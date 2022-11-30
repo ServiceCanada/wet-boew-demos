@@ -1,0 +1,4 @@
+[submodule "GCWeb-PR1916"]
+	path = GCWeb-PR1916
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = GCWeb-PR1916
