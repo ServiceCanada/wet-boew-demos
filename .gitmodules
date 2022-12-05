@@ -2,3 +2,7 @@
 	path = GCWeb-PR1916
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = GCWeb-PR1916
+[submodule "wet-pr9466"]
+	path = wet-pr9466
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = wet-pr9466
