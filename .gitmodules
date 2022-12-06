@@ -6,3 +6,7 @@
 	path = wet-pr9466
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = wet-pr9466
+[submodule "wet-pr9387"]
+	path = wet-pr9387
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = wet-pr9387
