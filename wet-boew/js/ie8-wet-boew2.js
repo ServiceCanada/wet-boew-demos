@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.54 - 2022-12-05
+ * v4.0.56.3 - 2022-12-06
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1232,7 +1232,7 @@ wb.date = {
 	fromDateISO: function( dateISO ) {
 		var date = null;
 
-		if ( dateISO && dateISO.match( /\d{4}-\d{2}-\d{2}/ ) ) {
+		if ( dateISO && /\d{4}-\d{2}-\d{2}/.test( dateISO ) ) {
 			date = new Date( dateISO.substr( 0, 4 ), dateISO.substr( 5, 2 ) - 1, dateISO.substr( 8, 2 ), 0, 0, 0, 0 );
 		}
 		return date;
@@ -1253,6 +1253,24 @@ wb.guid = function() {
 
 wb.escapeAttribute = function( str ) {
 	return str.replace( /'/g, "&#39;" ).replace( /"/g, "&#34;" );
+};
+
+/*
+ * Returns an escaped HTML string
+ */
+wb.escapeHTML = function( str ) {
+	return wb.escapeAttribute( str
+		.replace( /&/g, "&#38;" )
+		.replace( /</g, "&#60;" )
+		.replace( />/g, "&#62;" ) );
+};
+
+/*
+ * Returns a UTF-8 output from Base64
+ * Reference: https://developer.mozilla.org/fr/docs/Glossary/Base64 (To be reviewed later because escape function is deprecated)
+ */
+wb.decodeUTF8Base64 = function( str ) {
+	return decodeURIComponent( escape( atob( str ) ) );
 };
 
 /*
@@ -2671,7 +2689,7 @@ $document.on( "change", selector, function( event ) {
 	} );
 } );
 
-$document.on( "click vclick touchstart", ".cal-month-prev, .cal-month-next", function( event ) {
+$document.on( "click", ".cal-month-prev, .cal-month-next", function( event ) {
 	var $calendar = $( event.currentTarget ).closest( selector ),
 		calendar = $calendar.get( 0 ),
 		className = event.currentTarget.className,
@@ -4617,7 +4635,7 @@ var componentName = "wb-inview",
 		// Link the overlay close button to the dismiss action if the inview content is dismissable
 		if ( $elm.hasClass( "wb-dismissable" ) ) {
 			if ( $dataInView.hasClass( "wb-overlay" ) ) {
-				$dataInView.children( ".overlay-close" ).on( "click vclick", function( event ) {
+				$dataInView.children( ".overlay-close" ).on( "click", function( event ) {
 					var which = event.which;
 
 					// Ignore middle/right mouse buttons
@@ -5030,7 +5048,7 @@ var componentName = "wb-dismissable",
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // Handler for clicking on the dismiss button
-$document.on( "click vclick", "." + dismissClass, function( event ) {
+$document.on( "click", "." + dismissClass, function( event ) {
 	var elm = event.currentTarget,
 		which = event.which;
 
@@ -6343,9 +6361,15 @@ var componentName = "wb-filter",
 
 			totalEntries = $elm.find( ( settings.section || "" ) + " " + settings.selector ).length;
 
-			filterUI = "<div class=\"input-group\"><label for=\"" + inptId + "\" class=\"input-group-addon\"><span class=\"glyphicon glyphicon-filter\" aria-hidden=\"true\"></span> " + i18nText.filter_label + "</label><input id=\"" + inptId + "\" class=\"form-control " + inputClass + "\" data-" + dtNameFltrArea + "=\"" + elm.id + "\" type=\"search\"></div>" + "<p aria-live=\"polite\" id=\"" + elm.id + "-info\">" + infoFormater( totalEntries, totalEntries ) + "</p>";
+			filterUI = $( "<div class=\"input-group\">" +
+				"<label for=\"" + inptId + "\" class=\"input-group-addon\"><span class=\"glyphicon glyphicon-filter\" aria-hidden=\"true\"></span> " + i18nText.filter_label + "</label>" +
+				"<input id=\"" + inptId + "\" class=\"form-control " + inputClass + "\" data-" + dtNameFltrArea + "=\"" + elm.id + "\" aria-controls=\"" + elm.id + "\" type=\"search\">" +
+				"</div>" +
+				"<p aria-live=\"polite\" id=\"" + elm.id + "-info\">" + infoFormater( totalEntries, totalEntries ) + "</p>" );
 
-			if ( prependUI ) {
+			if ( settings.source ) {
+				$( settings.source ).prepend( filterUI );
+			} else if ( prependUI ) {
 				$elm.prepend( filterUI );
 			} else {
 				$elm.before( filterUI );
@@ -6441,7 +6465,7 @@ var componentName = "wb-filter",
 			$item = $items.eq( i );
 			text = unAccent( $item.text() );
 
-			if ( !text.match( searchFilterRegularExp ) ) {
+			if ( !searchFilterRegularExp.test( text ) ) {
 				if ( hndParentSelector ) {
 					$item = $item.parentsUntil( hndParentSelector );
 				}
@@ -6706,6 +6730,19 @@ var componentName = "wb-frmvld",
 						summaryHeading = settings.hdLvl,
 						i, len, validator;
 
+					if ( wb.lang === "fr" ) {
+
+						// alphanumeric regex is changed to allow french characters;
+						$.validator.addMethod( "alphanumeric", function( value, element ) {
+							return this.optional( element ) || /^[a-zàâçéèêëîïôûùüÿæœ0-9_]+$/i.test( value );
+						}, "Letters, numbers, and underscores only please." );
+
+						// error french text is adjusted to remove the word "spaces"
+						$.extend( $.validator.messages, {
+							alphanumeric: "Veuillez fournir seulement des lettres, nombres et soulignages."
+						} );
+					}
+
 					// Append the aria-live region (for provide message updates to screen readers)
 					$elm.append( "<div class='arialive wb-inv' aria-live='polite' aria-relevant='all'></div>" );
 
@@ -6952,7 +6989,7 @@ var componentName = "wb-frmvld",
 					} );
 
 					// Clear the form and remove error messages on reset
-					$document.on( "click vclick touchstart", selector + " input[type=reset]", function( event ) {
+					$document.on( "click", selector + " input[type=reset]", function( event ) {
 						var which = event.which,
 							ariaLive;
 
@@ -7600,7 +7637,7 @@ var componentName = "wb-lbx",
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // Handler for clicking on a same page link within the overlay to outside the overlay
-$document.on( "click vclick", ".mfp-wrap a[href^='#']", function( event ) {
+$document.on( "click", ".mfp-wrap a[href^='#']", function( event ) {
 	var which = event.which,
 		eventTarget = event.currentTarget,
 		$lightbox, linkTarget;
@@ -8239,13 +8276,12 @@ $document.on( "mouseenter", selector + " .sm", function() {
 } );
 
 // Touchscreen "touches" on menubar items should close the submenu if it is open
-$document.on( "touchstart click", selector + " .item[aria-haspopup=true]", function( event ) {
-	var isTouchstart = event.type === "touchstart",
-		which = event.which,
+$document.on( "click", selector + " .item[aria-haspopup=true]", function( event ) {
+	var which = event.which,
 		$this, $parent;
 
 	// Ignore middle and right mouse buttons
-	if ( isTouchstart || ( !which || which === 1 ) ) {
+	if ( !which || which === 1 ) {
 		event.preventDefault();
 		$this = $( this );
 		$parent = $this.parent();
@@ -8253,10 +8289,6 @@ $document.on( "touchstart click", selector + " .item[aria-haspopup=true]", funct
 		// Open the submenu if it is closed
 		if ( !$parent.hasClass( "sm-open" ) ) {
 			$this.trigger( "focusin" );
-
-		// Close the open submenu for a touch event
-		} else if ( isTouchstart ) {
-			menuClose( $parent, true );
 		}
 	}
 } );
@@ -8294,12 +8326,12 @@ $document.on( "click", selector + " [role=menu] [aria-haspopup=true]", function(
 } );
 
 // Clicks and touches outside of menus should close any open menus
-$document.on( "click touchstart", function( event ) {
+$document.on( "click", function( event ) {
 	var $openMenus,
 		which = event.which;
 
 	// Ignore middle and right mouse buttons
-	if ( event.type === "touchstart" || ( !which || which === 1 ) ) {
+	if ( event.type === "" || ( !which || which === 1 ) ) {
 		$openMenus = $( selector + " .sm-open" );
 		if ( $openMenus.length !== 0 &&
 			$( event.target ).closest( selector ).length === 0 ) {
@@ -9432,19 +9464,19 @@ $document.on( "click", selector, function( event ) {
 	// Optimized multiple class tests to include child glyphicon because Safari was reporting the click event
 	// from the child span not the parent button, forcing us to have to check for both elements
 	// JSPerf for multiple class matching https://jsperf.com/hasclass-vs-is-stackoverflow/7
-	if ( className.match( /playpause|-play|-pause|display/ ) || $target.is( "object" ) || $target.is( "video" ) ) {
+	if (  /playpause|-play|-pause|display/.test( className ) || $target.is( "object" ) || $target.is( "video" ) ) {
 		this.player( "getPaused" ) || this.player( "getEnded" ) ? this.player( "play" ) : this.player( "pause" );
-	} else if ( className.match( /(^|\s)cc\b|-subtitles/ ) && !$target.attr( "disabled" ) && !$target.parent().attr( "disabled" ) ) {
+	} else if ( /(^|\s)cc\b|-subtitles/.test( className ) && !$target.attr( "disabled" ) && !$target.parent().attr( "disabled" ) ) {
 		this.player( "setCaptionsVisible", !this.player( "getCaptionsVisible" ) );
-	} else if ( className.match( /\bmute\b|-volume-(up|off)/ ) ) {
+	} else if ( /\bmute\b|-volume-(up|off)/.test( className ) ) {
 		this.player( "setMuted", !this.player( "getMuted" ) );
 	} else if ( $target.is( "progress" ) || $target.hasClass( "progress" ) || $target.hasClass( "progress-bar" ) ) {
 		this.player( "setCurrentTime", this.player( "getDuration" ) * ( ( event.pageX - $target.offset().left ) / $target.width() ) );
-	} else if ( className.match( /\brewind\b|-backward/ ) ) {
+	} else if ( /\brewind\b|-backward/.test( className ) ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) - this.player( "getDuration" ) * 0.05 );
-	} else if ( className.match( /\bfastforward\b|-forward/ ) ) {
+	} else if ( /\bfastforward\b|-forward/.test( className ) ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05 );
-	} else if ( className.match( /cuepoint/ ) ) {
+	} else if ( className.includes( "cuepoint" ) ) {
 		$( this ).trigger( { type: "cuepoint", cuepoint: $target.data( "cuepoint" ) } );
 	}
 } );
@@ -10084,7 +10116,7 @@ $document.on( "timerpoke.wb " + initEvent + " keydown open" + selector +
 } );
 
 // Handler for clicking on the close button of the overlay
-$document.on( "click vclick", "." + closeClass, function( event ) {
+$document.on( "click", "." + closeClass, function( event ) {
 	var which = event.which;
 
 	// Ignore if not initialized and middle/right mouse buttons
@@ -10098,7 +10130,7 @@ $document.on( "click vclick", "." + closeClass, function( event ) {
 } );
 
 // Handler for clicking on a source link for the overlay
-$document.on( "click vclick keydown", "." + linkClass, function( event ) {
+$document.on( "click keydown", "." + linkClass, function( event ) {
 	var which = event.which,
 		sourceLink = event.currentTarget,
 		overlayId = sourceLink.hash.substring( 1 );
@@ -10120,7 +10152,7 @@ $document.on( "click vclick keydown", "." + linkClass, function( event ) {
 } );
 
 // Handler for clicking on a same page link within the overlay to outside the overlay
-$document.on( "click vclick", selector + " a[href^='#']", function( event ) {
+$document.on( "click", selector + " a[href^='#']", function( event ) {
 	var which = event.which,
 		eventTarget = event.target,
 		href, overlay, linkTarget;
@@ -10149,7 +10181,7 @@ $document.on( "click vclick", selector + " a[href^='#']", function( event ) {
 } );
 
 // Outside activity detection
-$document.on( "click vclick touchstart focusin", "body", function( event ) {
+$document.on( "click focusin", "body", function( event ) {
 	var eventTarget = event.target,
 		which = event.which,
 		overlayId, overlay;
@@ -11346,6 +11378,7 @@ var componentName = "wb-steps",
 
 		// set default attributes
 		control.className = ( type === "prev" ? "btn btn-md btn-default" : "btn btn-md btn-primary" ) + " " + style;
+		control.setAttribute( "type", "button" );
 		control.innerHTML = text;
 
 		return control;
@@ -11653,9 +11686,10 @@ $document.on( "init.dt", function( event ) {
 		$elm.find( "th" ).each( function() {
 			var $th = $( this ),
 				label = ( $th.attr( "aria-sort" ) === "ascending" ) ? i18nText.aria.sortDescending : i18nText.aria.sortAscending;
-
-			$th.html( "<button type='button' aria-controls='" + $th.attr( "aria-controls" ) +  "' title='" + $th.text().replace( /'/g, "&#39;" ) + label + "'>" + $th.html() + "<span class='sorting-cnt'><span class='sorting-icons' aria-hidden='true'></span></span></button>" );
-			$th.removeAttr( "aria-label tabindex aria-controls" );
+			if ( $th.attr( "data-orderable" ) !== "false" ) {
+				$th.html( "<button type='button' aria-controls='" + $th.attr( "aria-controls" ) +  "' title='" + $th.text().replace( /'/g, "&#39;" ) + label + "'>" + $th.html() + "<span class='sorting-cnt'><span class='sorting-icons' aria-hidden='true'></span></span></button>" );
+				$th.removeAttr( "aria-label tabindex aria-controls" );
+			}
 		} );
 		$elm.attr( "aria-label", i18nText.tblFilterInstruction );
 	}
@@ -11682,7 +11716,7 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 		};
 
 	// Lets reset the search
-	$datatable.search( "" ).columns().search( "" ).draw();
+	$datatable.search( "" ).columns().search( "" );
 
 	// Lets loop throug all options
 	var $prevCol = -1, $cachedVal = "";
@@ -11713,17 +11747,17 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 		if ( $elm.is( "select" ) ) {
 			$value = $elm.find( "option:selected" ).val();
 		} else if ( $elm.is( "input[type='number']" ) ) {
-			var $minNum, $maxNum;
+			var $minNum, $maxNum = null;
 
 			// Retain minimum number (always the first number input)
 			if ( $cachedVal === "" ) {
 				$cachedVal = parseFloat( $val );
 				$cachedVal = ( $cachedVal ) ? $cachedVal : "-0";
+			} else {
+				$maxNum = parseFloat( $val );
+				$maxNum = ( $maxNum ) ? $maxNum : "-0";
 			}
 			$minNum = $cachedVal;
-
-			// Maximum number is always the current selected number
-			$maxNum = parseFloat( $val );
 
 			//Number filtering logic needs to be reviewed in order to remove the "-0" value (issue #9235)
 			// Generates a list of numbers (within the min and max number)
@@ -11733,15 +11767,21 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 
 					if ( !isNaN( $num ) ) {
 						if ( $aoType === "and" ) {
-							if ( $cachedVal !== $maxNum && $cachedVal !== "-0" && $num >= $minNum && $num <= $maxNum ) {
+							if ( $cachedVal !== $maxNum && $cachedVal !== "-0" && $maxNum !== "0" && $num >= $minNum && $num <= $maxNum ) {
 								return true;
 							}
 						} else {
-							if ( $cachedVal === $maxNum && $num >= $minNum ) {
+							if ( $maxNum === null ) { // only one input number
+								return $minNum === "-0" || $minNum === $num;
+							} else if ( $maxNum === $cachedVal && $cachedVal === "-0" ) { // both are empty
 								return true;
-							} else if ( $cachedVal === "-0" && $num <= $maxNum ) {
+							} else if ( $maxNum !== "-0" && $minNum === $maxNum && $num === $maxNum ) { // min and max are the same
 								return true;
-							} else if ( $cachedVal !== "-0" && $num >= $minNum && $num <= $maxNum ) {
+							} else if ( $maxNum === "-0" && $num >= $minNum ) { // max number is missing
+								return true;
+							} else if ( $cachedVal === "-0" && $num <= $maxNum ) { // min number is missing
+								return true;
+							} else if ( $cachedVal !== "-0" && $num >= $minNum && $num <= $maxNum ) { // min and max are present
 								return true;
 							}
 						}
@@ -11834,10 +11874,10 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 				$regex = "(" + $value + ")";
 			}
 
-			$datatable.column( $column ).search( $regex, true ).draw();
+			$datatable.column( $column ).search( $regex, true );
 		}
 	} );
-
+	$datatable.draw();
 	return false;
 } );
 
@@ -11850,10 +11890,8 @@ $document.on( "click", ".wb-tables-filter [type='reset']", function( event ) {
 	$datatable.search( "" ).columns().search( "" ).draw();
 
 	$form.find( "select" ).prop( "selectedIndex", 0 );
-	$form.find( "input:checkbox" ).prop( "checked", false );
-	$form.find( "input:radio" ).prop( "checked", false );
-	$form.find( "input[type=date]" ).val( "" );
-
+	$form.find( "input:checkbox, input:radio" ).prop( "checked", false );
+	$form.find( ":input" ).not( ":button, :submit, :reset, :hidden, :checkbox, :radio" ).val( "" );
 	return false;
 } );
 
@@ -14142,7 +14180,7 @@ wb.add( selector );
 
 var $document = wb.doc,
 	$window = wb.win,
-	clickEvents = "click vclick",
+	clickEvents = "click",
 	setFocusEvent = "setfocus.wb",
 	linkSelector = "a[href]",
 	$linkTarget,
@@ -14339,6 +14377,38 @@ var componentName = "wb-jsonmanager",
 				}
 			},
 			{
+				name: "wb-decodeUTF8Base64",
+				fn: function( obj, key, tree ) {
+					var val = obj[ key ];
+
+					if ( !this.set ) {
+						jsonpatch.apply( tree, [
+							{ op: "replace", path: this.path, value: wb.decodeUTF8Base64( val ) }
+						] );
+					} else {
+						jsonpatch.apply( tree, [
+							{ op: "add", path: this.set, value: wb.decodeUTF8Base64( val ) }
+						] );
+					}
+				}
+			},
+			{
+				name: "wb-escapeHTML",
+				fn: function( obj, key, tree ) {
+					var val = obj[ key ];
+
+					if ( !this.set ) {
+						jsonpatch.apply( tree, [
+							{ op: "replace", path: this.path, value: wb.escapeHTML( val ) }
+						] );
+					} else {
+						jsonpatch.apply( tree, [
+							{ op: "add", path: this.set, value: wb.escapeHTML( val ) }
+						] );
+					}
+				}
+			},
+			{
 				name: "wb-toDateISO",
 				fn: function( obj, key, tree ) {
 					if ( !this.set ) {
@@ -14410,111 +14480,6 @@ var componentName = "wb-jsonmanager",
 		opsRoot: [],
 		settings: { }
 	},
-	jsonSource,
-	docMapKeys = { "externalReferer": document.referrer, "submissionPage": location.href },
-	extractData = function( elmData ) {
-
-		var extrName = elmData.name,
-			isGroup = false,
-			selectedTag,
-			targetTag,
-			lastIndex = [],
-			j_tag = "",
-			group = {},
-			node_children = [],
-			j_node = 0,
-			combineToObj = function( cur_obj ) {
-				if ( cur_obj.selector === j_tag ) {
-					if ( !lastIndex.includes( j_tag ) ) {
-						group[ cur_obj.path ] = cur_obj.attr && node_children[ j_node ].getAttributeNode( cur_obj.attr ) ? node_children[ j_node ].getAttributeNode( cur_obj.attr ).textContent : node_children[ j_node ].textContent;
-						lastIndex.push( j_tag );
-					}
-				}
-			};
-
-		jsonSource = {};
-		jsonSource[ extrName ] = {};
-		jsonSource[ extrName ].subset = elmData.mapAsArray ? [] : {};
-
-
-		for ( var tag = 0; tag <= elmData.srcExtractor.length - 1; tag++ ) {
-
-			selectedTag = elmData.srcExtractor[ tag ];
-			targetTag = document.querySelectorAll( "" + selectedTag.selector );
-			isGroup = selectedTag.mapping && selectedTag.mapping.length >= 1 ? true : false;
-
-			if ( selectedTag.selectAll ) {
-				jsonSource[ extrName ][ selectedTag.path ] = [];
-
-				for ( var i_node = 0; i_node <= targetTag.length - 1; i_node++ ) {
-					jsonSource[ extrName ][ selectedTag.path ].push( { [ selectedTag.path ]: selectedTag.attr && targetTag [ i_node ].getAttributeNode( selectedTag.attr ) ? targetTag [ i_node ].getAttributeNode( selectedTag.attr ).textContent : targetTag [ i_node ].textContent } );
-
-				}
-			}
-
-			// extract from combined selectors and group the values e.g dt with dd
-
-			if ( isGroup ) {
-				jsonSource[ extrName ][ selectedTag.path ] = [];
-				var arrMap = [];
-
-				node_children = targetTag[ 0 ].children;
-
-				var mappingLength = Object.keys( selectedTag.mapping ).length;
-
-				for ( j_node = 0; j_node <= node_children.length - 1; j_node++ ) {
-
-					j_tag = node_children[ j_node ].tagName.toLowerCase();
-
-					selectedTag.mapping.find( combineToObj );
-					if ( Object.keys( group ).length === mappingLength ) {
-						arrMap.push( group );
-						group = {};
-						lastIndex = [];
-					}
-				}
-
-				$.extend( jsonSource[ extrName ][ selectedTag.path ], arrMap );
-			}
-
-
-			targetTag = selectedTag.attr && targetTag [ 0 ].getAttributeNode( selectedTag.attr ) ? targetTag [ 0 ].getAttributeNode( selectedTag.attr ).textContent : targetTag [ 0 ].textContent;
-			if ( elmData.mapAsArray ) {
-
-				if ( !selectedTag.selectAll ) {
-					if ( isGroup === false ) {
-
-						// "conventional" key "subset" is used for the default json part that is not built with "selectAll"
-						jsonSource[ extrName ].subset.push( {
-							name: selectedTag.path,
-							value: targetTag
-						} );
-					}
-				}
-
-			} else {
-
-				if ( isGroup === false ) {
-					jsonSource[ extrName ].subset [ selectedTag.path ] = targetTag;
-				}
-			}
-		}
-
-		if ( Array.isArray( elmData.docExtractor ) ) {
-			for ( var i in elmData.docExtractor ) {
-
-				if ( elmData.mapAsArray ) {
-					jsonSource[ extrName ].subset.push( {
-						name: elmData.docExtractor[ i ],
-						value: docMapKeys[ elmData.docExtractor[ i ] ] || ""
-					} );
-				} else {
-					jsonSource[ extrName ].subset[ elmData.docExtractor[ i ] ] = docMapKeys[ elmData.docExtractor[ i ] ];
-				}
-			}
-		}
-		console.log( jsonSource );
-	},
 
 	// Add debug information after the JSON manager element
 	debugPrintOut = function( $elm, name, json, patches ) {
@@ -14546,7 +14511,7 @@ var componentName = "wb-jsonmanager",
 				// For loading multiple dependencies
 				load: "site!deps/json-patch" + wb.getMode() + ".js",
 				testReady: function() {
-					return window.jsonpatch && window.jsonpointer;
+					return window.jsonpatch;
 				},
 				complete: function() {
 					var elmData = wb.getData( $elm, componentName );
@@ -14608,57 +14573,11 @@ var componentName = "wb-jsonmanager",
 						}
 					} else {
 
-						if ( elmData.srcExtractor && Array.isArray( elmData.srcExtractor ) ) {
-
-							extractData( elmData );
-
-							var settings = wb.getData( $elm, componentName );
-
-							dsName = "[" + settings.name + "]";
-
-							datasetCache = jsonSource[ elmData.name ];
-							var dsJSON = jsonSource[ elmData.name ];
-							var delayedLst = dsDelayed[ dsName ] || [];
-							i_len = delayedLst.length;
-							for ( i = 0; i !== i_len; i += 1 ) {
-								i_cache = delayedLst[ i ];
-								var pntrSelector = i_cache.selector;
-								var resultSet = {};
-								if ( pntrSelector.length ) {
-									try {
-										resultSet = jsonpointer.get( dsJSON, pntrSelector );
-									} catch  ( e ) {
-										throw dsName + " - JSON selector not found: " + pntrSelector;
-									}
-								} else {
-									resultSet = dsJSON;
-								}
-								$( "#" + i_cache.callerId ).trigger( {
-									type: "json-fetched.wb",
-									fetch: {
-										response: resultSet,
-										status: "200",
-										refId: i_cache.refId,
-										xhr: null
-									}
-								}, this );
-							}
-
-							$elm.trigger( {
-								type: "json-fetch.wb"
-							} );
-
-							wb.ready( $elm, componentName );
-
-						} else {
-
-							// Do an empty fetch to ensure jsonPointer is loaded and correctly initialized
-
-							$elm.trigger( {
-								type: "json-fetch.wb"
-							} );
-							wb.ready( $elm, componentName );
-						}
+						// Do an empty fetch to ensure jsonPointer is loaded and correctly initialized
+						$elm.trigger( {
+							type: "json-fetch.wb"
+						} );
+						wb.ready( $elm, componentName );
 					}
 				}
 			} );
@@ -14839,7 +14758,7 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 		$elm = $( elm ),
 		settings,
 		dsName,
-		JSONresponse = event.fetch.response || jsonSource,
+		JSONresponse = event.fetch.response,
 		isArrayResponse = $.isArray( JSONresponse ),
 		resultSet,
 		i, i_len, i_cache, backlog, selector,

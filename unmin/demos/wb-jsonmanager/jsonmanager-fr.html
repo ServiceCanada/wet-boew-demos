@@ -399,9 +399,44 @@
 	</template>
 </ul>
 
+<h3>Contenu d'un fichier provenant de GitHub</h3>
+<p>L'appel à l'API GitHub pour obtenir le contenu d'un fichier doit être effectué de la sorte&nbsp;:</p>
+<pre><code>https://api.github.com/repos/[Nom-Organisation]/[Nom-Répertoire]/contents/[Chemin-Vers-Fichier]</code></pre>
+<p><strong>Remarque&nbsp;:</strong> Veuillez prendre en considération que GitHub a une limite d'utilisation de son API, qui est présentement réglée à 60 par heure (sans identifiant).</p>
+<div data-wb-jsonmanager='{
+		"url": "https://api.github.com/repos/wet-boew/wet-boew/contents/src/plugins/data-ajax/ajax/data-ajax-extra-fr.html",
+		"name": "githubCode",
+		"patches": [
+			{ "op": "wb-decodeUTF8Base64", "path": "/content", "set": "/raw" },
+			{ "op": "copy", "from": "/raw", "path": "/escape" },
+			{ "op": "wb-escapeHTML", "path": "/escape" }
+		]
+	}'>
+	<div data-json-replace="#[githubCode]/raw">Contenu ici...</div>
+	<h4>Contenu HTML échappé</h4>
+	<pre><code data-json-append="#[githubCode]/escape"></code></pre>
+</div>
+
+<details>
+<summary>Code source</summary>
+<pre><code>&lt;div data-wb-jsonmanager=&apos;{
+	&quot;url&quot;: &quot;https://api.github.com/repos/wet-boew/wet-boew/contents/src/plugins/data-ajax/ajax/data-ajax-extra-fr.html&quot;,
+	&quot;name&quot;: &quot;githubCode&quot;,
+	&quot;patches&quot;: [
+		{ &quot;op&quot;: &quot;wb-decodeUTF8Base64&quot;, &quot;path&quot;: &quot;/content&quot;, &quot;set&quot;: &quot;/raw&quot; },
+		{ &quot;op&quot;: &quot;copy&quot;, &quot;from&quot;: &quot;/raw&quot;, &quot;path&quot;: &quot;/escape&quot; },
+		{ &quot;op&quot;: &quot;wb-escapeHTML&quot;, &quot;path&quot;: &quot;/escape&quot; }
+	]
+}&apos;&gt;
+&lt;div data-json-replace=&quot;#[githubCode]/raw&quot;&gt;Contenu ici...&lt;/div&gt;
+&lt;h4&gt;Contenu HTML échappé&lt;/h4&gt;
+&lt;pre&gt;&lt;code data-json-append=&quot;#[githubCode]/escape&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+</details>
+
 <h2>Opération de correctifs JSON</h2>
 
-<p>Les opération de correctifs JSON sont définie par <a href="https://tools.ietf.org/html/rfc6902" lang="en" hreflang="en">RFC6002 - JavaScript Object Notation (JSON) Patch</a> avec quelques ajout d'opération afin de combler les besoins du gestionnaire JSON. Détaillé dans la documentations, les opérations suivant sont supporté par défaut: <code>add</code>, <code>remove</code>, <code>replace</code>, <code>move</code>, <code>copy</code>, <code>test</code>, <code>wb-count</code>, <code>wb-first</code>, <code>wb-last</code>, <code>wb-toDateISO</code> and <code>wb-toDateTimeISO</code>.</p>
+<p>Les opération de correctifs JSON sont définie par <a href="https://tools.ietf.org/html/rfc6902" lang="en" hreflang="en">RFC6002 - JavaScript Object Notation (JSON) Patch</a> avec quelques ajout d'opération afin de combler les besoins du gestionnaire JSON. Détaillé dans la documentations, les opérations suivant sont supporté par défaut: <code>add</code>, <code>remove</code>, <code>replace</code>, <code>move</code>, <code>copy</code>, <code>test</code>, <code>wb-count</code>, <code>wb-first</code>, <code>wb-last</code>, <code>wb-decodeUTF8Base64</code>, <code>wb-escapeHTML</code>, <code>wb-toDateISO</code> and <code>wb-toDateTimeISO</code>.</p>
 
 <h2>Débogage</h2>
 
@@ -424,289 +459,9 @@
 }'&gt;Nombre de produits: &lt;span data-json-replace=&quot;#[exemple3]/nbproduit&quot;&gt;Non disponible&lt;/span&gt;&lt;/p&gt;</code></pre>
 </details>
 
-<h2>Extraire les données des nœuds DOM pour créer l'objet JSON de la source de données</h2>
-	<p>Utilisez <code>replace</code> et <code>mappage</code> sur la même source de données JSON</p>
-<div data-wb-jsonmanager='{
-	"name": "ex1",
-	"srcExtractor": [
-						{ "selector": "title", "path": "pageTitle" },
-						{ "selector": "h2", "path": "firstH2" },
-						{ "selector": "h4", "path": "allH4", "selectAll": true }
-					]
-	}'>
-	<p> Le titre de la page est : <span data-json-replace="#[ex1]/subset/pageTitle">Non disponible</span></p>
-	<p> Le premier H2 est : <span data-json-replace="#[ex1]/subset/firstH2">Non disponible</span></p>
-	<p>Tous les H4 de la page :</p>
-	<ul data-wb-json='{
-						"url": "#[ex1]/allH4",
-						"mapping": [
-						{ "selector": "li", "value": "/allH4" }
-						]
-					}'>
-		<template>
-			<li></li>
-		</template>
-	</ul>
-</div>
-
-<details>
-<summary>Afficher le code source</summary>
-
-<pre><code>
-&lt;p&gt;Utilisez &lt;code&gt;replace&lt;/code&gt; et &lt;code&gt;mapping&lt;/code&gt; sur la même source de données JSON&lt;/p&gt;
-
-&lt;div data-wb-jsonmanager='{
-		&quot;name&quot; : &quot;ex1&quot;,
-		&quot;srcExtractor&quot; : [
-			{ &quot;selector&quot; : &quot;title&quot;, &quot;path&quot; : &quot;pageTitle&quot; },
-			{ &quot;selector&quot; : &quot;h2&quot;, &quot;path&quot; : &quot;firstH2&quot;},
-			{ &quot;selector&quot; : &quot;h4&quot;, &quot;path&quot; : &quot;allH4&quot;, &quot;selectAll&quot; : true}
-		]
-	}'>
-	&lt;p&gt;Le titre de la page est : &lt;span data-json-replace=&quot;#[ex1]/ex1/pageTitle&quot;&gt;Non disponible&lt;/span&gt;&lt;/p&gt;
-	&lt;p&gt;Le premier H2 est : &lt;span data-json-replace="#[ex1]/ex1/firstH2&quot;&gt;Non disponible&lt;/span&gt;&lt;/p&gt;
-	&lt;p&gt;Tous les H4 de la page :&lt;/p&gt;
-	&lt;ul data-wb-json='{
-			&quot;url&quot; : &quot;#[ex1]/allH4&quot;,
-				&quot;mapping&quot; : [
-										{ &quot;selector&quot; : &quot;li&quot;, &quot;value&quot; : &quot;/allH4&quot; }
-									]
-						}'>
-		&lt;template&gt;
-			&lt;li&gt;&lt;/li&gt;
-		&lt;/template&gt;
-	&lt;/ul&gt;
-&lt;/div&gt;</code></pre>
-</details>
-
-<h3>Regrouper les sélecteurs sur la même source de données JSON</h3>
-<p>La liste de description ci-dessous est la source des sélecteurs combinés :</p>
-<dl data-dl="test">
-	<dt data-td="data-title-1">Titre 1</dt>
-	<dd>Description 1</dd>
-
-	<dt data-td="data-title-2">Titre 2</dt>
-	<dd>Description 2</dd>
-
-	<dt>Titre 3</dt>
-	<dd>Description 3</dd>
-</dl>
-
-<div data-wb-jsonmanager='{
-		"name": "ex3",
-		"srcExtractor": [
-						{ "selector": "title", "path": "pageTitle" },
-						{ "selector": "h2", "path": "firstH2" },
-						{ "selector": "h3", "path": "allH3", "selectAll":true },
-						{
-							"selector": "dl[data-dl]",
-							"path": "monGroup",
-							"mapping": [
-								{
-									"selector": "dt",
-									"path": "title",
-									"attr":"data-td"
-								},
-								{
-									"selector": "dd",
-									"path": "desc"
-								}
-
-							]
-						}
-					]
-		}'>
-	<p>Afficher dans un tableau les valeurs combinées des sélecteurs :</p>
-	<table class="table table-striped">
-		<thead>
-			<tr data-wb-json='{
-				"url": "#[ex3]/monGroup",
-				"mapping": [
-					{ "selector": "th", "value": "/title" }
-				]
-				}'>
-				<template>
-					<th></th>
-				</template>
-			</tr>
-		</thead>
-		<tbody>
-			<tr data-wb-json='{
-				"url": "#[ex3]/monGroup",
-				"mapping": [
-					{ "selector": "td", "value": "/desc" }
-				]
-				}'>
-				<template>
-					<td></td>
-				</template>
-			</tr>
-		</tbody>
-	</table>
-	<p> Le titre de la page est: <span data-json-replace="#[ex3]/subset/pageTitle">Indisponible</span></p>
-	<p> Le premier H2 est: <span data-json-replace="#[ex3]/subset/firstH2">Indisponible</span></p>
-</div>
-<details>
-	<summary>Afficher le code source</summary>
-
-	<h3>HTML</h3>
-	<pre><code>
-&lt;div data-wb-jsonmanager='{
-		&quot;name&quot;: &quot;ex3&quot;,
-		&quot;srcExtractor&quot;: [
-			{ &quot;selector&quot;: &quot;title&quot;, &quot;path&quot;: &quot;pageTitle&quot; },
-			{ &quot;selector&quot;: &quot;h2&quot;, &quot;path&quot;: &quot;firstH2&quot; },
-			{ &quot;selector&quot;: &quot;dl&#91;data-dl&#93;&quot;, &quot;path&quot;: &quot;monGroup&quot;, &quot;mapping&quot;: &#91;
-				{
-					&quot;selector&quot;: &quot;dt&quot;,
-					&quot;path&quot;: &quot;title&quot;,
-					&quot;attr&quot;:&quot;data-td&quot;
-				},
-				{
-					&quot;selector&quot;: &quot;dd&quot;,
-					&quot;path&quot;: &quot;desc&quot;
-				} &#93;&quot;}
-		],
-	}'&gt;
-
-	&lt;table class=&quot;table table-striped&quot;&gt;
-		&lt;thead&gt;
-			&lt;tr data-wb-json='{
-				&quot;url&quot;: &quot;#[ex3]/monGroup&quot;,
-				&quot;mapping&quot;: [
-					{ &quot;selector&quot;: &quot;th&quot;, &quot;value&quot;: &quot;/title&quot; }
-				]
-				}'&gt;
-				&lt;template&gt;
-					&lt;th&gt;&lt;/th&gt;
-				&lt;/template&gt;
-			&lt;/tr&gt;
-		&lt;/thead&gt;
-		&lt;tbody&gt;
-			&lt;tr data-wb-json='{
-				&quot;url&quot;: &quot;#[ex3]/monGroup&quot;,
-				&quot;mapping&quot;: [
-					{ &quot;selector&quot;: &quot;td&quot;, &quot;value&quot;: &quot;/desc&quot; }
-				]
-				}'&gt;
-				&lt;template&gt;
-					&lt;td&gt;&lt;/td&gt;
-				&lt;/template&gt;
-			&lt;/tr&gt;
-		&lt;/tbody&gt;
-	&lt;/table&gt;
-	&lt;p&gt; Le titre de la page est: &lt;span data-json-replace=&quot;#[ex1]/subset/pageTitle&quot;&gt;Indisponible&lt;/span&gt;&lt;/p&gt;
-	&lt;p&gt; Le premier H2 est: &lt;span data-json-replace=&quot;#[ex1]/subset/firstH2&quot;&gt;Indisponible&lt;/span&gt;&lt;/p&gt;
-
-
-&lt;/div&gt;</code></pre>
-</details>
-
-
-<h3>Extraire les valeurs des attributs de balises ou extraire toutes les valeurs de balises spécifiques :</h3>
-<div data-wb-jsonmanager='{
-							"name": "ex2",
-							"srcExtractor": [
-								{ "selector": "title", "path": "pageTitle" },
-								{ "selector": "html", "path": "lang", "attr":"lang" },
-								{ "selector": "h2", "path": "allH2", "selectAll":true },
-								{ "selector": "h3", "path": "allH3", "selectAll":true }
-							],
-							"docExtractor": ["externalReferer", "submissionPage"],
-							"mapAsArray": true
-						}'>
-	<div data-wb-json='{
-						"url": "#[ex2]/subset",
-						"mapping": [
-									{ "selector": "input", "attr": "name", "value": "/name" },
-									{ "selector": "input", "attr": "value", "value": "/value" }
-								]
-					}'>
-		<template>
-			<input type="text" name="" value="">
-		</template>
-	</div>
-	<p>Tous les H2 de la page :</p>
-	<ul data-wb-json='{
-		"url": "#[ex2]/allH2",
-		"mapping": [
-					{ "selector": "li", "value": "/allH2" }
-				]
-	}'>
-		<template>
-			<li></li>
-		</template>
-	</ul>
-	<p>Tous les H3 de la page :</p>
-	<ul data-wb-json='{
-		"url": "#[ex2]/allH3",
-		"mapping": [
-					{ "selector": "li", "value": "/allH3" }
-				]
-		}'>
-		<template>
-			<li></li>
-		</template>
-	</ul>
-</div>
-
-<details>
-<summary>Afficher le code source</summary>
-
-<h3>HTML</h3>
-<pre><code>
-
-&lt;div data-wb-jsonmanager='{
-		&quot;name&quot; : &quot;ex2&quot;,
-		&quot;srcExtractor&quot; : [
-			{ &quot;selector&quot; : &quot;title&quot;, &quot;path&quot; : &quot;pageTitle&quot; },
-			{ &quot;selector&quot; : &quot;html&quot;, &quot;path&quot; : &quot;lang&quot;, &quot;attr&quot; : &quot;lang&quot;}
-			{ &quot;selector&quot;: &quot;h2&quot;, &quot;path&quot;: &quot;allH2&quot;, &quot;selectAll&quot;: true},
-			{ &quot;selector&quot; : &quot;h3&quot;, &quot;path&quot; : &quot;allH3&quot;, &quot;selectAll&quot; : true}
-		],
-		&quot;docExtractor&quot; : [ &quot;submissionPage&quot;, &quot;externalReferer&quot; ],
-		&quot;mapAsArray&quot; : &quot;true&quot;
-	}'>
-
-	&lt;div data-wb-json='{
-		&quot;url&quot; : &quot;#[ex2]/ex2&quot;,
-		&quot;mapping&quot; : [
-			{ &quot;selector&quot; : &quot;input&quot;, &quot;attr&quot; : &quot;name&quot;, &quot;value&quot; : &quot;/name&quot; },
-			{ &quot;selector&quot; : &quot;input&quot;, &quot;attr&quot; : &quot;name&quot;, &quot;value&quot; : &quot;/value&quot; }
-		]
-	}'>
-		&lt;template&gt;
-			&lt;input type=&quot;texte&quot; name="" value=&quot;&quot; &gt;
-		&lt;/template&gt;
-	&lt;/div&gt;
-	&lt;p&gt;Tous les H2 de la page :&lt;/p&gt;
-	&lt;ul data-wb-json='{
-			&quot;url&quot; : &quot;#[ex2]/allH2&quot;,
-			&quot;mapping&quot; : [
-			{ &quot;selector&quot; : &quot;li&quot;, &quot;value&quot; : &quot;/allH2&quot; }
-			]
-		}'>
-		&lt;template&gt;
-			&lt;li&gt;&lt;/li&gt;
-		&lt;/template&gt;
-	&lt;/ul&gt;
-	&lt;p&gt;Tous les H3 de la page :&lt;/p&gt;
-	&lt;ul data-wb-json='{
-		&quot;url&quot; : &quot;#[ex2]/allH3&quot;,
-		&quot;mapping&quot; : [
-			{ "selector": "li", "valeur": "/allH3" }
-		]
-		}'>
-		&lt;template&gt;
-			&lt;li&gt;&lt;/li&gt;
-		&lt;/template&gt;
-	&lt;/ul&gt;
-&lt;/div&gt;</code></pre>
-</details>
-
 		<dl id="wb-dtmd">
 			<dt>Date de modification&#160;:&#32;</dt>
-			<dd><time property="dateModified">2022-10-31</time></dd>
+			<dd><time property="dateModified">2017-02-02</time></dd>
 		</dl>
 	</main>
 
