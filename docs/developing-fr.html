@@ -5,7 +5,16 @@
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Developing for GCWeb - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta name="description" content=" " />
+<meta name="description" content="Instructions sur comment développer pour le thème de Canada.ca." />
+<meta name="author" content=" "/>
+<meta name="dcterms.title" content="Developing for GCWeb"/>
+<meta name="dcterms.description" content="Instructions sur comment développer pour le thème de Canada.ca."/>
+<meta name="dcterms.creator" content=" "/>
+<meta name="dcterms.language" content="fra"/>
+<meta name="dcterms.subject" content=""/>
+<meta name="dcterms.issued" content=""/>
+<meta name="dcterms.modified" content="2021-12-03"/>
+
 <link href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/css/theme.css" />
 <noscript><link rel="stylesheet" href="/wet-boew-demos/GCWeb-PR1916/dist/wet-boew/css/noscript.css" /></noscript>
@@ -211,6 +220,12 @@ docker-compose up
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt htmllint:all
 </code></pre></div></div>
+
+<h2 id="build-demo-files">Build demo files</h2>
+
+<p>Run the following command to generate files for a demo on https://github.com/ServiceCanada/wet-boew-demos where <code class="language-plaintext highlighter-rouge">[branchName]</code> refers to the branch name where your demo is hosted.</p>
+
+<p><code class="language-plaintext highlighter-rouge">grunt demo --branch=[branchName]</code></p>
 
 <h2 id="refresh-your-github-pages-with-the-latest-theme-changes">Refresh your github pages with the latest theme changes</h2>
 

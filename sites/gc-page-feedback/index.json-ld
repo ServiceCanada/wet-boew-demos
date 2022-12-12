@@ -14,7 +14,7 @@
 		"en": "Page feedback tool for Canada.ca",
 		"fr": "Outil de rétroaction sur la page pour Canada.ca"
 	},
-	"modified": "2022-11-29",
+	"modified": "2022-12-06",
 	"componentName": "gc-page-feedback",
 	"status": "stable",
 	"pages": {
