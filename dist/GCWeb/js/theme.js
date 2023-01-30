@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v12.4.0 - 2022-12-12
+ * v12.6.0 - 2023-01-30
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -374,9 +374,15 @@ var $document = wb.doc,
 		if ( $source.get( 0 ).nodeName !== "TABLE" ) {
 			throw "Table filtering can only applied on table";
 		}
+
 		$datatable = $source.dataTable( { "retrieve": true } ).api();
-		column = ( colInt === true ) ? colInt : column;
-		$datatable.column( column ).search( data.value, regex, smart, caseinsen ).draw();
+
+		if ( column ) {
+			column = ( colInt === true ) ? colInt : column;
+			$datatable.column( column ).search( data.value, regex, smart, caseinsen ).draw();
+		} else {
+			$datatable.search( data.value, regex, smart, caseinsen ).draw();
+		}
 	},
 	geomapAOIAct = function( event, data ) {
 		var $source = $( data.source || event.target ),
@@ -1898,7 +1904,7 @@ var componentName = "wb-fieldflow",
 		if ( fieldName ) {
 			data.provEvt.setAttribute( "name", fieldName );
 		}
-		if ( fieldValue ) {
+		if ( typeof fieldValue === "string" ) {
 			$selectElm.val( fieldValue );
 		}
 
@@ -2700,7 +2706,7 @@ $document.on( "change", selectorForm + " " + crtlSelectSelector, function( event
 				// Retreive action set on the binded element
 				bindToElm = document.getElementById( bindTo );
 				actionAttr = bindToElm.getAttribute( "data-" + componentName );
-				if ( actionAttr ) {
+				if ( typeof actionAttr === "string" ) {
 					if ( actionAttr.startsWith( "{" ) || actionAttr.startsWith( "[" ) ) {
 						try {
 							cacheAction = JSON.parse( actionAttr );

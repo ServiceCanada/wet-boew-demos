@@ -15,9 +15,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2022-04-26"/>
 
-<link href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/GCWeb-PR1916/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2094/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2094/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2094/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2094/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2094/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -211,13 +211,69 @@
 <h4>Report a problem (RAP) form (feedback)</h4>
 <p>Implemented ajax files reference</p>
 <ul>
-	<li><a href="ajax/report-problem-en.html">Version 2</a></li>
+	<li><a href="ajax/report-problem-en.html">Version 3</a></li>
+	<li><a href="ajax/report-problem-v2-en.html">Version 2</a></li>
 	<li><a href="ajax/report-problem-aa-en.html">Version 2 with Adobe Analytic configuration</a></li>
 	<li><a href="ajax/report-problem-v1-en.html">Version 1</a></li>
 </ul>
-<div class="row">
-	<div class="col-md-6">
-		<h5>Version 2.0</h5>
+
+<h5>Version 3</h5>
+<pre><code>&lt;form action="/sites/feedback/feedback-form-destination.html" id="gc-rprt-prblm-form" class="wb-postback" data-wb-postback="{&quot;success&quot;:&quot;.success-message&quot;,&quot;failure&quot;:&quot;.failure-message&quot;,&quot;content&quot;:&quot;.form-content&quot;}" &gt;
+	&lt;fieldset&gt;
+		&lt;legend&gt;
+			&lt;span class="field-name"&gt;Please select all that apply:&lt;/span&gt;
+		&lt;/legend&gt;
+		&lt;div class="checkbox"&gt;
+			&lt;label for="problem1"&gt;
+				&lt;input name="problem1" id="problem1" type="checkbox" value="Yes" &gt;A link, button or video is not working
+			&lt;/label&gt;
+			&lt;input name="problem1" type="hidden" value=""&gt;
+		&lt;/div&gt;
+		&lt;div class="checkbox"&gt;
+			&lt;label for="problem2"&gt;
+				&lt;input name="problem2" id="problem2" type="checkbox" value="Yes" &gt;It has a spelling mistake
+			&lt;/label&gt;
+			&lt;input name="problem2" type="hidden" value=""&gt;
+		&lt;/div&gt;
+		&lt;div class="checkbox"&gt;
+			&lt;label for="problem3"&gt;
+				&lt;input name="problem3" id="problem3" type="checkbox" value="Yes" &gt;Information is missing
+			&lt;/label&gt;
+			&lt;input name="problem3" type="hidden" value=""&gt;
+		&lt;/div&gt;
+		&lt;div class="checkbox"&gt;
+			&lt;label for="problem4"&gt;
+				&lt;input name="problem4" id="problem4" type="checkbox" value="Yes" &gt;Information is outdated or wrong
+			&lt;/label&gt;
+			&lt;input name="problem4" type="hidden" value=""&gt;
+		&lt;/div&gt;
+		<ins>&lt;div class="checkbox"&gt;
+			&lt;label for="problem5"&gt;
+				&lt;input name="problem5" id="problem5" type="checkbox" value="Yes" &gt;Login error when trying to access an account
+			&lt;/label&gt;
+			&lt;input name="problem5" type="hidden" value=""&gt;
+		&lt;/div&gt;</ins>
+		&lt;div class="checkbox"&gt;
+			&lt;label for="problem11"&gt;
+				&lt;input name="problem11" id="problem11" type="checkbox" value="Yes" &gt;I can't find what I'm looking for
+			&lt;/label&gt;
+			&lt;input name="problem11" type="hidden" value=""&gt;
+		&lt;/div&gt;
+		&lt;div class="checkbox"&gt;
+			&lt;label for="problem12"&gt;
+				&lt;input name="problem12" id="problem12" type="checkbox" value="Yes" &gt;Other issue not in this list
+			&lt;/label&gt;
+			&lt;input name="problem12" type="hidden" value=""&gt;
+		&lt;/div&gt;
+	&lt;/fieldset&gt;
+	&lt;strong&gt;&lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;&lt;/strong&gt;
+&lt;/form&gt;
+&lt;div class="success-message hide"&gt;
+	&lt;h3&gt;Thank you for your help!&lt;/h3&gt;
+	&lt;p&gt;You will not receive a reply. For enquiries, please &lt;a href="https://www.canada.ca/en/contact.html"&gt;contact us&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p class="failure-message hide"&gt;Something went wrong. Please submit your information via an alternative method.&lt;/p&gt;</code></pre>
+<h5>Before, version 2.0</h5>
 <pre><code>&lt;form <ins>action="/sites/feedback/feedback-form-destination.html" id="gc-rprt-prblm-form" class="wb-postback" data-wb-postback="{&quot;success&quot;:&quot;.success-message&quot;,&quot;failure&quot;:&quot;.failure-message&quot;,&quot;content&quot;:&quot;.form-content&quot;}"</ins> &gt;
 	&lt;fieldset&gt;
 		&lt;legend&gt;
@@ -305,9 +361,7 @@
 	&lt;p&gt;You will not receive a reply. For enquiries, please &lt;a href="https://www.canada.ca/en/contact.html"&gt;contact us&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p class="failure-message hide"&gt;Something went wrong. Please submit your information via an alternative method.&lt;/p&gt;</ins></code></pre>
-	</div>
-	<div class="col-md-6">
-		<h5>Before, version 1.0</h5>
+<h5>Before, version 1.0</h5>
 <pre><code>&lt;form action="#"&gt;
 	&lt;fieldset&gt;
 		&lt;legend&gt;&lt;span class="field-name"&gt;Please select all that apply:&lt;/span&gt;&lt;/legend&gt;
@@ -350,23 +404,17 @@
 	&lt;/fieldset&gt;
 	&lt;button type="submit" class="btn btn-primary wb-toggle" data-toggle='{"stateOff": "hide", "stateOn": "show", "selector": ".gc-rprt-prblm-tggl"}'&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</code></pre>
-	</div>
 </div>
 
-<!--
-NOTES:
--For testing/ease of development
--Remove this file before merging
--->
 <footer class="pagedetails">
-	<h2 class="wb-inv">Page details</h2>
-
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9"><div data-ajax-replace="ajax/report-problem-en.html">
+	<h2 class="wb-inv">Page details</h2><div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
+				<div data-ajax-replace="ajax/report-problem-en.html">
 	<div class="row row-no-gutters"><div class="col-sm-9 col-md-6 col-lg-5"><a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html">Report a problem on this page</a>
 		</div>
 	</div>
 </div>
-</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12">
+
+			</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12">
 			<dl id="wb-dtmd">
 				<dt>Date modified:</dt>
 				<dd><time property="dateModified">2022-04-26</time></dd>
@@ -413,7 +461,7 @@ NOTES:
 				
 				<div class="col-xs-6 visible-sm visible-xs tofpg">
 					<a href="#wb-cont">Top of page <span class="glyphicon glyphicon-chevron-up"></span></a>
-				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/gcweb-pr2094/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 				</div>
 			</div>
 		</div>
@@ -421,7 +469,7 @@ NOTES:
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/GCWeb-PR1916/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2094/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2094/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

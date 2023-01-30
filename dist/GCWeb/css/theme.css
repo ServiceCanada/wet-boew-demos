@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v12.4.0 - 2022-12-12
+ * v12.6.0 - 2023-01-30
  *
  */
 /*
@@ -62,7 +62,11 @@ Left menu variables
  * @title: Mixins
  *
  */
+/* Screen xxs-max grid override for brand component */
+/* Display none important for print */
 /* Theme base styles */
+/* Sub-component: Increase text size for small devices like mobile */
+/* Sub-component: Increase text size for small devices like mobile */
 /*
   WET-BOEW
   @title: Helper - Global Placeholders
@@ -2252,16 +2256,14 @@ pre {
 	.row:after {
 		clear: both; }
 
-.row-no-gutters, .no-js .gc-pft .row-no-gutters,
-.wb-disable .gc-pft .row-no-gutters {
+.row-no-gutters {
 	margin-right: 0;
 	margin-left: 0; }
-	.row-no-gutters [class*="col-"], .no-js .gc-pft .row-no-gutters [class*="col-"], .wb-disable .gc-pft .row-no-gutters [class*="col-"] {
+	.row-no-gutters [class*="col-"] {
 		padding-right: 0;
 		padding-left: 0; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .no-js .gc-pft .nojs-col-sm-12,
-.wb-disable .gc-pft .nojs-col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
 	position: relative;
 	min-height: 1px;
 	padding-right: 15px;
@@ -2424,8 +2426,7 @@ pre {
 	margin-left: 100%; }
 
 @media (min-width: 768px) {
-	.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .no-js .gc-pft .nojs-col-sm-12,
-	.wb-disable .gc-pft .nojs-col-sm-12 {
+	.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
 		float: left; }
 	.col-sm-1 {
 		width: 8.3333333333%; }
@@ -2449,8 +2450,7 @@ pre {
 		width: 83.3333333333%; }
 	.col-sm-11 {
 		width: 91.6666666667%; }
-	.col-sm-12, .no-js .gc-pft .nojs-col-sm-12,
-	.wb-disable .gc-pft .nojs-col-sm-12 {
+	.col-sm-12 {
 		width: 100%; }
 	.col-sm-pull-0 {
 		right: auto; }
@@ -2975,6 +2975,9 @@ caption {
 	font-size: 1.1em;
 	font-weight: bold;
 	text-align: center; }
+
+.table-responsive > .table, th, td {
+	white-space: normal; }
 
 fieldset {
 	min-width: 0;
@@ -4433,40 +4436,6 @@ header {
 		header .brand img {
 			margin-bottom: .375em; }
 
-/*
- * Mobile Chevron
- */
-#wb-glb-mn {
-	margin-top: 20px; }
-	#wb-glb-mn ul {
-		min-width: 150px; }
-		#wb-glb-mn ul.chvrn {
-			background: #26374a;
-			display: inline-block;
-			float: right;
-			height: 2.75em; }
-			#wb-glb-mn ul.chvrn li {
-				display: block;
-				padding-right: 0; }
-				#wb-glb-mn ul.chvrn li a {
-					color: #fff;
-					display: block;
-					font-size: 1.9em;
-					padding: 5px 20px 0 0; }
-			#wb-glb-mn ul.chvrn span .glyphicon-th-list {
-				padding-left: 12px;
-				top: 0; }
-			#wb-glb-mn ul.chvrn:before {
-				border-bottom: 1.375em solid transparent;
-				border-left: .6875em solid #f8f8f8;
-				border-top: 1.375em solid transparent;
-				content: " ";
-				display: block;
-				float: left;
-				height: 0;
-				position: relative;
-				width: 0; }
-
 /* IE Tweaks */
 .lt-ie9 header .brand a {
 	margin-top: 0; }
@@ -4476,18 +4445,6 @@ header {
 
 [dir=rtl] header .brand {
 	float: right; }
-
-[dir=rtl] #wb-glb-mn ul.chvrn {
-	padding-left: 1.5em;
-	padding-right: 0;
-	text-align: left; }
-	[dir=rtl] #wb-glb-mn ul.chvrn span .glyphicon-th-list {
-		padding-left: 0;
-		padding-right: 10px; }
-	[dir=rtl] #wb-glb-mn ul.chvrn:before {
-		border-left: 0;
-		border-right: 11px solid #f8f8f8;
-		float: right; }
 
 /* Home page banner */
 #hme-banner {
@@ -4798,24 +4755,11 @@ main .pagedetails {
 		padding-top: 7px; }
 		.pagedetails .datemod #wb-dtmd {
 			margin-top: 0; }
+	.pagedetails .well {
+		margin-left: -1.1em;
+		margin-right: -1.1em; }
 	.pagedetails details {
 		margin-bottom: 0; }
-		.pagedetails details .well {
-			margin-left: -1.1em;
-			margin-right: -1.1em; }
-
-/*
-  @title: Page feedback tool - Base
- */
-/* In noscript/basic HTML mode... */
-.no-js .gc-pft,
-.wb-disable .gc-pft {
-	/* Disable row gutters (default selector isn't specific-enough) */
-	/* Make the legend full width */
-	/* Left-align the legend and yes/no buttons */ }
-	.no-js .gc-pft .nojs-text-left,
-	.wb-disable .gc-pft .nojs-text-left {
-		text-align: left; }
 
 /*
  * Site menu
@@ -5165,6 +5109,40 @@ main .pagedetails {
 		#mb-pnl .sec-pnl summary {
 			color: #2e5576 !important; }
 
+/*
+ * Deprecated - Mobile menu popup style build with the megamenu (wb-menu) plugin (was: Mobile Chevron)
+ */
+#wb-glb-mn {
+	margin-top: 20px; }
+	#wb-glb-mn ul {
+		min-width: 150px; }
+		#wb-glb-mn ul.chvrn {
+			background: #26374a;
+			display: inline-block;
+			float: right;
+			height: 2.75em; }
+			#wb-glb-mn ul.chvrn li {
+				display: block;
+				padding-right: 0; }
+				#wb-glb-mn ul.chvrn li a {
+					color: #fff;
+					display: block;
+					font-size: 1.9em;
+					padding: 5px 20px 0 0; }
+			#wb-glb-mn ul.chvrn span .glyphicon-th-list {
+				padding-left: 12px;
+				top: 0; }
+			#wb-glb-mn ul.chvrn:before {
+				border-bottom: 1.375em solid transparent;
+				border-left: .6875em solid #f8f8f8;
+				border-top: 1.375em solid transparent;
+				content: " ";
+				display: block;
+				float: left;
+				height: 0;
+				position: relative;
+				width: 0; }
+
 [dir=rtl] #wb-sm .menu > li {
 	border-right: 1px solid #999; }
 
@@ -5188,6 +5166,18 @@ main .pagedetails {
 			border-right: 1em solid rgba(0, 0, 0, 0);
 			left: auto;
 			right: -1em; }
+
+[dir=rtl] #wb-glb-mn ul.chvrn {
+	padding-left: 1.5em;
+	padding-right: 0;
+	text-align: left; }
+	[dir=rtl] #wb-glb-mn ul.chvrn span .glyphicon-th-list {
+		padding-left: 0;
+		padding-right: 10px; }
+	[dir=rtl] #wb-glb-mn ul.chvrn:before {
+		border-left: 0;
+		border-right: 11px solid #f8f8f8;
+		float: right; }
 
 /*
  * Specific classes for authentication section which include Sign-on/Sign-off button and the Contextual Sign-in button.
@@ -10972,23 +10962,6 @@ ol-geolocate button {
 	padding: 0; }
 
 /*
- *
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- *
- * @title: Shared style between multiple components
- *
- */
-.gc-srvinfo p, .gc-drmt p, .gc-features p {
-	font-size: 17px;
-	line-height: 1.5em; }
-
-.gc-srvinfo h3, .gc-srvinfo h4, .gc-srvinfo h5, .gc-srvinfo h6, .gc-drmt h3, .gc-drmt h4, .gc-drmt h5, .gc-drmt h6, .gc-features h3, .gc-features h4, .gc-features h5, .gc-features h6 {
-	font-size: 1em;
-	margin-bottom: 5px;
-	margin-top: 23px; }
-
-/*
  * Components styles
  */
 .gc-dwnld .gc-dwnld-txt {
@@ -11358,6 +11331,23 @@ main .gc-rms-lngth img {
 .gc-nws a h4 {
 	font-size: 20px;
 	margin-top: 15px; }
+
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ * @title: GC Service and Information
+ *
+ */
+.gc-srvinfo p, .gc-drmt p {
+	font-size: 17px;
+	line-height: 1.5em; }
+
+.gc-srvinfo h3, .gc-srvinfo h4, .gc-srvinfo h5, .gc-srvinfo h6, .gc-drmt h3, .gc-drmt h4, .gc-drmt h5, .gc-drmt h6 {
+	font-size: 1em;
+	margin-bottom: 5px;
+	margin-top: 23px; }
 
 /*
  * Global small component style
@@ -11825,6 +11815,13 @@ fieldset.gc-chckbxrdio {
  */
 .gc-features {
 	margin-bottom: 15px; }
+	.gc-features p {
+		font-size: 17px;
+		line-height: 1.5em; }
+	.gc-features h3, .gc-features h4, .gc-features h5, .gc-features h6 {
+		font-size: 1em;
+		margin-bottom: 5px;
+		margin-top: 23px; }
 	.gc-features a:hover {
 		text-decoration: none; }
 	.gc-features img {
@@ -13567,16 +13564,6 @@ Miscellaneous Utiliy CSS
 	max-width: max-content; }
 
 /*
- * GCWeb custom implementation
- *
- * Copy and rename the folder "variant-default" to "variant".
- * - the "variant" folder should not GIT conflict with your custom implementation when updating to the latest gcweb
- */
-/*
-  Variant - GCWeb custom implementation
-  @title: Default SCSS
- */
-/*
  Views
  */
 /* All screen views */
@@ -13610,8 +13597,6 @@ Miscellaneous Utiliy CSS
   WET-BOEW
   @title: All screen views
  */
-	.overlay-def .modal-header {
-		background: #2e5274; }
 	.wb-sl {
 		background: #26374a;
 		color: #fff;
@@ -13622,6 +13607,12 @@ Miscellaneous Utiliy CSS
 		.wb-sl:hover {
 			background-color: #444;
 			color: #fff; }
+	/*
+  WET-BOEW
+  @title: All screen views
+ */
+	.overlay-def .modal-header {
+		background: #2e5274; }
 	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -13707,11 +13698,7 @@ Miscellaneous Utiliy CSS
 		float: right;
 		margin-left: 100%;
 		margin-right: 0; }
-	/* Deprecated as v4.0.28 */
-	/*
-  Variant - GCWeb custom implementation
-  @title: All screen views
- */ }
+	/* Deprecated as v4.0.28 */ }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -13719,6 +13706,14 @@ Miscellaneous Utiliy CSS
   WET-BOEW
   @title: Extra-small view and under (screen only)
  */
+	/*
+ Banner (small view and under)
+ */
+	header .brand img {
+		margin-top: 15px; }
+	header .brand object,
+	header .brand img {
+		max-height: 30px; }
 	/*
   WET-BOEW
   @title: Extra-small view and under (screen only)
@@ -13728,18 +13723,6 @@ Miscellaneous Utiliy CSS
 	.list-responsive > li {
 		clear: right;
 		width: 100%; }
-	/*
- Banner (small view and under)
- */
-	header .brand img {
-		margin-top: 15px; }
-	header .brand object,
-	header .brand img {
-		max-height: 30px; }
-	#wb-glb-mn {
-		margin-top: 20px; }
-		#wb-glb-mn ul.chvrn li a {
-			font-size: 1.7em; }
 	/*
   WET-BOEW
   @title: Extra-small view and under (screen only)
@@ -13752,6 +13735,10 @@ Miscellaneous Utiliy CSS
 	#wb-bnr + .gcweb-menu > [role=menu] {
 		margin-left: 0;
 		margin-right: 0; }
+	#wb-glb-mn {
+		margin-top: 20px; }
+		#wb-glb-mn ul.chvrn li a {
+			font-size: 1.7em; }
 	/*
  * Share/feedback-specific overrides (extra-small view and under)
  */
@@ -13821,11 +13808,7 @@ Miscellaneous Utiliy CSS
 			margin-top: 0;
 			padding-top: 15px; }
 		.cmpgn-sctns .sctn-desc {
-			margin-bottom: 10px; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Extra-small view and under (screen only)
- */ }
+			margin-bottom: 10px; } }
 
 /* Small view and under */
 @media screen and (max-width: 991px) {
@@ -13833,6 +13816,11 @@ Miscellaneous Utiliy CSS
   WET-BOEW
   @title: Small view and under (screen only)
  */
+	/*
+ Banner (small view and under)
+ */
+	header .brand img {
+		margin-top: 10px; }
 	/*
   WET-BOEW
   @title: Small view and under (screen only)
@@ -13843,27 +13831,6 @@ Miscellaneous Utiliy CSS
 		margin-top: .75em; }
 	h2, .h2 {
 		font-size: 1.6em; }
-	.gc-srvinfo p, .gc-drmt p, .gc-features p {
-		font-size: 19px; }
-	.home .home-most-requested li {
-		font-size: 19px; }
-	.home .home-your-gov {
-		background-image: none; }
-	/* PROVISIONAL features */
-	.provisional {
-		/* Contributors */ }
-		.provisional.gc-contributors h2, .provisional.gc-contributors ul {
-			display: block; }
-		.provisional.gc-contributors ul {
-			padding-inline-start: 20px; }
-			.provisional.gc-contributors ul li {
-				display: list-item;
-				margin-right: 0; }
-	/*
- Banner (small view and under)
- */
-	header .brand img {
-		margin-top: 10px; }
 	/*
   WET-BOEW
   @title: Small view and under (screen only)
@@ -14031,6 +13998,13 @@ Miscellaneous Utiliy CSS
 			border: 1px solid #26374a;
 			padding: 15px; }
 	/*
+  WET-BOEW
+  @title: Small view and under (screen only)
+  @desc:  Variable $screen-sm-max <= 991 px
+ */
+	.gc-features p {
+		font-size: 19px; }
+	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
@@ -14152,20 +14126,42 @@ Miscellaneous Utiliy CSS
 		.wb-tabs.tabs-acc > ul {
 			display: none; }
 	/*
-  Variant - GCWeb custom implementation
+  WET-BOEW
   @title: Small view and under (screen only)
- */ }
+  @desc:  Variable $screen-sm-max <= 991 px
+ */
+	.gc-srvinfo p, .gc-drmt p {
+		font-size: 19px; }
+	/*
+  WET-BOEW
+  @title: Small view and under (screen only)
+  @desc:  Variable $screen-sm-max <= 991 px
+ */
+	.home .home-most-requested li {
+		font-size: 19px; }
+	.home .home-your-gov {
+		background-image: none; }
+	/*
+  WET-BOEW
+  @title: Small view and under (screen only)
+  @desc:  Variable $screen-sm-max <= 991 px
+ */
+	/* PROVISIONAL features */
+	.provisional {
+		/* Contributors */ }
+		.provisional.gc-contributors h2, .provisional.gc-contributors ul {
+			display: block; }
+		.provisional.gc-contributors ul {
+			padding-inline-start: 20px; }
+			.provisional.gc-contributors ul li {
+				display: list-item;
+				margin-right: 0; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
 	/*
   WET-BOEW
   @title: Medium view and under (screen only)
- */
-	/*
-  WET-BOEW
-  @title: Medium view and under (screen only)
-  @desc:  Variable $screen-md-max <= 1199px
  */
 	/*
  * Site menu (medium view and under)
@@ -14187,25 +14183,12 @@ Miscellaneous Utiliy CSS
  * Set a responsive with for the h1 in the Well header responsive
  */
 	.home .well.header-rwd h1 {
-		width: 55%; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Medium view and under (screen only)
- */ }
+		width: 55%; } }
 
 /* Large view and under */
 @media screen and (max-width: 1599px) {
 	/*
   WET-BOEW
-  @title: Large view and under (screen only)
- */
-	/*
-  WET-BOEW
-  @title: Large view and under (screen only)
-  @desc:  Variable $screen-lg-max <= 1599px
- */
-	/*
-  Variant - GCWeb custom implementation
   @title: Large view and under (screen only)
  */ }
 
@@ -14214,11 +14197,6 @@ Miscellaneous Utiliy CSS
 	/*
   WET-BOEW
   @title: Extra-small view and over (screen only)
- */
-	/*
-  WET-BOEW
-  @title: Extra-small view and over (screen only)
-  @desc:  Variable $screen-xs-min >= 480px
  */
 	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -14244,11 +14222,7 @@ Miscellaneous Utiliy CSS
 	.colcount-xs-3 {
 		column-count: 3; }
 	.colcount-xs-4 {
-		column-count: 4; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Extra-small view and over (screen only)
- */ }
+		column-count: 4; } }
 
 /* Small view and over */
 @media screen and (min-width: 768px) {
@@ -14263,11 +14237,6 @@ Miscellaneous Utiliy CSS
 		padding-right: 10px; }
 		.form-inline .label-inline:last-child {
 			padding-right: 0; }
-	/*
-  WET-BOEW
-  @title: Small view and over (screen only)
-  @desc:  Variable $screen-sm-min >= 768px
- */
 	/*
   @title: Baseline styles for small breakpoint and over
 */
@@ -14378,11 +14347,7 @@ Miscellaneous Utiliy CSS
 		padding-left: 15px;
 		padding-right: 15px; }
 	.pr-sm-3 {
-		padding-right: 15px !important; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Small view and over (screen only)
- */ }
+		padding-right: 15px !important; } }
 
 /* Medium view and over */
 @media screen and (min-width: 992px) {
@@ -14396,22 +14361,6 @@ Miscellaneous Utiliy CSS
 		right: auto; }
 	.col-md-auto {
 		width: auto; }
-	/*
-  WET-BOEW
-  @title: Medium view and over (screen only)
-  @desc:  Variable $screen-md-min >= 992px
- */
-	/* PROVISIONAL features */
-	.provisional {
-		/* Contributors */
-		/* Follow us */ }
-		.provisional.gc-contributors ul li:first-child:before {
-			content: none; }
-		.provisional.gc-contributors ul li:before {
-			content: "\2022";
-			margin-right: .7em; }
-		.provisional.gc-followus h2 {
-			margin-top: 0 !important; }
 	/*
   @title: Baseline styles for medium breakpoint and over
 */
@@ -14453,12 +14402,6 @@ Miscellaneous Utiliy CSS
 			clear: none; }
 		.wb-disable .gcweb-menu [role=menu] > li:nth-child(2n+3) {
 			clear: none; }
-	/*
- * Share/feedback-specific overrides (medium view and over)
- */
-	/* Add a larger top margin on the share button (only if its plugin has initialized) if adjacent to the page feedback tool. */
-	.pagedetails div:has(.gc-pft) + .wb-share-inited {
-		margin-top: 21px; }
 	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -14551,6 +14494,22 @@ Miscellaneous Utiliy CSS
 		display: block; }
 	/*
   WET-BOEW
+  @title: Medium view and over (screen only)
+  @desc:  Variable $screen-md-min >= 992px
+ */
+	/* PROVISIONAL features */
+	.provisional {
+		/* Contributors */
+		/* Follow us */ }
+		.provisional.gc-contributors ul li:first-child:before {
+			content: none; }
+		.provisional.gc-contributors ul li:before {
+			content: "\2022";
+			margin-right: .7em; }
+		.provisional.gc-followus h2 {
+			margin-top: 0 !important; }
+	/*
+  WET-BOEW
   @title: Proximity CSS - Medium view and over
  */
 	.colcount-md-2 {
@@ -14574,11 +14533,7 @@ Miscellaneous Utiliy CSS
 	.pstn-bttm-md {
 		position: absolute;
 		bottom: 0;
-		top: auto; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Medium view and over (screen only)
- */ }
+		top: auto; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
@@ -14593,16 +14548,6 @@ Miscellaneous Utiliy CSS
 	.col-lg-auto {
 		width: auto; }
 	/*
-  WET-BOEW
-  @title: Large view and over (screen only)
-  @desc:  Variable $screen-lg-min >= 1200px
- */
-	/* Make a simple list multi-column and responsive (overide _defaults.scss) */
-	.list-responsive > li {
-		width: 25%; }
-		.list-responsive > li:nth-child(4n+4) {
-			clear: right; }
-	/*
   @title: Baseline styles for large breakpoint and over
 */
 	ul.list-col-lg-1 > li {
@@ -14613,6 +14558,11 @@ Miscellaneous Utiliy CSS
 		flex-basis: 33.33%; }
 	ul.list-col-lg-4 > li {
 		flex-basis: 25%; }
+	/* Make a simple list multi-column and responsive (overide _defaults.scss) */
+	.list-responsive > li {
+		width: 25%; }
+		.list-responsive > li:nth-child(4n+4) {
+			clear: right; }
 	.wb-filter .input-group {
 		max-width: 60%; }
 	/*
@@ -14668,11 +14618,7 @@ Miscellaneous Utiliy CSS
 	.pstn-bttm-lg {
 		position: absolute;
 		bottom: 0;
-		top: auto; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Large view and over (screen only)
- */ }
+		top: auto; } }
 
 /* Extra-extra-small view */
 @media screen and (max-width: 479px) {
@@ -14681,32 +14627,16 @@ Miscellaneous Utiliy CSS
   @title: Extra-extra-small view (screen only)
  */
 	/*
-  WET-BOEW
-  @title: Extra-extra-small view (screen only)
-  @desc:  Variable $screen-xxs-max <= 479px
- */
-	/* Embedding a Fluid Survey */
-	.gc-fld-srvy-container {
-		padding-bottom: 100%; }
-	#wb-srch input {
-		max-width: inherit; }
-	/*
  Banner (extra-extra-small view)
  */
-	header .brand.col-xs-5, #wb-glb-mn {
-		float: none !important;
-		width: auto !important; }
 	header .brand {
 		/* Solely for the purpose of having the previous header look decent */ }
+		header .brand.col-xs-5 {
+			float: none !important;
+			width: auto !important; }
 		header .brand object,
 		header .brand img {
 			padding-right: 0; }
-	#wb-glb-mn ul {
-		width: 100%; }
-		#wb-glb-mn ul.chvrn {
-			margin-left: auto; }
-			#wb-glb-mn ul.chvrn:before {
-				border: 0; }
 	/*
  * Site information (extra-extra-small view)
  */
@@ -14722,6 +14652,33 @@ Miscellaneous Utiliy CSS
 			padding-right: 10px; }
 		#wb-info .gc-sub-footer .row nav ul, #wb-info .brand .row nav ul {
 			column-count: 1; }
+	/*
+ Menu (extra-extra-small view)
+ */
+	#wb-glb-mn {
+		float: none !important;
+		width: auto !important; }
+		#wb-glb-mn ul {
+			width: 100%; }
+			#wb-glb-mn ul.chvrn {
+				margin-left: auto; }
+				#wb-glb-mn ul.chvrn:before {
+					border: 0; }
+	/*
+  WET-BOEW
+  @title: Extra-extra-small view (screen only)
+  @desc:  Variable $screen-xxs-max <= 479px
+ */
+	#wb-srch input {
+		max-width: inherit; }
+	/*
+  WET-BOEW
+  @title: Extra-extra-small view (screen only)
+  @desc:  Variable $screen-xxs-max <= 479px
+ */
+	/* Embedding a Fluid Survey */
+	.gc-fld-srvy-container {
+		padding-bottom: 100%; }
 	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -14777,11 +14734,7 @@ Miscellaneous Utiliy CSS
 		visibility: hidden;
 		width: 0; }
 		.prm-flpr .wb-tabs.carousel-s2 [role="tablist"] li .tab-count .curr-count {
-			font-size: 1em; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Extra-extra-small view (screen only)
- */ }
+			font-size: 1em; } }
 
 /* Extra-small view */
 @media screen and (min-width: 480px) and (max-width: 767px) {
@@ -14806,11 +14759,7 @@ Miscellaneous Utiliy CSS
  * Set a responsive with for the h1 in the Well header responsive
  */
 	.home .well.header-rwd h1 {
-		width: 59%; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Extra-small view (screen only)
- */ }
+		width: 59%; } }
 
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -14824,41 +14773,16 @@ Miscellaneous Utiliy CSS
 		clear: right; }
 	/*
   WET-BOEW
-  @title: Small view (screen only)
-  @desc:  Variable $screen-sm-min-to-screen-sm-max >= 768px <= 991px
- */
-	/*
-  WET-BOEW
   @title: Search Small view and under (screen only)
  */
 	#wb-srch {
 		margin-bottom: 15px; }
 	/*
- * Share/feedback-specific overrides (small view and over)
- */
-	/* Add a larger top margin on the share button (only if its plugin has initialized) if adjacent to the page feedback tool. */
-	.pagedetails div:has(.gc-pft) + .wb-share-inited {
-		margin-top: 29px; }
-	/*
-  @title: Page feedback tool - Small view and over
- */
-	/* In noscript/basic HTML mode... */
-	.no-js .gc-pft,
-	.wb-disable .gc-pft {
-		/* Disable the legend's right padding */ }
-		.no-js .gc-pft .nojs-pr-sm-0,
-		.wb-disable .gc-pft .nojs-pr-sm-0 {
-			padding-right: 0 !important; }
-	/*
   Campaign
   @title: Small view (screen only)
  */
 	.cmpgn-sctns {
-		word-wrap: break-word; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Small view (screen only)
- */ }
+		word-wrap: break-word; } }
 
 /* Medium view */
 @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -14870,11 +14794,6 @@ Miscellaneous Utiliy CSS
 		clear: left; }
 	.clr-rght-md {
 		clear: right; }
-	/*
-  WET-BOEW
-  @title: Medium view (screen only)
-  @desc:  Variable $screen-md-min-to-screen-md-max >= 992px <= 1199px
- */
 	/*
   WET-BOEW
   @title: Medium view (screen only)
@@ -14922,10 +14841,6 @@ Miscellaneous Utiliy CSS
 	.lt-ie9 main.col-md-9 .sect-lnks {
 		width: 46%; }
 	/*
-  Variant - GCWeb custom implementation
-  @title: Medium view (screen only)
- */
-	/*
   WET-BOEW
   @title: Search medium view and over (screen only)
  */
@@ -14937,15 +14852,6 @@ Miscellaneous Utiliy CSS
 	/*
   WET-BOEW
   @title: Large view (screen only)
- */
-	/*
-  WET-BOEW
-  @title: Large view (screen only)
-  @desc:  Variable $screen-lg-min-to-lg-max >= 1200 px <= 1599 px
- */
-	/*
-  Variant - GCWeb custom implementation
-  @title: Large view (screen only)
  */ }
 
 /* Extra-large view */
@@ -14956,11 +14862,6 @@ Miscellaneous Utiliy CSS
  */
 	/*
   WET-BOEW
-  @title: Extra-large view (screen only)
-  @desc:  Variable $screen-xl-min >= 1600px
- */
-	/*
-  WET-BOEW
   @title: Proximity CSS - Medium view and over
  */
 	.colcount-xl-2 {
@@ -14968,11 +14869,7 @@ Miscellaneous Utiliy CSS
 	.colcount-xl-3 {
 		column-count: 3; }
 	.colcount-xl-4 {
-		column-count: 4; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Extra-large view (screen only)
- */ }
+		column-count: 4; } }
 
 /* Print view */
 @media print {
@@ -14990,14 +14887,8 @@ Miscellaneous Utiliy CSS
   WET-BOEW
   @title: Print view
  */
-	.features, #wb-lng, #wb-glb-mn,
-	#wb-srch,
-	#wb-sm, #wb-info, .tofpg, .gcweb-menu, #wb-sec, .pagedetails details, .pagedetails .btn, .gc-pft, .followus {
-		display: none !important; }
 	header .brand {
 		margin-bottom: 0; }
-	h1 {
-		margin-top: 0; }
 	/*
   WET-BOEW
   @title: Breadcrumb print CSS overrides
@@ -15009,21 +14900,40 @@ Miscellaneous Utiliy CSS
 	/*
  Site information (print view)
 */
+	#wb-info {
+		display: none !important; }
+	.tofpg {
+		display: none !important; }
 	/*
  Site menu (print view)
 */
+	#wb-sm, .gcweb-menu {
+		display: none !important; }
+	/* Deprecated - Mobile menu popup style build with the megamenu (wb-menu) plugin */
+	#wb-glb-mn {
+		display: none !important; }
+	/*
+ * Main content area (print view)
+ */
+	#wb-lng {
+		display: none !important; }
 	/*
  Search (print view)
  */
+	#wb-srch {
+		display: none !important; }
 	/*
  Secondary menu (print view)
 */
+	#wb-sec {
+		display: none !important; }
 	/*
  * Share/feedback-specific overrides (print view)
  */
-	/*
-  @title: Page feedback tool - Print view
- */
+	.pagedetails details {
+		display: none !important; }
+	.pagedetails .btn {
+		display: none !important; }
 	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -15140,10 +15050,14 @@ Miscellaneous Utiliy CSS
  */
 	.gc-nttvs {
 		display: none; }
+	.features {
+		display: none !important; }
 	/* Deprecated as v4.0.28 */
 	/*
  Social Media Icons Print view
 */
+	.followus {
+		display: none !important; }
 	/*
  * There is no working example, probably not used
  */
@@ -15154,11 +15068,7 @@ Miscellaneous Utiliy CSS
   @title: Print view
  */
 	.cmpgn-sctns {
-		margin-top: 20px; }
-	/*
-  Variant - GCWeb custom implementation
-  @title: Print view
- */ }
+		margin-top: 20px; } }
 
 /* Testing WCAG Spacing */
 /*
