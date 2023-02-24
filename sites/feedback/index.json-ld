@@ -7,39 +7,49 @@
 		"modified": "dct:modified"
 	},
 	"title": {
-		"en": "Report a problem (RAP) - Feedback",
-		"fr": "Signaler un problème (SUP) - Commentaires"
+		"en": "Feedback area",
+		"fr": "Zone de rétroaction"
 	},
 	"description": {
-		"en": "Documentation on how to use the page feedback form.",
-		"fr": "Documentation sur l'utilisation de formulaire de commentaires de page."
+		"en": "Documentation on how to use the elements of the feedback area.",
+		"fr": "Documentation sur l'utilisation des éléments de la zone commentaires."
 	},
-	"modified": "2022-04-26",
+	"modified": "2023-01-10",
 	"componentName": "feedback",
 	"status": "stable",
 	"pages": {
 		"docs": [
 			{
-				"title": "Documentation for Page feedback form",
+				"title": "Documentation for the feedback area",
 				"language": "en",
 				"path": "feedback-docs-en.html"
 			},
 			{
-				"title": "Documentation pour formulaire de commentaire de page",
+				"title": "Documentation pour la zone de rétroaction",
 				"language": "fr",
 				"path": "feedback-docs-fr.html"
 			}
 		],
 		"examples": [
 			{
-				"title": "Page feedback form",
+				"title": "Report a problem",
 				"language": "en",
-				"path": "feedback-en.html"
+				"path": "report-problem-en.html"
 			},
 			{
-				"title": "Formulaire de commentaire de page",
+				"title": "Signaler un problème",
 				"language": "fr",
-				"path": "feedback-fr.html"
+				"path": "report-problem-fr.html"
+			},
+			{
+				"title": "Page feedback tool",
+				"language": "en",
+				"path": "page-feedback-en.html"
+			},
+			{
+				"title": "Outil de rétroaction sur la page",
+				"language": "fr",
+				"path": "page-feedback-fr.html"
 			}
 		]
 	}

@@ -12,12 +12,13 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2022-12-12 18:30:36 +0000"/>
-<meta name="dcterms.modified" content="2022-04-13"/>
+<meta name="dcterms.type" content=""/>
+<meta name="dcterms.issued" content="2023-02-27 13:15:16 +0000"/>
+<meta name="dcterms.modified" content="2023-02-01"/>
 
-<link href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/GCWeb-PR1916/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +32,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -104,6 +105,8 @@
 
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
 <h1 id="wb-cont" property="name">Envoie via Ajax</h1>
+<div class="wb-prettify all-pre hide"></div>
+
 <p>Soumission de formulaire via une requête Ajax.</p>
 
 <p>Pour voir cet example en action, vérifier l'onglet réseaux de la console du fureteur afin de voir la requête Ajax envoyé.</p>
@@ -131,10 +134,9 @@
 </form>
 <p class="success-message hide">Merci!</p>
 <p class="failure-message hide">Nous somme désolé, un problème est survenu lors de la soumission de votre formulaire. Veuillez nous envoyer l'information via une méthode alternative.</p>
-
 <details class="mrgn-tp-md mrgn-bttm-md">
 	<summary>View code</summary>
-	<pre><code>&lt;form action="wb-postback-fr.html" class="wb-postback" data-wb-postback="{&amp;quot;success&amp;quot;:&amp;quot;success-message&amp;quot;,&amp;quot;failure&amp;quot;:&amp;quot;failure-message&amp;quot;}"&gt;
+	<pre><code>&lt;form action="wb-postback-fr.html" class="wb-postback" data-wb-postback='{"success":".success-message","failure":".failure-message"}'&gt;
 	&lt;div class="form-content"&gt;
 		&lt;div class="form-group"&gt;
 			&lt;label for="firstname1"&gt;&lt;span class="field-name"&gt;Prénom&lt;/span&gt;&lt;/label&gt;
@@ -162,80 +164,76 @@
 <p>Soumission de formulaire via une requête Ajax en utilisant aussi le plugiciel <a href="https://wet-boew.github.io/wet-boew/demos/formvalid/formvalid-fr.html">Validation de formulaires</a> .</p>
 
 <p>Pour voir cet example en action, vérifier l'onglet réseaux de la console du fureteur afin de voir la requête Ajax envoyé.</p>
+
 <div class="wb-frmvld">
-<form action="wb-postback-fr.html" class="wb-postback" data-wb-postback='{"success":".success-message-2","failure":".failure-message-2"}'>
-	<div class="form-content">
-		<div class="form-group">
-			<label for="firstname2" class="required"><span class="field-name">Prénom</span> <strong class="required">(obligatoire)</strong></label>
-			<input class="form-control" id="firstname2" name="firstname" type="text" data-rule-minlength="2" required="required" />
+	<form action="wb-postback-fr.html" class="wb-postback" data-wb-postback='{"success":".success-message-2","failure":".failure-message-2"}'>
+		<div class="form-content">
+			<div class="form-group">
+				<label for="firstname2" class="required"><span class="field-name">Prénom</span> <strong class="required">(obligatoire)</strong></label>
+				<input class="form-control" id="firstname2" name="firstname" type="text" data-rule-minlength="2" required="required" />
+			</div>
+			<div class="form-group">
+				<label for="lastname2" class="required"><span class="field-name">Nom de famille</span> <strong class="required">(obligatoire)</strong></label>
+				<input class="form-control" id="lastname2" name="lastname" type="text" data-rule-minlength="2" required="required" />
+			</div>
+			<div class="form-group">
+				<label for="preferredNumber2"><span class="field-name">Numéro de téléphone</span></label>
+				<input class="form-control" id="preferredNumber2" name="preferredNumber" type="tel" data-rule-phoneUS="true" />
+			</div>
+			<div class="form-group">
+				<label for="email2"><span class="field-name">Addresse courriel</span> (test@domaine)</label>
+				<input class="form-control" id="email2" name="email" type="email" />
+			</div>
+			<button type="submit" class="btn btn-primary">Soumettre</button>
 		</div>
-		<div class="form-group">
-			<label for="lastname2" class="required"><span class="field-name">Nom de famille</span> <strong class="required">(obligatoire)</strong></label>
-			<input class="form-control" id="lastname2" name="lastname" type="text" data-rule-minlength="2" required="required" />
-		</div>
-		<div class="form-group">
-			<label for="preferredNumber2"><span class="field-name">Numéro de téléphone</span></label>
-			<input class="form-control" id="preferredNumber2" name="preferredNumber" type="tel" data-rule-phoneUS="true" />
-		</div>
-		<div class="form-group">
-			<label for="email2"><span class="field-name">Addresse courriel</span> (test@domaine)</label>
-			<input class="form-control" id="email2" name="email" type="email" />
-		</div>
-		<button type="submit" class="btn btn-primary">Soumettre</button>
-	</div>
-</form>
-<p class="success-message-2 hide">Merci!</p>
-<p class="failure-message-2 hide">Nous somme désolé, un problème est survenu lors de la soumission de votre formulaire. Veuillez nous envoyer l'information via une méthode alternative.</p>
+	</form>
+	<p class="success-message-2 hide">Merci!</p>
+	<p class="failure-message-2 hide">Nous somme désolé, un problème est survenu lors de la soumission de votre formulaire. Veuillez nous envoyer l'information via une méthode alternative.</p>
 </div>
 <details class="mrgn-tp-md mrgn-bttm-md">
 	<summary>View code</summary>
 	
-	<pre><code>
-		&lt;div class="wb-frmvld"&gt;
-		&lt;form action="wb-postback-fr.html" class="wb-postback" data-wb-postback="{&amp;quot;success&amp;quot;:&amp;quot;success-message-2&amp;quot;,&amp;quot;failure&amp;quot;:&amp;quot;failure-message-2&amp;quot;}"&gt;
-	&lt;div class="form-content"&gt;
-		&lt;div class="form-group"&gt;
-			&lt;label for="firstname2" class="required"&gt;&lt;span class="field-name"&gt;Prénom&lt;/span&gt; &lt;strong class="required"&gt;(obligatoire)&lt;/strong&gt;&lt;/label&gt;
-			&lt;input class="form-control" id="firstname2" name="firstname" type="text" data-rule-minlength="2" required="required" /&gt;
+	<pre><code>&lt;div class="wb-frmvld"&gt;
+	&lt;form action="wb-postback-fr.html" class="wb-postback" data-wb-postback='{"success":".success-message-2","failure":".failure-message-2"}'&gt;
+		&lt;div class="form-content"&gt;
+			&lt;div class="form-group"&gt;
+				&lt;label for="firstname2" class="required"&gt;&lt;span class="field-name"&gt;Prénom&lt;/span&gt; &lt;strong class="required"&gt;(obligatoire)&lt;/strong&gt;&lt;/label&gt;
+				&lt;input class="form-control" id="firstname2" name="firstname" type="text" data-rule-minlength="2" required="required" /&gt;
+			&lt;/div&gt;
+			&lt;div class="form-group"&gt;
+				&lt;label for="lastname2" class="required"&gt;&lt;span class="field-name"&gt;Nom de famille&lt;/span&gt; &lt;strong class="required"&gt;(obligatoire)&lt;/strong&gt;&lt;/label&gt;
+				&lt;input class="form-control" id="lastname2" name="lastname" type="text" data-rule-minlength="2" required="required" /&gt;
+			&lt;/div&gt;
+			&lt;div class="form-group"&gt;
+				&lt;label for="preferredNumber2"&gt;&lt;span class="field-name"&gt;Numéro de téléphone&lt;/span&gt;&lt;/label&gt;
+				&lt;input class="form-control" id="preferredNumber2" name="preferredNumber" type="tel" data-rule-phoneUS="true" /&gt;
+			&lt;/div&gt;
+			&lt;div class="form-group"&gt;
+				&lt;label for="email2"&gt;&lt;span class="field-name"&gt;Addresse courriel&lt;/span&gt; (test@domaine)&lt;/label&gt;
+				&lt;input class="form-control" id="email2" name="email" type="email" /&gt;
+			&lt;/div&gt;
+			&lt;button type="submit" class="btn btn-primary"&gt;Soumettre&lt;/button&gt;
 		&lt;/div&gt;
-		&lt;div class="form-group"&gt;
-			&lt;label for="lastname2" class="required"&gt;&lt;span class="field-name"&gt;Nom de famille&lt;/span&gt; &lt;strong class="required"&gt;(obligatoire)&lt;/strong&gt;&lt;/label&gt;
-			&lt;input class="form-control" id="lastname2" name="lastname" type="text" data-rule-minlength="2" required="required" /&gt;
-		&lt;/div&gt;
-		&lt;div class="form-group"&gt;
-			&lt;label for="preferredNumber2"&gt;&lt;span class="field-name"&gt;Numéro de téléphone&lt;/span&gt;&lt;/label&gt;
-			&lt;input class="form-control" id="preferredNumber2" name="preferredNumber" type="tel" data-rule-phoneUS="true" /&gt;
-		&lt;/div&gt;
-		&lt;div class="form-group"&gt;
-			&lt;label for="email2"&gt;&lt;span class="field-name"&gt;Addresse courriel&lt;/span&gt; (test@domaine)&lt;/label&gt;
-			&lt;input class="form-control" id="email2" name="email" type="email" /&gt;
-		&lt;/div&gt;
-		&lt;button type="submit" class="btn btn-primary"&gt;Soumettre&lt;/button&gt;
-	&lt;/div&gt;
-&lt;/form&gt;
-&lt;p class="success-message-2 hide"&gt;Merci!&lt;/p&gt;
-&lt;p class="failure-message-2 hide"&gt;Nous somme désolé, un problème est survenu lors de la soumission de votre formulaire. Veuillez nous envoyer l'information via une méthode alternative.&lt;/p&gt;
-&lt;/div&gt;
-</code></pre>
+	&lt;/form&gt;
+	&lt;p class="success-message-2 hide"&gt;Merci!&lt;/p&gt;
+	&lt;p class="failure-message-2 hide"&gt;Nous somme désolé, un problème est survenu lors de la soumission de votre formulaire. Veuillez nous envoyer l'information via une méthode alternative.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
 </details>
 
-<!--
-NOTES:
--For testing/ease of development
--Remove this file before merging
--->
 <footer class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2>
 
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9"><div data-ajax-replace="/sites/feedback/ajax/report-problem-fr.html">
+	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
+				<div data-ajax-replace="/sites/feedback/ajax/page-feedback-fr.html">
 	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
 		</div>
 	</div>
 </div>
-</div><div class="col-xs-12">
+
+			</div><div class="col-xs-12">
 			<dl id="wb-dtmd">
 				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified">2022-04-13</time></dd>
+				<dd><time property="dateModified">2023-02-01</time></dd>
 			</dl>
 		</div>
 	</div>
@@ -279,7 +277,7 @@ NOTES:
 				
 				<div class="col-xs-6 visible-sm visible-xs tofpg">
 					<a href="#wb-cont">Haut de la page <span class="glyphicon glyphicon-chevron-up"></span></a>
-				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 				</div>
 			</div>
 		</div>
@@ -287,7 +285,7 @@ NOTES:
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/GCWeb-PR1916/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/js/theme.js"></script>
+<script src="/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
