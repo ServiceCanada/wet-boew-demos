@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.56.2 - 2022-11-30
+ * v4.0.58 - 2023-02-24
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1232,7 +1232,7 @@ wb.date = {
 	fromDateISO: function( dateISO ) {
 		var date = null;
 
-		if ( dateISO && dateISO.match( /\d{4}-\d{2}-\d{2}/ ) ) {
+		if ( dateISO && /\d{4}-\d{2}-\d{2}/.test( dateISO ) ) {
 			date = new Date( dateISO.substr( 0, 4 ), dateISO.substr( 5, 2 ) - 1, dateISO.substr( 8, 2 ), 0, 0, 0, 0 );
 		}
 		return date;
@@ -1311,8 +1311,8 @@ wb.findPotentialPII = function( str, scope, opts ) {
 			passport: /\b[A-Za-z]{2}[\s\\.-]*?\d{6}\b/ig, //canadian nr passport pattern
 			email: /\b(?:[a-zA-Z0-9_\-\\.]+)(?:@|%40)(?:[a-zA-Z0-9_\-\\.]+)\.(?:[a-zA-Z]{2,5})\b/ig, //email pattern
 			postalCode: /\b[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d\b/ig, //postal code pattern
-			username: /\b(?:(username|user)[:=][a-zA-Z0-9_\-\\.]+)\b/ig,
-			password: /\b(?:(password|pass)[:=][^\s#&]+)\b/ig
+			username: /(?:(username|user)[%20]?([:=]|(%EF%BC%9A))[^\s&]*)/ig,
+			password: /(?:(password|pass)[%20]?([:=]|(%EF%BC%9A))[^\s&]*)/ig
 		},
 		isFound = false,
 		txtMarker = opts && opts.replaceWith ? opts.replaceWith : "",
@@ -6465,7 +6465,7 @@ var componentName = "wb-filter",
 			$item = $items.eq( i );
 			text = unAccent( $item.text() );
 
-			if ( !text.match( searchFilterRegularExp ) ) {
+			if ( !searchFilterRegularExp.test( text ) ) {
 				if ( hndParentSelector ) {
 					$item = $item.parentsUntil( hndParentSelector );
 				}
@@ -6729,6 +6729,19 @@ var componentName = "wb-frmvld",
 						),
 						summaryHeading = settings.hdLvl,
 						i, len, validator;
+
+					if ( wb.lang === "fr" ) {
+
+						// alphanumeric regex is changed to allow french characters;
+						$.validator.addMethod( "alphanumeric", function( value, element ) {
+							return this.optional( element ) || /^[a-zàâçéèêëîïôûùüÿæœ0-9_]+$/i.test( value );
+						}, "Letters, numbers, and underscores only please." );
+
+						// error french text is adjusted to remove the word "spaces"
+						$.extend( $.validator.messages, {
+							alphanumeric: "Veuillez fournir seulement des lettres, nombres et soulignages."
+						} );
+					}
 
 					// Append the aria-live region (for provide message updates to screen readers)
 					$elm.append( "<div class='arialive wb-inv' aria-live='polite' aria-relevant='all'></div>" );
@@ -9451,19 +9464,19 @@ $document.on( "click", selector, function( event ) {
 	// Optimized multiple class tests to include child glyphicon because Safari was reporting the click event
 	// from the child span not the parent button, forcing us to have to check for both elements
 	// JSPerf for multiple class matching https://jsperf.com/hasclass-vs-is-stackoverflow/7
-	if ( className.match( /playpause|-play|-pause|display/ ) || $target.is( "object" ) || $target.is( "video" ) ) {
+	if (  /playpause|-play|-pause|display/.test( className ) || $target.is( "object" ) || $target.is( "video" ) ) {
 		this.player( "getPaused" ) || this.player( "getEnded" ) ? this.player( "play" ) : this.player( "pause" );
-	} else if ( className.match( /(^|\s)cc\b|-subtitles/ ) && !$target.attr( "disabled" ) && !$target.parent().attr( "disabled" ) ) {
+	} else if ( /(^|\s)cc\b|-subtitles/.test( className ) && !$target.attr( "disabled" ) && !$target.parent().attr( "disabled" ) ) {
 		this.player( "setCaptionsVisible", !this.player( "getCaptionsVisible" ) );
-	} else if ( className.match( /\bmute\b|-volume-(up|off)/ ) ) {
+	} else if ( /\bmute\b|-volume-(up|off)/.test( className ) ) {
 		this.player( "setMuted", !this.player( "getMuted" ) );
 	} else if ( $target.is( "progress" ) || $target.hasClass( "progress" ) || $target.hasClass( "progress-bar" ) ) {
 		this.player( "setCurrentTime", this.player( "getDuration" ) * ( ( event.pageX - $target.offset().left ) / $target.width() ) );
-	} else if ( className.match( /\brewind\b|-backward/ ) ) {
+	} else if ( /\brewind\b|-backward/.test( className ) ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) - this.player( "getDuration" ) * 0.05 );
-	} else if ( className.match( /\bfastforward\b|-forward/ ) ) {
+	} else if ( /\bfastforward\b|-forward/.test( className ) ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05 );
-	} else if ( className.match( /cuepoint/ ) ) {
+	} else if ( className.includes( "cuepoint" ) ) {
 		$( this ).trigger( { type: "cuepoint", cuepoint: $target.data( "cuepoint" ) } );
 	}
 } );
@@ -11734,17 +11747,17 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 		if ( $elm.is( "select" ) ) {
 			$value = $elm.find( "option:selected" ).val();
 		} else if ( $elm.is( "input[type='number']" ) ) {
-			var $minNum, $maxNum;
+			var $minNum, $maxNum = null;
 
 			// Retain minimum number (always the first number input)
 			if ( $cachedVal === "" ) {
 				$cachedVal = parseFloat( $val );
 				$cachedVal = ( $cachedVal ) ? $cachedVal : "-0";
+			} else {
+				$maxNum = parseFloat( $val );
+				$maxNum = ( $maxNum ) ? $maxNum : "-0";
 			}
 			$minNum = $cachedVal;
-
-			// Maximum number is always the current selected number
-			$maxNum = parseFloat( $val );
 
 			//Number filtering logic needs to be reviewed in order to remove the "-0" value (issue #9235)
 			// Generates a list of numbers (within the min and max number)
@@ -11754,15 +11767,21 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 
 					if ( !isNaN( $num ) ) {
 						if ( $aoType === "and" ) {
-							if ( $cachedVal !== $maxNum && $cachedVal !== "-0" && $num >= $minNum && $num <= $maxNum ) {
+							if ( $cachedVal !== $maxNum && $cachedVal !== "-0" && $maxNum !== "0" && $num >= $minNum && $num <= $maxNum ) {
 								return true;
 							}
 						} else {
-							if ( $cachedVal === $maxNum && $num >= $minNum ) {
+							if ( $maxNum === null ) { // only one input number
+								return $minNum === "-0" || $minNum === $num;
+							} else if ( $maxNum === $cachedVal && $cachedVal === "-0" ) { // both are empty
 								return true;
-							} else if ( $cachedVal === "-0" && $num <= $maxNum ) {
+							} else if ( $maxNum !== "-0" && $minNum === $maxNum && $num === $maxNum ) { // min and max are the same
 								return true;
-							} else if ( $cachedVal !== "-0" && $num >= $minNum && $num <= $maxNum ) {
+							} else if ( $maxNum === "-0" && $num >= $minNum ) { // max number is missing
+								return true;
+							} else if ( $cachedVal === "-0" && $num <= $maxNum ) { // min number is missing
+								return true;
+							} else if ( $cachedVal !== "-0" && $num >= $minNum && $num <= $maxNum ) { // min and max are present
 								return true;
 							}
 						}
@@ -14459,12 +14478,14 @@ var componentName = "wb-jsonmanager",
 			}
 		],
 		opsRoot: [],
-		settings: { }
+		settings: { },
+		docMapKeys: { "referer": document.referrer, "locationHref": location.href }
 	},
 
 	// Add debug information after the JSON manager element
 	debugPrintOut = function( $elm, name, json, patches ) {
 		$elm.after( "<p lang=\"en\"><strong>JSON Manager Debug</strong> (" +  name + ")</p><ul lang=\"en\"><li>JSON: <pre><code>" + JSON.stringify( json ) + "</code></pre></li><li>Patches: <pre><code>" + JSON.stringify( patches ) + "</code></pre>" );
+		console.log( json );
 	},
 
 	/**
@@ -14490,9 +14511,12 @@ var componentName = "wb-jsonmanager",
 			Modernizr.load( {
 
 				// For loading multiple dependencies
-				load: "site!deps/json-patch" + wb.getMode() + ".js",
+				load: [
+					"site!deps/json-patch" + wb.getMode() + ".js",
+					"site!deps/jsonpointer" + wb.getMode() + ".js"
+				],
 				testReady: function() {
-					return window.jsonpatch;
+					return window.jsonpatch && window.jsonpointer;
 				},
 				complete: function() {
 					var elmData = wb.getData( $elm, componentName );
@@ -14525,7 +14549,6 @@ var componentName = "wb-jsonmanager",
 					}
 
 					dsName = elmData.name;
-
 					if ( !dsName || dsName in dsNameRegistered ) {
 						throw "Dataset name must be unique";
 					}
@@ -14552,19 +14575,159 @@ var componentName = "wb-jsonmanager",
 						if ( url.charCodeAt( 0 ) === 35 && url.charCodeAt( 1 ) === 91 ) {
 							wb.ready( $elm, componentName );
 						}
+					} else if ( !url && elmData.extractor ) {
+						$elm.trigger( {
+							type: "json-fetched.wb",
+							fetch: {
+								response: {}
+							}
+						} );
+						wb.ready( $elm, componentName );
+
 					} else {
 
-						// Do an empty fetch to ensure jsonPointer is loaded and correctly initialized
 						$elm.trigger( {
 							type: "json-fetch.wb"
 						} );
 						wb.ready( $elm, componentName );
 					}
+
 				}
 			} );
 		}
 	},
+	extractData = function( elmObj ) {
 
+		var isGroup = false,
+			selectedTag,
+			targetTag,
+			lastIndex = [],
+			j_tag = "",
+			group = {},
+			arrMap = [],
+			node_children = [],
+			j_node = 0,
+			arrRepeatPath = [],
+			combineToObj = function( cur_obj ) {
+				if ( cur_obj.selector === j_tag ) {
+					if ( !lastIndex.includes( j_tag ) ) {
+						group[ cur_obj.path ] = cur_obj.attr && node_children[ j_node ].getAttributeNode( cur_obj.attr ) ?
+							node_children[ j_node ].getAttributeNode( cur_obj.attr ).textContent :
+							node_children[ j_node ].textContent;
+						lastIndex.push( j_tag );
+					}
+				}
+			},
+			manageObjDir = function( selector, selectedValue, json_return ) {
+				var arrPath = selector.path.split( "/" ).filter( Boolean );
+				if ( arrPath.length > 1 ) {
+					var pointer = "";
+					pointer = arrPath.pop();
+
+					if ( arrPath[ 0 ] && arrPath[ 0 ] !== "" ) {
+
+						if ( !json_return[ arrPath[ 0 ] ] && !arrRepeatPath.includes( arrPath[ 0 ] ) ) {
+							arrRepeatPath.push( arrPath[ 0 ] );
+							json_return[ arrPath[ 0 ] ] = {};
+						}
+						if ( selector.selectAll && !json_return[ arrPath[ 0 ] ] [ pointer ]  ) {
+							json_return[ arrPath[ 0 ] ] [ pointer ] = [];
+						}
+						if ( selector.selectAll ) {
+							json_return[ arrPath[ 0 ] ] [ pointer ].push( selectedValue );
+						} else {
+							json_return[ arrPath[ 0 ] ] [ pointer ] = selectedValue;
+						}
+
+					} else {
+
+						if ( selector.selectAll ) {
+							json_return[ arrPath[ 0 ] ].push( selectedValue );
+						} else {
+							json_return[ pointer ] = selectedValue;
+						}
+					}
+				} else {
+
+					if ( selector.selectAll ) {
+						if ( !json_return[ selectedTag.path ] ) {
+							json_return[ selectedTag.path ] = [];
+						}
+						json_return[ selectedTag.path ].push( selectedValue );
+					} else {
+						json_return[ selectedTag.path ] = selectedValue;
+					}
+				}
+			},
+			jsonSource = {};
+
+
+		for ( var tag = 0; tag <= elmObj.length - 1; tag++ ) {
+
+			selectedTag = elmObj[ tag ];
+
+			if ( !selectedTag.interface ) {
+
+				targetTag = document.querySelectorAll( selectedTag.selector || "" );
+				isGroup = selectedTag.extractor && selectedTag.extractor.length >= 1 ? true : false;
+
+				if ( selectedTag.selectAll ) {
+
+					for ( var i_node = 0; i_node <= targetTag.length - 1; i_node++ ) {
+
+						var selectedTagValue = selectedTag.attr && targetTag [ i_node ].getAttributeNode( selectedTag.attr ) ?
+							targetTag [ i_node ].getAttributeNode( selectedTag.attr ).textContent :
+							targetTag [ i_node ].textContent;
+
+						manageObjDir( selectedTag, selectedTagValue, jsonSource );
+					}
+				}
+
+				// extract from combined selectors and group the values e.g dt with dd
+				if ( isGroup ) {
+
+					jsonSource[ selectedTag.path ] = [];
+
+					node_children = targetTag[ 0 ].children;
+
+					var extractorLength = Object.keys( selectedTag.extractor ).length;
+
+					for ( j_node = 0; j_node <= node_children.length - 1; j_node++ ) {
+
+						j_tag = node_children[ j_node ].tagName.toLowerCase();
+
+						selectedTag.extractor.find( combineToObj );
+						if ( Object.keys( group ).length === extractorLength ) {
+							arrMap.push( group );
+							group = {};
+							lastIndex = [];
+						}
+					}
+					$.extend( jsonSource[ selectedTag.path ], arrMap );
+				}
+
+				if ( targetTag.length ) {
+					targetTag = selectedTag.attr && targetTag [ 0 ].getAttributeNode( selectedTag.attr ) ?
+						targetTag [ 0 ].getAttributeNode( selectedTag.attr ).textContent :
+						targetTag [ 0 ].textContent;
+				}
+
+			} else {
+
+				targetTag = defaults.docMapKeys[ selectedTag.interface ];
+
+				manageObjDir( selectedTag, targetTag, jsonSource );
+			}
+
+			if ( !selectedTag.selectAll  ) {
+				if ( isGroup === false ) {
+					manageObjDir( selectedTag, targetTag, jsonSource );
+				}
+			}
+		}
+
+		return jsonSource;
+	},
 
 	// Filtering a JSON
 	// Return true if trueness && falseness
@@ -14743,12 +14906,20 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 		isArrayResponse = $.isArray( JSONresponse ),
 		resultSet,
 		i, i_len, i_cache, backlog, selector,
-		patches, filterTrueness, filterFaslseness, filterPath;
-
+		patches, filterTrueness, filterFaslseness, filterPath, extractor;
 
 	if ( elm === event.currentTarget ) {
-
 		settings = wb.getData( $elm, componentName );
+
+		extractor = settings.extractor;
+		if ( extractor ) {
+			if ( !$.isArray( extractor ) ) {
+				extractor = [ extractor ];
+			}
+			JSONresponse = $.extend( JSONresponse, extractData( extractor ) );
+
+		}
+
 		dsName = "[" + settings.name + "]";
 		patches = settings.patches || [];
 		filterPath = settings.fpath;
@@ -14760,9 +14931,9 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 		}
 
 		if ( isArrayResponse ) {
-			JSONresponse = $.extend( [], JSONresponse );
+			JSONresponse = $.extend( true, [], JSONresponse );
 		} else {
-			JSONresponse = $.extend( {}, JSONresponse );
+			JSONresponse = $.extend( true, {}, JSONresponse );
 		}
 
 		// Apply a filtering
@@ -14770,16 +14941,17 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 			JSONresponse = getPatchesToFilter( JSONresponse, filterPath, filterTrueness, filterFaslseness );
 		}
 
-		// Apply the patches
-		if ( patches.length ) {
-			if ( isArrayResponse && settings.wraproot ) {
-				i_cache = { };
-				i_cache[ settings.wraproot ] = JSONresponse;
-				JSONresponse = i_cache;
-			}
-			jsonpatch.apply( JSONresponse, patches );
+		// Apply the wraproot
+		if ( settings.wraproot  ) {
+			i_cache = { };
+			i_cache[ settings.wraproot ] = JSONresponse;
+			JSONresponse = i_cache;
 		}
 
+		// Apply the patches
+		if ( patches.length ) {
+			jsonpatch.apply( JSONresponse, patches );
+		}
 		if ( settings.debug ) {
 			debugPrintOut( $elm, "initEvent", JSONresponse, patches );
 		}

@@ -12,12 +12,13 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
+<meta name="dcterms.type" content=""/>
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2021-04-06"/>
 
-<link href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/GCWeb-PR1916/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body class="cnt-wdth-lmtd" vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +45,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -121,41 +122,235 @@
 	<h2>Unstable feature</h2>
 	<p>To be used at <strong>your own risks</strong>. All functionalities described below could be removed in any subsequent minor/major release and are excluded from the GCWeb public API.</p>
 	<p>Documentation and/or working examples for those features could be incomplete or not available.</p>
-	<p><a href="../provisional-en.html">See all provisional features.</a></p>
+	<p><a href="provisional-en.html">See all provisional features.</a></p>
 </div>
 
-<p>In order to use the provisional subway map navigation, you will need to complete the following steps:</p>
-<ol>
-	<li>First, you'll need a <code>&lt;nav&gt;</code> element with both the <code>"provisional"</code> and the <code>"gc-subway"</code> classes. Inside of that <code>&lt;nav&gt;</code>, put your first <code>&lt;h1&gt;</code>; it will be the smaller, gray-ish, upper one.</li>
-	<li>Add a <code>&lt;ul&gt;</code> next to that <code>&lt;h1&gt;</code>.</li>
-	<li>Each list item should contain the links to your set of pages targeted by the subway map navigation, as such:
-		<code>
-			&lt;a href="the-link-to-your-page.html"&gt;[Page 1]&lt;/a&gt;
-		</code>.Optionally, you could offer an SPA feel when the user is on mobile by adding a second hyperlink with an anchor to the first H1, like so:
-		<code>
-			&lt;a href="the-link-to-your-page.html#gc-document-nav" class="visible-xs visible-sm"&gt;[Page 1]&lt;/a&gt;
-		</code>. If you do go forward with this option, make sure to hide the regular link (the one without the anchor) on small devices with the following class attribute:
-		<code>class="hidden-xs hidden-sm"</code>, and the new one to be visible only on small screen devices (as shown in the HTML code snippet above already).
-	</li>
-	<li>The rest just needs your own main content for that page. Do not forget the navigation buttons at the bottom of the pages. If you want the left column to stop being at 2/3 of the width on desktop at some point, then you can stop the propagation by using any HTML element with a <code>"gc-subway-section-end"</code> class on it; that element needs to be a sibling of your <code>&lt;nav class="gc-subway"&gt;</code>.</li>
-	<li>If you want to use the new bold short red underline underneath your regular H1, then add both the <code>"provisional"</code> and <code>"gc-thickline"</code> classes on it.</li>
-</ol>
-<p>See raw code in action by <a href="gc-subway-en.html">checking out the working example</a>.</p>
+<div class="wb-prettify all-pre hide"></div>
 
-<!--
-NOTES:
--For testing/ease of development
--Remove this file before merging
--->
+<h2>On this page</h2>
+<ul>
+	<li><a href="#purpose">Purpose</a></li>
+	<li><a href="#workingExamples">Working examples</a></li>
+	<li><a href="#layout">Layout</a></li>
+	<li><a href="#style">Style</a></li>
+	<li><a href="#semantic">Semantic</a></li>
+	<li><a href="#configuration">Configuration</a></li>
+	<li><a href="#schema">Schema</a></li>
+</ul>
+
+<h2 id="purpose">Purpose</h2>
+<p>Break up long and complex content into pages that each focus on a step or specific answer people need before moving to the next step or section. Ideal for presenting services and processes.</p>
+
+<h2 id="workingExamples">Working examples</h2>
+<div data-wb-jsonmanager='{
+	"url": "index.json-ld",
+	"name": "gc-subway",
+	"fpath": "/pages/examples",
+	"filter": [
+		{ "path": "/language", "value": "en" }
+	]
+}'></div>
+<ul data-wb-json='{
+	"url": "#[gc-subway]/pages/examples",
+	"mapping": [
+		{ "selector": "a", "value": "/title" },
+		{ "selector": "a", "value": "/path", "attr": "href" }
+	]
+}'>
+	<template>
+		<li><a href></a></li>
+	</template>
+</ul>
+
+<h2 id="layout">Layout</h2>
+<p>The layout for the index page is different from the sections pages. Below are code samples of how the GC Subway elements are laid out before the plugin has been initialized.</p>
+
+<h3>Index page</h3>
+<p>The GC Subway code snippet for the <strong>index</strong> page can be placed anywhere within the content of the page (<code>&lt;main&gt;</code>). However, make sure the heading level is appropriate. Also, the sub-section items must not be included in the index page.</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;main&gt;</span>
+	<span class="nt">&lt;h1</span> <span class="na">property=</span><span class="s">"name"</span> <span class="na">id=</span><span class="s">"wb-cont"</span> <span class="na">class=</span><span class="s">"gc-thickline"</span><span class="nt">&gt;</span>[Service name]<span class="nt">&lt;/h1&gt;</span>
+
+	<span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<span class="nt">&lt;/p&gt;</span>
+
+	<span class="c">&lt;!-- GC Subway navigation --&gt;</span>
+	<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"gc-subway provisional"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;h2&gt;</span>Sections<span class="nt">&lt;/h2&gt;</span>
+		<span class="nt">&lt;dl&gt;</span>
+			<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section1-en.html"</span><span class="nt">&gt;</span>[Page 1]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+			<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+			<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section2-en.html"</span><span class="nt">&gt;</span>[Page 2]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+			<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+			<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section3-en.html"</span><span class="nt">&gt;</span>[Page 3]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+			<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+			<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section4-en.html"</span><span class="nt">&gt;</span>[Page 4]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+			<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+			<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section5-en.html"</span><span class="nt">&gt;</span>[Page 5]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+			<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+			<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section6-en.html"</span><span class="nt">&gt;</span>[Page 6]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+			<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+		<span class="nt">&lt;/dl&gt;</span>
+	<span class="nt">&lt;/nav&gt;</span>
+	...
+<span class="nt">&lt;/main&gt;</span></code></pre></figure>
+
+<h3>Section page</h3>
+<p>The GC Subway code snippet for the <strong>section</strong> page must be placed at the beginning of your content, before the title (<code>&lt;h1&gt;</code>).</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;main&gt;</span>
+	<span class="c">&lt;!-- 1: GC Subway navigation --&gt;</span>
+	<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"gc-subway provisional"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;h1&gt;</span>[Service name]<span class="nt">&lt;/h1&gt;</span>
+		<span class="nt">&lt;ul&gt;</span>
+			<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section1-en.html"</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;</span>[Page 1]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+			<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section2-en.html"</span><span class="nt">&gt;</span>[Page 2]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+			<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section3-en.html"</span><span class="nt">&gt;</span>[Page 3]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+			<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section4-en.html"</span><span class="nt">&gt;</span>[Page 4]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+			<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section5-en.html"</span><span class="nt">&gt;</span>[Page 5]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+			<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section6-en.html"</span><span class="nt">&gt;</span>[Page 6]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+		<span class="nt">&lt;/ul&gt;</span>
+	<span class="nt">&lt;/nav&gt;</span>
+
+	<span class="c">&lt;!-- 2: Title --&gt;</span>
+	<span class="nt">&lt;h1</span> <span class="na">property=</span><span class="s">"name"</span> <span class="na">id=</span><span class="s">"wb-cont"</span> <span class="na">class=</span><span class="s">"gc-thickline"</span><span class="nt">&gt;</span>[Page 1]<span class="nt">&lt;/h1&gt;</span>
+
+	<span class="c">&lt;!-- 3: Page content --&gt;</span>
+	<span class="nt">&lt;p&gt;</span>Page content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam commodo elementum est, ac ultrices urna convallis vitae.<span class="nt">&lt;/p&gt;</span>
+	...
+
+	<span class="c">&lt;!-- 4: Document navigation --&gt;</span>
+	<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"gc-subway-pagination"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Document navigation<span class="nt">&lt;/h2&gt;</span>
+		<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pager"</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"next"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section2-en.html"</span> <span class="na">rel=</span><span class="s">"next"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Next: <span class="nt">&lt;/span&gt;</span>[Page 2]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+		<span class="nt">&lt;/ul&gt;</span>
+	<span class="nt">&lt;/nav&gt;</span>
+
+	<span class="c">&lt;!-- 5: Related information (optional) --&gt;</span>
+	<span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">"gc-subway-support"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"h3"</span><span class="nt">&gt;</span>Related information<span class="nt">&lt;/h2&gt;</span>
+		...
+	<span class="nt">&lt;/aside&gt;</span>
+<span class="nt">&lt;/main&gt;</span></code></pre></figure>
+
+<h2 id="style">Style</h2>
+<dl>
+	<dt>Class (mandatory): <code>active</code></dt>
+	<dd>To be added to the active page's link (<code>&lt;a&gt;</code>) in the GC Subway navigation.</dd>
+	<dt>Class (optional): <code>noline</code></dt>
+	<dd>To be applied on a sub-section list (<code>&lt;ul&gt;</code>). It will remove the vertical line connecting all sub-sections. It will also add a horizontal line connecting the <strong>active</strong> sub-section with the main subway line. <a href="sub-section-noline-en.html">Example of correct implementation</a>.</dd>
+</dl>
+
+<h2 id="semantic">Semantic</h2>
+
+<h3>Index page</h3>
+<p>The heading's level will be dependent on your document's structure.</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"gc-subway provisional"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;h2&gt;</span>Sections<span class="nt">&lt;/h2&gt;</span>
+	<span class="nt">&lt;dl&gt;</span>
+		<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section1-en.html"</span><span class="nt">&gt;</span>[Page 1]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+		<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+		<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section2-en.html"</span><span class="nt">&gt;</span>[Page 2]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+		<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+		<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section3-en.html"</span><span class="nt">&gt;</span>[Page 3]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+		<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+		<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section4-en.html"</span><span class="nt">&gt;</span>[Page 4]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+		<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+		<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section5-en.html"</span><span class="nt">&gt;</span>[Page 5]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+		<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+		<span class="nt">&lt;dt&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section6-en.html"</span><span class="nt">&gt;</span>[Page 6]<span class="nt">&lt;/a&gt;&lt;/dt&gt;</span>
+		<span class="nt">&lt;dd&gt;</span>Page description. Lorem ipsum dolor sit amet, consectetur adipiscing elit<span class="nt">&lt;/dd&gt;</span>
+	<span class="nt">&lt;/dl&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></figure>
+
+<h3>Section page</h3>
+
+<h4>Main GC Subway element</h4>
+<p>The GC Subway navigation allows for up to two (2) levels of list items. However, the default and recommended structure is only one (1) level.</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"gc-subway provisional"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;h1&gt;</span>[Service name]<span class="nt">&lt;/h1&gt;</span>
+	<span class="nt">&lt;ul&gt;</span>
+		<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section1-en.html"</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;</span>[Page 1]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+		<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section2-en.html"</span><span class="nt">&gt;</span>[Page 2]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+		<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section3-en.html"</span><span class="nt">&gt;</span>[Page 3]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+		<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section4-en.html"</span><span class="nt">&gt;</span>[Page 4]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+		<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section5-en.html"</span><span class="nt">&gt;</span>[Page 5]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+		<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"section6-en.html"</span><span class="nt">&gt;</span>[Page 6]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+	<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></figure>
+
+<h4>Document navigation</h4>
+<p>To be added at the end of your content, before the related information block (if applicable). This navigation is mandatory for <strong>section</strong> pages.</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"gc-subway-pagination"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Document navigation<span class="nt">&lt;/h2&gt;</span>
+	<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pager"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"previous"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">rel=</span><span class="s">"prev"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Previous: <span class="nt">&lt;/span&gt;</span>[Page 3]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+		<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"next"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">rel=</span><span class="s">"next"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Next: <span class="nt">&lt;/span&gt;</span>[Page 3b]<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+	<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></figure>
+
+<h4>Related information (optional)</h4>
+<p>To be added at the end of your content, after the document navigation block. This block is optional. It will be displayed on the right side under the GC Subway navigation on <code>md</code> and <code>lg</code> breakpoints and at the end of the content on <code>xs</code> and <code>sm</code> breakpoints.</p>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;aside</span> <span class="na">class=</span><span class="s">"gc-subway-support"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"h3"</span><span class="nt">&gt;</span>Related information<span class="nt">&lt;/h2&gt;</span>
+	...
+<span class="nt">&lt;/aside&gt;</span></code></pre></figure>
+
+<h2 id="configuration">Configuration</h2>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<th>Description</th>
+			<th>Default</th>
+			<th>Example</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>data-sections-title</td>
+			<td>Text used for the dynamically created title visible above the subway navigation on <code>md</code> and <code>lg</code> breakpoints.</td>
+			<td><code>"Sections"</code></td>
+			<td><code>data-sections-title="My sections"</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="schema">Schema</h2>
+<ul>
+	<li>Title, type: string</li>
+	<li>Subtitle, type: string (optional)</li>
+	<li>Sections, type: array
+		<ul>
+			<li>Title, type: string</li>
+			<li>Url, type: string</li>
+			<li>Description, type: string</li>
+			<li>Sub-section, type: array
+				<ul>
+					<li>Title, type: string</li>
+					<li>Url, type: string</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li>Page content, type: HTML</li>
+	<li>Related information, type: object (optional)
+		<ul>
+			<li>Title, type: string</li>
+			<li>Content, type: HTML</li>
+		</ul>
+	</li>
+</ul>
+
 <footer class="pagedetails">
 	<h2 class="wb-inv">Page details</h2>
 
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9"><div data-ajax-replace="/sites/feedback/ajax/report-problem-en.html">
+	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
+				<div data-ajax-replace="/sites/feedback/ajax/page-feedback-en.html">
 	<div class="row row-no-gutters"><div class="col-sm-9 col-md-6 col-lg-5"><a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html">Report a problem on this page</a>
 		</div>
 	</div>
 </div>
-</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12">
+
+			</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12">
 			<dl id="wb-dtmd">
 				<dt>Date modified:</dt>
 				<dd><time property="dateModified">2021-04-06</time></dd>
@@ -202,7 +397,7 @@ NOTES:
 				
 				<div class="col-xs-6 visible-sm visible-xs tofpg">
 					<a href="#wb-cont">Top of page <span class="glyphicon glyphicon-chevron-up"></span></a>
-				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 				</div>
 			</div>
 		</div>
@@ -210,7 +405,7 @@ NOTES:
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/GCWeb-PR1916/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/GCWeb-PR1916/dist/GCWeb/js/theme.js"></script>
+<script src="/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
