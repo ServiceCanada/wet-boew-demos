@@ -150,6 +150,7 @@ wb.i18nDict = {
 	"cal-goToBtn": "Գնալ",
 	prvMnth: "Էջանշան դնել Դարձնել սկզբնական: ",
 	nxtMnth: "Հաջորդ ամիս: ",
+	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Կոդ %curr% %total% - ից",

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.56.3 - 2022-12-06
+ * v4.0.56.6 - 2023-02-27
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1510,7 +1510,7 @@ $.extend( $.expr[ ":" ], {
  * variables that are common to all instances of the plugin on a page.
  */
 var componentName = "wb-addcal",
-	selector = ".provisional." + componentName,
+	selector = "." + componentName,
 	initEvent = "wb-init." + componentName,
 	$document = wb.doc,
 
@@ -1530,88 +1530,73 @@ var componentName = "wb-addcal",
 
 			wb.ready( $( elm ), componentName );
 
-			var properties = elm.querySelectorAll( "[property]" ),
-				event_details = new Object(),
+			let properties = elm.querySelectorAll( "[property]" ),
+				addcalTarget = elm.dataset.addcalTarget,
+				event_details = {},
 				place_details = [],
-				i,
-				i_len,
-				prop_cache,
+				i18n = wb.i18n,
+				addCalBtn,
 				googleLink,
-				icsFile,
-				i18nDict = {
-					en: {
-						"addcal-addto": "Add to",
-						"addcal-calendar": "calendar",
-						"addcal-other": "Other (Outlook, Apple, etc.)"
-					},
-					fr: {
-						"addcal-addto": "Ajouter au",
-						"addcal-calendar": "calendrier",
-						"addcal-other": "Autre (Outlook, Apple, etc.)"
-					}
-				};
-
-			// Initiate dictionary
-			i18nDict = i18nDict[ $( "html" ).attr( "lang" ) || "en" ];
-			i18nDict = {
-				addto: i18nDict[ "addcal-addto" ],
-				calendar: i18nDict[ "addcal-calendar" ],
-				ical: i18nDict[ "addcal-other" ]
-			};
+				outlookLink,
+				yahooLink,
+				office365Link,
+				icsData;
 
 			// Set date stamp with the date modified
-			event_details.dtStamp = dtToISOString( $( "time[property='dateModified']" ) );
+			event_details.dtStamp = new Date().toISOString();
 
-			i_len = properties.length;
-			for ( i = 0; i < i_len; i++ ) {
-				prop_cache = properties[ i ];
-				switch ( prop_cache.getAttribute( "property" ) ) {
+			elm.setAttribute( "typeof", "Event" );
+
+			properties.forEach( function( prop ) {
+				switch ( prop.getAttribute( "property" ) ) {
 				case "name":
 
 					// If the property=name is inside an element with typeof=Place defined
-					if ( $( prop_cache ).parentsUntil( ( "." + componentName ), "[typeof=Place]" ).length ) {
-						event_details.placeName = prop_cache.textContent;
+					if ( $( prop ).parentsUntil( ( "." + componentName ), "[typeof=Place]" ).length ) {
+						event_details.placeName = prop.textContent;
 					} else {
-						event_details.name = prop_cache.textContent;
+						event_details.name = prop.textContent;
 					}
 					break;
 				case "description":
-					event_details.description = prop_cache.textContent.replace( /(\r\n|\n|\r)/gm, " " );
+					event_details.description = prop.textContent.replace( /(\r\n|\n|\r)/gm, " " );
 					break;
 				case "startDate":
-					event_details.sDate = dtToISOString( $( "time[property='startDate']", $elm ) );
+					event_details.sDate = dtToISOString( elm.querySelector( "time[property='startDate']" ), true );
+					event_details.sDateAlt = dtToISOString( elm.querySelector( "time[property='startDate']" ), false );
 					break;
 				case "endDate":
-					event_details.eDate = dtToISOString( $( "time[property='endDate']", $elm ) );
+					event_details.eDate = dtToISOString( elm.querySelector( "time[property='endDate']" ), true );
+					event_details.eDateAlt = dtToISOString( elm.querySelector( "time[property='endDate']" ), false );
 					break;
 				case "location":
 
 					// If the location doesn't have typeof defined OR has typeof=VirtualLocation without URL inside.
-					if ( !prop_cache.getAttribute( "typeof" ) || ( prop_cache.getAttribute( "typeof" ) === "VirtualLocation" && !$( prop_cache ).find( "[property=url]" ).length ) ) {
-						event_details.placeName = prop_cache.textContent;
+					if ( !prop.getAttribute( "typeof" ) || ( prop.getAttribute( "typeof" ) === "VirtualLocation" && !$( prop ).find( "[property=url]" ).length ) ) {
+						event_details.placeName = prop.textContent;
 					}
 					break;
 				case "streetAddress":
-					event_details.placeAddress = prop_cache.textContent;
+					event_details.placeAddress = prop.textContent;
 					break;
 				case "addressLocality":
-					event_details.placeLocality = prop_cache.textContent;
+					event_details.placeLocality = prop.textContent;
 					break;
 				case "addressRegion":
-					event_details.placeRegion = prop_cache.textContent;
+					event_details.placeRegion = prop.textContent;
 					break;
 				case "postalCode":
-					event_details.placePostalCode = prop_cache.textContent;
+					event_details.placePostalCode = prop.textContent;
 					break;
 				case "url":
 
 					// If the property=url is inside a property=location
-					if ( $( prop_cache ).parentsUntil( ( "." + componentName ), "[property=location]" ).length ) {
-						event_details.placeName = prop_cache.textContent;
+					if ( $( prop ).parentsUntil( ( "." + componentName ), "[property=location]" ).length ) {
+						event_details.placeName = prop.textContent;
 					}
 					break;
 				}
-			}
+			} );
 
 			place_details.push( ( event_details.placeName || "" ), ( event_details.placeAddress || "" ), ( event_details.placeLocality || "" ), ( event_details.placeRegion || "" ), ( event_details.placePostalCode || "" ) );
 
@@ -1625,42 +1610,69 @@ var componentName = "wb-addcal",
 			}
 
 			// Set Unique Identifier (UID) and Date Stamp (DSTAMP)
-			event_details.uid = window.location.href.replace( /\.|-|\/|:|[G-Zg-z]/g, "" ).toUpperCase().substr( -10 ) + "-" + event_details.sDate + "-" + event_details.dtStamp;
+			event_details.uid = window.location.href.replace( /\.|-|\/|:|[G-Zg-z]/g, "" ).toUpperCase().slice( 9 ) + "-" + event_details.sDate + "-" + event_details.dtStamp;
 
 			// Set google calendar link
 			googleLink = encodeURI( "https://www.google.com/calendar/render?action=TEMPLATE" +  "&text=" + event_details.name +  "&details=" +
-			event_details.description +  "&dates=" + event_details.sDate + "/" + event_details.eDate + "&location=" + place_details.join( " " ) );
+			event_details.description +  "&dates=" + event_details.sDate + "/" + event_details.eDate + "&location=" + place_details.join( " " ).trim() );
+
+			// Set Yahoo calendar link
+			yahooLink = encodeURI( "https://calendar.yahoo.com/?desc=" + event_details.description + "&et=" + event_details.eDate + "&in_loc=" + place_details.join( " " ).trim() + "&title=" + event_details.name + "&st=" + event_details.sDate + "&v=60" );
+
+			// Set Outlook.com calendar link
+			outlookLink = encodeURI( "https://outlook.live.com/calendar/0/deeplink/compose?body=" + event_details.description + "&enddt=" + event_details.eDateAlt + "&location=" + place_details.join( " " ).trim() + "&subject=" + event_details.name + "&startdt=" + event_details.sDateAlt + "&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" );
+
+			// Set Office 365 calendar link
+			office365Link = encodeURI( "https://outlook.office.com/calendar/0/deeplink/compose?body=" + event_details.description + "&enddt=" + event_details.eDateAlt + "&location=" + place_details.join( " " ).trim() + "&subject=" + event_details.name + "&startdt=" + event_details.sDateAlt + "&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" );
 
 			// Set ICS file for Outlook, Apple and other calendars
-			icsFile = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//WET-BOEW//Add to Calendar v4.0//\nBEGIN:VEVENT\nDTSTAMP:" + event_details.dtStamp + "\nSUMMARY:" + event_details.name +  "\nDESCRIPTION:" + event_details.description + "\nUID:" + event_details.uid + "\nDTSTART:" + event_details.sDate + "\nDTEND:" + event_details.eDate + "\nLOCATION:" + place_details.join( " " ) + "\nEND:VEVENT\nEND:VCALENDAR";
+			icsData = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//WET-BOEW//Add to Calendar v4.0//\nBEGIN:VEVENT\nDTSTAMP:" + event_details.dtStamp + "\nSUMMARY:" + event_details.name +  "\nDESCRIPTION:" + event_details.description + "\nUID:" + event_details.uid + "\nDTSTART:" + event_details.sDate + "\nDTEND:" + event_details.eDate + "\nLOCATION:" + place_details.join( " " ).trim() + "\nEND:VEVENT\nEND:VCALENDAR";
 
-			elm.dataset.icsFile = icsFile;
+			elm.dataset.ics = icsData;
 
-			// Create and add details summary to the wb-addcal event and initiate the unordered list
-			$elm.append( "<details class='max-content " + componentName + "-buttons'><summary>" + i18nDict.addto + " " + i18nDict.calendar +
-			"</summary><ul class='list-unstyled mrgn-bttm-0'><li><a class='btn btn-link' href='" + googleLink.replace( /'/g, "%27" ) + "' target='_blank' rel='noreferrer noopener'>Google<span class='wb-inv'>" + i18nDict.calendar + "</span></a></li><li><button class='btn btn-link download-ics'>" + i18nDict.ical +
-			"<span class='wb-inv'>Calendar</span></button></li></ul></details>" );
+			// Create Add to calendar dropdown button UI
+			addCalBtn = "<div class='dropdown wb-addcal-dd'><button type='button' class='btn btn-primary dropdown-toggle'><span class='glyphicon glyphicon-calendar mrgn-rght-md'></span>" + i18n( "addToCal" ) + "</button><ul class='dropdown-menu'>";
+			addCalBtn += "<li><a class='extrnl-lnk' href='" + office365Link.replace( /'/g, "%27" ) + "'><img src='img/office_365_icon.svg' alt='' width='16' class='mrgn-rght-md'>Office 365</a></li>";
+			addCalBtn += "<li><a class='extrnl-lnk' href='" + outlookLink.replace( /'/g, "%27" ) + "'><img src='img/outlook_logo.svg' width='16' alt='' class='mrgn-rght-md'>Outlook.com</a></li>";
+			addCalBtn += "<li><a class='extrnl-lnk' href='" + googleLink.replace( /'/g, "%27" ) + "'><img src='img/google_calendar_icon.svg' width='16' alt='' class='mrgn-rght-md'>Google</a></li>";
+			addCalBtn += "<li><a class='extrnl-lnk' href='" + yahooLink.replace( /'/g, "%27" ) + "'><img src='img/yahoo_icon.svg' width='16' alt='' class='mrgn-rght-md'>Yahoo</a></li>";
+			addCalBtn += "<li><button type='button' class='download-ics' data-addcal-id='" + elm.id + "'><span class='glyphicon glyphicon-calendar mrgn-rght-md'></span>iCal</button></li>";
+			addCalBtn += "</ul></div>";
+
+			if ( addcalTarget ) {
+				$( "#" + addcalTarget ).append( addCalBtn );
+			} else {
+				$elm.append( addCalBtn );
+			}
 		}
 
 		wb.ready( $( elm ), componentName );
 
 	};
 
-// Convert date to ISO string and formating for ICS file
-var dtToISOString = function( date ) {
-	if ( date.is( "[datetime]" ) ) {
-		date = date.attr( "datetime" );
-	} else {
-		date = date.text();
-	}
+// Convert date to ISO string. Formatting differently if modify=true
+// modify=true example: 20230127T120000Z
+// modify=false example: 2023-01-27T12:00:00.000Z
+var dtToISOString = function( dateElm, modify ) {
+	let date = dateElm.getAttribute( "datetime" );
 
-	return new Date( date ).toISOString().replace( /\..*[0-9]/g, "" ).replace( /-|:|\./g, "" );
+	if ( modify ) {
+		return new Date( date ).toISOString().replace( /\..*[0-9]/g, "" ).replace( /-|:|\./g, "" );
+	} else {
+		return new Date( date ).toISOString();
+	}
 };
 
+// Download ICS file
 $document.on( "click", ".download-ics", function( event ) {
-	var icsFile = $( event.currentTarget ).parentsUntil( "." + componentName ).parent()[ 0 ];
-	icsFile =  $( icsFile ).attr( "data-ics-file" );
-	wb.download( new Blob( [ icsFile ], { type: "text/calendar;charset=utf-8" } ), "evenement-gc-event.ics" );
+	let icsData = document.querySelector( "#" + event.target.getAttribute( "data-addcal-id" ) ).dataset.ics;
+
+	wb.download( new Blob( [ icsData ], { type: "text/calendar;charset=utf-8" } ), "evenement-gc-event.ics" );
+} );
+
+// Close dropdown when an item is selected
+$document.on( "click", ".wb-addcal-btn .list-group-item", function( event ) {
+	$( event.target ).closest( ".wb-addcal-dd" ).find( "input[type=checkbox]" ).prop( "checked", false );
 } );
 
 // Bind the init event of the plugin
@@ -5062,6 +5074,364 @@ $document.on( "click", "." + dismissClass, function( event ) {
 wb.add( selector );
 
 } )( jQuery, window, wb );
+
+/**
+ * @title WET-BOEW Dropdown
+ * @overview Dropdown functionality
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @garneauma
+ * Adapted from W3C's Actions Menu Button Example Using aria-activedescendant
+ * Link: https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-links/
+ * License: https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ */
+( function( $, wb ) {
+"use strict";
+
+/*
+* Variable and function definitions.
+* These are global to the plugin - meaning that they will be initialized once per page,
+* not once per instance of plugin on the page. So, this is a good place to define
+* variables that are common to all instances of the plugin on a page.
+*/
+var componentName = "dropdown",
+	selector = "." + componentName,
+	initEvent = "wb-init." + componentName,
+	$document = wb.doc,
+
+	/**
+	* @method init
+	* @param {jQuery Event} event Event that triggered the function call
+	*/
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector );
+
+		if ( elm ) {
+			wb.ready( $( elm ), componentName );
+
+			new Dropdown( elm );
+		}
+	};
+
+class Dropdown {
+	constructor( dropdown ) {
+		this.dropdown = dropdown;
+		this.buttonNode = dropdown.querySelector( ".dropdown-toggle" );
+		this.menuNode = dropdown.querySelector( ".dropdown-menu" );
+		this.menuitemNodes = [];
+		this.firstMenuitem = false;
+		this.lastMenuitem = false;
+		this.firstChars = [];
+
+		this.buttonNode.addEventListener( "keydown", this.onButtonKeydown.bind( this ) );
+		this.buttonNode.addEventListener( "click", this.onButtonClick.bind( this ) );
+
+		// Set ID's
+		this.buttonNode.id = this.buttonNode.id || wb.getId();
+		this.menuNode.id = this.menuNode.id || wb.getId();
+
+		// Set attributes for accessibility
+		this.menuNode.setAttribute( "role", "menu" );
+		this.menuNode.setAttribute( "aria-labelledby", this.buttonNode.id );
+		this.buttonNode.setAttribute( "aria-controls", this.menuNode.id );
+		this.buttonNode.setAttribute( "aria-haspopup", "true" );
+
+		var nodes = dropdown.querySelectorAll( "li a, li button" );
+
+		for ( var i = 0; i < nodes.length; i++ ) {
+			var menuitem = nodes[ i ];
+			this.menuitemNodes.push( menuitem );
+			menuitem.tabIndex = -1;
+			this.firstChars.push( menuitem.textContent.trim()[ 0 ].toLowerCase() );
+
+			menuitem.parentElement.setAttribute( "role", "none" );
+			menuitem.setAttribute( "role", "menuitem" );
+			menuitem.id = menuitem.id || wb.getId();
+
+			menuitem.addEventListener( "keydown", this.onMenuitemKeydown.bind( this ) );
+			menuitem.addEventListener( "mouseover", this.onMenuitemMouseover.bind( this ) );
+
+			if ( !this.firstMenuitem ) {
+				this.firstMenuitem = menuitem;
+			}
+			this.lastMenuitem = menuitem;
+		}
+
+		dropdown.addEventListener( "focusin", this.onFocusin.bind( this ) );
+		dropdown.addEventListener( "focusout", this.onFocusout.bind( this ) );
+		window.addEventListener( "mousedown", this.onBackgroundMousedown.bind( this ), true );
+	}
+
+	setFocusToMenuitem( newMenuitem ) {
+		this.menuitemNodes.forEach( function( item ) {
+			if ( item === newMenuitem ) {
+				item.tabIndex = 0;
+				newMenuitem.focus();
+			} else {
+				item.tabIndex = -1;
+			}
+		} );
+	}
+
+	setFocusToFirstMenuitem() {
+		this.setFocusToMenuitem( this.firstMenuitem );
+	}
+
+	setFocusToLastMenuitem() {
+		this.setFocusToMenuitem( this.lastMenuitem );
+	}
+
+	setFocusToPreviousMenuitem( currentMenuitem ) {
+		var newMenuitem, index;
+
+		if ( currentMenuitem === this.firstMenuitem ) {
+			newMenuitem = this.lastMenuitem;
+		} else {
+			index = this.menuitemNodes.indexOf( currentMenuitem );
+			newMenuitem = this.menuitemNodes[ index - 1 ];
+		}
+
+		this.setFocusToMenuitem( newMenuitem );
+
+		return newMenuitem;
+	}
+
+	setFocusToNextMenuitem( currentMenuitem ) {
+		var newMenuitem, index;
+
+		if ( currentMenuitem === this.lastMenuitem ) {
+			newMenuitem = this.firstMenuitem;
+		} else {
+			index = this.menuitemNodes.indexOf( currentMenuitem );
+			newMenuitem = this.menuitemNodes[ index + 1 ];
+		}
+		this.setFocusToMenuitem( newMenuitem );
+
+		return newMenuitem;
+	}
+
+	setFocusByFirstCharacter( currentMenuitem, char ) {
+		var start, index;
+
+		if ( char.length > 1 ) {
+			return;
+		}
+
+		char = char.toLowerCase();
+
+		// Get start index for search based on position of currentItem
+		start = this.menuitemNodes.indexOf( currentMenuitem ) + 1;
+		if ( start >= this.menuitemNodes.length ) {
+			start = 0;
+		}
+
+		// Check remaining slots in the menu
+		index = this.firstChars.indexOf( char, start );
+
+		// If not found in remaining slots, check from beginning
+		if ( index === -1 ) {
+			index = this.firstChars.indexOf( char, 0 );
+		}
+
+		// If match was found...
+		if ( index > -1 ) {
+			this.setFocusToMenuitem( this.menuitemNodes[ index ] );
+		}
+	}
+
+	// Utilities
+
+	getIndexFirstChars( startIndex, char ) {
+		for ( var i = startIndex; i < this.firstChars.length; i++ ) {
+			if ( char === this.firstChars[ i ] ) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	// Popup menu methods
+
+	openPopup() {
+		this.dropdown.classList.add( "open" );
+		this.buttonNode.setAttribute( "aria-expanded", "true" );
+	}
+
+	closePopup() {
+		if ( this.isOpen() ) {
+			this.buttonNode.removeAttribute( "aria-expanded" );
+			this.dropdown.classList.remove( "open" );
+		}
+	}
+
+	isOpen() {
+		return this.buttonNode.getAttribute( "aria-expanded" ) === "true";
+	}
+
+	// Menu event handlers
+
+	onFocusin() {
+		this.dropdown.classList.add( "focus" );
+	}
+
+	onFocusout() {
+		this.dropdown.classList.remove( "focus" );
+	}
+
+	onButtonKeydown( event ) {
+		var key = event.key,
+			flag = false;
+
+		switch ( key ) {
+		case " ":
+		case "Enter":
+		case "ArrowDown":
+		case "Down":
+			this.openPopup();
+			this.setFocusToFirstMenuitem();
+			flag = true;
+			break;
+
+		case "Esc":
+		case "Escape":
+			this.closePopup();
+			this.buttonNode.focus();
+			flag = true;
+			break;
+
+		case "Up":
+		case "ArrowUp":
+			this.openPopup();
+			this.setFocusToLastMenuitem();
+			flag = true;
+			break;
+
+		default:
+			break;
+		}
+
+		if ( flag ) {
+			event.stopPropagation();
+			event.preventDefault();
+		}
+	}
+
+	onButtonClick( event ) {
+		if ( this.isOpen() ) {
+			this.closePopup();
+			this.buttonNode.focus();
+		} else {
+			this.openPopup();
+			this.setFocusToFirstMenuitem();
+		}
+		event.stopPropagation();
+		event.preventDefault();
+	}
+
+	onMenuitemKeydown( event ) {
+		var tgt = event.currentTarget,
+			key = event.key,
+			flag = false;
+
+		function isPrintableCharacter( str ) {
+			return str.length === 1 && str.match( /\S/ );
+		}
+
+		if ( event.ctrlKey || event.altKey || event.metaKey ) {
+			return;
+		}
+
+		if ( event.shiftKey ) {
+			if ( isPrintableCharacter( key ) ) {
+				this.setFocusByFirstCharacter( tgt, key );
+				flag = true;
+			}
+
+			if ( event.key === "Tab" ) {
+				this.buttonNode.focus();
+				this.closePopup();
+				flag = true;
+			}
+		} else {
+			switch ( key ) {
+			case " ":
+				window.location.href = tgt.href;
+				break;
+			case "Esc":
+			case "Escape":
+				this.closePopup();
+				this.buttonNode.focus();
+				flag = true;
+				break;
+
+			case "Up":
+			case "ArrowUp":
+				this.setFocusToPreviousMenuitem( tgt );
+				flag = true;
+				break;
+
+			case "ArrowDown":
+			case "Down":
+				this.setFocusToNextMenuitem( tgt );
+				flag = true;
+				break;
+
+			case "Home":
+			case "PageUp":
+				this.setFocusToFirstMenuitem();
+				flag = true;
+				break;
+
+			case "End":
+			case "PageDown":
+				this.setFocusToLastMenuitem();
+				flag = true;
+				break;
+
+			case "Tab":
+				this.closePopup();
+				break;
+
+			default:
+				if ( isPrintableCharacter( key ) ) {
+					this.setFocusByFirstCharacter( tgt, key );
+					flag = true;
+				}
+				break;
+			}
+		}
+
+		if ( flag ) {
+			event.stopPropagation();
+			event.preventDefault();
+		}
+	}
+
+	onMenuitemMouseover( event ) {
+		var tgt = event.currentTarget;
+		tgt.focus();
+	}
+
+	onBackgroundMousedown( event ) {
+		if ( !this.dropdown.contains( event.target ) ) {
+			if ( this.isOpen() ) {
+				this.closePopup();
+				this.buttonNode.focus();
+			}
+		}
+	}
+}
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, wb );
 
 /**
  * @title eqht

@@ -150,6 +150,7 @@ wb.i18nDict = {
 	"cal-goToBtn": "Перейти",
 	prvMnth: "Попередній місяць: ",
 	nxtMnth: "Наступний місяць: ",
+	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Знайдено %curr% із %total%",

@@ -150,6 +150,7 @@ wb.i18nDict = {
 	"cal-goToBtn": "Git",
 	prvMnth: "Önceki ay: ",
 	nxtMnth: "Sonraki ay: ",
+	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "%total% de %curr% inci madde",

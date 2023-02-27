@@ -150,6 +150,7 @@ wb.i18nDict = {
 	"cal-goToBtn": "Shkoj",
 	prvMnth: "Muajin e kaluar: ",
 	nxtMnth: "Muajin e ardhshëm: ",
+	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Pika %curr% e %total%",

@@ -150,6 +150,7 @@ wb.i18nDict = {
 	"cal-goToBtn": "Farðu",
 	prvMnth: "Fyrri mánuður: ",
 	nxtMnth: "Næsti mánuður: ",
+	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Item %curr% af %total%",

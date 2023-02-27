@@ -1,10 +1,10 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.56.3 - 2022-12-06
+ * v4.0.56.6 - 2023-02-27
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
-/*! @license DOMPurify 2.4.0 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.0/LICENSE */
+/*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -135,6 +135,7 @@
   var arrayPop = unapply(Array.prototype.pop);
   var arrayPush = unapply(Array.prototype.push);
   var stringToLowerCase = unapply(String.prototype.toLowerCase);
+  var stringToString = unapply(String.prototype.toString);
   var stringMatch = unapply(String.prototype.match);
   var stringReplace = unapply(String.prototype.replace);
   var stringIndexOf = unapply(String.prototype.indexOf);
@@ -201,7 +202,7 @@
     var property;
 
     for (property in object) {
-      if (apply(hasOwnProperty, object, [property])) {
+      if (apply(hasOwnProperty, object, [property]) === true) {
         newObject[property] = object[property];
       }
     }
@@ -261,6 +262,7 @@
   var MUSTACHE_EXPR = seal(/\{\{[\w\W]*|[\w\W]*\}\}/gm); // Specify template detection regex for SAFE_FOR_TEMPLATES mode
 
   var ERB_EXPR = seal(/<%[\w\W]*|[\w\W]*%>/gm);
+  var TMPLIT_EXPR = seal(/\${[\w\W]*}/gm);
   var DATA_ATTR = seal(/^data-[\-\w.\u00B7-\uFFFF]/); // eslint-disable-line no-useless-escape
 
   var ARIA_ATTR = seal(/^aria-[\-\w]+$/); // eslint-disable-line no-useless-escape
@@ -332,7 +334,7 @@
      */
 
 
-    DOMPurify.version = '2.4.0';
+    DOMPurify.version = '2.4.4';
     /**
      * Array of elements that DOMPurify removed during sanitation.
      * Empty if nothing was removed.
@@ -401,6 +403,7 @@
     DOMPurify.isSupported = typeof getParentNode === 'function' && implementation && typeof implementation.createHTMLDocument !== 'undefined' && documentMode !== 9;
     var MUSTACHE_EXPR$1 = MUSTACHE_EXPR,
         ERB_EXPR$1 = ERB_EXPR,
+        TMPLIT_EXPR$1 = TMPLIT_EXPR,
         DATA_ATTR$1 = DATA_ATTR,
         ARIA_ATTR$1 = ARIA_ATTR,
         IS_SCRIPT_OR_DATA$1 = IS_SCRIPT_OR_DATA,
@@ -461,6 +464,10 @@
     /* Decide if unknown protocols are okay */
 
     var ALLOW_UNKNOWN_PROTOCOLS = false;
+    /* Decide if self-closing tags in attributes are allowed.
+     * Usually removed due to a mXSS issue in jQuery 3.0 */
+
+    var ALLOW_SELF_CLOSE_IN_ATTR = true;
     /* Output should be safe for common template engines.
      * This means, DOMPurify removes data attributes, mustaches and ERB
      */
@@ -540,6 +547,10 @@
 
     var NAMESPACE = HTML_NAMESPACE;
     var IS_EMPTY_INPUT = false;
+    /* Allowed XHTML+XML namespaces */
+
+    var ALLOWED_NAMESPACES = null;
+    var DEFAULT_ALLOWED_NAMESPACES = addToSet({}, [MATHML_NAMESPACE, SVG_NAMESPACE, HTML_NAMESPACE], stringToString);
     /* Parsing of strict XHTML documents */
 
     var PARSER_MEDIA_TYPE;
@@ -583,13 +594,12 @@
       PARSER_MEDIA_TYPE = // eslint-disable-next-line unicorn/prefer-includes
       SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? PARSER_MEDIA_TYPE = DEFAULT_PARSER_MEDIA_TYPE : PARSER_MEDIA_TYPE = cfg.PARSER_MEDIA_TYPE; // HTML tags and attributes are not case-sensitive, converting to lowercase. Keeping XHTML as is.
 
-      transformCaseFunc = PARSER_MEDIA_TYPE === 'application/xhtml+xml' ? function (x) {
-        return x;
-      } : stringToLowerCase;
+      transformCaseFunc = PARSER_MEDIA_TYPE === 'application/xhtml+xml' ? stringToString : stringToLowerCase;
       /* Set configuration parameters */
 
       ALLOWED_TAGS = 'ALLOWED_TAGS' in cfg ? addToSet({}, cfg.ALLOWED_TAGS, transformCaseFunc) : DEFAULT_ALLOWED_TAGS;
       ALLOWED_ATTR = 'ALLOWED_ATTR' in cfg ? addToSet({}, cfg.ALLOWED_ATTR, transformCaseFunc) : DEFAULT_ALLOWED_ATTR;
+      ALLOWED_NAMESPACES = 'ALLOWED_NAMESPACES' in cfg ? addToSet({}, cfg.ALLOWED_NAMESPACES, stringToString) : DEFAULT_ALLOWED_NAMESPACES;
       URI_SAFE_ATTRIBUTES = 'ADD_URI_SAFE_ATTR' in cfg ? addToSet(clone(DEFAULT_URI_SAFE_ATTRIBUTES), // eslint-disable-line indent
       cfg.ADD_URI_SAFE_ATTR, // eslint-disable-line indent
       transformCaseFunc // eslint-disable-line indent
@@ -609,6 +619,8 @@
       ALLOW_DATA_ATTR = cfg.ALLOW_DATA_ATTR !== false; // Default true
 
       ALLOW_UNKNOWN_PROTOCOLS = cfg.ALLOW_UNKNOWN_PROTOCOLS || false; // Default false
+
+      ALLOW_SELF_CLOSE_IN_ATTR = cfg.ALLOW_SELF_CLOSE_IN_ATTR !== false; // Default true
 
       SAFE_FOR_TEMPLATES = cfg.SAFE_FOR_TEMPLATES || false; // Default false
 
@@ -772,7 +784,7 @@
 
       if (!parent || !parent.tagName) {
         parent = {
-          namespaceURI: HTML_NAMESPACE,
+          namespaceURI: NAMESPACE,
           tagName: 'template'
         };
       }
@@ -780,13 +792,17 @@
       var tagName = stringToLowerCase(element.tagName);
       var parentTagName = stringToLowerCase(parent.tagName);
 
+      if (!ALLOWED_NAMESPACES[element.namespaceURI]) {
+        return false;
+      }
+
       if (element.namespaceURI === SVG_NAMESPACE) {
         // The only way to switch from HTML namespace to SVG
         // is via <svg>. If it happens via any other tag, then
         // it should be killed.
         if (parent.namespaceURI === HTML_NAMESPACE) {
           return tagName === 'svg';
-        } // The only way to switch from MathML to SVG is via
+        } // The only way to switch from MathML to SVG is via`
         // svg if parent is either <annotation-xml> or MathML
         // text integration points.
 
@@ -834,9 +850,15 @@
 
 
         return !ALL_MATHML_TAGS[tagName] && (COMMON_SVG_AND_HTML_ELEMENTS[tagName] || !ALL_SVG_TAGS[tagName]);
+      } // For XHTML and XML documents that support custom namespaces
+
+
+      if (PARSER_MEDIA_TYPE === 'application/xhtml+xml' && ALLOWED_NAMESPACES[element.namespaceURI]) {
+        return true;
       } // The code should never reach this place (this means
       // that the element somehow got namespace that is not
-      // HTML, SVG or MathML). Return false just in case.
+      // HTML, SVG, MathML or allowed via ALLOWED_NAMESPACES).
+      // Return false just in case.
 
 
       return false;
@@ -920,7 +942,7 @@
         leadingWhitespace = matches && matches[0];
       }
 
-      if (PARSER_MEDIA_TYPE === 'application/xhtml+xml') {
+      if (PARSER_MEDIA_TYPE === 'application/xhtml+xml' && NAMESPACE === HTML_NAMESPACE) {
         // Root of XHTML doc must contain xmlns declaration (see https://www.w3.org/TR/xhtml1/normative.html#strict)
         dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + '</body></html>';
       }
@@ -943,7 +965,7 @@
         doc = implementation.createDocument(NAMESPACE, 'template', null);
 
         try {
-          doc.documentElement.innerHTML = IS_EMPTY_INPUT ? '' : dirtyPayload;
+          doc.documentElement.innerHTML = IS_EMPTY_INPUT ? emptyHTML : dirtyPayload;
         } catch (_) {// Syntax error if dirtyPayload is invalid xml
         }
       }
@@ -983,7 +1005,7 @@
 
 
     var _isClobbered = function _isClobbered(elm) {
-      return elm instanceof HTMLFormElement && (typeof elm.nodeName !== 'string' || typeof elm.textContent !== 'string' || typeof elm.removeChild !== 'function' || !(elm.attributes instanceof NamedNodeMap) || typeof elm.removeAttribute !== 'function' || typeof elm.setAttribute !== 'function' || typeof elm.namespaceURI !== 'string' || typeof elm.insertBefore !== 'function');
+      return elm instanceof HTMLFormElement && (typeof elm.nodeName !== 'string' || typeof elm.textContent !== 'string' || typeof elm.removeChild !== 'function' || !(elm.attributes instanceof NamedNodeMap) || typeof elm.removeAttribute !== 'function' || typeof elm.setAttribute !== 'function' || typeof elm.namespaceURI !== 'string' || typeof elm.insertBefore !== 'function' || typeof elm.hasChildNodes !== 'function');
     };
     /**
      * _isNode
@@ -1125,6 +1147,7 @@
         content = currentNode.textContent;
         content = stringReplace(content, MUSTACHE_EXPR$1, ' ');
         content = stringReplace(content, ERB_EXPR$1, ' ');
+        content = stringReplace(content, TMPLIT_EXPR$1, ' ');
 
         if (currentNode.textContent !== content) {
           arrayPush(DOMPurify.removed, {
@@ -1262,7 +1285,7 @@
         /* Work around a security issue in jQuery 3.0 */
 
 
-        if (regExpTest(/\/>/i, value)) {
+        if (!ALLOW_SELF_CLOSE_IN_ATTR && regExpTest(/\/>/i, value)) {
           _removeAttribute(name, currentNode);
 
           continue;
@@ -1273,6 +1296,7 @@
         if (SAFE_FOR_TEMPLATES) {
           value = stringReplace(value, MUSTACHE_EXPR$1, ' ');
           value = stringReplace(value, ERB_EXPR$1, ' ');
+          value = stringReplace(value, TMPLIT_EXPR$1, ' ');
         }
         /* Is `value` valid for this attribute? */
 
@@ -1542,7 +1566,7 @@
           returnNode = body;
         }
 
-        if (ALLOWED_ATTR.shadowroot) {
+        if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmod) {
           /*
             AdoptNode() is not used because internal state is not reset
             (e.g. the past names map of a HTMLFormElement), this is safe
@@ -1568,6 +1592,7 @@
       if (SAFE_FOR_TEMPLATES) {
         serializedHTML = stringReplace(serializedHTML, MUSTACHE_EXPR$1, ' ');
         serializedHTML = stringReplace(serializedHTML, ERB_EXPR$1, ' ');
+        serializedHTML = stringReplace(serializedHTML, TMPLIT_EXPR$1, ' ');
       }
 
       return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? trustedTypesPolicy.createHTML(serializedHTML) : serializedHTML;
@@ -1945,6 +1970,39 @@ jQuery.html = function( value ) {
  * Build: https://modernizr.com/download/#-elem_details-elem_progress_meter-mathml-cors-load-mq-css3-input-inputtypes-svg-cssclasses-csstransitions-fontface-backgroundsize-borderimage-teststyles-testprops-testallprops-hasevents-prefixes-domprefixes
  */
 ;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.3",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("cors",!!(window.XMLHttpRequest&&"withCredentials"in new XMLHttpRequest));
+
+/**
+ * String.prototype.includes() polyfill
+ * @author Ricokola
+ * @license MIT
+ */
+if ( !String.prototype.includes ) {
+	String.prototype.includes = function( string ) {
+
+		return this.indexOf( string ) !== -1;
+
+	};
+}
+
+/**
+ * String.prototype.replaceAll() polyfill
+ * https://gomakethings.com/how-to-replace-a-section-of-a-string-with-another-one-with-vanilla-js/
+ * @author Chris Ferdinandi
+ * @license MIT
+ */
+if ( !String.prototype.replaceAll ) {
+	String.prototype.replaceAll = function( str, newStr ) {
+
+		// If a regex pattern
+		if ( Object.prototype.toString.call( str ).toLowerCase() === "[object regexp]" ) {
+			return this.replace( str, newStr );
+		}
+
+		// If a string
+		return this.replace( new RegExp( str, "g" ), newStr );
+
+	};
+}
 
 /**
  * @title WET-BOEW Vapour loader
@@ -4124,26 +4182,6 @@ $.extend( $.expr[ ":" ], {
 } )( jQuery );
 
 /**
- * String.prototype.replaceAll() polyfill
- * https://gomakethings.com/how-to-replace-a-section-of-a-string-with-another-one-with-vanilla-js/
- * @author Chris Ferdinandi
- * @license MIT
- */
-if ( !String.prototype.replaceAll ) {
-	String.prototype.replaceAll = function( str, newStr ) {
-
-		// If a regex pattern
-		if ( Object.prototype.toString.call( str ).toLowerCase() === "[object regexp]" ) {
-			return this.replace( str, newStr );
-		}
-
-		// If a string
-		return this.replace( new RegExp( str, "g" ), newStr );
-
-	};
-}
-
-/**
  * @title WET-BOEW Add to calendar
  * @overview Create an add to calendar button for an event
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -4159,7 +4197,7 @@ if ( !String.prototype.replaceAll ) {
  * variables that are common to all instances of the plugin on a page.
  */
 var componentName = "wb-addcal",
-	selector = ".provisional." + componentName,
+	selector = "." + componentName,
 	initEvent = "wb-init." + componentName,
 	$document = wb.doc,
 
@@ -4179,88 +4217,73 @@ var componentName = "wb-addcal",
 
 			wb.ready( $( elm ), componentName );
 
-			var properties = elm.querySelectorAll( "[property]" ),
-				event_details = new Object(),
+			let properties = elm.querySelectorAll( "[property]" ),
+				addcalTarget = elm.dataset.addcalTarget,
+				event_details = {},
 				place_details = [],
-				i,
-				i_len,
-				prop_cache,
+				i18n = wb.i18n,
+				addCalBtn,
 				googleLink,
-				icsFile,
-				i18nDict = {
-					en: {
-						"addcal-addto": "Add to",
-						"addcal-calendar": "calendar",
-						"addcal-other": "Other (Outlook, Apple, etc.)"
-					},
-					fr: {
-						"addcal-addto": "Ajouter au",
-						"addcal-calendar": "calendrier",
-						"addcal-other": "Autre (Outlook, Apple, etc.)"
-					}
-				};
-
-			// Initiate dictionary
-			i18nDict = i18nDict[ $( "html" ).attr( "lang" ) || "en" ];
-			i18nDict = {
-				addto: i18nDict[ "addcal-addto" ],
-				calendar: i18nDict[ "addcal-calendar" ],
-				ical: i18nDict[ "addcal-other" ]
-			};
+				outlookLink,
+				yahooLink,
+				office365Link,
+				icsData;
 
 			// Set date stamp with the date modified
-			event_details.dtStamp = dtToISOString( $( "time[property='dateModified']" ) );
+			event_details.dtStamp = new Date().toISOString();
 
-			i_len = properties.length;
-			for ( i = 0; i < i_len; i++ ) {
-				prop_cache = properties[ i ];
-				switch ( prop_cache.getAttribute( "property" ) ) {
+			elm.setAttribute( "typeof", "Event" );
+
+			properties.forEach( function( prop ) {
+				switch ( prop.getAttribute( "property" ) ) {
 				case "name":
 
 					// If the property=name is inside an element with typeof=Place defined
-					if ( $( prop_cache ).parentsUntil( ( "." + componentName ), "[typeof=Place]" ).length ) {
-						event_details.placeName = prop_cache.textContent;
+					if ( $( prop ).parentsUntil( ( "." + componentName ), "[typeof=Place]" ).length ) {
+						event_details.placeName = prop.textContent;
 					} else {
-						event_details.name = prop_cache.textContent;
+						event_details.name = prop.textContent;
 					}
 					break;
 				case "description":
-					event_details.description = prop_cache.textContent.replace( /(\r\n|\n|\r)/gm, " " );
+					event_details.description = prop.textContent.replace( /(\r\n|\n|\r)/gm, " " );
 					break;
 				case "startDate":
-					event_details.sDate = dtToISOString( $( "time[property='startDate']", $elm ) );
+					event_details.sDate = dtToISOString( elm.querySelector( "time[property='startDate']" ), true );
+					event_details.sDateAlt = dtToISOString( elm.querySelector( "time[property='startDate']" ), false );
 					break;
 				case "endDate":
-					event_details.eDate = dtToISOString( $( "time[property='endDate']", $elm ) );
+					event_details.eDate = dtToISOString( elm.querySelector( "time[property='endDate']" ), true );
+					event_details.eDateAlt = dtToISOString( elm.querySelector( "time[property='endDate']" ), false );
 					break;
 				case "location":
 
 					// If the location doesn't have typeof defined OR has typeof=VirtualLocation without URL inside.
-					if ( !prop_cache.getAttribute( "typeof" ) || ( prop_cache.getAttribute( "typeof" ) === "VirtualLocation" && !$( prop_cache ).find( "[property=url]" ).length ) ) {
-						event_details.placeName = prop_cache.textContent;
+					if ( !prop.getAttribute( "typeof" ) || ( prop.getAttribute( "typeof" ) === "VirtualLocation" && !$( prop ).find( "[property=url]" ).length ) ) {
+						event_details.placeName = prop.textContent;
 					}
 					break;
 				case "streetAddress":
-					event_details.placeAddress = prop_cache.textContent;
+					event_details.placeAddress = prop.textContent;
 					break;
 				case "addressLocality":
-					event_details.placeLocality = prop_cache.textContent;
+					event_details.placeLocality = prop.textContent;
 					break;
 				case "addressRegion":
-					event_details.placeRegion = prop_cache.textContent;
+					event_details.placeRegion = prop.textContent;
 					break;
 				case "postalCode":
-					event_details.placePostalCode = prop_cache.textContent;
+					event_details.placePostalCode = prop.textContent;
 					break;
 				case "url":
 
 					// If the property=url is inside a property=location
-					if ( $( prop_cache ).parentsUntil( ( "." + componentName ), "[property=location]" ).length ) {
-						event_details.placeName = prop_cache.textContent;
+					if ( $( prop ).parentsUntil( ( "." + componentName ), "[property=location]" ).length ) {
+						event_details.placeName = prop.textContent;
 					}
 					break;
 				}
-			}
+			} );
 
 			place_details.push( ( event_details.placeName || "" ), ( event_details.placeAddress || "" ), ( event_details.placeLocality || "" ), ( event_details.placeRegion || "" ), ( event_details.placePostalCode || "" ) );
 
@@ -4274,42 +4297,69 @@ var componentName = "wb-addcal",
 			}
 
 			// Set Unique Identifier (UID) and Date Stamp (DSTAMP)
-			event_details.uid = window.location.href.replace( /\.|-|\/|:|[G-Zg-z]/g, "" ).toUpperCase().substr( -10 ) + "-" + event_details.sDate + "-" + event_details.dtStamp;
+			event_details.uid = window.location.href.replace( /\.|-|\/|:|[G-Zg-z]/g, "" ).toUpperCase().slice( 9 ) + "-" + event_details.sDate + "-" + event_details.dtStamp;
 
 			// Set google calendar link
 			googleLink = encodeURI( "https://www.google.com/calendar/render?action=TEMPLATE" +  "&text=" + event_details.name +  "&details=" +
-			event_details.description +  "&dates=" + event_details.sDate + "/" + event_details.eDate + "&location=" + place_details.join( " " ) );
+			event_details.description +  "&dates=" + event_details.sDate + "/" + event_details.eDate + "&location=" + place_details.join( " " ).trim() );
+
+			// Set Yahoo calendar link
+			yahooLink = encodeURI( "https://calendar.yahoo.com/?desc=" + event_details.description + "&et=" + event_details.eDate + "&in_loc=" + place_details.join( " " ).trim() + "&title=" + event_details.name + "&st=" + event_details.sDate + "&v=60" );
+
+			// Set Outlook.com calendar link
+			outlookLink = encodeURI( "https://outlook.live.com/calendar/0/deeplink/compose?body=" + event_details.description + "&enddt=" + event_details.eDateAlt + "&location=" + place_details.join( " " ).trim() + "&subject=" + event_details.name + "&startdt=" + event_details.sDateAlt + "&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" );
+
+			// Set Office 365 calendar link
+			office365Link = encodeURI( "https://outlook.office.com/calendar/0/deeplink/compose?body=" + event_details.description + "&enddt=" + event_details.eDateAlt + "&location=" + place_details.join( " " ).trim() + "&subject=" + event_details.name + "&startdt=" + event_details.sDateAlt + "&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" );
 
 			// Set ICS file for Outlook, Apple and other calendars
-			icsFile = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//WET-BOEW//Add to Calendar v4.0//\nBEGIN:VEVENT\nDTSTAMP:" + event_details.dtStamp + "\nSUMMARY:" + event_details.name +  "\nDESCRIPTION:" + event_details.description + "\nUID:" + event_details.uid + "\nDTSTART:" + event_details.sDate + "\nDTEND:" + event_details.eDate + "\nLOCATION:" + place_details.join( " " ) + "\nEND:VEVENT\nEND:VCALENDAR";
+			icsData = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//WET-BOEW//Add to Calendar v4.0//\nBEGIN:VEVENT\nDTSTAMP:" + event_details.dtStamp + "\nSUMMARY:" + event_details.name +  "\nDESCRIPTION:" + event_details.description + "\nUID:" + event_details.uid + "\nDTSTART:" + event_details.sDate + "\nDTEND:" + event_details.eDate + "\nLOCATION:" + place_details.join( " " ).trim() + "\nEND:VEVENT\nEND:VCALENDAR";
 
-			elm.dataset.icsFile = icsFile;
+			elm.dataset.ics = icsData;
 
-			// Create and add details summary to the wb-addcal event and initiate the unordered list
-			$elm.append( "<details class='max-content " + componentName + "-buttons'><summary>" + i18nDict.addto + " " + i18nDict.calendar +
-			"</summary><ul class='list-unstyled mrgn-bttm-0'><li><a class='btn btn-link' href='" + googleLink.replace( /'/g, "%27" ) + "' target='_blank' rel='noreferrer noopener'>Google<span class='wb-inv'>" + i18nDict.calendar + "</span></a></li><li><button class='btn btn-link download-ics'>" + i18nDict.ical +
-			"<span class='wb-inv'>Calendar</span></button></li></ul></details>" );
+			// Create Add to calendar dropdown button UI
+			addCalBtn = "<div class='dropdown wb-addcal-dd'><button type='button' class='btn btn-primary dropdown-toggle'><span class='glyphicon glyphicon-calendar mrgn-rght-md'></span>" + i18n( "addToCal" ) + "</button><ul class='dropdown-menu'>";
+			addCalBtn += "<li><a class='extrnl-lnk' href='" + office365Link.replace( /'/g, "%27" ) + "'><img src='img/office_365_icon.svg' alt='' width='16' class='mrgn-rght-md'>Office 365</a></li>";
+			addCalBtn += "<li><a class='extrnl-lnk' href='" + outlookLink.replace( /'/g, "%27" ) + "'><img src='img/outlook_logo.svg' width='16' alt='' class='mrgn-rght-md'>Outlook.com</a></li>";
+			addCalBtn += "<li><a class='extrnl-lnk' href='" + googleLink.replace( /'/g, "%27" ) + "'><img src='img/google_calendar_icon.svg' width='16' alt='' class='mrgn-rght-md'>Google</a></li>";
+			addCalBtn += "<li><a class='extrnl-lnk' href='" + yahooLink.replace( /'/g, "%27" ) + "'><img src='img/yahoo_icon.svg' width='16' alt='' class='mrgn-rght-md'>Yahoo</a></li>";
+			addCalBtn += "<li><button type='button' class='download-ics' data-addcal-id='" + elm.id + "'><span class='glyphicon glyphicon-calendar mrgn-rght-md'></span>iCal</button></li>";
+			addCalBtn += "</ul></div>";
+
+			if ( addcalTarget ) {
+				$( "#" + addcalTarget ).append( addCalBtn );
+			} else {
+				$elm.append( addCalBtn );
+			}
 		}
 
 		wb.ready( $( elm ), componentName );
 
 	};
 
-// Convert date to ISO string and formating for ICS file
-var dtToISOString = function( date ) {
-	if ( date.is( "[datetime]" ) ) {
-		date = date.attr( "datetime" );
-	} else {
-		date = date.text();
-	}
+// Convert date to ISO string. Formatting differently if modify=true
+// modify=true example: 20230127T120000Z
+// modify=false example: 2023-01-27T12:00:00.000Z
+var dtToISOString = function( dateElm, modify ) {
+	let date = dateElm.getAttribute( "datetime" );
 
-	return new Date( date ).toISOString().replace( /\..*[0-9]/g, "" ).replace( /-|:|\./g, "" );
+	if ( modify ) {
+		return new Date( date ).toISOString().replace( /\..*[0-9]/g, "" ).replace( /-|:|\./g, "" );
+	} else {
+		return new Date( date ).toISOString();
+	}
 };
 
+// Download ICS file
 $document.on( "click", ".download-ics", function( event ) {
-	var icsFile = $( event.currentTarget ).parentsUntil( "." + componentName ).parent()[ 0 ];
-	icsFile =  $( icsFile ).attr( "data-ics-file" );
-	wb.download( new Blob( [ icsFile ], { type: "text/calendar;charset=utf-8" } ), "evenement-gc-event.ics" );
+	let icsData = document.querySelector( "#" + event.target.getAttribute( "data-addcal-id" ) ).dataset.ics;
+
+	wb.download( new Blob( [ icsData ], { type: "text/calendar;charset=utf-8" } ), "evenement-gc-event.ics" );
+} );
+
+// Close dropdown when an item is selected
+$document.on( "click", ".wb-addcal-btn .list-group-item", function( event ) {
+	$( event.target ).closest( ".wb-addcal-dd" ).find( "input[type=checkbox]" ).prop( "checked", false );
 } );
 
 // Bind the init event of the plugin
@@ -7711,6 +7761,364 @@ $document.on( "click", "." + dismissClass, function( event ) {
 wb.add( selector );
 
 } )( jQuery, window, wb );
+
+/**
+ * @title WET-BOEW Dropdown
+ * @overview Dropdown functionality
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @garneauma
+ * Adapted from W3C's Actions Menu Button Example Using aria-activedescendant
+ * Link: https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-links/
+ * License: https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
+ */
+( function( $, wb ) {
+"use strict";
+
+/*
+* Variable and function definitions.
+* These are global to the plugin - meaning that they will be initialized once per page,
+* not once per instance of plugin on the page. So, this is a good place to define
+* variables that are common to all instances of the plugin on a page.
+*/
+var componentName = "dropdown",
+	selector = "." + componentName,
+	initEvent = "wb-init." + componentName,
+	$document = wb.doc,
+
+	/**
+	* @method init
+	* @param {jQuery Event} event Event that triggered the function call
+	*/
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector );
+
+		if ( elm ) {
+			wb.ready( $( elm ), componentName );
+
+			new Dropdown( elm );
+		}
+	};
+
+class Dropdown {
+	constructor( dropdown ) {
+		this.dropdown = dropdown;
+		this.buttonNode = dropdown.querySelector( ".dropdown-toggle" );
+		this.menuNode = dropdown.querySelector( ".dropdown-menu" );
+		this.menuitemNodes = [];
+		this.firstMenuitem = false;
+		this.lastMenuitem = false;
+		this.firstChars = [];
+
+		this.buttonNode.addEventListener( "keydown", this.onButtonKeydown.bind( this ) );
+		this.buttonNode.addEventListener( "click", this.onButtonClick.bind( this ) );
+
+		// Set ID's
+		this.buttonNode.id = this.buttonNode.id || wb.getId();
+		this.menuNode.id = this.menuNode.id || wb.getId();
+
+		// Set attributes for accessibility
+		this.menuNode.setAttribute( "role", "menu" );
+		this.menuNode.setAttribute( "aria-labelledby", this.buttonNode.id );
+		this.buttonNode.setAttribute( "aria-controls", this.menuNode.id );
+		this.buttonNode.setAttribute( "aria-haspopup", "true" );
+
+		var nodes = dropdown.querySelectorAll( "li a, li button" );
+
+		for ( var i = 0; i < nodes.length; i++ ) {
+			var menuitem = nodes[ i ];
+			this.menuitemNodes.push( menuitem );
+			menuitem.tabIndex = -1;
+			this.firstChars.push( menuitem.textContent.trim()[ 0 ].toLowerCase() );
+
+			menuitem.parentElement.setAttribute( "role", "none" );
+			menuitem.setAttribute( "role", "menuitem" );
+			menuitem.id = menuitem.id || wb.getId();
+
+			menuitem.addEventListener( "keydown", this.onMenuitemKeydown.bind( this ) );
+			menuitem.addEventListener( "mouseover", this.onMenuitemMouseover.bind( this ) );
+
+			if ( !this.firstMenuitem ) {
+				this.firstMenuitem = menuitem;
+			}
+			this.lastMenuitem = menuitem;
+		}
+
+		dropdown.addEventListener( "focusin", this.onFocusin.bind( this ) );
+		dropdown.addEventListener( "focusout", this.onFocusout.bind( this ) );
+		window.addEventListener( "mousedown", this.onBackgroundMousedown.bind( this ), true );
+	}
+
+	setFocusToMenuitem( newMenuitem ) {
+		this.menuitemNodes.forEach( function( item ) {
+			if ( item === newMenuitem ) {
+				item.tabIndex = 0;
+				newMenuitem.focus();
+			} else {
+				item.tabIndex = -1;
+			}
+		} );
+	}
+
+	setFocusToFirstMenuitem() {
+		this.setFocusToMenuitem( this.firstMenuitem );
+	}
+
+	setFocusToLastMenuitem() {
+		this.setFocusToMenuitem( this.lastMenuitem );
+	}
+
+	setFocusToPreviousMenuitem( currentMenuitem ) {
+		var newMenuitem, index;
+
+		if ( currentMenuitem === this.firstMenuitem ) {
+			newMenuitem = this.lastMenuitem;
+		} else {
+			index = this.menuitemNodes.indexOf( currentMenuitem );
+			newMenuitem = this.menuitemNodes[ index - 1 ];
+		}
+
+		this.setFocusToMenuitem( newMenuitem );
+
+		return newMenuitem;
+	}
+
+	setFocusToNextMenuitem( currentMenuitem ) {
+		var newMenuitem, index;
+
+		if ( currentMenuitem === this.lastMenuitem ) {
+			newMenuitem = this.firstMenuitem;
+		} else {
+			index = this.menuitemNodes.indexOf( currentMenuitem );
+			newMenuitem = this.menuitemNodes[ index + 1 ];
+		}
+		this.setFocusToMenuitem( newMenuitem );
+
+		return newMenuitem;
+	}
+
+	setFocusByFirstCharacter( currentMenuitem, char ) {
+		var start, index;
+
+		if ( char.length > 1 ) {
+			return;
+		}
+
+		char = char.toLowerCase();
+
+		// Get start index for search based on position of currentItem
+		start = this.menuitemNodes.indexOf( currentMenuitem ) + 1;
+		if ( start >= this.menuitemNodes.length ) {
+			start = 0;
+		}
+
+		// Check remaining slots in the menu
+		index = this.firstChars.indexOf( char, start );
+
+		// If not found in remaining slots, check from beginning
+		if ( index === -1 ) {
+			index = this.firstChars.indexOf( char, 0 );
+		}
+
+		// If match was found...
+		if ( index > -1 ) {
+			this.setFocusToMenuitem( this.menuitemNodes[ index ] );
+		}
+	}
+
+	// Utilities
+
+	getIndexFirstChars( startIndex, char ) {
+		for ( var i = startIndex; i < this.firstChars.length; i++ ) {
+			if ( char === this.firstChars[ i ] ) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	// Popup menu methods
+
+	openPopup() {
+		this.dropdown.classList.add( "open" );
+		this.buttonNode.setAttribute( "aria-expanded", "true" );
+	}
+
+	closePopup() {
+		if ( this.isOpen() ) {
+			this.buttonNode.removeAttribute( "aria-expanded" );
+			this.dropdown.classList.remove( "open" );
+		}
+	}
+
+	isOpen() {
+		return this.buttonNode.getAttribute( "aria-expanded" ) === "true";
+	}
+
+	// Menu event handlers
+
+	onFocusin() {
+		this.dropdown.classList.add( "focus" );
+	}
+
+	onFocusout() {
+		this.dropdown.classList.remove( "focus" );
+	}
+
+	onButtonKeydown( event ) {
+		var key = event.key,
+			flag = false;
+
+		switch ( key ) {
+		case " ":
+		case "Enter":
+		case "ArrowDown":
+		case "Down":
+			this.openPopup();
+			this.setFocusToFirstMenuitem();
+			flag = true;
+			break;
+
+		case "Esc":
+		case "Escape":
+			this.closePopup();
+			this.buttonNode.focus();
+			flag = true;
+			break;
+
+		case "Up":
+		case "ArrowUp":
+			this.openPopup();
+			this.setFocusToLastMenuitem();
+			flag = true;
+			break;
+
+		default:
+			break;
+		}
+
+		if ( flag ) {
+			event.stopPropagation();
+			event.preventDefault();
+		}
+	}
+
+	onButtonClick( event ) {
+		if ( this.isOpen() ) {
+			this.closePopup();
+			this.buttonNode.focus();
+		} else {
+			this.openPopup();
+			this.setFocusToFirstMenuitem();
+		}
+		event.stopPropagation();
+		event.preventDefault();
+	}
+
+	onMenuitemKeydown( event ) {
+		var tgt = event.currentTarget,
+			key = event.key,
+			flag = false;
+
+		function isPrintableCharacter( str ) {
+			return str.length === 1 && str.match( /\S/ );
+		}
+
+		if ( event.ctrlKey || event.altKey || event.metaKey ) {
+			return;
+		}
+
+		if ( event.shiftKey ) {
+			if ( isPrintableCharacter( key ) ) {
+				this.setFocusByFirstCharacter( tgt, key );
+				flag = true;
+			}
+
+			if ( event.key === "Tab" ) {
+				this.buttonNode.focus();
+				this.closePopup();
+				flag = true;
+			}
+		} else {
+			switch ( key ) {
+			case " ":
+				window.location.href = tgt.href;
+				break;
+			case "Esc":
+			case "Escape":
+				this.closePopup();
+				this.buttonNode.focus();
+				flag = true;
+				break;
+
+			case "Up":
+			case "ArrowUp":
+				this.setFocusToPreviousMenuitem( tgt );
+				flag = true;
+				break;
+
+			case "ArrowDown":
+			case "Down":
+				this.setFocusToNextMenuitem( tgt );
+				flag = true;
+				break;
+
+			case "Home":
+			case "PageUp":
+				this.setFocusToFirstMenuitem();
+				flag = true;
+				break;
+
+			case "End":
+			case "PageDown":
+				this.setFocusToLastMenuitem();
+				flag = true;
+				break;
+
+			case "Tab":
+				this.closePopup();
+				break;
+
+			default:
+				if ( isPrintableCharacter( key ) ) {
+					this.setFocusByFirstCharacter( tgt, key );
+					flag = true;
+				}
+				break;
+			}
+		}
+
+		if ( flag ) {
+			event.stopPropagation();
+			event.preventDefault();
+		}
+	}
+
+	onMenuitemMouseover( event ) {
+		var tgt = event.currentTarget;
+		tgt.focus();
+	}
+
+	onBackgroundMousedown( event ) {
+		if ( !this.dropdown.contains( event.target ) ) {
+			if ( this.isOpen() ) {
+				this.closePopup();
+				this.buttonNode.focus();
+			}
+		}
+	}
+}
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, wb );
 
 /**
  * @title eqht

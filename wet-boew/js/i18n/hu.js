@@ -150,6 +150,7 @@ wb.i18nDict = {
 	"cal-goToBtn": "Indít",
 	prvMnth: "Előző hónap: ",
 	nxtMnth: "Következő hónap: ",
+	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "%total%-ből %curr%",

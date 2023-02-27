@@ -150,6 +150,7 @@ wb.i18nDict = {
 	"cal-goToBtn": "जाना",
 	prvMnth: "पिछले माह: ",
 	nxtMnth: "अगला महीना: ",
+	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "%total% में से %curr% आइटम",

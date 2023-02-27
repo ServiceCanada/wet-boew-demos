@@ -150,6 +150,7 @@ wb.i18nDict = {
 	"cal-goToBtn": "가다",
 	prvMnth: "이전 월: ",
 	nxtMnth: "다음 월: ",
+	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "%total% 항목 %curr%",
