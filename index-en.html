@@ -12,13 +12,12 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.type" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2023-02-21"/>
+<meta name="dcterms.modified" content="2023-02-28"/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+<link href="/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -35,8 +34,8 @@
 	<ul class="list-inline mrgn-bttm-0">
 		<li>
 			<a lang="fr" hreflang="fr" href="index-fr.html">
-				<span class="hidden-xs">Français</span>
-				<abbr title="Français" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+				<span class="hidden-xs" translate="no">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
 			</a>
 		</li>
 	</ul>
@@ -45,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -124,8 +123,8 @@
 			<p>The page templates and design patterns below comprise a reference implementation of the <a href="https://design.canada.ca">Canada.ca design system</a>, including the mandatory requirement of the Content and Information Architecture (C&amp;IA) Specification. Government of Canada departments and agencies can contribute additional patterns and templates via <a href="https://github.com/wet-boew/GCWeb">GCWeb github repository</a>.</p>
 		</div>
 		<div class="col-xs-12 col-md-auto pull-right">
-			<p><a href="https://github.com/wet-boew/GCWeb/archive/v12.9.0.zip" class="btn btn-primary">Download GCWeb theme <strong>v12.9.0</strong></a><br />
-				<small>(<time>2023-02-21</time> - <a href="https://github.com/wet-boew/gcweb/releases/latest">Release notes</a>)</small></p>
+			<p><a href="https://github.com/wet-boew/GCWeb/archive/v12.10.0.zip" class="btn btn-primary">Download GCWeb theme <strong>v12.10.0</strong></a><br />
+				<small>(<time>2023-02-28</time> - <a href="https://github.com/wet-boew/gcweb/releases/latest">Release notes</a>)</small></p>
 		</div>
 	</div>
 </div>
@@ -2843,6 +2842,12 @@
 					- Link to the documentations if any
 					-->
 					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="templates/news/news-doc-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
 					</ul>
 					<!--
 					> All examples and info
@@ -2853,6 +2858,22 @@
 					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
 						<ul class="mrgn-tp-md">
 							
+							
+							<li>Documentations
+								<ul>
+								
+								
+									
+									<li><a href="templates/news/news-doc-en.html" >News page</a></li>
+									
+								
+									
+									<li><a href="templates/news/news-doc-fr.html" lang="fr" hreflang="fr">Page de nouvelles</a></li>
+									
+								
+								</ul>
+							</li>
+						
 							
 							<li>Examples
 								<ul>
@@ -3695,13 +3716,13 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h4 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Feedback area
+				<h4 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Report a problem (RAP) - Feedback
 				
 				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
 				
 				</h4>
 				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
-					<p>Documentation on how to use the elements of the feedback area.</p>
+					<p>Documentation on how to use the page feedback form.</p>
 					<!--
 					Main working example
 					- First working example in the example list where the language match
@@ -3711,7 +3732,7 @@
 					
 					<li>
 					
-					<a href="sites/feedback/report-problem-en.html" ><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					<a href="sites/feedback/feedback-en.html" ><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
 					
 					
 					<!--
@@ -3741,11 +3762,11 @@
 								
 								
 									
-									<li><a href="sites/feedback/feedback-docs-en.html" >Documentation for the feedback area</a></li>
+									<li><a href="sites/feedback/feedback-docs-en.html" >Documentation for Page feedback form</a></li>
 									
 								
 									
-									<li><a href="sites/feedback/feedback-docs-fr.html" lang="fr" hreflang="fr">Documentation pour la zone de rétroaction</a></li>
+									<li><a href="sites/feedback/feedback-docs-fr.html" lang="fr" hreflang="fr">Documentation pour formulaire de commentaire de page</a></li>
 									
 								
 								</ul>
@@ -3757,19 +3778,11 @@
 								
 								
 									
-									<li><a href="sites/feedback/report-problem-en.html" >Report a problem</a></li>
+									<li><a href="sites/feedback/feedback-en.html" >Page feedback form</a></li>
 									
 								
 									
-									<li><a href="sites/feedback/report-problem-fr.html" lang="fr" hreflang="fr">Signaler un problème</a></li>
-									
-								
-									
-									<li><a href="sites/feedback/page-feedback-en.html" >Page feedback tool</a></li>
-									
-								
-									
-									<li><a href="sites/feedback/page-feedback-fr.html" lang="fr" hreflang="fr">Outil de rétroaction sur la page</a></li>
+									<li><a href="sites/feedback/feedback-fr.html" lang="fr" hreflang="fr">Formulaire de commentaire de page</a></li>
 									
 								
 								</ul>
@@ -4385,10 +4398,8 @@
 </div>
 
 <footer class="pagedetails container">
-	<h2 class="wb-inv">Page details</h2>
-
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="ajax/page-feedback-en.html">
+	<h2 class="wb-inv">Page details</h2><div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
+				<div data-ajax-replace="/sites/feedback/ajax/report-problem-en.html">
 	<div class="row row-no-gutters"><div class="col-sm-9 col-md-6 col-lg-5"><a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html">Report a problem on this page</a>
 		</div>
 	</div>
@@ -4397,7 +4408,7 @@
 			</div><div class="col-xs-12">
 			<dl id="wb-dtmd">
 				<dt>Date modified:</dt>
-				<dd><time property="dateModified">2023-02-21</time></dd>
+				<dd><time property="dateModified">2023-02-28</time></dd>
 			</dl>
 		</div>
 	</div>
@@ -4441,7 +4452,7 @@
 				
 				<div class="col-xs-6 visible-sm visible-xs tofpg">
 					<a href="#wb-cont">Top of page <span class="glyphicon glyphicon-chevron-up"></span></a>
-				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 				</div>
 			</div>
 		</div>
@@ -4449,7 +4460,7 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

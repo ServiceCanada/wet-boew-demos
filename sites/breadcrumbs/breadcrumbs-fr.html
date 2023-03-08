@@ -3,22 +3,21 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-<title>Fil d'arianne - Canada.ca</title>
+<title>Fil d'Ariane - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta name="description" content="Documentation sur l'utilisation du fil d'arianne." />
+<meta name="description" content="Documentation sur l'utilisation du fil d'Ariane." />
 <meta name="author" content=" "/>
-<meta name="dcterms.title" content="Fil d'arianne"/>
-<meta name="dcterms.description" content="Documentation sur l'utilisation du fil d'arianne."/>
+<meta name="dcterms.title" content="Fil d'Ariane"/>
+<meta name="dcterms.description" content="Documentation sur l'utilisation du fil d'Ariane."/>
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.type" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2022-05-13"/>
+<meta name="dcterms.modified" content="2023-03-08"/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -35,8 +34,8 @@
 	<ul class="list-inline mrgn-bttm-0">
 		<li>
 			<a lang="en" hreflang="en" href="breadcrumbs-en.html">
-				<span class="hidden-xs">English</span>
-				<abbr title="English" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">en</abbr>
+				<span class="hidden-xs" translate="no">English</span>
+				<abbr title="English" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">en</abbr>
 			</a>
 		</li>
 	</ul>
@@ -45,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -132,50 +131,132 @@
 </header>
 
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Fil d'arianne</h1>
+<h1 id="wb-cont" property="name">Fil d'Ariane</h1>
 <div class="wb-prettify all-pre hide"></div>
 
-<p>Documentation sur l'utilisation du fil d'arianne.</p>
+<dl class="horizontal">
+	<dt>Statut</dt>
+	<dd>Stable</dd>
+	<dt>Version</dt>
+	<dd>1.1.0</dd>
+	<dt>Type</dt>
+	<dd>Fonctionnalité globale de site de Canada.ca</dd>
+</dl>
 
-<p>Note: GCWeb vX.0 n'est plus compatible avec le modèle de mégamenu antérieur à 2019 (GCWEB v4.x) qui prenait toute la largeur de la page.</p>
+<h2>Introduction</h2>
 
-<p>Recommendation</p>
+<h3>Objectif</h3>
+<p>L’objectif du fil d'Ariane est de renforcer l’emplacement actuel des visiteurs dans le modèle de navigation de l’utilisateur du site Canada.ca. Il indique l’emplacement de la page actuelle par rapport à son parenr dans la structure du site. Il fournit également aux utilisateurs une méthode simple pour accéder à des sections supérieures de la structure du site.</p>
+
+<h3>Évaluation et rapport</h3>
+<p>Il n'y a pas d'évaluation ni de rapport disponible pour cette composante.</p>
+
+<h3>Orientation</h3>
 <ul>
-	<li>Le titre de la page ne dois pas être inclus parmis la liste de fil d'arianne.</li>
+	<li><a href="https://conception.canada.ca/configurations-conception-communes/fil-ariane.html">Fil d'Ariane</a></li>
 </ul>
 
-<p>Voici la sortie html avec des données structurées au format RDFa pour l'exemple de fil d'Ariane ci-dessus:</p>
-<pre><code>&lt;nav id="wb-bc" property="breadcrumb"&gt;
-		&lt;h2&gt;Vous êtes ici:&lt;/h2&gt;
-		&lt;div class="container"&gt;
-			&lt;ol class="breadcrumb" typeof="BreadcrumbList"&gt;
-				&lt;li property="itemListElement" typeof="ListItem"&gt;
-					&lt;a property="item" typeof="WebPage" href="https://www.canada.ca/fr.html"&gt;
-						&lt;span property="name">Canada.ca&lt;/span&gt;
-					&lt;/a&gt;
-					&lt;meta property="position" content="1"&gt;
-				&lt;/li&gt;
-				&lt;li property="itemListElement" typeof="ListItem"&gt;
-					&lt;a property="item" typeof="WebPage" href="https://wet-boew.github.io/GCWeb/index-fr.html"&gt;
-						&lt;span property="name"&gt;GCWeb accueil&lt;/span&gt;
-					&lt;/a&gt;
-					&lt;meta property="position" content="2"&gt;
-				&lt;/li&gt;
-				&lt;li property="itemListElement" typeof="ListItem"&gt;
-					&lt;a property="item" typeof="WebPage" href="https://wet-boew.github.io/GCWeb/méli-mélo/méli-mélo-fr.html"&gt;
-						&lt;span property="name"&gt;GCWeb accueil&lt;/span&gt;
-					&lt;/a&gt;
-					&lt;meta property="position" content="3"&gt;
-				&lt;/li&gt;
-			&lt;/ol&gt;
-		&lt;/div&gt;
-	&lt;/nav&gt;</code></pre>
+<h3>Variantes</h3>
+<p>Ce composant prend en charge 1 variante:</p>
+<ul>
+	<li><a href="#variantDefault">Fil d'Ariane (par défaut)</a></li>
+</ul>
+
+<h2 id="variantDefault">Fil d'Ariane (par défaut)</h2>
+
+<h3>Itération 2</h3>
+<p>Voici une liste des changements qui se sont produits depuis l'itération précédente&nbsp;:</p>
+<table class="table table-bordered">
+	<tr>
+		<th style="width:0;">Majeurs</th>
+		<td>n/a</td>
+	</tr>
+	<tr>
+		<th>Additions</th>
+		<td>
+			<ul>
+				<li>Styles: Modification du séparateur de niveaux d'un signe «&nbsp;plus grand que&nbsp;» (&gt;) à une icône de chevron à droite (<span class="glyphicon glyphicon-chevron-right"></span>)</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<th>Correctifs</th>
+		<td>n/a</td>
+	</tr>
+</table>
+
+<h4>Comment mettre en œuvre</h4>
+<ul>
+	<li>Le fil d'Ariane commence toujours par «&nbsp;Canada.ca&nbsp;», qui est toujours un lien vers la page d'accueil de Canada.ca dans la langue actuelle.</li>
+	<li>La page en cours n’est jamais affichée à la fin de la piste de navigation.</li>
+	<li>Utilisez une icône de chevron à droite (<span class="glyphicon glyphicon-chevron-right"></span>) pour séparer les niveaux</li>
+	<li>Les longs titres de page doivent être raccourcis dans la mesure du possible, pour permettre de réduire l’espace horizontal nécessaire pour afficher la piste.</li>
+</ul>
+<p>Le nom de chaque page ou section dans le site Canada.ca doit être associé à une version raccourcie du nom, aux fins du fil d'Ariane et d’autres systèmes de navigation. </p>
+<p>Par exemple, lorsqu'une personne est sur la page «&nbsp;Planification d'entreprise&nbsp;» dans le thème «&nbsp;Entreprises et industrie&nbsp;» le fil d'Ariane sera&nbsp;:</p>
+<p>Canada.ca &gt; Entreprises &gt; Lancer une entreprise</p>
+<p><strong>Note</strong>: GCWeb vX.0 n'est plus compatible avec le modèle de mégamenu antérieur à 2019 (GCWEB v4.x) qui prenait toute la largeur de la page.</p>
+<p><strong>Recommendation</strong>: Le titre de la page ne dois pas être inclus parmis la liste de fil d'arianne.</p>
+
+<h4>Exemple de code</h4>
+	<p>Voici la sortie html avec des données structurées au format RDFa pour l'exemple de fil d'Ariane ci-dessus&nbsp;:</p><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">id=</span><span class="s">"wb-bc"</span> <span class="na">property=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;h2&gt;</span>Vous êtes ici:<span class="nt">&lt;/h2&gt;</span>
+		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span> <span class="na">typeof=</span><span class="s">"BreadcrumbList"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;li</span> <span class="na">property=</span><span class="s">"itemListElement"</span> <span class="na">typeof=</span><span class="s">"ListItem"</span><span class="nt">&gt;</span>
+					<span class="nt">&lt;a</span> <span class="na">property=</span><span class="s">"item"</span> <span class="na">typeof=</span><span class="s">"WebPage"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/fr.html"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;span</span> <span class="na">property=</span><span class="s">"name"</span><span class="nt">&gt;</span>Canada.ca<span class="nt">&lt;/span&gt;</span>
+					<span class="nt">&lt;/a&gt;</span>
+					<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"position"</span> <span class="na">content=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;/li&gt;</span>
+				<span class="nt">&lt;li</span> <span class="na">property=</span><span class="s">"itemListElement"</span> <span class="na">typeof=</span><span class="s">"ListItem"</span><span class="nt">&gt;</span>
+					<span class="nt">&lt;a</span> <span class="na">property=</span><span class="s">"item"</span> <span class="na">typeof=</span><span class="s">"WebPage"</span> <span class="na">href=</span><span class="s">"https://wet-boew.github.io/GCWeb/index-fr.html"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;span</span> <span class="na">property=</span><span class="s">"name"</span><span class="nt">&gt;</span>GCWeb accueil<span class="nt">&lt;/span&gt;</span>
+					<span class="nt">&lt;/a&gt;</span>
+					<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"position"</span> <span class="na">content=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;/li&gt;</span>
+				<span class="nt">&lt;li</span> <span class="na">property=</span><span class="s">"itemListElement"</span> <span class="na">typeof=</span><span class="s">"ListItem"</span><span class="nt">&gt;</span>
+					<span class="nt">&lt;a</span> <span class="na">property=</span><span class="s">"item"</span> <span class="na">typeof=</span><span class="s">"WebPage"</span> <span class="na">href=</span><span class="s">"https://wet-boew.github.io/GCWeb/méli-mélo/méli-mélo-fr.html"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;span</span> <span class="na">property=</span><span class="s">"name"</span><span class="nt">&gt;</span>GCWeb accueil<span class="nt">&lt;/span&gt;</span>
+					<span class="nt">&lt;/a&gt;</span>
+					<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"position"</span> <span class="na">content=</span><span class="s">"3"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;/li&gt;</span>
+			<span class="nt">&lt;/ol&gt;</span>
+		<span class="nt">&lt;/div&gt;</span>
+	<span class="nt">&lt;/nav&gt;</span></code></pre></figure><h3>Itérations précédentes</h3>
+
+<details>
+	<summary>Itération 1</summary>
+	<h4>Exemple de code</h4>
+	<p>Voici la sortie html avec des données structurées au format RDFa pour l'exemple de fil d'Ariane ci-dessus&nbsp;:</p><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">id=</span><span class="s">"wb-bc"</span> <span class="na">property=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;h2&gt;</span>Vous êtes ici:<span class="nt">&lt;/h2&gt;</span>
+		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span> <span class="na">typeof=</span><span class="s">"BreadcrumbList"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;li</span> <span class="na">property=</span><span class="s">"itemListElement"</span> <span class="na">typeof=</span><span class="s">"ListItem"</span><span class="nt">&gt;</span>
+					<span class="nt">&lt;a</span> <span class="na">property=</span><span class="s">"item"</span> <span class="na">typeof=</span><span class="s">"WebPage"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/fr.html"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;span</span> <span class="na">property=</span><span class="s">"name"</span><span class="nt">&gt;</span>Canada.ca<span class="nt">&lt;/span&gt;</span>
+					<span class="nt">&lt;/a&gt;</span>
+					<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"position"</span> <span class="na">content=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;/li&gt;</span>
+				<span class="nt">&lt;li</span> <span class="na">property=</span><span class="s">"itemListElement"</span> <span class="na">typeof=</span><span class="s">"ListItem"</span><span class="nt">&gt;</span>
+					<span class="nt">&lt;a</span> <span class="na">property=</span><span class="s">"item"</span> <span class="na">typeof=</span><span class="s">"WebPage"</span> <span class="na">href=</span><span class="s">"https://wet-boew.github.io/GCWeb/index-fr.html"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;span</span> <span class="na">property=</span><span class="s">"name"</span><span class="nt">&gt;</span>GCWeb accueil<span class="nt">&lt;/span&gt;</span>
+					<span class="nt">&lt;/a&gt;</span>
+					<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"position"</span> <span class="na">content=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;/li&gt;</span>
+				<span class="nt">&lt;li</span> <span class="na">property=</span><span class="s">"itemListElement"</span> <span class="na">typeof=</span><span class="s">"ListItem"</span><span class="nt">&gt;</span>
+					<span class="nt">&lt;a</span> <span class="na">property=</span><span class="s">"item"</span> <span class="na">typeof=</span><span class="s">"WebPage"</span> <span class="na">href=</span><span class="s">"https://wet-boew.github.io/GCWeb/méli-mélo/méli-mélo-fr.html"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;span</span> <span class="na">property=</span><span class="s">"name"</span><span class="nt">&gt;</span>GCWeb accueil<span class="nt">&lt;/span&gt;</span>
+					<span class="nt">&lt;/a&gt;</span>
+					<span class="nt">&lt;meta</span> <span class="na">property=</span><span class="s">"position"</span> <span class="na">content=</span><span class="s">"3"</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;/li&gt;</span>
+			<span class="nt">&lt;/ol&gt;</span>
+		<span class="nt">&lt;/div&gt;</span>
+	<span class="nt">&lt;/nav&gt;</span></code></pre></figure></details>
 
 <footer class="pagedetails">
-	<h2 class="wb-inv">Détails de la page</h2>
-
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="ajax/page-feedback-fr.html">
+	<h2 class="wb-inv">Détails de la page</h2><div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
+				<div data-ajax-replace="/sites/feedback/ajax/report-problem-fr.html">
 	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
 		</div>
 	</div>
@@ -184,7 +265,7 @@
 			</div><div class="col-xs-12">
 			<dl id="wb-dtmd">
 				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified">2022-05-13</time></dd>
+				<dd><time property="dateModified">2023-03-08</time></dd>
 			</dl>
 		</div>
 	</div>
@@ -228,7 +309,7 @@
 				
 				<div class="col-xs-6 visible-sm visible-xs tofpg">
 					<a href="#wb-cont">Haut de la page <span class="glyphicon glyphicon-chevron-up"></span></a>
-				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 				</div>
 			</div>
 		</div>
@@ -236,7 +317,7 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v12.9.0 - 2023-02-27
+ * v12.10.0 - 2023-03-08
  *
  */
 /*
@@ -2256,16 +2256,14 @@ pre {
 	.row:after {
 		clear: both; }
 
-.row-no-gutters, .no-js .gc-pft .row-no-gutters,
-.wb-disable .gc-pft .row-no-gutters {
+.row-no-gutters {
 	margin-right: 0;
 	margin-left: 0; }
-	.row-no-gutters [class*="col-"], .no-js .gc-pft .row-no-gutters [class*="col-"], .wb-disable .gc-pft .row-no-gutters [class*="col-"] {
+	.row-no-gutters [class*="col-"] {
 		padding-right: 0;
 		padding-left: 0; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .no-js .gc-pft .nojs-col-sm-12,
-.wb-disable .gc-pft .nojs-col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
 	position: relative;
 	min-height: 1px;
 	padding-right: 15px;
@@ -2428,8 +2426,7 @@ pre {
 	margin-left: 100%; }
 
 @media (min-width: 768px) {
-	.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .no-js .gc-pft .nojs-col-sm-12,
-	.wb-disable .gc-pft .nojs-col-sm-12 {
+	.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
 		float: left; }
 	.col-sm-1 {
 		width: 8.3333333333%; }
@@ -2453,8 +2450,7 @@ pre {
 		width: 83.3333333333%; }
 	.col-sm-11 {
 		width: 91.6666666667%; }
-	.col-sm-12, .no-js .gc-pft .nojs-col-sm-12,
-	.wb-disable .gc-pft .nojs-col-sm-12 {
+	.col-sm-12 {
 		width: 100%; }
 	.col-sm-pull-0 {
 		right: auto; }
@@ -4362,14 +4358,15 @@ details {
 	padding-right: 0px; }
 
 #wb-bc li:before {
-	position: relative;
-	top: -2px; }
+	content: "\e080";
+	padding: 0 4px 0 0;
+	position: relative; }
 
 #wb-bc li:first-child a {
 	padding-left: 0; }
 
 #wb-bc a {
-	padding: 5px 10px; }
+	padding: 5px 0; }
 
 /*
   WET-BOEW
@@ -4759,24 +4756,11 @@ main .pagedetails {
 		padding-top: 7px; }
 		.pagedetails .datemod #wb-dtmd {
 			margin-top: 0; }
+	.pagedetails .well {
+		margin-left: -1.1em;
+		margin-right: -1.1em; }
 	.pagedetails details {
 		margin-bottom: 0; }
-		.pagedetails details .well {
-			margin-left: -1.1em;
-			margin-right: -1.1em; }
-
-/*
-  @title: Page feedback tool - Base
- */
-/* In noscript/basic HTML mode... */
-.no-js .gc-pft,
-.wb-disable .gc-pft {
-	/* Disable row gutters (default selector isn't specific-enough) */
-	/* Make the legend full width */
-	/* Left-align the legend and yes/no buttons */ }
-	.no-js .gc-pft .nojs-text-left,
-	.wb-disable .gc-pft .nojs-text-left {
-		text-align: left; }
 
 /*
  * Site menu
@@ -14396,12 +14380,6 @@ Miscellaneous Utiliy CSS
 		.wb-disable .gcweb-menu [role=menu] > li:nth-child(2n+3) {
 			clear: none; }
 	/*
- * Share/feedback-specific overrides (medium view and over)
- */
-	/* Add a larger top margin on the share button (only if its plugin has initialized) if adjacent to the page feedback tool. */
-	.pagedetails div:has(.gc-pft) + .wb-share-inited {
-		margin-top: 21px; }
-	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
@@ -14787,22 +14765,6 @@ Miscellaneous Utiliy CSS
 	#wb-srch {
 		margin-bottom: 15px; }
 	/*
- * Share/feedback-specific overrides (small view and over)
- */
-	/* Add a larger top margin on the share button (only if its plugin has initialized) if adjacent to the page feedback tool. */
-	.pagedetails div:has(.gc-pft) + .wb-share-inited {
-		margin-top: 29px; }
-	/*
-  @title: Page feedback tool - Small view and over
- */
-	/* In noscript/basic HTML mode... */
-	.no-js .gc-pft,
-	.wb-disable .gc-pft {
-		/* Disable the legend's right padding */ }
-		.no-js .gc-pft .nojs-pr-sm-0,
-		.wb-disable .gc-pft .nojs-pr-sm-0 {
-			padding-right: 0 !important; }
-	/*
   Campaign
   @title: Small view (screen only)
  */
@@ -14958,11 +14920,6 @@ Miscellaneous Utiliy CSS
 	.pagedetails details {
 		display: none !important; }
 	.pagedetails .btn {
-		display: none !important; }
-	/*
-  @title: Page feedback tool - Print view
- */
-	.gc-pft {
 		display: none !important; }
 	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)

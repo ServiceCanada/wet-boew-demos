@@ -3,22 +3,21 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-<title>Report a problem - Canada.ca</title>
+<title>Language toggle link - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta name="description" content=" " />
+<meta name="description" content="Documentation and working example on how to use language toggle link." />
 <meta name="author" content=" "/>
-<meta name="dcterms.title" content="Report a problem"/>
-<meta name="dcterms.description" content=" "/>
+<meta name="dcterms.title" content="Language toggle link"/>
+<meta name="dcterms.description" content="Documentation and working example on how to use language toggle link."/>
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.type" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2023-01-10"/>
+<meta name="dcterms.modified" content="2022-11-01"/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -34,9 +33,9 @@
 	<h2 class="wb-inv">Language selection</h2>
 	<ul class="list-inline mrgn-bttm-0">
 		<li>
-			<a lang="fr" hreflang="fr" href="report-problem-fr.html">
-				<span class="hidden-xs">Français</span>
-				<abbr title="Français" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+			<a lang="fr" hreflang="fr" href="language-fr.html">
+				<span class="hidden-xs" translate="no">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
 			</a>
 		</li>
 	</ul>
@@ -45,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -109,14 +108,6 @@
 				</a>
 				<meta property="position" content="1">
 			</li>
-	
-			<li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="https://www.canada.ca/en.html">
-					<span property="name">Canada.ca</span>
-				</a>
-				<meta property="position" content="2">
-			</li>
-			
 		</ol>
 	</div>
 </nav>
@@ -125,118 +116,74 @@
 </header>
 
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Report a problem</h1>
-<div class="wb-prettify all-pre hide"></div>
+<h1 id="wb-cont" property="name">Language toggle link</h1>
+<span class="wb-prettify all-pre hide"></span>
 
-<h2>Code HTML</h2>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">&lt;div class="row row-no-gutters"&gt;
-	&lt;div class="col-sm-9 col-md-6 col-lg-5"&gt;
-		&lt;details class="brdr-0"&gt;
-			&lt;summary class="btn btn-default text-center"&gt;Report a problem on this page&lt;/summary&gt;
-			&lt;div class="well row"&gt;
-				&lt;div class="gc-rprt-prblm"&gt;
-					&lt;div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl"&gt;
-						&lt;form action="/sites/feedback/feedback-form-destination.html" id="gc-rprt-prblm-form" class="wb-postback"
-							data-wb-postback='{
-								"success": ".success-message",
-								"failure": ".failure-message"}'
-							data-wb-jsonmanager='{
-								"name": "rap",
-								"extractor": [
-									{ "interface": "referer", "path": "externalReferer" },
-									{ "selector": "title", "path": "pageTitle" },
-									{ "interface": "locationHref", "path": "submissionPage" },
-									{ "selector": "html", "attr": "lang", "path": "lang" },
-									{ "selector": "meta[name=\"author\"]", "attr": "content", "path": "pageOwner" },
-									{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "subject" }
-								]
-							}'&gt;
-							&lt;div data-wb-json='{
-								"url": "#[rap]",
-								"mapping": [
-									{ "selector": "input", "attr": "name", "value": "/@id" },
-									{ "selector": "input", "attr": "value", "value": "/@value" }
-								]
-							}'&gt;
-								&lt;template&gt;
-									&lt;input type="hidden" name="" value="" /&gt;
-								&lt;/template&gt;
-							&lt;/div&gt;
-							&lt;fieldset&gt;
-								&lt;legend&gt;
-									&lt;span class="field-name"&gt;Please select all that apply:&lt;/span&gt;
-								&lt;/legend&gt;
-								&lt;div class="checkbox"&gt;
-									&lt;label for="problem1"&gt;
-										&lt;input name="problem1" id="problem1" type="checkbox" value="Yes" &gt;A link, button or video is not working
-									&lt;/label&gt;
-									&lt;input name="problem1" type="hidden" value=""&gt;
-								&lt;/div&gt;
-								&lt;div class="checkbox"&gt;
-									&lt;label for="problem2"&gt;
-										&lt;input name="problem2" id="problem2" type="checkbox" value="Yes" &gt;It has a spelling mistake
-									&lt;/label&gt;
-									&lt;input name="problem2" type="hidden" value=""&gt;
-								&lt;/div&gt;
-								&lt;div class="checkbox"&gt;
-									&lt;label for="problem3"&gt;
-										&lt;input name="problem3" id="problem3" type="checkbox" value="Yes" &gt;Information is missing
-									&lt;/label&gt;
-									&lt;input name="problem3" type="hidden" value=""&gt;
-								&lt;/div&gt;
-								&lt;div class="checkbox"&gt;
-									&lt;label for="problem4"&gt;
-										&lt;input name="problem4" id="problem4" type="checkbox" value="Yes" &gt;Information is outdated or wrong
-									&lt;/label&gt;
-									&lt;input name="problem4" type="hidden" value=""&gt;
-								&lt;/div&gt;
-								&lt;div class="checkbox"&gt;
-									&lt;label for="problem5"&gt;
-										&lt;input name="problem5" id="problem5" type="checkbox" value="Yes" &gt;Login error when trying to access an account
-									&lt;/label&gt;
-									&lt;input name="problem5" type="hidden" value=""&gt;
-								&lt;/div&gt;
-								&lt;div class="checkbox"&gt;
-									&lt;label for="problem6"&gt;
-										&lt;input name="problem6" id="problem6" type="checkbox" value="Yes" &gt;I can't find what I'm looking for
-									&lt;/label&gt;
-									&lt;input name="problem6" type="hidden" value=""&gt;
-								&lt;/div&gt;
-								&lt;div class="checkbox"&gt;
-									&lt;label for="problem7"&gt;
-										&lt;input name="problem7" id="problem7" type="checkbox" value="Yes" &gt;Other issue not in this list
-									&lt;/label&gt;
-									&lt;input name="problem7" type="hidden" value=""&gt;
-								&lt;/div&gt;
-							&lt;/fieldset&gt;
-							&lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
-						&lt;/form&gt;
-					&lt;/div&gt;
-					&lt;div class="success-message hide"&gt;
-						&lt;h3&gt;Thank you for your help!&lt;/h3&gt;
-						&lt;p&gt;You will not receive a reply. For enquiries, please &lt;a href="https://www.canada.ca/en/contact.html"&gt;contact us&lt;/a&gt;.&lt;/p&gt;
-					&lt;/div&gt;
-					&lt;p class="failure-message hide"&gt;Something went wrong. Please submit your information via an alternative method.&lt;/p&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/details&gt;
-	&lt;/div&gt;
-&lt;/div&gt;</code></pre></figure>
+<dl class="horizontal">
+	<dt>Status</dt>
+	<dd>Stable</dd>
+	<dt>Type</dt>
+	<dd>Canada.ca site functionality</dd>
+	<dt>Last review</dt>
+	<dd>2022-11-01</dd>
+	<dt>Component version</dt>
+	<dd>Version 1.1</dd>
+</dl>
+
+<h2>Purpose</h2>
+<p>The language toggle link always leads people to the equivalent page in the other official language, ensuring that people are able to switch between languages without losing track of where they were before </p>
+
+<h2>How to implement</h2>
+<ul>
+	<li>The language toggle link consists of only one element—a simple text link indicating either “English” or “Français”</li>
+	<li>The link is always presented in the top right corner of the global header area, regardless of the screen size</li>
+</ul>
+
+<h2>Before and After</h2>
+<div class="row">
+	<div class="col-md-6">
+		<h2 id="v2">Version 1.1</h2>
+
+		<p>List of change since version 1.0: Addition the <code>translation="no"</code> attribute.</p>
+
+		<pre><code>&lt;ul class="list-inline mrgn-bttm-0"&gt;
+				&lt;li&gt;
+					&lt;a href="/fr.html" lang="fr"&gt;
+						&lt;span class="hidden-xs"&gt;Français&lt;/span&gt;
+						&lt;abbr title="Français" <ins>translate="no"</ins> class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase"&gt;fr&lt;/abbr&gt;
+					&lt;/a&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;</code></pre>
+	</div>
+	<div class="col-md-6">
+<h2>Version 1.0 (deprecated)</h2>
+
+<p>The language toggle version 1.0 is deprecated but still supported.</p>
+
+<pre><code>&lt;ul class="list-inline mrgn-bttm-0"&gt;
+				&lt;li&gt;
+					&lt;a href="/fr.html" lang="fr"&gt;
+						&lt;span class="hidden-xs"&gt;Français&lt;/span&gt;
+						&lt;abbr title="Français" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase"&gt;fr&lt;/abbr&gt;
+					&lt;/a&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;</code></pre>
+
+	</div>
+</div>
 
 <footer class="pagedetails">
-	<h2 class="wb-inv">Page details</h2>
-
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="ajax/report-problem-en.html">
+	<h2 class="wb-inv">Page details</h2><div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
+				<div data-ajax-replace="/sites/feedback/ajax/report-problem-en.html">
 	<div class="row row-no-gutters"><div class="col-sm-9 col-md-6 col-lg-5"><a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html">Report a problem on this page</a>
 		</div>
 	</div>
 </div>
 
-			</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12">
+			</div><div class="col-xs-12">
 			<dl id="wb-dtmd">
 				<dt>Date modified:</dt>
-				<dd><time property="dateModified">2023-01-10</time></dd>
+				<dd><time property="dateModified">2022-11-01</time></dd>
 			</dl>
 		</div>
 	</div>
@@ -280,7 +227,7 @@
 				
 				<div class="col-xs-6 visible-sm visible-xs tofpg">
 					<a href="#wb-cont">Top of page <span class="glyphicon glyphicon-chevron-up"></span></a>
-				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 				</div>
 			</div>
 		</div>
@@ -288,7 +235,7 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
