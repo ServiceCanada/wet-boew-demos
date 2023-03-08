@@ -26,3 +26,7 @@
 	path = wet-pr9533
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = wet-pr9533
+[submodule "gcweb-pr2122"]
+	path = gcweb-pr2122
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gcweb-pr2122
