@@ -1473,18 +1473,18 @@
   },
   "@/js/ie8-wet-boew2.js": {
     "hashes": {
-      "sha256": "JI9/wew5x2Ge+ftUxD4TibKkCSDhZySdxfLyGxE5Lcw=",
-      "sha512": "nXImF28gPLltWjGBznVqAkeSQHE0pJCsQqaJQKfl5CzoM1EB9UzLwuNmCfll5eA18z5A3+pBdBZ5kCqnpMRPkQ=="
+      "sha256": "hHVTxSWKQZXxwSHJMRVyOyINC4yL5Vkl9j06GVOwSCM=",
+      "sha512": "cJn2YpjcF8J5Xa0U/8/EHmGgGAnnC5SGG9los2EW9kOd7goCdvTImuAYhCw6mVfv65W/0O8ryDvI5v+hUg9BWw=="
     },
-    "integrity": "sha256-JI9/wew5x2Ge+ftUxD4TibKkCSDhZySdxfLyGxE5Lcw= sha512-nXImF28gPLltWjGBznVqAkeSQHE0pJCsQqaJQKfl5CzoM1EB9UzLwuNmCfll5eA18z5A3+pBdBZ5kCqnpMRPkQ==",
+    "integrity": "sha256-hHVTxSWKQZXxwSHJMRVyOyINC4yL5Vkl9j06GVOwSCM= sha512-cJn2YpjcF8J5Xa0U/8/EHmGgGAnnC5SGG9los2EW9kOd7goCdvTImuAYhCw6mVfv65W/0O8ryDvI5v+hUg9BWw==",
     "path": "/js/ie8-wet-boew2.js"
   },
   "@/js/ie8-wet-boew2.min.js": {
     "hashes": {
-      "sha256": "5WAVltHZ5n/VHlbkcd8NvIOh9RUGOhdtCai2s5A8xPk=",
-      "sha512": "9cpz65W/h7/dRFJmslc2nicRGBrA9VcSVgZ69YG8H/4xZg/hKBNdrXSyoZ9rnqOZ2vpn/A41A0LcPun83sr/BQ=="
+      "sha256": "vMAnREFJifr8YrAEmxX0yYdyTtDMrDnS3whsQhbTOfo=",
+      "sha512": "iBPj5Fc6ijvBddh/YdgGJgNyf2ad8QS4PJd/n4al2tgj0Kic2ngP8Dev10fpH4CWPHb+zimSBc6YLDlL6EQAYQ=="
     },
-    "integrity": "sha256-5WAVltHZ5n/VHlbkcd8NvIOh9RUGOhdtCai2s5A8xPk= sha512-9cpz65W/h7/dRFJmslc2nicRGBrA9VcSVgZ69YG8H/4xZg/hKBNdrXSyoZ9rnqOZ2vpn/A41A0LcPun83sr/BQ==",
+    "integrity": "sha256-vMAnREFJifr8YrAEmxX0yYdyTtDMrDnS3whsQhbTOfo= sha512-iBPj5Fc6ijvBddh/YdgGJgNyf2ad8QS4PJd/n4al2tgj0Kic2ngP8Dev10fpH4CWPHb+zimSBc6YLDlL6EQAYQ==",
     "path": "/js/ie8-wet-boew2.min.js"
   },
   "@/js/jquery/2.2.4/jquery.js": {
@@ -1705,18 +1705,18 @@
   },
   "@/js/wet-boew.js": {
     "hashes": {
-      "sha256": "7epUO0CAmWuRvDtqfpqsUX6AvPBQqdVx0nXGx24hKLE=",
-      "sha512": "/85jsUjL1jALzNelgeUt7mnQAOIiQKDT07GYcotO/65jIxFk86t27RIyKQoMj1oy3hcktJn/ZbirjBi+qLVyfA=="
+      "sha256": "IxNyCGR0zn5LPvAU0/BU+K22FRIWlMt0RedZjj2IzDc=",
+      "sha512": "qxGAdpXVFDtbtEdQm33lE6AyAykAzEbUc6jiZ7vbyJ9RkdPtVTjUigTxITh2WlQx7YSXfqmhRz+3fhuYdz9peQ=="
     },
-    "integrity": "sha256-7epUO0CAmWuRvDtqfpqsUX6AvPBQqdVx0nXGx24hKLE= sha512-/85jsUjL1jALzNelgeUt7mnQAOIiQKDT07GYcotO/65jIxFk86t27RIyKQoMj1oy3hcktJn/ZbirjBi+qLVyfA==",
+    "integrity": "sha256-IxNyCGR0zn5LPvAU0/BU+K22FRIWlMt0RedZjj2IzDc= sha512-qxGAdpXVFDtbtEdQm33lE6AyAykAzEbUc6jiZ7vbyJ9RkdPtVTjUigTxITh2WlQx7YSXfqmhRz+3fhuYdz9peQ==",
     "path": "/js/wet-boew.js"
   },
   "@/js/wet-boew.min.js": {
     "hashes": {
-      "sha256": "BnkcdGEhGMOvjCh+lX7o+Un6gjOhl7/kKyk0hRFDhsY=",
-      "sha512": "eqHgFsbygoNLEBvaZcMSzr0R+pVK9+bkwvKqqq9040xvuRO1Dy6N6zGaLXds76kE29wId1dnbQAxbjGRAzeNsw=="
+      "sha256": "eL7EC3vpzb4lCSnGCRRZWpKYBeHF3OrBELnqRHqvnOg=",
+      "sha512": "AlRCjMk7LkecaaiBC1WNDKDAnQ8xYNhRMWgbw86HePPSs0l0rCjzmet94viVk8nJ+CUt/Uq3hWMVYGPDree/aw=="
     },
-    "integrity": "sha256-BnkcdGEhGMOvjCh+lX7o+Un6gjOhl7/kKyk0hRFDhsY= sha512-eqHgFsbygoNLEBvaZcMSzr0R+pVK9+bkwvKqqq9040xvuRO1Dy6N6zGaLXds76kE29wId1dnbQAxbjGRAzeNsw==",
+    "integrity": "sha256-eL7EC3vpzb4lCSnGCRRZWpKYBeHF3OrBELnqRHqvnOg= sha512-AlRCjMk7LkecaaiBC1WNDKDAnQ8xYNhRMWgbw86HePPSs0l0rCjzmet94viVk8nJ+CUt/Uq3hWMVYGPDree/aw==",
     "path": "/js/wet-boew.min.js"
   }
 }
