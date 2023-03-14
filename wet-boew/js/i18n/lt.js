@@ -150,7 +150,6 @@ wb.i18nDict = {
 	"cal-goToBtn": "Eiti",
 	prvMnth: "Ankstesnis mėnuo: ",
 	nxtMnth: "Sekantis mėnuo: ",
-	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Punktas %curr% iš %total%",

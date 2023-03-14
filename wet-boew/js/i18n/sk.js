@@ -150,7 +150,6 @@ wb.i18nDict = {
 	"cal-goToBtn": "Ísť",
 	prvMnth: "Predchádzajúci mesiac: ",
 	nxtMnth: "Budúci mesiac: ",
-	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Bod %curr% %total%",

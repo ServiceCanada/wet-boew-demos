@@ -150,7 +150,6 @@ wb.i18nDict = {
 	"cal-goToBtn": "Go",
 	prvMnth: "Previous Month: ",
 	nxtMnth: "Next Month: ",
-	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Item %curr% of %total%",

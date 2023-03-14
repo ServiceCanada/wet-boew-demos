@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.56.6 - 2023-02-27
+ * v4.0.59 - 2023-03-14
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -3998,8 +3998,8 @@ wb.findPotentialPII = function( str, scope, opts ) {
 			passport: /\b[A-Za-z]{2}[\s\\.-]*?\d{6}\b/ig, //canadian nr passport pattern
 			email: /\b(?:[a-zA-Z0-9_\-\\.]+)(?:@|%40)(?:[a-zA-Z0-9_\-\\.]+)\.(?:[a-zA-Z]{2,5})\b/ig, //email pattern
 			postalCode: /\b[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d\b/ig, //postal code pattern
-			username: /\b(?:(username|user)[:=][a-zA-Z0-9_\-\\.]+)\b/ig,
-			password: /\b(?:(password|pass)[:=][^\s#&]+)\b/ig
+			username: /(?:(username|user)[%20]?([:=]|(%EF%BC%9A))[^\s&]*)/ig,
+			password: /(?:(password|pass)[%20]?([:=]|(%EF%BC%9A))[^\s&]*)/ig
 		},
 		isFound = false,
 		txtMarker = opts && opts.replaceWith ? opts.replaceWith : "",
@@ -4197,7 +4197,7 @@ $.extend( $.expr[ ":" ], {
  * variables that are common to all instances of the plugin on a page.
  */
 var componentName = "wb-addcal",
-	selector = "." + componentName,
+	selector = ".provisional." + componentName,
 	initEvent = "wb-init." + componentName,
 	$document = wb.doc,
 
@@ -4217,73 +4217,88 @@ var componentName = "wb-addcal",
 
 			wb.ready( $( elm ), componentName );
 
-			let properties = elm.querySelectorAll( "[property]" ),
-				addcalTarget = elm.dataset.addcalTarget,
-				event_details = {},
+			var properties = elm.querySelectorAll( "[property]" ),
+				event_details = new Object(),
 				place_details = [],
-				i18n = wb.i18n,
-				addCalBtn,
+				i,
+				i_len,
+				prop_cache,
 				googleLink,
-				outlookLink,
-				yahooLink,
-				office365Link,
-				icsData;
+				icsFile,
+				i18nDict = {
+					en: {
+						"addcal-addto": "Add to",
+						"addcal-calendar": "calendar",
+						"addcal-other": "Other (Outlook, Apple, etc.)"
+					},
+					fr: {
+						"addcal-addto": "Ajouter au",
+						"addcal-calendar": "calendrier",
+						"addcal-other": "Autre (Outlook, Apple, etc.)"
+					}
+				};
+
+			// Initiate dictionary
+			i18nDict = i18nDict[ $( "html" ).attr( "lang" ) || "en" ];
+			i18nDict = {
+				addto: i18nDict[ "addcal-addto" ],
+				calendar: i18nDict[ "addcal-calendar" ],
+				ical: i18nDict[ "addcal-other" ]
+			};
 
 			// Set date stamp with the date modified
-			event_details.dtStamp = new Date().toISOString();
+			event_details.dtStamp = dtToISOString( $( "time[property='dateModified']" ) );
 
-			elm.setAttribute( "typeof", "Event" );
-
-			properties.forEach( function( prop ) {
-				switch ( prop.getAttribute( "property" ) ) {
+			i_len = properties.length;
+			for ( i = 0; i < i_len; i++ ) {
+				prop_cache = properties[ i ];
+				switch ( prop_cache.getAttribute( "property" ) ) {
 				case "name":
 
 					// If the property=name is inside an element with typeof=Place defined
-					if ( $( prop ).parentsUntil( ( "." + componentName ), "[typeof=Place]" ).length ) {
-						event_details.placeName = prop.textContent;
+					if ( $( prop_cache ).parentsUntil( ( "." + componentName ), "[typeof=Place]" ).length ) {
+						event_details.placeName = prop_cache.textContent;
 					} else {
-						event_details.name = prop.textContent;
+						event_details.name = prop_cache.textContent;
 					}
 					break;
 				case "description":
-					event_details.description = prop.textContent.replace( /(\r\n|\n|\r)/gm, " " );
+					event_details.description = prop_cache.textContent.replace( /(\r\n|\n|\r)/gm, " " );
 					break;
 				case "startDate":
-					event_details.sDate = dtToISOString( elm.querySelector( "time[property='startDate']" ), true );
-					event_details.sDateAlt = dtToISOString( elm.querySelector( "time[property='startDate']" ), false );
+					event_details.sDate = dtToISOString( $( "time[property='startDate']", $elm ) );
 					break;
 				case "endDate":
-					event_details.eDate = dtToISOString( elm.querySelector( "time[property='endDate']" ), true );
-					event_details.eDateAlt = dtToISOString( elm.querySelector( "time[property='endDate']" ), false );
+					event_details.eDate = dtToISOString( $( "time[property='endDate']", $elm ) );
 					break;
 				case "location":
 
 					// If the location doesn't have typeof defined OR has typeof=VirtualLocation without URL inside.
-					if ( !prop.getAttribute( "typeof" ) || ( prop.getAttribute( "typeof" ) === "VirtualLocation" && !$( prop ).find( "[property=url]" ).length ) ) {
-						event_details.placeName = prop.textContent;
+					if ( !prop_cache.getAttribute( "typeof" ) || ( prop_cache.getAttribute( "typeof" ) === "VirtualLocation" && !$( prop_cache ).find( "[property=url]" ).length ) ) {
+						event_details.placeName = prop_cache.textContent;
 					}
 					break;
 				case "streetAddress":
-					event_details.placeAddress = prop.textContent;
+					event_details.placeAddress = prop_cache.textContent;
 					break;
 				case "addressLocality":
-					event_details.placeLocality = prop.textContent;
+					event_details.placeLocality = prop_cache.textContent;
 					break;
 				case "addressRegion":
-					event_details.placeRegion = prop.textContent;
+					event_details.placeRegion = prop_cache.textContent;
 					break;
 				case "postalCode":
-					event_details.placePostalCode = prop.textContent;
+					event_details.placePostalCode = prop_cache.textContent;
 					break;
 				case "url":
 
 					// If the property=url is inside a property=location
-					if ( $( prop ).parentsUntil( ( "." + componentName ), "[property=location]" ).length ) {
-						event_details.placeName = prop.textContent;
+					if ( $( prop_cache ).parentsUntil( ( "." + componentName ), "[property=location]" ).length ) {
+						event_details.placeName = prop_cache.textContent;
 					}
 					break;
 				}
-			} );
+			}
 
 			place_details.push( ( event_details.placeName || "" ), ( event_details.placeAddress || "" ), ( event_details.placeLocality || "" ), ( event_details.placeRegion || "" ), ( event_details.placePostalCode || "" ) );
 
@@ -4297,69 +4312,42 @@ var componentName = "wb-addcal",
 			}
 
 			// Set Unique Identifier (UID) and Date Stamp (DSTAMP)
-			event_details.uid = window.location.href.replace( /\.|-|\/|:|[G-Zg-z]/g, "" ).toUpperCase().slice( 9 ) + "-" + event_details.sDate + "-" + event_details.dtStamp;
+			event_details.uid = window.location.href.replace( /\.|-|\/|:|[G-Zg-z]/g, "" ).toUpperCase().substr( -10 ) + "-" + event_details.sDate + "-" + event_details.dtStamp;
 
 			// Set google calendar link
 			googleLink = encodeURI( "https://www.google.com/calendar/render?action=TEMPLATE" +  "&text=" + event_details.name +  "&details=" +
-			event_details.description +  "&dates=" + event_details.sDate + "/" + event_details.eDate + "&location=" + place_details.join( " " ).trim() );
-
-			// Set Yahoo calendar link
-			yahooLink = encodeURI( "https://calendar.yahoo.com/?desc=" + event_details.description + "&et=" + event_details.eDate + "&in_loc=" + place_details.join( " " ).trim() + "&title=" + event_details.name + "&st=" + event_details.sDate + "&v=60" );
-
-			// Set Outlook.com calendar link
-			outlookLink = encodeURI( "https://outlook.live.com/calendar/0/deeplink/compose?body=" + event_details.description + "&enddt=" + event_details.eDateAlt + "&location=" + place_details.join( " " ).trim() + "&subject=" + event_details.name + "&startdt=" + event_details.sDateAlt + "&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" );
-
-			// Set Office 365 calendar link
-			office365Link = encodeURI( "https://outlook.office.com/calendar/0/deeplink/compose?body=" + event_details.description + "&enddt=" + event_details.eDateAlt + "&location=" + place_details.join( " " ).trim() + "&subject=" + event_details.name + "&startdt=" + event_details.sDateAlt + "&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent" );
+			event_details.description +  "&dates=" + event_details.sDate + "/" + event_details.eDate + "&location=" + place_details.join( " " ) );
 
 			// Set ICS file for Outlook, Apple and other calendars
-			icsData = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//WET-BOEW//Add to Calendar v4.0//\nBEGIN:VEVENT\nDTSTAMP:" + event_details.dtStamp + "\nSUMMARY:" + event_details.name +  "\nDESCRIPTION:" + event_details.description + "\nUID:" + event_details.uid + "\nDTSTART:" + event_details.sDate + "\nDTEND:" + event_details.eDate + "\nLOCATION:" + place_details.join( " " ).trim() + "\nEND:VEVENT\nEND:VCALENDAR";
+			icsFile = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//WET-BOEW//Add to Calendar v4.0//\nBEGIN:VEVENT\nDTSTAMP:" + event_details.dtStamp + "\nSUMMARY:" + event_details.name +  "\nDESCRIPTION:" + event_details.description + "\nUID:" + event_details.uid + "\nDTSTART:" + event_details.sDate + "\nDTEND:" + event_details.eDate + "\nLOCATION:" + place_details.join( " " ) + "\nEND:VEVENT\nEND:VCALENDAR";
 
-			elm.dataset.ics = icsData;
+			elm.dataset.icsFile = icsFile;
 
-			// Create Add to calendar dropdown button UI
-			addCalBtn = "<div class='dropdown wb-addcal-dd'><button type='button' class='btn btn-primary dropdown-toggle'><span class='glyphicon glyphicon-calendar mrgn-rght-md'></span>" + i18n( "addToCal" ) + "</button><ul class='dropdown-menu'>";
-			addCalBtn += "<li><a class='extrnl-lnk' href='" + office365Link.replace( /'/g, "%27" ) + "'><img src='img/office_365_icon.svg' alt='' width='16' class='mrgn-rght-md'>Office 365</a></li>";
-			addCalBtn += "<li><a class='extrnl-lnk' href='" + outlookLink.replace( /'/g, "%27" ) + "'><img src='img/outlook_logo.svg' width='16' alt='' class='mrgn-rght-md'>Outlook.com</a></li>";
-			addCalBtn += "<li><a class='extrnl-lnk' href='" + googleLink.replace( /'/g, "%27" ) + "'><img src='img/google_calendar_icon.svg' width='16' alt='' class='mrgn-rght-md'>Google</a></li>";
-			addCalBtn += "<li><a class='extrnl-lnk' href='" + yahooLink.replace( /'/g, "%27" ) + "'><img src='img/yahoo_icon.svg' width='16' alt='' class='mrgn-rght-md'>Yahoo</a></li>";
-			addCalBtn += "<li><button type='button' class='download-ics' data-addcal-id='" + elm.id + "'><span class='glyphicon glyphicon-calendar mrgn-rght-md'></span>iCal</button></li>";
-			addCalBtn += "</ul></div>";
-
-			if ( addcalTarget ) {
-				$( "#" + addcalTarget ).append( addCalBtn );
-			} else {
-				$elm.append( addCalBtn );
-			}
+			// Create and add details summary to the wb-addcal event and initiate the unordered list
+			$elm.append( "<details class='max-content " + componentName + "-buttons'><summary>" + i18nDict.addto + " " + i18nDict.calendar +
+			"</summary><ul class='list-unstyled mrgn-bttm-0'><li><a class='btn btn-link' href='" + googleLink.replace( /'/g, "%27" ) + "' target='_blank' rel='noreferrer noopener'>Google<span class='wb-inv'>" + i18nDict.calendar + "</span></a></li><li><button class='btn btn-link download-ics'>" + i18nDict.ical +
+			"<span class='wb-inv'>Calendar</span></button></li></ul></details>" );
 		}
 
 		wb.ready( $( elm ), componentName );
 
 	};
 
-// Convert date to ISO string. Formatting differently if modify=true
-// modify=true example: 20230127T120000Z
-// modify=false example: 2023-01-27T12:00:00.000Z
-var dtToISOString = function( dateElm, modify ) {
-	let date = dateElm.getAttribute( "datetime" );
-
-	if ( modify ) {
-		return new Date( date ).toISOString().replace( /\..*[0-9]/g, "" ).replace( /-|:|\./g, "" );
+// Convert date to ISO string and formating for ICS file
+var dtToISOString = function( date ) {
+	if ( date.is( "[datetime]" ) ) {
+		date = date.attr( "datetime" );
 	} else {
-		return new Date( date ).toISOString();
+		date = date.text();
 	}
+
+	return new Date( date ).toISOString().replace( /\..*[0-9]/g, "" ).replace( /-|:|\./g, "" );
 };
 
-// Download ICS file
 $document.on( "click", ".download-ics", function( event ) {
-	let icsData = document.querySelector( "#" + event.target.getAttribute( "data-addcal-id" ) ).dataset.ics;
-
-	wb.download( new Blob( [ icsData ], { type: "text/calendar;charset=utf-8" } ), "evenement-gc-event.ics" );
-} );
-
-// Close dropdown when an item is selected
-$document.on( "click", ".wb-addcal-btn .list-group-item", function( event ) {
-	$( event.target ).closest( ".wb-addcal-dd" ).find( "input[type=checkbox]" ).prop( "checked", false );
+	var icsFile = $( event.currentTarget ).parentsUntil( "." + componentName ).parent()[ 0 ];
+	icsFile =  $( icsFile ).attr( "data-ics-file" );
+	wb.download( new Blob( [ icsFile ], { type: "text/calendar;charset=utf-8" } ), "evenement-gc-event.ics" );
 } );
 
 // Bind the init event of the plugin
@@ -7763,364 +7751,6 @@ wb.add( selector );
 } )( jQuery, window, wb );
 
 /**
- * @title WET-BOEW Dropdown
- * @overview Dropdown functionality
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @garneauma
- * Adapted from W3C's Actions Menu Button Example Using aria-activedescendant
- * Link: https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/examples/menu-button-links/
- * License: https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
- */
-( function( $, wb ) {
-"use strict";
-
-/*
-* Variable and function definitions.
-* These are global to the plugin - meaning that they will be initialized once per page,
-* not once per instance of plugin on the page. So, this is a good place to define
-* variables that are common to all instances of the plugin on a page.
-*/
-var componentName = "dropdown",
-	selector = "." + componentName,
-	initEvent = "wb-init." + componentName,
-	$document = wb.doc,
-
-	/**
-	* @method init
-	* @param {jQuery Event} event Event that triggered the function call
-	*/
-	init = function( event ) {
-
-		// Start initialization
-		// returns DOM object = proceed with init
-		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector );
-
-		if ( elm ) {
-			wb.ready( $( elm ), componentName );
-
-			new Dropdown( elm );
-		}
-	};
-
-class Dropdown {
-	constructor( dropdown ) {
-		this.dropdown = dropdown;
-		this.buttonNode = dropdown.querySelector( ".dropdown-toggle" );
-		this.menuNode = dropdown.querySelector( ".dropdown-menu" );
-		this.menuitemNodes = [];
-		this.firstMenuitem = false;
-		this.lastMenuitem = false;
-		this.firstChars = [];
-
-		this.buttonNode.addEventListener( "keydown", this.onButtonKeydown.bind( this ) );
-		this.buttonNode.addEventListener( "click", this.onButtonClick.bind( this ) );
-
-		// Set ID's
-		this.buttonNode.id = this.buttonNode.id || wb.getId();
-		this.menuNode.id = this.menuNode.id || wb.getId();
-
-		// Set attributes for accessibility
-		this.menuNode.setAttribute( "role", "menu" );
-		this.menuNode.setAttribute( "aria-labelledby", this.buttonNode.id );
-		this.buttonNode.setAttribute( "aria-controls", this.menuNode.id );
-		this.buttonNode.setAttribute( "aria-haspopup", "true" );
-
-		var nodes = dropdown.querySelectorAll( "li a, li button" );
-
-		for ( var i = 0; i < nodes.length; i++ ) {
-			var menuitem = nodes[ i ];
-			this.menuitemNodes.push( menuitem );
-			menuitem.tabIndex = -1;
-			this.firstChars.push( menuitem.textContent.trim()[ 0 ].toLowerCase() );
-
-			menuitem.parentElement.setAttribute( "role", "none" );
-			menuitem.setAttribute( "role", "menuitem" );
-			menuitem.id = menuitem.id || wb.getId();
-
-			menuitem.addEventListener( "keydown", this.onMenuitemKeydown.bind( this ) );
-			menuitem.addEventListener( "mouseover", this.onMenuitemMouseover.bind( this ) );
-
-			if ( !this.firstMenuitem ) {
-				this.firstMenuitem = menuitem;
-			}
-			this.lastMenuitem = menuitem;
-		}
-
-		dropdown.addEventListener( "focusin", this.onFocusin.bind( this ) );
-		dropdown.addEventListener( "focusout", this.onFocusout.bind( this ) );
-		window.addEventListener( "mousedown", this.onBackgroundMousedown.bind( this ), true );
-	}
-
-	setFocusToMenuitem( newMenuitem ) {
-		this.menuitemNodes.forEach( function( item ) {
-			if ( item === newMenuitem ) {
-				item.tabIndex = 0;
-				newMenuitem.focus();
-			} else {
-				item.tabIndex = -1;
-			}
-		} );
-	}
-
-	setFocusToFirstMenuitem() {
-		this.setFocusToMenuitem( this.firstMenuitem );
-	}
-
-	setFocusToLastMenuitem() {
-		this.setFocusToMenuitem( this.lastMenuitem );
-	}
-
-	setFocusToPreviousMenuitem( currentMenuitem ) {
-		var newMenuitem, index;
-
-		if ( currentMenuitem === this.firstMenuitem ) {
-			newMenuitem = this.lastMenuitem;
-		} else {
-			index = this.menuitemNodes.indexOf( currentMenuitem );
-			newMenuitem = this.menuitemNodes[ index - 1 ];
-		}
-
-		this.setFocusToMenuitem( newMenuitem );
-
-		return newMenuitem;
-	}
-
-	setFocusToNextMenuitem( currentMenuitem ) {
-		var newMenuitem, index;
-
-		if ( currentMenuitem === this.lastMenuitem ) {
-			newMenuitem = this.firstMenuitem;
-		} else {
-			index = this.menuitemNodes.indexOf( currentMenuitem );
-			newMenuitem = this.menuitemNodes[ index + 1 ];
-		}
-		this.setFocusToMenuitem( newMenuitem );
-
-		return newMenuitem;
-	}
-
-	setFocusByFirstCharacter( currentMenuitem, char ) {
-		var start, index;
-
-		if ( char.length > 1 ) {
-			return;
-		}
-
-		char = char.toLowerCase();
-
-		// Get start index for search based on position of currentItem
-		start = this.menuitemNodes.indexOf( currentMenuitem ) + 1;
-		if ( start >= this.menuitemNodes.length ) {
-			start = 0;
-		}
-
-		// Check remaining slots in the menu
-		index = this.firstChars.indexOf( char, start );
-
-		// If not found in remaining slots, check from beginning
-		if ( index === -1 ) {
-			index = this.firstChars.indexOf( char, 0 );
-		}
-
-		// If match was found...
-		if ( index > -1 ) {
-			this.setFocusToMenuitem( this.menuitemNodes[ index ] );
-		}
-	}
-
-	// Utilities
-
-	getIndexFirstChars( startIndex, char ) {
-		for ( var i = startIndex; i < this.firstChars.length; i++ ) {
-			if ( char === this.firstChars[ i ] ) {
-				return i;
-			}
-		}
-		return -1;
-	}
-
-	// Popup menu methods
-
-	openPopup() {
-		this.dropdown.classList.add( "open" );
-		this.buttonNode.setAttribute( "aria-expanded", "true" );
-	}
-
-	closePopup() {
-		if ( this.isOpen() ) {
-			this.buttonNode.removeAttribute( "aria-expanded" );
-			this.dropdown.classList.remove( "open" );
-		}
-	}
-
-	isOpen() {
-		return this.buttonNode.getAttribute( "aria-expanded" ) === "true";
-	}
-
-	// Menu event handlers
-
-	onFocusin() {
-		this.dropdown.classList.add( "focus" );
-	}
-
-	onFocusout() {
-		this.dropdown.classList.remove( "focus" );
-	}
-
-	onButtonKeydown( event ) {
-		var key = event.key,
-			flag = false;
-
-		switch ( key ) {
-		case " ":
-		case "Enter":
-		case "ArrowDown":
-		case "Down":
-			this.openPopup();
-			this.setFocusToFirstMenuitem();
-			flag = true;
-			break;
-
-		case "Esc":
-		case "Escape":
-			this.closePopup();
-			this.buttonNode.focus();
-			flag = true;
-			break;
-
-		case "Up":
-		case "ArrowUp":
-			this.openPopup();
-			this.setFocusToLastMenuitem();
-			flag = true;
-			break;
-
-		default:
-			break;
-		}
-
-		if ( flag ) {
-			event.stopPropagation();
-			event.preventDefault();
-		}
-	}
-
-	onButtonClick( event ) {
-		if ( this.isOpen() ) {
-			this.closePopup();
-			this.buttonNode.focus();
-		} else {
-			this.openPopup();
-			this.setFocusToFirstMenuitem();
-		}
-		event.stopPropagation();
-		event.preventDefault();
-	}
-
-	onMenuitemKeydown( event ) {
-		var tgt = event.currentTarget,
-			key = event.key,
-			flag = false;
-
-		function isPrintableCharacter( str ) {
-			return str.length === 1 && str.match( /\S/ );
-		}
-
-		if ( event.ctrlKey || event.altKey || event.metaKey ) {
-			return;
-		}
-
-		if ( event.shiftKey ) {
-			if ( isPrintableCharacter( key ) ) {
-				this.setFocusByFirstCharacter( tgt, key );
-				flag = true;
-			}
-
-			if ( event.key === "Tab" ) {
-				this.buttonNode.focus();
-				this.closePopup();
-				flag = true;
-			}
-		} else {
-			switch ( key ) {
-			case " ":
-				window.location.href = tgt.href;
-				break;
-			case "Esc":
-			case "Escape":
-				this.closePopup();
-				this.buttonNode.focus();
-				flag = true;
-				break;
-
-			case "Up":
-			case "ArrowUp":
-				this.setFocusToPreviousMenuitem( tgt );
-				flag = true;
-				break;
-
-			case "ArrowDown":
-			case "Down":
-				this.setFocusToNextMenuitem( tgt );
-				flag = true;
-				break;
-
-			case "Home":
-			case "PageUp":
-				this.setFocusToFirstMenuitem();
-				flag = true;
-				break;
-
-			case "End":
-			case "PageDown":
-				this.setFocusToLastMenuitem();
-				flag = true;
-				break;
-
-			case "Tab":
-				this.closePopup();
-				break;
-
-			default:
-				if ( isPrintableCharacter( key ) ) {
-					this.setFocusByFirstCharacter( tgt, key );
-					flag = true;
-				}
-				break;
-			}
-		}
-
-		if ( flag ) {
-			event.stopPropagation();
-			event.preventDefault();
-		}
-	}
-
-	onMenuitemMouseover( event ) {
-		var tgt = event.currentTarget;
-		tgt.focus();
-	}
-
-	onBackgroundMousedown( event ) {
-		if ( !this.dropdown.contains( event.target ) ) {
-			if ( this.isOpen() ) {
-				this.closePopup();
-				this.buttonNode.focus();
-			}
-		}
-	}
-}
-
-// Bind the init event of the plugin
-$document.on( "timerpoke.wb " + initEvent, selector, init );
-
-// Add the timer poke to initialize the plugin
-wb.add( selector );
-
-} )( jQuery, wb );
-
-/**
  * @title eqht
  * @overview Provide ability to have equal height containers and nested containers inside a WET-BOEW grid
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -9364,14 +8994,16 @@ var componentName = "wb-filter",
 		}
 	},
 	i18n, i18nText,
-	infoText,
 	wait,
 
 	init = function( event ) {
 		var elm = wb.init( event, componentName, selector ),
 			$elm, elmTagName, filterUI, prependUI,
 			settings, setDefault,
-			inptId, totalEntries;
+			itemsObserver,
+			inptId, totalEntries,
+			secSelector,
+			uiTemplate, uiInpt, uiInfo;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -9399,8 +9031,6 @@ var componentName = "wb-filter",
 					filter_label: i18n( "fltr-lbl" ),
 					fltr_info: i18n( "fltr-info" )
 				};
-
-				infoText = i18nText.fltr_info;
 			}
 
 			Modernizr.addTest( "stringnormalize", "normalize" in String );
@@ -9416,13 +9046,40 @@ var componentName = "wb-filter",
 			}
 			inptId = elm.id + "-inpt";
 
-			totalEntries = $elm.find( ( settings.section || "" ) + " " + settings.selector ).length;
+			secSelector = ( settings.section || "" ) + " ";
+			totalEntries = $elm.find( secSelector + settings.selector ).length;
+			uiTemplate = settings.uiTemplate ? document.querySelector( settings.uiTemplate ) : "";
 
-			filterUI = $( "<div class=\"input-group\">" +
-				"<label for=\"" + inptId + "\" class=\"input-group-addon\"><span class=\"glyphicon glyphicon-filter\" aria-hidden=\"true\"></span> " + i18nText.filter_label + "</label>" +
-				"<input id=\"" + inptId + "\" class=\"form-control " + inputClass + "\" data-" + dtNameFltrArea + "=\"" + elm.id + "\" aria-controls=\"" + elm.id + "\" type=\"search\">" +
-				"</div>" +
-				"<p aria-live=\"polite\" id=\"" + elm.id + "-info\">" + infoFormater( totalEntries, totalEntries ) + "</p>" );
+			if ( uiTemplate ) {
+				uiInpt = uiTemplate.querySelector( "input[type=search]" );
+
+				if ( uiInpt ) {
+					uiInfo = uiTemplate.querySelector( ".wb-fltr-info" );
+
+					uiInpt.classList.add( inputClass );
+					uiInpt.setAttribute( "data-" + dtNameFltrArea, elm.id );
+					uiInpt.setAttribute( "aria-controls", elm.id );
+
+					if ( uiInfo ) {
+						elm.infoText = uiInfo.textContent;
+						uiInfo.id = uiInfo.id || elm.id + "-info";
+						uiInfo.setAttribute( "role", "status" );
+						uiInfo.textContent = infoFormater( totalEntries, totalEntries, elm.infoText );
+					}
+
+					filterUI = uiTemplate.innerHTML;
+					uiTemplate.remove();
+				} else {
+					console.error( componentName + ": " + "an <input type=\"search\"> is required in your UI template." );
+				}
+			} else {
+				elm.infoText = i18nText.fltr_info;
+				filterUI = $( "<div class=\"input-group\">" +
+					"<label for=\"" + inptId + "\" class=\"input-group-addon\"><span class=\"glyphicon glyphicon-filter\" aria-hidden=\"true\"></span> " + i18nText.filter_label + "</label>" +
+					"<input id=\"" + inptId + "\" class=\"form-control " + inputClass + "\" data-" + dtNameFltrArea + "=\"" + elm.id + "\" aria-controls=\"" + elm.id + "\" type=\"search\">" +
+					"</div>" +
+					"<p role=\"status\" id=\"" + elm.id + "-info\">" + infoFormater( totalEntries, totalEntries, elm.infoText ) + "</p>" );
+			}
 
 			if ( settings.source ) {
 				$( settings.source ).prepend( filterUI );
@@ -9432,11 +9089,23 @@ var componentName = "wb-filter",
 				$elm.before( filterUI );
 			}
 
+			itemsObserver = new MutationObserver( function() {
+				let itemsLength = $elm.find( secSelector + settings.selector ).length,
+					itemsVisible = $elm.find( secSelector + notFilterClassSel + settings.selector + visibleSelector ).length,
+					infoElm = $( "#" + $elm.get( 0 ).id + "-info" );
+
+				if ( infoElm ) {
+					infoElm.html( infoFormater( itemsVisible, itemsLength, elm.infoText ) );
+				}
+			} );
+
+			itemsObserver.observe( elm, { attributes: true, subtree: true } );
+
 			wb.ready( $elm, componentName );
 		}
 	},
-	infoFormater = function( nbItem, total ) {
-		return infoText.
+	infoFormater = function( nbItem, total, text ) {
+		return text.
 			replace( /_NBITEM_/g, nbItem ).
 			replace( /_TOTAL_/g, total );
 	},
@@ -9534,8 +9203,6 @@ var componentName = "wb-filter",
 			fCallBack = filterCallback;
 		}
 		fCallBack.apply( this, arguments );
-
-		$( "#" + $elm.get( 0 ).id + "-info" ).html( infoFormater( $elm.find( secSelector + notFilterClassSel + settings.selector + visibleSelector ).length, itemsLength ) );
 	},
 	filterCallback = function( $field, $elm, settings ) {
 		var $sections =	$elm.find( settings.section + visibleSelector ),
@@ -12136,6 +11803,7 @@ var componentName = "wb-mltmd",
 
 		switch ( fn ) {
 		case "play":
+			this.object.wasMutedPlay = this.object.isMuted();
 			return this.object.playVideo();
 		case "pause":
 			return this.object.pauseVideo();
@@ -12153,7 +11821,13 @@ var componentName = "wb-mltmd",
 		case "setCurrentTime":
 			return this.object.seekTo( args, true );
 		case "getMuted":
-			return this.object.isMuted();
+			if ( !this.object.playedOnce && this.object.wasMutedPlay ) {
+				state = this.object.wasMutedPlay;
+				this.object.playedOnce = true;
+				return state;
+			} else {
+				return this.object.isMuted();
+			}
 		case "setMuted":
 			if ( args ) {
 				this.object.mute();
@@ -12162,7 +11836,7 @@ var componentName = "wb-mltmd",
 			}
 			setTimeout( function() {
 				$media.trigger( "volumechange" );
-			}, 50 );
+			}, ( wb.isReady ? 50 : 500 ) );
 			break;
 		case "getVolume":
 			return this.object.getVolume() / 100;
@@ -12204,13 +11878,24 @@ var componentName = "wb-mltmd",
 			timeline = function() {
 				$media.trigger( "timeupdate" );
 			},
-			$mltmPlayerElm;
+			$mltmPlayerElm,
+			mltmPlayerElm,
+			isMuted;
 
 		switch ( event.data ) {
-		case null:
+		case null: // init
 			$media
 				.trigger( "canplay" )
 				.trigger( "durationchange" );
+
+			// Put video on mute if the video is muted on init, run once
+			$mltmPlayerElm = $media.parentsUntil( selector ).parent();
+
+			// Mute the player, GUI
+			if ( $mltmPlayerElm.data( "putMutedOnInit" ) ) {
+				youTubeApi.call( $mltmPlayerElm.get( 0 ), "setMuted", true );
+				$mltmPlayerElm.data( "putMutedOnInit", false );
+			}
 			break;
 		case -1:
 			event.target.unMute();
@@ -12220,17 +11905,31 @@ var componentName = "wb-mltmd",
 			$media.trigger( "ended" );
 			media.timeline = clearInterval( media.timeline );
 			break;
-		case 1:
-			if ( media.dataset.L2 ) {
+		case 1: // play
 
-				// Reset the close caption state when iframe was reloaded
-				$mltmPlayerElm = $media.parentsUntil( selector ).parent();
-				youTubeApi.call( $mltmPlayerElm.get( 0 ), "setCaptionsVisible", $mltmPlayerElm.hasClass( captionClass ) );
+			// Get the media player
+			$mltmPlayerElm = $media.parentsUntil( selector ).parent();
+			mltmPlayerElm = $mltmPlayerElm.get( 0 );
+
+			// Need to be muted here
+			isMuted = mltmPlayerElm.player( "getMuted" );
+
+			// Reset the close caption state when iframe was reloaded
+			if ( media.dataset.L2 ) {
+				youTubeApi.call( mltmPlayerElm, "setCaptionsVisible", $mltmPlayerElm.hasClass( captionClass ) );
 			}
+
+			// Play
 			$media
 				.trigger( "canplay" )
 				.trigger( "play" )
 				.trigger( "playing" );
+
+			// Reset muted as needed because youtube onMute by default when playing
+			if ( isMuted ) {
+				youTubeApi.call( mltmPlayerElm, "setMuted", true );
+			}
+
 			media.timeline = setInterval( timeline, 250 );
 			break;
 		case 2:
@@ -12318,6 +12017,9 @@ $document.on( initializedEvent, selector, function( event ) {
 
 			// lets set the flag for the call back
 			data.youTubeId = url.params.v ? url.params.v : url.pathname.substr( 1 );
+
+			// Defaults config set on the video element
+			data.isInitMuted = $media.get( 0 ).muted;
 
 			if ( youTube.ready === false ) {
 				$document.one( youtubeReadyEvent, function() {
@@ -12490,6 +12192,12 @@ $document.on( renderUIEvent, selector, function( event, type, data ) {
 				"\", \"pnlId\": \"" + data.id + "-shr\"}'></div>" )
 				.insertBefore( $media.parent() )
 				.trigger( "wb-init.wb-share" );
+		}
+
+		if ( data.isInitMuted ) {
+			$this.data( "putMutedOnInit", true );
+		} else if ( !data.ytPlayer && this.object.muted ) {
+			$media.trigger( "volumechange" );
 		}
 
 		if ( data.captions === undef ) {
@@ -15948,6 +15656,288 @@ wb.add( selector );
 } )( jQuery, window, wb );
 
 /**
+ * @title WET-BOEW Tag filter
+ * @overview Filter based content tagging
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @duboisp
+ */
+( function( $, window, document, wb ) {
+"use strict";
+
+const componentName = "wb-tagfilter",
+	selector = ".provisional." + componentName,
+	selectorCtrl = "." + componentName + "-ctrl",
+	initEvent = "wb-init" + selector,
+	$document = wb.doc,
+	filterOutClass = "wb-tgfltr-out",
+
+	init = function( event ) {
+		const elm = wb.init( event, componentName, selector );
+
+		if ( elm ) {
+			elm.items = [];
+			elm.filters = {};
+			elm.activeFilters = [];
+
+			// Get all form inputs (radio buttons, checkboxes and select) within filters form
+			const filterControls = document.querySelectorAll( "#" + elm.id + " .wb-tagfilter-ctrl" ),
+				taggedItems = document.querySelectorAll( "#" + elm.id + " [data-wb-tags]" ),
+				taggedItemsWrapper = document.querySelector( "#" + elm.id + " .wb-tagfilter-items" );
+
+			if ( taggedItemsWrapper ) {
+				taggedItemsWrapper.id = taggedItemsWrapper.id || wb.getId(); // Ensure the element has an ID
+				taggedItemsWrapper.setAttribute( "aria-live", "polite" );
+			} else {
+				console.warn( componentName + ": You have to identify the wrapper of your tagged elements using the class 'wb-tagfilter-items'." );
+			}
+
+			// Handle filters
+			if ( filterControls.length ) {
+				elm.filters = buildFiltersObj( filterControls );
+
+				filterControls.forEach( function( item ) {
+					item.setAttribute( "aria-controls", taggedItemsWrapper.id );
+				} );
+			} else {
+				console.warn( componentName + ": You have no defined filter." );
+			}
+
+			// Handle tagged items
+			if ( taggedItems.length ) {
+				elm.items = buildTaggedItemsArr( taggedItems );
+			} else {
+				console.warn( componentName + ": You have no tagged items. Please add tags using the 'data-wb-tags' attribute." );
+			}
+
+			// Update list of visible items (in case of predefined filters)
+			update( elm );
+
+			wb.ready( $( elm ), componentName );
+		}
+	},
+
+	// Add every tagged item to an array of objects with their DOM ID, list of associated tags, and default isMatched attribute
+	buildTaggedItemsArr = function( taggedItems ) {
+		let taggedItemsArr = [];
+
+		taggedItems.forEach( function( taggedItem ) {
+			let tagsList = taggedItem.dataset.wbTags.split( " " );
+
+			if ( !taggedItem.id ) {
+				taggedItem.setAttribute( "id", wb.getId() );
+			}
+
+			taggedItemsArr.push( {
+				id: taggedItem.id,
+				tags: tagsList,
+				isMatched: true,
+				itemText: taggedItem.innerText.toLowerCase()
+			} );
+		} );
+
+		return taggedItemsArr;
+	},
+
+	// Build list of available filters using all filters grouped by filter name
+	buildFiltersObj = function( filterControls ) {
+		let filtersObj = {};
+
+		filterControls.forEach( function( control ) {
+			let controlName, controlID;
+
+			switch ( control.type ) {
+			case "checkbox":
+			case "radio":
+				if ( control.getAttribute( "name" ) ) {
+					controlName = control.getAttribute( "name" );
+
+					if ( !( controlName in filtersObj ) ) {
+						filtersObj[ controlName ] = [ ];
+					}
+
+					filtersObj[ controlName ].push( {
+						id: control.id,
+						value: control.value,
+						isChecked: control.checked,
+						type: control.type
+					} );
+				} else {
+					console.warn( componentName + ": You need to add the attribute 'name' to every filter control of type radio or checkbox" );
+				}
+				break;
+			case "select-one":
+				if ( !control.getAttribute( "id" ) ) {
+					control.setAttribute( "id", wb.getId() );
+				}
+
+				controlID = control.getAttribute( "id" );
+
+				filtersObj[ controlID ] = [ {
+					id: control.id,
+					value: control.value,
+					type: control.type
+				} ];
+				break;
+			}
+		} );
+
+		return filtersObj;
+	},
+
+	// Update array of active filters according to UI selected controls
+	refineFilters = function( instance ) {
+		instance.activeFilters = [ ]; // Clear active filters
+
+		for ( let filterGroupName in instance.filters ) {
+			let filterGroup = instance.filters[ filterGroupName ],
+				filterGroupCnt = filterGroup.length,
+				filterGroupChkCnt = filterGroup.filter( function( o ) {
+					return o.isChecked === true;
+				} ).length,
+				filterGroupActiveFilters = [ ];
+
+			switch ( filterGroup[ 0 ].type ) {
+			case "checkbox":
+				if ( filterGroupCnt > 1 && filterGroupChkCnt > 0 ) {
+					filterGroup.forEach( function( filterItem ) {
+						if ( filterItem.isChecked ) {
+							filterGroupActiveFilters.push( filterItem.value );
+						}
+					} );
+				}
+				break;
+
+			case "radio":
+				if ( filterGroupCnt > 1 && filterGroupChkCnt > 0 ) {
+					let radioChkdItem;
+
+					for ( let i = 0; i < filterGroupCnt; i++ ) {
+						if ( filterGroup[ i ].isChecked === true ) {
+							radioChkdItem = filterGroup[ i ];
+							break;
+						}
+					}
+
+					if ( radioChkdItem.value !== "" ) {
+						filterGroupActiveFilters.push( radioChkdItem.value );
+					}
+				} else {
+					console.warn( componentName + ": Radio button groups must have a default selected value. If you want to display all items, add an option called \"All\" with an empty value." );
+				}
+				break;
+
+			case "select-one":
+				if ( filterGroup[ 0 ].value !== "" ) {
+					filterGroupActiveFilters.push( filterGroup[ 0 ].value );
+				}
+				break;
+			}
+
+			instance.activeFilters.push( filterGroupActiveFilters );
+		}
+	},
+
+	// Match tagged items to active filters and only return items that have an active filter in every filter group
+	matchItemsToFilters = function( instance ) {
+		let filtersGroups = instance.activeFilters.length;
+
+		instance.items.forEach( function( item ) {
+			let itemTags = item.tags,
+				matchCount = 0;
+
+			instance.activeFilters.forEach( function( filterGroup ) {
+				if ( filterGroup.length === 0 ) {
+					matchCount++;
+				} else {
+					let itemIncludesFilter = filterGroup.filter( function( f ) {
+						return itemTags.includes( f );
+					} ).length;
+
+					if ( itemIncludesFilter ) {
+						matchCount++;
+					}
+				}
+			} );
+
+			matchCount === filtersGroups ? item.isMatched = true : item.isMatched = false;
+		} );
+	},
+
+	// Update list of visible items according to their "isMatched" property
+	updateDOMItems = function( instance ) {
+		const updatedItemsList = instance.items.forEach( function( item ) {
+			let domItem = document.querySelector( "#" + item.id ),
+				matched = item.isMatched;
+
+			if ( matched ) {
+				if ( domItem.classList.contains( filterOutClass ) ) {
+					domItem.classList.remove( filterOutClass );
+				}
+			} else {
+				if ( !domItem.classList.contains( filterOutClass ) ) {
+					domItem.classList.add( filterOutClass );
+				}
+			}
+		} );
+
+		return updatedItemsList;
+	},
+
+	// Utility method to update stored active filters, update stored items and update visibility of tagged items
+	update = function( instance ) {
+		refineFilters( instance );
+		matchItemsToFilters( instance );
+		updateDOMItems( instance );
+	};
+
+// When a filter is updated
+$document.on( "change", selectorCtrl, function( event )  {
+
+	let control = event.currentTarget,
+		filterType = control.type,
+		filterName = control.getAttribute( "name" ),
+		$elm = control.closest( selector ),
+		state;
+
+	switch ( filterType ) {
+	case "checkbox":
+		state = !!control.checked;
+
+		// Update filter to the new state
+		$elm.filters[ filterName ].find( function( filter ) {
+			return filter.id === control.id;
+		} ).isChecked = state;
+		break;
+
+	case "radio":
+
+		// Set all radio items to unchecked, then set selected item to checked
+		$elm.filters[ filterName ].forEach( function( filterItem ) {
+			filterItem.isChecked = false;
+		} );
+		$elm.filters[ filterName ].find( function( filter ) {
+			return filter.id === control.id;
+		} ).isChecked = true;
+		break;
+
+	case "select-one":
+
+		// Update filter to the new value
+		$elm.filters[ control.id ][ 0 ].value = control.value;
+		break;
+	}
+
+	// Update list of visible items
+	update( $elm );
+} );
+
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+wb.add( selector );
+
+} )( jQuery, window, document, wb );
+
+/**
  * @title WET-BOEW Text highlighting
  * @overview Automatically highlights certain words on a Web page. The highlighted words can be selected via the query string.
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -17157,7 +17147,9 @@ var componentName = "wb-disable",
 			noticeHeader = i18n( "disable-notice-h" ),
 			noticeBody = i18n( "disable-notice" ),
 			noticehtml = "<section",
-			noticehtmlend = "</a>.</p></section>";
+			noticehtmlend = "</a>.</p></section>",
+			canonicalUrl,
+			canonicalLink;
 
 		if ( elm ) {
 
@@ -17181,9 +17173,28 @@ var componentName = "wb-disable",
 						/* swallow error */
 					}
 
+					// Add canonical link if not already present
+					if ( !document.querySelector( "link[rel=canonical]" ) ) {
+
+						// Remove wbdisable from URL
+						canonicalUrl = window.location.href.replace( /&?wbdisable=true/gi, "" ).replace( "?&", "?" ).replace( "?#", "#" );
+
+						if ( canonicalUrl.indexOf( "?" ) === ( canonicalUrl.length - 1 ) ) {
+							canonicalUrl = canonicalUrl.replace( "?", "" );
+						}
+
+						canonicalLink = document.createElement( "link" );
+						canonicalLink.rel = "canonical";
+						canonicalLink.href = canonicalUrl;
+
+						document.head.appendChild( canonicalLink );
+					}
+
 					// Add notice and link to re-enable WET plugins and polyfills
-					noticehtml = noticehtml + " class='container-fluid bg-warning text-center mrgn-tp-sm py-4'><h2 class='mrgn-tp-0'>" + noticeHeader + "</h2><p>" + noticeBody + "</p><p><a rel='alternate' property='significantLink' href='" + nQuery + "wbdisable=false'>" + i18n( "wb-enable" ) + noticehtmlend;
+					let significantLinkId = wb.getId();
+					noticehtml = noticehtml + " class='container-fluid bg-warning text-center mrgn-tp-sm py-4'><h2 class='mrgn-tp-0'>" + noticeHeader + "</h2><p>" + noticeBody + "</p><p><a id='" + significantLinkId + "' rel='alternate' href='" + nQuery + "wbdisable=false'>" + i18n( "wb-enable" ) + noticehtmlend;
 					$( elm ).after( noticehtml );
+					document.querySelector( "#" + significantLinkId ).setAttribute( "property", "significantLink" );
 					return true;
 				} else {
 					$html.addClass( "wb-enable" );
@@ -17535,12 +17546,14 @@ var componentName = "wb-jsonmanager",
 			}
 		],
 		opsRoot: [],
-		settings: { }
+		settings: { },
+		docMapKeys: { "referer": document.referrer, "locationHref": location.href }
 	},
 
 	// Add debug information after the JSON manager element
 	debugPrintOut = function( $elm, name, json, patches ) {
 		$elm.after( "<p lang=\"en\"><strong>JSON Manager Debug</strong> (" +  name + ")</p><ul lang=\"en\"><li>JSON: <pre><code>" + JSON.stringify( json ) + "</code></pre></li><li>Patches: <pre><code>" + JSON.stringify( patches ) + "</code></pre>" );
+		console.log( json );
 	},
 
 	/**
@@ -17566,9 +17579,12 @@ var componentName = "wb-jsonmanager",
 			Modernizr.load( {
 
 				// For loading multiple dependencies
-				load: "site!deps/json-patch" + wb.getMode() + ".js",
+				load: [
+					"site!deps/json-patch" + wb.getMode() + ".js",
+					"site!deps/jsonpointer" + wb.getMode() + ".js"
+				],
 				testReady: function() {
-					return window.jsonpatch;
+					return window.jsonpatch && window.jsonpointer;
 				},
 				complete: function() {
 					var elmData = wb.getData( $elm, componentName );
@@ -17601,7 +17617,6 @@ var componentName = "wb-jsonmanager",
 					}
 
 					dsName = elmData.name;
-
 					if ( !dsName || dsName in dsNameRegistered ) {
 						throw "Dataset name must be unique";
 					}
@@ -17628,19 +17643,159 @@ var componentName = "wb-jsonmanager",
 						if ( url.charCodeAt( 0 ) === 35 && url.charCodeAt( 1 ) === 91 ) {
 							wb.ready( $elm, componentName );
 						}
+					} else if ( !url && elmData.extractor ) {
+						$elm.trigger( {
+							type: "json-fetched.wb",
+							fetch: {
+								response: {}
+							}
+						} );
+						wb.ready( $elm, componentName );
+
 					} else {
 
-						// Do an empty fetch to ensure jsonPointer is loaded and correctly initialized
 						$elm.trigger( {
 							type: "json-fetch.wb"
 						} );
 						wb.ready( $elm, componentName );
 					}
+
 				}
 			} );
 		}
 	},
+	extractData = function( elmObj ) {
 
+		var isGroup = false,
+			selectedTag,
+			targetTag,
+			lastIndex = [],
+			j_tag = "",
+			group = {},
+			arrMap = [],
+			node_children = [],
+			j_node = 0,
+			arrRepeatPath = [],
+			combineToObj = function( cur_obj ) {
+				if ( cur_obj.selector === j_tag ) {
+					if ( !lastIndex.includes( j_tag ) ) {
+						group[ cur_obj.path ] = cur_obj.attr && node_children[ j_node ].getAttributeNode( cur_obj.attr ) ?
+							node_children[ j_node ].getAttributeNode( cur_obj.attr ).textContent :
+							node_children[ j_node ].textContent;
+						lastIndex.push( j_tag );
+					}
+				}
+			},
+			manageObjDir = function( selector, selectedValue, json_return ) {
+				var arrPath = selector.path.split( "/" ).filter( Boolean );
+				if ( arrPath.length > 1 ) {
+					var pointer = "";
+					pointer = arrPath.pop();
+
+					if ( arrPath[ 0 ] && arrPath[ 0 ] !== "" ) {
+
+						if ( !json_return[ arrPath[ 0 ] ] && !arrRepeatPath.includes( arrPath[ 0 ] ) ) {
+							arrRepeatPath.push( arrPath[ 0 ] );
+							json_return[ arrPath[ 0 ] ] = {};
+						}
+						if ( selector.selectAll && !json_return[ arrPath[ 0 ] ] [ pointer ]  ) {
+							json_return[ arrPath[ 0 ] ] [ pointer ] = [];
+						}
+						if ( selector.selectAll ) {
+							json_return[ arrPath[ 0 ] ] [ pointer ].push( selectedValue );
+						} else {
+							json_return[ arrPath[ 0 ] ] [ pointer ] = selectedValue;
+						}
+
+					} else {
+
+						if ( selector.selectAll ) {
+							json_return[ arrPath[ 0 ] ].push( selectedValue );
+						} else {
+							json_return[ pointer ] = selectedValue;
+						}
+					}
+				} else {
+
+					if ( selector.selectAll ) {
+						if ( !json_return[ selectedTag.path ] ) {
+							json_return[ selectedTag.path ] = [];
+						}
+						json_return[ selectedTag.path ].push( selectedValue );
+					} else {
+						json_return[ selectedTag.path ] = selectedValue;
+					}
+				}
+			},
+			jsonSource = {};
+
+
+		for ( var tag = 0; tag <= elmObj.length - 1; tag++ ) {
+
+			selectedTag = elmObj[ tag ];
+
+			if ( !selectedTag.interface ) {
+
+				targetTag = document.querySelectorAll( selectedTag.selector || "" );
+				isGroup = selectedTag.extractor && selectedTag.extractor.length >= 1 ? true : false;
+
+				if ( selectedTag.selectAll ) {
+
+					for ( var i_node = 0; i_node <= targetTag.length - 1; i_node++ ) {
+
+						var selectedTagValue = selectedTag.attr && targetTag [ i_node ].getAttributeNode( selectedTag.attr ) ?
+							targetTag [ i_node ].getAttributeNode( selectedTag.attr ).textContent :
+							targetTag [ i_node ].textContent;
+
+						manageObjDir( selectedTag, selectedTagValue, jsonSource );
+					}
+				}
+
+				// extract from combined selectors and group the values e.g dt with dd
+				if ( isGroup ) {
+
+					jsonSource[ selectedTag.path ] = [];
+
+					node_children = targetTag[ 0 ].children;
+
+					var extractorLength = Object.keys( selectedTag.extractor ).length;
+
+					for ( j_node = 0; j_node <= node_children.length - 1; j_node++ ) {
+
+						j_tag = node_children[ j_node ].tagName.toLowerCase();
+
+						selectedTag.extractor.find( combineToObj );
+						if ( Object.keys( group ).length === extractorLength ) {
+							arrMap.push( group );
+							group = {};
+							lastIndex = [];
+						}
+					}
+					$.extend( jsonSource[ selectedTag.path ], arrMap );
+				}
+
+				if ( targetTag.length ) {
+					targetTag = selectedTag.attr && targetTag [ 0 ].getAttributeNode( selectedTag.attr ) ?
+						targetTag [ 0 ].getAttributeNode( selectedTag.attr ).textContent :
+						targetTag [ 0 ].textContent;
+				}
+
+			} else {
+
+				targetTag = defaults.docMapKeys[ selectedTag.interface ];
+
+				manageObjDir( selectedTag, targetTag, jsonSource );
+			}
+
+			if ( !selectedTag.selectAll  ) {
+				if ( isGroup === false ) {
+					manageObjDir( selectedTag, targetTag, jsonSource );
+				}
+			}
+		}
+
+		return jsonSource;
+	},
 
 	// Filtering a JSON
 	// Return true if trueness && falseness
@@ -17819,12 +17974,20 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 		isArrayResponse = $.isArray( JSONresponse ),
 		resultSet,
 		i, i_len, i_cache, backlog, selector,
-		patches, filterTrueness, filterFaslseness, filterPath;
-
+		patches, filterTrueness, filterFaslseness, filterPath, extractor;
 
 	if ( elm === event.currentTarget ) {
-
 		settings = wb.getData( $elm, componentName );
+
+		extractor = settings.extractor;
+		if ( extractor ) {
+			if ( !$.isArray( extractor ) ) {
+				extractor = [ extractor ];
+			}
+			JSONresponse = $.extend( JSONresponse, extractData( extractor ) );
+
+		}
+
 		dsName = "[" + settings.name + "]";
 		patches = settings.patches || [];
 		filterPath = settings.fpath;
@@ -17836,9 +17999,9 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 		}
 
 		if ( isArrayResponse ) {
-			JSONresponse = $.extend( [], JSONresponse );
+			JSONresponse = $.extend( true, [], JSONresponse );
 		} else {
-			JSONresponse = $.extend( {}, JSONresponse );
+			JSONresponse = $.extend( true, {}, JSONresponse );
 		}
 
 		// Apply a filtering
@@ -17846,16 +18009,17 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 			JSONresponse = getPatchesToFilter( JSONresponse, filterPath, filterTrueness, filterFaslseness );
 		}
 
-		// Apply the patches
-		if ( patches.length ) {
-			if ( isArrayResponse && settings.wraproot ) {
-				i_cache = { };
-				i_cache[ settings.wraproot ] = JSONresponse;
-				JSONresponse = i_cache;
-			}
-			jsonpatch.apply( JSONresponse, patches );
+		// Apply the wraproot
+		if ( settings.wraproot  ) {
+			i_cache = { };
+			i_cache[ settings.wraproot ] = JSONresponse;
+			JSONresponse = i_cache;
 		}
 
+		// Apply the patches
+		if ( patches.length ) {
+			jsonpatch.apply( JSONresponse, patches );
+		}
 		if ( settings.debug ) {
 			debugPrintOut( $elm, "initEvent", JSONresponse, patches );
 		}
@@ -18115,7 +18279,7 @@ var $document = wb.doc,
 					wb.getData( $elm, componentName )
 				),
 				attrEngaged = "data-wb-engaged",
-				$buttons = $( "[type=submit]", $elm ),
+				$buttons = $( "[type=submit], button:not([type])", $elm ),
 				multiple = typeof $elm.data( componentName + "-multiple" ) !== "undefined",
 				classToggle = settings.toggle || "hide",
 				selectorSuccess = settings.success,
@@ -18136,15 +18300,15 @@ var $document = wb.doc,
 				if ( elm.parentElement.classList.contains( "wb-frmvld" ) ) {
 					if ( !$elm.valid() ) {
 						$( this ).attr( attrEngaged, true );
-					} else {
 						$buttons.removeAttr( attrEngaged );
+					} else {
 						$( this ).attr( attrEngaged, "" );
 					}
 				}
 
 				if ( !$( this ).attr( attrEngaged ) ) {
 					var data = $elm.serializeArray(),
-						$btn = $( "[type=submit][name][" + attrEngaged + "]", $elm ),
+						$btn = $( "[name][" + attrEngaged + "]", $elm ),
 						$selectorSuccess = $( selectorSuccess ),
 						$selectorFailure = $( selectorFailure );
 

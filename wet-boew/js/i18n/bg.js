@@ -150,7 +150,6 @@ wb.i18nDict = {
 	"cal-goToBtn": "Отивам",
 	prvMnth: "Предходния месец: ",
 	nxtMnth: "Следващия месец: ",
-	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Член %curr% от %total%",

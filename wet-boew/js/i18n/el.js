@@ -150,7 +150,6 @@ wb.i18nDict = {
 	"cal-goToBtn": "Πάω",
 	prvMnth: "Προηγούμενος Μήνας: ",
 	nxtMnth: "Επόμενος Μήνας: ",
-	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Αντικείμενο %curr% από ​​%total%",

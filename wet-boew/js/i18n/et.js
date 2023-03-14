@@ -150,7 +150,6 @@ wb.i18nDict = {
 	"cal-goToBtn": "Mine",
 	prvMnth: "Eelmine kuu: ",
 	nxtMnth: "Järgmine kuu: ",
-	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "Kirje %curr% koguhulgast %total%",

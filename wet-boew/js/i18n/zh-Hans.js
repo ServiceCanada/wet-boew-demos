@@ -150,7 +150,6 @@ wb.i18nDict = {
 	"cal-goToBtn": "去",
 	prvMnth: "上个月：",
 	nxtMnth: "下个月：",
-	addToCal: "Add to calendar",
 
 	/* Lightbox */
 	"lb-curr": "项目%curr%的%total%",
