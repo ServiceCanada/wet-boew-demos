@@ -15,9 +15,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2022-04-26"/>
 
-<link href="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2122/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2139/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -143,7 +143,7 @@
 <ul>
 	<li><a href="feedback-fr.html">Exemple de formulaire de commentaires de page</a></li>
 	<li><a href="feedback-aa-fr.html">Exemple de formulaire de commentaires de page en utilisant les attributs de données analytiques</a></li>
-	<li><a href="/sites/page-details/page-details-v1-fr.html">Exemple de formulaire de commentaires de page version 1</a></li>
+	<li><a href="/sites/page-details/deprecated/page-details-v1-fr.html">Exemple de formulaire de commentaires de page version 1</a></li>
 
 </ul>
 
@@ -211,14 +211,112 @@
 <h4>Formulaire de signalement d'un problème (SUP) (commentaires)</h4>
 <p>Référence des fichiers ajax implémentés</p>
 <ul>
-	<li><a href="ajax/report-problem-fr.html">Version 3</a></li>
-	<li><a href="ajax/report-problem-v2-fr.html">Version 2</a></li>
-	<li><a href="ajax/report-problem-aa-fr.html">Version 2 avec configuration Adobe Analytic</a></li>
-	<li><a href="ajax/report-problem-v1-fr.html">Version 1</a></li>
+	<li><a href="ajax/report-problem-fr.html">Version 4.0</a></li>
+	<li><a href="ajax/report-problem-v3-fr.html">Version 3.0</a></li>
+	<li><a href="ajax/report-problem-v2-fr.html">Version 2.0</a></li>
+	<li><a href="ajax/report-problem-aa-fr.html">Version 2.0 avec configuration Adobe Analytic</a></li>
+	<li><a href="ajax/report-problem-v1-fr.html">Version 1.0</a></li>
 </ul>
 
-<h5>Version 3</h5>
-<pre><code>&lt;form action="/sites/feedback/feedback-form-destination.html" id="gc-rprt-prblm-form" class="wb-postback" data-wb-postback="{&quot;success&quot;:&quot;.success-message&quot;,&quot;failure&quot;:&quot;.failure-message&quot;,&quot;content&quot;:&quot;.form-content&quot;}"&gt;
+<h5>Version 4.0</h5>
+<pre><code>&lt;div class="row row-no-gutters"&gt;&lt;div class="col-sm-11 col-md-7 col-lg-6"&gt;
+	&lt;details class="brdr-0"&gt;
+		&lt;summary class="btn btn-default text-center"&gt;Signaler un problème ou une erreur sur cette page&lt;/summary&gt;
+		&lt;div class="well row"&gt;
+			&lt;div class="gc-rprt-prblm"&gt;
+				&lt;div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl"&gt;
+					&lt;form action="/sites/feedback/feedback-form-destination.html" id="gc-rprt-prblm-form" class="wb-postback"
+						data-wb-postback=&apos;{
+							"success": ".success-message",
+							"failure": ".failure-message"}&apos;
+						<ins>data-wb-jsonmanager=&apos;{
+							"name": "rap",
+							"extractor": [
+								{ "interface": "referer", "path": "externalReferer" },
+								{ "selector": "title", "path": "pageTitle" },
+								{ "interface": "locationHref", "path": "submissionPage" },
+								{ "selector": "html", "attr": "lang", "path": "lang" },
+								{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "pageOwner" },
+								{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "subject" }
+							]
+						}&apos;&gt;
+						&lt;div data-wb-json=&apos;{
+							"url": "#[rap]",
+							"mapping": [
+								{ "selector": "input", "attr": "name", "value": "/@id" },
+								{ "selector": "input", "attr": "value", "value": "/@value" }
+							]
+						}&apos;&gt;
+							&lt;template&gt;
+								&lt;input type="hidden" name=" value=" /&gt;
+							&lt;/template&gt;
+						&lt;/div&gt;</ins>
+						&lt;fieldset&gt;
+							&lt;legend&gt;
+								&lt;span class="field-name"&gt;Veuillez sélectionner toutes les cases qui s&apos;appliquent :&lt;/span&gt;
+							&lt;/legend&gt;
+							&lt;div class="checkbox"&gt;
+								&lt;label for="problem1"&gt;
+									&lt;input name="problem1" id="problem1" type="checkbox" value="Yes" &gt;Un lien, un bouton ou une vidéo ne fonctionne pas
+								&lt;/label&gt;
+								&lt;input name="problem1" type="hidden" value="&gt;
+							&lt;/div&gt;
+							&lt;div class="checkbox"&gt;
+								&lt;label for="problem2"&gt;
+									&lt;input name="problem2" id="problem2" type="checkbox" value="Yes" &gt;Il y a une erreur d&apos;orthographe ou de grammaire
+								&lt;/label&gt;
+								&lt;input name="problem2" type="hidden" value="&gt;
+							&lt;/div&gt;
+							&lt;div class="checkbox"&gt;
+								&lt;label for="problem3"&gt;
+									&lt;input name="problem3" id="problem3" type="checkbox" value="Yes" &gt;Les renseignements sont incomplets
+								&lt;/label&gt;
+								&lt;input name="problem3" type="hidden" value="&gt;
+							&lt;/div&gt;
+							&lt;div class="checkbox"&gt;
+								&lt;label for="problem4"&gt;
+									&lt;input name="problem4" id="problem4" type="checkbox" value="Yes" &gt;L&apos;information n&apos;est plus à jour ou est erronée
+								&lt;/label&gt;
+								&lt;input name="problem4" type="hidden" value="&gt;
+							&lt;/div&gt;
+							&lt;div class="checkbox"&gt;
+								&lt;label for="problem5"&gt;
+									&lt;input name="problem5" id="problem5" type="checkbox" value="Yes" &gt;Message d&apos;erreur à l&apos;ouverture de la session lorsque je tente d&apos;accéder à un compte
+								&lt;/label&gt;
+								&lt;input name="problem5" type="hidden" value="&gt;
+							&lt;/div&gt;
+							&lt;div class="checkbox"&gt;
+								&lt;label for="problem11"&gt;
+									&lt;input name="problem11" id="problem11" type="checkbox" value="Yes" &gt;Je n&apos;arrive pas à trouver ce que je cherche
+								&lt;/label&gt;
+								&lt;input name="problem11" type="hidden" value="&gt;
+							&lt;/div&gt;
+								&lt;div class="checkbox"&gt;
+									&lt;label for="problem12"&gt;
+										&lt;input name="problem12" id="problem12" type="checkbox" value="Yes" &gt;Autre problème qui ne figure pas sur cette liste
+									&lt;/label&gt;
+								&lt;input name="problem12" type="hidden" value="&gt;
+							&lt;/div&gt;
+						&lt;/fieldset&gt;
+						&lt;button type="submit" class="btn btn-primary"&gt;Soumettre&lt;/button&gt;
+					&lt;/form&gt;
+				&lt;/div&gt;
+				&lt;div class="success-message hide"&gt;
+					&lt;h3&gt;Merci de votre aide!&lt;/h3&gt;
+					&lt;p&gt;Vous ne recevrez pas de réponse. Pour toute question, s’il vous plaît &lt;a href="https://www.canada.ca/fr/contact.html"&gt;contactez-nous&lt;/a&gt;.&lt;/p&gt;
+				&lt;/div&gt;
+				&lt;p class="failure-message hide"&gt;Nous somme désolé, un problème est survenu lors de la soumission de votre formulaire. Veuillez nous envoyer l&apos;information via une méthode alternative.&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/details&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h5 class="wb-inv">Versions précédentes</h5>
+<details>
+	<summary>Version 3.0</summary>
+	<pre><code>&lt;form action="/sites/feedback/feedback-form-destination.html" id="gc-rprt-prblm-form" class="wb-postback" data-wb-postback="{&quot;success&quot;:&quot;.success-message&quot;,&quot;failure&quot;:&quot;.failure-message&quot;,&quot;content&quot;:&quot;.form-content&quot;}"&gt;
 	&lt;fieldset&gt;
 		&lt;legend&gt;
 			&lt;span class="field-name"&gt;Veuillez sélectionner toutes les cases qui s'appliquent :&lt;/span&gt;
@@ -272,8 +370,10 @@
 	&lt;p&gt;Vous ne recevrez pas de réponse. Pour toute question, s’il vous plaît &lt;a href="https://www.canada.ca/fr/contact.html"&gt;contactez-nous&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p class="failure-message hide"&gt;Nous somme désolé, un problème est survenu lors de la soumission de votre formulaire. Veuillez nous envoyer l'information via une méthode alternative.&lt;/p&gt;</code></pre>
-<h5>Avant, version 2.0</h5>
-<pre><code>&lt;form <ins>action="/sites/feedback/feedback-form-destination.html" id="gc-rprt-prblm-form" class="wb-postback" data-wb-postback="{&quot;success&quot;:&quot;.success-message&quot;,&quot;failure&quot;:&quot;.failure-message&quot;,&quot;content&quot;:&quot;.form-content&quot;}" </ins> &gt;
+</details>
+<details>
+	<summary>Version 2.0</summary>
+	<pre><code>&lt;form <ins>action="/sites/feedback/feedback-form-destination.html" id="gc-rprt-prblm-form" class="wb-postback" data-wb-postback="{&quot;success&quot;:&quot;.success-message&quot;,&quot;failure&quot;:&quot;.failure-message&quot;,&quot;content&quot;:&quot;.form-content&quot;}" </ins> &gt;
 	&lt;fieldset&gt;
 		&lt;legend&gt;
 			&lt;span class="field-name"&gt;Veuillez sélectionner toutes les cases qui s'appliquent :&lt;/span&gt;
@@ -359,8 +459,10 @@
 	&lt;p&gt;Vous ne recevrez pas de réponse. Pour toute question, s'il vous plaît &lt;a href="https://www.canada.ca/fr/contact.html"&gt;contactez-nous&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p class="failure-message hide"&gt;Nous somme désolé, un problème est survenu lors de la soumission de votre formulaire. Veuillez nous envoyer l'information via une méthode alternative.&lt;/p&gt;</ins></code></pre>
-<h5>Avant, la version 1.0</h5>
-<pre><code>&lt;form action="#"&gt;
+</details>
+<details>
+	<summary>Version 1.0</summary>
+	<pre><code>&lt;form action="#"&gt;
 	&lt;fieldset&gt;
 		&lt;legend&gt;&lt;span class="field-name"&gt;Veuillez cocher toutes les réponses pertinentes&nbsp;:&lt;/span&gt;&lt;/legend&gt;
 		&lt;div class="checkbox"&gt;
@@ -402,9 +504,10 @@
 	&lt;/fieldset&gt;
 	&lt;button type="submit" class="btn btn-primary wb-toggle" data-toggle='{"stateOff": "hide", "stateOn": "show", "selector": ".gc-rprt-prblm-tggl"}'&gt;Soumettre&lt;/button&gt;
 &lt;/form&gt;</code></pre>
-</div>
+	</div>
+</details>
 
-<footer class="pagedetails">
+<section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2><div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
 				<div data-ajax-replace="ajax/report-problem-fr.html">
 	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
@@ -419,7 +522,7 @@
 			</dl>
 		</div>
 	</div>
-</footer>
+</section>
 
 </main>
 
@@ -459,7 +562,7 @@
 				
 				<div class="col-xs-6 visible-sm visible-xs tofpg">
 					<a href="#wb-cont">Haut de la page <span class="glyphicon glyphicon-chevron-up"></span></a>
-				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 				</div>
 			</div>
 		</div>
@@ -467,7 +570,7 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2122/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2139/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

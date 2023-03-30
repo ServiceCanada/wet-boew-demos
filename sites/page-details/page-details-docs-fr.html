@@ -13,11 +13,11 @@
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2022-06-30"/>
+<meta name="dcterms.modified" content="2023-02-27"/>
 
-<link href="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2122/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2139/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -171,7 +171,7 @@
 <h2>Évaluation et rapport</h2>
 <p>Il n'y a pas d'évaluation ni de rapport disponible pour ce composant.</p>
 
-<h2>API (version 2.0)</h2>
+<h2>API (version 2.1)</h2>
 <table class="table bordée de table">
 	<tr>
 		<th>Classe CSS</th>
@@ -181,7 +181,7 @@
 	</tr>
 	<tr>
 		<td>Version 1.0</td>
-		<td>Version 2.0</td>
+		<td>Version 2.1</td>
 		<td>Version 1.0</td>
 		<td>n.d.</td>
 	</tr>
@@ -191,13 +191,53 @@
 <p><code>page-details</code></p>
 
 
-<h3>Gabarit (v.2.0)</h3>
+<h3>Gabarit (v.2.1)</h3>
 <p>Notes sur la migration du gabarit</p>
 
+<div class="alert alert-info">
+	<h4>Support de la version 2.0</h4>
+	<p>Bien que le gabarit ait été mis à jour vers la version 2.1, la version 2.0 est toujours prise en charge. Cependant, le contenu de la page et le <code>&lt;footer></code> doivent être situés à l'intérieur d'un <code>&lt;article></code>. Voici un exemple de code&nbsp;:</p>
+<pre><code>&lt;main>
+	&lt;article>
+		...
+		Contenu de la page
+		...
+		&lt;footer class="pagedetails">
+			...
+		&lt;/footer>
+	&lt;/article>
+&lt;/main></code></pre>
+</div>
+
 <h4>Détails de la page avec "Signaler un problème sur cette page" et "Partager cette page" activés</h4>
-<div class="row">
-	<div class="col-md-6">
-		<h5>Version 2.0</h5>
+
+<h5>Version 2.1</h5>
+<pre><code><ins>&lt;section class="pagedetails"&gt;</ins>
+	&lt;h2 class="wb-inv"&gt;Détails de la page&lt;/h2&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col-sm-8 col-md-9 col-lg-9"&gt;
+			&lt;div data-ajax-replace="../feedback/ajax/report-problem-fr.html"&gt;
+				&lt;div class=&quot;row row-no-gutters&quot;&gt;
+					&lt;div class=&quot;col-sm-11 col-md-7 col-lg-6&quot;&gt;
+						&lt;a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html"&gt;Signaler un problème ou une erreur sur cette page &lt;/a&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class="wb-share col-sm-4 col-md-3" data-wb-share="{&quot;lnkClass&quot; : &quot;btn btn-default btn-block&quot;}" &gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-xs-12&quot;&gt;
+			&lt;dl id="wb-dtmd"&gt;
+				&lt;dt&gt;Date de modification&nbsp;:&lt;/dt&gt;
+				&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-14&lt;/time&gt;&lt;/dd&gt;
+			&lt;/dl&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+<ins>&lt;/section&gt;</ins></code></pre>
+
+<h5 class="wb-inv">Version précécentes</h5>
+<details>
+	<summary>Version 2.0</summary>
 <pre><code><ins>&lt;footer class="pagedetails"&gt;
 	&lt;h2 class="wb-inv"&gt;Détails de la page&lt;/h2&gt;
 	&lt;div class="row"&gt;
@@ -220,10 +260,11 @@
 		&lt;/div&gt;
 	&lt;/div&gt;
 &lt;/footer&gt;</ins></code></pre>
-	</div>
-	<div class="col-md-6">
-		<h5>Avant la version 2.0</h5>
-<pre><code><del>&lt;div class="pagedetails"&gt;
+</details>
+
+<details>
+	<summary>Version 1.0</summary>
+<pre><code>&lt;div class="pagedetails"&gt;
 	&lt;div class="row"&gt;
 		&lt;div class="col-sm-6 col-md-5 col-lg-4"&gt;
 			&lt;details class="brdr-0"&gt;
@@ -248,14 +289,27 @@
 		&lt;dt&gt;Date de modification :&lt;/dt&gt;
 		&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-25&lt;/time&gt;&lt;/dd&gt;
 	&lt;/dl&gt;
-&lt;/div&gt;</del></code></pre>
-	</div>
-</div>
+&lt;/div&gt;</code></pre>
+</details>
 
 <h5>Détails de la page avec "Signaler un problème sur cette page" et "Partager cette page" désactivés</h5>
-<div class="row">
-	<div class="col-md-6">
-		<h5>Version 2.0</h5>
+
+<h5>Version 2.1</h5>
+<pre><code><ins>&lt;section class="pagedetails container"&gt;</ins>
+	&lt;h2 class="wb-inv"&gt;Détails de la page&lt;/h2&gt;
+	&lt;div class="row"&gt;
+		&lt;div class=&quot;col-xs-12&quot;&gt;
+			&lt;dl id="wb-dtmd"&gt;
+				&lt;dt&gt;Date de modification&nbsp;:&lt;/dt&gt;
+				&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-14&lt;/time&gt;&lt;/dd&gt;
+			&lt;/dl&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+<ins>&lt;/section&gt;</ins></code></pre>
+
+<h5 class="wb-inv">Version précécentes</h5>
+<details>
+	<summary>Version 2.0</summary>
 <pre><code><ins>&lt;footer class="pagedetails container"&gt;
 	&lt;h2 class="wb-inv"&gt;Détails de la page&lt;/h2&gt;
 	&lt;div class="row"&gt;
@@ -267,10 +321,11 @@
 		&lt;/div&gt;
 	&lt;/div&gt;
 &lt;/footer&gt;</ins></code></pre>
-	</div>
-	<div class="col-md-6">
-		<h5>Avant la version 2.0</h5>
-<pre><code><del>&lt;div class="pagedetails container"&gt;
+</details>
+
+<details>
+	<summary>Version 1.0</summary>
+<pre><code>&lt;div class="pagedetails container"&gt;
 	&lt;div class="row"&gt;
 		&lt;div class="col-sm-6 col-md-5 col-lg-4"&gt;&lt;/div&gt;
 	&lt;/div&gt;
@@ -278,15 +333,13 @@
 		&lt;dt&gt;Date de modification :&lt;/dt&gt;
 		&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-25&lt;/time&gt;&lt;/dd&gt;
 	&lt;/dl&gt;
-&lt;/div&gt;</del></code></pre>
-	</div>
-</div>
+&lt;/div&gt;</code></pre>
+</details>
 
 <h4>Détails de la page sans le bouton "Signaler un problème sur cette page"</h4>
-<div class="row">
-	<div class="col-md-6">
-		<h5>Version 2.0</h5>
-<pre><code><ins>&lt;footer class="pagedetails"&gt;
+
+<h5>Version 2.1</h5>
+<pre><code><ins>&lt;section class="pagedetails"&gt;</ins>
 	&lt;h2 class="wb-inv"&gt;Détails de la page&lt;/h2&gt;
 	&lt;div class="row"&gt;
 		&lt;div class="wb-share col-sm-4 col-md-3 col-sm-push-8 col-md-push-9" data-wb-share='{&quot;lnkClass&quot; : &quot;btn btn-default btn-block&quot;}' &gt;
@@ -298,30 +351,70 @@
 			&lt;/dl&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
-&lt;/footer&gt;</ins></code></pre>
-	</div>
-	<div class="col-md-6">
-		<h5>Avant la version 2.0</h5>
-<pre><code><del>&lt;div class="pagedetails container"&gt;
-	&lt;div class="row"&gt;
-		&lt;div class="col-sm-6 col-md-5 col-lg-4"&gt;&lt;/div&gt;
-		&lt;div class="col-sm-4 col-md-3 col-sm-offset-2 col-md-offset-4 col-lg-offset-5"&gt;
-			&lt;div class="wb-share" data-wb-share='{&quot;lnkClass&quot; : &quot;btn btn-default btn-block&quot;}' &gt;
+<ins>&lt;/section&gt;</ins></code></pre>
+
+<h5 class="wb-inv">Version précécentes</h5>
+<details>
+	<summary>Version 2.0</summary>
+	<pre><code><ins>&lt;footer class="pagedetails"&gt;
+		&lt;h2 class="wb-inv"&gt;Détails de la page&lt;/h2&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="wb-share col-sm-4 col-md-3 col-sm-push-8 col-md-push-9" data-wb-share='{&quot;lnkClass&quot; : &quot;btn btn-default btn-block&quot;}' &gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;col-sm-6 col-md-5 col-lg-4 col-sm-pull-4 col-md-pull-3&quot;&gt;
+				&lt;dl id="wb-dtmd"&gt;
+					&lt;dt&gt;Date de modification&nbsp;:&lt;/dt&gt;
+					&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-14&lt;/time&gt;&lt;/dd&gt;
+				&lt;/dl&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;
-	&lt;/div&gt;
-	&lt;dl id="wb-dtmd"&gt;
-		&lt;dt&gt;Date de modification :&lt;/dt&gt;
-		&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-25&lt;/time&gt;&lt;/dd&gt;
-	&lt;/dl&gt;
-&lt;/div&gt;</del></code></pre>
-	</div>
-</div>
+	&lt;/footer&gt;</ins></code></pre>
+</details>
+
+<details>
+	<summary>Version 1.0</summary>
+	<pre><code>&lt;div class="pagedetails container"&gt;
+		&lt;div class="row"&gt;
+			&lt;div class="col-sm-6 col-md-5 col-lg-4"&gt;&lt;/div&gt;
+			&lt;div class="col-sm-4 col-md-3 col-sm-offset-2 col-md-offset-4 col-lg-offset-5"&gt;
+				&lt;div class="wb-share" data-wb-share='{&quot;lnkClass&quot; : &quot;btn btn-default btn-block&quot;}' &gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;dl id="wb-dtmd"&gt;
+			&lt;dt&gt;Date de modification :&lt;/dt&gt;
+			&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-25&lt;/time&gt;&lt;/dd&gt;
+		&lt;/dl&gt;
+	&lt;/div&gt;</code></pre>
+</details>
 
 <h5>Détails de la page sans le bouton "Partager cette page"</h5>
-<div class="row">
-	<div class="col-md-6">
-		<h5>Version 2.0</h5>
+
+<h5>Version 2.1</h5>
+<pre><code><ins>&lt;section class="pagedetails"&gt;</ins>
+	&lt;h2 class="wb-inv"&gt;Détails de la page&lt;/h2&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col-sm-8 col-md-9 col-lg-9"&gt;
+			&lt;div data-ajax-replace="../feedback/ajax/report-problem-fr.html"&gt;
+				&lt;div class=&quot;row row-no-gutters&quot;&gt;
+					&lt;div class=&quot;col-sm-11 col-md-7 col-lg-6&quot;&gt;
+						&lt;a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html"&gt;Signaler un problème <ins>ou une erreur</ins> sur cette page &lt;/a&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-xs-12&quot;&gt;
+			&lt;dl id="wb-dtmd"&gt;
+				&lt;dt&gt;Date de modification&nbsp;:&lt;/dt&gt;
+				&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-14&lt;/time&gt;&lt;/dd&gt;
+			&lt;/dl&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+<ins>&lt;/section&gt;</ins></code></pre>
+
+<h5 class="wb-inv">Version précécentes</h5>
+<details>
+	<summary>Version 2.0</summary>
 <pre><code><ins>&lt;footer class="pagedetails"&gt;
 	&lt;h2 class="wb-inv"&gt;Détails de la page&lt;/h2&gt;
 	&lt;div class="row"&gt;
@@ -342,10 +435,11 @@
 		&lt;/div&gt;
 	&lt;/div&gt;
 &lt;/footer&gt;</ins></code></pre>
-	</div>
-	<div class="col-md-6">
-		<h5>Avant la version 2.0</h5>
-<pre><code><del>&lt;div class="pagedetails"&gt;
+</details>
+
+<details>
+	<summary>Version 1.0</summary>
+<pre><code>&lt;div class="pagedetails"&gt;
 	&lt;div class="row"&gt;
 		&lt;div class="col-sm-6 col-md-5 col-lg-4"&gt;
 			&lt;details class="brdr-0"&gt;
@@ -361,17 +455,15 @@
 						&lt;/div&gt;
 					&lt;/div&gt;
 				&lt;/div&gt;
-			&lt;/détails&gt;
+			&lt;/details&gt;
 		&lt;/div&gt;
 	&lt;/div&gt;
 		&lt;dl id="wb-dtmd"&gt;
 		&lt;dt&gt;Date de modification :&lt;/dt&gt;
 		&lt;dd&gt;&lt;time property="dateModified"&gt;2022-04-25&lt;/time&gt;&lt;/dd&gt;
 	&lt;/dl&gt;
-&lt;/div&gt;</del></code></pre>
-	</div>
-</div>
-
+&lt;/div&gt;</code></pre>
+</details>
 
 <h3>Rendu visuel (v2.0)</h3>
 <ul>
@@ -385,7 +477,7 @@
 	</li>
 </ul>
 
-<footer class="pagedetails">
+<section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2><div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
 				<div data-ajax-replace="../feedback/ajax/report-problem-en.html">
 	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
@@ -396,11 +488,11 @@
 			</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12">
 			<dl id="wb-dtmd">
 				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified">2022-06-30</time></dd>
+				<dd><time property="dateModified">2023-02-27</time></dd>
 			</dl>
 		</div>
 	</div>
-</footer>
+</section>
 
 </main>
 
@@ -440,7 +532,7 @@
 				
 				<div class="col-xs-6 visible-sm visible-xs tofpg">
 					<a href="#wb-cont">Haut de la page <span class="glyphicon glyphicon-chevron-up"></span></a>
-				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				</div><div class="col-xs-6 col-md-3 col-lg-2 text-right"><img src="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 				</div>
 			</div>
 		</div>
@@ -448,7 +540,7 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2122/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2122/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2139/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
