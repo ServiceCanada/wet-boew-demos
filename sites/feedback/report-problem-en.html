@@ -35,8 +35,8 @@
 	<ul class="list-inline mrgn-bttm-0">
 		<li>
 			<a lang="fr" hreflang="fr" href="report-problem-fr.html">
-				<span class="hidden-xs">Français</span>
-				<abbr title="Français" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+				<span class="hidden-xs" translate="no">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
 			</a>
 		</li>
 	</ul>
@@ -147,7 +147,7 @@
 									{ "selector": "title", "path": "pageTitle" },
 									{ "interface": "locationHref", "path": "submissionPage" },
 									{ "selector": "html", "attr": "lang", "path": "lang" },
-									{ "selector": "meta[name=\"author\"]", "attr": "content", "path": "pageOwner" },
+									{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "pageOwner" },
 									{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "subject" }
 								]
 							}'&gt;
@@ -197,16 +197,16 @@
 									&lt;input name="problem5" type="hidden" value=""&gt;
 								&lt;/div&gt;
 								&lt;div class="checkbox"&gt;
-									&lt;label for="problem6"&gt;
-										&lt;input name="problem6" id="problem6" type="checkbox" value="Yes" &gt;I can't find what I'm looking for
+									&lt;label for="problem11"&gt;
+										&lt;input name="problem11" id="problem11" type="checkbox" value="Yes" &gt;I can't find what I'm looking for
 									&lt;/label&gt;
-									&lt;input name="problem6" type="hidden" value=""&gt;
+									&lt;input name="problem11" type="hidden" value=""&gt;
 								&lt;/div&gt;
 								&lt;div class="checkbox"&gt;
-									&lt;label for="problem7"&gt;
-										&lt;input name="problem7" id="problem7" type="checkbox" value="Yes" &gt;Other issue not in this list
+									&lt;label for="problem12"&gt;
+										&lt;input name="problem12" id="problem12" type="checkbox" value="Yes" &gt;Other issue not in this list
 									&lt;/label&gt;
-									&lt;input name="problem7" type="hidden" value=""&gt;
+									&lt;input name="problem12" type="hidden" value=""&gt;
 								&lt;/div&gt;
 							&lt;/fieldset&gt;
 							&lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
@@ -223,7 +223,7 @@
 	&lt;/div&gt;
 &lt;/div&gt;</code></pre></figure>
 
-<footer class="pagedetails">
+<section class="pagedetails">
 	<h2 class="wb-inv">Page details</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
@@ -240,7 +240,7 @@
 			</dl>
 		</div>
 	</div>
-</footer>
+</section>
 
 </main>
 

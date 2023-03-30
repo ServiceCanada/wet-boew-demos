@@ -13,7 +13,7 @@
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.type" content=""/>
-<meta name="dcterms.issued" content="2023-02-27 15:23:17 +0000"/>
+<meta name="dcterms.issued" content="2023-03-30 13:42:41 +0000"/>
 <meta name="dcterms.modified" content="2017-02-20"/>
 
 <link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -219,10 +219,10 @@
 
 	<div class="row">
 		<section class="col-md-6">
-			<h3>MPEG4 (H264 + AAC) source with inline HTML captions</h3>
+			<h3>Muted MPEG4 (H264 + AAC) source with inline HTML captions</h3>
 			<p>This example illustrates the use of an inline transcript to provide captions. This example can also demonstrate the fallback mechanism in Web browsers that don't support HTML5 videos.</p>
 			<figure class="wb-mltmd">
-				<video poster="demo/video1-en.jpg" title="Looking for a Job">
+				<video poster="demo/video1-en.jpg" title="Looking for a Job" muted>
 					<source type="video/mp4" src="https://wet-boew.github.io/wet-boew-attachments/videos/video1-en.mp4" />
 					<track src="#inline-captions" kind="captions" data-type="text/html" srclang="en" label="English" />
 				</video>
@@ -292,7 +292,7 @@
 			<details class="mrgn-tp-md">
 				<summary>View code</summary>
 				<pre><code>&lt;figure class=&quot;wb-mltmd&quot;&gt;
-	&lt;video poster=&quot;demo/video1-en.jpg&quot; title=&quot;Looking for a Job&quot;&gt;
+	&lt;video poster=&quot;demo/video1-en.jpg&quot; title=&quot;Looking for a Job&quot; muted&gt;
 		&lt;source type=&quot;video/mp4&quot; src=&quot;https://wet-boew.github.io/wet-boew-attachments/videos/video1-en.mp4&quot; /&gt;
 		&lt;track src=&quot;#inline-captions&quot; kind=&quot;captions&quot; data-type=&quot;text/html&quot; srclang=&quot;en&quot; label=&quot;English&quot; /&gt;
 	&lt;/video&gt;
@@ -388,7 +388,7 @@
 	</div>
 </section>
 
-<footer class="pagedetails">
+<section class="pagedetails">
 	<h2 class="wb-inv">Page details</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
@@ -405,7 +405,7 @@
 			</dl>
 		</div>
 	</div>
-</footer>
+</section>
 
 </main>
 

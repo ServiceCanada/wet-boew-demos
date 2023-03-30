@@ -18,7 +18,7 @@
 
 <link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -35,8 +35,8 @@
 	<ul class="list-inline mrgn-bttm-0">
 		<li>
 			<a lang="fr" hreflang="fr" href="page-feedback-fr.html">
-				<span class="hidden-xs">Français</span>
-				<abbr title="Français" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+				<span class="hidden-xs" translate="no">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
 			</a>
 		</li>
 	</ul>
@@ -132,18 +132,16 @@
 <figure class="highlight"><pre><code class="language-text" data-lang="text">&lt;div class="gc-pft row" data-wb-jsonmanager='{
 	"name": "feedback",
 	"extractor": [
-		{ "interface": "locationHref", "path": "submissionPage" },
-		{ "selector": "title", "path": "pageTitle" },
-		{ "selector": "html", "attr": "lang", "path": "language" },
+		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
 		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
 		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
-		{ "selector": "meta[name=\"author\"]", "attr": "content", "path": "institutionopt" }
+		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }
 	]
 }'&gt;
 	&lt;div class="col-sm-10 col-md-9 col-lg-8"&gt;
 		&lt;section class="well mrgn-bttm-0" aria-live="polite"&gt;
 			&lt;h3 class="wb-inv"&gt;Page feedback&lt;/h3&gt;
-			&lt;form id="gc-pft-frm" action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback" data-wb-postback='{"success":".gc-pft-thnk", "content":"#gc-pft-frm"}'&gt;
+			&lt;form action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback" data-wb-postback='{"success":".gc-pft-thnk"}'&gt;
 				&lt;div data-wb-json='{
 					"url": "#[feedback]",
 					"mapping": [
@@ -158,10 +156,10 @@
 				&lt;fieldset class="gc-pft-btns chkbxrdio-grp row row-no-gutters d-sm-flex flex-sm-wrap align-items-sm-center"&gt;
 					&lt;legend class="col-xs-12 col-sm-7 nojs-col-sm-12 col-md-9 col-lg-8 text-center text-sm-left nojs-text-left mrgn-tp-sm pr-sm-3 nojs-pr-sm-0"&gt;&lt;span class="field-name"&gt;Did you find what you were looking for?&lt;/span&gt;&lt;/legend&gt;
 					&lt;div class="col-xs-12 nojs-show"&gt;
-						&lt;button type="submit" name="helpful" value="Yes-Oui" class="btn btn-primary" aria-describedby="why-note"&gt;Yes&lt;/button&gt;
+						&lt;button name="helpful" value="Yes-Oui" class="btn btn-primary" aria-describedby="why-note"&gt;Yes&lt;/button&gt;
 					&lt;/div&gt;
 					&lt;div class="col-xs-12 col-sm-5 col-md-3 col-lg-4 text-center text-sm-right nojs-hide"&gt;
-						&lt;button type="submit" name="helpful" value="Yes-Oui" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm"&gt;Yes&lt;/button&gt;
+						&lt;button name="helpful" value="Yes-Oui" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm"&gt;Yes&lt;/button&gt;
 						&lt;button type="button" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm" data-wb-doaction='[
 							{"action":"removeClass","source":".gc-pft-no","class":"nojs-show"},
 							{"action":"addClass","source":".gc-pft-btns","class":"hide"}
@@ -172,39 +170,24 @@
 					&lt;p id="why-note" class="nojs-show mrgn-tp-lg mrgn-bttm-md"&gt;&lt;strong&gt;If not, tell us why below:&lt;/strong&gt;&lt;/p&gt;
 					&lt;p class="nojs-hide wb-inv"&gt;&lt;strong&gt;Tell us why below:&lt;/strong&gt;&lt;/p&gt;
 					&lt;div aria-live="off"&gt;
-						&lt;fieldset class="chkbxrdio-grp"&gt;
-							&lt;legend&gt;&lt;span class="field-name"&gt;What was wrong?&lt;/span&gt;&lt;/legend&gt;
-							&lt;div class="radio"&gt;
-								&lt;label for="problem1"&gt;&lt;input name="problem" id="problem1" type="radio" value="I can't find the information-Je ne peux pas trouver l'information" /&gt; I can't &lt;strong&gt;find&lt;/strong&gt; the information&lt;/label&gt;
-							&lt;/div&gt;
-							&lt;div class="radio"&gt;
-								&lt;label for="problem2"&gt;&lt;input name="problem" id="problem2" type="radio" value="The information is hard to understand-L'information est difficile à comprendre" /&gt; The information is hard to &lt;strong&gt;understand&lt;/strong&gt;&lt;/label&gt;
-							&lt;/div&gt;
-							&lt;div class="radio"&gt;
-								&lt;label for="problem3"&gt;&lt;input name="problem" id="problem3" type="radio" value="There was an error or something didn't work-Il y avait une erreur ou quelque chose ne fonctionnait pas" /&gt; There was an error or something &lt;strong&gt;didn't work&lt;/strong&gt;&lt;/label&gt;
-							&lt;/div&gt;
-							&lt;div class="radio"&gt;
-								&lt;label for="problem4"&gt;&lt;input name="problem" id="problem4" type="radio" value="Other reason-Autre raison" /&gt; Other reason&lt;/label&gt;
-							&lt;/div&gt;
-							&lt;input type="hidden" name="problem" value="" /&gt;
-						&lt;/fieldset&gt;
 						&lt;div class="form-group"&gt;
-							&lt;label for="problem6" class="mrgn-tp-sm mrgn-bttm-0"&gt;&lt;span class="field-name"&gt;Please provide more details (maximum 300 characters)&lt;/span&gt;&lt;/label&gt;
-							&lt;textarea id="problem6" aria-describedby="problem6-note" name="details" class="form-control full-width" maxlength="300"&gt;&lt;/textarea&gt;
-							&lt;p id="problem6-note"&gt;&lt;small&gt;You will not receive a reply. Telephone numbers and email addresses will be removed.&lt;/small&gt;&lt;/p&gt;
+							&lt;label for="problem" class="mrgn-bttm-0"&gt;&lt;span class="field-name"&gt;Please provide more details&lt;/span&gt;&lt;/label&gt;
+							&lt;p id="problem-note" class="mrgn-bttm-sm"&gt;&lt;strong&gt;&lt;small&gt;You will not receive a reply. Don't include personal information (telephone, email, SIN, financial, medical, or work details).&lt;/small&gt;&lt;/strong&gt;&lt;/p&gt;
+							&lt;p&gt;&lt;small&gt;Maximum 300 characters&lt;/small&gt;&lt;/p&gt;
+							&lt;textarea id="problem" aria-describedby="problem problem-note" name="details" class="form-control full-width" maxlength="300"&gt;&lt;/textarea&gt;
 						&lt;/div&gt;
 						&lt;button name="helpful" value="No-Non" class="btn btn-primary"&gt;Submit&lt;/button&gt;
 					&lt;/div&gt;
 				&lt;/div&gt;
 			&lt;/form&gt;
 			&lt;div class="gc-pft-thnk hide"&gt;
-				&lt;p class="mrgn-tp-sm mrgn-bttm-0"&gt;&lt;span class="far fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"&gt;&lt;/span&gt; Thank you for your feedback.&lt;/p&gt;
+				&lt;p class="mrgn-tp-sm mrgn-bttm-0"&gt;&lt;span class="glyphicon glyphicon-ok text-success mrgn-rght-sm" aria-hidden="true"&gt;&lt;/span&gt; Thank you for your feedback.&lt;/p&gt;
 			&lt;/div&gt;
 		&lt;/section&gt;
 	&lt;/div&gt;
 &lt;/div&gt;</code></pre></figure>
 
-<footer class="pagedetails">
+<section class="pagedetails">
 	<h2 class="wb-inv">Page details</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
@@ -221,7 +204,7 @@
 			</dl>
 		</div>
 	</div>
-</footer>
+</section>
 
 </main>
 

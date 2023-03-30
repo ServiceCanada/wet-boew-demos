@@ -1,18 +1,16 @@
 <div class="gc-pft row" data-wb-jsonmanager='{
 	"name": "feedback",
 	"extractor": [
-		{ "interface": "locationHref", "path": "submissionPage" },
-		{ "selector": "title", "path": "pageTitle" },
-		{ "selector": "html", "attr": "lang", "path": "language" },
+		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
 		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
 		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
-		{ "selector": "meta[name=\"author\"]", "attr": "content", "path": "institutionopt" }
+		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }
 	]
 }'>
 	<div class="col-sm-10 col-md-9 col-lg-8">
 		<section class="well mrgn-bttm-0" aria-live="polite">
 			<h3 class="wb-inv">Rétroaction sur la page</h3>
-			<form id="gc-pft-frm" action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback" data-wb-postback='{"success":".gc-pft-thnk", "content":"#gc-pft-frm"}'>
+			<form action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback" data-wb-postback='{"success":".gc-pft-thnk"}'>
 				<div data-wb-json='{
 					"url": "#[feedback]",
 					"mapping": [
@@ -27,10 +25,10 @@
 				<fieldset class="gc-pft-btns chkbxrdio-grp row row-no-gutters d-sm-flex flex-sm-wrap align-items-sm-center">
 					<legend class="col-xs-12 col-sm-7 nojs-col-sm-12 col-md-9 col-lg-8 text-center text-sm-left nojs-text-left mrgn-tp-sm pr-sm-3 nojs-pr-sm-0"><span class="field-name">Avez-vous trouvé ce que vous cherchiez?</span></legend>
 					<div class="col-xs-12 nojs-show">
-						<button type="submit" name="helpful" value="Yes-Oui" class="btn btn-primary" aria-describedby="why-note">Oui</button>
+						<button name="helpful" value="Yes-Oui" class="btn btn-primary" aria-describedby="why-note">Oui</button>
 					</div>
 					<div class="col-xs-12 col-sm-5 col-md-3 col-lg-4 text-center text-sm-right nojs-hide">
-						<button type="submit" name="helpful" value="Yes-Oui" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm">Oui</button>
+						<button name="helpful" value="Yes-Oui" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm">Oui</button>
 						<button type="button" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm" data-wb-doaction='[
 							{"action":"removeClass","source":".gc-pft-no","class":"nojs-show"},
 							{"action":"addClass","source":".gc-pft-btns","class":"hide"}
@@ -41,33 +39,18 @@
 					<p id="why-note" class="nojs-show mrgn-tp-lg mrgn-bttm-md"><strong>Sinon, dites nous pourquoi ci-dessous&nbsp;:</strong></p>
 					<p class="nojs-hide wb-inv"><strong>Dites nous pourquoi ci-dessous&nbsp;:</strong></p>
 					<div aria-live="off">
-						<fieldset class="chkbxrdio-grp">
-							<legend><span class="field-name">Qu'est-ce qui n'allait pas?</span></legend>
-							<div class="radio">
-								<label for="problem1"><input name="problem" id="problem1" type="radio" value="I can't find the information-Je ne peux pas trouver l'information" /> Je ne peux pas <strong>trouver</strong> l'information</label>
-							</div>
-							<div class="radio">
-								<label for="problem2"><input name="problem" id="problem2" type="radio" value="The information is hard to understand-L'information est difficile à comprendre" /> L'information est difficile à <strong>comprendre</strong></label>
-							</div>
-							<div class="radio">
-								<label for="problem3"><input name="problem" id="problem3" type="radio" value="There was an error or something didn't work-Il y avait une erreur ou quelque chose ne fonctionnait pas" /> Il y avait une erreur ou quelque chose <strong>ne fonctionnait pas</strong></label>
-							</div>
-							<div class="radio">
-								<label for="problem4"><input name="problem" id="problem4" type="radio" value="Other reason-Autre raison" /> Autre raison</label>
-							</div>
-							<input type="hidden" name="problem" value="" />
-						</fieldset>
 						<div class="form-group">
-							<label for="problem6" class="mrgn-tp-sm mrgn-bttm-0"><span class="field-name">Veuillez fournir plus de détails (maximum de 300 caractères)</span></label>
-							<textarea id="problem6" aria-describedby="problem6-note" name="details" class="form-control full-width" maxlength="300"></textarea>
-							<p id="problem6-note"><small>Vous ne recevrez aucune réponse. Les numéros de téléphone et les adresses électroniques seront supprimés.</small></p>
+							<label for="problem" class="mrgn-bttm-0"><span class="field-name">Veuillez fournir plus de détails</span></label>
+							<p id="problem-note" class="mrgn-bttm-sm"><strong><small>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).</small></strong></p>
+							<p><small>Maximum de 300 caractères</small></p>
+							<textarea id="problem" aria-describedby="problem problem-note" name="details" class="form-control full-width" maxlength="300"></textarea>
 						</div>
 						<button name="helpful" value="No-Non" class="btn btn-primary">Soumettre</button>
 					</div>
 				</div>
 			</form>
 			<div class="gc-pft-thnk hide">
-				<p class="mrgn-tp-sm mrgn-bttm-0"><span class="far fa-check-circle text-success mrgn-rght-sm" aria-hidden="true"></span> Merci de vos commentaires.</p>
+				<p class="mrgn-tp-sm mrgn-bttm-0"><span class="glyphicon glyphicon-ok text-success mrgn-rght-sm" aria-hidden="true"></span> Merci de vos commentaires.</p>
 			</div>
 		</section>
 	</div>
