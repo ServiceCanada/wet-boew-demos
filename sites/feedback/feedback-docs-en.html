@@ -208,7 +208,10 @@
 	<summary>Ajaxed-in content</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft row"</span> <span class="na">data-wb-jsonmanager=</span><span class="s">'{
 	"name": "feedback",
 	"extractor": [
-		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
+	{ "selector": "title", "path": "pageTitle" },
+	{ "selector": "html", "attr": "lang", "path": "lang" },
+	{ "interface": "locationHref", "path": "submissionPage" },
+	{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
 		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
 		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
 		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }

@@ -1,7 +1,10 @@
 <div class="gc-pft row" data-wb-jsonmanager='{
 	"name": "feedback",
 	"extractor": [
-		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
+	{ "selector": "title", "path": "pageTitle" },
+	{ "selector": "html", "attr": "lang", "path": "lang" },
+	{ "interface": "locationHref", "path": "submissionPage" },
+	{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
 		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
 		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
 		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }
