@@ -32,16 +32,6 @@
 		],
 		"examples": [
 			{
-				"title": "Report a problem",
-				"language": "en",
-				"path": "report-problem-en.html"
-			},
-			{
-				"title": "Signaler un problème",
-				"language": "fr",
-				"path": "report-problem-fr.html"
-			},
-			{
 				"title": "Page feedback tool",
 				"language": "en",
 				"path": "page-feedback-en.html"
@@ -50,6 +40,36 @@
 				"title": "Outil de rétroaction sur la page",
 				"language": "fr",
 				"path": "page-feedback-fr.html"
+			},
+			{
+				"title": "Page feedback tool with contact link",
+				"language": "en",
+				"path": "page-feedback-contact-en.html"
+			},
+			{
+				"title": "Outil de rétroaction sur la page avec lien de contact",
+				"language": "fr",
+				"path": "page-feedback-contact-fr.html"
+			},
+			{
+				"title": "Page feedback tool without comment",
+				"language": "en",
+				"path": "page-feedback-no-form-en.html"
+			},
+			{
+				"title": "Outil de rétroaction sur la page sans commentaire",
+				"language": "fr",
+				"path": "page-feedbac-no-formk-fr.html"
+			},
+			{
+				"title": "Report a problem",
+				"language": "en",
+				"path": "report-problem-en.html"
+			},
+			{
+				"title": "Signaler un problème",
+				"language": "fr",
+				"path": "report-problem-fr.html"
 			}
 		]
 	}
