@@ -1,10 +1,10 @@
 <div class="gc-pft row" data-wb-jsonmanager='{
 	"name": "feedback",
 	"extractor": [
-	{ "selector": "title", "path": "pageTitle" },
-	{ "selector": "html", "attr": "lang", "path": "lang" },
-	{ "interface": "locationHref", "path": "submissionPage" },
-	{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
+		{ "selector": "title", "path": "pageTitle" },
+		{ "selector": "html", "attr": "lang", "path": "language" },
+		{ "interface": "locationHref", "path": "submissionPage" },
+		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
 		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
 		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
 		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }
@@ -12,7 +12,7 @@
 }'>
 	<div class="col-sm-10 col-md-9 col-lg-8">
 		<section class="well mrgn-bttm-0" aria-live="polite">
-			<h3 class="wb-inv">Rétroaction sur la page</h3>
+			<h3 class="wb-inv">Donnez votre avis sur cette page</h3>
 			<form action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback" data-wb-postback='{"success":".gc-pft-thnk"}'>
 				<div data-wb-json='{
 					"url": "#[feedback]",
@@ -44,7 +44,7 @@
 					<div aria-live="off">
 						<div class="form-group">
 							<label for="problem" class="mrgn-bttm-0"><span class="field-name">Veuillez fournir plus de détails</span></label>
-							<p id="problem-note" class="mrgn-bttm-sm"><strong><small>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).</small></strong></p>
+							<p id="problem-note" class="mrgn-bttm-sm"><small><b>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).</b></small></p>
 							<p><small>Maximum de 300 caractères</small></p>
 							<textarea id="problem" aria-describedby="problem problem-note" name="details" class="form-control full-width" maxlength="300"></textarea>
 						</div>
