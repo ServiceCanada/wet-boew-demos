@@ -8,7 +8,6 @@
 		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
 		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
 		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" },
-		{ "selector": "[data-feedback-service]", "attr": "data-feedback-service", "path": "contact/service" },
 		{ "selector": "[data-feedback-link]", "attr": "data-feedback-link", "path": "contact/link" },
 		{ "selector": "[data-feedback-url]", "attr": "data-feedback-url", "path": "contact/url" }
 	]
@@ -35,7 +34,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-5 col-md-3 col-lg-4 text-center text-sm-right nojs-hide">
 						<button name="helpful" value="Yes-Oui" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm">Yes</button>
-						<button type="button" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm" data-wb-doaction='[
+						<button class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm" data-wb-doaction='[
 							{"action":"removeClass","source":".gc-pft-no","class":"nojs-show"},
 							{"action":"addClass","source":".gc-pft-btns","class":"hide"}
 						]'>No</button>
@@ -47,17 +46,9 @@
 					<details>
 						<summary><b>Need urgent help with a problem? Contact us</b></summary>
 						<p class="mrgn-bttm-0 mrgn-tp-md">
-							<b data-json-replace="#[feedback]/contact/service"></b><br>
 							<a href="#" data-wb-json='[
-							{
-								"url": "#[feedback]/contact/url",
-								"type": "attr",
-								"attr": "href"
-							},
-							{
-								"url": "#[feedback]/contact/link",
-								"type": "replace"
-							}
+							{ "url": "#[feedback]/contact/url", "type": "attr", "attr": "href" },
+							{ "url": "#[feedback]/contact/link", "type": "replace" }
 							]'></a>
 						</p>
 					</details>

@@ -139,7 +139,6 @@
 		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
 		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
 		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" },
-		{ "selector": "[data-feedback-service]", "attr": "data-feedback-service", "path": "contact/service" },
 		{ "selector": "[data-feedback-link]", "attr": "data-feedback-link", "path": "contact/link" },
 		{ "selector": "[data-feedback-url]", "attr": "data-feedback-url", "path": "contact/url" }
 	]
@@ -166,7 +165,7 @@
 					&lt;/div&gt;
 					&lt;div class="col-xs-12 col-sm-5 col-md-3 col-lg-4 text-center text-sm-right nojs-hide"&gt;
 						&lt;button name="helpful" value="Yes-Oui" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm"&gt;Yes&lt;/button&gt;
-						&lt;button type="button" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm" data-wb-doaction='[
+						&lt;button class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm" data-wb-doaction='[
 							{"action":"removeClass","source":".gc-pft-no","class":"nojs-show"},
 							{"action":"addClass","source":".gc-pft-btns","class":"hide"}
 						]'&gt;No&lt;/button&gt;
@@ -178,17 +177,9 @@
 					&lt;details&gt;
 						&lt;summary&gt;&lt;b&gt;Need urgent help with a problem? Contact us&lt;/b&gt;&lt;/summary&gt;
 						&lt;p class="mrgn-bttm-0 mrgn-tp-md"&gt;
-							&lt;b data-json-replace="#[feedback]/contact/service"&gt;&lt;/b&gt;&lt;br&gt;
 							&lt;a href="#" data-wb-json='[
-							{
-								"url": "#[feedback]/contact/url",
-								"type": "attr",
-								"attr": "href"
-							},
-							{
-								"url": "#[feedback]/contact/link",
-								"type": "replace"
-							}
+							{ "url": "#[feedback]/contact/url", "type": "attr", "attr": "href" },
+							{ "url": "#[feedback]/contact/link", "type": "replace" }
 							]'&gt;&lt;/a&gt;
 						&lt;/p&gt;
 					&lt;/details&gt;
@@ -214,8 +205,7 @@
 	<h2 class="wb-inv">Page details</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="ajax/page-feedback-contact-en.html"data-feedback-service="Contact service"
-		data-feedback-link="Contact link"
+				<div data-ajax-replace="ajax/page-feedback-contact-en.html"data-feedback-link="Contact Service Name"
 		data-feedback-url="https://canada.ca"
 	>
 	<div class="row row-no-gutters"><div class="col-sm-9 col-md-6 col-lg-5"><a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html">Report a problem on this page</a>
