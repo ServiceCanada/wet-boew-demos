@@ -12,7 +12,7 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2023-03-30 12:35:19 +0000"/>
+<meta name="dcterms.issued" content="2023-06-14 12:21:44 +0000"/>
 <meta name="dcterms.modified" content="2022-10-12"/>
 
 <link href="/wet-boew-demos/gcweb-pr2139/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -177,7 +177,8 @@
 			"language": {
 				"fr": {
 					"description": "description de M. X",
-					"about": "À propos de M. X"
+					"about": "À propos de M. X",
+					"test_undefined_override": ","
 				},
 				"en": {
 					"description": "description of Mr X",
@@ -470,6 +471,7 @@
 				"source": "#gabaritExterneSousModele",
 				"mapping": [
 					{ "selector": "[data-language]", "value": "/@id" },
+					{ "selector": "[data-test-undefined-override]", "value": "/test_undefined_override" },
 					{ "selector": "[data-about]", "value": "/about" },
 					{ "selector": "[data-about]", "value": "/@id", "attr": "lang" }
 				]
@@ -496,7 +498,7 @@
 		</div>
 	</template>
 	<template id="gabaritExterneSousModele">
-		<li>(<span data-language></span>) <span data-about lang></span></li>
+		<li>(<span data-language></span>) <span data-about lang></span><span data-test-undefined-override>.</span></li>
 	</template>
 </div>
 
@@ -514,6 +516,7 @@
 				"source": "#gabaritExterneSousModele",
 				"mapping": [
 					{ "selector": "[data-language]", "value": "/@id" },
+					{ "selector": "[data-test-undefined-override]", "value": "/test_undefined_override" },
 					{ "selector": "[data-about]", "value": "/about" },
 					{ "selector": "[data-about]", "value": "/@id", "attr": "lang" }
 				]
@@ -540,7 +543,7 @@
 		&lt;/div&gt;
 	&lt;/template&gt;
 	&lt;template id="gabaritExterneSousModele"&gt;
-		&lt;li&gt;(&lt;span data-language&gt;&lt;/span&gt;) &lt;span data-about lang&gt;&lt;/span&gt;&lt;/li&gt;
+		&lt;li&gt;(&lt;span data-language&gt;&lt;/span&gt;) &lt;span data-about lang&gt;&lt;/span&gt;&lt;span data-test-undefined-override>.&lt;/span>&lt;/li&gt;
 	&lt;/template&gt;
 &lt;/div&gt;</code></pre>
 </details>
