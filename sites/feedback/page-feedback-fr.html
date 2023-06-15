@@ -136,8 +136,8 @@
 		{ "selector": "html", "attr": "lang", "path": "language" },
 		{ "interface": "locationHref", "path": "submissionPage" },
 		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
-		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
-		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
+		{ "selector": "[data-feedback-theme]", "attr": "data-feedback-theme", "path": "themeopt" },
+		{ "selector": "[data-feedback-section]", "attr": "data-feedback-section", "path": "sectionopt" },
 		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }
 	]
 }'&gt;
@@ -194,7 +194,9 @@
 	<h2 class="wb-inv">Détails de la page</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="ajax/page-feedback-fr.html">
+				<div data-ajax-replace="ajax/page-feedback-fr.html"
+	data-feedback-section="Section"
+	data-feedback-theme="Thème">
 	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
 		</div>
 	</div>

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.61 - 2023-03-29
+ * v4.0.63 - 2023-06-14
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -22,6 +22,7 @@ wb.getData = function( element, dataName ) {
 			dataObj = JSON.parse( dataAttr );
 			$.data( elm, dataName, dataObj );
 		} catch ( error ) {
+			console.info( elm );
 			$.error( "Bad JSON array in data-" + dataName + " attribute" );
 		}
 	}
@@ -3743,7 +3744,7 @@ var componentName = "wb-charts",
 
 				} else {
 
-					header = currentRowGroup.row[ rIndex ].header;
+					header = !reverseTblParsing ? dataCell.row.header : dataCell.col.header;
 
 					figurehtml = "<figure><figcaption>" +
 						header[ header.length - 1 ].elem.innerHTML +
@@ -4476,6 +4477,19 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 	 * continue
 	 */
 	return true;
+} );
+
+// Re-run WET for elements that have just been loaded if WET is already done initializing
+$document.on( contentUpdatedEvent, function( event ) {
+	if ( wb.isReady && !wb.isDisabled ) {
+		let updtElm = event.currentTarget;
+
+		$( updtElm )
+			.find( wb.allSelectors )
+			.addClass( "wb-init" )
+			.filter( ":not(#" + updtElm.id + " .wb-init .wb-init)" )
+			.trigger( "timerpoke.wb" );
+	}
 } );
 
 // Add the timerpoke to initialize the plugin
@@ -5221,26 +5235,26 @@ var componentName = "wb-eqht",
 			}
 			$elm = reattachElement( $anchor );
 
-			// set the top and tallest to the first element
-			rowTop = $children[ 0 ] ? $children[ 0 ].offsetTop : 0;
+			// set the top offset and tallest height to the first element
+			rowTop = $children[ 0 ] ? $children[ 0 ].getBoundingClientRect().top + window.pageYOffset : 0;
 			tallestHeight = $children[ 0 ] ? $children[ 0 ].offsetHeight : 0;
 
 			// first, the loop MUST be from start to end to work.
 			for ( j = 0; j < $children.length; j++ ) {
 				currentChild = $children[ j ];
 
-				currentChildTop = currentChild.offsetTop;
+				currentChildTop = currentChild.getBoundingClientRect().top + window.pageYOffset;
 				currentChildHeight = currentChild.offsetHeight;
 
 				if ( currentChildTop !== rowTop ) {
 
-					// as soon as we find an element not on this row (not the same offsetTop)
+					// as soon as we find an element not on this row (not the same top offset)
 					// we need to equalize each items in that row to align the next row.
 					equalize( row, tallestHeight );
 
 					// since the elements of the previous row was equalized
-					// we need to get the new offsetTop of the current element
-					currentChildTop = currentChild.offsetTop;
+					// we need to get the new top offset of the current element
+					currentChildTop = currentChild.getBoundingClientRect().top + window.pageYOffset;
 
 					// reset the row, rowTop and tallestHeight
 					row.length = 0;
@@ -7162,17 +7176,23 @@ var $document = wb.doc,
 	fetchEvent = component + ".wb",
 	jsonCache = { },
 	jsonCacheBacklog = { },
-	completeJsonFetch = function( callerId, refId, response, status, xhr, selector ) {
+	completeJsonFetch = function( callerId, refId, response, status, xhr, selector, fetchedOpts ) {
 		if ( !window.jsonpointer ) {
 
 			// JSON pointer library is loaded but not executed in memory yet, we need to wait a tick before to continue
 			setTimeout( function() {
-				completeJsonFetch( callerId, refId, response, status, xhr, selector );
+				completeJsonFetch( callerId, refId, response, status, xhr, selector, fetchedOpts );
 			}, 100 );
 			return false;
 		}
 		if ( selector ) {
-			response = jsonpointer.get( response, selector );
+			try {
+				response = jsonpointer.get( response, selector );
+			} catch ( ex ) {
+				console.error( "JSON fetch - Bad JSON selector: " + selector );
+				console.error( response );
+				console.error( $( "#" + callerId ).get( 0 ) );
+			}
 		}
 		$( "#" + callerId ).trigger( {
 			type: "json-fetched.wb",
@@ -7180,7 +7200,8 @@ var $document = wb.doc,
 				response: response,
 				status: status,
 				xhr: xhr,
-				refId: refId
+				refId: refId,
+				fetchedOpts: fetchedOpts
 			}
 		}, this );
 	};
@@ -7263,7 +7284,7 @@ $document.on( fetchEvent, function( event ) {
 					cachedResponse = jsonCache[ url ];
 
 					if ( cachedResponse ) {
-						completeJsonFetch( callerId, refId, cachedResponse, "success", undefined, selector );
+						completeJsonFetch( callerId, refId, cachedResponse, "success", undefined, selector, fetchOpts );
 						return;
 					} else {
 						if ( !jsonCacheBacklog[ url ] ) {
@@ -7310,7 +7331,7 @@ $document.on( fetchEvent, function( event ) {
 							}
 						}
 
-						completeJsonFetch( callerId, refId, response, status, xhr, selector );
+						completeJsonFetch( callerId, refId, response, status, xhr, selector, fetchOpts );
 
 						if ( jsonCacheBacklog[ url ] ) {
 							backlog = jsonCacheBacklog[ url ];
@@ -7319,7 +7340,7 @@ $document.on( fetchEvent, function( event ) {
 
 							for ( i = 0; i !== i_len; i += 1 ) {
 								i_cache = backlog[ i ];
-								completeJsonFetch( i_cache.callerId, i_cache.refId, response, status, xhr, i_cache.selector );
+								completeJsonFetch( i_cache.callerId, i_cache.refId, response, status, xhr, i_cache.selector, fetchOpts );
 							}
 						}
 
@@ -7331,7 +7352,8 @@ $document.on( fetchEvent, function( event ) {
 								xhr: xhr,
 								status: status,
 								error: error,
-								refId: refId
+								refId: refId,
+								fetchOpts: fetchOpts
 							}
 						}, this );
 					}, this );
@@ -11213,7 +11235,7 @@ var componentName = "wb-share",
 				// Add an email mailto option
 				defaults.sites.email = {
 					name: i18nText.email,
-					url: "mailto:?to=&subject={t}&body={u}%0A{d}",
+					url: "mailto:?subject={t}&body={u}%0A{d}",
 					isMailto: true
 				};
 			}
@@ -11629,7 +11651,12 @@ var componentName = "wb-tables",
 				complete: function() {
 					var $elm = $( "#" + elmId ),
 						dataTableExt = $.fn.dataTableExt,
-						settings = wb.getData( $elm, componentName );
+						settings = wb.getData( $elm, componentName ) || {};
+
+					// Explicitly deactivate the paging for the filterEmphasis provisional feature/styling when not configured
+					if ( $elm.hasClass( "provisional" ) && $elm.hasClass( "filterEmphasis" ) ) {
+						settings.paging = settings.paging ? settings.paging : false;
+					}
 
 					/*
 					 * Extend sorting support
@@ -11754,23 +11781,29 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 } );
 
 // Identify that initialization has completed
-$document.on( "init.dt", function( event ) {
+$document.on( "init.dt", selector, function( event ) {
 	var $elm = $( event.target ),
 		settings = $.extend( true, {}, defaults, window[ componentName ], wb.getData( $elm, componentName ) );
 
 	// Handle sorting/ordering
 	var ordering = ( settings && settings.ordering === false ) ? false : true;
 	if ( ordering ) {
-		$elm.find( "th" ).each( function() {
+		$elm.find( "thead th" ).each( function() {
 			var $th = $( this ),
 				label = ( $th.attr( "aria-sort" ) === "ascending" ) ? i18nText.aria.sortDescending : i18nText.aria.sortAscending;
-			if ( $th.attr( "data-orderable" ) !== "false" ) {
+			if ( ( $th.attr( "data-orderable" ) !== "false" ) && !( $th.hasClass( "sorting_disabled" ) ) ) {
 				$th.html( "<button type='button' aria-controls='" + $th.attr( "aria-controls" ) +  "' title='" + $th.text().replace( /'/g, "&#39;" ) + label + "'>" + $th.html() + "<span class='sorting-cnt'><span class='sorting-icons' aria-hidden='true'></span></span></button>" );
 				$th.removeAttr( "aria-label tabindex aria-controls" );
 			}
 		} );
 		$elm.attr( "aria-label", i18nText.tblFilterInstruction );
 	}
+
+	// Apply the filter emphasis style
+	if ( $elm.hasClass( "provisional" ) && $elm.hasClass( "filterEmphasis" ) ) {
+		$elm.parent().addClass( "provisional filterEmphasis" );
+	}
+
 	wb.ready( $( event.target ), componentName );
 } );
 
@@ -14260,6 +14293,11 @@ var componentName = "wb-data-json",
 						cached_value = jsonpointer.get( content, basePntr + j_cache.value );
 					}
 
+					// Go to the next mapping if the value of JSON node don't exist to ensure we keep the default text set in the template, but move ahead if empty or null
+					if ( cached_value === undefined ) {
+						continue;
+					}
+
 					// Placeholder text replacement if any
 					if ( j_cache.placeholder ) {
 						cached_textContent = cached_node.textContent || "";
@@ -14413,7 +14451,8 @@ var componentName = "wb-data-json",
 		loadJSON( elm, wbJsonConfig.url, refId );
 	};
 
-$document.on( "json-failed.wb", selector, function( ) {
+$document.on( "json-failed.wb", selector, function( event ) {
+	console.info( event.currentTarget );
 	throw "Bad JSON Fetched from url in " + componentName;
 } );
 
@@ -14702,9 +14741,26 @@ var componentName = "wb-jsonmanager",
 	datasetCacheSettings = {},
 	dsDelayed = {},
 	dsPostponePatches = {},
+	dsFetching = {},
+	dsFetchIsArray = {},
+	dsFetchMerged = {},
 	$document = wb.doc,
 	defaults = {
 		ops: [
+			{
+				name: "patches",
+				fn: function( obj, key, tree ) {
+					var path = this.path,
+						patches = this.patches,
+						newTree = jsonpointer.get( tree, path );
+
+					patches.forEach( ( patchConf ) => {
+						patchConf.mainTree = tree;
+						patchConf.pathParent = path;
+						jsonpatch.apply( newTree, [ patchConf ] );
+					} );
+				}
+			},
 			{
 				name: "wb-count",
 				fn: function( obj, key, tree ) {
@@ -14713,14 +14769,14 @@ var componentName = "wb-jsonmanager",
 						filter = this.filter || [ ],
 						filternot = this.filternot || [ ];
 
-					if ( !$.isArray( filter ) ) {
+					if ( !Array.isArray( filter ) ) {
 						filter = [ filter ];
 					}
-					if ( !$.isArray( filternot ) ) {
+					if ( !Array.isArray( filternot ) ) {
 						filternot = [ filternot ];
 					}
 
-					if ( ( filter.length || filternot.length ) && $.isArray( countme ) ) {
+					if ( ( filter.length || filternot.length ) && Array.isArray( countme ) ) {
 
 						// Iterate in obj[key] / item and check if is true for the given path is any.
 						i_len = countme.length;
@@ -14730,38 +14786,32 @@ var componentName = "wb-jsonmanager",
 								len = len + 1;
 							}
 						}
-					} else if ( $.isArray( countme ) ) {
+					} else if ( Array.isArray( countme ) ) {
 						len = countme.length;
 					}
-					jsonpatch.apply( tree, [
-						{ op: "add", path: this.set, value: len }
-					] );
+					applyPatch( tree, "add", this.set, len );
 				}
 			},
 			{
 				name: "wb-first",
 				fn: function( obj, key, tree ) {
 					var currObj = obj[ key ];
-					if ( !$.isArray( currObj ) || currObj.length === 0 ) {
+					if ( !Array.isArray( currObj ) || currObj.length === 0 ) {
 						return;
 					}
 
-					jsonpatch.apply( tree, [
-						{ op: "add", path: this.set, value: currObj[ 0 ] }
-					] );
+					applyPatch( tree, "add", this.set, currObj[ 0 ] );
 				}
 			},
 			{
 				name: "wb-last",
 				fn: function( obj, key, tree ) {
 					var currObj = obj[ key ];
-					if ( !$.isArray( currObj ) || currObj.length === 0 ) {
+					if ( !Array.isArray( currObj ) || currObj.length === 0 ) {
 						return;
 					}
 
-					jsonpatch.apply( tree, [
-						{ op: "add", path: this.set, value: currObj[ currObj.length - 1 ] }
-					] );
+					applyPatch( tree, "add", this.set, currObj[ currObj.length - 1 ] );
 				}
 			},
 			{
@@ -14779,9 +14829,7 @@ var componentName = "wb-jsonmanager",
 						}
 					}
 
-					jsonpatch.apply( tree, [
-						{ op: "replace", path: this.path, value: prefix + val.toLocaleString( loc ) + suffix  }
-					] );
+					applyPatch( tree, "replace", this.path, prefix + val.toLocaleString( loc ) + suffix );
 				}
 			},
 			{
@@ -14790,13 +14838,9 @@ var componentName = "wb-jsonmanager",
 					var val = obj[ key ];
 
 					if ( !this.set ) {
-						jsonpatch.apply( tree, [
-							{ op: "replace", path: this.path, value: wb.decodeUTF8Base64( val ) }
-						] );
+						applyPatch( tree, "replace", this.path, wb.decodeUTF8Base64( val ) );
 					} else {
-						jsonpatch.apply( tree, [
-							{ op: "add", path: this.set, value: wb.decodeUTF8Base64( val ) }
-						] );
+						applyPatch( tree, "add", this.set, wb.decodeUTF8Base64( val ) );
 					}
 				}
 			},
@@ -14806,13 +14850,9 @@ var componentName = "wb-jsonmanager",
 					var val = obj[ key ];
 
 					if ( !this.set ) {
-						jsonpatch.apply( tree, [
-							{ op: "replace", path: this.path, value: wb.escapeHTML( val ) }
-						] );
+						applyPatch( tree, "replace", this.path, wb.escapeHTML( val ) );
 					} else {
-						jsonpatch.apply( tree, [
-							{ op: "add", path: this.set, value: wb.escapeHTML( val ) }
-						] );
+						applyPatch( tree, "add", this.set, wb.escapeHTML( val ) );
 					}
 				}
 			},
@@ -14820,13 +14860,9 @@ var componentName = "wb-jsonmanager",
 				name: "wb-toDateISO",
 				fn: function( obj, key, tree ) {
 					if ( !this.set ) {
-						jsonpatch.apply( tree, [
-							{ op: "replace", path: this.path, value: wb.date.toDateISO( obj[ key ] ) }
-						] );
+						applyPatch( tree, "replace", this.path, wb.date.toDateISO( obj[ key ] ) );
 					} else {
-						jsonpatch.apply( tree, [
-							{ op: "add", path: this.set, value: wb.date.toDateISO( obj[ key ] ) }
-						] );
+						applyPatch( tree, "add", this.set, wb.date.toDateISO( obj[ key ] ) );
 					}
 				}
 			},
@@ -14834,13 +14870,37 @@ var componentName = "wb-jsonmanager",
 				name: "wb-toDateTimeISO",
 				fn: function( obj, key, tree ) {
 					if ( !this.set ) {
-						jsonpatch.apply( tree, [
-							{ op: "replace", path: this.path, value: wb.date.toDateISO( obj[ key ], true ) }
-						] );
+						applyPatch( tree, "replace", this.path, wb.date.toDateISO( obj[ key ], true ) );
 					} else {
-						jsonpatch.apply( tree, [
-							{ op: "add", path: this.set, value: wb.date.toDateISO( obj[ key ], true ) }
-						] );
+						applyPatch( tree, "add", this.set, wb.date.toDateISO( obj[ key ], true ) );
+					}
+				}
+			},
+			{
+				name: "wb-swap",
+				fn: function( obj, key, tree ) {
+					var val = obj[ key ],
+						ref = this.ref,
+						mainTree = this.mainTree,
+						path = this.path,
+						newVal;
+
+					if ( val ) {
+						if ( Array.isArray( val ) ) {
+							val.forEach( ( item, i ) => {
+								item = item.replaceAll( "~", "~0" ).replaceAll( "/", "~1" ); // Escape slashed and tilde in val when the key is an IRI
+								newVal = mainTree ? jsonpointer.get( mainTree, ref + "/" + item ) : jsonpointer.get( tree, ref + "/" + item );
+								if ( newVal ) {
+									applyPatch( tree, "replace", path + "/" + i, newVal );
+								}
+							} );
+						} else if ( typeof val === "string" ) {
+							val = val.replaceAll( "~", "~0" ).replaceAll( "/", "~1" ); // Escape slashed and tilde in val when the key is an IRI
+							newVal = mainTree ? jsonpointer.get( mainTree, ref + "/" + val ) : jsonpointer.get( tree, ref + "/" + val );
+							if ( newVal ) {
+								applyPatch( tree, "replace", path, newVal );
+							}
+						}
 					}
 				}
 			}
@@ -14883,6 +14943,26 @@ var componentName = "wb-jsonmanager",
 						}
 					}
 				}
+			},
+			{
+				name: "wb-swap",
+				fn: function( arr ) {
+					arr.forEach( ( item, i ) => {
+						jsonpatch.apply( arr, [
+							{ op: "wb-swap", path: "/" + i + this.path, ref: this.ref, mainTree: this.mainTree }
+						] );
+					} );
+				}
+			},
+			{
+				name: "patches",
+				fn: function( arr ) {
+					arr.forEach( ( item, i ) => {
+						jsonpatch.apply( this.mainTree || arr, [
+							{ op: "patches", path: ( this.pathParent || "" ) + "/" + i + this.path, patches: this.patches }
+						] );
+					} );
+				}
 			}
 		],
 		opsRoot: [],
@@ -14910,7 +14990,8 @@ var componentName = "wb-jsonmanager",
 			jsSettings = window[ componentName ] || { },
 			ops, opsArray, opsRoot,
 			i, i_len, i_cache,
-			url, dsName;
+			url, urlActual, dsName,
+			fetchOpts = { };
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -14966,22 +15047,42 @@ var componentName = "wb-jsonmanager",
 
 					if ( url ) {
 
-						// Fetch the JSON
-						$elm.trigger( {
-							type: "json-fetch.wb",
-							fetch: {
-								url: url,
+						url = typeof url === "string" ? [ url ] : url;
+						i_len = url.length;
+
+						dsFetching[ dsName ] = i_len;
+
+						for ( i = 0; i !== i_len; i++ ) {
+
+							urlActual = url[ i ];
+
+							// Fetch default configuration
+							fetchOpts = {
 								nocache: elmData.nocache,
 								nocachekey: elmData.nocachekey,
 								data: elmData.data,
 								contentType: elmData.contenttype,
 								method: elmData.method
-							}
-						} );
+							};
 
-						// If the URL is a dataset, make it ready
-						if ( url.charCodeAt( 0 ) === 35 && url.charCodeAt( 1 ) === 91 ) {
-							wb.ready( $elm, componentName );
+							// When the "url" is an extended configuration
+							if ( urlActual.url ) {
+								fetchOpts.savingPath = urlActual.path || "";
+								fetchOpts.url = urlActual.url;
+							} else {
+								fetchOpts.url = urlActual;
+							}
+
+							// Fetch the JSON
+							$elm.trigger( {
+								type: "json-fetch.wb",
+								fetch: fetchOpts
+							} );
+
+							// If the URL is a dataset, make it ready
+							if ( fetchOpts.url.charCodeAt( 0 ) === 35 && fetchOpts.url.charCodeAt( 1 ) === 91 ) {
+								wb.ready( $elm, componentName );
+							}
 						}
 					} else if ( !url && elmData.extractor ) {
 						$elm.trigger( {
@@ -15193,8 +15294,8 @@ var componentName = "wb-jsonmanager",
 				return b === null;
 			}
 			var i, l;
-			if ( $.isArray( a ) ) {
-				if (  $.isArray( b ) || a.length !== b.length ) {
+			if ( Array.isArray( a ) ) {
+				if (  Array.isArray( b ) || a.length !== b.length ) {
 					return false;
 				}
 				for ( i = 0, l = a.length; i < l; i++ ) {
@@ -15221,7 +15322,7 @@ var componentName = "wb-jsonmanager",
 	},
 	_objectKeys = function( obj ) {
 		var keys;
-		if ( $.isArray( obj ) ) {
+		if ( Array.isArray( obj ) ) {
 			keys = new Array( obj.length );
 			for ( var k = 0; k < keys.length; k++ ) {
 				keys[ k ] = "" + k;
@@ -15240,20 +15341,27 @@ var componentName = "wb-jsonmanager",
 		return keys;
 	},
 
+	// Utility function to apply a JSON patch
+	applyPatch = function( tree, op, path, value ) {
+		jsonpatch.apply( tree, [
+			{ op: op, path: path, value: value }
+		] );
+	},
+
 	// Create series of patches for filtering
 	getPatchesToFilter = function( JSONsource, filterPath, filterTrueness, filterFaslseness ) {
 		var filterObj,
 			i, i_len;
 
-		if ( !$.isArray( filterTrueness ) ) {
+		if ( !Array.isArray( filterTrueness ) ) {
 			filterTrueness = [ filterTrueness ];
 		}
-		if ( !$.isArray( filterFaslseness ) ) {
+		if ( !Array.isArray( filterFaslseness ) ) {
 			filterFaslseness = [ filterFaslseness ];
 		}
 
 		filterObj = jsonpointer.get( JSONsource, filterPath );
-		if ( $.isArray( filterObj ) ) {
+		if ( Array.isArray( filterObj ) ) {
 			i_len = filterObj.length - 1;
 			for ( i = i_len; i !== -1; i -= 1 ) {
 				if ( !filterPassJSON( filterObj[ i ], filterTrueness, filterFaslseness ) ) {
@@ -15309,39 +15417,85 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 	var elm = event.target,
 		$elm = $( elm ),
 		settings,
+		fetchedOpts = event.fetch.fetchedOpts,
+		isReloading = elm.hasAttribute( reloadFlag ),
 		dsName,
 		JSONresponse = event.fetch.response,
-		isArrayResponse = $.isArray( JSONresponse ),
+		isArrayResponse,
 		resultSet,
 		i, i_len, i_cache, backlog, selector,
+		objIterator, savingPathSplit,
 		patches, filterTrueness, filterFaslseness, filterPath, extractor;
 
 	if ( elm === event.currentTarget ) {
 		settings = wb.getData( $elm, componentName );
 
+		// Is the fetched JSON need to be wrap in another plain object
+		if ( fetchedOpts && fetchedOpts.savingPath ) {
+			savingPathSplit = fetchedOpts.savingPath.split( "/" );
+
+			for ( i = savingPathSplit.length - 1; i > 0; i-- ) {
+				if ( !savingPathSplit[ i ] ) {
+					continue;
+				}
+				objIterator = {};
+				objIterator[ savingPathSplit[ i ] ] = JSONresponse;
+				JSONresponse = objIterator;
+			}
+		}
+
+		// Determine if the response is an array
+		isArrayResponse = Array.isArray( JSONresponse );
+
+		// Ensure the response is an independant clone
+		if ( isArrayResponse ) {
+			JSONresponse = $.extend( true, [], JSONresponse );
+		} else {
+			JSONresponse = $.extend( true, {}, JSONresponse );
+		}
+
+		dsName = settings.name;
+		dsFetching[ dsName ]--;
+
+		// Ensure that we do have fetched and merged all urls everything before to move ahead
+		dsFetchIsArray[ dsName ] = dsFetchIsArray[ dsName ] ? dsFetchIsArray[ dsName ] : isArrayResponse;
+
+		if ( dsFetchIsArray[ dsName ] !== isArrayResponse ) {
+			throw "Can't merge, incompatible JSON type (array vs object)";
+		}
+
+		if ( !dsFetchMerged[ dsName ] ) {
+			dsFetchMerged[ dsName ] = JSONresponse;
+		} else if ( dsFetchMerged[ dsName ] && isArrayResponse ) {
+			dsFetchMerged[ dsName ] = dsFetchMerged[ dsName ].concat( JSONresponse );
+		} else {
+			dsFetchMerged[ dsName ] = $.extend( dsFetchMerged[ dsName ], JSONresponse );
+		}
+
+		// Quit and wait for the next fetch
+		if ( !isReloading && dsFetching[ dsName ] ) {
+			return;
+		}
+
+		JSONresponse = dsFetchMerged[ dsName ];
+
 		extractor = settings.extractor;
 		if ( extractor ) {
-			if ( !$.isArray( extractor ) ) {
+			if ( !Array.isArray( extractor ) ) {
 				extractor = [ extractor ];
 			}
 			JSONresponse = $.extend( JSONresponse, extractData( extractor ) );
 
 		}
 
-		dsName = "[" + settings.name + "]";
+		dsName = "[" + dsName + "]";
 		patches = settings.patches || [];
 		filterPath = settings.fpath;
 		filterTrueness = settings.filter || [];
 		filterFaslseness = settings.filternot || [];
 
-		if ( !$.isArray( patches ) ) {
+		if ( !Array.isArray( patches ) ) {
 			patches = [ patches ];
-		}
-
-		if ( isArrayResponse ) {
-			JSONresponse = $.extend( true, [], JSONresponse );
-		} else {
-			JSONresponse = $.extend( true, {}, JSONresponse );
 		}
 
 		// Apply a filtering
@@ -15360,6 +15514,7 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 		if ( patches.length ) {
 			jsonpatch.apply( JSONresponse, patches );
 		}
+
 		if ( settings.debug ) {
 			debugPrintOut( $elm, "initEvent", JSONresponse, patches );
 		}
@@ -15371,7 +15526,7 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 		}
 		datasetCacheSettings[ dsName ] = settings;
 
-		if ( elm.hasAttribute( reloadFlag ) ) {
+		if ( isReloading ) {
 			elm.removeAttribute( reloadFlag );
 			i_cache = dsPostponePatches[ dsName ];
 			if ( i_cache ) {
@@ -15426,7 +15581,7 @@ $document.on( patchesEvent, selector, function( event ) {
 		delayedLst,
 		i, i_len, i_cache, pntrSelector;
 
-	if ( elm === event.currentTarget && $.isArray( patches ) ) {
+	if ( elm === event.currentTarget && Array.isArray( patches ) ) {
 		settings = wb.getData( $elm, componentName );
 
 		if ( !settings ) {
@@ -15446,7 +15601,7 @@ $document.on( patchesEvent, selector, function( event ) {
 
 		dsJSON = datasetCache[ dsName ];
 		if ( !isCumulative ) {
-			dsJSON = $.extend( true, ( $.isArray( dsJSON ) ? [] : {} ), dsJSON );
+			dsJSON = $.extend( true, ( Array.isArray( dsJSON ) ? [] : {} ), dsJSON );
 		}
 
 		// Apply a filtering
@@ -15568,7 +15723,7 @@ $document.on( "op.submit.wb-fieldflow", ".wb-fieldflow", function( event, data )
 		return true;
 	}
 
-	if ( !$.isArray( op ) ) {
+	if ( !Array.isArray( op ) ) {
 		ops = [];
 		ops.push( op );
 	} else {

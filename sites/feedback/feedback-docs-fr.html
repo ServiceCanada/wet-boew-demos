@@ -167,22 +167,37 @@
 
 <h4>Comment mettre en œuvre</h4>
 <ul>
-	<li>Pour afficher le formulaire de rétroaction sur la page, créez un <code>&lt;div&gt;</code> avec l'attribut suivant&nbsp;: <code>data-ajax-replace="ajax/page-feedback-fr.html"</code>.</li>
+	<li>Pour afficher le formulaire de rétroaction sur la page, créez un <code>&lt;div&gt;</code> avec les attributs suivants&nbsp;:
+		<ul>
+			<li>Obligatoire&nbsp;: <code>data-ajax-replace="ajax/page-feedback-en.html"</code></li>
+			<li>Optionnel&nbsp;: <code>data-feedback-theme="[Texte définissant le thème de votre page]"</code></li>
+			<li>Optionnel&nbsp;: <code>data-feedback-section="[Texte définissant la section où réside votre page]"</code></li>
+		</ul>
+	</li>
 	<li>Pour la version HTML de base, un lien doit être créé dans un <code>&lt;div&gt;</code> qui pointe vers la page du formulaire de signalement d'un problème&nbsp;: <code>&lt;div&gt;&lt;a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html"&gt;Signaler un problème sur cette page&lt;/a&gt;&lt;/div&gt;</code>.</li>
+	<li>De plus, votre page doit avoir les métadonnées suivantes: <code>&lt;meta name="dcterms.creator" content="[Nom du département]"&gt;</code></li>
 </ul>
 <p>Pour plus d'informations sur le plugin Data Ajax, veuillez visiter la <a href="https://wet-boew.github.io/wet-boew/docs/ref/data-ajax/data-ajax-fr.html">page de documentation Data Ajax</a>.</p>
 
-<h5>Champs de saisie masqués</h5>
-<p>La variante de l'outil de rétroaction sur la page exploite JSON Manager et Data JSON pour obtenir des informations sur la page et générer des champs de saisie masqués dans le formulaire.<p>
-<p>Voici la liste des balises qui <strong>doivent</strong> être présentes dans la page pour que les champs de saisie masqués soient remplis :</p>
+<h5>Spécifique à GCWeb Jekyll</h5>
+<p>Pour appliquer les attributs facultatifs de cette variante sur une page donnée, vous devrez procéder comme suit dans le front-matter de la page&nbsp;:</p>
 <ul>
-	<li><code>&lt;meta name="dcterms.creator" content="[Nom du service]"&gt;</code> (peut être vide)<br>
-	Où [Nom du ministère] est un nom de ministère du vocabulaire contrôlé de canada.ca, par exemple : <code>gc:institutions/service-canada</code></li>
-	<li><code>&lt;meta name="dcterms.subject" content="[Section/catégorie de la page actuelle]"&gt;</code></li> (peut être vide)
-	<li><code>&lt;meta name="dcterms.type" content="[Thème de la page actuelle]"&gt;</code></li> (peut être vide)
+	<li>Définissez la variable <code>feedbackData</code> à un objet contenant les chaînes de caractères suivantes&nbsp;:
+		<ul>
+			<li><code>section</code>&nbsp;: pour définir la section où réside votre page.</li>
+			<li><code>theme</code>&nbsp;: pour définir le thème de votre page.</li>
+		</ul>
+	</li>
 </ul>
+<p>Par exemple&nbsp;:</p>
+<pre><code>"feedbackData": {
+	"theme": "Thème",
+	"section": "Section"
+}</code></pre>
 
-<h4>Exemple de code</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-ajax-replace=</span><span class="s">"ajax/page-feedback-fr.html"</span><span class="nt">&gt;</span>
+<h4>Exemple de code</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-ajax-replace=</span><span class="s">"ajax/page-feedback-fr.html"</span>
+	<span class="na">data-feedback-section=</span><span class="s">"[Texte définissant le thème de votre page]"</span>
+	<span class="na">data-feedback-theme=</span><span class="s">"[Texte définissant la section où réside votre page]"</span><span class="nt">&gt;</span>
 	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
 		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-11 col-md-7 col-lg-6"</span><span class="nt">&gt;</span>
 			<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-default btn-block"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/fr/signaler-probleme.html"</span><span class="nt">&gt;</span>Signaler un problème sur cette page<span class="nt">&lt;/a&gt;</span>
@@ -196,8 +211,8 @@
 		{ "selector": "html", "attr": "lang", "path": "language" },
 		{ "interface": "locationHref", "path": "submissionPage" },
 		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
-		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
-		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
+		{ "selector": "[data-feedback-theme]", "attr": "data-feedback-theme", "path": "themeopt" },
+		{ "selector": "[data-feedback-section]", "attr": "data-feedback-section", "path": "sectionopt" },
 		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }
 	]
 }'</span><span class="nt">&gt;</span>
@@ -260,51 +275,53 @@
 
 <h4>Comment mettre en œuvre</h4>
 <ul>
-	<li>Pour afficher le formulaire de rétroaction sur la page, créez un <code>&lt;div&gt;</code> avec les attributs suivants:
+	<li>Pour afficher le formulaire de rétroaction sur la page, créez un <code>&lt;div&gt;</code> avec les attributs suivants&nbsp;:
 		<ul>
-			<li><code>data-ajax-replace="ajax/page-feedback-contact-fr.html"</code></li>
-			<li><code>data-feedback-link="[Texte du lien de contact]"</code></li>
-			<li><code>data-feedback-url="[URL du lien de contact]"</code></li>
+			<li>Obligatoire&nbsp;: <code>data-ajax-replace="ajax/page-feedback-contact-en.html"</code></li>
+			<li>Obligatoire&nbsp;: <code>data-feedback-link="[Texte du lien de contact]"</code></li>
+			<li>Obligatoire&nbsp;: <code>data-feedback-url="[URL du lien de contact]"</code></li>
+			<li>Optionnel&nbsp;: <code>data-feedback-theme="[Texte définissant le thème de votre page]"</code></li>
+			<li>Optionnel&nbsp;: <code>data-feedback-section="[Texte définissant la section où réside votre page]"</code></li>
 		</ul>
 	</li>
 	<li>Pour la version HTML de base, un lien doit être créé dans un <code>&lt;div&gt;</code> qui pointe vers la page du formulaire de signalement d'un problème&nbsp;: <code>&lt;div&gt;&lt;a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html"&gt;Signaler un problème sur cette page&lt;/a&gt;&lt;/div&gt;</code>.</li>
+	<li>De plus, votre page doit avoir les métadonnées suivantes: <code>&lt;meta name="dcterms.creator" content="[Nom du département]"&gt;</code></li>
 </ul>
 <p>Pour plus d'informations sur le plugin Data Ajax, veuillez visiter la <a href="https://wet-boew.github.io/wet-boew/docs/ref/data-ajax/data-ajax-fr.html">page de documentation Data Ajax</a>.</p>
-
-<h5>Champs de saisie masqués</h5>
-<p>La variante de l'outil de rétroaction sur la page avec lien de contact exploite JSON Manager et Data JSON pour obtenir des informations sur la page et générer des champs de saisie masqués dans le formulaire.<p>
-<p>Voici la liste des balises qui <strong>doivent</strong> être présentes dans la page pour que les champs de saisie masqués soient remplis :</p>
-<ul>
-	<li><code>&lt;meta name="dcterms.creator" content="[Nom du service]"&gt;</code> (peut être vide)<br>
-	Où [Nom du ministère] est un nom de ministère du vocabulaire contrôlé de canada.ca, par exemple : <code>gc:institutions/service-canada</code></li>
-	<li><code>&lt;meta name="dcterms.subject" content="[Section/catégorie de la page actuelle]"&gt;</code></li> (peut être vide)
-	<li><code>&lt;meta name="dcterms.type" content="[Thème de la page actuelle]"&gt;</code></li> (peut être vide)
-</ul>
 
 <h5>Spécifique à GCWeb Jekyll</h5>
 <p>Pour appliquer cette variante sur une page donnée, vous devrez faire ce qui suit dans l'en-tête de la page&nbsp;:</p>
 <ul>
 	<li>Définissez la variable <code>feedbackPath</code> à <code>"ajax/page-feedback-contact-fr.html"</code></li>
-	<li>Définissez la variable <code>feedbackContact</code> à un object contenant les chaînes personnalisables suivantes:
+	<li>Définissez la variable <code>feedbackContact</code> à un objet contenant les chaînes personnalisables suivantes:
 		<ul>
-			<li><code>service</code>: pour définir le nom du service ou le type d'assistance.</li>
 			<li><code>link</code>: pour définir le texte du lien de contact.</li>
 			<li><code>url</code>: pour définir l'URL du lien de contact.</li>
+		</ul>
+	</li>
+	<li>Facultativement, vous pouvez définir la variable <code>feedbackData</code> à un objet contenant les chaînes de caractères suivantes:
+		<ul>
+			<li><code>section</code>&nbsp;: pour définir la section où réside votre page.</li>
+			<li><code>theme</code>&nbsp;: pour définir le thème de votre page.</li>
 		</ul>
 	</li>
 </ul>
 <p>Par exemple&nbsp;:</p>
 <pre><code>"feedbackPath": "ajax/page-feedback-contact-fr.html",
 "feedbackContact": {
-	"service": "Service à contacter",
 	"link": "Lien de contact",
 	"url": "https://canada.ca/fr"
+},
+"feedbackData": {
+	"theme": "Thème",
+	"section": "Section"
 }</code></pre>
 
 <h4>Exemple de code</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-ajax-replace=</span><span class="s">"ajax/page-feedback-contact-fr.html"</span>
-	<span class="na">data-feedback-service=</span><span class="s">"[Nom du service ou type d'assistance]"</span>
 	<span class="na">data-feedback-link=</span><span class="s">"[Texte du lien de contact]"</span>
-	<span class="na">data-feedback-url=</span><span class="s">"[URL du lien de contact]"</span><span class="nt">&gt;</span>
+	<span class="na">data-feedback-url=</span><span class="s">"[URL du lien de contact]"</span>
+	<span class="na">data-feedback-section=</span><span class="s">"[Texte définissant le thème de votre page]"</span>
+	<span class="na">data-feedback-theme=</span><span class="s">"[Texte définissant la section où réside votre page]"</span><span class="nt">&gt;</span>
 	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
 		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-11 col-md-7 col-lg-6"</span><span class="nt">&gt;</span>
 			<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-default btn-block"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/fr/signaler-probleme.html"</span><span class="nt">&gt;</span>Signaler un problème sur cette page<span class="nt">&lt;/a&gt;</span>
@@ -318,8 +335,8 @@
 		{ "selector": "html", "attr": "lang", "path": "language" },
 		{ "interface": "locationHref", "path": "submissionPage" },
 		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
-		{ "selector": "meta[name=\"dcterms.type\"]", "attr": "content", "path": "themeopt" },
-		{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "sectionopt" },
+		{ "selector": "[data-feedback-theme]", "attr": "data-feedback-theme", "path": "themeopt" },
+		{ "selector": "[data-feedback-section]", "attr": "data-feedback-section", "path": "sectionopt" },
 		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" },
 		{ "selector": "[data-feedback-link]", "attr": "data-feedback-link", "path": "contact/link" },
 		{ "selector": "[data-feedback-url]", "attr": "data-feedback-url", "path": "contact/url" }
@@ -860,7 +877,9 @@
 	<h2 class="wb-inv">Détails de la page</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="ajax/page-feedback-fr.html">
+				<div data-ajax-replace="https://wet-boew.github.io/GCWeb/sites/feedback/ajax/page-feedback-fr.html"
+	data-feedback-section=""
+	data-feedback-theme="">
 	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
 		</div>
 	</div>

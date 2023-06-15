@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v13.0.0 - 2023-05-18
+ * v13.3.0 - 2023-06-15
  *
  */
 /*!
@@ -5859,9 +5859,11 @@ a {
 		border: 0 !important; }
 	.dl-horizontal dt {
 		border-top: 1px solid #ccc;
+		hyphens: auto;
 		padding: 10px 10px 10px 0;
 		text-align: left;
-		white-space: normal; }
+		white-space: normal;
+		word-break: break-word; }
 	.dl-horizontal dd {
 		border-top: 1px solid #ccc;
 		margin-bottom: 3px;
@@ -8051,9 +8053,11 @@ a {
 		border: 0 !important; }
 	.dl-horizontal dt {
 		border-top: 1px solid #ccc;
+		hyphens: auto;
 		padding: 10px 10px 10px 0;
 		text-align: left;
-		white-space: normal; }
+		white-space: normal;
+		word-break: break-word; }
 	.dl-horizontal dd {
 		border-top: 1px solid #ccc;
 		margin-bottom: 3px;
@@ -14805,6 +14809,15 @@ table.dataTable {
 		margin-right: 15px; }
 		.dataTables_wrapper .dataTables_filter input {
 			margin-left: .5em; }
+	.dataTables_wrapper.filterEmphasis.provisional .dataTables_filter {
+		background-color: #D9EDF7;
+		float: none;
+		margin-bottom: 7px;
+		padding: 10px; }
+	.dataTables_wrapper.filterEmphasis.provisional .dataTables_info {
+		padding-left: 7px; }
+		.dataTables_wrapper.filterEmphasis.provisional .dataTables_info:after {
+			content: ""; }
 	.dataTables_wrapper .dataTables_length {
 		display: inline-block;
 		margin-top: 5px; }
