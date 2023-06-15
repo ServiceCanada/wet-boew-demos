@@ -13,7 +13,9 @@
 	{%- if page.feedbackContact -%}
 		data-feedback-link="{{page.feedbackContact.link}}"
 		data-feedback-url="{{page.feedbackContact.url}}"
-	{% endif %}>
+	{% endif %}
+	data-feedback-section="{{page.feedbackData.section}}"
+	data-feedback-theme="{{page.feedbackData.theme}}">
 	<div class="row row-no-gutters">
 		{%- if i18nText-lang == "en" -%}
 			<div class="col-sm-9 col-md-6 col-lg-5">
