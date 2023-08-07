@@ -12,7 +12,6 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.type" content=""/>
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2022-06-30"/>
 
@@ -118,11 +117,12 @@
 
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
 <h1 id="wb-cont" property="name">Authentication patterns</h1>
-<p>This component support the following 3 design pattern variant:</p>
+<p>This component support the following 4 design pattern variant:</p>
 <ul>
 	<li>Contextual Sign in button: A link pointing to a dedicated sign in web page</li>
 	<li>Signed-off: A pattern that show how the user can sign-on directly from the current page. Note: The prompt sign in dialog and the interaction resulting of the signed-on are currently out-of-scope.</li>
 	<li>Signed-on: A pattern that shows that the user is logged in, a way to access user's account and how to disconnect.</li>
+	<li><a href="activeusersession-en.html">Active user session</a>: A pattern that show the active user session information (connected), with a personalized user name.</li>
 </ul>
 
 <h2>Contextual Sign in button</h2>
@@ -233,9 +233,7 @@
 	<h2 class="wb-inv">Page details</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="https://wet-boew.github.io/GCWeb/sites/feedback/ajax/page-feedback-en.html"
-	data-feedback-section=""
-	data-feedback-theme="">
+				<div data-ajax-replace="http://0.0.0.0:4000/sites/feedback/ajax/page-feedback-en.html" class="wb-disable-allow">
 	<div class="row row-no-gutters"><div class="col-sm-9 col-md-6 col-lg-5"><a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html">Report a problem on this page</a>
 		</div>
 	</div>

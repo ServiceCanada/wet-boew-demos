@@ -12,7 +12,6 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.type" content=""/>
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2023-01-10"/>
 
@@ -121,7 +120,7 @@
 <span class="wb-prettify all-pre hide"></span>
 <dl class="horizontal">
 	<dt>Statut</dt>
-	<dd>Stable</dd>
+	<dd>Provisoire</dd>
 	<dt>Version</dt>
 	<dd>3.0.0</dd>
 	<dt>Type</dt>
@@ -153,7 +152,7 @@
 	<p>Toutes les variantes sont composées de deux sous-composants&nbsp;:</p>
 	<ul>
 		<li>Le premier est utilisé pour l'intégration sur la page.</li>
-		<li>Le second est le formulaire qui est inséré dynamiquement via un appel Ajax.</li>
+		<li>Le second est le formulaire qui est inséré dynamiquement via un appel Ajax. Ce sous-composant est par contre hors de portée de l'API.</li>
 	</ul>
 </div>
 
@@ -175,7 +174,7 @@
 		</ul>
 	</li>
 	<li>Pour la version HTML de base, un lien doit être créé dans un <code>&lt;div&gt;</code> qui pointe vers la page du formulaire de signalement d'un problème&nbsp;: <code>&lt;div&gt;&lt;a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html"&gt;Signaler un problème sur cette page&lt;/a&gt;&lt;/div&gt;</code>.</li>
-	<li>De plus, votre page doit avoir les métadonnées suivantes: <code>&lt;meta name="dcterms.creator" content="[Nom du département]"&gt;</code></li>
+	<li>De plus, vous pouvez définir les métadonnées suivantes: <code>&lt;meta name="dcterms.creator" content="[Nom du département]"&gt;</code></li>
 </ul>
 <p>Pour plus d'informations sur le plugin Data Ajax, veuillez visiter la <a href="https://wet-boew.github.io/wet-boew/docs/ref/data-ajax/data-ajax-fr.html">page de documentation Data Ajax</a>.</p>
 
@@ -204,7 +203,7 @@
 		<span class="nt">&lt;/div&gt;</span>
 	<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure><details>
-	<summary>Contenu ajouté via Ajax</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft row"</span> <span class="na">data-wb-jsonmanager=</span><span class="s">'{
+	<summary>Contenu ajouté via Ajax</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"gc-pft"</span> <span class="na">class=</span><span class="s">"row wb-disable-allow"</span> <span class="na">data-wb-jsonmanager=</span><span class="s">'{
 	"name": "feedback",
 	"extractor": [
 		{ "selector": "title", "path": "pageTitle" },
@@ -217,10 +216,10 @@
 	]
 }'</span><span class="nt">&gt;</span>
 	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10 col-md-9 col-lg-8"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"well mrgn-bttm-0"</span> <span class="na">aria-live=</span><span class="s">"polite"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"well mrgn-bttm-0"</span><span class="nt">&gt;</span>
 			<span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Donnez votre rétroaction sur cette page<span class="nt">&lt;/h3&gt;</span>
-			<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">class=</span><span class="s">"wb-postback"</span> <span class="na">data-wb-postback=</span><span class="s">'{"success":".gc-pft-thnk"}'</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">data-wb-json=</span><span class="s">'{
+			<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">class=</span><span class="s">"wb-postback wb-disable-allow"</span> <span class="na">data-wb-postback=</span><span class="s">'{"success":".gc-pft-thnk"}'</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wb-disable-allow"</span> <span class="na">data-wb-json=</span><span class="s">'{
 					"url": "#[feedback]",
 					"mapping": [
 						{ "selector": "input", "attr": "name", "value": "/@id" },
@@ -245,21 +244,19 @@
 					<span class="nt">&lt;/div&gt;</span>
 				<span class="nt">&lt;/fieldset&gt;</span>
 				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft-no nojs-show"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"why-note"</span> <span class="na">class=</span><span class="s">"nojs-show mrgn-tp-lg mrgn-bttm-md"</span><span class="nt">&gt;&lt;strong&gt;</span>Sinon, dites nous pourquoi ci-dessous<span class="ni">&amp;nbsp;</span>:<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"nojs-hide wb-inv"</span><span class="nt">&gt;&lt;strong&gt;</span>Dites nous pourquoi ci-dessous<span class="ni">&amp;nbsp;</span>:<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">aria-live=</span><span class="s">"off"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Veuillez fournir plus de détails<span class="nt">&lt;/span&gt;&lt;/label&gt;</span>
-							<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"problem-note"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-sm"</span><span class="nt">&gt;&lt;small&gt;&lt;b&gt;</span>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).<span class="nt">&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;</span>
-							<span class="nt">&lt;p&gt;&lt;small&gt;</span>Maximum de 300 caractères<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
-							<span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"problem"</span> <span class="na">aria-describedby=</span><span class="s">"problem problem-note"</span> <span class="na">name=</span><span class="s">"details"</span> <span class="na">class=</span><span class="s">"form-control full-width"</span> <span class="na">maxlength=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
-						<span class="nt">&lt;/div&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"No-Non"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Soumettre<span class="nt">&lt;/button&gt;</span>
+					<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"why-note"</span> <span class="na">class=</span><span class="s">"nojs-show mrgn-tp-lg mrgn-bttm-md"</span><span class="nt">&gt;&lt;b&gt;</span>Sinon, dites nous pourquoi ci-dessous<span class="ni">&amp;nbsp;</span>:<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
+					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"nojs-hide wb-inv"</span> <span class="na">aria-live=</span><span class="s">"polite"</span><span class="nt">&gt;&lt;b&gt;</span>Dites nous pourquoi ci-dessous<span class="ni">&amp;nbsp;</span>:<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
+					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Veuillez fournir plus de détails<span class="nt">&lt;/span&gt;&lt;/label&gt;</span>
+						<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"problem-note"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-sm"</span><span class="nt">&gt;&lt;small&gt;&lt;b&gt;</span>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).<span class="nt">&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;</span>
+						<span class="nt">&lt;p&gt;&lt;small&gt;</span>Maximum de 300 caractères<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+						<span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"problem"</span> <span class="na">aria-describedby=</span><span class="s">"problem problem-note"</span> <span class="na">name=</span><span class="s">"details"</span> <span class="na">class=</span><span class="s">"form-control full-width"</span> <span class="na">maxlength=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
 					<span class="nt">&lt;/div&gt;</span>
+					<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"No-Non"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Soumettre<span class="nt">&lt;/button&gt;</span>
 				<span class="nt">&lt;/div&gt;</span>
 			<span class="nt">&lt;/form&gt;</span>
 			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft-thnk hide"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mrgn-tp-sm mrgn-bttm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok text-success mrgn-rght-sm"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span> Merci de vos commentaires.<span class="nt">&lt;/p&gt;</span>
+				<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mrgn-tp-sm mrgn-bttm-0"</span> <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok text-success mrgn-rght-sm"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span> Merci de vos commentaires.<span class="nt">&lt;/p&gt;</span>
 			<span class="nt">&lt;/div&gt;</span>
 		<span class="nt">&lt;/section&gt;</span>
 	<span class="nt">&lt;/div&gt;</span>
@@ -328,7 +325,7 @@
 		<span class="nt">&lt;/div&gt;</span>
 	<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure><details>
-	<summary>Contenu ajouté via Ajax</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft row"</span> <span class="na">data-wb-jsonmanager=</span><span class="s">'{
+	<summary>Contenu ajouté via Ajax</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"gc-pft"</span> <span class="na">class=</span><span class="s">"row wb-disable-allow"</span> <span class="na">data-wb-jsonmanager=</span><span class="s">'{
 	"name": "feedback",
 	"extractor": [
 		{ "selector": "title", "path": "pageTitle" },
@@ -343,10 +340,10 @@
 	]
 }'</span><span class="nt">&gt;</span>
 	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10 col-md-9 col-lg-8"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"well mrgn-bttm-0"</span> <span class="na">aria-live=</span><span class="s">"polite"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"well mrgn-bttm-0"</span><span class="nt">&gt;</span>
 			<span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Donnez votre rétroaction sur cette page<span class="nt">&lt;/h3&gt;</span>
-			<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">class=</span><span class="s">"wb-postback"</span> <span class="na">data-wb-postback=</span><span class="s">'{"success":".gc-pft-thnk"}'</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">data-wb-json=</span><span class="s">'{
+			<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">class=</span><span class="s">"wb-postback wb-disable-allow"</span> <span class="na">data-wb-postback=</span><span class="s">'{"success":".gc-pft-thnk"}'</span><span class="nt">&gt;</span>
+				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wb-disable-allow"</span> <span class="na">data-wb-json=</span><span class="s">'{
 					"url": "#[feedback]",
 					"mapping": [
 						{ "selector": "input", "attr": "name", "value": "/@id" },
@@ -371,10 +368,10 @@
 					<span class="nt">&lt;/div&gt;</span>
 				<span class="nt">&lt;/fieldset&gt;</span>
 				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft-no nojs-show"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"why-note"</span> <span class="na">class=</span><span class="s">"nojs-show mrgn-tp-lg mrgn-bttm-md"</span><span class="nt">&gt;&lt;strong&gt;</span>Sinon, dites nous pourquoi ci-dessous<span class="ni">&amp;nbsp;</span>:<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"nojs-hide wb-inv"</span><span class="nt">&gt;&lt;strong&gt;</span>Dites nous pourquoi ci-dessous<span class="ni">&amp;nbsp;</span>:<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+					<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"why-note"</span> <span class="na">class=</span><span class="s">"nojs-show mrgn-tp-lg mrgn-bttm-md"</span><span class="nt">&gt;&lt;b&gt;</span>Sinon, dites nous pourquoi ci-dessous<span class="ni">&amp;nbsp;</span>:<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
+					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"nojs-hide wb-inv"</span> <span class="na">aria-live=</span><span class="s">"polite"</span><span class="nt">&gt;&lt;b&gt;</span>Dites nous pourquoi ci-dessous<span class="ni">&amp;nbsp;</span>:<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
 					<span class="nt">&lt;details&gt;</span>
-						<span class="nt">&lt;summary&gt;&lt;b&gt;</span>Besoin d’aide urgente pour résoudre un problème? Communiquez avec nous<span class="nt">&lt;/b&gt;&lt;/summary&gt;</span>
+						<span class="nt">&lt;summary&gt;</span>Besoin d’aide urgente pour résoudre un problème? Communiquez avec nous<span class="nt">&lt;/summary&gt;</span>
 						<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mrgn-bttm-0 mrgn-tp-md"</span><span class="nt">&gt;</span>
 							<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-wb-json=</span><span class="s">'[
 							{ "url": "#[feedback]/contact/url", "type": "attr", "attr": "href" },
@@ -382,19 +379,17 @@
 							]'</span><span class="nt">&gt;&lt;/a&gt;</span>
 						<span class="nt">&lt;/p&gt;</span>
 					<span class="nt">&lt;/details&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">aria-live=</span><span class="s">"off"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Veuillez fournir plus de détails<span class="nt">&lt;/span&gt;&lt;/label&gt;</span>
-							<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"problem-note"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-sm"</span><span class="nt">&gt;&lt;small&gt;&lt;b&gt;</span>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).<span class="nt">&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;</span>
-							<span class="nt">&lt;p&gt;&lt;small&gt;</span>Maximum de 300 caractères<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
-							<span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"problem"</span> <span class="na">aria-describedby=</span><span class="s">"problem problem-note"</span> <span class="na">name=</span><span class="s">"details"</span> <span class="na">class=</span><span class="s">"form-control full-width"</span> <span class="na">maxlength=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
-						<span class="nt">&lt;/div&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"No-Non"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Soumettre<span class="nt">&lt;/button&gt;</span>
+					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+						<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Veuillez fournir plus de détails<span class="nt">&lt;/span&gt;&lt;/label&gt;</span>
+						<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"problem-note"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-sm"</span><span class="nt">&gt;&lt;small&gt;&lt;b&gt;</span>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).<span class="nt">&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;</span>
+						<span class="nt">&lt;p&gt;&lt;small&gt;</span>Maximum de 300 caractères<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
+						<span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"problem"</span> <span class="na">aria-describedby=</span><span class="s">"problem problem-note"</span> <span class="na">name=</span><span class="s">"details"</span> <span class="na">class=</span><span class="s">"form-control full-width"</span> <span class="na">maxlength=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
 					<span class="nt">&lt;/div&gt;</span>
+					<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"No-Non"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Soumettre<span class="nt">&lt;/button&gt;</span>
 				<span class="nt">&lt;/div&gt;</span>
 			<span class="nt">&lt;/form&gt;</span>
 			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft-thnk hide"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mrgn-tp-sm mrgn-bttm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok text-success mrgn-rght-sm"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span> Merci de vos commentaires.<span class="nt">&lt;/p&gt;</span>
+				<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mrgn-tp-sm mrgn-bttm-0"</span> <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok text-success mrgn-rght-sm"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span> Merci de vos commentaires.<span class="nt">&lt;/p&gt;</span>
 			<span class="nt">&lt;/div&gt;</span>
 		<span class="nt">&lt;/section&gt;</span>
 	<span class="nt">&lt;/div&gt;</span>
@@ -877,9 +872,7 @@
 	<h2 class="wb-inv">Détails de la page</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="https://wet-boew.github.io/GCWeb/sites/feedback/ajax/page-feedback-fr.html"
-	data-feedback-section=""
-	data-feedback-theme="">
+				<div data-ajax-replace="http://0.0.0.0:4000/sites/feedback/ajax/page-feedback-fr.html" class="wb-disable-allow">
 	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
 		</div>
 	</div>
