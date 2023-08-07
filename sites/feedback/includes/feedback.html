@@ -2,20 +2,24 @@
 	{%- if page.feedbackPath -%}
 		{{ page.feedbackPath }}
 	{%- elsif site.global.feedbackPath and site.global.feedbackPath.first -%}
-		{{ site.global.feedbackPath[ i18nText-lang ] }}
+		{{ site.url }}{{ site.baseurl }}{{ site.global.feedbackPath[ i18nText-lang ] }}
 	{%- endif -%}
 {%- endcapture -%}
 
 
 <div {% if feedbackPath and feedbackPath != "" -%}
-		data-ajax-replace="{{feedbackPath}}"
+		data-ajax-replace="{{feedbackPath}}" class="wb-disable-allow"
 	{%- endif -%}
 	{%- if page.feedbackContact -%}
 		data-feedback-link="{{page.feedbackContact.link}}"
 		data-feedback-url="{{page.feedbackContact.url}}"
 	{% endif %}
-	data-feedback-section="{{page.feedbackData.section}}"
-	data-feedback-theme="{{page.feedbackData.theme}}">
+	{%- if page.feedbackData.section -%}
+		data-feedback-section="{{page.feedbackData.section}}"
+	{% endif %}
+	{%- if page.feedbackData.theme -%}
+		data-feedback-theme="{{page.feedbackData.theme}}"
+	{% endif %}>
 	<div class="row row-no-gutters">
 		{%- if i18nText-lang == "en" -%}
 			<div class="col-sm-9 col-md-6 col-lg-5">

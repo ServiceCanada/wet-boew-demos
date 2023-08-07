@@ -1,4 +1,4 @@
-<div class="gc-pft row" data-wb-jsonmanager='{
+<div id="gc-pft" class="row wb-disable-allow" data-wb-jsonmanager='{
 	"name": "feedback",
 	"extractor": [
 		{ "selector": "title", "path": "pageTitle" },
@@ -13,10 +13,10 @@
 	]
 }'>
 	<div class="col-sm-10 col-md-9 col-lg-8">
-		<section class="well mrgn-bttm-0" aria-live="polite">
+		<section class="well mrgn-bttm-0">
 			<h3 class="wb-inv">Donnez votre rétroaction sur cette page</h3>
-			<form action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback" data-wb-postback='{"success":".gc-pft-thnk"}'>
-				<div data-wb-json='{
+			<form action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback wb-disable-allow" data-wb-postback='{"success":".gc-pft-thnk"}'>
+				<div class="wb-disable-allow" data-wb-json='{
 					"url": "#[feedback]",
 					"mapping": [
 						{ "selector": "input", "attr": "name", "value": "/@id" },
@@ -41,10 +41,10 @@
 					</div>
 				</fieldset>
 				<div class="gc-pft-no nojs-show">
-					<p id="why-note" class="nojs-show mrgn-tp-lg mrgn-bttm-md"><strong>Sinon, dites nous pourquoi ci-dessous&nbsp;:</strong></p>
-					<p class="nojs-hide wb-inv"><strong>Dites nous pourquoi ci-dessous&nbsp;:</strong></p>
+					<p id="why-note" class="nojs-show mrgn-tp-lg mrgn-bttm-md"><b>Sinon, dites nous pourquoi ci-dessous&nbsp;:</b></p>
+					<p class="nojs-hide wb-inv" aria-live="polite"><b>Dites nous pourquoi ci-dessous&nbsp;:</b></p>
 					<details>
-						<summary><b>Besoin d’aide urgente pour résoudre un problème? Communiquez avec nous</b></summary>
+						<summary>Besoin d’aide urgente pour résoudre un problème? Communiquez avec nous</summary>
 						<p class="mrgn-bttm-0 mrgn-tp-md">
 							<a href="#" data-wb-json='[
 							{ "url": "#[feedback]/contact/url", "type": "attr", "attr": "href" },
@@ -52,19 +52,17 @@
 							]'></a>
 						</p>
 					</details>
-					<div aria-live="off">
-						<div class="form-group">
-							<label for="problem" class="mrgn-bttm-0"><span class="field-name">Veuillez fournir plus de détails</span></label>
-							<p id="problem-note" class="mrgn-bttm-sm"><small><b>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).</b></small></p>
-							<p><small>Maximum de 300 caractères</small></p>
-							<textarea id="problem" aria-describedby="problem problem-note" name="details" class="form-control full-width" maxlength="300"></textarea>
-						</div>
-						<button name="helpful" value="No-Non" class="btn btn-primary">Soumettre</button>
+					<div class="form-group">
+						<label for="problem" class="mrgn-bttm-0"><span class="field-name">Veuillez fournir plus de détails</span></label>
+						<p id="problem-note" class="mrgn-bttm-sm"><small><b>Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).</b></small></p>
+						<p><small>Maximum de 300 caractères</small></p>
+						<textarea id="problem" aria-describedby="problem problem-note" name="details" class="form-control full-width" maxlength="300"></textarea>
 					</div>
+					<button name="helpful" value="No-Non" class="btn btn-primary">Soumettre</button>
 				</div>
 			</form>
 			<div class="gc-pft-thnk hide">
-				<p class="mrgn-tp-sm mrgn-bttm-0"><span class="glyphicon glyphicon-ok text-success mrgn-rght-sm" aria-hidden="true"></span> Merci de vos commentaires.</p>
+				<p class="mrgn-tp-sm mrgn-bttm-0" role="status"><span class="glyphicon glyphicon-ok text-success mrgn-rght-sm" aria-hidden="true"></span> Merci de vos commentaires.</p>
 			</div>
 		</section>
 	</div>

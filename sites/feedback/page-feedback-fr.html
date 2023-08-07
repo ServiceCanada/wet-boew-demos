@@ -12,7 +12,6 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.type" content=""/>
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2023-01-10"/>
 
@@ -129,7 +128,7 @@
 <div class="wb-prettify all-pre hide"></div>
 
 <h2>Code HTML</h2>
-<figure class="highlight"><pre><code class="language-text" data-lang="text">&lt;div class="gc-pft row" data-wb-jsonmanager='{
+<figure class="highlight"><pre><code class="language-text" data-lang="text">&lt;div id="gc-pft" class="row wb-disable-allow" data-wb-jsonmanager='{
 	"name": "feedback",
 	"extractor": [
 		{ "selector": "title", "path": "pageTitle" },
@@ -142,10 +141,10 @@
 	]
 }'&gt;
 	&lt;div class="col-sm-10 col-md-9 col-lg-8"&gt;
-		&lt;section class="well mrgn-bttm-0" aria-live="polite"&gt;
+		&lt;section class="well mrgn-bttm-0"&gt;
 			&lt;h3 class="wb-inv"&gt;Donnez votre rétroaction sur cette page&lt;/h3&gt;
-			&lt;form action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback" data-wb-postback='{"success":".gc-pft-thnk"}'&gt;
-				&lt;div data-wb-json='{
+			&lt;form action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback wb-disable-allow" data-wb-postback='{"success":".gc-pft-thnk"}'&gt;
+				&lt;div class="wb-disable-allow" data-wb-json='{
 					"url": "#[feedback]",
 					"mapping": [
 						{ "selector": "input", "attr": "name", "value": "/@id" },
@@ -170,21 +169,19 @@
 					&lt;/div&gt;
 				&lt;/fieldset&gt;
 				&lt;div class="gc-pft-no nojs-show"&gt;
-					&lt;p id="why-note" class="nojs-show mrgn-tp-lg mrgn-bttm-md"&gt;&lt;strong&gt;Sinon, dites nous pourquoi ci-dessous&amp;nbsp;:&lt;/strong&gt;&lt;/p&gt;
-					&lt;p class="nojs-hide wb-inv"&gt;&lt;strong&gt;Dites nous pourquoi ci-dessous&amp;nbsp;:&lt;/strong&gt;&lt;/p&gt;
-					&lt;div aria-live="off"&gt;
-						&lt;div class="form-group"&gt;
-							&lt;label for="problem" class="mrgn-bttm-0"&gt;&lt;span class="field-name"&gt;Veuillez fournir plus de détails&lt;/span&gt;&lt;/label&gt;
-							&lt;p id="problem-note" class="mrgn-bttm-sm"&gt;&lt;small&gt;&lt;b&gt;Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;
-							&lt;p&gt;&lt;small&gt;Maximum de 300 caractères&lt;/small&gt;&lt;/p&gt;
-							&lt;textarea id="problem" aria-describedby="problem problem-note" name="details" class="form-control full-width" maxlength="300"&gt;&lt;/textarea&gt;
-						&lt;/div&gt;
-						&lt;button name="helpful" value="No-Non" class="btn btn-primary"&gt;Soumettre&lt;/button&gt;
+					&lt;p id="why-note" class="nojs-show mrgn-tp-lg mrgn-bttm-md"&gt;&lt;b&gt;Sinon, dites nous pourquoi ci-dessous&amp;nbsp;:&lt;/b&gt;&lt;/p&gt;
+					&lt;p class="nojs-hide wb-inv" aria-live="polite"&gt;&lt;b&gt;Dites nous pourquoi ci-dessous&amp;nbsp;:&lt;/b&gt;&lt;/p&gt;
+					&lt;div class="form-group"&gt;
+						&lt;label for="problem" class="mrgn-bttm-0"&gt;&lt;span class="field-name"&gt;Veuillez fournir plus de détails&lt;/span&gt;&lt;/label&gt;
+						&lt;p id="problem-note" class="mrgn-bttm-sm"&gt;&lt;small&gt;&lt;b&gt;Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;
+						&lt;p&gt;&lt;small&gt;Maximum de 300 caractères&lt;/small&gt;&lt;/p&gt;
+						&lt;textarea id="problem" aria-describedby="problem problem-note" name="details" class="form-control full-width" maxlength="300"&gt;&lt;/textarea&gt;
 					&lt;/div&gt;
+					&lt;button name="helpful" value="No-Non" class="btn btn-primary"&gt;Soumettre&lt;/button&gt;
 				&lt;/div&gt;
 			&lt;/form&gt;
 			&lt;div class="gc-pft-thnk hide"&gt;
-				&lt;p class="mrgn-tp-sm mrgn-bttm-0"&gt;&lt;span class="glyphicon glyphicon-ok text-success mrgn-rght-sm" aria-hidden="true"&gt;&lt;/span&gt; Merci de vos commentaires.&lt;/p&gt;
+				&lt;p class="mrgn-tp-sm mrgn-bttm-0" role="status"&gt;&lt;span class="glyphicon glyphicon-ok text-success mrgn-rght-sm" aria-hidden="true"&gt;&lt;/span&gt; Merci de vos commentaires.&lt;/p&gt;
 			&lt;/div&gt;
 		&lt;/section&gt;
 	&lt;/div&gt;
@@ -194,9 +191,9 @@
 	<h2 class="wb-inv">Détails de la page</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="ajax/page-feedback-fr.html"
-	data-feedback-section="Section"
-	data-feedback-theme="Thème">
+				<div data-ajax-replace="ajax/page-feedback-fr.html" class="wb-disable-allow"data-feedback-section="Section"
+	data-feedback-theme="Thème"
+	>
 	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
 		</div>
 	</div>
