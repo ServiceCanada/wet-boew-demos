@@ -74,6 +74,7 @@
 @import "search/base";
 @import "secondary-menu/base";
 @import "page-details/base";
+@import "date-modified/base";
 @import "feedback/base";
 @import "gcweb-menu/base";
 @import "authentication/base";
@@ -154,6 +155,7 @@
 @import "wet-boew/src/plugins/geomap/base";
 @import "wet-boew/src/plugins/zebra/base";
 @import "wet-boew/src/plugins/feeds/base";
+@import "wet-boew/src/plugins/paginate/base";
 
 // Components GC Theme
 @import "../components/baseline/base";
@@ -161,6 +163,7 @@
 @import "../components/base2";
 @import "../components/provisional";
 
+@import "../components/gc-dwnld/base";
 @import "../components/gc-nws/base";
 @import "../components/gc-servinfo/base";
 @import "../components/redacted";
@@ -175,6 +178,7 @@
 @import "../components/wb-fieldflow/base";
 @import "../components/gc-chckbxrdio/base";
 @import "../components/gc-features/base";
+@import "../components/gc-stp-stp/base";
 
 @import "../components/wb5-click-postback/base";
 
@@ -298,6 +302,8 @@
 	@import "wet-boew/src/plugins/filter/screen-sm-min";
 	@import "../components/header-rwd/screen-sm-min";
 	@import "../components/gc-chckbxrdio/screen-sm-min";
+	@import "../components/gc-stp-stp/screen-sm-min";
+
 
 	@import "../templates/news/screen-sm-min";
 	@import "../templates/campaign/screen-sm-min";
@@ -312,7 +318,7 @@
 
 	@import "baseline/lists/screen-md-min";
 	@import "gcweb-menu/screen-md-min";
-	@import "page-details/screen-md-min";
+	@import "feedback/screen-md-min";
 
 	@import "wet-boew/src/plugins/feeds/screen-md-min";
 	@import "wet-boew/src/plugins/tabs/screen-md-min";
@@ -368,8 +374,7 @@
 	@import "wet-boew/src/base/views/screen-sm-min-to-screen-sm-max";
 
 	@import "search/screen-sm-min-to-screen-sm-max";
-	@import "page-details/screen-sm-min";
-	@import "feedback/screen-sm-min";
+	@import "feedback/screen-sm-min-to-screen-sm-max";
 
 	@import "../templates/campaign/screen-sm-min-to-screen-sm-max";
 }

@@ -15,9 +15,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content=""/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +31,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -78,7 +78,7 @@
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
-		<li role="presentation"><a role="menuitem" href="https://international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li></ul>
 </nav>
@@ -95,6 +95,14 @@
 				</a>
 				<meta property="position" content="1">
 			</li>
+			
+							<li property="itemListElement" typeof="ListItem">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/index-fr.html">
+									<span property="name">GCWeb</span>
+								</a>
+								<meta property="position" content="2">
+							</li>
+							
 		</ol>
 	</div>
 </nav>
@@ -102,100 +110,67 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Page untitled</h1>
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Thème Canada.ca</h1>
-<span class="wb-prettify all-pre hide"></span>
-
-<div lang="en">
-<section>
-	<h2>Purpose</h2>
-	<p>This theme implements the layout and design requirements for Canada.ca.</p>
-</section>
-
-<section>
-	<h2>Use when</h2>
-	<ul>
-		<li>This theme must be used on Canada.ca.</li>
-	</ul>
-</section>
-
-<section>
-	<h2>Do not use when</h2>
-	<ul>
-		<li>This theme can only be used on Canada.ca.</li>
-	</ul>
-</section>
-
-<section>
-	<h2>Working example</h2>
-	<p><a href="../../../index-en.html">English and French examples</a></p>
-</section>
-
-<section>
-	<h2>How to implement</h2>
-	<section>
-		<h3>General instructions</h3>
-		<ol>
-			<li>Use the <strong>*.html</strong> files to create your Web pages.</li>
-			<li><strong>Optional:</strong> Create, install and link to one or more new CSS files (will be used for custom CSS)</li>
-			<li>Correct all <strong>*.css</strong>, <strong>*.js</strong>, and <strong>*.gif</strong> file paths referenced in the installed <strong>*.html</strong> files</li>
-			<li>Replace the page title (in between <code>&lt;title&gt;</code> and <code>&lt;/title&gt;</code>), the site title, and the content title (in between <code>&lt;h1 id="wb-cont"&gt;</code> and <code>&lt;/h1&gt;</code>)</li>
-			<li>Correct the metadata values</li>
-		</ol>
-	</section>
-	<section>
-		<h3>Content page-specific instructions (content-*.html)</h3>
-		<ol>
-			<li>Correct the menu bar links or remove the menu bar</li>
-			<li>Correct the <strong>English/<span lang="fr">Français</span></strong> link or remove the language selection link</li>
-			<li><strong>Optional:</strong> Implement the <a href="../../../localnav/task1/index-fr.html">section menu</a></li>
-			<li>Correct the search field or remove the search field</li>
-			<li>Correct the breadcrumb trail or remove the breadcrumb trail</li>
-			<li>Correct the site footer links</li>
-			<li>Correct the <strong>Date modified/<span lang="fr">Date de modification</span></strong> or change to <strong>Version</strong></li>
-		</ol>
-	</section>
-	<section>
-		<h3>Splash page-specific instructions (splashpage-*.html)</h3>
-		<ol>
-			<li>Correct the English and French language links</li>
-		</ol>
-	</section>
-	<section>
-		<h3>Server message page-specific instructions (serv*.html)</h3>
-		<ol>
-			<li>Replace the English and/or French messages.</li>
-		</ol>
-	</section>
-</section>
-
-<section>
-	<h2>Source code</h2>
-	<ul>
-		<li><a href="https://github.com/wet-boew//tree/master/src">Canada.ca theme source code on GitHub</a></li>
-		<li><a href="https://github.com/wet-boew//tree/master/site/pages">Canada.ca theme demo pages source code on GitHub</a></li>
-	</ul>
-</section>
-</div>
-
-<section class="pagedetails">
-	<h2 class="wb-inv">Détails de la page</h2>
-
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="https://servicecanada.github.io/wet-boew-demos/gcweb-pr2098/sites/feedback/ajax/page-feedback-fr.html" class="wb-disable-allow">
-	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
-		</div>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Page untitled</h1>
+<main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+    <div class="container">
+    	<h1>About - Campaign Menu</h1>
+        <p>Example of a new menu that uses megamenu for md and lg, and GCWeb menu for sm and xs.</p>
+    </div>
+	<div class="container">
+		<nav class="gcweb-menu campaign-menu" typeof="SiteNavigationElement">
+			<h2 class="wb-inv">Winterlude Site Menu</h2>
+			<button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+			<ul role="menu" aria-orientation="vertical">
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="./index.html">Home</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="./calendar.html">Calendar</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="sub-menu-1" aria-expanded="false" href="#">What's happening</a>
+					<ul id="sub-menu-1" role="menu" aria-orientation="vertical">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Venues</a></li>
+					</ul>
+				</li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sculptures</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="sub-menu-2" aria-expanded="false" href="#">About</a>
+					<ul id="sub-menu-2" role="menu" aria-orientation="vertical">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="./about.html">About Winterlude</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Over the years</a></li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Media</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
 	</div>
-</div>
+    <div class="container mrgn-tp-xl">
+        <h2>Test content</h2>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+        <p>Lorem</p>
+    </div>
 
-			</div><div class="col-xs-12">
-			<dl id="wb-dtmd">
-				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified">2014-10-09</time></dd>
-			</dl>
-		</div>
+<section class="pagedetails container">
+	<h2 class="wb-inv">Page details</h2>
+
+	<div class="row"><div class="col-xs-12"><dl id="wb-dtmd">
+	<dt>Date modified:</dt>
+	<dd><time property="dateModified">2023-09-12 00:00:00 +0000</time></dd>
+</dl>
+</div>
 	</div>
 </section>
 
@@ -535,24 +510,15 @@
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2>
 
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="https://servicecanada.github.io/wet-boew-demos/gcweb-pr2098/sites/feedback/ajax/page-feedback-fr.html" class="wb-disable-allow">
-	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
-		</div>
-	</div>
+	<div class="row"><div class="col-xs-12"><dl id="wb-dtmd">
+	<dt>Date de modification&#160;:</dt>
+	<dd><time property="dateModified"></time></dd>
+</dl>
 </div>
-
-			</div><div class="col-xs-12">
-			<dl id="wb-dtmd">
-				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified"></time></dd>
-			</dl>
-		</div>
 	</div>
 </section>
 
 </main>
-
 <footer id="wb-info">
 	<h2 class="wb-inv">À propos de ce site</h2>
 
@@ -598,14 +564,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

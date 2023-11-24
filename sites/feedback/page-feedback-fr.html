@@ -15,9 +15,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2023-01-10"/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -91,7 +91,7 @@
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
-		<li role="presentation"><a role="menuitem" href="https://international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li></ul>
 </nav>
@@ -108,14 +108,21 @@
 				</a>
 				<meta property="position" content="1">
 			</li>
-	
-			<li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="/sites/feedback/feedback-docs-fr.html">
-					<span property="name">Zone de rétroaction - Documentation</span>
-				</a>
-				<meta property="position" content="2">
-			</li>
 			
+							<li property="itemListElement" typeof="ListItem">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/index-fr.html">
+									<span property="name">GCWeb</span>
+								</a>
+								<meta property="position" content="2">
+							</li>
+							
+						<li property="itemListElement" typeof="ListItem">
+							<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/sites/feedback/feedback-docs-fr.html">
+								<span property="name">Zone de rétroaction - Documentation</span>
+							</a>
+							<meta property="position" content="3">
+						</li>
+						
 		</ol>
 	</div>
 </nav>
@@ -123,13 +130,20 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Outil de rétroaction sur la page</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Outil de rétroaction sur la page</h1>
 <div class="wb-prettify all-pre hide"></div>
 
-<h2>Code HTML</h2>
+<p>Code HTML dans la page web</p>
+<pre><code>&lt;div class="wb-disable-allow"
+	data-ajax-replace="https://www.canada.ca/etc/designs/canada/wet-boew/assets/feedback/page-feedback-fr.html"
+	data-feedback-section="Section"
+	data-feedback-theme="Thème"&gt;&lt;/div&gt;</code></pre>
+
+<details>
+	<summary>Code source du contenu ajouté via Ajax</summary>
+	<p>Note : Cet exemple pratique charge une copie locale du formulaire de rétroaction à des fins d'essai seulement. Les institutions sont invitées à charger la version centralisée du formulaire de rétroaction disponible à cette adresse :<code>https://www.canada.ca/etc/designs/canada/wet-boew/assets/feedback/page-feedback-fr.html</code>.</p>
 <figure class="highlight"><pre><code class="language-text" data-lang="text">&lt;div id="gc-pft" class="row wb-disable-allow" data-wb-jsonmanager='{
-	"name": "feedback",
+	"name": "gc-pft",
 	"extractor": [
 		{ "selector": "title", "path": "pageTitle" },
 		{ "selector": "html", "attr": "lang", "path": "language" },
@@ -137,15 +151,17 @@
 		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
 		{ "selector": "[data-feedback-theme]", "attr": "data-feedback-theme", "path": "themeopt" },
 		{ "selector": "[data-feedback-section]", "attr": "data-feedback-section", "path": "sectionopt" },
-		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }
+		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" },
+		{ "selector": "[data-feedback-link]", "attr": "data-feedback-link", "path": "contact/link" },
+		{ "selector": "[data-feedback-url]", "attr": "data-feedback-url", "path": "contact/url" }
 	]
 }'&gt;
 	&lt;div class="col-sm-10 col-md-9 col-lg-8"&gt;
 		&lt;section class="well mrgn-bttm-0"&gt;
 			&lt;h3 class="wb-inv"&gt;Donnez votre rétroaction sur cette page&lt;/h3&gt;
-			&lt;form action="https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm" method="post" class="wb-postback wb-disable-allow" data-wb-postback='{"success":".gc-pft-thnk"}'&gt;
+			&lt;form action="https://feedback-retroaction.canada.ca/api/QueueProblemForm" method="post" class="wb-postback wb-disable-allow" data-wb-postback='{"success":".gc-pft-thnk"}'&gt;
 				&lt;div class="wb-disable-allow" data-wb-json='{
-					"url": "#[feedback]",
+					"url": "#[gc-pft]",
 					"mapping": [
 						{ "selector": "input", "attr": "name", "value": "/@id" },
 						{ "selector": "input", "attr": "value", "value": "/@value" }
@@ -156,26 +172,50 @@
 					&lt;/template&gt;
 				&lt;/div&gt;
 				&lt;fieldset class="gc-pft-btns chkbxrdio-grp row row-no-gutters d-sm-flex flex-sm-wrap align-items-sm-center"&gt;
-					&lt;legend class="col-xs-12 col-sm-7 nojs-col-sm-12 col-md-9 col-lg-8 text-center text-sm-left nojs-text-left mrgn-tp-sm pr-sm-3 nojs-pr-sm-0"&gt;&lt;span class="field-name"&gt;Avez-vous trouvé ce que vous cherchiez?&lt;/span&gt;&lt;/legend&gt;
+					&lt;legend class="col-xs-12 col-sm-7 nojs-col-sm-12 col-md-9 col-lg-8 text-center text-sm-left nojs-text-left mrgn-tp-sm pr-sm-3"&gt;&lt;span class="field-name"&gt;Avez-vous trouvé ce que vous cherchiez?&lt;/span&gt;&lt;/legend&gt;
 					&lt;div class="col-xs-12 nojs-show"&gt;
-						&lt;button name="helpful" value="Yes-Oui" class="btn btn-primary" aria-describedby="why-note"&gt;Oui&lt;/button&gt;
+						&lt;button name="helpful" value="Yes-Oui" class="btn btn-primary" aria-describedby="gc-pft-why"&gt;Oui&lt;/button&gt;
 					&lt;/div&gt;
 					&lt;div class="col-xs-12 col-sm-5 col-md-3 col-lg-4 text-center text-sm-right nojs-hide"&gt;
-						&lt;button name="helpful" value="Yes-Oui" class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm"&gt;Oui&lt;/button&gt;
-						&lt;button class="btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm" data-wb-doaction='[
+						&lt;button name="helpful" value="Yes-Oui" class="btn btn-primary"&gt;Oui&lt;/button&gt;
+						&lt;button class="btn btn-primary mrgn-lft-sm" data-wb-doaction='[
 							{"action":"removeClass","source":".gc-pft-no","class":"nojs-show"},
 							{"action":"addClass","source":".gc-pft-btns","class":"hide"}
 						]'&gt;Non&lt;/button&gt;
 					&lt;/div&gt;
 				&lt;/fieldset&gt;
 				&lt;div class="gc-pft-no nojs-show"&gt;
-					&lt;p id="why-note" class="nojs-show mrgn-tp-lg mrgn-bttm-md"&gt;&lt;b&gt;Sinon, dites nous pourquoi ci-dessous&amp;nbsp;:&lt;/b&gt;&lt;/p&gt;
-					&lt;p class="nojs-hide wb-inv" aria-live="polite"&gt;&lt;b&gt;Dites nous pourquoi ci-dessous&amp;nbsp;:&lt;/b&gt;&lt;/p&gt;
+					&lt;p id="gc-pft-why" class="nojs-show mrgn-tp-lg mrgn-bttm-md"&gt;Sinon, dites nous pourquoi ci-dessous&amp;nbsp;:&lt;/p&gt;
+					&lt;p class="nojs-hide wb-inv" aria-live="polite"&gt;Dites nous pourquoi ci-dessous&amp;nbsp;:&lt;/p&gt;
+					&lt;div class="wb-disable-allow"  data-wb-json='{
+						"url": "#[gc-pft]/contact",
+						"streamline": "true",
+						"mapping": [
+							{
+								"template": "[data-contact-template]",
+								"test": "fn:isLiteral",
+								"assess": "/url",
+								"mapping": [
+									{ "selector": "a", "type": "attr", "attr": "href", "value": "/url"  },
+									{ "selector": "a", "value": "/link"  }
+								]
+							}
+						]
+					}'&gt;
+						&lt;template data-contact-template&gt;
+							&lt;details&gt;
+								&lt;summary&gt;Besoin d’aide urgente pour résoudre un problème? Communiquez avec nous&lt;/summary&gt;
+								&lt;p class="mrgn-bttm-0 mrgn-tp-md fnt-nrml"&gt;
+									&lt;a href="#"&gt;&lt;/a&gt;
+								&lt;/p&gt;
+							&lt;/details&gt;
+						&lt;/template&gt;
+					&lt;/div&gt;
 					&lt;div class="form-group"&gt;
-						&lt;label for="problem" class="mrgn-bttm-0"&gt;&lt;span class="field-name"&gt;Veuillez fournir plus de détails&lt;/span&gt;&lt;/label&gt;
-						&lt;p id="problem-note" class="mrgn-bttm-sm"&gt;&lt;small&gt;&lt;b&gt;Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;
-						&lt;p&gt;&lt;small&gt;Maximum de 300 caractères&lt;/small&gt;&lt;/p&gt;
-						&lt;textarea id="problem" aria-describedby="problem problem-note" name="details" class="form-control full-width" maxlength="300"&gt;&lt;/textarea&gt;
+						&lt;label for="gc-pft-prblm" class="mrgn-bttm-0"&gt;&lt;span class="field-name"&gt;Veuillez fournir plus de détails&lt;/span&gt;&lt;/label&gt;
+						&lt;p id="gc-pft-prblm-note" class="mrgn-bttm-sm"&gt;&lt;small&gt;Vous ne recevrez pas de réponse. N'incluez pas de renseignements personnels (téléphone, courriel, NAS, renseignements financiers, médicaux ou professionnels).&lt;/small&gt;&lt;/p&gt;
+						&lt;p id="gc-pft-prblm-instruction" class="fnt-nrml small"&gt;Maximum de 300 caractères&lt;/p&gt;
+						&lt;textarea id="gc-pft-prblm" aria-describedby="gc-pft-prblm-note gc-pft-prblm-instruction" name="details" class="form-control full-width" maxlength="300"&gt;&lt;/textarea&gt;
 					&lt;/div&gt;
 					&lt;button name="helpful" value="No-Non" class="btn btn-primary"&gt;Soumettre&lt;/button&gt;
 				&lt;/div&gt;
@@ -186,30 +226,28 @@
 		&lt;/section&gt;
 	&lt;/div&gt;
 &lt;/div&gt;</code></pre></figure>
+</details>
 
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2>
 
 	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="ajax/page-feedback-fr.html" class="wb-disable-allow"data-feedback-section="Section"
-	data-feedback-theme="Thème"
-	>
-	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
-		</div>
-	</div>
-</div>
+				<div 
+		data-ajax-replace="assets/page-feedback-fr.html"
+		
+			class="wb-disable-allow"
+	 data-feedback-section="Section" 
+	 data-feedback-theme="Thème" ><!-- Will always be replaced by data-ajax --></div>
 
-			</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12">
-			<dl id="wb-dtmd">
-				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified">2023-01-10</time></dd>
-			</dl>
-		</div>
+			</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12"><dl id="wb-dtmd">
+	<dt>Date de modification&#160;:</dt>
+	<dd><time property="dateModified">2023-01-10</time></dd>
+</dl>
+</div>
 	</div>
 </section>
 
 </main>
-
 <footer id="wb-info">
 	<h2 class="wb-inv">À propos de ce site</h2>
 
@@ -255,14 +293,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

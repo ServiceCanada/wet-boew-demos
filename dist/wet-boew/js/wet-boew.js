@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.65 - 2023-07-20
+ * v4.0.71 - 2023-11-22
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -2858,7 +2858,7 @@ wb.addSkipLink = function( text, attr, isBtn, isLast ) {
 
 } )( jQuery, wb );
 
-( function( wb ) {
+( function( wb, window ) {
 
 "use strict";
 
@@ -3832,7 +3832,70 @@ wb.string = {
 			str = "0" + str;
 		}
 		return str;
+	},
+
+	/*
+	 * Convert a base64 string into an ArrayBuffer (Note: this function are not fully UTF-8 supported and may create interoperability issue)
+	 * ref. https://www.isummation.com/blog/convert-arraybuffer-to-base64-string-and-vice-versa/
+	 * @memberof wb.string
+	 * @param {string} Base64 browser encoded
+	 * @return {ArrayBuffer} string converted into ArrayBuffer
+	 */
+	base64ToArrayBuffer: function( base64 ) {
+		var binary_string = window.atob( base64 ),
+			len = binary_string.length,
+			bytes = new Uint8Array( len ),
+			i;
+		for ( i = 0; i < len; i++ ) {
+			bytes[ i ] = binary_string.charCodeAt( i );
+		}
+		return bytes.buffer;
+	},
+
+	/*
+	 * Convert an ArrayBuffer into base64 string (Note: this function are not fully UTF-8 supported and may create interoperability issue)
+	 * ref. https://www.isummation.com/blog/convert-arraybuffer-to-base64-string-and-vice-versa/
+	 * @memberof wb.string
+	 * @param {ArrayBuffer}
+	 * @return {string} ArrayBuffer converted into base64 string
+	 */
+	arrayBufferToBase64: function( buffer ) {
+		var binary = "",
+			bytes = new Uint8Array( buffer ),
+			len = bytes.byteLength,
+			i;
+		for ( i = 0; i < len; i++ ) {
+			binary += String.fromCharCode( bytes[ i ] );
+		}
+		return window.btoa( binary );
+	},
+
+	/*
+	 * Convert an hexadecimal string into an ArrayBuffer
+	 * ref. https://stackoverflow.com/questions/38987784/how-to-convert-a-hexadecimal-string-to-uint8array-and-back-in-javascript/50868276#50868276
+	 * @memberof wb.string
+	 * @param {string} Encoded string in hexadecimal
+	 * @return {Uint8Array} Binary array buffer
+	 */
+	fromHexString: function( hexString ) {
+		return hexString === null ? null : Uint8Array.from( hexString.match( /.{1,2}/g ).map( function( byte ) {
+			return parseInt( byte, 16 );
+		} ) );
+	},
+
+	/*
+	 * Convert an ArrayBuffer into an hexadecimal string
+	 * ref. https://stackoverflow.com/questions/38987784/how-to-convert-a-hexadecimal-string-to-uint8array-and-back-in-javascript/50868276#50868276
+	 * @memberof wb.string
+	 * @param {Uint8Array} Binary array buffer
+	 * @return {string} Encoded string in hexadecimal
+	 */
+	toHexString: function( bytes ) {
+		return bytes.reduce( function( str, byte ) {
+			return str + byte.toString( 16 ).padStart( 2, "0" );
+		}, "" );
 	}
+
 };
 
 /*
@@ -3997,7 +4060,7 @@ wb.findPotentialPII = function( str, scope, opts ) {
 	var oRegEx = {
 			digits: /\d(?:[\s\-\\.\\/]?\d){8,}(?!\d)/ig, //9digits or more pattern
 			passport: /\b[A-Za-z]{2}[\s\\.-]*?\d{6}\b/ig, //canadian nr passport pattern
-			email: /\b(?:[a-zA-Z0-9_\-\\.]+)(?:@|%40)(?:[a-zA-Z0-9_\-\\.]+)\.(?:[a-zA-Z]{2,5})\b/ig, //email pattern
+			email: /\b(?:[a-zA-Z0-9_\-\\.]+)(?:@|%40|%2540)(?:[a-zA-Z0-9_\-\\.]+)\.(?:[a-zA-Z]{2,5})\b/ig, //email pattern
 			postalCode: /\b[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d\b/ig, //postal code pattern
 			username: /(?:(username|user)[%20]?([:=]|(%EF%BC%9A))[^\s&]*)/ig,
 			password: /(?:(password|pass)[%20]?([:=]|(%EF%BC%9A))[^\s&]*)/ig
@@ -4055,7 +4118,7 @@ wb.findPotentialPII = function( str, scope, opts ) {
 	return toClean && isFound ? str : isFound;
 };
 
-} )( wb );
+} )( wb, window );
 
 ( function( $, undef ) {
 "use strict";
@@ -4365,7 +4428,7 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author WET Community
  */
-( function( $, wb ) {
+( function( $, wb, DOMPurify ) {
 "use strict";
 
 /*
@@ -4442,9 +4505,18 @@ $document.on( "ajax-fetch.wb", function( event ) {
 				fetchData.pointer = $( "<div id='" + wb.getId() + "' data-type='" + responseType + "'></div>" )
 					.append( responseType === "string" ? response : "" );
 
-				response = $( response );
+				if ( !xhr.responseJSON ) {
+					try {
+						response = $( response );
+					} catch ( e ) {
+						response = DOMPurify.sanitize( xhr.responseText );
+					}
+				} else {
+					response = xhr.responseText;
+				}
 
 				fetchData.response = response;
+				fetchData.hasSelector = !!selector;
 				fetchData.status = status;
 				fetchData.xhr = xhr;
 
@@ -4466,7 +4538,7 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	}
 } );
 
-} )( jQuery, wb );
+} )( jQuery, wb, DOMPurify );
 
 /**
  * @title WET-BOEW Set background image
@@ -4782,16 +4854,6 @@ var componentName = "wb-calevt",
 			if ( !directLinking ) {
 				linkId = event.id || wb.getId();
 				event.id = linkId;
-
-				/*
-				 * Fixes IE tabbing error:
-				 * http://www.earthchronicle.com/ECv1point8/Accessibility01IEAnchoredKeyboardNavigation.aspx
-				 */
-
-				// TODO: Which versions of IE should this fix be limited to?
-				if ( wb.ie ) {
-					event.tabIndex = "-1";
-				}
 				href = "#" + linkId;
 			}
 
@@ -4877,14 +4939,6 @@ var componentName = "wb-calevt",
 	addEvents = function( year, month, $days ) {
 		var eventsList = this.events,
 			i, eLen, date, dayIndex, $day, $dayEvents, event, eventMonth;
-
-		// Fix required to make up with the IE z-index behaviour mismatch
-		// TODO: Move ot IE CSS? Which versions of IE should this fix be limited to?
-		if ( wb.ie ) {
-			for ( i = 0, eLen = $days.length; i !== eLen; i += 1 ) {
-				$days.eq( i ).css( "z-index", 31 - i );
-			}
-		}
 
 		/*
 		 * Determines for each event, if it occurs in the display month
@@ -7114,11 +7168,21 @@ var componentName = "wb-data-ajax",
 		var $elm = $( elm ),
 			ajxInfo = getAjxInfo( elm ),
 			ajaxType = ajxInfo.type,
-			content, jQueryCaching;
+			content, jQueryCaching,
+			settings = wb.getData( $( elm ), shortName ) || {},
+			doEncode = settings.encode,
+			hasSelector = fetchObj.hasSelector;
 
 		// ajax-fetched event
 		content = fetchObj.response;
 		if ( content &&  content.length > 0 ) {
+
+			// If the fetched content need to be encoded
+			if ( doEncode && hasSelector ) {
+				content = content.html().replaceAll( "<", "&lt;" );
+			} else if ( doEncode && !hasSelector ) {
+				content = fetchObj.xhr.responseText.replaceAll( "<", "&lt;" );
+			}
 
 			//Prevents the force caching of nested resources
 			jQueryCaching = jQuery.ajaxSettings.cache;
@@ -7169,7 +7233,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 // Re-run WET for elements that have just been loaded if WET is already done initializing
 $document.on( contentUpdatedEvent, function( event ) {
 	if ( !wb.isDisabled ) {
-		let updtElm = event.currentTarget;
+		let updtElm = event.target;
 
 		$( updtElm )
 			.find( wb.allSelectors )
@@ -7512,13 +7576,6 @@ var imgClass,
 			}
 			img.src = matchedElm.getAttribute( "data-src" );
 			matchedElm.appendChild( img );
-
-			// Fixes bug with IE8 constraining the height of the image
-			// when the .img-responsive class is used.
-			if ( wb.ielt9 ) {
-				img.removeAttribute( "width" );
-				img.removeAttribute( "height" );
-			}
 
 		// No match and an image exists: delete it
 		} else if ( img ) {
@@ -7933,24 +7990,29 @@ var componentName = "wb-eqht",
 				currentChildTop = currentChild.getBoundingClientRect().top + window.pageYOffset;
 				currentChildHeight = currentChild.offsetHeight;
 
-				if ( currentChildTop !== rowTop ) {
+				// if the current element is visible...
+				// note: hidden elements need to be excluded since they have a different top offset than visible ones
+				if ( currentChildHeight ) {
 
-					// as soon as we find an element not on this row (not the same top offset)
-					// we need to equalize each items in that row to align the next row.
-					equalize( row, tallestHeight );
+					// as soon as we find an element not on this row (not the same top offset)...
+					if ( currentChildTop !== rowTop ) {
 
-					// since the elements of the previous row was equalized
-					// we need to get the new top offset of the current element
-					currentChildTop = currentChild.getBoundingClientRect().top + window.pageYOffset;
+						// we need to equalize each item in that row to align the next row
+						equalize( row, tallestHeight );
 
-					// reset the row, rowTop and tallestHeight
-					row.length = 0;
-					rowTop = currentChildTop;
-					tallestHeight = currentChildHeight;
+						// since the elements of the previous row was equalized
+						// we need to get the new top offset of the current element
+						currentChildTop = currentChild.getBoundingClientRect().top + window.pageYOffset;
+
+						// reset the row, rowTop and tallestHeight
+						row.length = 0;
+						rowTop = currentChildTop;
+						tallestHeight = currentChildHeight;
+					}
+
+					tallestHeight = Math.max( currentChildHeight, tallestHeight );
+					row.push( $children.eq( j ) );
 				}
-
-				tallestHeight = Math.max( currentChildHeight, tallestHeight );
-				row.push( $children.eq( j ) );
 			}
 
 			// equalize the last row
@@ -8038,13 +8100,14 @@ wb.add( selector );
 * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
 * @author @ipaksc
 */
-( function( $, window, wb ) {
+( function( $, window, wb, crypto ) {
 "use strict";
 var componentName = "wb-exitscript",
 	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
 	$document = wb.doc,
 	exiturlparam = componentName + "-urlparam",
+	keyForKeyHolder = componentName + "key",
 	moDalId = componentName + "-modal",
 	i18n,
 	i18nDict = {
@@ -8075,7 +8138,9 @@ var componentName = "wb-exitscript",
 			settings,
 			queryString = window.location.search,
 			urlParams = new URLSearchParams( queryString ),
-			originalURL = urlParams.get( "exturl" ),
+			counterInUrl = wb.string.fromHexString( urlParams.get( "exturl" ) ),
+			encryptedUrl = localStorage.getItem( componentName ),
+			jwt = JSON.parse( localStorage.getItem( keyForKeyHolder ) ),
 			$elm;
 		if ( elm ) {
 			$elm = $( elm );
@@ -8088,16 +8153,90 @@ var componentName = "wb-exitscript",
 
 			$elm.data( componentName, settings );
 
-			if ( settings.url ) {
-				$( this ).attr( "href", settings.url + "?exturl=" +  encodeURIComponent( this.href ) );
+			if ( settings.url && crypto ) {
+
+				crypto.subtle.generateKey(
+					{
+						name: "AES-CTR",
+						length: 256
+					},
+					true,
+					[ "encrypt", "decrypt" ]
+				).then( function( keyToEncryp ) {
+
+					var enc, messageEncoded, counter;
+
+					// Save the key in the anchor
+					crypto.subtle.exportKey( "jwk", keyToEncryp )
+						.then( function( exportedJwtKey ) {
+							elm[ keyForKeyHolder ] = exportedJwtKey;
+						} );
+
+					// Encrypt the URL
+					enc = new TextEncoder();
+					messageEncoded = enc.encode( elm.href );
+					counter = crypto.getRandomValues( new Uint8Array( 16 ) );
+					crypto.subtle.encrypt(
+						{
+							name: "AES-CTR",
+							counter: counter,
+							length: 64
+						},
+						keyToEncryp,
+						messageEncoded
+					).then( function( ciphertext ) {
+						elm[ componentName ] = ciphertext;
+					} );
+
+					// Change the link URL by passing the counter as a key
+					$elm.attr( "href", settings.url + "?exturl=" + wb.string.toHexString( counter ) );
+				} );
+
 			}
 
 			i18n = i18nDict[ wb.lang || "en" ];
 
 			// This conditional statement for a middle static exit page, to retrieve the URL to the non-secure site.
-			if ( $elm.hasClass( exiturlparam ) ) {
-				this.outerHTML = "<a href='" + originalURL + "'>" + originalURL + "</a>";
+			if ( $elm.hasClass( exiturlparam ) && encryptedUrl !== null && jwt !== null ) {
+
+				crypto.subtle.importKey(
+					"jwk",
+					jwt,
+					{
+						name: "AES-CTR",
+						length: 256
+					},
+					true,
+					[ "decrypt" ]
+				).then( function( key ) {
+
+					crypto.subtle.decrypt(
+						{
+							name: "AES-CTR",
+							counter: counterInUrl,
+							length: 64
+						},
+						key,
+						wb.string.base64ToArrayBuffer( encryptedUrl )
+					).then( function( decrypted ) {
+
+						var dec = new TextDecoder(),
+							urlToRedirect = dec.decode( decrypted );
+
+						// Check if the decrypted message is an valid URL and silently fail if the pattern don't match
+						if ( urlToRedirect.match( /^(http|https):\/\//g ) ) {
+							elm.outerHTML = "<a href='" + urlToRedirect + "'>" + urlToRedirect + "</a>";
+						}
+
+					} );
+				} );
+
 			}
+
+			// Remove the plugin data and ensure it is removed from the localstorage
+			localStorage.removeItem( componentName );
+			localStorage.removeItem( keyForKeyHolder );
+
 			wb.ready( $elm, componentName );
 		}
 	};
@@ -8171,6 +8310,11 @@ $document.on( "click", selector, function( event ) {
 
 		] );
 
+	} else if ( crypto && this[ componentName ] ) {
+
+		// Save to localstorage, the plugin init will ensure this data is only used once
+		localStorage.setItem( componentName, wb.string.arrayBufferToBase64( this[ componentName ] ) );
+		localStorage.setItem( keyForKeyHolder, JSON.stringify( this[ keyForKeyHolder ] ) );
 	}
 
 } );
@@ -8181,7 +8325,7 @@ $document.on( "timerpoke.wb " + initEvent, selector, init );
 // Add the timer poke to initialize the plugin
 wb.add( selector );
 
-} )( jQuery, window, wb );
+} )( jQuery, window, wb, crypto );
 
 /**
 * @title WET-BOEW Facebook embedded page
@@ -8875,14 +9019,20 @@ var componentName = "wb-feeds",
 
 $document.on( "ajax-fetched.wb data-ready.wb-feeds", selector + " " + feedLinkSelector, function( event, context ) {
 	var eventTarget = event.target,
-		data, response, $emlRss, limit, results;
+		data, response, responseRaw,
+		$emlRss, limit, results;
 
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === eventTarget ) {
 		$emlRss = $( eventTarget ).parentsUntil( selector ).parent();
 		switch ( event.type ) {
 		case "ajax-fetched":
-			response = event.fetch.response.get( 0 );
+			responseRaw = event.fetch.response;
+			if ( typeof responseRaw === "string" ) {
+				response = JSON.parse( responseRaw ); // Assuming we have fetch a JSON document, try to parse it.
+			} else {
+				response = responseRaw.get( 0 ); // fetched an HTML or XML document which has been parsed by jQuery and sanitized by DomPurify
+			}
 			if ( response.documentElement ) {
 				limit = getLimit( $emlRss[ Object.keys( $emlRss )[ 0 ] ] );
 				data = corsEntry( response, limit );
@@ -9443,329 +9593,338 @@ var componentName = "wb-frmvld",
 			}
 
 			Modernizr.load( {
-
-				// For loading multiple dependencies
-				both: [
-					"site!deps/jquery.validate" + modeJS,
-					"site!deps/additional-methods" + modeJS
-				],
+				load: [ "site!deps/jquery.validate" + modeJS ],
 				testReady: function() {
-					return ( $.validator && $.validator.methods.bic );
+					return ( $.validator );
 				},
 				complete: function() {
-					var $elm = $( "#" + elmId ),
-						$form = $elm.find( "form" ),
-						formDOM = $form.get( 0 ),
-						formId = $form.attr( "id" ),
-						labels = formDOM.getElementsByTagName( "label" ),
-						submitted = false,
-						errorFormId = "errors-" + ( !formId ? "default" : formId ),
-						settings = $.extend(
-							true,
-							{},
-							defaults,
-							window[ componentName ],
-							wb.getData( $elm, componentName )
-						),
-						summaryHeading = settings.hdLvl,
-						i, len, validator;
+					Modernizr.load( {
 
-					if ( wb.lang === "fr" ) {
+						// For loading multiple dependencies
+						load: [ "site!deps/additional-methods" + modeJS ],
+						testReady: function() {
+							return ( $.validator.methods.bic );
+						},
+						complete: function() {
+							var $elm = $( "#" + elmId ),
+								$form = $elm.find( "form" ),
+								formDOM = $form.get( 0 ),
+								formId = $form.attr( "id" ),
+								labels = formDOM.getElementsByTagName( "label" ),
+								submitted = false,
+								errorFormId = "errors-" + ( !formId ? "default" : formId ),
+								settings = $.extend(
+									true,
+									{},
+									defaults,
+									window[ componentName ],
+									wb.getData( $elm, componentName )
+								),
+								summaryHeading = settings.hdLvl,
+								i, len, validator;
 
-						// alphanumeric regex is changed to allow french characters;
-						$.validator.addMethod( "alphanumeric", function( value, element ) {
-							return this.optional( element ) || /^[a-zàâçéèêëîïôûùüÿæœ0-9_]+$/i.test( value );
-						}, "Letters, numbers, and underscores only please." );
+							if ( wb.lang === "fr" ) {
 
-						// error french text is adjusted to remove the word "spaces"
-						$.extend( $.validator.messages, {
-							alphanumeric: "Veuillez fournir seulement des lettres, nombres et soulignages."
-						} );
-					}
+								// alphanumeric regex is changed to allow french characters;
+								$.validator.addMethod( "alphanumeric", function( value, element ) {
+									return this.optional( element ) || /^[a-zàâçéèêëîïôûùüÿæœ0-9_]+$/i.test( value );
+								}, "Letters, numbers, and underscores only please." );
 
-					// Append the aria-live region (for provide message updates to screen readers)
-					$elm.append( "<div class='arialive wb-inv' aria-live='polite' aria-relevant='all'></div>" );
-
-					// Add space to the end of the labels (so separation between label and error when CSS turned off)
-					len = labels.length;
-					for ( i = 0; i !== len; i += 1 ) {
-						labels[ i ].innerHTML += " ";
-					}
-
-					// Hide "required" label text in older forms from screen readers
-					// Prevents redundant "required" announcements on semantically-required fields whose labels mention they're required
-					$form.find( "strong.required:not([aria-hidden='true'])" ).each( function() {
-						const $requiredText = $( this ),
-							$label = $requiredText.closest( "label" ),
-							fieldId = $label.attr( "for" );
-						let $field = fieldId ? $( "#" + fieldId ) : $label.find( ":input" ).first();
-
-						// If the label's field has yet to be found, look for fields that refer to the label via aria-labelledby
-						if ( !$field.length ) {
-							const labelId = $label.attr( "id" ) || $requiredText.closest( "id" );
-							$field = $form.find( "[aria-labelledby~='" + labelId + "']:input" ).first();
-						}
-
-						// Hide the "required" text if its field is semantically-required
-						if ( $field.is( "[required], [aria-required='true']" ) ) {
-							$requiredText.attr( "aria-hidden", "true" );
-						}
-					} );
-
-					// The jQuery validation plug-in in action
-					validator = $form.validate( {
-						meta: "validate",
-						focusInvalid: false,
-						ignore: settings.ignore,
-
-						// Set the element which will wrap the inline error messages
-						errorElement: "strong",
-
-						// Location for the inline error messages
-						// In this case we will place them in the associated label element
-						errorPlacement: function( $error, $element ) {
-							var type = $element.attr( "type" ),
-								group = $element.attr( "data-rule-require_from_group" ),
-								$fieldset, $legend;
-
-							$error.data( "element-id", $element.attr( "id" ) );
-							if ( type ) {
-								type = type.toLowerCase();
-								if ( type === "radio" || type === "checkbox" ) {
-									$fieldset = $element.closest( "fieldset" );
-									if ( $fieldset.length !== 0 ) {
-										$legend = $fieldset.find( "legend" ).first();
-										if ( $legend.length !== 0 && $fieldset.find( "input[name='" + $element.attr( "name" ) + "']" ) !== 1 ) {
-											$error.appendTo( $legend );
-											return;
-										}
-									}
-								}
+								// error french text is adjusted to remove the word "spaces"
+								$.extend( $.validator.messages, {
+									alphanumeric: "Veuillez fournir seulement des lettres, nombres et soulignages."
+								} );
 							}
 
-							if ( group ) {
-								$fieldset = $element.closest( "fieldset" );
-								if ( $fieldset.length !== 0 ) {
-									$legend = $fieldset.find( "legend" ).first();
-									if ( $legend.length !== 0 && $fieldset.find( "input[name='" + $element.attr( "name" ) + "']" ) !== 1 ) {
-										var $strong = $legend.find( "strong.error" ),
-											id = $legend.attr( "id" );
+							// Append the aria-live region (for provide message updates to screen readers)
+							$elm.append( "<div class='arialive wb-inv' aria-live='polite' aria-relevant='all'></div>" );
 
-										if ( $strong.length > 0 ) {
-											$strong.remove();
+							// Add space to the end of the labels (so separation between label and error when CSS turned off)
+							len = labels.length;
+							for ( i = 0; i !== len; i += 1 ) {
+								labels[ i ].innerHTML += " ";
+							}
+
+							// Hide "required" label text in older forms from screen readers
+							// Prevents redundant "required" announcements on semantically-required fields whose labels mention they're required
+							$form.find( "strong.required:not([aria-hidden='true'])" ).each( function() {
+								const $requiredText = $( this ),
+									$label = $requiredText.closest( "label" ),
+									fieldId = $label.attr( "for" );
+								let $field = fieldId ? $( "#" + fieldId ) : $label.find( ":input" ).first();
+
+								// If the label's field has yet to be found, look for fields that refer to the label via aria-labelledby
+								if ( !$field.length ) {
+									const labelId = $label.attr( "id" ) || $requiredText.closest( "id" );
+									$field = $form.find( "[aria-labelledby~='" + labelId + "']:input" ).first();
+								}
+
+								// Hide the "required" text if its field is semantically-required
+								if ( $field.is( "[required], [aria-required='true']" ) ) {
+									$requiredText.attr( "aria-hidden", "true" );
+								}
+							} );
+
+							// The jQuery validation plug-in in action
+							validator = $form.validate( {
+								meta: "validate",
+								focusInvalid: false,
+								ignore: settings.ignore,
+
+								// Set the element which will wrap the inline error messages
+								errorElement: "strong",
+
+								// Location for the inline error messages
+								// In this case we will place them in the associated label element
+								errorPlacement: function( $error, $element ) {
+									var type = $element.attr( "type" ),
+										group = $element.attr( "data-rule-require_from_group" ),
+										$fieldset, $legend;
+
+									$error.data( "element-id", $element.attr( "id" ) );
+									if ( type ) {
+										type = type.toLowerCase();
+										if ( type === "radio" || type === "checkbox" ) {
+											$fieldset = $element.closest( "fieldset" );
+											if ( $fieldset.length !== 0 ) {
+												$legend = $fieldset.find( "legend" ).first();
+												if ( $legend.length !== 0 && $fieldset.find( "input[name='" + $element.attr( "name" ) + "']" ) !== 1 ) {
+													$error.appendTo( $legend );
+													return;
+												}
+											}
 										}
+									}
 
-										if ( !id ) {
-											id = "required-group-" + idCount;
-											idCount += 1;
+									if ( group ) {
+										$fieldset = $element.closest( "fieldset" );
+										if ( $fieldset.length !== 0 ) {
+											$legend = $fieldset.find( "legend" ).first();
+											if ( $legend.length !== 0 && $fieldset.find( "input[name='" + $element.attr( "name" ) + "']" ) !== 1 ) {
+												var $strong = $legend.find( "strong.error" ),
+													id = $legend.attr( "id" );
 
-											$legend.attr( "id", id );
+												if ( $strong.length > 0 ) {
+													$strong.remove();
+												}
+
+												if ( !id ) {
+													id = "required-group-" + idCount;
+													idCount += 1;
+
+													$legend.attr( "id", id );
+												}
+
+												$error.data( "element-id", id );
+												$error.attr( "id", id );
+												$error.appendTo( $legend );
+
+												return;
+											}
 										}
+									}
 
-										$error.data( "element-id", id );
-										$error.attr( "id", id );
-										$error.appendTo( $legend );
-
+									//Std If we have a label and the input field is inside the label
+									// need to add a css-implicite-input
+									if ( $form.find( "label" ).find( ".wb-server-error + input.css-implicite-input[name='" + $element.attr( "name" ) + "']" ).length > 0 ) {
+										$error.insertBefore( $form.find( ".wb-server-error + input.css-implicite-input[name='" + $element.attr( "name" ) + "']" ) );
 										return;
 									}
-								}
-							}
 
-							//Std If we have a label and the input field is inside the label
-							// need to add a css-implicite-input
-							if ( $form.find( "label" ).find( ".wb-server-error + input.css-implicite-input[name='" + $element.attr( "name" ) + "']" ).length > 0 ) {
-								$error.insertBefore( $form.find( ".wb-server-error + input.css-implicite-input[name='" + $element.attr( "name" ) + "']" ) );
-								return;
-							}
+									$error.appendTo( $form.find( "label[for='" + $element.attr( "id" ) + "']" ) );
+									return;
+								},
 
-							$error.appendTo( $form.find( "label[for='" + $element.attr( "id" ) + "']" ) );
-							return;
-						},
+								// Create our error summary that will appear before the form
+								showErrors: function( errorMap ) {
+									this.defaultShowErrors();
+									var $errors = $form.find( ".wb-server-error, strong.error" ).filter( ":not(:hidden)" ),
+										$errorfields = $form.find( "input.error, select.error, textarea.error" ),
+										prefixStart = "<span class='prefix'>" + i18nText.error + "&#160;",
+										prefixEnd = i18nText.colon + " </span>",
+										separator = i18nText.hyphen,
+										ariaLive = $form.parent().find( ".arialive" )[ 0 ],
+										$summaryContainer, summary, key, i, len, $error, prefix, $fieldName, $fieldset, label, labelString;
 
-						// Create our error summary that will appear before the form
-						showErrors: function( errorMap ) {
-							this.defaultShowErrors();
-							var $errors = $form.find( ".wb-server-error, strong.error" ).filter( ":not(:hidden)" ),
-								$errorfields = $form.find( "input.error, select.error, textarea.error" ),
-								prefixStart = "<span class='prefix'>" + i18nText.error + "&#160;",
-								prefixEnd = i18nText.colon + " </span>",
-								separator = i18nText.hyphen,
-								ariaLive = $form.parent().find( ".arialive" )[ 0 ],
-								$summaryContainer, summary, key, i, len, $error, prefix, $fieldName, $fieldset, label, labelString;
+									// Correct the colouring of fields that are no longer invalid
+									$form
+										.find( ".has-error [aria-invalid=false]" )
+										.closest( ".has-error" )
+										.removeClass( "has-error" );
 
-							// Correct the colouring of fields that are no longer invalid
-							$form
-								.find( ".has-error [aria-invalid=false]" )
-								.closest( ".has-error" )
-								.removeClass( "has-error" );
+									if ( $errors.length !== 0 ) {
 
-							if ( $errors.length !== 0 ) {
-
-								// Post process
-								summary = "<" + summaryHeading + ">" +
-									i18nText.formNotSubmitted + $errors.length +
-									(
-										$errors.length !== 1 ?
-											i18nText.errorsFound :
-											i18nText.errorFound
-									) + "</" + summaryHeading + "><ul>";
-								$errorfields
-									.closest( ".form-group" )
-									.addClass( "has-error" );
-								len = $errors.length;
-								for ( i = 0; i !== len; i += 1 ) {
-									$error = $errors.eq( i );
-									prefix = prefixStart + ( i + 1 ) + prefixEnd;
-									$fieldName = $error.closest( "label" ).find( ".field-name" );
-
-									// Try to find the field name in the legend (if one exists)
-									if ( $fieldName.length === 0 ) {
-										$fieldset = $error.closest( "fieldset" );
-										if ( $fieldset.length !== 0 ) {
-											$fieldName = $fieldset.find( "legend .field-name" );
-										}
-									}
-
-									$error.find( "span.prefix" ).detach();
-
-									//Verify if it is a wb-server-error
-									if ( $errors[ i ].classList.contains( "wb-server-error" ) ) {
-										if ( $errors[ i ].id ) {
-											var myParent = document.getElementById( $errors[ i ].id ).parentElement;
-											if ( myParent === null ) {
-												summary += "<li><a>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
-											} else {
-												if ( myParent.hasAttribute( "for" ) && myParent.getAttribute( "for" ).length > 0 ) {
-													summary += "<li><a href='#" + myParent.getAttribute( "for" ) + "'>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
-												} else {
-													if ( myParent.getElementsByTagName( "input" )[ 0 ] && myParent.getElementsByTagName( "input" )[ 0 ].name.length > 0 ) {
-														summary += "<li><a href='#" + myParent.getElementsByTagName( "input" )[ 0 ].id + "'>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
-													} else {
-														if ( myParent.tagName === ( "LEGEND" ) && ( myParent.parentElement.getElementsByTagName( "input" )[ 0 ].type === "checkbox" || myParent.parentElement.getElementsByTagName( "input" )[ 0 ].type === "radio" && myParent.parentElement.getElementsByTagName( "input" )[ 0 ].name.length > 0 ) ) {
-															summary += "<li><a href='#" + myParent.parentElement.getElementsByTagName( "input" )[ 0 ].id + "'>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
-														} else {
-															summary += "<li><a>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
-														}
-													}
-												}
-											}
-											$error.html( "<strong>" + prefix + $error.text() + "</strong>" );
-										}
-									} else {
-										summary += "<li><a href='#" + $error.data( "element-id" ) + "'>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + "</a></li>";
-										$error.html( "<span class='label label-danger'>" + prefix + $error.text() + "</span>" );
-									}
-								}
-								summary += "</ul>";
-
-								if ( !submitted ) {
-
-									// Update the aria-live region as necessary
-									i = 0;
-									for ( key in errorMap ) {
-										if ( Object.prototype.hasOwnProperty.call( errorMap, key ) ) {
-											i += 1;
-											break;
-										}
-									}
-									if ( i !== 0 ) {
+										// Post process
+										summary = "<" + summaryHeading + ">" +
+											i18nText.formNotSubmitted + $errors.length +
+											(
+												$errors.length !== 1 ?
+													i18nText.errorsFound :
+													i18nText.errorFound
+											) + "</" + summaryHeading + "><ul>";
+										$errorfields
+											.closest( ".form-group" )
+											.addClass( "has-error" );
 										len = $errors.length;
 										for ( i = 0; i !== len; i += 1 ) {
-											label = $errors[ i ].parentNode;
-											if ( label.getAttribute( "for" ) === key ) {
-												labelString = label.innerHTML;
-												if ( labelString !== ariaLive.innerHTML ) {
-													ariaLive.innerHTML = labelString;
+											$error = $errors.eq( i );
+											prefix = prefixStart + ( i + 1 ) + prefixEnd;
+											$fieldName = $error.closest( "label" ).find( ".field-name" );
+
+											// Try to find the field name in the legend (if one exists)
+											if ( $fieldName.length === 0 ) {
+												$fieldset = $error.closest( "fieldset" );
+												if ( $fieldset.length !== 0 ) {
+													$fieldName = $fieldset.find( "legend .field-name" );
 												}
-												break;
+											}
+
+											$error.find( "span.prefix" ).detach();
+
+											//Verify if it is a wb-server-error
+											if ( $errors[ i ].classList.contains( "wb-server-error" ) ) {
+												if ( $errors[ i ].id ) {
+													var myParent = document.getElementById( $errors[ i ].id ).parentElement;
+													if ( myParent === null ) {
+														summary += "<li><a>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
+													} else {
+														if ( myParent.hasAttribute( "for" ) && myParent.getAttribute( "for" ).length > 0 ) {
+															summary += "<li><a href='#" + myParent.getAttribute( "for" ) + "'>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
+														} else {
+															if ( myParent.getElementsByTagName( "input" )[ 0 ] && myParent.getElementsByTagName( "input" )[ 0 ].name.length > 0 ) {
+																summary += "<li><a href='#" + myParent.getElementsByTagName( "input" )[ 0 ].id + "'>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
+															} else {
+																if ( myParent.tagName === ( "LEGEND" ) && ( myParent.parentElement.getElementsByTagName( "input" )[ 0 ].type === "checkbox" || myParent.parentElement.getElementsByTagName( "input" )[ 0 ].type === "radio" && myParent.parentElement.getElementsByTagName( "input" )[ 0 ].name.length > 0 ) ) {
+																	summary += "<li><a href='#" + myParent.parentElement.getElementsByTagName( "input" )[ 0 ].id + "'>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
+																} else {
+																	summary += "<li><a>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + separator + i18nText.errorCorrect + "</a></li>";
+																}
+															}
+														}
+													}
+													$error.html( "<strong>" + prefix + $error.text() + "</strong>" );
+												}
+											} else {
+												summary += "<li><a href='#" + $error.data( "element-id" ) + "'>" + prefix + ( $fieldName.length !== 0 ? $fieldName.html() + separator : "" ) + $error.text() + "</a></li>";
+												$error.html( "<span class='label label-danger'>" + prefix + $error.text() + "</span>" );
 											}
 										}
-									} else if ( ariaLive.innerHTML.length !== 0 ) {
+										summary += "</ul>";
+
+										if ( !submitted ) {
+
+											// Update the aria-live region as necessary
+											i = 0;
+											for ( key in errorMap ) {
+												if ( Object.prototype.hasOwnProperty.call( errorMap, key ) ) {
+													i += 1;
+													break;
+												}
+											}
+											if ( i !== 0 ) {
+												len = $errors.length;
+												for ( i = 0; i !== len; i += 1 ) {
+													label = $errors[ i ].parentNode;
+													if ( label.getAttribute( "for" ) === key ) {
+														labelString = label.innerHTML;
+														if ( labelString !== ariaLive.innerHTML ) {
+															ariaLive.innerHTML = labelString;
+														}
+														break;
+													}
+												}
+											} else if ( ariaLive.innerHTML.length !== 0 ) {
+												ariaLive.innerHTML = "";
+											}
+										}
+
+										// Delay updating the summary container in case a summary link was clicked
+										setTimeout( function() {
+											$summaryContainer = $form.find( "#" + errorFormId );
+
+											// Output our error summary and place it in the error container
+											// Create our container if one doesn't already exist
+											if ( $summaryContainer.length === 0 ) {
+												$summaryContainer = $( "<section id='" + errorFormId + "' class='alert alert-danger' tabindex='-1'>" + summary + "</section>" ).prependTo( $form );
+											} else {
+												$summaryContainer.empty().append( summary );
+											}
+
+											// Put focus on the error if the errors are generated by an attempted form submission
+											if ( submitted ) {
+
+												// Assign focus to $summaryContainer
+												$summaryContainer.trigger( setFocusEvent );
+												submitted = false;
+											}
+										}, 100 );
+									} else {
+
+										// Update the aria-live region as necessary
+										if ( ariaLive.innerHTML.length !== 0 ) {
+											ariaLive.innerHTML = "";
+										}
+										$form.find( "#" + errorFormId ).detach();
+									}
+								},
+
+								/* End of showErrors() */
+
+								invalidHandler: function() {
+									submitted = true;
+								}
+
+							} ); /* end of validate() */
+
+							/* fixes validation issue (see PR #7913) */
+							$form.on( "change", "input[type=date], input[type=file], select", function() {
+								$form.validate().element( this );
+							} );
+
+							// Clear the form and remove error messages on reset
+							$document.on( "click", selector + " input[type=reset]", function( event ) {
+								var which = event.which,
+									ariaLive;
+
+								// Ignore middle/right mouse buttons
+								if ( !which || which === 1 ) {
+									validator.resetForm();
+									$( "#" + errorFormId ).detach();
+
+									ariaLive = $form.parent().find( ".arialive" )[ 0 ];
+									if ( ariaLive.innerHTML.length !== 0 ) {
 										ariaLive.innerHTML = "";
 									}
+
+									// Correct the colouring of fields that are no longer invalid
+									$form.find( ".has-error" ).removeClass( "has-error" );
 								}
+							} );
 
-								// Delay updating the summary container in case a summary link was clicked
-								setTimeout( function() {
-									$summaryContainer = $form.find( "#" + errorFormId );
-
-									// Output our error summary and place it in the error container
-									// Create our container if one doesn't already exist
-									if ( $summaryContainer.length === 0 ) {
-										$summaryContainer = $( "<section id='" + errorFormId + "' class='alert alert-danger' tabindex='-1'>" + summary + "</section>" ).prependTo( $form );
-									} else {
-										$summaryContainer.empty().append( summary );
+							//Trigger validation on wb-server-error
+							$form.find( ".wb-server-error" ).filter( ":not( :hidden )" ).parent().each( function() {
+								if ( this.attributes.for && this.attributes.for.value.length > 0 ) {
+									$form.validate().element( $( "[id =" + this.attributes.for.value + "]" ) );
+								} else if ( $( this ).find( "input" )[ 0 ] ) {
+									$form.validate().element( $( this ).find( "input" )[ 0 ] );
+								} else if ( $( this ).next( ".radio, .checkbox" ).children( "label" ).children( "input" )[ 0 ] ) {
+									if ( $( this ).find( $( this ).next( ".radio, .checkbox" ).children( "label" ).children( "input" )[ 0 ].id ) ) {
+										$form.validate().element( $( this ).next( ".radio, .checkbox" ).children( "label" ).children( "input" )[ 0 ] );
 									}
-
-									// Put focus on the error if the errors are generated by an attempted form submission
-									if ( submitted ) {
-
-										// Assign focus to $summaryContainer
-										$summaryContainer.trigger( setFocusEvent );
-										submitted = false;
+								} else if ( $( this ).next( ".radio-inline, .checkbox-inline, .label-inline" ).children( "input" )[ 0 ] ) {
+									if ( $( this ).find( $( this ).next( ".radio-inline, .checkbox-inline, .label-inline" ).children( "input" )[ 0 ].id ) ) {
+										$form.validate().element( $( this ).next( ".radio-inline, .checkbox-inline, .label-inline" ).children( "input" )[ 0 ] );
 									}
-								}, 100 );
-							} else {
-
-								// Update the aria-live region as necessary
-								if ( ariaLive.innerHTML.length !== 0 ) {
-									ariaLive.innerHTML = "";
 								}
-								$form.find( "#" + errorFormId ).detach();
-							}
-						},
+							} );
 
-						/* End of showErrors() */
+							// Tell the i18n file to execute to run any $.validator extends
+							$form.trigger( "formLanguages.wb" );
 
-						invalidHandler: function() {
-							submitted = true;
-						}
-
-					} ); /* end of validate() */
-
-					/* fixes validation issue (see PR #7913) */
-					$form.on( "change", "input[type=date], input[type=file], select", function() {
-						$form.validate().element( this );
-					} );
-
-					// Clear the form and remove error messages on reset
-					$document.on( "click", selector + " input[type=reset]", function( event ) {
-						var which = event.which,
-							ariaLive;
-
-						// Ignore middle/right mouse buttons
-						if ( !which || which === 1 ) {
-							validator.resetForm();
-							$( "#" + errorFormId ).detach();
-
-							ariaLive = $form.parent().find( ".arialive" )[ 0 ];
-							if ( ariaLive.innerHTML.length !== 0 ) {
-								ariaLive.innerHTML = "";
-							}
-
-							// Correct the colouring of fields that are no longer invalid
-							$form.find( ".has-error" ).removeClass( "has-error" );
+							// Identify that initialization has completed
+							wb.ready( $( eventTarget ), componentName );
 						}
 					} );
-
-					//Trigger validation on wb-server-error
-					$form.find( ".wb-server-error" ).filter( ":not( :hidden )" ).parent().each( function() {
-						if ( this.attributes.for && this.attributes.for.value.length > 0 ) {
-							$( "form" ).validate().element( $( "[id =" + this.attributes.for.value + "]" ) );
-						} else if ( $( this ).find( "input" )[ 0 ] ) {
-							$( "form" ).validate().element( $( this ).find( "input" )[ 0 ] );
-						} else if ( $( this ).next( ".radio, .checkbox" ).children( "label" ).children( "input" )[ 0 ] ) {
-							if ( $( this ).find( $( this ).next( ".radio, .checkbox" ).children( "label" ).children( "input " )[ 0 ].id ) ) {
-								$( "form" ).validate().element( $( this ).next( ".radio, .checkbox" ).children( "label" ).children( "input" )[ 0 ] );
-							}
-						}
-					} );
-
-					// Tell the i18n file to execute to run any $.validator extends
-					$form.trigger( "formLanguages.wb" );
-
-					// Identify that initialization has completed
-					wb.ready( $( eventTarget ), componentName );
 				}
 			} );
 		}
@@ -9851,7 +10010,7 @@ wb.add( selector );
  * @author @duboisp
  */
 /*global jsonpointer */
-( function( $, wb ) {
+( function( $, wb, DOMPurify ) {
 "use strict";
 
 /*
@@ -10035,6 +10194,7 @@ $document.on( fetchEvent, function( event ) {
 
 					} )
 					.fail( function( xhr, status, error ) {
+						xhr.responseText = DOMPurify.sanitize( xhr.responseText );
 						$( "#" + callerId ).trigger( {
 							type: "json-failed.wb",
 							fetch: {
@@ -10051,7 +10211,7 @@ $document.on( fetchEvent, function( event ) {
 	}
 } );
 
-} )( jQuery, wb );
+} )( jQuery, wb, DOMPurify );
 
 /**
  * @title WET-BOEW Lightbox
@@ -11452,6 +11612,7 @@ var componentName = "wb-mltmd",
 					cc_on: i18n( "cc", "on" ),
 					cc_off: i18n( "cc", "off" ),
 					cc_error: i18n( "cc-err" ),
+					fs: i18n( "fs" ),
 					mute_on: i18n( "mute", "on" ),
 					mute_off: i18n( "mute", "off" ),
 					duration: i18n( "dur" ),
@@ -11790,6 +11951,15 @@ var componentName = "wb-mltmd",
 			}
 			$this.trigger( captionsVisibleChangeEvent );
 			break;
+		case "fullscreen":
+			if ( this.object.requestFullscreen ) {
+				this.object.requestFullscreen();
+			} else if ( this.object.webkitRequestFullscreen ) { /* Safari */
+				this.object.webkitRequestFullscreen();
+			} else if ( this.object.msRequestFullscreen ) { /* IE11 */
+				this.object.msRequestFullscreen();
+			}
+			break;
 		case "getBuffering":
 			return this.object.buffering || false;
 		case "setBuffering":
@@ -11844,6 +12014,8 @@ var componentName = "wb-mltmd",
 			return this.object.getCurrentTime();
 		case "setCurrentTime":
 			return this.object.seekTo( args, true );
+		case "fullscreen":
+			return this.object.getIframe().requestFullscreen();
 		case "getMuted":
 			if ( !this.object.playedOnce && this.object.wasMutedPlay ) {
 				state = this.object.wasMutedPlay;
@@ -12030,6 +12202,7 @@ $document.on( initializedEvent, selector, function( event ) {
 
 		if ( settings !== undef ) {
 			data.shareUrl = settings.shareUrl;
+			data.fullscreen = settings.fullscreenBtn || false;
 		}
 
 		$this.addClass( type );
@@ -12095,10 +12268,6 @@ $document.on( initializedEvent, selector, function( event ) {
 
 			// Identify that initialization has completed
 			wb.ready( $this, componentName );
-		} else {
-
-			// Do nothing since IE8 support is no longer required
-			return;
 		}
 	}
 } );
@@ -12154,6 +12323,11 @@ $document.on( youtubeEvent, selector, function( event, data ) {
 
 		data.media = $media;
 		data.ytPlayer = ytPlayer;
+
+		// The fullscreen button is not visible by default because there are no controls when in full screen.
+		if ( data.fullscreen ) {
+			$this.attr( "data-fullscreen-btn", true );
+		}
 
 		// Detect if the YT player reloads, like when magnific Popup show the modal, because it moves the iframe
 		// and then the iframe gets refreshed and reloaded. So the issue is that the iframe stops emitting the event
@@ -12234,6 +12408,11 @@ $document.on( renderUIEvent, selector, function( event, type, data ) {
 		} else {
 			loadCaptionsInternal( $media, $( "#" + wb.jqEscape( captionsUrl.hash.substring( 1 ) ) ) );
 		}
+
+		// The fullscreen button is not visible by default because there are no controls when in full screen.
+		if ( data.fullscreen ) {
+			$this.attr( "data-fullscreen-btn", true );
+		}
 	}
 } );
 
@@ -12267,6 +12446,8 @@ $document.on( "click", selector, function( event ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05 );
 	} else if ( className.includes( "cuepoint" ) ) {
 		$( this ).trigger( { type: "cuepoint", cuepoint: $target.data( "cuepoint" ) } );
+	} else if ( /fullscreen|fs/.test( className ) ) {
+		this.player( "fullscreen" );
 	}
 } );
 
@@ -12293,6 +12474,10 @@ $document.on( "keydown", dispCtrls, function( event ) {
 			// Mute/unmute if focused on the mute/unmute button or volume input.
 			if ( $( event.target ).hasClass( "mute" ) || event.target.nodeName === "INPUT" ) {
 				$playerTarget.find( ".mute" ).trigger( "click" );
+			} else if ( $( event.target ).hasClass( "fs" ) ) {
+
+				// Enter full screen if focused on the full screen button
+				$playerTarget.find( ".fs" ).trigger( "click" );
 			} else if ( $( event.target ).hasClass( "cc" ) ) {
 
 				// Show/hide captions if focused on the closed captions button.
@@ -13707,6 +13892,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	 * @param {Object} settings Key-value object
 	 */
 	initEventTimeout = function( $elm, eventName, time, settings ) {
+		var duration = parseTime( time );
 
 		// Clear any existing timeout for the event
 		clearTimeout( $elm.data( eventName ) );
@@ -13714,7 +13900,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 		// Create the new timeout that will trigger the event
 		$elm.data( eventName, setTimeout( function() {
 			$elm.trigger( eventName, settings );
-		}, parseTime( time ) ) );
+		}, duration ) );
 	},
 
 	/**
@@ -13836,6 +14022,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	inactivity = function( event, settings ) {
 		var $buttonContinue, $buttonEnd,
 			time = getTime( settings.reactionTime ),
+			startTime = getCurrentTime(),
 			timeoutBegin = i18nText.timeoutBegin
 				.replace( "#min#", "<span class='min'>" + time.minutes + "</span>" )
 				.replace( "#sec#", "<span class='sec'>" + time.seconds + "</span>" ),
@@ -13843,12 +14030,12 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 			buttonEnd = "</button>";
 
 		// Clear the keepalive timeout to avoid double firing of requests
-		clearTimeout( $( event.target ).data( keepaliveEvent ) );
+		clearInterval( $( event.target ).data( keepaliveEvent ) );
 
 		$buttonContinue = $( buttonStart + confirmClass +
 			" btn btn-primary popup-modal-dismiss'>" + i18nText.buttonContinue + buttonEnd )
 			.data( settings )
-			.data( "start", getCurrentTime() );
+			.data( "start", startTime );
 		$buttonEnd = $( buttonStart + confirmClass + " btn btn-default'>" +
 			i18nText.buttonEnd + buttonEnd )
 			.data( "logouturl", settings.logouturl );
@@ -13858,9 +14045,11 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 			buttons: [ $buttonContinue, $buttonEnd ],
 			open: function() {
 				var $minutes = $modal.find( ".min" ),
-					$seconds = $modal.find( ".sec" );
+					$seconds = $modal.find( ".sec" ),
+					endDuration = settings.reactionTime;
+
 				countdownInterval = setInterval( function() {
-					if ( countdown( $minutes, $seconds ) ) {
+					if ( countdown( $minutes, $seconds, startTime, endDuration ) ) {
 						clearInterval( countdownInterval );
 
 						// Let the user know their session has timed out
@@ -13868,7 +14057,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 						$buttonContinue.text( i18nText.buttonSignin );
 						$buttonEnd.hide();
 					}
-				}, 1000 );
+				}, 500 );
 			}
 		} );
 	},
@@ -13997,25 +14186,18 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	 * @function countdown
 	 * @param {jQuery DOM Element} $minutes Element that contains the minute value
 	 * @param {jQuery DOM Element} $seconds Element that contains the second value
+	 * @param { integer } startTime The time value of when the countdown started in milliseconds
+	 * @param { integer } endDuration The time value of the duration of the countdown in milliseconds
 	 * @returns {boolean} Is the countdown finished?
 	 */
-	countdown = function( $minutes, $seconds ) {
-		var minutes = parseInt( $minutes.text(), 10 ),
-			seconds = parseInt( $seconds.text(), 10 );
-
-		// Decrement seconds and minutes
-		if ( seconds > 0 ) {
-			seconds -= 1;
-		} else if ( minutes > 0 ) {
-			minutes -= 1;
-			seconds = 59;
-		}
+	countdown = function( $minutes, $seconds, startTime, endDuration ) {
+		var newTime = getTime( endDuration - ( getCurrentTime() - startTime ) );
 
 		// Update the DOM elements
-		$minutes.text( minutes );
-		$seconds.text( seconds );
+		$minutes.text( newTime.minutes );
+		$seconds.text( newTime.seconds );
 
-		return minutes === 0 && seconds === 0;
+		return newTime.minutes <= 0 && newTime.seconds <= 0;
 	};
 
 // Bind the plugin events
@@ -16245,7 +16427,7 @@ $document.on( "wb-contentupdated", selector, function( event, data )  {
 	if ( supportsHas === "false" ) {
 		let noResultItem = this.querySelector( "." + noResultWrapperClass );
 
-		if ( noResultItem ) {
+		if ( noResultItem && this.items.length > 0 ) {
 			let visibleItems = this.querySelectorAll( "." + itemsWrapperClass + " " + "[data-wb-tags]:not(." + tgFilterOutClass + ", ." + filterOutClass + ")" );
 
 			if ( visibleItems.length < 1 ) {
@@ -17260,7 +17442,7 @@ var componentName = "wb-data-json",
 				content = [ content ];
 			} else {
 				content = $.map( content, function( val, index ) {
-					if ( typeof val === "object" && !$.isArray( val ) ) {
+					if ( val && typeof val === "object" && !$.isArray( val ) ) {
 						if ( !val[ "@id" ] ) {
 							val[ "@id" ] = index;
 						}
@@ -17599,6 +17781,7 @@ var componentName = "wb-data-json",
 
 		var j, j_cache,
 			cached_node, cached_value,
+			cached_value_is_HTML, cached_value_is_JSON, cached_value_is_IRI,
 			queryAll = mappingConfig.queryall,
 			selElements,
 			mapping = mappingConfig.mapping,
@@ -17618,7 +17801,7 @@ var componentName = "wb-data-json",
 		}
 
 		// Check if there is some mapping configuration
-		if ( !mapping && !queryAll && !mappingConfig.template ) {
+		if ( !mapping && !queryAll && !mappingConfig.template && typeof mapping !== "object" ) {
 			return;
 		}
 
@@ -17704,6 +17887,11 @@ var componentName = "wb-data-json",
 		for ( j = 0; j < mapping_len || j === 0; j += 1 ) {
 			j_cache = mapping[ j ];
 
+			// Reset the cache value special type flag
+			cached_value_is_IRI = false;
+			cached_value_is_HTML = false;
+			cached_value_is_JSON = false;
+
 			// Get the element to be updated
 			if ( j_cache.selector ) {
 				cached_node = clone.querySelector( j_cache.selector );
@@ -17728,13 +17916,23 @@ var componentName = "wb-data-json",
 				continue;
 			}
 
+			// Do the cache value contain special @type
+			if ( cached_value && cached_value[ "@value" ] && cached_value[ "@type" ] ) {
+				if ( !$.isArray( cached_value[ "@type" ] ) ) {
+					cached_value[ "@type" ] = [ cached_value[ "@type" ] ];
+				}
+				cached_value_is_IRI = cached_value[ "@type" ].indexOf( "@id" ) !== -1;
+				cached_value_is_HTML = cached_value[ "@type" ].indexOf( "rdf:HTML" ) !== -1;
+				cached_value_is_JSON = cached_value[ "@type" ].indexOf( "rdf:JSON" ) !== -1 || cached_value[ "@type" ].indexOf( "@json" ) !== -1;
+			}
+
 			// Action the value
 			if ( $.isArray( cached_value ) && ( j_cache.mapping || j_cache.queryall ) ) {
 
 				// Deep dive into the content if a mapping exist
 				dataIterator( cached_node, cached_value, j_cache );
 
-			} else if ( j_cache.mapping || j_cache.queryall ) {
+			} else if ( j_cache.mapping || j_cache.queryall || !j_cache.mapping && typeof j_cache.mapping === "object" ) {
 				try {
 
 					// Map the inner mapping
@@ -17749,14 +17947,32 @@ var componentName = "wb-data-json",
 						throw ex;
 					}
 				}
+			} else if ( cached_value_is_IRI && cached_value_is_HTML ) {
+
+				// The import file type are expected to be HTML
+				// Add the data-ajax instruction so the content would be added once the JSON mapping is completed and added on the page.
+				cached_node.dataset.wbAjax = JSON.stringify( {
+					url: cached_value[ "@value" ],
+					type: "replace",
+					dataType: cached_value_is_JSON ? "json" : null,
+					encode: j_cache.encode
+				} );
+			} else if ( cached_value_is_HTML && cached_value_is_JSON && !cached_value_is_IRI ) {
+
+				// Get content from the "@value" property which contain JSON value and use it as a string value
+				cached_value = JSON.stringify( cached_value[ "@value" ] );
+
+				// Map the value in the element
+				mapValue( cached_node, cached_value, j_cache );
+
 			} else if ( !cached_node && typeof cached_value === "object" ) {
 				throw "cached_node: null";
-			} else {
+			} else if ( mappingConfig.mapping !== null ) {
 
 				cached_value = getValue( cached_value );
 
-				// Serialize the value if it is an JS object
-				if ( typeof cached_value === "object" ) {
+				// Serialize the value if it is an JS object and its not a null object
+				if ( typeof cached_value === "object" &&  cached_value !== null ) {
 					cached_value = JSON.stringify( cached_value );
 				}
 
@@ -17790,7 +18006,7 @@ var componentName = "wb-data-json",
 		var value = getRawValue( source, pointer );
 
 		// for JSON-LD @value support
-		if ( typeof value === "object" && value !== null && value[ "@value" ] ) {
+		if ( typeof value === "object" && value !== null && Object.prototype.hasOwnProperty.call( value, "@value" ) ) {
 			value = value[ "@value" ];
 		}
 
@@ -17836,11 +18052,13 @@ var componentName = "wb-data-json",
 			value = placeholderText.replace( mappingConfig.placeholder, value );
 		}
 
-		// Set the value to the node
-		if ( mappingConfig.isHTML ) {
-			element.innerHTML = value;
-		} else {
-			element.textContent = value;
+		// Exclude null values and replace with default text
+		if ( value !== null ) {
+			if ( mappingConfig.isHTML ) {
+				element.innerHTML = value;
+			} else {
+				element.textContent = value;
+			}
 		}
 	},
 
@@ -17967,8 +18185,35 @@ var componentName = "wb-data-json",
 	};
 
 $document.on( "json-failed.wb", selector, function( event ) {
+
+	var elm = event.currentTarget,
+		$elm = $( elm ),
+		lstCall = $elm.data( dataQueue ),
+		fetchObj = event.fetch,
+		xhrResponse = fetchObj.xhr,
+		itmSettings = lstCall[ fetchObj.refId ],
+		failSettings = itmSettings.fail;
+
+	if ( failSettings ) {
+
+		// Mapping is always streamline because the data structure is a static object not an array
+		failSettings.streamline = true;
+
+		// apply the templaty to display an error message
+		applyTemplate( elm, failSettings, {
+			error: fetchObj.error.message || xhrResponse.statusText,
+			status: fetchObj.status,
+			url: fetchObj.fetchOpts.url,
+			response: {
+				text: xhrResponse.responseText || "",
+				status: xhrResponse.status,
+				statusText: xhrResponse.statusText
+			}
+		} );
+	}
+
 	console.info( event.currentTarget );
-	throw "Bad JSON Fetched from url in " + componentName;
+	console.error( "Error or bad JSON Fetched from url in " + componentName );
 } );
 
 // Load template polyfill
@@ -18089,7 +18334,7 @@ var componentName = "wb-disable",
 			}
 
 			try {
-				if ( wb.isDisabled || ( wb.ie && wb.ielt7 ) ) {
+				if ( wb.isDisabled || wb.ie ) {
 					$html.addClass( "wb-disable" );
 
 					try {
@@ -18452,24 +18697,51 @@ var componentName = "wb-jsonmanager",
 				fn: function( obj, key, tree ) {
 					var val = obj[ key ],
 						ref = this.ref,
-						mainTree = this.mainTree,
+						mainTree = this.mainTree || obj,
 						path = this.path,
-						newVal;
+						newVal,
+						refObject, refIsArray, valWasArray,
+						i, i_len, i_item,
+						j, j_len, j_item;
 
 					if ( val ) {
-						if ( Array.isArray( val ) ) {
-							val.forEach( ( item, i ) => {
-								item = item.replaceAll( "~", "~0" ).replaceAll( "/", "~1" ); // Escape slashed and tilde in val when the key is an IRI
-								newVal = mainTree ? jsonpointer.get( mainTree, ref + "/" + item ) : jsonpointer.get( tree, ref + "/" + item );
-								if ( newVal ) {
-									applyPatch( tree, "replace", path + "/" + i, newVal );
+
+						refObject = jsonpointer.get( mainTree, ref );
+						refIsArray = Array.isArray( refObject );
+						valWasArray = Array.isArray( val );
+
+						if ( !valWasArray ) {
+							val =  [ val ];
+						}
+
+						i_len = val.length;
+
+						for ( i = 0; i !== i_len; i++ ) {
+							i_item = val[ i ];
+							newVal = undefined; // Reinit
+							if ( !refIsArray ) {
+								i_item = i_item.replaceAll( "~", "~0" ).replaceAll( "/", "~1" ); // Escape slashed and tilde in val when the key is an IRI for JSON pointer compatibility
+								newVal = mainTree ? jsonpointer.get( mainTree, ref + "/" + i_item ) : jsonpointer.get( tree, ref + "/" + i_item );
+							} else {
+
+								// Iterate until we found a corresponding value in the property "@id"
+								j_len = refObject.length;
+								for ( j = 0; j !== j_len; j++ ) {
+									j_item = refObject[ j ];
+									if ( j_item[ "@id" ] && j_item[ "@id" ] === i_item ) {
+										newVal = j_item;
+										break;
+									}
 								}
-							} );
-						} else if ( typeof val === "string" ) {
-							val = val.replaceAll( "~", "~0" ).replaceAll( "/", "~1" ); // Escape slashed and tilde in val when the key is an IRI
-							newVal = mainTree ? jsonpointer.get( mainTree, ref + "/" + val ) : jsonpointer.get( tree, ref + "/" + val );
-							if ( newVal ) {
+								if ( !newVal ) {
+									console.error( "wb-swap: Unable to find a corresponding value for: " + val + " in reference " + ref );
+									break;
+								}
+							}
+							if ( newVal && !valWasArray ) {
 								applyPatch( tree, "replace", path, newVal );
+							} else if ( newVal ) {
+								applyPatch( tree, "replace", path + "/" + i, newVal );
 							}
 						}
 					}
@@ -18700,6 +18972,12 @@ var componentName = "wb-jsonmanager",
 			},
 			manageObjDir = function( selector, selectedValue, json_return ) {
 				var arrPath = selector.path.split( "/" ).filter( Boolean );
+
+				// Check if selectedValue is an empty value returned by querySelectorAll
+				if ( selectedValue && selectedValue instanceof NodeList && selectedValue.length === 0 ) {
+					selectedValue = null;
+				}
+
 				if ( arrPath.length > 1 ) {
 					var pointer = "";
 					pointer = arrPath.pop();
@@ -18942,34 +19220,6 @@ var componentName = "wb-jsonmanager",
 		}
 		return JSONsource;
 	};
-
-// IE dedicated patch to support ECMA-402 but limited to English and French number formatting
-if ( wb.ie ) {
-	Number.prototype.toLocaleString = function( locale ) {
-
-		var splitVal = this.toString().split( "." ),
-			integer = splitVal[ 0 ],
-			decimal = splitVal[ 1 ],
-			intLength = integer.length,
-			nbSection = intLength % 3 || 3,
-			strValue = integer.substr( 0, nbSection ),
-			isFrenchLoc = ( locale === "fr" ),
-			thousandSep = ( isFrenchLoc ? " " : "," ),
-			i;
-
-		for ( i = nbSection; i < intLength; i = i + 3 ) {
-			strValue = strValue + thousandSep + integer.substr( i, 3 );
-		}
-		if ( decimal.length ) {
-			if ( isFrenchLoc ) {
-				strValue = strValue + "," + decimal;
-			} else {
-				strValue = strValue + "." + decimal;
-			}
-		}
-		return strValue;
-	};
-}
 
 $document.on( "json-failed.wb", selector, function( event ) {
 	var elm = event.target,
@@ -19443,7 +19693,7 @@ var $document = wb.doc,
 
 	init = function( event ) {
 		var elm = wb.init( event, componentName, selector ),
-			$elm, settings, $selectedElm;
+			$elm, settings, $selectedElm, valuesList;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -19455,22 +19705,39 @@ var $document = wb.doc,
 				wb.getData( $elm, componentName )
 			);
 
-			$selectedElm = settings.selector ? $( settings.selector, $elm ) : $elm.children();
+			if ( settings.attribute ) {
+				if ( settings.values && Array.isArray( settings.values ) ) {
+					valuesList = settings.values;
+					shuffleArray( valuesList );
+					elm.setAttribute( settings.attribute, valuesList[ 0 ] );
+				} else {
+					throw componentName + ": You must define the property \"values\" to an array of strings when \"attribute\" property is defined.";
+				}
+			} else {
+				$selectedElm = settings.selector ? $( settings.selector, $elm ) : $elm.children();
 
-			if ( !$selectedElm.length ) {
-				throw componentName + " selector setting is invalid or no children";
-			}
+				if ( !$selectedElm.length ) {
+					throw componentName + " selector setting is invalid or no children";
+				}
 
-			if ( settings.shuffle ) {
-				$selectedElm = wb.shuffleDOM( $selectedElm );
-			}
+				if ( settings.shuffle ) {
+					$selectedElm = wb.shuffleDOM( $selectedElm );
+				}
 
-			if ( settings.toggle ) {
-				$selectedElm = wb.pickElements( $selectedElm, settings.number );
-				$selectedElm.toggleClass( settings.toggle );
+				if ( settings.toggle ) {
+					$selectedElm = wb.pickElements( $selectedElm, settings.number );
+					$selectedElm.toggleClass( settings.toggle );
+				}
 			}
 
 			wb.ready( $elm, componentName );
+		}
+	},
+
+	shuffleArray = function( array ) {
+		for ( let i = array.length - 1; i > 0; i-- ) {
+			const j = Math.floor( Math.random() * ( i + 1 ) );
+			[ array[ i ], array[ j ] ] = [ array[ j ], array[ i ] ];
 		}
 	};
 
