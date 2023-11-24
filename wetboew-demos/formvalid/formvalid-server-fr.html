@@ -12,12 +12,12 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2023-08-07 12:20:26 +0000"/>
+<meta name="dcterms.issued" content="2023-11-24 15:07:05 +0000"/>
 <meta name="dcterms.modified" content="2022-04-13"/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +31,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -78,7 +78,7 @@
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
-		<li role="presentation"><a role="menuitem" href="https://international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li></ul>
 </nav>
@@ -95,6 +95,14 @@
 				</a>
 				<meta property="position" content="1">
 			</li>
+			
+							<li property="itemListElement" typeof="ListItem">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/index-fr.html">
+									<span property="name">GCWeb</span>
+								</a>
+								<meta property="position" content="2">
+							</li>
+							
 		</ol>
 	</div>
 </nav>
@@ -102,8 +110,7 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Fusion des erreurs Serveur-Client</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Fusion des erreurs Serveur-Client</h1>
 <ul>
 	<li><a href="formvalid-fr.html">Validation de formulaires</a></li>
 	<li><a href="formvalid-server-fr.html">Fusion des erreurs Serveur-Client</a></li>
@@ -121,7 +128,7 @@
 
 	
 
-	<p>Après avoir soumis votre page, le serveur retoune 4 erreurs serveur. Maintenant si vous essayez de resoumettre
+	<p>Après avoir soumis votre page, le serveur retoune 7 erreurs serveur. Maintenant si vous essayez de resoumettre
 		votre formulaire avec des erreurs clients, ce composant ajoutera ces erreurs aux erreurs serveur déjà existantes.</p>
 	<p>Pour tester le composant: Essayez d'effacer un champ ou d'entrer 201 comme âge du bénéficiaire ou de décocher
 		toutes les cases à cocher .</p>
@@ -173,15 +180,13 @@
 							<label class="required" for="MainContent_BeneficiaryName">
 								<span class="field-name">Nom du bénéficiaire</span>
 								<strong class="required">(Champ requis)</strong>
-								<span class="label label-danger wb-server-error" id="MainContent_BeneficiaryNameCv"><strong><span class="prefix">Erreur&nbsp;1&nbsp;:
-									</span>Le nom doit commencer par "Super"</strong></span> </label><input name="ctl00$MainContent$BeneficiaryName" class="form-control valid" id="MainContent_BeneficiaryName" aria-invalid="false" required="required" type="text" maxlength="16" value="Moi">
+								<span class="label label-danger wb-server-error" id="MainContent_BeneficiaryNameCv">Le nom doit commencer par "Super"</span> </label><input name="ctl00$MainContent$BeneficiaryName" class="form-control valid" id="MainContent_BeneficiaryName" aria-invalid="false" required="required" type="text" maxlength="16" value="Moi">
 						</div>
 						<div class="form-group">
 							<label class="required">
 								<span class="field-name">Âge du bénéficiaire</span>
 								<strong class="required">(Champ requis)</strong>
-								<span class="label label-danger wb-server-error" id="MainContent_BeneficiaryAgeCv"><strong><span class="prefix">Erreur&nbsp;2&nbsp;:
-									</span>L'âge doit être entre 64 et 200 pour recevoir des prestations de retraite</strong></span><input name="ctl00$MainContent$BeneficiaryAge" class="form-control css-implicite-input valid" id="MainContent_BeneficiaryAge" aria-invalid="false" required="required" type="number" min="1" max="200" step="1" value="52">
+								<span class="label label-danger wb-server-error" id="MainContent_BeneficiaryAgeCv">L'âge doit être entre 64 et 200 pour recevoir des prestations de retraite</span><input name="ctl00$MainContent$BeneficiaryAge" class="form-control css-implicite-input valid" id="MainContent_BeneficiaryAge" aria-invalid="false" required="required" type="number" min="1" max="200" step="1" value="52">
 							</label>
 						</div>
 					</fieldset>
@@ -196,8 +201,7 @@
 					<fieldset class="legend-brdr-bttm">
 						<legend class="required"><span class="field-name">Informations de contact</span> <strong class="required">(Champ
 								requis)</strong>
-							<span class="label label-danger wb-server-error" id="MainContent_wbCheckBoxList0Cv"><strong><span class="prefix">Erreur&nbsp;3&nbsp;:
-									</span>Vous ne pouvez sélectionner plus de 2 cases à cocher</strong></span>
+							<span class="label label-danger wb-server-error" id="MainContent_wbCheckBoxList0Cv">Vous ne pouvez sélectionner plus de 2 cases à cocher</span>
 						</legend>
 						<div class="checkbox"><label for="MainContent_wbCheckBoxList0_checkBoxList0_0"><input name="checkBoxList0" class="required_js valid" id="MainContent_wbCheckBoxList0_checkBoxList0_0" aria-invalid="false" required="required" type="checkbox" checked="checked" value="checkBoxList0_0v"><span> <span class="field-name">Contactez-moi par courrier électronique</span></span> </label></div>
 						<div class="checkbox"><label for="MainContent_wbCheckBoxList0_checkBoxList0_1"><input name="checkBoxList0" id="MainContent_wbCheckBoxList0_checkBoxList0_1" type="checkbox" checked="checked" value="checkBoxList0_1v"><span> <span class="field-name">Contactez-moi par téléphone</span></span> </label></div>
@@ -208,7 +212,42 @@
 						<legend class="required"><span class="field-name">Signature</span> <strong class="required">(Champ requis)</strong></legend>
 						<div class="checkbox"><label for="MainContent_wbCheckBoxList1_checkBoxList1_0"><input name="checkBoxList1" class="required_js valid" id="MainContent_wbCheckBoxList1_checkBoxList1_0" required="required" type="checkbox" checked="checked" value="checkBoxList1_0v"><span> <span class="field-name">Imprimer cette page</span></span> </label></div>
 						<div class="checkbox"><label for="MainContent_wbCheckBoxList1_checkBoxList1_1"><input name="checkBoxList1" id="MainContent_wbCheckBoxList1_checkBoxList1_1" type="checkbox" value="checkBoxList1_1v"><span> <span class="field-name">Veuillez m'envoyer de l'information complémentaire</span></span> </label></div>
-						<div class="checkbox required"><label for="MainContent_wbCheckBoxList1_checkBoxList1_2"><input name="checkBoxList1" id="MainContent_wbCheckBoxList1_checkBoxList1_2" aria-invalid="false" required="required" type="checkbox" value="checkBoxList1_2v"><span> <span class="field-name">Je suis en accord avec les directives</span><strong class="required"> (Champ requis)</strong></span><span class="label label-danger wb-server-error" id="MainContent_wbCheckBoxList1_checkBoxList1_2Cv"><strong><span class="prefix">Erreur&nbsp;4&nbsp;: </span>Ce champs est obligatoire</strong></span> </label></div>
+						<div class="checkbox required"><label for="MainContent_wbCheckBoxList1_checkBoxList1_2"><input name="checkBoxList1" id="MainContent_wbCheckBoxList1_checkBoxList1_2" aria-invalid="false" required="required" type="checkbox" value="checkBoxList1_2v"><span> <span class="field-name">Je suis en accord avec les directives</span><strong class="required"> (Champ requis)</strong></span><span class="label label-danger wb-server-error" id="MainContent_wbCheckBoxList1_checkBoxList1_2Cv">Ce champs est obligatoire</span></label></div>
+					</fieldset>
+
+					<fieldset class="form-inline chkbxrdio-grp">
+						<legend class="required"><span class="field-name">Statut de travail</span> <strong class="required">(Champ requis)</strong><span class="label label-danger wb-server-error" id="workError">Vous devez sélectionner Non pour cette question.</span></legend>
+						<label class="radio-inline">
+							<input class="input-validation-error" data-msg-required="Vous devez sélectionner Oui ou Non." data-rule-required="true" id="workNo" name="workStatus" type="radio" value="No" />
+							Non
+						</label>
+						<label class="radio-inline">
+							<input class="input-validation-error" id="workYes" checked="checked" name="workStatus" type="radio" value="Yes" />
+							Oui
+						</label>
+					</fieldset>
+
+					<fieldset class="form-inline chkbxrdio-grp">
+						<legend class="required"><span class="field-name">Nouvelles destinations de vacances</span> <strong class="required">(Champ requis)</strong><span class="label label-danger wb-server-error" id="vacationError">Vous êtes déjà allé au Mexique.</span></legend>
+						<div class="label-inline">
+							<input type="checkbox" checked="checked" name="vacationDestination" id="dest1" required="required" />
+							<label for="dest1">Mexique</label>
+						</div>
+						<div class="label-inline">
+							<input type="checkbox" name="vacationDestination" id="dest2" />
+							<label for="dest2">Italie</label>
+						</div>
+						<div class="label-inline">
+							<input type="checkbox" name="vacationDestination" id="dest3" />
+							<label for="dest3">Allemagne</label>
+						</div>
+					</fieldset>
+
+					<fieldset class="form-inline chkbxrdio-grp">
+						<legend class="required"><span class="field-name">Animaux de compagnie</span> <strong class="required">(Champ requis)</strong><span class="label label-danger wb-server-error" id="petError">Un chevreuil n'est pas un animal de compagnie</span></legend>
+						<label class="checkbox-inline"><input type="checkbox" checked="checked" name="petChoice" id="petDeer" required="required" /> Chevreuil</label>
+						<label class="checkbox-inline"><input type="checkbox" name="petChoice" id="petCat" /> Chat</label>
+						<label class="checkbox-inline"><input type="checkbox" name="petChoice" id="petDog" /> Chien</label>
 					</fieldset>
 
 					<ul class="list-inline">
@@ -223,24 +262,15 @@
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2>
 
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="https://servicecanada.github.io/wet-boew-demos/gcweb-pr2098/sites/feedback/ajax/page-feedback-fr.html" class="wb-disable-allow">
-	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
-		</div>
-	</div>
+	<div class="row"><div class="col-xs-12"><dl id="wb-dtmd">
+	<dt>Date de modification&#160;:</dt>
+	<dd><time property="dateModified">2022-04-13</time></dd>
+</dl>
 </div>
-
-			</div><div class="col-xs-12">
-			<dl id="wb-dtmd">
-				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified">2022-04-13</time></dd>
-			</dl>
-		</div>
 	</div>
 </section>
 
 </main>
-
 <footer id="wb-info">
 	<h2 class="wb-inv">À propos de ce site</h2>
 
@@ -286,14 +316,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

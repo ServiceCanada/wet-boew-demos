@@ -12,12 +12,12 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2023-08-07 12:20:26 +0000"/>
+<meta name="dcterms.issued" content="2023-11-24 15:07:05 +0000"/>
 <meta name="dcterms.modified" content="2020-06-17"/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +31,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -78,7 +78,7 @@
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
-		<li role="presentation"><a role="menuitem" href="https://international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li></ul>
 </nav>
@@ -95,6 +95,14 @@
 				</a>
 				<meta property="position" content="1">
 			</li>
+			
+							<li property="itemListElement" typeof="ListItem">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/index-fr.html">
+									<span property="name">GCWeb</span>
+								</a>
+								<meta property="position" content="2">
+							</li>
+							
 		</ol>
 	</div>
 </nav>
@@ -102,8 +110,7 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Sortie de navigation avisé</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Sortie de navigation avisé</h1>
 <p>Aviser l'utilisateur d'une redirection vers un autre site.</p>
 <p>Configuration par defaut:</p>
 <dl>
@@ -120,87 +127,76 @@
 <dt>target</dt>
 <dd>_self</dd>
 </dl>
-<div lang="en">
-<p>Scenario – 1: <a href="http://csszengarden.com/219" class="wb-exitscript">http://csszengarden.com/219</a></p>
-<p>This scenario displays a modal dialog with a message, “You are about to leave a secure site, do you wish to continue?”</p>
+<p>Scénario – 1: <a href="http://csszengarden.com/219" class="wb-exitscript">http://csszengarden.com/219</a></p>
+<p>Ce scénario affiche une fenêtre modale avec le message suivant&nbsp;: “Vous êtes sur le point de quitter un site sécurisé. Voulez-vous continuer?”</p>
 <details class="mrgn-bttm-md">
-<summary>View code</summary>
+<summary>Consulter le code</summary>
 	<pre><code>
 	&lt;a href="http://csszengarden.com/219" class="wb-exitscript"&gt;http://csszengarden.com/219&lt;/a&gt;
 	</code></pre>
 </details>
-<p>Scenario – 2: <a href="http://csszengarden.com/219" class="wb-exitscript" target="_blank">http://csszengarden.com/219</a></p>
-<p>This scenario displays a modal dialog with a message, “You are about to leave a secure site, do you wish to continue? The link will open in a new browser window.”</p>
+<p>Scénario – 2: <a href="http://csszengarden.com/219" class="wb-exitscript" target="_blank">http://csszengarden.com/219</a></p>
+<p>Ce scénario affiche une fenêtre modale avec le message suivant&nbsp;: “Vous êtes sur le point de quitter un site sécurisé. Voulez-vous continuer? Le lien s'ouvrira dans une nouvelle fenêtre de navigateur”</p>
 <details class="mrgn-bttm-md">
-<summary>View code</summary>
+<summary>Consulter le code</summary>
 	<pre><code>
 	&lt;a href="http://csszengarden.com/219" class="wb-exitscript" target="_blank"&gt;http://csszengarden.com/219&lt;/a&gt;
 	</code></pre>
 </details>
-<p>Scenario – 3: <a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{"url": "../../docs/ref/exitscript/exiturl-fr.html"}'>http://csszengarden.com/219</a></p>
-<p>In this scenario a middle page opens in the same window with a link to the non-secure site.</p>
+<p>Scénario – 3: <a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{"url": "../../docs/ref/exitscript/exiturl-fr.html"}'>http://csszengarden.com/219</a></p>
+<p>Dans ce scénario, la page intermédiaire s'ouvre dans la même fenêtre et ce dernier contiendra un lien vers le site web externe.</p>
 <details class="mrgn-bttm-md">
-<summary>View code</summary>
+<summary>Consulter le code</summary>
 	<pre><code>
 	&lt;a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{"url": "../../docs/ref/exitscript/exiturl-fr.html"}'&gt;http://csszengarden.com/219&lt;/a&gt;
 	</code></pre>
 </details>
-<p>Scenario – 4: <a href="http://csszengarden.com/219" class="wb-exitscript" target="_blank" data-wb-exitscript='{"url": "../../docs/ref/exitscript/exiturl-fr.html"}'>http://csszengarden.com/219</a>. The link will open in a new browser window.</p>
-<p>In this scenario a middle page opens in a new window with a link to the non-secure site.</p>
+<p>Scénario – 4: <a href="http://csszengarden.com/219" class="wb-exitscript" target="_blank" data-wb-exitscript='{"url": "../../docs/ref/exitscript/exiturl-fr.html"}'>http://csszengarden.com/219</a></p>
+<p>Dans ce scénario, le lien ouvrira une page intermédiaire dans une nouvelle fenêtre du navigateur afin d'aviser l'utilisateur qu'il est sur le point de quitter le site web.</p>
 <details class="mrgn-bttm-md">
-<summary>View code</summary>
+<summary>Consulter le code</summary>
 	<pre><code>
 	&lt;a href="http://csszengarden.com/219" class="wb-exitscript" target="_blank" data-wb-exitscript='{"url": "../../docs/ref/exitscript/exiturl-fr.html"}'&gt;http://csszengarden.com/219&lt;/a&gt;
 	</code></pre>
 </details>
-<p>This example shows a custom message</p>
-<p><a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{"i18n": { "exitMsg": "This is a custom message.", "cancelBtn": "Nope", "yesBtn": "Sure" }}'>http://csszengarden.com/219</a></p>
+<p>Cet exemple affiche un message personnalisé dans la fenêtre modale.</p>
+<p><a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{"i18n": { "exitMsg": "Ceci est un message personnalisé.", "cancelBtn": "Non merci", "yesBtn": "Oui S.V.P." }}'>http://csszengarden.com/219</a></p>
 <details class="mrgn-bttm-md">
-<summary>View code</summary>
+<summary>Consulter le code</summary>
 	<pre><code>
 	&lt;a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{
 	"i18n":{
-	"exitMsg": "This is a custom message.",
-	"cancelBtn": "Nope",
-	"yesBtn": "Sure" }
+	"exitMsg": "Ceci est un message personnalisé.",
+	"cancelBtn": "Non merci",
+	"yesBtn": "Oui S.V.P." }
 	}'&gt;http://csszengarden.com/219&lt;/a&gt;
 	</code></pre>
 </details>
-<p>Users can change button labels, message box title, and set a custom message</p>
-<p><a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{"i18n": { "msgboxHeader": "Avertissement de sortie", "cancelBtn": "Nope", "yesBtn": "Sure" }}'>http://csszengarden.com/219</a></p>
+<p>Les auteurs peuvent configurer les étiquettes des boutons, le titre de la boîte de message et personnaliser un message.</p>
+<p><a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{"i18n": { "msgboxHeader": "Avertissement de sortie", "cancelBtn": "Non merci", "yesBtn": "Oui S.V.P." }}'>http://csszengarden.com/219</a></p>
 <details class="mrgn-bttm-md">
-<summary>View code</summary>
+<summary>Consulter le code</summary>
 	<pre><code>
 	&lt;a href="http://csszengarden.com/219" class="wb-exitscript" data-wb-exitscript='{
 	"i18n":{ "msgboxHeader": "Avertissement de sortie",
-	"cancelBtn": "Nope",
-	"yesBtn": "Sure" }
+	"cancelBtn": "Non merci",
+	"yesBtn": "Oui S.V.P." }
 	}'&gt;http://csszengarden.com/219&lt;/a&gt;
 	</code></pre>
 </details>
-</div>
 
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2>
 
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="https://servicecanada.github.io/wet-boew-demos/gcweb-pr2098/sites/feedback/ajax/page-feedback-fr.html" class="wb-disable-allow">
-	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
-		</div>
-	</div>
+	<div class="row"><div class="col-xs-12"><dl id="wb-dtmd">
+	<dt>Date de modification&#160;:</dt>
+	<dd><time property="dateModified">2020-06-17</time></dd>
+</dl>
 </div>
-
-			</div><div class="col-xs-12">
-			<dl id="wb-dtmd">
-				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified">2020-06-17</time></dd>
-			</dl>
-		</div>
 	</div>
 </section>
 
 </main>
-
 <footer id="wb-info">
 	<h2 class="wb-inv">À propos de ce site</h2>
 
@@ -246,14 +242,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

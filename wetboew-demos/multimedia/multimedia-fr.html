@@ -12,12 +12,12 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2023-08-07 12:20:26 +0000"/>
-<meta name="dcterms.modified" content="2017-02-20"/>
+<meta name="dcterms.issued" content="2023-11-24 15:07:05 +0000"/>
+<meta name="dcterms.modified" content="2023-06-19"/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +31,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -78,7 +78,7 @@
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
-		<li role="presentation"><a role="menuitem" href="https://international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li></ul>
 </nav>
@@ -95,6 +95,14 @@
 				</a>
 				<meta property="position" content="1">
 			</li>
+			
+							<li property="itemListElement" typeof="ListItem">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/index-fr.html">
+									<span property="name">GCWeb</span>
+								</a>
+								<meta property="position" content="2">
+							</li>
+							
 		</ol>
 	</div>
 </nav>
@@ -102,8 +110,7 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Lecteur multimédia - Vidéo</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Lecteur multimédia - Vidéo</h1>
 <span class="wb-prettify all-pre hide"></span>
 
 <div class="row">
@@ -118,7 +125,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>Exemples</h2>
-			<p>Tous les exemples vidéo utilisent la vidéo HTML5 natif sur la plupart des navigateurs modernes, y compris Firefox 6 +, Google Chrome 3 + et IE9.</p>
+			<p>Tous les exemples vidéo utilisent la vidéo HTML5 natif sur la plupart des navigateurs modernes, y compris Firefox 6 +, Google Chrome 3 + et Edge.</p>
 		</div>
 	</div>
 
@@ -314,6 +321,7 @@
 &lt;/figure&gt;</code></pre>
 			</details>
 		</section>
+
 		<section class="col-md-6">
 			<h3>MPEG4 (H264 + AAC) Source avec marqueurs temporels (cue points)</h3>
 			<p>Cet exemple illustre l'utilisation de boutons pour naviguer à des marqueurs temporels dans une vidéo.</p>
@@ -345,36 +353,70 @@
 			</details>
 		</section>
 	</div>
-	<section>
-		<h3>Lecteur multimédia dans une fenêtre superposé</h3>
-		<p><a href="#mltmd-overlay" aria-controls="mltmd-overlay" class="overlay-lnk" role="button">Ouvrir le vidéo</a></p>
-		<details class="mrgn-tp-md">
+
+	<div class="row">
+		<section class="col-md-6">
+			<h3>MPEG4 (H264 + AAC) et WebM (VP8) avec bouton plein écran</h3>
+			<figure class="wb-mltmd" data-wb-mltmd='{"fullscreenBtn": true}'>
+				<video poster="demo/video1-fr.jpg" title="Trouver un emploi">
+					<source type="video/webm" src="https://wet-boew.github.io/wet-boew-attachments/videos/video1-fr.webm" />
+					<source type="video/mp4" src="https://wet-boew.github.io/wet-boew-attachments/videos/video1-fr.mp4" />
+					<track src="cpts-lg-fr.html" kind="captions" data-type="text/html" srclang="fr" label="Français" />
+				</video>
+				<figcaption>
+					<p>Trouver un emploi (<a href="cpts-lg-fr.html">Transcription</a>)</p>
+				</figcaption>
+			</figure>
+
+			<details class="mrgn-tp-md mrgn-bttm-lg">
+				<summary>Visualiser le code</summary>
+				<section>
+					<h4>HTML dans la page</h4>
+					<pre><code>&lt;figure class=&quot;wb-mltmd&quot; data-wb-mltmd='{"fullscreenBtn": true}'&gt;
+	&lt;video poster=&quot;demo/video1-fr.jpg&quot; title=&quot;Trouver un emploi&quot;&gt;
+		&lt;source type=&quot;video/webm&quot; src=&quot;https://wet-boew.github.io/wet-boew-attachments/videos/video1-fr.webm&quot; /&gt;
+		&lt;source type=&quot;video/mp4&quot; src=&quot;https://wet-boew.github.io/wet-boew-attachments/videos/video1-fr.mp4&quot; /&gt;
+		&lt;track src=&quot;cpts-lg-fr.html&quot; kind=&quot;captions&quot; data-type=&quot;text/html&quot; srclang=&quot;fr&quot; label=&quot;Français&quot; /&gt;
+	&lt;/video&gt;
+	&lt;figcaption&gt;
+		&lt;p&gt;Trouver un emploi (&lt;a href=&quot;cpts-lg-fr.html&quot;&gt;Transcription&lt;/a&gt;)&lt;/p&gt;
+	&lt;/figcaption&gt;
+	&lt;/figure&gt;</code></pre>
+				</section>
+			</details>
+		</section>
+
+		<section class="col-md-6">
+			<h3>Lecteur multimédia dans une fenêtre superposé</h3>
+			<p><a href="#mltmd-overlay" aria-controls="mltmd-overlay" class="overlay-lnk" role="button">Ouvrir le vidéo</a></p>
+			<details class="mrgn-tp-md">
 			<summary>View code</summary>
 			<pre><code>&lt;p&gt;&lt;a href="#mltmd-overlay" aria-controls="mltmd-overlay" class="overlay-lnk" role="button"&gt;Ouvrir le vidéo&lt;/a&gt;&lt;/p&gt;
 
-&lt;section id="mltmd-overlay" class="wb-overlay modal-content overlay-def wb-popup-full"&gt;
-	&lt;header class="modal-header"&gt;
-		&lt;h2 class="modal-title"&gt;Lecteur multimédia dans une fenêtre superposé&lt;/h2&gt;
-	&lt;/header&gt;
-	&lt;div class="modal-body"&gt;
-		&lt;div class="row"&gt;
-			&lt;div class="col-xs-8 col-xs-offset-2"&gt;
-				&lt;figure class="wb-mltmd" data-wb-mltmd='{"shareUrl": "https://wet-boew.github.io/v4.0-ci/demos/multimedia/multimedia-fr.html"}'&gt;
-					&lt;video poster="demo/video1-fr.jpg" title="Trouver un emploi"&gt;
-						&lt;source type="video/webm" src="https://wet-boew.github.io/wet-boew-attachments/videos/video1-fr.webm" /&gt;
-						&lt;source type="video/mp4" src="https://wet-boew.github.io/wet-boew-attachments/videos/video1-fr.mp4" /&gt;
-						&lt;track src="cpts-lg-fr.html" kind="captions" data-type="text/html" srclang="fr" label="Français" /&gt;
-					&lt;/video&gt;
-					&lt;figcaption&gt;
-						&lt;p&gt;Trouver un emploi (&lt;a href="cpts-lg-fr.html"&gt;Transcription&lt;/a&gt;)&lt;/p&gt;
-					&lt;/figcaption&gt;
-				&lt;/figure&gt;
+		&lt;section id="mltmd-overlay" class="wb-overlay modal-content overlay-def wb-popup-full"&gt;
+		&lt;header class="modal-header"&gt;
+			&lt;h2 class="modal-title"&gt;Lecteur multimédia dans une fenêtre superposé&lt;/h2&gt;
+		&lt;/header&gt;
+		&lt;div class="modal-body"&gt;
+			&lt;div class="row"&gt;
+				&lt;div class="col-xs-8 col-xs-offset-2"&gt;
+					&lt;figure class="wb-mltmd" data-wb-mltmd='{"shareUrl": "https://wet-boew.github.io/v4.0-ci/demos/multimedia/multimedia-fr.html"}'&gt;
+						&lt;video poster="demo/video1-fr.jpg" title="Trouver un emploi"&gt;
+							&lt;source type="video/webm" src="https://wet-boew.github.io/wet-boew-attachments/videos/video1-fr.webm" /&gt;
+							&lt;source type="video/mp4" src="https://wet-boew.github.io/wet-boew-attachments/videos/video1-fr.mp4" /&gt;
+							&lt;track src="cpts-lg-fr.html" kind="captions" data-type="text/html" srclang="fr" label="Français" /&gt;
+						&lt;/video&gt;
+						&lt;figcaption&gt;
+							&lt;p&gt;Trouver un emploi (&lt;a href="cpts-lg-fr.html"&gt;Transcription&lt;/a&gt;)&lt;/p&gt;
+						&lt;/figcaption&gt;
+					&lt;/figure&gt;
+				&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;
-	&lt;/div&gt;
-&lt;/section&gt;</code></pre>
-		</details>
-	</section>
+		&lt;/section&gt;</code></pre>
+			</details>
+		</section>
+	</div>
 </section>
 
 <section id="mltmd-overlay" class="wb-overlay modal-content overlay-def wb-popup-full">
@@ -402,24 +444,15 @@
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2>
 
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="https://servicecanada.github.io/wet-boew-demos/gcweb-pr2098/sites/feedback/ajax/page-feedback-fr.html" class="wb-disable-allow">
-	<div class="row row-no-gutters"><div class="col-sm-11 col-md-7 col-lg-6"><a class="btn btn-default btn-block" href="https://www.canada.ca/fr/signaler-probleme.html">Signaler un problème ou une erreur sur cette page</a>
-		</div>
-	</div>
+	<div class="row"><div class="col-xs-12"><dl id="wb-dtmd">
+	<dt>Date de modification&#160;:</dt>
+	<dd><time property="dateModified">2023-06-19</time></dd>
+</dl>
 </div>
-
-			</div><div class="col-xs-12">
-			<dl id="wb-dtmd">
-				<dt>Date de modification&#160;:</dt>
-				<dd><time property="dateModified">2017-02-20</time></dd>
-			</dl>
-		</div>
 	</div>
 </section>
 
 </main>
-
 <footer id="wb-info">
 	<h2 class="wb-inv">À propos de ce site</h2>
 
@@ -465,14 +498,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

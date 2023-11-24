@@ -13,11 +13,11 @@
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2023-01-10"/>
+<meta name="dcterms.modified" content="2023-11-08"/>
 
-<link href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -91,7 +91,7 @@
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
-		<li role="presentation"><a role="menuitem" href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Money and finances</a></li>
 		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li></ul>
 </nav>
@@ -108,6 +108,14 @@
 				</a>
 				<meta property="position" content="1">
 			</li>
+			
+							<li property="itemListElement" typeof="ListItem">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/index-en.html">
+									<span property="name">GCWeb</span>
+								</a>
+								<meta property="position" content="2">
+							</li>
+							
 		</ol>
 	</div>
 </nav>
@@ -115,786 +123,2054 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<h1 id="wb-cont" property="name">Feedback area - Documentation</h1>
-<span class="wb-prettify all-pre hide"></span>
-<dl class="horizontal">
-	<dt>Status</dt>
-	<dd>Provisional</dd>
-	<dt>Version</dt>
-	<dd>3.0.0</dd>
-	<dt>Type</dt>
-	<dd>Canada.ca site functionality</dd>
-</dl>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Feedback area - Documentation</h1>
 
-<h2>Introduction</h2>
-<h3>Purpose</h3>
-<p>Provide feedback on any given page through a form.</p>
 
-<h3>Evaluation and report</h3>
-<p>There is no evaluation and report available for this component.</p>
+<p>(<a href="index.json-ld" rel="alternate" type="application/json">Consult this documentation in a data format noted in JSON</a>)</p>
 
-<h3>Guidance</h3>
-<ul>
-	<li><a href="https://design.canada.ca/continuous-improvement/monitoring/feedback.html">Page feedback tool</a></li>
-	<li><a href="https://design.canada.ca/common-design-patterns/report-problem.html">Report a problem</a></li>
-</ul>
+<div data-wb-jsonmanager='{
+	"url": "index.json-ld",
+	"name": "api",
+	"patches": [
+		{
+			"op": "patches", "path": "/variations", "patches": [
+				{ "op": "wb-swap", "path": "/revisedFor", "ref": "/iteration" },
+				{ "op": "wb-swap", "path": "/implementation", "ref": "/implementation" },
+				{ "op": "wb-swap", "path": "/oldImplementation", "ref": "/implementation" }
+			]
+		},
+		{
+			"op": "patches", "path": "/implementation", "patches": [
+				{ "op": "wb-swap", "path": "/iteration", "ref": "/iteration" }
+			]
+		},
+		{
+			"op": "patches", "path": "/changesets", "patches": [
+				{ "op": "wb-swap", "path": "/baseOnIteration", "ref": "/iteration" }
+			]
+		}
+	]
+}'></div>
 
-<h3>Variants</h3>
-<p>This component supports the following variants:</p>
-<ul>
-	<li><a href="#variantPFT">Page Feedback Tool (default)</a></li>
-	<li><a href="#variantPFTContact">Page Feedback Tool with contact link</a></li>
-	<li><a href="#variantRAP">Report a Problem (RAP)</a></li>
-</ul>
-<div class="alert alert-info">
-	<h4>Note</h4>
-	<p>All variants are comprised of two sub-components:</p>
-	<ul>
-		<li>The first one is used for the integration on the page.</li>
-		<li>The second one is the form which is inserted dynamically via an Ajax call. This sub-component is however out of scope of the API.</li>
-	</ul>
+<p class="lead">Version <strong data-json-replace="#[api]/version">Unknown</strong></p><div data-wb-json='{
+	"url": "#[api]",
+	"streamline": true,
+	"mapping": [
+		{
+			"template": "[data-type-container]",
+			"test": "fn:getValue",
+			"assess": "/componentType",
+			"expect": "container",
+			"mapping": null
+		}
+	]
+}'>
+	<template data-type-container>
+		<section class="alert alert-info">
+			
+			<h2 class="h3">About this component</h2>
+			<p>This component is only a container for other components. Therefore, updates to included components do not affect this component's API.</p>
+			
+		</section>
+	</template>
+	<template></template>
 </div>
 
-<h2 id="variantPFT">Variant 1: Page Feedback Tool (default)</h2>
-<h3>Iteration 1</h3>
 
-<h4>Working example(s)</h4>
+<h2>On this page</h2>
 <ul>
-	<li><a href="page-feedback-en.html">Page feedback</a></li>
+	<li><a href="#inc-components">Included components</a></li><li><a href="#before-start">Before you start</a></li><li><a href="#accessibility-guidance">Accessibility guidance</a></li>
+	<li><a href="#variations">Variations</a></li>
+	<li><a href="#eval-report">Evaluation and report</a></li>
+	<li><a href="#technical-docs">Technical documentation</a></li>
 </ul>
 
-<h4>How to implement</h4>
-<ul>
-	<li>To show the page feedback form, create a <code>&lt;div&gt;</code> with the following data attributes:
-		<ul>
-			<li>Mandatory: <code>data-ajax-replace="ajax/page-feedback-en.html"</code></li>
-			<li>Optional: <code>data-feedback-theme="[Text defining the theme of your page]"</code></li>
-			<li>Optional: <code>data-feedback-section="[Text defining the section where your page resides]"</code></li>
-		</ul>
-	</li>
-	<li>For the basic HTML version, a link element should be created inside your <code>&lt;div&gt;</code> that points to the report a problem form page: <code>&lt;div&gt;&lt;a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html"&gt;Report a problem on this page&lt;/a&gt;&lt;/div&gt;</code>.</li>
-	<li>Additionally, your page needs to have the following metadata: <code>&lt;meta name="dcterms.creator" content="[Department name]"&gt;</code></li>
-</ul>
-<p>For more information about Data Ajax plugin, please visit <a href="https://wet-boew.github.io/wet-boew/docs/ref/data-ajax/data-ajax-en.html">Data Ajax documentation page</a>.</p>
 
-<h5>GCWeb Jekyll specific</h5>
-<p>To apply this variant's optional attributes on any given page, you will need to do the following in the page's front-matter:</p>
-<ul>
-	<li>Set the variable <code>feedbackData</code> to an object containing the following customizable strings:
-		<ul>
-			<li><code>section</code>: to define the section where your page resides.</li>
-			<li><code>theme</code>: to define the theme of your page.</li>
-		</ul>
-	</li>
-</ul>
-<p>For example:</p>
-<pre><code>"feedbackData": {
-	"theme": "Theme",
-	"section": "Section"
-}</code></pre>
+<h2 id="inc-components">Included components</h2>
 
-<h4>Code sample</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-ajax-replace=</span><span class="s">"ajax/page-feedback-en.html"</span>
-	<span class="na">data-feedback-section=</span><span class="s">"[Text defining the theme of your page]"</span>
-	<span class="na">data-feedback-theme=</span><span class="s">"[Text defining the section where your page resides]"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-default btn-block"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/report-problem.html"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/a&gt;</span>
-		<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure><details>
-	<summary>Ajaxed-in content</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"gc-pft"</span> <span class="na">class=</span><span class="s">"row wb-disable-allow"</span> <span class="na">data-wb-jsonmanager=</span><span class="s">'{
-	"name": "feedback",
-	"extractor": [
-		{ "selector": "title", "path": "pageTitle" },
-		{ "selector": "html", "attr": "lang", "path": "language" },
-		{ "interface": "locationHref", "path": "submissionPage" },
-		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
-		{ "selector": "[data-feedback-theme]", "attr": "data-feedback-theme", "path": "themeopt" },
-		{ "selector": "[data-feedback-section]", "attr": "data-feedback-section", "path": "sectionopt" },
-		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" }
-	]
-}'</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10 col-md-9 col-lg-8"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"well mrgn-bttm-0"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Give feedback about this page<span class="nt">&lt;/h3&gt;</span>
-			<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">class=</span><span class="s">"wb-postback wb-disable-allow"</span> <span class="na">data-wb-postback=</span><span class="s">'{"success":".gc-pft-thnk"}'</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wb-disable-allow"</span> <span class="na">data-wb-json=</span><span class="s">'{
-					"url": "#[feedback]",
+<div data-wb-json='{
+	"url": "#[api]",
+	"streamline": "true",
+	"mapping": [
+		{
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-yes]",
+					"test": "fn:isArray",
+					"value": "/dependencies",
 					"mapping": [
-						{ "selector": "input", "attr": "name", "value": "/@id" },
-						{ "selector": "input", "attr": "value", "value": "/@value" }
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
 					]
-				}'</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;template&gt;</span>
-						<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">value=</span><span class="s">""</span> <span class="nt">/&gt;</span>
-					<span class="nt">&lt;/template&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-				<span class="nt">&lt;fieldset</span> <span class="na">class=</span><span class="s">"gc-pft-btns chkbxrdio-grp row row-no-gutters d-sm-flex flex-sm-wrap align-items-sm-center"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;legend</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-7 nojs-col-sm-12 col-md-9 col-lg-8 text-center text-sm-left nojs-text-left mrgn-tp-sm pr-sm-3 nojs-pr-sm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Did you find what you were looking for?<span class="nt">&lt;/span&gt;&lt;/legend&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 nojs-show"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"Yes-Oui"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">aria-describedby=</span><span class="s">"why-note"</span><span class="nt">&gt;</span>Yes<span class="nt">&lt;/button&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-5 col-md-3 col-lg-4 text-center text-sm-right nojs-hide"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"Yes-Oui"</span> <span class="na">class=</span><span class="s">"btn btn-primary mrgn-tp-sm mrgn-bttm-sm"</span><span class="nt">&gt;</span>Yes<span class="nt">&lt;/button&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm"</span> <span class="na">data-wb-doaction=</span><span class="s">'[
-							{"action":"removeClass","source":".gc-pft-no","class":"nojs-show"},
-							{"action":"addClass","source":".gc-pft-btns","class":"hide"}
-						]'</span><span class="nt">&gt;</span>No<span class="nt">&lt;/button&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-				<span class="nt">&lt;/fieldset&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft-no nojs-show"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"why-note"</span> <span class="na">class=</span><span class="s">"nojs-show mrgn-tp-lg mrgn-bttm-md"</span><span class="nt">&gt;&lt;b&gt;</span>If not, tell us why below:<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"nojs-hide wb-inv"</span> <span class="na">aria-live=</span><span class="s">"polite"</span><span class="nt">&gt;&lt;b&gt;</span>Tell us why below:<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Please provide more details<span class="nt">&lt;/span&gt;&lt;/label&gt;</span>
-						<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"problem-note"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-sm"</span><span class="nt">&gt;&lt;small&gt;&lt;b&gt;</span>You will not receive a reply. Don't include personal information (telephone, email, SIN, financial, medical, or work details).<span class="nt">&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;</span>
-						<span class="nt">&lt;p&gt;&lt;small&gt;</span>Maximum 300 characters<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
-						<span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"problem"</span> <span class="na">aria-describedby=</span><span class="s">"problem problem-note"</span> <span class="na">name=</span><span class="s">"details"</span> <span class="na">class=</span><span class="s">"form-control full-width"</span> <span class="na">maxlength=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"No-Non"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-			<span class="nt">&lt;/form&gt;</span>
-			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft-thnk hide"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mrgn-tp-sm mrgn-bttm-0"</span> <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok text-success mrgn-rght-sm"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span> Thank you for your feedback.<span class="nt">&lt;/p&gt;</span>
-			<span class="nt">&lt;/div&gt;</span>
-		<span class="nt">&lt;/section&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure></details>
 
-<h2 id="variantPFTContact">Variant 2: Page Feedback Tool With Contact Link</h2>
-<h3>Iteration 1</h3>
-
-<h4>Working example(s)</h4>
-<ul>
-	<li><a href="page-feedback-contact-en.html">Page feedback tool with contact link</a></li>
-</ul>
-
-<h4>How to implement</h4>
-<ul>
-	<li>To show the page feedback form, create a <code>&lt;div&gt;</code> with the following data attributes:
-		<ul>
-			<li>Mandatory: <code>data-ajax-replace="ajax/page-feedback-contact-en.html"</code></li>
-			<li>Mandatory: <code>data-feedback-link="[Contact link text]"</code></li>
-			<li>Mandatory: <code>data-feedback-url="[Contact link URL]"</code></li>
-			<li>Optional: <code>data-feedback-theme="[Text defining the theme of your page]"</code></li>
-			<li>Optional: <code>data-feedback-section="[Text defining the section where your page resides]"</code></li>
-		</ul>
-	</li>
-	<li>For the basic HTML version, a link element should be created inside your <code>&lt;div&gt;</code> that points to the report a problem form page: <code>&lt;div&gt;&lt;a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html"&gt;Report a problem on this page&lt;/a&gt;&lt;/div&gt;</code>.</li>
-	<li>Additionally, you can define the following metadata: <code>&lt;meta name="dcterms.creator" content="[Department name]"&gt;</code></li>
-</ul>
-<p>For more information about Data Ajax plugin, please visit <a href="https://wet-boew.github.io/wet-boew/docs/ref/data-ajax/data-ajax-en.html">Data Ajax documentation page</a>.</p>
-
-<h5>GCWeb Jekyll specific</h5>
-<p>To apply this variant on any given page, you will need to do the following in the page's front-matter:</p>
-<ul>
-	<li>Set the variable <code>feedbackPath</code> to <code>"ajax/page-feedback-contact-en.html"</code></li>
-	<li>Set the variable <code>feedbackContact</code> to an object containing the following customizable strings:
-		<ul>
-			<li><code>link</code>: to define the contact link's text.</li>
-			<li><code>url</code>: to define the contact link's URL.</li>
-		</ul>
-	</li>
-	<li>Optionally, you can set the variable <code>feedbackData</code> to an object containing the following customizable strings:
-		<ul>
-			<li><code>section</code>: to define the section where your page resides.</li>
-			<li><code>theme</code>: to define the theme of your page.</li>
-		</ul>
-	</li>
-</ul>
-<p>For example:</p>
-<pre><code>"feedbackPath": "ajax/page-feedback-contact-en.html",
-"feedbackContact": {
-	"link": "Contact link",
-	"url": "https://canada.ca"
-},
-"feedbackData": {
-	"theme": "Theme",
-	"section": "Section"
-}</code></pre>
-
-<h4>Code sample</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-ajax-replace=</span><span class="s">"ajax/page-feedback-contact-en.html"</span>
-	<span class="na">data-feedback-link=</span><span class="s">"[Contact link text]"</span>
-	<span class="na">data-feedback-url=</span><span class="s">"[Contact link URL]"</span>
-	<span class="na">data-feedback-section=</span><span class="s">"[Text defining the theme of your page]"</span>
-	<span class="na">data-feedback-theme=</span><span class="s">"[Text defining the section where your page resides]"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-default btn-block"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/report-problem.html"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/a&gt;</span>
-		<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure><details>
-	<summary>Ajaxed-in content</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"gc-pft"</span> <span class="na">class=</span><span class="s">"row wb-disable-allow"</span> <span class="na">data-wb-jsonmanager=</span><span class="s">'{
-	"name": "feedback",
-	"extractor": [
-		{ "selector": "title", "path": "pageTitle" },
-		{ "selector": "html", "attr": "lang", "path": "language" },
-		{ "interface": "locationHref", "path": "submissionPage" },
-		{ "selector": "#wb-lng ul li:first-child a[lang]", "attr": "href", "path": "oppositelang" },
-		{ "selector": "[data-feedback-theme]", "attr": "data-feedback-theme", "path": "themeopt" },
-		{ "selector": "[data-feedback-section]", "attr": "data-feedback-section", "path": "sectionopt" },
-		{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "institutionopt" },
-		{ "selector": "[data-feedback-link]", "attr": "data-feedback-link", "path": "contact/link" },
-		{ "selector": "[data-feedback-url]", "attr": "data-feedback-url", "path": "contact/url" }
-	]
-}'</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-10 col-md-9 col-lg-8"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"well mrgn-bttm-0"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"wb-inv"</span><span class="nt">&gt;</span>Give feedback about this page<span class="nt">&lt;/h3&gt;</span>
-			<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"https://pagesuccessemailqueue.azurewebsites.net/api/QueueProblemForm"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">class=</span><span class="s">"wb-postback wb-disable-allow"</span> <span class="na">data-wb-postback=</span><span class="s">'{"success":".gc-pft-thnk"}'</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"wb-disable-allow"</span> <span class="na">data-wb-json=</span><span class="s">'{
-					"url": "#[feedback]",
+				},
+				{
+					"template": "[data-no]",
+					"test": "fn:isLiteral",
+					"value": "/dependencies",
 					"mapping": [
-						{ "selector": "input", "attr": "name", "value": "/@id" },
-						{ "selector": "input", "attr": "value", "value": "/@value" }
+						{ "selector": "span", "value": "/" }
 					]
-				}'</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;template&gt;</span>
-						<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">value=</span><span class="s">""</span> <span class="nt">/&gt;</span>
-					<span class="nt">&lt;/template&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-				<span class="nt">&lt;fieldset</span> <span class="na">class=</span><span class="s">"gc-pft-btns chkbxrdio-grp row row-no-gutters d-sm-flex flex-sm-wrap align-items-sm-center"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;legend</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-7 nojs-col-sm-12 col-md-9 col-lg-8 text-center text-sm-left nojs-text-left mrgn-tp-sm pr-sm-3 nojs-pr-sm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Did you find what you were looking for?<span class="nt">&lt;/span&gt;&lt;/legend&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 nojs-show"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"Yes-Oui"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">aria-describedby=</span><span class="s">"why-note"</span><span class="nt">&gt;</span>Yes<span class="nt">&lt;/button&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-12 col-sm-5 col-md-3 col-lg-4 text-center text-sm-right nojs-hide"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"Yes-Oui"</span> <span class="na">class=</span><span class="s">"btn btn-primary mrgn-tp-sm mrgn-bttm-sm"</span><span class="nt">&gt;</span>Yes<span class="nt">&lt;/button&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary mrgn-tp-sm mrgn-bttm-sm mrgn-lft-sm"</span> <span class="na">data-wb-doaction=</span><span class="s">'[
-							{"action":"removeClass","source":".gc-pft-no","class":"nojs-show"},
-							{"action":"addClass","source":".gc-pft-btns","class":"hide"}
-						]'</span><span class="nt">&gt;</span>No<span class="nt">&lt;/button&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-				<span class="nt">&lt;/fieldset&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft-no nojs-show"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"why-note"</span> <span class="na">class=</span><span class="s">"nojs-show mrgn-tp-lg mrgn-bttm-md"</span><span class="nt">&gt;&lt;b&gt;</span>If not, tell us why below:<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"nojs-hide wb-inv"</span> <span class="na">aria-live=</span><span class="s">"polite"</span><span class="nt">&gt;&lt;b&gt;</span>Tell us why below:<span class="nt">&lt;/b&gt;&lt;/p&gt;</span>
-					<span class="nt">&lt;details&gt;</span>
-						<span class="nt">&lt;summary&gt;</span>Need urgent help with a problem? Contact us<span class="nt">&lt;/summary&gt;</span>
-						<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mrgn-bttm-0 mrgn-tp-md"</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-wb-json=</span><span class="s">'[
-							{ "url": "#[feedback]/contact/url", "type": "attr", "attr": "href" },
-							{ "url": "#[feedback]/contact/link", "type": "replace" }
-							]'</span><span class="nt">&gt;&lt;/a&gt;</span>
-						<span class="nt">&lt;/p&gt;</span>
-					<span class="nt">&lt;/details&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-0"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Please provide more details<span class="nt">&lt;/span&gt;&lt;/label&gt;</span>
-						<span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">"problem-note"</span> <span class="na">class=</span><span class="s">"mrgn-bttm-sm"</span><span class="nt">&gt;&lt;small&gt;&lt;b&gt;</span>You will not receive a reply. Don't include personal information (telephone, email, SIN, financial, medical, or work details).<span class="nt">&lt;/b&gt;&lt;/small&gt;&lt;/p&gt;</span>
-						<span class="nt">&lt;p&gt;&lt;small&gt;</span>Maximum 300 characters<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
-						<span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"problem"</span> <span class="na">aria-describedby=</span><span class="s">"problem problem-note"</span> <span class="na">name=</span><span class="s">"details"</span> <span class="na">class=</span><span class="s">"form-control full-width"</span> <span class="na">maxlength=</span><span class="s">"300"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;button</span> <span class="na">name=</span><span class="s">"helpful"</span> <span class="na">value=</span><span class="s">"No-Non"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-			<span class="nt">&lt;/form&gt;</span>
-			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-pft-thnk hide"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"mrgn-tp-sm mrgn-bttm-0"</span> <span class="na">role=</span><span class="s">"status"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-ok text-success mrgn-rght-sm"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span> Thank you for your feedback.<span class="nt">&lt;/p&gt;</span>
-			<span class="nt">&lt;/div&gt;</span>
-		<span class="nt">&lt;/section&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure></details>
+				}
+			]
+		}
+	]
+}'>
+	<template data-no>
+		<p>There is <span>no</span> sub-dependencies</p>
+	</template>
 
-<h2 id="variantRAP">Variant 3: Report a Problem (RAP)</h2>
-<h3>Iteration 4</h3>
-<p>Here is a list of changes that happened since the previous iteration:</p>
-<table class="table table-bordered">
-	<tr>
-		<th style="width:0;">Breaking</th>
-		<td>
+	<template data-yes>
+		<ul>
+			<template>
+				<li></li>
+			</template>
+		</ul>
+	</template>
+</div><h2 id="before-start">Before you start</h2>
+	<div data-ajax-replace="dto-guidance-en.html #beforeYouBegin"></div><h2 id="accessibility-guidance">Accessibility guidance</h2><p>List of accessibility guidances to be followed to ensure component is used in respect of the accessibility guideline and EN 301 549 standard (including WCAG 2.1 Level AA).</p><div data-wb-json='{
+	"url": "#[api]",
+	"streamline": "true",
+	"mapping": [
+		{
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-yes]",
+					"test": "fn:isArray",
+					"value": "/a11yGuidance",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+
+				},
+				{
+					"template": "[data-no]",
+					"test": "fn:isLiteral",
+					"value": "/a11yGuidance",
+					"mapping": null
+				}
+			]
+		}
+	]
+}'>
+	<template data-no>
+		<p>There is no accessibility guidance defined</p>
+	</template>
+
+	<template data-yes>
+		<ul>
+			<template>
+				<li></li>
+			</template>
+		</ul>
+	</template>
+</div>
+
+<!--
+<p>Data ajax</p>
+<div>
+	<pre><code data-wb-ajax='{
+		"url": "samples/sample-1.html",
+		"type": "replace",
+		"encode": true
+	}'></code></pre>
+</div>-->
+
+<h2 id="variations">Variations</h2><p>Here are some popular examples. This isn’t an exhaustive list of possible variations. Configure your page based on page type, user needs and design system guidance.</p><div data-wb-json='{
+	"url": "#[api]/variations",
+	"mapping": [
+		{ "selector": "[data-name]", "value": "/name/en" },
+		{ "selector": "[data-description]", "value": "/description/en", "isHTML": true  },
+		{ "selector": "[data-guidance]", "value": "/guidance/en", "attr": "href" },
+		{ "selector": "[data-iteration]", "value": "/revisedFor/name/en" },
+
+		{
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-status-stable]",
+					"test": "fn:getValue",
+					"assess": "/status",
+					"expect": "stable",
+					"mapping": null
+				},
+				{
+					"template": "[data-status-tobereviewed]",
+					"test": "fn:getValue",
+					"assess": "/status",
+					"expect": "to be reviewed",
+					"mapping": null
+				},
+				{
+					"template": "[data-status-provisional]",
+					"test": "fn:getValue",
+					"assess": "/status",
+					"expect": "provisional",
+					"mapping": null
+				},
+				{
+					"template": "[data-status-deprecated]",
+					"test": "fn:getValue",
+					"assess": "/status",
+					"expect": "deprecated",
+					"mapping": null
+				}
+			]
+		},
+
+		{
+			"template": "[data-variation-example]",
+			"test": "fn:isArray",
+			"assess": "/example",
+			"mapping": [
+				{
+					"selector": "ul",
+					"value": "/example",
+					"mapping": [
+						{ "selector": "a", "value": "/en/href", "attr": "href" },
+						{ "selector": "a", "value": "/en/text" }
+					]
+				}
+			]
+		},
+
+		{
+			"template": "[data-implementation]",
+			"test": "fn:isArray",
+			"assess": "/implementation",
+			"mapping": [
+				{
+					"selector": "[data-implementation-tabs]",
+					"value": "/implementation",
+					"mapping": [
+						{ "selector": "summary", "value": "/name/en" },
+						{ "selector": "[data-status]", "value": "/status" },
+						{ "selector": "[data-introduction]", "value": "/introduction/en", "isHTML": true },
+
+						{
+							"template": "[data-example]",
+							"test": "fn:isArray",
+							"assess": "/example/en",
+							"mapping": [
+								{
+									"selector": "ul",
+									"value": "/example/en",
+									"mapping": [
+										{ "selector": "a", "value": "/href", "attr": "href" },
+										{ "selector": "a", "value": "/text" }
+									]
+								}
+							]
+						},
+
+						{
+							"template": "[data-instructions]",
+							"test": "fn:isArray",
+							"assess": "/instructions/en",
+							"mapping": [
+								{
+									"selector": "ul",
+									"value": "/instructions/en",
+									"mapping": [
+										{ "selector": "li",	"value": "/", "isHTML": true }
+									]
+								}
+							]
+						},
+
+						{
+							"template": "[data-notes]",
+							"test": "fn:isArray",
+							"assess": "/notes/en",
+							"mapping": [
+								{
+									"selector": "ul",
+									"value": "/notes/en",
+									"mapping": [
+										{ "selector": "li",	"value": "/", "isHTML": true }
+									]
+								}
+							]
+						},
+
+						{
+							"@type": "rdf:Alt",
+							"mapping": [
+								{
+									"test": "fn:guessType",
+									"value": "/sample/en",
+									"expect": "rdfs:Container",
+									"mapping": [
+										{
+											"template": "[data-source-code]",
+											"test": "fn:guessType",
+											"value": "/",
+											"expect": "source-code",
+											"mapping": [
+												{
+													"@type": "rdf:Alt",
+													"mapping": [
+														{
+															"template": "[data-source-code-collapsed]",
+															"test": "fn:getValue",
+															"assess": "/collapsed",
+															"expect": true,
+															"mapping": [
+																{ "selector": "summary", "value": "/description" },
+																{ "selector": "code", "value": "/code", "encode": true }
+															]
+														},
+														{
+															"template": "[data-source-code-expanded]",
+															"test": "fn:getValue",
+															"assess": "/collapsed",
+															"expect": false,
+															"mapping": [
+																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "code", "value": "/code", "encode": true }
+															]
+														},
+														{
+															"template": "[data-source-code-expanded]",
+															"test": "fn:guessType",
+															"assess": "/collapsed",
+															"expect": "undefined",
+															"mapping": [
+																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "code", "value": "/code", "encode": true }
+															]
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"template": "[data-source-code]",
+									"test": "fn:guessType",
+									"value": "/sample",
+									"expect": "source-code",
+									"mapping": [
+										{
+											"@type": "rdf:Alt",
+											"mapping": [
+												{
+													"template": "[data-source-code-collapsed]",
+													"test": "fn:getValue",
+													"assess": "/collapsed",
+													"expect": true,
+													"mapping": [
+														{ "selector": "summary", "value": "/description" },
+														{ "selector": "code", "value": "/code", "encode": true }
+													]
+												},
+												{
+													"template": "[data-source-code-expanded]",
+													"test": "fn:getValue",
+													"assess": "/collapsed",
+													"expect": false,
+													"mapping": [
+														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "code", "value": "/code", "encode": true }
+													]
+												},
+												{
+													"template": "[data-source-code-expanded]",
+													"test": "fn:guessType",
+													"assess": "/collapsed",
+													"expect": "undefined",
+													"mapping": [
+														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "code", "value": "/code", "encode": true }
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"template": "[data-code-compare]",
+									"test": "fn:guessType",
+									"value": "/sample",
+									"expect": "code-compare",
+									"mapping": [
+										{ "selector": "figcaption[data-rev]", "value": "/rev_title" },
+										{ "selector": "code[data-rev]", "value": "/rev_code", "isHTML": true },
+										{ "selector": "figcaption[data-from]", "value": "/from_title" },
+										{ "selector": "code[data-from]", "value": "/from_code", "isHTML": true }
+									]
+								}
+
+							]
+						}
+					]
+				}
+			]
+		},
+
+		{ "selector": "[data-history]", "value": "/history",
+			"mapping": [
+				{ "selector": "li", "value": "/en" }
+			]
+		}
+
+	],
+	"trigger": true
+}'>
+
+	<template>
+		<h3>
+			<span data-name>[[ Name of the variation ]]</span>
+			<template data-status-stable>
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">Status: </span>Stable</span>
+			</template>
+			<template data-status-tobereviewed>
+				<span class="label label-info mrgn-lft-sm"><span class="wb-inv">Status: </span>To be reviewed</span>
+			</template>
+			<template data-status-provisional>
+				<span class="label label-warning mrgn-lft-sm"><span class="wb-inv">Status: </span>Provisional</span>
+			</template>
+			<template data-status-deprecated>
+				<span class="label label-default mrgn-lft-sm"><span class="wb-inv">Status: </span>Deprecated</span>
+			</template>
+		</h3>
+
+		<p data-description>[[ Short description ]]</p><p>Consult the <a data-guidance href>design guidance about this variation</a>.</p><!--
+		<p>TODO: Screen capture</p>
+		<p>TODO: Working example link</p>
+		-->
+		<template data-variation-example>
+			<h4>Working example(s)</h4>
 			<ul>
-				<li>Leveraging JSON Manager Extractor and Data JSON to generate hidden input fields</li>
+				<template>
+					<li><a href></a></li>
+				</template>
 			</ul>
-		</td>
-	</tr>
-	<tr>
-		<th>Additions</th>
-		<td>n/a</td>
-	</tr>
-	<tr>
-		<th>Fixes</th>
-		<td>n/a</td>
-	</tr>
-</table>
+		</template>
 
-<h4>Working example(s)</h4>
-<ul>
-	<li><a href="report-problem-en.html">Report a problem</a></li>
-</ul>
+		<template data-implementation>
+			<h4>Implementation</h4>
 
-<h4>How to implement</h4>
-<ul>
-	<li>To show the Report a problem form, create a <code>&lt;div&gt;</code> with the following data attribute: <code>data-ajax-replace="ajax/report-problem-en.html"</code>.</li>
-	<li>For the basic HTML version, a link element should be created inside a <code>&lt;div&gt;</code> that points to the report a problem form page: <code>&lt;div&gt;&lt;a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html"&gt;Report a problem on this page&lt;/a&gt;&lt;/div&gt;</code>.</li>
-</ul>
+			<div class="wb-tabs" data-implementation-tabs>
+				<template>
+					<div class="tabpanels">
+						<details>
+							<summary>Name of the implementation</summary>
+							<p data-introduction>Introduction</p>
 
-<p>For more information about Data Ajax plugin, please visit <a href="https://wet-boew.github.io/wet-boew/docs/ref/data-ajax/data-ajax-en.html">Data Ajax documentation page</a>.</p>
-<details>
-	<summary>Adobe Analytics implementation</summary>
-	<p>To implement Adobe Analytics in the Report a problem form, simply add the attribute <code>data-gc-analytics-rap</code> to every checkbox with the value being the same as the current language's label, followed by a dash and followed by the other language's label.</p>
-	<p>For example:</p>
-	<pre><code>&lt;div class=&quot;checkbox&quot;&gt;
-	&lt;label for=&quot;problem2&quot;&gt;
-		&lt;input name=&quot;problem2&quot; id=&quot;problem2&quot; type=&quot;checkbox&quot; value=&quot;Yes&quot; <ins>data-gc-analytics-rap=&quot;It has a spelling mistake-Il y a une erreur d&apos;orthographe ou de grammaire&quot;</ins>&gt;It has a spelling mistake
-	&lt;/label&gt;
-	&lt;input name=&quot;problem2&quot; type=&quot;hidden&quot; value=&quot;&quot;&gt;
-&lt;/div&gt;</code></pre>
-</details>
+							<template data-example>
+								<p>Working examples:</p>
+								<ul>
+									<template>
+										<li><a href></a></li>
+									</template>
+								</ul>
+							</template>
 
-<h5>Hidden input fields</h5>
-<p>The Report a problem variant leverages JSON Manager and Data JSON to get information about the page and generate hidden input fields in the form.<p>
-<p>Here is the list of tags that <strong>need</strong> to be present in the page:</p>
-<ul>
-	<li>
-		<code>&lt;meta name="dcterms.creator" content="[Department name]"&gt;</code><br>
-		Where [Department name] is a department name from canada.ca controlled vocabulary, i.e.: <code>gc:institutions/service-canada</code>
-	</li>
-	<li><code>&lt;meta name="dcterms.subject" content="[The subject of the page]"&gt;</code></li>
-</ul>
+							<template data-instructions>
+								<p>Instructions:</p>
+								<ul>
+									<template>
+										<li>Instruction</li>
+									</template>
+								</ul>
+							</template>
 
-<h5>GCWeb Jekyll specific</h5>
-<p>To apply this variant on any given page, you will need to set the variable <code>feedbackPath</code> to <code>"ajax/report-problem-en.html"</code> in the page's front-matter or in the site configurations (<code>_config.yml</code>).</p>
+							<template data-notes>
+								<p>Notes:</p>
+								<ul>
+									<template>
+										<li>Note</li>
+									</template>
+								</ul>
+							</template>
 
-<h4>Code sample</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-ajax-replace=</span><span class="s">"ajax/report-problem-en.html"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-default btn-block"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/report-problem.html"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/a&gt;</span>
-		<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure><details>
-	<summary>Ajaxed-in content</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;details</span> <span class="na">class=</span><span class="s">"brdr-0"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;summary</span> <span class="na">class=</span><span class="s">"btn btn-default text-center"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/summary&gt;</span>
-			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"well row"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm-frm gc-rprt-prblm-tggl"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/sites/feedback/feedback-form-destination.html"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-form"</span> <span class="na">class=</span><span class="s">"wb-postback"</span>
-							<span class="na">data-wb-postback=</span><span class="s">'{
-								"success": ".success-message",
-								"failure": ".failure-message"}'</span>
-							<span class="na">data-wb-jsonmanager=</span><span class="s">'{
-								"name": "rap",
-								"extractor": [
-									{ "interface": "referer", "path": "externalReferer" },
-									{ "selector": "title", "path": "pageTitle" },
-									{ "interface": "locationHref", "path": "submissionPage" },
-									{ "selector": "html", "attr": "lang", "path": "lang" },
-									{ "selector": "meta[name=\"dcterms.creator\"]", "attr": "content", "path": "pageOwner" },
-									{ "selector": "meta[name=\"dcterms.subject\"]", "attr": "content", "path": "subject" }
-								]
-							}'</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;div</span> <span class="na">data-wb-json=</span><span class="s">'{
-								"url": "#[rap]",
-								"mapping": [
-									{ "selector": "input", "attr": "name", "value": "/@id" },
-									{ "selector": "input", "attr": "value", "value": "/@value" }
-								]
-							}'</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;template&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">value=</span><span class="s">""</span> <span class="nt">/&gt;</span>
-								<span class="nt">&lt;/template&gt;</span>
-							<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;fieldset&gt;</span>
-								<span class="nt">&lt;legend&gt;</span>
-									<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Please select all that apply:<span class="nt">&lt;/span&gt;</span>
-								<span class="nt">&lt;/legend&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem1"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem1"</span> <span class="na">id=</span><span class="s">"problem1"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>A link, button or video is not working
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem1"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem2"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem2"</span> <span class="na">id=</span><span class="s">"problem2"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>It has a spelling mistake
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem2"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem3"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem3"</span> <span class="na">id=</span><span class="s">"problem3"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>Information is missing
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem3"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem4"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem4"</span> <span class="na">id=</span><span class="s">"problem4"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>Information is outdated or wrong
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem4"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem5"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem5"</span> <span class="na">id=</span><span class="s">"problem5"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>Login error when trying to access an account
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem5"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem11"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem11"</span> <span class="na">id=</span><span class="s">"problem11"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>I can't find what I'm looking for
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem11"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem12"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem12"</span> <span class="na">id=</span><span class="s">"problem12"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>Other issue not in this list
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem12"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;/fieldset&gt;</span>
-							<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-						<span class="nt">&lt;/form&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"success-message hide"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;h3&gt;</span>Thank you for your help!<span class="nt">&lt;/h3&gt;</span>
-						<span class="nt">&lt;p&gt;</span>You will not receive a reply. For enquiries, please <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/contact.html"</span><span class="nt">&gt;</span>contact us<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/p&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"failure-message hide"</span><span class="nt">&gt;</span>Something went wrong. Please submit your information via an alternative method.<span class="nt">&lt;/p&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-			<span class="nt">&lt;/div&gt;</span>
-		<span class="nt">&lt;/details&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure></details>
+							<template data-source-code>
+								<template data-source-code-collapsed>
+									<details class="mrgn-bttm-lg">
+										<summary>Intro to source code</summary>
+										<pre><code></code></pre>
+									</details>
+								</template>
 
-<h3>Previous iterations</h3>
+								<template data-source-code-expanded>
+									<figure class="mrgn-bttm-lg">
+										<figcaption>Intro to source code</figcaption>
+										<pre><code></code></pre>
+									</figure>
+								</template>
+							</template>
 
-<details>
-	<summary>Iteration 3</summary>
-	<p>Here is a list of changes that happened since the previous iteration:</p>
-	<table class="table table-bordered">
-		<tr>
-			<th style="width:0;">Breaking</th>
-			<td>
-				<ul>
-					<li>Removed login error sub-options.</li>
-					<li>Renamed login error option.</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<th>Additions</th>
-			<td>n/a</td>
-		</tr>
-		<tr>
-			<th>Fixes</th>
-			<td>n/a</td>
-		</tr>
-	</table>
+							<template data-code-compare>
+								<div class="row">
+									<div class="col-md-6">
+										<figure>
+											<figcaption data-rev>Intro to source code</figcaption>
+											<pre><code data-rev></code></pre>
+										</figure>
+									</div>
+									<div class="col-md-6">
+										<figure>
+											<figcaption data-from>Intro to source code</figcaption>
+											<pre><code data-from></code></pre>
+										</figure>
+									</div>
+								</div>
+							</template>
+						</details>
+					</div>
+				</template>
+			</div>
+		</template>
 
-	<h4>Code sample</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-ajax-replace=</span><span class="s">"ajax/report-problem-en.html"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-default btn-block"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/report-problem.html"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/a&gt;</span>
-			<span class="nt">&lt;/div&gt;</span>
-		<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;/div&gt;</span></code></pre></figure><details>
-		<summary>Ajaxed-in content</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;details</span> <span class="na">class=</span><span class="s">"brdr-0"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;summary</span> <span class="na">class=</span><span class="s">"btn btn-default text-center"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/summary&gt;</span>
-			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"well row"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm-frm gc-rprt-prblm-tggl"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/sites/feedback/feedback-form-destination.html"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-form"</span> <span class="na">class=</span><span class="s">"wb-postback"</span> <span class="na">data-wb-postback=</span><span class="s">"{&amp;quot;success&amp;quot;:&amp;quot;.success-message&amp;quot;,&amp;quot;failure&amp;quot;:&amp;quot;.failure-message&amp;quot;}"</span> <span class="nt">&gt;</span>
-							<span class="c">&lt;!--
+		<h4>History notes</h4>
+		<ul data-history>
+			<template>
+				<li>[[ history ]]</li>
+			</template>
+		</ul>
+	</template>
+</div>
 
-							Insert the form submission configuration here
+<h2 id="eval-report">Evaluation and report</h2>
 
-							--&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"externalReferer"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"pageTitle"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span> <span class="c">&lt;!-- Copy of the title of the page --&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"submissionPage"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span> <span class="c">&lt;!-- Copy of the page URL --&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"lang"</span> <span class="na">value=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"pageOwner"</span> <span class="na">value=</span><span class="s">"gc:institutions/"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- Department name from canada.ca controlled vocabulary --&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"subject"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"Report a problem or mistake on this page"</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;fieldset&gt;</span>
-								<span class="nt">&lt;legend&gt;</span>
-									<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Please select all that apply:<span class="nt">&lt;/span&gt;</span>
-								<span class="nt">&lt;/legend&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem1"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem1"</span> <span class="na">id=</span><span class="s">"problem1"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>A link, button or video is not working
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem1"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem2"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem2"</span> <span class="na">id=</span><span class="s">"problem2"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>It has a spelling mistake
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem2"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem3"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem3"</span> <span class="na">id=</span><span class="s">"problem3"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>Information is missing
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem3"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem4"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem4"</span> <span class="na">id=</span><span class="s">"problem4"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>Information is outdated or wrong
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem4"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem5"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem5"</span> <span class="na">id=</span><span class="s">"problem5"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>Login error when trying to access an account
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem5"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem6"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem6"</span> <span class="na">id=</span><span class="s">"problem6"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>I can't find what I'm looking for
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem6"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem7"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem7"</span> <span class="na">id=</span><span class="s">"problem7"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="nt">&gt;</span>Other issue not in this list
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem7"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;/fieldset&gt;</span>
-							<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-						<span class="nt">&lt;/form&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"success-message hide"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;h3&gt;</span>Thank you for your help!<span class="nt">&lt;/h3&gt;</span>
-						<span class="nt">&lt;p&gt;</span>You will not receive a reply. For enquiries, please <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/contact.html"</span><span class="nt">&gt;</span>contact us<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/p&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"failure-message hide"</span><span class="nt">&gt;</span>Something went wrong. Please submit your information via an alternative method.<span class="nt">&lt;/p&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-			<span class="nt">&lt;/div&gt;</span>
-		<span class="nt">&lt;/details&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure></details>
-</details>
+<!-- Accessibility assessment -->
+<div data-wb-json='{
+	"url": "#[api]",
+	"streamline": "true",
+	"mapping": [
+		{
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-yes]",
+					"test": "fn:isArray",
+					"value": "/pages/assessment",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "a", "value": "/path", "attr": "href" },
+								{ "selector": "a", "value": "/language", "attr": "hreflang" },
+								{ "selector": "a", "value": "/language", "attr": "lang" },
+								{ "selector": "a", "value": "/title" }
+							]
+						}
+					]
+				},
+				{
+					"template": "[data-no]",
+					"test": "fn:guessType",
+					"value": "/pages/assessment",
+					"expect": "undefined"
+				}
+			]
+		}
+	]
+}'>
+	<template data-no><p>There is no accessibility assessment.</p></template>
+
+	<template data-yes><p>Accessibility assessment:</p><ul>
+			<template>
+				<li><a href hreflang lang></a></li>
+			</template>
+		</ul>
+	</template>
+</div>
 
 
-<details>
-	<summary>Iteration 2</summary>
-	<p>Here is a list of changes that happened since the previous iteration:</p>
-	<table class="table table-bordered">
-		<tr>
-			<th style="width:0;">Breaking</th>
-			<td>
-				<ul>
-					<li>Rework of the template to use data-ajax. Includes fallback for basic HTML version.</li>
-					<li>Updated form:
-						<ul>
-							<li>Now implements wb-postback for form validation and no longer uses data-toggle on submit.</li>
-							<li>Added login error options (problem 5 to problem 10).</li>
-							<li>Added error and success messages.</li>
-						</ul>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<th>Additions</th>
-			<td>n/a</td>
-		</tr>
-		<tr>
-			<th>Fixes</th>
-			<td>n/a</td>
-		</tr>
-	</table>
+<!-- Accessibility conformance reports -->
+<div data-wb-json='{
+	"url": "#[api]",
+	"streamline": "true",
+	"mapping": [
+		{
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-yes]",
+					"test": "fn:isArray",
+					"value": "/pages/acr",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "a", "value": "/path", "attr": "href" },
+								{ "selector": "a", "value": "/language", "attr": "hreflang" },
+								{ "selector": "a", "value": "/language", "attr": "lang" },
+								{ "selector": "a", "value": "/title" }
+							]
+						}
+					]
+				},
+				{
+					"template": "[data-no]",
+					"test": "fn:guessType",
+					"value": "/pages/acr",
+					"expect": "undefined"
+				}
+			]
+		}
+	]
+}'>
+	<template data-no><p>There is no accessibility conformance report.</p></template>
 
-	<h4>Code sample</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-ajax-replace=</span><span class="s">"ajax/report-problem-v2-en.html"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"btn btn-default btn-block"</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/report-problem.html"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/a&gt;</span>
-			<span class="nt">&lt;/div&gt;</span>
-		<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;/div&gt;</span></code></pre></figure><details>
-		<summary>Ajaxed-in content</summary><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;details</span> <span class="na">class=</span><span class="s">"brdr-0"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;summary</span> <span class="na">class=</span><span class="s">"btn btn-default text-center"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/summary&gt;</span>
-			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"well row"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm-frm gc-rprt-prblm-tggl"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"/sites/feedback/feedback-form-destination.html"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-form"</span> <span class="na">class=</span><span class="s">"wb-postback"</span> <span class="na">data-wb-postback=</span><span class="s">"{&amp;quot;success&amp;quot;:&amp;quot;.success-message&amp;quot;,&amp;quot;failure&amp;quot;:&amp;quot;.failure-message&amp;quot;}"</span><span class="nt">&gt;</span>
-							<span class="c">&lt;!-- Insert the form submission configuration here --&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"externalReferer"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"pageTitle"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span> <span class="c">&lt;!-- Copy of the title of the page --&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"submissionPage"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span> <span class="c">&lt;!-- Copy of the page URL --&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"lang"</span> <span class="na">value=</span><span class="s">"en"</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"pageOwner"</span> <span class="na">value=</span><span class="s">"gc:institutions/"</span><span class="nt">&gt;</span> <span class="c">&lt;!-- Department name from canada.ca controlled vocabulary --&gt;</span>
-							<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"subject"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"Report a problem or mistake on this page"</span><span class="nt">&gt;</span>
-							<span class="nt">&lt;fieldset&gt;</span>
-								<span class="nt">&lt;legend&gt;</span>
-									<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Please select all that apply:<span class="nt">&lt;/span&gt;</span>
-								<span class="nt">&lt;/legend&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem1"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem1"</span> <span class="na">id=</span><span class="s">"problem1"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>A link, button or video is not working
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem1"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem2"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem2"</span> <span class="na">id=</span><span class="s">"problem2"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>It has a spelling mistake
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem2"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem3"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem3"</span> <span class="na">id=</span><span class="s">"problem3"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>Information is missing
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem3"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem4"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem4"</span> <span class="na">id=</span><span class="s">"problem4"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>Information is outdated or wrong
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem4"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem5"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem5"</span> <span class="na">id=</span><span class="s">"problem5"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>Login error when trying to access an account (e.g. My Service Canada Account)
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem5"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;ul&gt;</span>
-									<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem6a"</span><span class="nt">&gt;</span>
-											<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem6"</span> <span class="na">id=</span><span class="s">"problem6a"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>GC Key access
-										<span class="nt">&lt;/label&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem6"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;/li&gt;</span>
-									<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem7"</span><span class="nt">&gt;</span>
-											<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem7"</span> <span class="na">id=</span><span class="s">"problem7"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>SecureKey Concierge (Banking Credential) access
-										<span class="nt">&lt;/label&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem7"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;/li&gt;</span>
-									<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem8"</span><span class="nt">&gt;</span>
-											<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem8"</span> <span class="na">id=</span><span class="s">"problem8"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>Personal Access Code (PAC) problems or EI Access Code (AC) problems
-										<span class="nt">&lt;/label&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem8"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;/li&gt;</span>
-									<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem9"</span><span class="nt">&gt;</span>
-											<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem9"</span> <span class="na">id=</span><span class="s">"problem9"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>Social Insurance Number (SIN) validation problems
-										<span class="nt">&lt;/label&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem9"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;/li&gt;</span>
-									<span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem10"</span><span class="nt">&gt;</span>
-											<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem10"</span> <span class="na">id=</span><span class="s">"problem10"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>Other login error not in this list
-										<span class="nt">&lt;/label&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem10"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;/li&gt;</span>
-								<span class="nt">&lt;/ul&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem11"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem11"</span> <span class="na">id=</span><span class="s">"problem11"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>I can't find what I'm looking for
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem11"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-								<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"problem12"</span><span class="nt">&gt;</span>
-										<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem12"</span> <span class="na">id=</span><span class="s">"problem12"</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"Yes"</span><span class="nt">&gt;</span>Other issue not in this list
-									<span class="nt">&lt;/label&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem12"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;/fieldset&gt;</span>
-							<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-						<span class="nt">&lt;/form&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"success-message hide"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;h3&gt;</span>Thank you for your help!<span class="nt">&lt;/h3&gt;</span>
-						<span class="nt">&lt;p&gt;</span>You will not receive a reply. For enquiries, please <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/contact.html"</span><span class="nt">&gt;</span>contact us<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/p&gt;</span>
-					<span class="nt">&lt;/div&gt;</span>
-					<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"failure-message hide"</span><span class="nt">&gt;</span>Something went wrong. Please submit your information via an alternative method.<span class="nt">&lt;/p&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-			<span class="nt">&lt;/div&gt;</span>
-		<span class="nt">&lt;/details&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure></details>
-</details>
-<details>
-	<summary>Iteration 1</summary>
-	<h4>Code sample</h4><figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-no-gutters"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9 col-md-6 col-lg-5"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;details</span> <span class="na">class=</span><span class="s">"brdr-0"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;summary</span> <span class="na">class=</span><span class="s">"btn btn-default text-center"</span><span class="nt">&gt;</span>Report a problem on this page<span class="nt">&lt;/summary&gt;</span>
-			<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm-frm gc-rprt-prblm-tggl"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"#"</span><span class="nt">&gt;</span>
-						<span class="nt">&lt;fieldset&gt;</span>
-							<span class="nt">&lt;legend&gt;&lt;span</span> <span class="na">class=</span><span class="s">"field-name"</span><span class="nt">&gt;</span>Please select all that apply:<span class="nt">&lt;/span&gt;&lt;/legend&gt;</span>
-							<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"gc-rprt-prblm-f1"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"problem1"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-f1"</span> <span class="nt">/&gt;</span>A link, button or video is not working
-								<span class="nt">&lt;/label&gt;</span>
-								<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem1"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"No"</span> <span class="nt">/&gt;</span>
-							<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"gc-rprt-prblm-f2"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"problem2"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-f2"</span> <span class="nt">/&gt;</span>It has a spelling mistake
-								<span class="nt">&lt;/label&gt;</span>
-								<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem2"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"No"</span> <span class="nt">/&gt;</span>
-							<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"gc-rprt-prblm-f3"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"problem3"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-f3"</span> <span class="nt">/&gt;</span>Information is missing
-								<span class="nt">&lt;/label&gt;</span>
-								<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem3"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"No"</span> <span class="nt">/&gt;</span>
-							<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"gc-rprt-prblm-f4"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"problem4"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-f4"</span> <span class="nt">/&gt;</span>Information is outdated or wrong
-								<span class="nt">&lt;/label&gt;</span>
-								<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem4"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"No"</span> <span class="nt">/&gt;</span>
-							<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"gc-rprt-prblm-f5"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"problem5"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-f5"</span> <span class="nt">/&gt;</span>I can't find what I'm looking for
-								<span class="nt">&lt;/label&gt;</span>
-								<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem5"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"No"</span> <span class="nt">/&gt;</span>
-							<span class="nt">&lt;/div&gt;</span>
-							<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
-								<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"gc-rprt-prblm-f6"</span><span class="nt">&gt;</span>
-									<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"problem6"</span> <span class="na">value=</span><span class="s">"Yes"</span> <span class="na">id=</span><span class="s">"gc-rprt-prblm-f6"</span> <span class="nt">/&gt;</span>Other issue not in this list
-								<span class="nt">&lt;/label&gt;</span>
-								<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"problem6"</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">value=</span><span class="s">"No"</span> <span class="nt">/&gt;</span>
-							<span class="nt">&lt;/div&gt;</span>
-						<span class="nt">&lt;/fieldset&gt;</span>
-						<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-primary wb-toggle"</span> <span class="na">data-toggle=</span><span class="s">'{"stateOff": "hide", "stateOn": "show", "selector": ".gc-rprt-prblm-tggl"}'</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
-					<span class="nt">&lt;/form&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-				<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gc-rprt-prblm-thnk gc-rprt-prblm-tggl hide"</span><span class="nt">&gt;</span>
-					<span class="nt">&lt;h3&gt;</span>Thank you for your help!<span class="nt">&lt;/h3&gt;</span>
-					<span class="nt">&lt;p&gt;</span>You will not receive a reply. For enquiries, please <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://www.canada.ca/en/contact.html"</span><span class="nt">&gt;</span>contact us<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/p&gt;</span>
-				<span class="nt">&lt;/div&gt;</span>
-			<span class="nt">&lt;/div&gt;</span>
-		<span class="nt">&lt;/details&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure></details>
+	<template data-yes><p>Accessibility conformance report:</p><ul>
+			<template>
+				<li><a href hreflang lang></a></li>
+			</template>
+		</ul>
+	</template>
+</div>
+
+<h2 id="technical-docs">Technical documentation</h2>
+
+<h3>Change set</h3>
+
+<!--
+<p>The description beside the public API item are defining the scope of how the public API item is applicable in the context of its "Change set". It should contains all the information about how we can measure a change when a subsequent iteration would be created. It can refer to an explicit example, or contains a code sample, or link to another documentation section where more details is provided. Optionally and when it provide more clarity, it can provide a description what is not in the versioning scope.</p>
+--><p>Unless specified, the <a href="https://wet-boew.github.io/wet-boew-documentation/decision/14.html">public versioning API dimensions</a> are strictly limited to what is described here. Anything that is omitted or not identified is out of scope.</p><div data-wb-json='{
+	"url": "#[api]/changesets",
+	"mapping": [
+		{ "selector": "details > summary", "value": "/name" },
+		{ "selector": "[data-status]", "value": "/status" },
+		{ "selector": "[data-description]", "value": "/description" },
+		{ "selector": "[data-detectability]", "value": "/detectableBy" },
+		{ "selector": "[data-iteration]", "value": "/baseOnIteration/name" },
+
+		{
+			"about": "/layout",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-layout-none]",
+					"test": "fn:guessType",
+					"value": "/layout",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-layout-description]",
+					"test": "fn:guessType",
+					"value": "/layout",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-layout-list]",
+					"test": "fn:guessType",
+					"value": "/layout",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/style",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-style-none]",
+					"test": "fn:guessType",
+					"value": "/style",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-style-description]",
+					"test": "fn:guessType",
+					"value": "/style",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-style-list]",
+					"test": "fn:guessType",
+					"value": "/style",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/semantic",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-semantic-none]",
+					"test": "fn:guessType",
+					"value": "/semantic",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-semantic-description]",
+					"test": "fn:guessType",
+					"value": "/semantic",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-semantic-list]",
+					"test": "fn:guessType",
+					"value": "/semantic",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				},
+				{
+					"template": "[data-semantic-source-code]",
+					"test": "fn:guessType",
+					"value": "/semantic",
+					"expect": "source-code",
+					"mapping": [
+						{
+							"@type": "rdf:Alt",
+							"mapping": [
+								{
+									"template": "[data-source-code-collapsed]",
+									"test": "fn:getValue",
+									"assess": "/collapsed",
+									"expect": true,
+									"mapping": [
+										{ "selector": "summary", "value": "/description" },
+										{ "selector": "code", "value": "/code", "encode": true }
+									]
+								},
+								{
+									"template": "[data-source-code-expanded]",
+									"test": "fn:getValue",
+									"assess": "/collapsed",
+									"expect": false,
+									"mapping": [
+										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "code", "value": "/code", "encode": true }
+									]
+								},
+								{
+									"template": "[data-source-code-expanded]",
+									"test": "fn:guessType",
+									"assess": "/collapsed",
+									"expect": "undefined",
+									"mapping": [
+										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "code", "value": "/code", "encode": true }
+									]
+								}
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/include",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-include-none]",
+					"test": "fn:guessType",
+					"value": "/include",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-include-description]",
+					"test": "fn:guessType",
+					"value": "/include",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-include-list]",
+					"test": "fn:guessType",
+					"value": "/include",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				},
+				{
+					"template": "[data-include-source-code]",
+					"test": "fn:guessType",
+					"value": "/include",
+					"expect": "source-code",
+					"mapping": [
+						{
+							"@type": "rdf:Alt",
+							"mapping": [
+								{
+									"template": "[data-source-code-collapsed]",
+									"test": "fn:getValue",
+									"assess": "/collapsed",
+									"expect": true,
+									"mapping": [
+										{ "selector": "summary", "value": "/description" },
+										{ "selector": "code", "value": "/code", "encode": true }
+									]
+								},
+								{
+									"template": "[data-source-code-expanded]",
+									"test": "fn:getValue",
+									"assess": "/collapsed",
+									"expect": false,
+									"mapping": [
+										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "code", "value": "/code", "encode": true }
+									]
+								},
+								{
+									"template": "[data-source-code-expanded]",
+									"test": "fn:guessType",
+									"assess": "/collapsed",
+									"expect": "undefined",
+									"mapping": [
+										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "code", "value": "/code", "encode": true }
+									]
+								}
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/logic",
+			"dd14": "Function, callback and events",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-logic-none]",
+					"test": "fn:guessType",
+					"value": "/logic",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-logic-description]",
+					"test": "fn:guessType",
+					"value": "/logic",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-logic-list]",
+					"test": "fn:guessType",
+					"value": "/logic",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/perceptibility",
+			"dd14": "Pattern recognition",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-recognition-none]",
+					"test": "fn:guessType",
+					"value": "/recognition",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-recognition-description]",
+					"test": "fn:guessType",
+					"value": "/recognition",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-recognition-list]",
+					"test": "fn:guessType",
+					"value": "/recognition",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/behaviour",
+			"dd14": "Essential component behaviour",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-behaviour-none]",
+					"test": "fn:guessType",
+					"value": "/behaviour",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-behaviour-description]",
+					"test": "fn:guessType",
+					"value": "/behaviour",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-behaviour-list]",
+					"test": "fn:guessType",
+					"value": "/behaviour",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/basic",
+			"dd14": "Basic HTML mode behaviour",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-basic-none]",
+					"test": "fn:guessType",
+					"value": "/basic",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-basic-description]",
+					"test": "fn:guessType",
+					"value": "/basic",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-basic-list]",
+					"test": "fn:guessType",
+					"value": "/basic",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/accessibility",
+			"dd14": "Accessibility guidance",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-accessibility-none]",
+					"test": "fn:guessType",
+					"value": "/accessibility",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-accessibility-description]",
+					"test": "fn:guessType",
+					"value": "/accessibility",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-accessibility-list]",
+					"test": "fn:guessType",
+					"value": "/accessibility",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/guidance",
+			"dd14": "Guidance of use",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-guidance-none]",
+					"test": "fn:guessType",
+					"value": "/guidance",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-guidance-description]",
+					"test": "fn:guessType",
+					"value": "/guidance",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-guidance-list]",
+					"test": "fn:guessType",
+					"value": "/guidance",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/context",
+			"dd14": "Context of use",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-context-none]",
+					"test": "fn:guessType",
+					"value": "/context",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-context-description]",
+					"test": "fn:guessType",
+					"value": "/context",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-context-list]",
+					"test": "fn:guessType",
+					"value": "/context",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/configuration",
+			"dd14": "Configuration",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-configuration-none]",
+					"test": "fn:guessType",
+					"value": "/configuration",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-configuration-description]",
+					"test": "fn:guessType",
+					"value": "/configuration",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-configuration-list]",
+					"test": "fn:guessType",
+					"value": "/configuration",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/static",
+			"dd14": "Static value",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-static-none]",
+					"test": "fn:guessType",
+					"value": "/static",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-static-description]",
+					"test": "fn:guessType",
+					"value": "/static",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-static-list]",
+					"test": "fn:guessType",
+					"value": "/static",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/schema",
+			"dd14": "Schema (Dynamic data)",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-schema-none]",
+					"test": "fn:guessType",
+					"value": "/schema",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-schema-description]",
+					"test": "fn:guessType",
+					"value": "/schema",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-schema-list]",
+					"test": "fn:guessType",
+					"value": "/schema",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/aria",
+			"dd14": "Technical accessibility consideration",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-aria-none]",
+					"test": "fn:guessType",
+					"value": "/aria",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-aria-description]",
+					"test": "fn:guessType",
+					"value": "/aria",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-aria-list]",
+					"test": "fn:guessType",
+					"value": "/aria",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/notable",
+			"dd14": "Other notable technical consideration",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-notable-none]",
+					"test": "fn:guessType",
+					"value": "/notable",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-notable-description]",
+					"test": "fn:guessType",
+					"value": "/notable",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-notable-list]",
+					"test": "fn:guessType",
+					"value": "/notable",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/dependency",
+			"dd14": "Essential dependencies",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-dependency-none]",
+					"test": "fn:guessType",
+					"value": "/dependency",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-dependency-description]",
+					"test": "fn:guessType",
+					"value": "/dependency",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-dependency-list]",
+					"test": "fn:guessType",
+					"value": "/dependency",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		},
+
+		{
+			"about": "/file",
+			"dd14": "Packaged essential file",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-file-none]",
+					"test": "fn:guessType",
+					"value": "/file",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-file-description]",
+					"test": "fn:guessType",
+					"value": "/file",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-file-list]",
+					"test": "fn:guessType",
+					"value": "/file",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value" }
+							]
+						}
+					]
+				}
+
+			]
+		}
+
+
+	]
+}'>
+
+
+
+<!--
+
+	- String describing how to measure the API aspect
+	- Array of string describing what is measured
+	- Complex object (Depending of the API aspect)
+		+ For layout: HTML structure
+		+ For static (data not modifiable or only modifiable during the implementation) but are translated: Key/Value object where the key is a phrase (When used by JS, only the key is versioned. When used in a HTML template, only the value (localized) is versioned.)
+		+ Configuration: Data structure where the key is the configuration key and the value describe the type, what it is and any other useful info.
+
+
+
+-->
+
+<template>
+	<details lang="en">
+		<summary>[[ Change set name ]]</summary>
+		<dl class="dl-horizontal brdr-0 mrgn-bttm-0 mrgn-tp-md" lang="en">
+			<dt>Status:</dt> <dd data-status>stable</dd>
+			<dt>Detectable by:</dt> <dd data-detectability>detectableBy</dd>
+
+			<!-- Layout -->
+			<template data-layout-none>
+				<dt>Layout:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-layout-description>
+				<dt>Layout:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-layout-list>
+				<dt>Layout:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Style -->
+			<template data-style-none>
+				<dt>Style:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-style-description>
+				<dt>Style:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-style-list>
+				<dt>Style:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Semantic -->
+			<template data-semantic-none>
+				<dt>Semantic:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-semantic-description>
+				<dt>Semantic:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-semantic-list>
+				<dt>Semantic:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+			<template data-semantic-source-code>
+				<dt>Semantic:</dt>
+				<dd>
+					<template data-source-code-collapsed>
+						<details>
+							<summary>Intro to source code</summary>
+							<pre><code></code></pre>
+						</details>
+					</template>
+
+					<template data-source-code-expanded>
+						<figure>
+							<figcaption>Intro to source code</figcaption>
+							<pre><code></code></pre>
+						</figure>
+					</template>
+				</dd>
+			</template>
+
+			<!-- Include file -->
+			<template data-include-none>
+				<dt>include:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-include-description>
+				<dt>include:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-include-list>
+				<dt>include:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+			<template data-include-source-code>
+				<dt>Include:</dt>
+				<dd>
+					<template data-source-code-collapsed>
+						<details>
+							<summary>Intro to source code</summary>
+							<pre><code></code></pre>
+						</details>
+					</template>
+
+					<template data-source-code-expanded>
+						<figure>
+							<figcaption>Intro to source code</figcaption>
+							<pre><code></code></pre>
+						</figure>
+					</template>
+				</dd>
+			</template>
+
+			<!-- Logic -->
+			<template data-logic-none>
+				<dt>Logic:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-logic-description>
+				<dt>Logic:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-logic-list>
+				<dt>Logic:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Pattern recognition -->
+			<template data-recognition-none>
+				<dt>Pattern <span class="nowrap">recognition</span>:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-recognition-description>
+				<dt>Pattern <span class="nowrap">recognition</span>:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-recognition-list>
+				<dt>Pattern <span class="nowrap">recognition</span>:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Behaviour -->
+			<template data-behaviour-none>
+				<dt>Behaviour:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-behaviour-description>
+				<dt>Behaviour:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-behaviour-list>
+				<dt>Behaviour:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Basic HTML mode behaviour -->
+			<template data-basic-none>
+				<dt>Basic HTML mode behaviour:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-basic-description>
+				<dt>Basic HTML mode behaviour:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-basic-list>
+				<dt>Basic HTML mode behaviour:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Accessibility guidance -->
+			<template data-accessibility-none>
+				<dt>Accessibility guidance:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-accessibility-description>
+				<dt>Accessibility guidance:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-accessibility-list>
+				<dt>Accessibility guidance:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Guidance of use -->
+			<template data-guidance-none>
+				<dt>Guidance of use:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-guidance-description>
+				<dt>Guidance of use:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-guidance-list>
+				<dt>Guidance of use:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Context of use -->
+			<template data-context-none>
+				<dt>Context of use:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-context-description>
+				<dt>Context of use:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-context-list>
+				<dt>Context of use:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Configuration -->
+			<template data-configuration-none>
+				<dt>Configuration:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-configuration-description>
+				<dt>Configuration:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-configuration-list>
+				<dt>Configuration:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Static value -->
+			<template data-static-none>
+				<dt>Static value:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-static-description>
+				<dt>Static value:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-static-list>
+				<dt>Static value:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Schema (Dynamic data) -->
+			<template data-schema-none>
+				<dt>Schema <wbr>(Dynamic data):</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-schema-description>
+				<dt>Schema <wbr>(Dynamic data):</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-schema-list>
+				<dt>Schema <wbr>(Dynamic data):</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Technical accessibility consideration -->
+			<template data-aria-none>
+				<dt>Technical<br> accessibility consideration:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-aria-description>
+				<dt>Technical accessibility consideration:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-aria-list>
+				<dt>Technical accessibility consideration:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Other notable technical consideration -->
+			<template data-notable-none>
+				<dt>Other notable technical<br> consideration:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-notable-description>
+				<dt>Other notable technical consideration:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-notable-list>
+				<dt>Other notable technical consideration:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Essential dependencies -->
+			<template data-dependency-none>
+				<dt>Essential <span class="nowrap">dependencies:</span></dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-dependency-description>
+				<dt>Essential <span class="nowrap">dependencies:</span></dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-dependency-list>
+				<dt>Essential <span class="nowrap">dependencies:</span></dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<!-- Packaged essential file -->
+			<template data-file-none>
+				<dt>Packaged <span class="nowrap">essential</span> file:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-file-description>
+				<dt>Packaged <span class="nowrap">essential</span> file:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-file-list>
+				<dt>Packaged <span class="nowrap">essential</span> file:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<dt>Based on <span class="nowrap">iteration</span></dt>
+			<dd data-iteration>_:iteration_xyz</dd>
+		</dl>
+	</details>
+</template>
+</div>
+
+
+<h3>Iterations</h3>
+
+<div data-wb-json='{
+	"url": "#[api]/iteration",
+	"mapping": [
+		{ "selector": "summary", "value": "/name" },
+		{ "selector": "[data-detectability]", "value": "/detectableBy" },
+		{ "selector": "[data-date]", "value": "/date" },
+
+		{
+			"template": "[data-predecessor]",
+			"test": "fn:guessType",
+			"expect": "xsd:string",
+			"assess": "/predecessor",
+			"mapping": [
+				{ "selector": "[data-predecessor]", "value": "/predecessor" }
+			]
+		},
+		{
+			"template": "[data-successor]",
+			"test": "fn:guessType",
+			"expect": "xsd:string",
+			"assess": "/successor",
+			"mapping": [
+				{ "selector": "[data-successor]", "value": "/successor" }
+			]
+		},
+		{
+			"template": "[data-breaking]",
+			"test": "fn:isArray",
+			"assess": "/breaking",
+			"mapping": [
+				{
+					"selector": "ul",
+					"value": "/breaking",
+					"mapping": [
+						{ "selector": "li", "value": "/@value" }
+					]
+				}
+			]
+		},
+		{
+			"template": "[data-additions]",
+			"test": "fn:isArray",
+			"assess": "/additions",
+			"mapping": [
+				{
+					"selector": "ul",
+					"value": "/additions",
+					"mapping": [
+						{ "selector": "li", "value": "/@value" }
+					]
+				}
+			]
+		},
+		{
+			"template": "[data-fixes]",
+			"test": "fn:isArray",
+			"assess": "/fixes",
+			"mapping": [
+				{
+					"selector": "ul",
+					"value": "/fixes",
+					"mapping": [
+						{ "selector": "li", "value": "/@value" }
+					]
+				}
+			]
+		},
+		{
+			"template": "[data-asset]",
+			"test": "fn:isArray",
+			"assess": "/assets",
+			"mapping": [
+				{
+					"selector": "div",
+					"value": "/assets",
+					"mapping": [
+						{
+							"template": "[data-asset-source-code]",
+							"test": "fn:guessType",
+							"expect": "source-code",
+							"assess": "/",
+							"mapping": [
+								{ "selector": "summary", "value": "/description" },
+								{ "selector": "code", "value": "/code", "encode": "true" },
+								{ "selector": "details", "attr": "lang", "value": "/@language" }
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"template": "[data-example]",
+			"test": "fn:isArray",
+			"assess": "/example/en",
+			"mapping": [
+				{
+					"selector": "ul",
+					"value": "/example/en",
+					"mapping": [
+						{ "selector": "a", "value": "/href", "attr": "href" },
+						{ "selector": "a", "value": "/text" }
+					]
+				}
+			]
+		}
+	]
+}'>
+
+<template>
+	<details lang="en">
+		<summary></summary>
+		<dl class="dl-horizontal mrgn-bttm-0 mrgn-tp-md brdr-0">
+			<dt>Detectable by:</dt>
+			<dd data-detectability>detectableBy</dd>
+
+			<template data-predecessor>
+				<dt>Predecessor:</dt> <dd data-predecessor>Iteration ID</dd>
+			</template>
+
+			<template data-successor>
+				<dt>Successor:</dt> <dd data-successor>Iteration ID</dd>
+			</template>
+
+			<dt>Created on:</dt> <dd data-date>Not specified</dd>
+
+			<template data-breaking>
+				<dt>Breaking changes:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li lang="en">Breaking change description</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<template data-additions>
+				<dt>Additions:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li lang="en">Addition description</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<template data-fixes>
+				<dt>Fixes:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li lang="en">Fix description</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
+			<template data-asset>
+				<div>
+					<dt>Assets:</dt>
+					<template data-asset-source-code>
+						<dd>
+							<details>
+								<summary>Title</summary>
+								<pre><code>Code sample</code></pre>
+							</details>
+						</dd>
+					</template>
+					<template></template>
+				</div>
+			</template>
+
+			<template data-example>
+				<dt>Examples:</dt>
+				<dd>
+					<ul data-example>
+						<template>
+							<li><a href></a></li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+		</dl>
+	</details>
+</template>
+</div>
 
 <section class="pagedetails">
 	<h2 class="wb-inv">Page details</h2>
 
-	<div class="row"><div class="col-sm-8 col-md-9 col-lg-9">
-				<div data-ajax-replace="https://servicecanada.github.io/wet-boew-demos/gcweb-pr2098/sites/feedback/ajax/page-feedback-en.html" class="wb-disable-allow">
-	<div class="row row-no-gutters"><div class="col-sm-9 col-md-6 col-lg-5"><a class="btn btn-default btn-block" href="https://www.canada.ca/en/report-problem.html">Report a problem on this page</a>
-		</div>
-	</div>
+	<div class="row"><div class="col-xs-12"><dl id="wb-dtmd">
+	<dt>Date modified:</dt>
+	<dd><time property="dateModified">2023-11-08</time></dd>
+</dl>
 </div>
-
-			</div><div class="wb-share col-sm-4 col-md-3" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-xs-12">
-			<dl id="wb-dtmd">
-				<dt>Date modified:</dt>
-				<dd><time property="dateModified">2023-01-10</time></dd>
-			</dl>
-		</div>
 	</div>
 </section>
 
 </main>
-
 <footer id="wb-info">
 	<h2 class="wb-inv">About this site</h2>
 
@@ -940,14 +2216,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2098/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
