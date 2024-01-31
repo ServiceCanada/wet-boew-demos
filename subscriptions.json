@@ -1,0 +1,28 @@
+{
+  "subscriptions": [
+    {
+      "institutions": [
+        "canadian-coast-guard"
+      ],
+      "regions": [
+        "atlantic",
+        "ontario"
+      ],
+      "pref_notification": "daily",
+      "pref_language": "fr"
+    },
+    {
+      "newsTypes": [
+        "media-advisories"
+      ],
+      "institutions": [
+        "secretariat-of-the-national-security-and-intelligence-committee-of-parliamentarians"
+      ],
+      "ministers": [
+        "hon-francois-philippe-champagne"
+      ],
+      "pref_notification": "immediately",
+      "pref_language": "en"
+    }
+  ]
+}

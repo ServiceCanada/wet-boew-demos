@@ -1,48 +1,1548 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en" dir="ltr">
-<head>
-<meta charset="utf-8">
-<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-<title>Language selection - Web Experience Toolkit / Sélection de la langue - Boîte à outils de l’expérience Web - Working examples - Web Experience Toolkit
-</title>
-<meta content="width=device-width,initial-scale=1" name="viewport">
-<meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities">
-<link href="./theme-wet-boew/assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="./theme-wet-boew/css/theme.min.css">
-<noscript><link rel="stylesheet" href="./wet-boew/css/noscript.min.css"></noscript>
+<!doctype html>
+<html class="no-js" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head prefix="og: http://ogp.me/ns#">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="utf-8" />
+	<title>News - Canada.ca</title>
+	<meta content="width=device-width,initial-scale=1" name="viewport" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="dist/GCWeb/css/theme.css" />
+	<link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-init wb-favicon-inited">
 </head>
-<body vocab="http://schema.org/" resource="#wb-webpage" typeof="WebPage">
-<div class="wb-sppe">
-<header role="banner">
-<div id="wb-bnr">
-<div class="container">
-<div class="row mrgn-tp-lg mrgn-bttm-lg">
-<div id="wb-spllg" class="col-md-8 col-md-offset-2">
-<img src="./theme-wet-boew/assets/logo.svg" alt="Web Experience Toolkit">
-</div>
-</div>
-</div>
-</div>
-</header>
-<main role="main" property="mainContentOfPage" resource="#wb-main" class="container">
-<div class="row mrgn-tp-lg">
-<div class="col-md-12">
-<section class="col-md-6">
-<h2 class="h3 text-center">Web Experience Toolkit</h2>
-<a class="btn btn-lg btn-primary btn-block" href="index-en.html">English</a>
-<a class="btn btn-lg btn-default btn-block" href="License-en.html" rel="license">Terms and conditions of use</a>
-</section>
-<section class="col-md-6" lang="fr">
-<h2 class="h3 text-center">Boîte à outils de l’expérience Web</h2>
-<a class="btn btn-lg btn-primary btn-block" href="index-fr.html">Français</a>
-<a class="btn btn-lg btn-default btn-block" href="Licence-fr.html" rel="license">Conditions régissant l'utilisation</a>
-</section>
-</div>
-</div>
-</main>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="./wet-boew/js/wet-boew.min.js"></script>
+
+<body vocab="http://schema.org/" typeof="WebPage" resource="#wb-webpage">
+	<nav>
+		<ul id="wb-tphp">
+			<li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+			<li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to About this site</a></li>
+		</ul>
+	</nav>
+	<header>
+		<div id="wb-bnr" class="container">
+			<div class="row">
+				<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+					<h2 class="wb-inv">Language selection</h2>
+					<ul class="list-inline mrgn-bttm-0">
+						<li>
+							<a lang="fr" hreflang="fr" href="header-docs-fr.html">
+								<span class="hidden-xs" translate="no">Français</span>
+								<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+							</a>
+						</li>
+					</ul>
+				</section>
+				<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+					<a href="https://www.canada.ca/en.html" property="url">
+						<img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+					</a>
+					<meta property="name" content="Government of Canada">
+					<meta property="areaServed" typeof="Country" content="Canada" />
+					<link property="logo" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" />
+				</div>
+				<section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
+					<h2>Search</h2>
+					<form action="https://www.canada.ca/en/sr/srb.html" name="cse-search-box" role="search">
+						<div class="form-group wb-srch-qry">
+							<label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+							<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" />
+							<datalist id="wb-srch-q-ac"></datalist>
+						</div>
+						<div class="form-group submit">
+							<button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div>
+		<hr>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<nav class="gcweb-menu" typeof="SiteNavigationElement">
+						<h2 class="wb-inv">Menu</h2>
+						<button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+						<ul role="menu" aria-orientation="vertical">
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/jobs.html">Jobs and the workplace</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+							<li role="presentation"><a role="menuitem" href="https://travel.gc.ca/">Travel and tourism</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/business.html">Business and industry</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/health.html">Health</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+							<li role="presentation"><a role="menuitem" href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Money and finances</a></li>
+							<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<nav id="wb-bc" property="breadcrumb">
+			<h2>You are here:</h2>
+			<div class="container">
+				<ol class="breadcrumb" typeof="BreadcrumbList">
+					<li property="itemListElement" typeof="ListItem">
+						<a property="item" typeof="WebPage" href="https://www.canada.ca/en.html">
+							<span property="name">Canada.ca</span>
+						</a>
+						<meta property="position" content="1">
+					</li>
+				</ol>
+			</div>
+		</nav>
+	</header>
+
+	<main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement" class="container">
+		<h1 property="name" id="wb-cont">News</h1>
+		<div class="mrgn-bttm-md" data-wb-randomize='{ "shuffle": true, "selector": "a", "toggle": "hide" }'>
+			<a href="#" class="promo hide learmore">
+				<figure><img class="img-responsive full-width" src="https://www.canada.ca/content/dam/news/carousel/20231214-3-1170x347.jpg" alt="">
+					<figcaption class="well brdr-rds-0">
+						<span class="h4 mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0">Canada’s response to the crisis in Israel, the West Bank and the Gaza Strip</span>
+					</figcaption>
+				</figure>
+			</a>
+			<a href="#" class="promo hide learmore">
+				<figure><img class="img-responsive full-width" src="https://www.canada.ca/content/dam/news/carousel/20231214-3-1170x347.jpg" alt="">
+					<figcaption class="well brdr-rds-0">
+						<span class="h4 mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0">Give back to the community by volunteering at Winterlude</span>
+					</figcaption>
+				</figure>
+			</a>
+			<a href="#" class="promo hide learmore">
+				<figure><img class="img-responsive full-width" src="https://www.canada.ca/content/dam/news/carousel/20231214-3-1170x347.jpg" alt="">
+					<figcaption class="well brdr-rds-0">
+						<span class="h4 mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0">Learn about Canada’s response to the Russian invasion of Ukraine</span>
+					</figcaption>
+				</figure>
+			</a>
+			<a href="#" class="promo hide learmore">
+				<figure><img class="img-responsive full-width" src="https://www.canada.ca/content/dam/news/carousel/20231214-3-1170x347.jpg" alt="">
+					<figcaption class="well brdr-rds-0">
+						<span class="h4 mrgn-tp-0 mrgn-bttm-0 mrgn-lft-0">Do you know an inspirational educator? Nominate them for a Prime Minister’s Award.</span>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+
+		<section>
+			<h2>Features</h2>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="mwsfeatureimage textimage parbase section">
+						<section>
+							<img class="img-responsive thumbnail mrgn-bttm-sm" src="https://www.canada.ca/content/dam/news/features/20231214-2-360x203.jpg" alt="" />
+							<h3 class="h5">
+								<a class="stretched-link" href="https://www.ic.gc.ca/eic/site/062.nsf/eng/h_00108.html?open&amp;WT.mc_id=DigitalCharter_canada.ca-News_features_en">Learn more about Canada’s Digital Charter</a>
+							</h3>
+							<p>Learn how Canada’s Digital Charter will build a foundation of trust in a digital world.</p>
+						</section>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="mwsfeatureimage textimage parbase section">
+						<section>
+							<img class="img-responsive thumbnail mrgn-bttm-sm" src="https://www.canada.ca/content/dam/news/features/20231214-2-360x203.jpg" alt="" />
+							<h3 class="h5">
+								<a class="stretched-link" href="/content/canadasite/en/canadian-heritage/campaigns/celebrate-canada-day.html">Canada Day</a>
+							</h3>
+							<p>Canada Day and other festivities are just around the corner. Are you ready?</p>
+						</section>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="mwsfeatureimage textimage parbase section">
+						<section>
+							<img class="img-responsive thumbnail mrgn-bttm-sm" src="https://www.canada.ca/content/dam/news/features/20231214-2-360x203.jpg" alt="" />
+							<h3 class="h5">
+								<a class="stretched-link" href="/content/canadasite/en/employment-social-development/programs/new-horizons-seniors.html">New Horizons for Seniors Program</a>
+							</h3>
+							<p>Apply now for funding for projects that engage seniors. The deadline is June 21</p>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="filteredNews" class="wb-tagfilter wb-filter wb-paginate provisional mrgn-tp-lg" data-wb-filter='{
+			"uiTemplate": "#newsFiltersUI",
+			"selector": "article",
+			"section": "#newsList"
+		}'  data-wb-paginate='{
+			"itemsPerPage": 10,
+			"section": "#newsList",
+			"selector": "article",
+			"uiTarget": "#filteredNewsPagination"
+		}'>
+			<h2 class="wb-inv">News articles</h2>
+			<p class="mrgn-tp-lg text-center mrgn-bttm-lg">To access&nbsp;all articles, please visit the <a href="https://www.canada.ca/en/news/advanced-news-search.html">advanced search</a>.</p>
+			<div id="newsFilters" data-wb-jsonmanager='{
+				"name": "newsFilters"
+			}'></div>
+			<div data-wb-jsonmanager='{
+				"name": "newsItems",
+				"url": "news-data.json",
+				"cumulative": true,
+				"patches": [
+					{ "op": "patches", "path": "/data", "patches": [
+						{ "op": "wb-add", "path": "/tags", "value": [] },
+						{ "op": "wb-slug", "path": "/MINISTER", "set": "/tags/-" },
+						{ "op": "wb-slug", "path": "/AUDIENCE", "set": "/tags/-" },
+						{ "op": "wb-slug", "path": "/TYPE", "set": "/tags/-" },
+						{ "op": "wb-slug", "path": "/DEPT", "set": "/tags/-" },
+						{ "op": "wb-slug", "path": "/TOPIC", "set": "/tags/-" },
+						{ "op": "wb-slug", "path": "/SUBJECT", "set": "/tags/-" },
+						{ "op": "wb-stringify", "path": "/tags", "separator": " " }
+					] }
+				]
+			}'></div>
+			<div class="row">
+				<div class="col-xs-12 col-md-4 col-lg-3">
+					<h2 class="h3 mrgn-tp-0">Filter news</h2>
+
+					<div class="list-group">
+						<div class="list-group-item p-0">
+							<button type="button" class="btn btn-link btn-block" style="text-align:left;" aria-controls="newsTypeList" data-wb-doaction='{
+								"action": "toggleClass",
+								"class": "hide",
+								"source": ".news-type-tggl"
+							}'>
+								<span class="fas fa-angle-up mrgn-rght-md news-type-tggl"><span class="wb-inv">Hide </span></span><span class="fas fa-angle-down mrgn-rght-md news-type-tggl hide"><span class="wb-inv">Show </span></span><strong>News type<span class="wb-inv"> options</span></strong>
+							</button>
+							<div class="news-type-tggl mrgn-lft-md mrgn-rght-md">
+								<fieldset class="p-0" data-path="/newsTypes" data-template-object='[]'>
+									<legend class="wb-inv">News type</legend>
+									<ul id="newsTypeList" class="list-unstyled mrgn-bttm-0">
+										<li class="checkbox">
+											<label for="newsTypebackgrounders"><input type="checkbox" value="backgrounders" name="newsType" id="newsTypebackgrounders" data-path="/-" class="wb-tagfilter-ctrl">Backgrounders</label>
+										</li>
+										<li class="checkbox">
+											<label for="newsTypemediaadvisories"><input type="checkbox" value="media-advisories" name="newsType" id="newsTypemediaadvisories" data-path="/-" class="wb-tagfilter-ctrl">Media advisories</label>
+										</li>
+										<li class="checkbox"><label for="newsTypenewsreleases">
+											<input type="checkbox" value="news-releases" name="newsType" id="newsTypenewsreleases" data-path="/-" class="wb-tagfilter-ctrl">News releases</label>
+										</li>
+										<li class="checkbox">
+											<label for="newsTypereadouts"><input type="checkbox" value="readouts" name="newsType" id="newsTypereadouts" data-path="/-" class="wb-tagfilter-ctrl">Readouts</label>
+										</li>
+										<li class="checkbox">
+											<label for="newsTypespeeches"><input type="checkbox" value="speeches" name="newsType" id="newsTypespeeches" data-path="/-" class="wb-tagfilter-ctrl">Speeches</label>
+										</li>
+										<li class="checkbox">
+											<label for="newsTypestatements"><input type="checkbox" value="statements" name="newsType" id="newsTypestatements" data-path="/-" class="wb-tagfilter-ctrl">Statements</label>
+										</li>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
+
+						<div class="list-group-item p-0">
+							<button type="button" class="btn btn-link btn-block" style="text-align:left;" aria-controls="newsTypeList" data-wb-doaction='{
+								"action": "toggleClass",
+								"class": "hide",
+								"source": ".news-institutions-tggl"
+							}'>
+								<span class="fas fa-angle-up mrgn-rght-md news-institutions-tggl hide"><span class="wb-inv">Hide </span></span><span class="fas fa-angle-down mrgn-rght-md news-institutions-tggl"><span class="wb-inv">Show </span></span><strong>Institution<span class="wb-inv"> options</span></strong>
+							</button>
+							<div id="newsInstitutionList" class="news-institutions-tggl hide mrgn-lft-md mrgn-rght-md wb-filter" data-wb-filter='{
+								"uiTemplate": "#filteredInstitutions",
+								"section": "ul",
+								"selector": "li"
+							}'>
+								<div id="filteredInstitutions">
+									<div class="input-group input-group-sm">
+										<input id="newsInstitutionSearch" type="search" class="form-control full-width" placeholder="Find an institution...">
+										<label for="newsInstitutionSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter institutions: results appear below as you type.</span></label>
+									</div>
+								</div>
+								<fieldset class="p-0" data-path="/institutions" data-template-object='[]'>
+									<legend class="wb-inv">Institution</legend>
+									<ul class="list-unstyled mrgn-bttm-0 mrgn-tp-md">
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution1" value="aboriginal-business-canada">Aboriginal Business Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution2" value="accessibility-standards-canada">Accessibility Standards Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution3" value="administrative-tribunals-support-service-of-canada">Administrative Tribunals Support Service of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution4" value="advisory-panel-on-responsible-conduct-of-research">Advisory Panel on Responsible Conduct of Research</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution5" value="agriculture-and-agri-food-canada">Agriculture and Agri-Food Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution6" value="atlantic-canada-opportunities-agency">Atlantic Canada Opportunities Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution7" value="bedford-institute-of-oceanography">Bedford Institute of Oceanography</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution8" value="canada-agricultural-review-tribunal">Canada Agricultural Review Tribunal</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution9" value="canada-alberta-oil-sands-environmental-monitoring">Canada-Alberta Oil Sands Environmental Monitoring</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution10" value="canada-border-services-agency">Canada Border Services Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution11" value="canada-centre-for-inland-waters">Canada Centre for Inland Waters</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution12" value="canada-economic-development-for-quebec-regions">Canada Economic Development for Quebec Regions</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution13" value="canada-employment-insurance-commission">Canada Employment Insurance Commission</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution14" value="canada-energy-regulator">Canada Energy Regulator</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution15" value="canada-excellence-research-chairs">Canada Excellence Research Chairs</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution16" value="canada-firearms-centre">Canada Firearms Centre</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution17" value="canada-industrial-relations-board">Canada Industrial Relations Board</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution18" value="canada-infrastructure-bank">Canada Infrastructure Bank</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution19" value="canada-research-coordinating-committee">Canada Research Coordinating Committee</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution20" value="canada-revenue-agency">Canada Revenue Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution21" value="canada-school-of-public-service">Canada School of Public Service</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution22" value="canadian-army">Canadian Army</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution23" value="canadian-centre-for-housing-technology">Canadian Centre for Housing Technology</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution24" value="canadian-centre-for-occupational-health-and-safety">Canadian Centre for Occupational Health and Safety</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution25" value="canadian-coast-guard">Canadian Coast Guard</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution26" value="canadian-commercial-corporation">Canadian Commercial Corporation</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution27" value="canadian-conservation-institute">Canadian Conservation Institute</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution28" value="canadian-cultural-property-export-review-board">Canadian Cultural Property Export Review Board</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution29" value="canadian-dairy-information-centre-cdic">Canadian Dairy Information Centre - CDIC</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution30" value="canadian-food-inspection-agency">Canadian Food Inspection Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution31" value="canadian-grain-commission">Canadian Grain Commission</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution32" value="canadian-heritage">Canadian Heritage</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution33" value="canadian-heritage-information-network">Canadian Heritage Information Network</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution34" value="canadian-human-rights-commission">Canadian Human Rights Commission</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution35" value="canadian-institutes-of-health-research">Canadian Institutes of Health Research</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution36" value="canadian-intellectual-property-office">Canadian Intellectual Property Office</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution37" value="canadian-intergovernmental-conference-secretariat">Canadian Intergovernmental Conference Secretariat</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution38" value="canadian-international-trade-tribunal">Canadian International Trade Tribunal</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution39" value="canadian-northern-economic-development-agency">Canadian Northern Economic Development Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution40" value="canadian-nuclear-safety-commission">Canadian Nuclear Safety Commission</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution41" value="canadian-pari-mutuel-agency">Canadian Pari-Mutuel Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution42" value="canadian-radio-television-and-telecommunications-com">Canadian Radio-television and Telecommunications Com</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution43" value="canadian-security-intelligence-service">Canadian Security Intelligence Service</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution44" value="canadian-space-agency">Canadian Space Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution45" value="canadian-special-operations-forces-command">Canadian Special Operations Forces Command</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution46" value="canadian-transportation-agency">Canadian Transportation Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution47" value="civilian-review-and-complaints-commission-for-the-rcmp">Civilian Review and Complaints Commission for the RCMP</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution48" value="committee-on-the-status-of-endangered-wildlife">Committee on the status of Endangered Wildlife</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution49" value="communications-research-centre-canada">Communications Research Centre Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution50" value="communications-security-establishment-canada">Communications Security Establishment Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution51" value="competition-bureau-canada">Competition Bureau Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution52" value="competition-tribunal">Competition Tribunal</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution53" value="copyright-board-canada">Copyright Board Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution54" value="correctional-service-canada">Correctional Service Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution55" value="criminal-intelligence-service-canada">Criminal Intelligence Service Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution56" value="crown-indigenous-relations-and-northern-affairs-canada">Crown-Indigenous Relations and Northern Affairs Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution57" value="defence-construction-canada">Defence Construction Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution58" value="defence-research-and-development-canada">Defence Research and Development Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution59" value="democratic-institutions">Democratic Institutions</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution60" value="department-of-finance-canada">Department of Finance Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution61" value="department-of-justice-canada">Department of Justice Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution62" value="education-in-canada">Education in Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution63" value="elections-canada">Elections Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution64" value="employment-and-social-development-canada">Employment and Social Development Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution65" value="environmental-protection-review-canada">Environmental Protection Review Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution66" value="environment-and-climate-change-canada">Environment and Climate Change Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution67" value="farm-products-council-of-canada">Farm Products Council of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution68" value="federal-economic-development-agency-for-northern-ofednor">Federal Economic Development Agency for Northern OFedNor</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution69" value="federal-economic-development-agency-for-southern">Federal Economic Development Agency for Southern</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution70" value="financial-consumer-agency-of-canada">Financial Consumer Agency of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution71" value="financial-transactions-and-reports-analysis-centre-of">Financial Transactions and Reports Analysis Centre of</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution72" value="fisheries-and-oceans-canada">Fisheries and Oceans Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution73" value="geographical-names-board-of-canada">Geographical Names Board of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution74" value="geological-survey-of-canada">Geological Survey of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution75" value="geomatics-canada">Geomatics Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution76" value="global-affairs-canada">Global Affairs Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution77" value="health-canada">Health Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution78" value="historic-sites-and-monuments-board-of-canada">Historic Sites and Monuments Board of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution79" value="human-rights-tribunal-of-canada">Human Rights Tribunal of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution80" value="immigration-refugees-and-citizenship-canada">Immigration, Refugees and Citizenship Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution81" value="immigration-and-refugee-board-of-canada">Immigration and Refugee Board of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution82" value="impact-assessment-agency-of-canada">Impact Assessment Agency of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution83" value="independent-review-panel-for-defence-acquisition">Independent Review Panel for Defence Acquisition</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution84" value="indian-oil-and-gas">Indian Oil and Gas</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution85" value="indigenous-and-northern-affairs-canada">Indigenous and Northern Affairs Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution86" value="indigenous-services-canada">Indigenous Services Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution87" value="industrial-technologies-office">Industrial Technologies Office</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution88" value="infrastructure-canada">Infrastructure Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution89" value="innovation-science-and-economic-development-canada">Innovation, Science and Economic Development Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution" value="innovation-hub">Innovation Hub</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution90" value="integrated-terrorism-assessment-centre">Integrated Terrorism Assessment Centre</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution91" value="interagency-advisory-panel-on-research-ethics">Interagency Advisory Panel on Research Ethics</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution92" value="intergovernmental-affairs">Intergovernmental Affairs</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution93" value="judicial-compensation-and-benefits-commission">Judicial Compensation and Benefits Commission</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution94" value="labour-program">Labour Program</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution95" value="law-commission-of-canada">Law Commission of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution96" value="leader-of-the-government-in-the-house-of-commons">Leader of the Government in the House of Commons</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution97" value="library-and-archives-canada">Library and Archives Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution98" value="management-advisory-board-for-the-rcmp">Management Advisory Board for the RCMP</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution99" value="marine-security-operations-centres-project">Marine Security Operations Centres Project</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution100" value="measurement-canada">Measurement Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution101" value="military-grievances-external-review-committee">Military Grievances External Review Committee</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution102" value="military-police-complaints-commission-of-canada">Military Police Complaints Commission of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution103" value="national-defence">National Defence</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution104" value="national-film-board">National Film Board</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution105" value="national-research-council-canada">National Research Council Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution106" value="national-security-and-intelligence-review-agency">National Security and Intelligence Review Agency</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution107" value="national-seniors-council">National Seniors Council</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution108" value="natural-resources-canada">Natural Resources Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution109" value="natural-sciences-and-engineering-research-council">Natural Sciences and Engineering Research Council</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution110" value="networks-of-centres-of-excellence-of-canada">Networks of Centres of Excellence of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution111" value="northern-pipeline-agency-canada">Northern Pipeline Agency Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution112" value="occupational-health-and-safety-tribunal-canada">Occupational Health and Safety Tribunal Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution113" value="office-of-the-chief-military-judge">Office of the Chief Military Judge</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution114" value="office-of-the-commissioner-for-federal-judicial-affairs">Office of the Commissioner for Federal Judicial Affairs</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution115" value="office-of-the-communications-security-estab">Office of the Communications Security Estab</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution116" value="office-of-the-extractive-sector-corporate-social-respon">Office of the Extractive Sector Corporate Social Respon</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution117" value="office-of-the-federal-ombudsperson-for-victims-of-crime">Office of the Federal Ombudsperson for Victims of Crime</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution118" value="office-of-the-intelligence-commissioner">Office of the Intelligence Commissioner</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution119" value="office-of-the-national-defence-and-canadian-arme">Office of the National Defence and Canadian Arme</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution120" value="office-of-the-procurement-ombudsman">Office of the Procurement Ombudsman</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution121" value="office-of-the-superintendent-of-bankruptcy-canada">Office of the Superintendent of Bankruptcy Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution122" value="office-of-the-superintendent-of-financial-institutions">Office of the Superintendent of Financial Institutions</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution123" value="office-of-the-taxpayers-ombudsperson">Office of the Taxpayers' Ombudsperson</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution124" value="office-of-the-veterans-ombudsman">Office of the Veterans' Ombudsman</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution125" value="pacific-economic-development">Pacific Economic Development</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution126" value="parks-canada">Parks Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution127" value="parole-board-of-canada">Parole Board of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution128" value="patented-medicine-prices-review-board-canada">Patented Medicine Prices Review Board Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution129" value="physical-resources-bureau">Physical Resources Bureau</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution130" value="polar-knowledge-canada">Polar Knowledge Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution131" value="ppp-canada">PPP Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution132" value="prairies-economic-development">Prairies Economic Development</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution133" value="privy-council-office">Privy Council Office</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution134" value="public-health-agency-of-canada">Public Health Agency of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution135" value="public-prosecution-service-of-canada">Public Prosecution Service of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution136" value="public-safety-canada">Public Safety Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution137" value="public-servants-disclosure-protection-tribunal-canada">Public Servants Disclosure Protection Tribunal Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution138" value="public-service-commission-of-canada">Public Service Commission of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution139" value="public-service-labour-relations-and-employment-board">Public Service Labour Relations and Employment Board</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution140" value="public-services-and-procurement-canada">Public Services and Procurement Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution141" value="rcmp-external-review-committee">RCMP External Review Committee</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution142" value="registry-of-the-specific-claims-tribunal-of-canada">Registry of the Specific Claims Tribunal of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution143" value="royal-canadian-air-force">Royal Canadian Air Force</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution144" value="royal-canadian-mounted-police">Royal Canadian Mounted Police</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution145" value="royal-canadian-navy">Royal Canadian Navy</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution146" value="secretariat-of-the-national-security-and-intelligence-c">Secretariat of the National Security and Intelligence C</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution147" value="security-intelligence-review-committee">Security Intelligence Review Committee</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution148" value="service-canada">Service Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution149" value="shared-services-canada">Shared Services Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution150" value="social-sciences-and-humanities-research-council-of">Social Sciences and Humanities Research Council of</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution151" value="social-security-tribunal-of-canada">Social Security Tribunal of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution152" value="statistics-canada">Statistics Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution153" value="the-canadian-shellfish-sanitation-program">The Canadian Shellfish Sanitation Program</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution154" value="the-correctional-investigator-canada">The Correctional Investigator Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution155" value="the-national-battlefields-commission">The National Battlefields Commission</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution156" value="the-ontario-quebec-continental-gateway">The Ontario-Quebec Continental Gateway</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution157" value="translation-bureau">Translation Bureau</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution158" value="transportation-appeal-tribunal-of-canada">Transportation Appeal Tribunal of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution159" value="transportation-safety-board-of-canada">Transportation Safety Board of Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution160" value="transport-canada">Transport Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution161" value="treasury-board-of-canada-secretariat">Treasury Board of Canada Secretariat</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution162" value="tri-agency-institutional-programs-secretariat">Tri-agency Institutional Programs Secretariat</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution163" value="veterans-affairs-canada">Veterans Affairs Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution164" value="veterans-review-and-appeal-board">Veterans Review and Appeal Board</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution165" value="western-economic-diversification-canada">Western Economic Diversification Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution166" value="wild-species">Wild Species</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution167" value="women-and-gender-equality-canada">Women and Gender Equality Canada</label>
+										</li>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
+
+						<div class="list-group-item p-0">
+							<button type="button" class="btn btn-link btn-block" style="text-align:left;" aria-controls="newsTypeList" data-wb-doaction='{
+								"action": "toggleClass",
+								"class": "hide",
+								"source": ".news-subject-tggl"
+							}'>
+								<span class="fas fa-angle-up mrgn-rght-md news-subject-tggl hide"><span class="wb-inv">Hide </span></span><span class="fas fa-angle-down mrgn-rght-md news-subject-tggl"><span class="wb-inv">Show </span></span><strong>Subject<span class="wb-inv"> options</span></strong>
+							</button>
+							<div id="newsSubjectList" class="news-subject-tggl hide mrgn-lft-md mrgn-rght-md wb-filter" data-wb-filter='{
+								"uiTemplate": "#filteredNewsSubjects",
+								"section": "ul",
+								"selector": "li"
+							}'>
+								<div id="filteredNewsSubjects">
+									<div class="input-group input-group-sm">
+										<input id="newsSubjectSearch" type="search" class="form-control full-width" placeholder="Find a subject...">
+										<label for="newsSubjectSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter subjects: results appear below as you type.</span></label>
+									</div>
+								</div>
+								<fieldset class="p-0" data-path="/subjects" data-template-object='[]'>
+									<legend class="wb-inv">Subject</legend>
+									<ul class="list-unstyled mrgn-bttm-0 mrgn-tp-md">
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject1" value="aa-arts-music-literature">AA Arts, Music, Literature</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject2" value="ag-agriculture">AG Agriculture</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject3" value="ec-economics-and-industry">EC Economics and Industry</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject4" value="et-education-and-training">ET Education and Training</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject5" value="fm-form-descriptors">FM Form descriptors</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject6" value="gv-government-and-politics">GV Government and Politics</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject7" value="he-health-and-safety">HE Health and Safety</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject8" value="hi-history-and-archaeology">HI History and Archaeology</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject9" value="in-information-and-communications">IN Information and Communications</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject10" value="lb-labour">LB Labour</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject11" value="ln-language-and-linguistics">LN Language and Linguistics</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject12" value="lw-law">LW Law</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject13" value="mi-military">MI Military</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject14" value="ne-nature-and-environment">NE Nature and Environment</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject15" value="pe-persons">PE Persons</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject16" value="pr-processes">PR Processes</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject17" value="so-society-and-culture">SO Society and Culture</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject18" value="st-science-and-technology">ST Science and Technology</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject19" value="tr-transport">TR Transport</label>
+										</li>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
+
+						<div class="list-group-item p-0">
+							<button type="button" class="btn btn-link btn-block" style="text-align:left;" aria-controls="newsTypeList" data-wb-doaction='{
+								"action": "toggleClass",
+								"class": "hide",
+								"source": ".news-minister-tggl"
+							}'>
+								<span class="fas fa-angle-up mrgn-rght-md news-minister-tggl hide"><span class="wb-inv">Hide </span></span><span class="fas fa-angle-down mrgn-rght-md news-minister-tggl"><span class="wb-inv">Show </span></span><strong>Minister<span class="wb-inv"> options</span></strong>
+							</button>
+							<div id="newsMinisterList" class="news-minister-tggl hide mrgn-lft-md mrgn-rght-md wb-filter" data-wb-filter='{
+								"uiTemplate": "#filteredNewsMinisters",
+								"section": "ul",
+								"selector": "li"
+							}'>
+								<div id="filteredNewsMinisters">
+									<div class="input-group input-group-sm">
+										<input id="newsMinisterSearch" type="search" class="form-control full-width" placeholder="Find a minister...">
+										<label for="newsMinisterSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter ministers: results appear below as you type.</span></label>
+									</div>
+								</div>
+								<fieldset class="p-0" data-path="/ministers" data-template-object='[]'>
+									<legend class="wb-inv">Minister</legend>
+									<ul class="list-unstyled mrgn-bttm-0 mrgn-tp-md">
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister1" value="hon-ahmed-d-hussen">Hon. Ahmed D. Hussen</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister2" value="hon-anita-anand">Hon. Anita Anand</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister3" value="hon-arif-virani">Hon. Arif Virani</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister4" value="hon-bill-blair">Hon. Bill Blair</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister5" value="hon-carla-qualtrough">Hon. Carla Qualtrough</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister6" value="hon-chrystia-freeland">Hon. Chrystia Freeland</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister7" value="hon-dan-vandal">Hon. Dan Vandal</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister8" value="hon-diane-lebouthillier">Hon. Diane Lebouthillier</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister9" value="hon-dominic-leblanc">Hon. Dominic LeBlanc</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister10" value="hon-filomena-tassi">Hon. Filomena Tassi</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister11" value="hon-francois-philippe-champagne">Hon. François-Philippe Champagne</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister12" value="hon-gary-anandasangaree">Hon. Gary Anandasangaree</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister13" value="hon-ginette-petitpas-taylor">Hon. Ginette Petitpas Taylor</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister14" value="hon-gudie-hutchings">Hon. Gudie Hutchings</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister15" value="hon-harjit-singh-sajjan">Hon. Harjit Singh Sajjan</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister16" value="hon-jean-yves-duclos">Hon. Jean-Yves Duclos</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister17" value="hon-jenna-sudds">Hon. Jenna Sudds</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister18" value="hon-jonathan-wilkinson">Hon. Jonathan Wilkinson</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister19" value="hon-kamal-khera">Hon. Kamal Khera</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister20" value="hon-karina-gould">Hon. Karina Gould</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister21" value="hon-lawrence-macaulay">Hon. Lawrence MacAulay</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister22" value="hon-marci-ien">Hon. Marci Ien</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister23" value="hon-marc-miller">Hon. Marc Miller</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister24" value="hon-marie-claude-bibeau">Hon. Marie-Claude Bibeau</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister25" value="hon-mark-holland">Hon. Mark Holland</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister26" value="hon-mary-ng">Hon. Mary Ng</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister27" value="hon-melanie-joly">Hon. Mélanie Joly</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister28" value="hon-pablo-rodriguez">Hon. Pablo Rodriguez</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister29" value="hon-pascale-st-onge">Hon. Pascale St-Onge</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister30" value="hon-patricia-a-hajdu">Hon. Patricia A. Hajdu</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister31" value="hon-randy-boissonnault">Hon. Randy Boissonnault</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister32" value="hon-rechie-valdez">Hon. Rechie Valdez</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister33" value="hon-seamus-oregan">Hon. Seamus O’Regan</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister34" value="hon-sean-fraser">Hon. Sean Fraser</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister35" value="hon-soraya-martinez-ferrada">Hon. Soraya Martinez Ferrada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister36" value="hon-steven-guilbeault">Hon. Steven Guilbeault</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister37" value="hon-terry-beech">Hon. Terry Beech</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister38" value="hon-yaara-saks">Hon. Ya’ara Saks</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister39" value="right-hon-justin-p-j-trudeau">Right Hon. Justin P. J. Trudeau</label>
+										</li>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
+
+						<div class="list-group-item p-0">
+							<button type="button" class="btn btn-link btn-block" style="text-align:left;" aria-controls="newsTypeList" data-wb-doaction='{
+								"action": "toggleClass",
+								"class": "hide",
+								"source": ".news-audience-tggl"
+							}'>
+								<span class="fas fa-angle-up mrgn-rght-md news-audience-tggl hide"><span class="wb-inv">Hide </span></span><span class="fas fa-angle-down mrgn-rght-md news-audience-tggl"><span class="wb-inv">Show </span></span><strong>Audience<span class="wb-inv"> options</span></strong>
+							</button>
+							<div id="newsAudienceList" class="news-audience-tggl hide mrgn-lft-md mrgn-rght-md wb-filter" data-wb-filter='{
+								"uiTemplate": "#filteredNewsAudiences",
+								"section": "ul",
+								"selector": "li"
+							}'>
+								<div id="filteredNewsAudiences">
+									<div class="input-group input-group-sm">
+										<input id="newsAudienceSearch" type="search" class="form-control full-width" placeholder="Find an audience...">
+										<label for="newsAudienceSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter audiences: results appear below as you type.</span></label>
+									</div>
+								</div>
+								<fieldset class="p-0" data-path="/audiences" data-template-object='[]'>
+									<legend class="wb-inv">Audience</legend>
+									<ul class="list-unstyled mrgn-bttm-0 mrgn-tp-md">
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience1" value="aboriginal-peoples">Aboriginal peoples</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience2" value="business">business</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience3" value="children">children</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience4" value="consumers">consumers</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience5" value="educators">educators</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience6" value="employers">employers</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience7" value="funding-applicants">funding applicants</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience8" value="general-public">general public</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience9" value="government">government</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience10" value="immigrants">immigrants</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience11" value="job-seekers">job seekers</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience12" value="media">media</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience13" value="non-canadians">non-Canadians</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience14" value="non-governmental-organizations">non-governmental organizations</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience15" value="parents">parents</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience16" value="persons-with-disabilities">persons with disabilities</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience17" value="rural-community">rural community</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience18" value="scientists">scientists</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience19" value="seniors">seniors</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience20" value="students">students</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience21" value="travellers">travellers</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience22" value="veterans">veterans</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience23" value="visitors-to-canada">visitors to Canada</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience24" value="women">women</label>
+										</li>
+										<li class="checkbox">
+											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience25" value="youth">youth</label>
+										</li>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
+
+						<div class="list-group-item p-0">
+							<button type="button" class="btn btn-link btn-block" style="text-align:left;" aria-controls="newsTypeList" data-wb-doaction='{
+								"action": "toggleClass",
+								"class": "hide",
+								"source": ".news-region-tggl"
+							}'>
+								<span class="fas fa-angle-up mrgn-rght-md news-region-tggl hide"><span class="wb-inv">Hide </span></span><span class="fas fa-angle-down mrgn-rght-md news-region-tggl"><span class="wb-inv">Show </span></span><strong>Region<span class="wb-inv"> options</span></strong>
+							</button>
+							<div id="newsRegionList" class="news-region-tggl hide mrgn-lft-md mrgn-rght-md">
+								<fieldset class="p-0" data-path="/regions" data-template-object='[]'>
+									<legend class="wb-inv">Region</legend>
+									<ul class="list-unstyled mrgn-bttm-0">
+										<li class="checkbox"><label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsRegion" id="newsRegion1" value="atlantic">Atlantic</label></li>
+										<li class="checkbox"><label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsRegion" id="newsRegion2" value="british-columbia">British Columbia</label></li>
+										<li class="checkbox"><label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsRegion" id="newsRegion3" value="ontario">Ontario</label></li>
+										<li class="checkbox"><label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsRegion" id="newsRegion4" value="prairies">Prairies</label></li>
+										<li class="checkbox"><label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsRegion" id="newsRegion5" value="quebec">Quebec</label></li>
+										<li class="checkbox"><label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsRegion" id="newsRegion6" value="territories">Territories</label></li>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
+					</div>
+
+					<h2 class="h3">Stay up to date</h2>
+					<form>
+						<p>Subscribe to receive notifications when news are posted according to the above filter options.</p>
+						<p>
+							<a href="#notificationModal" class="btn btn-primary wb-lbx" aria-controls="notificationModal" data-wb-doaction='[
+								{
+									"source": "#newsFilters",
+									"action": "importInDataset",
+									"inputs": "#filteredNews fieldset, #filteredNews input[type=checkbox]",
+									"useTextValue": true
+								},
+								{
+									"action": "removeClass",
+									"source": "#subscribeForm",
+									"class": "hide"
+								},
+								{
+									"action": "addClass",
+									"source": "#notificationModal .success-message, #notificationModal .failure-message",
+									"class": "hide"
+								}
+							]'>Subscribe</a>
+						</p>
+					</form>
+
+					<h2 class="h3">Resources</h2>
+					<ul class="list-group mrgn-bttm-lg">
+						<li class="list-group-item"><a rel="external" href="http://www.gazette.gc.ca/accueil-home-eng.html">Canada Gazette</a></li>
+						<li class="list-group-item"><a rel="external" href="https://www.ourcommons.ca/DocumentViewer/en/house/latest/hansard">Hansard</a></li>
+						<li class="list-group-item"><a href="./news/media-contacts.html">Media contacts</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-md-8 col-lg-9">
+					<div id="newsFiltersUI">
+						<div class="row mrgn-bttm-sm">
+							<div class="col-xs-12 col-sm-8 col-md-9">
+								<div class="form-inline">
+									<div class="form-group mrgn-bttm-lg">
+										<label for="filterSearch" class="small">Search within</label>
+										<input type="search" id="filterSearch" class="form-control full-width" placeholder="Type a keyword">
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-4 col-md-3">
+								<p class="nojs-hide text-right">
+									<strong class="wb-fltr-info"><span data-nbitem></span> results</strong>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div id="newsList" class="wb-tagfilter-items" data-wb-json='{
+						"url": "#[newsItems]/data",
+						"source": "#newsItemTemplate",
+						"mapping": [
+							{ "selector": "h3", "value": "/TITLE", "isHTML": "true" },
+							{ "selector": ".news-description", "value": "/TEASER" },
+							{ "selector": ".news-type", "value": "/TYPE" },
+							{ "selector": ".news-institution", "value": "/DEPT" },
+							{ "selector": ".news-date", "value": "/PUBDATE" },
+							{ "selector": ".panel", "value": "/tags", "attr": "data-wb-tags" }
+						]
+					}'>
+					</div>
+					<template id="newsItemTemplate">
+						<article class="panel brdr-tp brdr-rght brdr-bttm brdr-lft mrgn-bttm-md position-relative" data-wb-tags="test">
+							<div class="panel-body">
+								<h3 class="h4 mrgn-tp-0 mrgn-bttm-md"></h3>
+								<dl class="clearfix dl-inline small mrgn-bttm-md">
+									<div class="pull-left">
+										<dt class="mrgn-rght-sm"><i class="far fa-clone"></i><span class="wb-inv">News type</span></dt>
+										<dd class="mrgn-rght-md"><b class="news-type"></b></dd>
+									</div>
+									<div class="pull-left">
+										<dt class="mrgn-rght-sm"><i class="far fa-building"></i><span class="wb-inv">Institution</span></dt>
+										<dd class="mrgn-rght-md"><b class="news-institution"></b></dd>
+									</div>
+									<div class="pull-left">
+										<dt class="mrgn-rght-sm"><i class="far fa-calendar-alt"></i><span class="wb-inv">Publication date</span></dt>
+										<dd><b class="news-date"></b></dd>
+									</div>
+								</dl>
+								<p class="news-description mrgn-bttm-0"></p>
+							</div>
+						</article>
+					</template>
+					<div class="wb-tagfilter-noresult" role="status">
+						<p>No item match this combination of filters.</p>
+					</div>
+					<div id="filteredNewsPagination"></div>
+				</div>
+			</div>
+		</section>
+		<section id="notificationModal" class="mfp-hide modal-dialog modal-content overlay-def">
+			<header class="modal-header">
+				<h2 class="modal-title">Confirm subscription</h2>
+			</header>
+			<div class="modal-body">
+				<div class="wb-frmvld">
+					<form id="subscribeForm" action="#" class="wb-postback" data-wb-postback='{"success": ".success-message", "failure": ".failure-message"}'>
+						<div class="form-content">
+							<p class="mrgn-bttm-sm">Please complete this form to confirm your subscription to the following filters:</p>
+							<div data-wb-jsonmanager='{
+								"name": "newsFiltersText",
+								"url": ["#[newsFilters]", "news-i18n.json"],
+								"patches": [
+									{ "op": "wb-swap", "path": "/newsTypes", "ref": "/reference/newsType/en" },
+									{ "op": "wb-stringify", "path": "/newsTypes", "separator": ", " },
+									{ "op": "wb-swap", "path": "/institutions", "ref": "/reference/institution/en" },
+									{ "op": "wb-stringify", "path": "/institutions", "separator": ", " },
+									{ "op": "wb-swap", "path": "/subjects", "ref": "/reference/subject/en" },
+									{ "op": "wb-stringify", "path": "/subjects", "separator": ", " },
+									{ "op": "wb-swap", "path": "/ministers", "ref": "/reference/minister/en" },
+									{ "op": "wb-stringify", "path": "/ministers", "separator": ", " },
+									{ "op": "wb-swap", "path": "/audiences", "ref": "/reference/audience/en" },
+									{ "op": "wb-stringify", "path": "/audiences", "separator": ", " },
+									{ "op": "wb-swap", "path": "/regions", "ref": "/reference/region/en" },
+									{ "op": "wb-stringify", "path": "/regions", "separator": ", " }
+								]
+							}'></div>
+							<ul>
+								<li data-wb-json='{
+									"url": "#[newsFiltersText]",
+									"streamline": true,
+									"removeAll": "span",
+									"mapping": [
+										{
+											"@type": "rdf:Alt",
+											"mapping": [
+												{
+													"template": "[data-empty]",
+													"test": "fn:getValue",
+													"assess": "/newsTypes",
+													"operand": "eq",
+													"expect": "",
+													"mapping": null
+												},
+												{
+													"template": "[data-notempty]",
+													"test": "fn:isLiteral",
+													"value": "/newsTypes",
+													"mapping": [
+														{ "selector": "span", "value": "/@value" }
+													]
+
+												}
+											]
+										}
+									]
+								}'><strong>News type:</strong> <template data-empty><span>Any</span></template><template data-notempty><span></span></template></li>
+								<li data-wb-json='{
+									"url": "#[newsFiltersText]",
+									"streamline": true,
+									"removeAll": "span",
+									"mapping": [
+										{
+											"@type": "rdf:Alt",
+											"mapping": [
+												{
+													"template": "[data-empty]",
+													"test": "fn:getValue",
+													"assess": "/institutions",
+													"operand": "eq",
+													"expect": "",
+													"mapping": null
+												},
+												{
+													"template": "[data-notempty]",
+													"test": "fn:isLiteral",
+													"value": "/institutions",
+													"mapping": [
+														{ "selector": "span", "value": "/@value" }
+													]
+
+												}
+											]
+										}
+									]
+								}'><strong>Institution:</strong> <template data-empty><span>Any</span></template><template data-notempty><span></span></template></li>
+								<li data-wb-json='{
+									"url": "#[newsFiltersText]",
+									"streamline": true,
+									"removeAll": "span",
+									"mapping": [
+										{
+											"@type": "rdf:Alt",
+											"mapping": [
+												{
+													"template": "[data-empty]",
+													"test": "fn:getValue",
+													"assess": "/subjects",
+													"operand": "eq",
+													"expect": "",
+													"mapping": null
+												},
+												{
+													"template": "[data-notempty]",
+													"test": "fn:isLiteral",
+													"value": "/subjects",
+													"mapping": [
+														{ "selector": "span", "value": "/@value" }
+													]
+
+												}
+											]
+										}
+									]
+								}'><strong>Subject:</strong> <template data-empty><span>Any</span></template><template data-notempty><span></span></template></li>
+								<li data-wb-json='{
+									"url": "#[newsFiltersText]",
+									"streamline": true,
+									"removeAll": "span",
+									"mapping": [
+										{
+											"@type": "rdf:Alt",
+											"mapping": [
+												{
+													"template": "[data-empty]",
+													"test": "fn:getValue",
+													"assess": "/ministers",
+													"operand": "eq",
+													"expect": "",
+													"mapping": null
+												},
+												{
+													"template": "[data-notempty]",
+													"test": "fn:isLiteral",
+													"value": "/ministers",
+													"mapping": [
+														{ "selector": "span", "value": "/@value" }
+													]
+
+												}
+											]
+										}
+									]
+								}'><strong>Minister:</strong> <template data-empty><span>Any</span></template><template data-notempty><span></span></template></li>
+								<li data-wb-json='{
+									"url": "#[newsFiltersText]",
+									"streamline": true,
+									"removeAll": "span",
+									"mapping": [
+										{
+											"@type": "rdf:Alt",
+											"mapping": [
+												{
+													"template": "[data-empty]",
+													"test": "fn:getValue",
+													"assess": "/audiences",
+													"operand": "eq",
+													"expect": "",
+													"mapping": null
+												},
+												{
+													"template": "[data-notempty]",
+													"test": "fn:isLiteral",
+													"value": "/audiences",
+													"mapping": [
+														{ "selector": "span", "value": "/@value" }
+													]
+
+												}
+											]
+										}
+									]
+								}'><strong>Audience:</strong> <template data-empty><span>Any</span></template><template data-notempty><span></span></template></li>
+								<li data-wb-json='{
+									"url": "#[newsFiltersText]",
+									"streamline": true,
+									"removeAll": "span",
+									"mapping": [
+										{
+											"@type": "rdf:Alt",
+											"mapping": [
+												{
+													"template": "[data-empty]",
+													"test": "fn:getValue",
+													"assess": "/regions",
+													"operand": "eq",
+													"expect": "",
+													"mapping": null
+												},
+												{
+													"template": "[data-notempty]",
+													"test": "fn:isLiteral",
+													"value": "/regions",
+													"mapping": [
+														{ "selector": "span", "value": "/@value" }
+													]
+
+												}
+											]
+										}
+									]
+								}'><strong>Region:</strong> <template data-empty><span>Any</span></template><template data-notempty><span></span></template></li>
+							</ul>
+							<input type="hidden" name="filters" value="" data-wb-json='{ "url": "#[newsFilters]", "type": "val" }'>
+							<div class="form-group mrgn-tp-lg mrgn-lft-md">
+								<fieldset class="chkbxrdio-grp">
+									<legend class="required"><span class="field-name">How often would you like to be notified?</span> <strong class="required">(required)</strong></legend>
+									<div class="radio">
+										<label for="newsImmediately"><input type="radio" name="newsFrequency" value="immediately" id="newsImmediately">Send immediately (Send notifications as soon as they are published)</label>
+									</div>
+									<div class="radio">
+										<label for="newsDaily"><input type="radio" name="newsFrequency" value="daily" id="newsDaily" checked>Daily (Send notifications in a single day digest)</label>
+									</div>
+									<div class="radio">
+										<label for="newsWeekly"><input type="radio" name="newsFrequency" value="weekly" id="newsWeekly">Weekly (Send notifications in a single week digest)</label>
+									</div>
+								</fieldset>
+							</div>
+							<div class="form-group mrgn-lft-md">
+								<fieldset class="chkbxrdio-grp form-inline">
+									<legend class="required"><span class="field-name">Preferred language of correspondence</span> <strong class="required">(required)</strong></legend>
+									<div class="label-inline">
+										<input type="radio" name="newsLanguage" value="immediately" id="newsEnglish" checked>
+										<label for="newsEnglish">English</label>
+									</div>
+									<div class="label-inline">
+										<input type="radio" name="newsLanguage" value="daily" id="newsFrancais">
+										<label for="newsFrancais">Français</label>
+									</div>
+								</fieldset>
+							</div>
+							<div class="form-group mrgn-lft-md">
+								<label for="newsEmail" class="required">Email <strong class="required">(required)</strong></label>
+								<div class="row">
+									<div class="col-sm-6"><input type="text" name="newsEmail" id="newsEmail" class="form-control full-width" type="email" placeholder="email@xyz.com" autocomplete="email" required></div>
+								</div>
+							</div>
+						</div>
+						<div class="row brdr-tp">
+							<div class="col-xs-12">
+								<div class="mrgn-tp-md text-right">
+									<button title="Close overlay" class="btn btn-default popup-modal-dismiss mrgn-rght-md" type="button">Cancel<span class="wb-inv">Close overlay</span></button>
+									<input type="submit" class="btn btn-primary" value="Subscribe">
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="success-message hide">
+						<section class="alert alert-success">
+							<h3>Email sent!</h3>
+							<p>Thank you for subscribing to our service. An email has been sent to you with an activation link to begin your News subscription.</p>
+						</section>
+					</div>
+					<div class="failure-message hide">
+						<section class="alert alert-warning">
+							<h3>Something went wrong</h3>
+							<p>We were unable to confirm your subscription to our service. Please try again later.</p>
+						</section>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer hide"></div>
+		</section>
+		<section class="pagedetails">
+			<h2 class="wb-inv">Page details</h2>
+			<div class="row">
+				<div class="wb-share col-sm-4 col-md-3 col-sm-push-8 col-md-push-9" data-wb-share='{&#34;lnkClass&#34;: &#34;btn btn-default btn-block&#34;}'></div>
+				<div class="col-sm-6 col-md-5 col-lg-4 col-sm-pull-4 col-md-pull-3">
+					<dl id="wb-dtmd">
+						<dt>Date modified:</dt>
+						<dd><time property="dateModified">2024-01-11</time></dd>
+					</dl>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer id="wb-info">
+		<h2 class="wb-inv">About this site</h2>
+		<div class="gc-main-footer">
+			<div class="container">
+				<nav>
+					<h3>Government of Canada</h3>
+					<ul class="list-col-xs-1 list-col-sm-2 list-col-md-3"><li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+						<li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+						<li><a href="https://www.canada.ca/en/government/system.html">About government</a></li></ul>
+					<h4><span class="wb-inv">Themes and topics</span></h4>
+					<ul class="list-unstyled colcount-sm-2 colcount-md-3"><li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+						<li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+						<li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+						<li><a href="https://www.canada.ca/en/services/business.html">Business</a></li>
+						<li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+						<li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+						<li><a href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+						<li><a href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+						<li><a href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+						<li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+						<li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+						<li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+						<li><a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+						<li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
+						<li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
+						<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
+						<li><a href="https://www.canada.ca/en/services/veterans-military.html">Veterans and military</a></li>
+						<li><a href="https://www.canada.ca/en/services/youth.html">Youth</a></li></ul>
+				</nav>
+			</div>
+		</div>
+
+		<div class="gc-sub-footer">
+			<div class="container d-flex align-items-center">
+				<nav>
+					<h3 class="wb-inv">Government of Canada Corporate</h3>
+					<ul>
+						<li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+						<li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+						<li><a href="https://www.canada.ca/en/government/about.html">About Canada.ca</a></li><li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+						<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
+				</nav>
+				<div class="wtrmrk align-self-end">
+					<img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
+	<script src="dist/wet-boew/js/wet-boew.js"></script>
 </body>
 </html>
