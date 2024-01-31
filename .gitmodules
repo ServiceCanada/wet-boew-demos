@@ -42,3 +42,7 @@
 	path = gcweb-pr2289
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = gcweb-pr2289
+[submodule "news-subscription"]
+	path = news-subscription
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = news-subscription
