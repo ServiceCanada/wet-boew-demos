@@ -15,9 +15,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2023-09-12"/>
 
-<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="campaign-menu.css" />
+<link href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="campaign-menu.css" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +31,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -60,10 +60,12 @@
 			
 		</div>
 	</div>
+	
 	<hr>
 	<div class="container">
 		<div class="row"></div>
 	</div>
+	
 	<nav id="wb-bc" property="breadcrumb">
 	<h2>You are here:</h2>
 	<div class="container">
@@ -76,7 +78,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/index-en.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2322/index-en.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -100,28 +102,16 @@
 		</ul>
 	</div>
 	<div class="container">
-		<nav class="gcweb-menu campaign-menu" typeof="SiteNavigationElement">
+		<nav class="gcweb-menu campaign-menu" typeof="SiteNavigationElement" data-megamenu-ajax="ajax/wet-mega-menu.html">
 			<h2 class="wb-inv">Winterlude Site Menu</h2>
 			<button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
-			<ul role="menu" aria-orientation="vertical">
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="./index.html">Home</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="./calendar.html">Calendar</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="sub-menu-1" aria-expanded="false" href="#">What's happening</a>
-					<ul id="sub-menu-1" role="menu" aria-orientation="vertical">
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Venues</a></li>
-					</ul>
-				</li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sculptures</a></li>
-				<li role="presentation"><a role="menuitem" tabindex="-1" aria-haspopup="true" aria-controls="sub-menu-2" aria-expanded="false" href="#">About</a>
-					<ul id="sub-menu-2" role="menu" aria-orientation="vertical">
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="./about.html">About Winterlude</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Over the years</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Media</a></li>
-					</ul>
-				</li>
+			<ul role="menu" aria-orientation="vertical" data-ajax-replace="ajax/gcweb-menu.html">
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="index.html">Home</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="calendar.html">Calendar</a></li>
+				<li role="presentation"><a role="menuitem" tabindex="-1" href="about.html">About</a></li>
 			</ul>
 		</nav>
-	</div>
+    </div>
     <div class="container mrgn-tp-xl">
 		<h2>Implementation plan</h2>
 		<p>(To be revised during winter 2023-24)</p>
@@ -214,14 +204,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script><script src="campaign-menu.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/js/theme.js"></script><script src="campaign-menu.js"></script>
 </body>
 </html>

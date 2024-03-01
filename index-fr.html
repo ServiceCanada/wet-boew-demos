@@ -13,11 +13,11 @@
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2023-11-21"/>
+<meta name="dcterms.modified" content="2024-02-14"/>
 
-<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+<link href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -73,6 +73,7 @@
 			
 		</div>
 	</div>
+	
 	<hr>
 	<div class="container">
 		<div class="row"><div class="col-md-8">
@@ -98,6 +99,7 @@
 
 				</div></div>
 	</div>
+	
 	<nav id="wb-bc" property="breadcrumb">
 	<h2>Vous êtes ici :</h2>
 	<div class="container">
@@ -124,8 +126,8 @@
 			<p>Les gabarits et les conceptions communes si dessous sont une référence d'implémentation du <a href="https://conception.canada.ca">Système de conception de Canada.ca</a>, incluant les exigences obligatoire de la spécifications du contenu et de l’architecture de l'information (C&amp;AI) pour Canada.ca. Les ministères et organisme du gouvernement du Canada peuvent y contribuer en publiant leur modèle et leur conception commune via le <a href="https://github.com/wet-boew/GCWeb">dépôt github de GCWeb</a>.</p>
 		</div>
 		<div class="col-xs-12 col-md-auto pull-right">
-			<p><a href="https://github.com/wet-boew/GCWeb/archive/v14.1.0.zip" class="btn btn-primary">Télécharger le thème <strong>GCWeb v14.1.0</strong></a><br />
-				<small>(<time>2023-11-21</time> - <a href="https://github.com/wet-boew/gcweb/releases/latest">Note de version</a>)</small></p>
+			<p><a href="https://github.com/wet-boew/GCWeb/archive/v14.5.0.zip" class="btn btn-primary">Télécharger le thème <strong>GCWeb v14.5.0</strong></a><br />
+				<small>(<time>2024-02-14</time> - <a href="https://github.com/wet-boew/gcweb/releases/latest">Note de version</a>)</small></p>
 		</div>
 	</div>
 </div>
@@ -211,6 +213,88 @@
 	</details>
 	<h2 id="composantes" class="mrgn-bttm-lg">Composantes</h2>
 	<ul class="row list-unstyled wb-eqht-grd wb-filter mrgn-tp-md pb-4" data-wb-filter='{ "selector": ">li" }'>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Contenu en gras
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Ce composant applique une épaisseur de police en gras à chaque élément de texte qu'il contient et génère une épaisseur de police normale lorsque l'élément <code>&lt;strong&gt;</code> est appliqué.</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+					<a href="components/bold-content/bold-content-fr.html" lang="fr" hreflang="fr"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Exemple pratique</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="components/bold-content/bold-content-doc-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
+					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/bold-content" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Code source</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>Tous les exemples et info</summary>
+						<ul class="list-unstyled">
+						
+							
+							<li>Exemples
+								<ul>
+								
+								
+									
+									<li><a href="components/bold-content/bold-content-en.html" hreflang="en">Bold content - working example</a></li>
+									
+								
+									
+									<li><a href="components/bold-content/bold-content-fr.html" >Contenu en gras - example pratique</a></li>
+									
+								
+								</ul>
+							</li>
+						
+							
+							<li>Documentations
+								<ul>
+								
+								
+									
+									<li><a href="components/bold-content/bold-content-doc-en.html" hreflang="en">Bold content</a></li>
+									
+								
+									
+									<li><a href="components/bold-content/bold-content-doc-fr.html" >Contenu en gras</a></li>
+									
+								
+								</ul>
+							</li>
+						
+						</ul>
+					</details>
+				</div>
+			</div>
+		</li>
 	
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
@@ -424,6 +508,30 @@
 								</ul>
 							</li>
 						
+							
+							<li>Rapports
+								<ul>
+								
+								
+									
+									<li><a href="components/gc-featured-link/reports/a11y-1-en.html" hreflang="en">Accessibility pre-assessment #1</a></li>
+									
+								
+									
+									<li><a href="components/gc-featured-link/reports/a11y-1-fr.html" >Pré-évaluation de l'accessibilité #1</a></li>
+									
+								
+									
+									<li><a href="components/gc-featured-link/reports/a11y-2-en.html" hreflang="en">Accessibility assessment #1</a></li>
+									
+								
+									
+									<li><a href="components/gc-featured-link/reports/a11y-2-fr.html" >Évaluation de l'accessibilité #1</a></li>
+									
+								
+								</ul>
+							</li>
+						
 						</ul>
 					</details>
 				</div>
@@ -531,19 +639,24 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Application de styles GC au plugiciel de fils de syndication
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Bloc des réseaux de médias sociaux
 				
-				<span class="label label-warning mrgn-lft-sm"><span class="wb-inv">État: </span>Provisionel</span>
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
 				
 				</h3>
 				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
-					<p>Remplace les Fils de syndication pour appliquer le modèle de conception GC.</p>
+					<p>La configuration de conception des chaînes de médias sociaux fournit des liens vers les comptes de médias sociaux officiels du gouvernement du Canada (GC).</p>
 					<!--
 					Main working example
 					- First working example in the example list where the language match
 					-->
 					
 					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+					<a href="components/gc-follow-us/gc-follow-us-fr.html" lang="fr" hreflang="fr"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Exemple pratique</a>
+					
 					
 					<!--
 					Documentation
@@ -553,10 +666,10 @@
 					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
 					
 					
-						<li><a href="components/gc-feeds/gc-feeds-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+						<li><a href="components/gc-follow-us/gc-follow-us-doc-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
 					
 					
-					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/gc-feeds" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Code source</a></li>
+					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/gc-follow-us" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Code source</a></li>
 					</ul>
 					<!--
 					> All examples and info
@@ -573,11 +686,27 @@
 								
 								
 									
-									<li><a href="components/gc-feeds/gc-feeds-en.html" hreflang="en">Feeds GC overrides - Documentation and working example.</a></li>
+									<li><a href="components/gc-follow-us/gc-follow-us-doc-en.html" hreflang="en">Social media channels - Documentation</a></li>
 									
 								
 									
-									<li><a href="components/gc-feeds/gc-feeds-fr.html" >Fils de syndication remplacement GC - Documentation et exemple pratique</a></li>
+									<li><a href="components/gc-follow-us/gc-follow-us-doc-fr.html" >Bloc des réseaux de médias sociaux - Documentation</a></li>
+									
+								
+								</ul>
+							</li>
+						
+							
+							<li>Exemples
+								<ul>
+								
+								
+									
+									<li><a href="components/gc-follow-us/gc-follow-us-en.html" hreflang="en">Social media channels</a></li>
+									
+								
+									
+									<li><a href="components/gc-follow-us/gc-follow-us-fr.html" >Bloc des réseaux de médias sociaux</a></li>
 									
 								
 								</ul>
@@ -1468,96 +1597,6 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Data JSON
-				
-				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
-				
-				</h3>
-				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
-					<p>Insertion de contenu extrait d'un fichier JSON</p>
-					<!--
-					Main working example
-					- First working example in the example list where the language match
-					-->
-					
-					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
-					
-					<li>
-					
-						<a href="https://wet-boew.github.io/wet-boew/demos/wb-data-json/data-json-fr.html" lang="fr" hreflang="fr"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Exemple pratique</a>
-					
-					
-					<!--
-					Documentation
-					- Link to the documentations if any
-					-->
-					
-					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
-					
-					
-						<li><a href="components/wb-data-json/"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
-					
-					
-					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/wb-data-json" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Code source</a></li>
-					</ul>
-					<!--
-					> All examples and info
-					* Example
-					* Documentation
-					* Spec
-					-->
-					<details class="mrgn-tp-lg"><summary>Tous les exemples et info</summary>
-						<ul class="list-unstyled">
-						
-							
-							<li>Exemples
-								<ul>
-								
-								
-									
-										<li><a href="https://wet-boew.github.io/wet-boew/demos/wb-data-json/data-json-en.html">Data JSON</a></li>
-									
-								
-									
-										<li><a href="https://wet-boew.github.io/wet-boew/demos/wb-data-json/data-json-fr.html">Data JSON</a></li>
-									
-								
-									
-										<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-data-json/template-en.html">Template HTML 5</a></li>
-									
-								
-									
-										<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-data-json/template-fr.html">Gabarit HTML 5</a></li>
-									
-								
-								</ul>
-							</li>
-						
-							
-							<li>Documentations
-								<ul>
-								
-								
-									
-										<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-data-json/wb-data-json-en.html">Data JSON</a></li>
-									
-								
-									
-										<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-data-json/wb-data-json-en.html">Data JSON</a></li>
-									
-								
-								</ul>
-							</li>
-						
-						</ul>
-					</details>
-				</div>
-			</div>
-		</li>
-	
-		
-		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
-			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
 				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Exécuter des actions
 				
 				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
@@ -1762,96 +1801,6 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Gestionnaire JSON
-				
-				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
-				
-				</h3>
-				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
-					<p>Gérer des jeux de données et applique des correctifs JSON.</p>
-					<!--
-					Main working example
-					- First working example in the example list where the language match
-					-->
-					
-					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
-					
-					<li>
-					
-						<a href="https://wet-boew.github.io/wet-boew/demos/wb-jsonmanager/jsonmanager-fr.html" lang="fr" hreflang="fr"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Exemple pratique</a>
-					
-					
-					<!--
-					Documentation
-					- Link to the documentations if any
-					-->
-					
-					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
-					
-					
-						<li><a href="components/wb-jsonmanager/"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
-					
-					
-					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/wb-jsonmanager" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Code source</a></li>
-					</ul>
-					<!--
-					> All examples and info
-					* Example
-					* Documentation
-					* Spec
-					-->
-					<details class="mrgn-tp-lg"><summary>Tous les exemples et info</summary>
-						<ul class="list-unstyled">
-						
-							
-							<li>Exemples
-								<ul>
-								
-								
-									
-										<li><a href="https://wet-boew.github.io/wet-boew/demos/wb-jsonmanager/jsonmanager-en.html">JSON Manager</a></li>
-									
-								
-									
-										<li><a href="https://wet-boew.github.io/wet-boew/demos/wb-jsonmanager/jsonmanager-fr.html">Gestionnaire JSON</a></li>
-									
-								
-									
-									<li><a href="components/wb-jsonmanager/jsonmanager-doaction-en.html" hreflang="en">with Do Action patches</a></li>
-									
-								
-									
-									<li><a href="components/wb-jsonmanager/jsonmanager-doaction-fr.html" >avec l'exécuteur d'action de patches</a></li>
-									
-								
-								</ul>
-							</li>
-						
-							
-							<li>Documentations
-								<ul>
-								
-								
-									
-										<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-jsonmanager/wb-jsonmanager-en.html">JSON Manager</a></li>
-									
-								
-									
-										<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-jsonmanager/wb-jsonmanager-fr.html">Gestionnaire JSON</a></li>
-									
-								
-								</ul>
-							</li>
-						
-						</ul>
-					</details>
-				</div>
-			</div>
-		</li>
-	
-		
-		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
-			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
 				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Suggestion interative avec un datalist
 				
 				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
@@ -1983,6 +1932,14 @@
 									
 								
 									
+									<li><a href="components/wb-urlmapping/selectinput-en.html" hreflang="en">Select input</a></li>
+									
+								
+									
+									<li><a href="components/wb-urlmapping/selectinput-fr.html" >Sélectionner un champ de saisie</a></li>
+									
+								
+									
 									<li><a href="components/wb-urlmapping/geomap-en.html" hreflang="en">Geomap</a></li>
 									
 								
@@ -2064,88 +2021,6 @@
 								
 									
 									<li><a href="components/wb5-click-postback/wb5-click-postback-fr.html" >conversion du wb5-click postback</a></li>
-									
-								
-								</ul>
-							</li>
-						
-						</ul>
-					</details>
-				</div>
-			</div>
-		</li>
-	
-		
-		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
-			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Boîte grise en gras
-				
-				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
-				
-				</h3>
-				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
-					<p>Ceci applique la propriété gras comme poid de police de caractère à chacun des éléments d'un composant well et applique un poid de police de caractère normal lorsque l'élément <code>strong</code> est appliqué.</p>
-					<!--
-					Main working example
-					- First working example in the example list where the language match
-					-->
-					
-					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
-					
-					<li>
-					
-					<a href="components/well-bold/well-bold-fr.html" lang="fr" hreflang="fr"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Exemple pratique</a>
-					
-					
-					<!--
-					Documentation
-					- Link to the documentations if any
-					-->
-					
-					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
-					
-					
-						<li><a href="components/well-bold/well-bold-doc-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
-					
-					
-					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/well-bold" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Code source</a></li>
-					</ul>
-					<!--
-					> All examples and info
-					* Example
-					* Documentation
-					* Spec
-					-->
-					<details class="mrgn-tp-lg"><summary>Tous les exemples et info</summary>
-						<ul class="list-unstyled">
-						
-							
-							<li>Exemples
-								<ul>
-								
-								
-									
-									<li><a href="components/well-bold/well-bold-en.html" hreflang="en">Well bold - working example</a></li>
-									
-								
-									
-									<li><a href="components/well-bold/well-bold-fr.html" >Boîte grise en gras - example pratique</a></li>
-									
-								
-								</ul>
-							</li>
-						
-							
-							<li>Documentations
-								<ul>
-								
-								
-									
-									<li><a href="components/well-bold/well-bold-doc-en.html" hreflang="en">Well bold</a></li>
-									
-								
-									
-									<li><a href="components/well-bold/well-bold-doc-fr.html" >Boîte grise en gras</a></li>
 									
 								
 								</ul>
@@ -2250,6 +2125,95 @@
 								
 									
 									<li><a href="templates/advancedservice/page6-fr.html" >[Nom du service] - 6. [Nom de la page de la section ou de l’étape]</a></li>
+									
+								
+								</ul>
+							</li>
+						
+						</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Application
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Exemples de pages d'application.</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+					<a href="templates/application/default-application-fr.html" ><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Exemple pratique</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="templates/application/application-docs-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>Tous les exemples et info</summary>
+						<ul class="mrgn-tp-md">
+							
+							
+							<li>Documentations
+								<ul>
+								
+								
+									
+									<li><a href="templates/application/application-docs-en.html" lang="en" hreflang="en">Application template documentation</a></li>
+									
+								
+									
+									<li><a href="templates/application/application-docs-fr.html" >Documentation du gabarit de page d'application</a></li>
+									
+								
+								</ul>
+							</li>
+						
+							
+							<li>Exemples
+								<ul>
+								
+								
+									
+									<li><a href="templates/application/default-application-en.html" lang="en" hreflang="en">Default application page</a></li>
+									
+								
+									
+									<li><a href="templates/application/default-application-fr.html" >Page d'application par défaut</a></li>
+									
+								
+									
+									<li><a href="templates/application/application-with-banner-en.html" lang="en" hreflang="en">Application page with informational banner</a></li>
+									
+								
+									
+									<li><a href="templates/application/application-with-banner-fr.html" >Page d'application avec bannière informative</a></li>
 									
 								
 								</ul>
@@ -3852,6 +3816,12 @@
 					- Link to the documentations if any
 					-->
 					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="sites/archived/archived-docs-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
 					</ul>
 					<!--
 					> All examples and info
@@ -3873,6 +3843,22 @@
 								
 									
 									<li><a href="sites/archived/archived-fr.html" >Archivé - Page de contenu</a></li>
+									
+								
+								</ul>
+							</li>
+						
+							
+							<li>Documentations
+								<ul>
+								
+								
+									
+									<li><a href="sites/archived/archived-docs-en.html" lang="en" hreflang="en">Archived - documentation</a></li>
+									
+								
+									
+									<li><a href="sites/archived/archived-docs-fr.html" >Archivé - documentation</a></li>
 									
 								
 								</ul>
@@ -4219,6 +4205,30 @@
 								
 									
 									<li><a href="sites/feedback/report-problem-fr.html" >Signaler un problème</a></li>
+									
+								
+								</ul>
+							</li>
+						
+							
+							<li>Rapports
+								<ul>
+								
+								
+									
+									<li><a href="sites/feedback/reports/a11y-2-en.html" lang="en" hreflang="en">Accessibility assessment #1</a></li>
+									
+								
+									
+									<li><a href="sites/feedback/reports/a11y-2-fr.html" >Évaluation de l'accessibilité #1</a></li>
+									
+								
+									
+									<li><a href="sites/feedback/reports/acr-2023-autumn-en.html" lang="en" hreflang="en">Accessibility Conformance Report - WCAG Level AA - Autumn 2023</a></li>
+									
+								
+									
+									<li><a href="sites/feedback/reports/acr-2023-autumn-fr.html" >Rapport de conformité d'accessibilité WCAG 2.1 Niveau AA - Automne 2023</a></li>
 									
 								
 								</ul>
@@ -4628,6 +4638,66 @@
 								
 									
 									<li><a href="sites/language/language-fr.html" >Lien pour changer de langue</a></li>
+									
+								
+								</ul>
+							</li>
+						
+						</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h4 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Titre principal
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
+				
+				</h4>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Documentation sur l'utilisation du composant Titre principal.</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="sites/main-page-title/main-page-title-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>Tous les exemples et info</summary>
+						<ul class="mrgn-tp-md">
+							
+							
+							<li>Documentations
+								<ul>
+								
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-en.html" lang="en" hreflang="en">Main page title documentation</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-fr.html" >Documentation du titre principal</a></li>
 									
 								
 								</ul>
@@ -5820,6 +5890,283 @@
 			</div>
 		</li>
 	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Fils de syndication
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Affiche les articles d’un ou plus fils de syndication.</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+						<a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/feeds/feeds-fr.html" lang="fr" hreflang="fr"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					<!--
+					Documentation in GCWeb repo
+					-->
+					  
+					      
+						<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/feeds/feeds-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					      
+					   
+					
+					    <li><a href="https://github.com/wet-boew/GCWeb/tree/master/wet-boew/feeds" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
+					<ul class="list-unstyled">
+					
+						
+						<li>Documentations
+							<ul>
+							
+							
+								
+									<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/feeds/feeds-en.html">Feeds</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/feeds/feeds-fr.html">Fils de syndication</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Exemples
+							<ul>
+							
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/feeds/feeds-en.html">Feeds</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/feeds/feeds-fr.html">Fils de syndication</a></li>
+								
+							
+							</ul>
+						</li>
+					
+					</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Data JSON
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Insertion de contenu extrait d'un fichier JSON</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+						<a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-data-json/data-json-fr.html" lang="fr" hreflang="fr"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					<!--
+					Documentation in GCWeb repo
+					-->
+					  
+					      
+						<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-data-json/wb-data-json-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					      
+					   
+					
+					    <li><a href="https://github.com/wet-boew/GCWeb/tree/master/wet-boew/wb-data-json" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
+					<ul class="list-unstyled">
+					
+						
+						<li>Exemples
+							<ul>
+							
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-data-json/data-json-en.html">Data JSON</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-data-json/data-json-fr.html">Data JSON</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-data-json/template-en.html">Template HTML 5</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-data-json/template-fr.html">Gabarit HTML 5</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Documentations
+							<ul>
+							
+							
+								
+									<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-data-json/wb-data-json-en.html">Data JSON</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-data-json/wb-data-json-fr.html">Data JSON</a></li>
+								
+							
+							</ul>
+						</li>
+					
+					</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Gestionnaire JSON
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Gérer des jeux de données et applique des correctifs JSON</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+						<a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-jsonmanager/jsonmanager-fr.html" lang="fr" hreflang="fr"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					<!--
+					Documentation in GCWeb repo
+					-->
+					  
+					      
+						<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-jsonmanager/wb-jsonmanager-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					      
+					   
+					
+					    <li><a href="https://github.com/wet-boew/GCWeb/tree/master/wet-boew/wb-jsonmanager" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
+					<ul class="list-unstyled">
+					
+						
+						<li>Exemples
+							<ul>
+							
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-jsonmanager/jsonmanager-en.html">JSON Manager</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/wb-jsonmanager/jsonmanager-fr.html">Gestionnaire JSON</a></li>
+								
+							
+								
+								<li><a href="wet-boew/wb-jsonmanager/jsonmanager-doaction-en.html" lang="en" hreflang="en">with Do Action patches</a></li>
+								
+							
+								
+								<li><a href="wet-boew/wb-jsonmanager/jsonmanager-doaction-fr.html" >avec l'exécuteur d'action de patches</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Documentations
+							<ul>
+							
+							
+								
+									<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-jsonmanager/wb-jsonmanager-en.html">JSON Manager</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/wb-jsonmanager/wb-jsonmanager-fr.html">Gestionnaire JSON</a></li>
+								
+							
+							</ul>
+						</li>
+					
+					</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
 	</ul>
 	<hr />
 	<h2 id="autre">Autre documentation</h2>
@@ -5876,7 +6223,7 @@
 
 			</div><div class="col-xs-12"><dl id="wb-dtmd">
 	<dt>Date de modification&#160;:</dt>
-	<dd><time property="dateModified">2023-11-21</time></dd>
+	<dd><time property="dateModified">2024-02-14</time></dd>
 </dl>
 </div>
 	</div>
@@ -5929,14 +6276,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

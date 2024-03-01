@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.1.0 - 2023-11-24
+ * v14.5.0 - 2024-03-01
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -194,11 +194,11 @@ var $document = wb.doc,
 				}
 			} else {
 				$navH1 = $( "h1", $elm );
+				$navH1.get( 0 ).id = $navH1.get( 0 ).id || wb.getId();
 
 				// Add skip link to sections list
 				if ( $navH1 ) {
-					$navH1.id = $navH1.id || wb.getId(); // Ensure the element has an ID
-					wb.addSkipLink( wb.i18n( "skip-prefix" ) + " " + $navH1.text(), { href: "#" + $navH1.id } );
+					wb.addSkipLink( wb.i18n( "skip-prefix" ) + " " + $navH1.text(), { href: "#" + $navH1.get( 0 ).id } );
 				}
 
 				// Wrap all content until it hits either: ".pagedetails", or "".gc-subway-support"
@@ -293,6 +293,7 @@ var $document = wb.doc,
 		"removeClass",
 		"tblfilter",
 		"withInput",
+		"selectInput",
 		"run"
 	].join( "." + actionEvent + " " ) + "." + actionEvent,
 
@@ -676,6 +677,20 @@ var $document = wb.doc,
 		}
 
 	},
+	selectInputAct = function( event, data ) {
+		var sourceElm = document.querySelector( data.source ) || event.currentTarget,
+			inputs;
+
+		inputs = sourceElm.querySelectorAll( "[value=\"" + data.value + "\"]" );
+
+		inputs.forEach( input => {
+			if ( input.nodeName === "OPTION" ) {
+				input.setAttribute( "selected", true );
+			} else if ( input.nodeName === "INPUT" ) {
+				input.setAttribute( "checked", true );
+			}
+		} );
+	},
 	patchFixArray = function( patchArray, val, basePointer ) {
 
 		var i, i_len = patchArray.length, i_cache,
@@ -841,6 +856,9 @@ $document.on( actionMngEvent, selector, function( event, data ) {
 			break;
 		case "patch":
 			patchAct( event, data );
+			break;
+		case "selectInput":
+			selectInputAct( event, data );
 			break;
 		case "mapfilter":
 			geomapAOIAct( event, data );

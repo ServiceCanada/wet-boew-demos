@@ -15,9 +15,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2023-11-08"/>
 
-<link href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -73,6 +73,7 @@
 			
 		</div>
 	</div>
+	
 	<hr>
 	<div class="container">
 		<div class="row"><div class="col-md-8">
@@ -98,6 +99,7 @@
 
 				</div></div>
 	</div>
+	
 	<nav id="wb-bc" property="breadcrumb">
 	<h2>You are here:</h2>
 	<div class="container">
@@ -110,7 +112,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2289/index-en.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2322/index-en.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -128,7 +130,7 @@
 
 <p>(<a href="index.json-ld" rel="alternate" type="application/json">Consult this documentation in a data format noted in JSON</a>)</p>
 
-<div data-wb-jsonmanager='{
+<div class="wb-disable-allow" data-wb-jsonmanager='{
 	"url": "index.json-ld",
 	"name": "api",
 	"patches": [
@@ -152,7 +154,7 @@
 	]
 }'></div>
 
-<p class="lead">Version <strong data-json-replace="#[api]/version">Unknown</strong></p><div data-wb-json='{
+<p class="lead">Version <strong class="wb-disable-allow" data-json-replace="#[api]/version">Unknown</strong></p><div class="wb-disable-allow" data-wb-json='{
 	"url": "#[api]",
 	"streamline": true,
 	"mapping": [
@@ -188,7 +190,7 @@
 
 <h2 id="inc-components">Included components</h2>
 
-<div data-wb-json='{
+<div class="wb-disable-allow" data-wb-json='{
 	"url": "#[api]",
 	"streamline": "true",
 	"mapping": [
@@ -214,16 +216,14 @@
 					"template": "[data-no]",
 					"test": "fn:isLiteral",
 					"value": "/dependencies",
-					"mapping": [
-						{ "selector": "span", "value": "/" }
-					]
+					"mapping": null
 				}
 			]
 		}
 	]
 }'>
 	<template data-no>
-		<p>There is <span>no</span> sub-dependencies</p>
+		<p>This component has no dependency</p>
 	</template>
 
 	<template data-yes>
@@ -233,7 +233,7 @@
 			</template>
 		</ul>
 	</template>
-</div><h2 id="accessibility-guidance">Accessibility guidance</h2><p>List of accessibility guidances to be followed to ensure component is used in respect of the accessibility guideline and EN 301 549 standard (including WCAG 2.1 Level AA).</p><div data-wb-json='{
+</div><h2 id="accessibility-guidance">Accessibility guidance</h2><p>List of accessibility guidances to be followed to ensure component is used in respect of the accessibility guideline and EN 301 549 standard (including WCAG 2.1 Level AA).</p><div class="wb-disable-allow" data-wb-json='{
 	"url": "#[api]",
 	"streamline": "true",
 	"mapping": [
@@ -288,7 +288,7 @@
 	}'></code></pre>
 </div>-->
 
-<h2 id="variations">Variations</h2><p>Here are some popular examples. This isn’t an exhaustive list of possible variations. Configure your page based on page type, user needs and design system guidance.</p><div data-wb-json='{
+<h2 id="variations">Variations</h2><p>Here are some popular examples. This isn’t an exhaustive list of possible variations. Configure your page based on page type, user needs and design system guidance.</p><div class="wb-disable-allow" data-wb-json='{
 	"url": "#[api]/variations",
 	"mapping": [
 		{ "selector": "[data-name]", "value": "/name/en" },
@@ -648,7 +648,7 @@
 <h2 id="eval-report">Evaluation and report</h2>
 
 <!-- Accessibility assessment -->
-<div data-wb-json='{
+<div class="wb-disable-allow" data-wb-json='{
 	"url": "#[api]",
 	"streamline": "true",
 	"mapping": [
@@ -694,7 +694,7 @@
 
 
 <!-- Accessibility conformance reports -->
-<div data-wb-json='{
+<div class="wb-disable-allow" data-wb-json='{
 	"url": "#[api]",
 	"streamline": "true",
 	"mapping": [
@@ -744,7 +744,7 @@
 
 <!--
 <p>The description beside the public API item are defining the scope of how the public API item is applicable in the context of its "Change set". It should contains all the information about how we can measure a change when a subsequent iteration would be created. It can refer to an explicit example, or contains a code sample, or link to another documentation section where more details is provided. Optionally and when it provide more clarity, it can provide a description what is not in the versioning scope.</p>
---><p>Unless specified, the <a href="https://wet-boew.github.io/wet-boew-documentation/decision/14.html">public versioning API dimensions</a> are strictly limited to what is described here. Anything that is omitted or not identified is out of scope.</p><div data-wb-json='{
+--><p>Unless specified, the <a href="https://wet-boew.github.io/wet-boew-documentation/decision/14.html">public versioning API dimensions</a> are strictly limited to what is described here. Anything that is omitted or not identified is out of scope.</p><div class="wb-disable-allow" data-wb-json='{
 	"url": "#[api]/changesets",
 	"mapping": [
 		{ "selector": "details > summary", "value": "/name" },
@@ -1969,7 +1969,7 @@
 
 <h3>Iterations</h3>
 
-<div data-wb-json='{
+<div class="wb-disable-allow" data-wb-json='{
 	"url": "#[api]/iteration",
 	"mapping": [
 		{ "selector": "summary", "value": "/name" },
@@ -2215,14 +2215,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2289/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2289/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
