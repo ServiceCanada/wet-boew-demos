@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.71 - 2023-11-22
+ * v4.0.74 - 2024-01-24
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -4753,8 +4753,20 @@ var componentName = "wb-calevt",
 		year = settings.year;
 		month = settings.month;
 
-		minDate = events.minDate;
-		maxDate = events.maxDate;
+		if ( $elm.data( "calevtMinDate" ) ) {
+			minDate = getLocaleDate( $elm.data( "calevtMinDate" ) );
+		}
+		if ( $elm.data( "calevtMaxDate" ) ) {
+			maxDate = getLocaleDate( $elm.data( "calevtMaxDate" ) );
+		}
+
+		if ( !minDate || ( events.minDate < minDate ) ) {
+			minDate = events.minDate;
+		}
+		if ( !maxDate || ( events.maxDate > maxDate ) ) {
+			maxDate = events.maxDate;
+		}
+
 		minDateTime = minDate.getTime();
 		maxDateTime = maxDate.getTime();
 
@@ -5010,6 +5022,16 @@ var componentName = "wb-calevt",
 					.attr( "tabindex", "-1" );
 			}
 		}, 5 );
+	},
+
+	getLocaleDate = function( dateString ) {
+		var date = new Date(),
+			dateComponents = dateString.split( "-" );
+
+		dateComponents[ 1 ] = dateComponents[ 1 ] - 1;	// Convert to zero-based month
+		date.setFullYear( dateComponents[ 0 ], dateComponents[ 1 ], dateComponents[ 2 ] );
+
+		return date;
 	};
 
 // Bind the init event of the plugin
@@ -9743,7 +9765,7 @@ var componentName = "wb-frmvld",
 										prefixStart = "<span class='prefix'>" + i18nText.error + "&#160;",
 										prefixEnd = i18nText.colon + " </span>",
 										separator = i18nText.hyphen,
-										ariaLive = $form.parent().find( ".arialive" )[ 0 ],
+										ariaLive = $form.closest( ".wb-frmvld" ).find( ".arialive" )[ 0 ],
 										$summaryContainer, summary, key, i, len, $error, prefix, $fieldName, $fieldset, label, labelString;
 
 									// Correct the colouring of fields that are no longer invalid
@@ -9891,7 +9913,7 @@ var componentName = "wb-frmvld",
 									validator.resetForm();
 									$( "#" + errorFormId ).detach();
 
-									ariaLive = $form.parent().find( ".arialive" )[ 0 ];
+									ariaLive = $form.closest( ".wb-frmvld" ).find( ".arialive" )[ 0 ];
 									if ( ariaLive.innerHTML.length !== 0 ) {
 										ariaLive.innerHTML = "";
 									}
@@ -14831,6 +14853,53 @@ var componentName = "wb-tables",
 				}
 			} );
 		}
+	},
+	updatePaginationMarkup = function( $pagination, setFocusOnId ) {
+
+		var ol = document.createElement( "OL" ),
+			li = document.createElement( "LI" ),
+			paginate_buttons = $pagination.find( ".paginate_button" ),
+			navFocusOnId;
+
+		if ( $pagination.length === 0 ) {
+			return;
+		}
+
+		// Set the element to get the focus upon navigation
+		navFocusOnId = setFocusOnId || $pagination.get( 0 ).id;
+
+		// Update Pagination List
+		for ( var i = 0; i < paginate_buttons.length; i++ ) {
+			var item = li.cloneNode( true );
+			item.appendChild( paginate_buttons[ i ] );
+			ol.appendChild( item );
+		}
+
+		ol.className = "pagination mrgn-tp-0 mrgn-bttm-0";
+		$pagination.empty();
+		$pagination.append( ol );
+
+		// Update the aria-pressed properties on the pagination buttons
+		// Should be pushed upstream to DataTables
+		$pagination.find( ".paginate_button" )
+			.attr( {
+				"href": "#" + navFocusOnId
+			} )
+
+			// This is required to override the datatable.js (v1.10.13) behavior to cancel the event propagation on anchor element.
+			.on( "keypress", function( evn ) {
+				if ( evn.keyCode === 13 ) {
+					window.location = evn.target.href;
+				}
+			} )
+
+			.not( ".previous, .next" )
+			.attr( "aria-pressed", "false" )
+			.html( function( index, oldHtml ) {
+				return "<span class='wb-inv'>" + i18nText.paginate.page + " </span>" + oldHtml;
+			} )
+			.filter( ".current" )
+			.attr( "aria-pressed", "true" );
 	};
 
 // Bind the init event of the plugin
@@ -14840,12 +14909,11 @@ $document.on( "timerpoke.wb " + initEvent, selector, init );
 $document.on( "draw.dt", selector, function( event, settings ) {
 	var $elm = $( event.target ),
 		pagination = $elm.next( ".bottom" ).find( "div:first-child" ),
+		pagination_top = $elm.prevAll( ".top" ).find( "div.dataTables_paginate" ),
 		paginate_buttons = $elm.next( ".bottom" ).find( ".paginate_button" ),
 		pbLength = paginate_buttons.length,
 		pHasLF = pagination.find( ".last, .first" ).length === 2,
-		pHasPN = pagination.find( ".previous, .next" ).length === 2,
-		ol = document.createElement( "OL" ),
-		li = document.createElement( "LI" );
+		pHasPN = pagination.find( ".previous, .next" ).length === 2;
 
 	// Handle sorting/ordering
 	var order = $elm.dataTable( { "retrieve": true } ).api().order();
@@ -14877,43 +14945,15 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 		)
 	) {
 		pagination.addClass( "hidden" );
+		pagination_top.addClass( "hidden" );
 	} else {
 
 		// Make sure Pagination is visible
 		pagination.removeClass( "hidden" );
+		pagination_top.removeClass( "hidden" );
 
-		// Update Pagination List
-		for ( var i = 0; i < paginate_buttons.length; i++ ) {
-			var item = li.cloneNode( true );
-			item.appendChild( paginate_buttons[ i ] );
-			ol.appendChild( item );
-		}
-
-		ol.className = "pagination mrgn-tp-0 mrgn-bttm-0";
-		pagination.empty();
-		pagination.append( ol );
-
-		// Update the aria-pressed properties on the pagination buttons
-		// Should be pushed upstream to DataTables
-		$elm.next( ".bottom" ).find( ".paginate_button" )
-			.attr( {
-				"href": "#" + $elm.get( 0 ).id
-			} )
-
-			// This is required to override the datatable.js (v1.10.13) behavior to cancel the event propagation on anchor element.
-			.on( "keypress", function( evn ) {
-				if ( evn.keyCode === 13 ) {
-					window.location = evn.target.href;
-				}
-			} )
-
-			.not( ".previous, .next" )
-			.attr( "aria-pressed", "false" )
-			.html( function( index, oldHtml ) {
-				return "<span class='wb-inv'>" + i18nText.paginate.page + " </span>" + oldHtml;
-			} )
-			.filter( ".current" )
-			.attr( "aria-pressed", "true" );
+		updatePaginationMarkup( pagination, $elm.get( 0 ).id );
+		updatePaginationMarkup( pagination_top );
 	}
 
 	// Identify that the table has been updated
