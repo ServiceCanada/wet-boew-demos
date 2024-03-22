@@ -21,6 +21,7 @@
 
 /*! Reset and dependencies */
 @import "bootstrap-sass/assets/stylesheets/bootstrap/normalize";
+@import "wet-boew/src/base/bootstrap-overrides/normalize";
 @import "bootstrap-sass/assets/stylesheets/bootstrap/print";
 @import "bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
 
@@ -172,6 +173,8 @@
 @import "../components/dshbrd/base";
 @import "../components/triangle-up";
 @import "../components/gc-follow-us/base";
+@import "../components/gc-most-requested/base";
+@import "../components/gc-minister/base";
 @import "../components/fd-wdgt";
 @import "../components/pagination/base";
 @import "../components/toc/base";
@@ -188,7 +191,6 @@
 @import "../components/gc-subway/base"; // Provisional CSS for GC subway map menu
 @import "../components/gc-table/base"; // Provisional CSS for GC table
 @import "../components/gc-featured-link/base"; // Provisional CSS for GC featured link
-@import "../components/gc-most-requested/base"; // Provisional CSS for GC most requested
 @import "../components/bold-content/base"; // Provisional CSS that bold every text element in a well component
 
 
@@ -202,6 +204,7 @@
 @import "../templates/campaign/base";
 @import "../templates/news/base";
 @import "../templates/application/base";
+@import "../templates/institutional/base";
 
 
 /*! Core - Utilities */
@@ -270,6 +273,7 @@
 
 	@import "../templates/home/screen-sm-max";
 	@import "../templates/theme-topic/screen-sm-max";
+	@import "../templates/institutional/screen-sm-max";
 }
 
 /* Medium view and under */
@@ -327,6 +331,7 @@
 	@import "wet-boew/src/plugins/tabs/screen-md-min";
 	@import "../components/social-media-icons/screen-md-min";
 	@import "../components/gc-subway/screen-md-min";
+	@import "../components/gc-most-requested/screen-md-min";
 
 	@import "../templates/theme-topic/screen-md-min";
 

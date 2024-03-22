@@ -5,19 +5,19 @@
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Lien en vedette - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta name="description" content="Documentation et exemple pratique de lien en vedette - fonctionnalité provisoire" />
+<meta name="description" content="Exemples pratiques de la composante Lien en vedette" />
 <meta name="author" content=" "/>
 <meta name="dcterms.title" content="Lien en vedette"/>
-<meta name="dcterms.description" content="Documentation et exemple pratique de lien en vedette - fonctionnalité provisoire"/>
+<meta name="dcterms.description" content="Exemples pratiques de la composante Lien en vedette"/>
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2021-07-07"/>
+<meta name="dcterms.modified" content="2024-03-08"/>
 
-<link href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -112,12 +112,19 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2322/index-fr.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/ilp-template/index-fr.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
 							</li>
 							
+						<li property="itemListElement" typeof="ListItem">
+							<a property="item" typeof="WebPage" href="/wet-boew-demos/ilp-template/components/gc-featured-link/gc-featured-link-doc-fr.html">
+								<span property="name">Lien en vedette - Documentation</span>
+							</a>
+							<meta property="position" content="3">
+						</li>
+						
 		</ol>
 	</div>
 </nav>
@@ -126,84 +133,51 @@
 </header>
 
 <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+<span class="wb-prettify all-pre hide"></span>
+
 <div class="container">
-	<h1>Lien en vedette</h1>
+	<h1 id="wb-cont" property="name">Lien en vedette</h1>
+	<p>Vous trouverez ci-dessous des exemples pratiques pour la composante « Lien en vedette ».</p>
 
-	<div class="alert alert-warning">
-	<h2>Fonctionnalité instable</h2>
-	<p>À être utilisé <strong>à vos propres risques</strong>. Toutes les fonctionnalités décrites ci-dessous pourraient être retirées à n'importe quelle version mineur/majeur ultérieure et l'ensemble des fonctionnalités provisoires sont exclues de l'API publique de GCWeb.</p>
-	<p>La documentation et/ou les exemples pratiques pourraient être incomplets ou être non disponible.</p>
-	<p><a href="/components/provisional-fr.html">Voir l'ensemble des fonctionnalités provisoires.</a></p>
+	<section class="alert alert-info mrgn-tp-lg">
+		<h2 class="h3">Structure des en-têtes</h2>
+		<p>La structure sémantique logique des en-têtes n'a pas été suivie afin de s'adapter aux exemples pratiques suivants.</p>
+	</section>
+
+	<h2>Sur cette page</h2>
+	<ul>
+		<li><a href="#exempleParDefaut">Exemple par défaut</a></li>
+		<li><a href="#arrierePlanPersonnalise">Exemple avec couleur d'arrière-plan personnalisée</a></li>
+		<li><a href="#descriptionSousLien">Exemple de lien en vedette avec description sous le lien</a></li>
+	</ul>
+
+	<h2 id="exempleParDefaut">Exemple par défaut</h2>
 </div>
 
-	<span class="wb-prettify all-pre hide"></span>
-
-	<dl class="horizontal">
-		<dt>Statut</dt>
-		<dd>Provisoire</dd>
-		<dt>Type</dt>
-		<dd>Conception de Canada.ca</dd>
-		<dt>Dernière revue</dt>
-		<dd>2021-07-07</dd>
-		<dt>Est conforme à</dt>
-		<dd>Spécifications du contenu et de l'architecture de l'information 2.1.2</dd>
-		<dt>Directives</dt>
-		<dd>n/a</dd>
-		<dt>Nom technique</dt>
-		<dd><code>gc-featured-link</code></dd>
-	</dl>
-
-	<h2>Objectif</h2>
-	<p>Ceci ajoute un lien en vedette court et descriptif vers une page que votre institution doit mettre en évidence. Il doit être utilisé pour attirer l'attention sur les avertissements ou les avis.</p>
-
-	<h2>Exemples pratiques</h2>
-
-	<h3>Lien en vedette (Provisiore v1.0)</h3>
-	<p>La structure sémantique logique des en-têtes n'a pas été suivie afin de s'adapter à l'exemple pratique suivant. Vous pouvez aller directement au <a href="#codeSample1">code source</a>.</p>
-</div>
-
-<section class="provisional gc-featured-link">
+<section class="gc-featured-link">
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<h2 class="wb-inv">En vedette</h2>
-				<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
-				<p>Description longue [Facultatif]</p>
-			</div>
-		</div>
+		<h2 class="wb-inv">Pleins feux sur</h2>
+		<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
 	</div>
 </section>
 
 <div class="container">
-	<h4 id="codeSample1">Code</h4>
-	<pre><code>&lt;section class="provisional gc-featured-link">
+	<h3 id="codeSample1">Code</h3>
+	<pre><code>&lt;section class="gc-featured-link">
 	&lt;div class="container">
-		&lt;div class="row">
-			&lt;div class="col-xs-12">
-				&lt;h2 class="wb-inv">En vedette&lt;/h2>
-				&lt;p>&lt;a class="stretched-link" href="#">[Titre de la promotion]&lt;/a>&lt;/p>
-				&lt;p>Description longue [Facultatif]&lt;/p>
-			&lt;/div>
-		&lt;/div>
+		&lt;h2 class="wb-inv">Pleins feux sur&lt;/h2>
+		&lt;p>&lt;a class="stretched-link" href="#">[Titre de la promotion]&lt;/a>&lt;/p>
 	&lt;/div>
 &lt;/section></code></pre>
 
-		<h3>Couleur d'arrière-plan personnalisée</h3>
-		<p>Pour personnaliser la couleur d'arrière-pla, ajoutez l'attribut <code>data-bg-color</code>. La valeur doit être le code hexadécimal de la couleur souhaitée.</p>
-		<p>Le plugiciel appliquera automatiquement la bonne couleur au texte&nbsp;: <code>#FFFFFF</code> pour les couleurs sombres, <code>#333333</code> pour les couleurs claires, <code>#000000</code> pour les couleurs intermédiaires.</p>
-		<p>La structure sémantique logique des en-têtes n'a pas été suivie afin de s'adapter à chaque exemples pratiques. Vous pouvez aller directement au <a href="#codeSample2">code source</a>.</p>
-		<p class="mrgn-tp-lg">Exemple avec couleur sombre&nbsp;:</p>
-	</div>
+	<h2 id="arrierePlanPersonnalise">Exemple avec couleur d'arrière-plan personnalisée</h2>
+	<p class="mrgn-tp-lg">Exemple avec couleur sombre&nbsp;:</p>
+</div>
 
-<section class="provisional gc-featured-link" data-bg-color="#005B61">
+<section class="gc-featured-link" data-bg-color="#005B61">
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<h2 class="wb-inv">En vedette</h2>
-				<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
-				<p>Description longue [Facultatif]</p>
-			</div>
-		</div>
+		<h2 class="wb-inv">Pleins feux sur</h2>
+		<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
 	</div>
 </section>
 
@@ -211,15 +185,10 @@
 	<p class="mrgn-tp-lg">Exemple avec couleur claire&nbsp;:</p>
 </div>
 
-<section class="provisional gc-featured-link" data-bg-color="#99dade">
+<section class="gc-featured-link" data-bg-color="#99dade">
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<h2 class="wb-inv">En vedette</h2>
-				<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
-				<p>Description longue [Facultatif]</p>
-			</div>
-		</div>
+		<h2 class="wb-inv">Pleins feux sur</h2>
+		<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
 	</div>
 </section>
 
@@ -227,101 +196,56 @@
 	<p class="mrgn-tp-lg">Exemple avec couleur intermédiaire&nbsp;:</p>
 </div>
 
-<section class="provisional gc-featured-link" data-bg-color="#8F8F8F">
+<section class="gc-featured-link" data-bg-color="#8F8F8F">
 	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<h2 class="wb-inv">En vedette</h2>
-				<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
-				<p>Description longue [Facultatif]</p>
-			</div>
-		</div>
+		<h2 class="wb-inv">Pleins feux sur</h2>
+		<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
 	</div>
 </section>
 
 <div class="container">
-	<h4 id="codeSample2">Code</h4>
-	<pre><code>&lt;section class="provisional gc-featured-link" data-bg-color="#005B61">
-		&lt;div class="container">
-			&lt;div class="row">
-				&lt;div class="col-xs-12">
-					&lt;h2 class="wb-inv">En vedette&lt;/h2>
-					&lt;p>&lt;a class="stretched-link" href="#">[Titre de la promotion]&lt;/a>&lt;/p>
-					&lt;p>Description longue [Facultatif]&lt;/p>
-				&lt;/div>
-			&lt;/div>
-		&lt;/div>
-	&lt;/section>
+	<h3 id="codeSample2">Code</h3>
+	<pre><code>&lt;section class="gc-featured-link" data-bg-color="#005B61">
+	&lt;div class="container">
+		&lt;h2 class="wb-inv">Pleins feux sur&lt;/h2>
+		&lt;p>&lt;a class="stretched-link" href="#">[Titre de la promotion]&lt;/a>&lt;/p>
+	&lt;/div>
+&lt;/section>
 
-	&lt;section class="provisional gc-featured-link" data-bg-color="#99dade">
-		&lt;div class="container">
-			&lt;div class="row">
-				&lt;div class="col-xs-12">
-					&lt;h2 class="wb-inv">En vedette&lt;/h2>
-					&lt;p>&lt;a class="stretched-link" href="#">[Titre de la promotion]&lt;/a>&lt;/p>
-					&lt;p>Description longue [Facultatif]&lt;/p>
-				&lt;/div>
-			&lt;/div>
-		&lt;/div>
-	&lt;/section>
+&lt;section class="gc-featured-link" data-bg-color="#99dade">
+	&lt;div class="container">
+		&lt;h2 class="wb-inv">Pleins feux sur&lt;/h2>
+		&lt;p>&lt;a class="stretched-link" href="#">[Titre de la promotion]&lt;/a>&lt;/p>
+	&lt;/div>
+&lt;/section>
 
-	&lt;section class="provisional gc-featured-link" data-bg-color="#8F8F8F">
-		&lt;div class="container">
-			&lt;div class="row">
-				&lt;div class="col-xs-12">
-					&lt;h2 class="wb-inv">En vedette&lt;/h2>
-					&lt;p>&lt;a class="stretched-link" href="#">[Titre de la promotion]&lt;/a>&lt;/p>
-					&lt;p>Description longue [Facultatif]&lt;/p>
-				&lt;/div>
-			&lt;/div>
-		&lt;/div>
-	&lt;/section></code></pre>
+&lt;section class="gc-featured-link" data-bg-color="#8F8F8F">
+	&lt;div class="container">
+		&lt;h2 class="wb-inv">Pleins feux sur&lt;/h2>
+		&lt;p>&lt;a class="stretched-link" href="#">[Titre de la promotion]&lt;/a>&lt;/p>
+	&lt;/div>
+&lt;/section></code></pre>
 
-	<h3>Modèles de conception précédents</h3>
-	<details>
-		<summary>Modèle précédent (Page d'accueil)</summary>
-		<p>Modèle utilisant les "helpers":</p>
-		<div class="bg-gctheme opct-90">
-			<div class="container">
-				<div class="row">
-					<div class="mrgn-tp-md mrgn-bttm-md col-xs-12">
-						<p class="pull-left text-white mrgn-bttm-0">En vedette&nbsp;:&nbsp;</p>
-						<p class="pull-left mrgn-bttm-0"><a class="stretched-link text-white" href="#">[Titre de la promotion]</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<pre><code>&lt;div class="bg-gctheme opct-90"&gt;
-			&lt;div class="container"&gt;
-				&lt;div class="row"&gt;
-					&lt;div class="mrgn-tp-md mrgn-bttm-md col-xs-12"&gt;
-						&lt;p class="pull-left text-white mrgn-bttm-0"&gt;En vedette&nbsp;:&nbsp;&lt;/p&gt;
-						&lt;p class="pull-left mrgn-bttm-0"&gt;&lt;a class="stretched-link text-white" href="#"&gt;[Titre de la promotion]&lt;/a&gt;&lt;/p&gt;
-					&lt;/div&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-		</code></pre>
-	</details>
-
-	<div lang="en">
-	<h2>Evaluation and report</h2>
-	<ul>
-		<li>Accessibility pre-assessment #1
-			<ul>
-				<li><a href="./reports/a11y-1-en.html" hreflang="en"><span class="wb-inv">Pre-assessment report #1</span> English report</a></li>
-				<li><a href="./reports/a11y-1-fr.html" hreflang="fr"><span class="wb-inv">Pre-assessment report #1</span> French report</a></li>
-			</ul>
-		</li>
-		<li>Accessibility assessment #1
-			<ul>
-				<li><a href="./reports/a11y-2-en.html" hreflang="en"><span class="wb-inv">Assessment report #1</span> English report</a></li>
-				<li><a href="./reports/a11y-2-fr.html" hreflang="fr"><span class="wb-inv">Assessment report #1</span> French report</a></li>
-			</ul>
-		</li>
-	</ul>
+	<h2 id="descriptionSousLien">Exemple de lien en vedette avec description sous le lien</h2>
 </div>
+
+<section class="gc-featured-link">
+	<div class="container">
+		<h2 class="wb-inv">Pleins feux sur</h2>
+		<p><a class="stretched-link" href="#">[Titre de la promotion]</a></p>
+		<p>Description longue [facultatif]</p>
+	</div>
+</section>
+
+<div class="container">
+	<h3 id="codeSample3">Code</h3>
+	<pre><code>&lt;section class="gc-featured-link"&gt;
+	&lt;div class="container"&gt;
+		&lt;h2 class="wb-inv"&gt;Pleins feux sur&lt;/h2&gt;
+		&lt;p&gt;&lt;a class="stretched-link" href="#"&gt;[Titre de la promotion]&lt;/a&gt;&lt;/p&gt;
+		&lt;p&gt;Description longue [facultatif]&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/section&gt;</code></pre>
 </div>
 
 <section class="pagedetails container">
@@ -329,7 +253,7 @@
 
 	<div class="row"><div class="col-xs-12"><dl id="wb-dtmd">
 	<dt>Date de modification&#160;:</dt>
-	<dd><time property="dateModified">2021-07-07</time></dd>
+	<dd><time property="dateModified">2024-03-08</time></dd>
 </dl>
 </div>
 	</div>
@@ -382,14 +306,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/ilp-template/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/ilp-template/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
