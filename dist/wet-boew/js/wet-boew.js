@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.74 - 2024-01-24
+ * v4.0.75 - 2024-03-21
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -2608,7 +2608,7 @@ Modernizr.load( [
 					if ( isTrident ) {
 
 						// Load an ES6 polyfill
-						Modernizr.load( "timeout=500!https://polyfill.io/v3/polyfill.min.js?features=es6" );
+						Modernizr.load( "timeout=500!https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" );
 
 						// Specify the CDN's font URL
 						// Note: IE11 is unable to resolve this on its own
@@ -4652,7 +4652,12 @@ var $document = wb.doc,
 
 		for ( link in optimizedLink ) {
 			elm = document.getElementById( link );
-			elm.style.backgroundImage = "url(" + optimizedLink[ link ] + ")";
+
+			if ( optimizedLink[ link ] === "https://wet-boew.github.io/vocab/wb/utilities#no-image" ) {
+				elm.style.backgroundImage = "none";
+			} else {
+				elm.style.backgroundImage = "url(" + optimizedLink[ link ] + ")";
+			}
 		}
 	};
 
@@ -15161,8 +15166,12 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 
 			// Verifies if regex was preset, if not preset use 'contains value' as default
 			if ( !$regex ) {
-				$value = $value.replace( /\s/g, "\\s*" );
-				$regex = "(" + $value + ")";
+				if ( $elm[ 0 ].getAttribute( "data-exact" ) ) {
+					$regex = "^" + $value + "$";
+				} else {
+					$value = $value.replace( /\s/g, "\\s*" );
+					$regex = "(" + $value + ")";
+				}
 			}
 
 			$datatable.column( $column ).search( $regex, true );

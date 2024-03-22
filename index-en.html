@@ -13,11 +13,11 @@
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2024-02-14"/>
+<meta name="dcterms.modified" content="2024-03-05"/>
 
-<link href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+<link href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -126,8 +126,8 @@
 			<p>The page templates and design patterns below comprise a reference implementation of the <a href="https://design.canada.ca">Canada.ca design system</a>, including the mandatory requirement of the Content and Information Architecture (C&amp;IA) Specification. Government of Canada departments and agencies can contribute additional patterns and templates via <a href="https://github.com/wet-boew/GCWeb">GCWeb github repository</a>.</p>
 		</div>
 		<div class="col-xs-12 col-md-auto pull-right">
-			<p><a href="https://github.com/wet-boew/GCWeb/archive/v14.5.0.zip" class="btn btn-primary">Download GCWeb theme <strong>v14.5.0</strong></a><br />
-				<small>(<time>2024-02-14</time> - <a href="https://github.com/wet-boew/gcweb/releases/latest">Release notes</a>)</small></p>
+			<p><a href="https://github.com/wet-boew/GCWeb/archive/v14.6.0.zip" class="btn btn-primary">Download GCWeb theme <strong>v14.6.0</strong></a><br />
+				<small>(<time>2024-03-05</time> - <a href="https://github.com/wet-boew/gcweb/releases/latest">Release notes</a>)</small></p>
 		</div>
 	</div>
 </div>
@@ -457,9 +457,9 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Featured link - Documentation and working example
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Featured link
 				
-				<span class="label label-warning mrgn-lft-sm"><span class="wb-inv">State: </span>Provisional</span>
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
 				
 				</h3>
 				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
@@ -481,6 +481,12 @@
 					- Link to the documentations if any
 					-->
 					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="components/gc-featured-link/gc-featured-link-doc-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
 					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/gc-featured-link" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
 					</ul>
 					<!--
@@ -493,16 +499,32 @@
 					<ul class="list-unstyled">
 					
 						
+						<li>Documentations
+							<ul>
+							
+							
+								
+								<li><a href="components/gc-featured-link/gc-featured-link-doc-en.html" >Featured link</a></li>
+								
+							
+								
+								<li><a href="components/gc-featured-link/gc-featured-link-doc-fr.html" lang="fr" hreflang="fr">Lien en vedette</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
 						<li>Examples
 							<ul>
 							
 							
 								
-								<li><a href="components/gc-featured-link/gc-featured-link-en.html" >Featured link - Documentation and working example</a></li>
+								<li><a href="components/gc-featured-link/gc-featured-link-en.html" >Featured link</a></li>
 								
 							
 								
-								<li><a href="components/gc-featured-link/gc-featured-link-fr.html" lang="fr" hreflang="fr">Lien en vedette - Documentation et example pratique</a></li>
+								<li><a href="components/gc-featured-link/gc-featured-link-fr.html" lang="fr" hreflang="fr">Lien en vedette</a></li>
 								
 							
 							</ul>
@@ -721,9 +743,107 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Most requested - Documentation and working example
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Minister or institutional head
 				
-				<span class="label label-warning mrgn-lft-sm"><span class="wb-inv">State: </span>Provisional</span>
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>This component is for the minister or institutional head pattern on the institutional landing page.</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+					<a href="components/gc-minister/gc-minister-en.html" lang="en" hreflang="en"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="components/gc-minister/gc-minister-doc-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
+					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/gc-minister" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
+					<ul class="list-unstyled">
+					
+						
+						<li>Examples
+							<ul>
+							
+							
+								
+								<li><a href="components/gc-minister/gc-minister-en.html" >Minister or institutional head</a></li>
+								
+							
+								
+								<li><a href="components/gc-minister/gc-minister-fr.html" lang="fr" hreflang="fr">Ministre ou chef d’institution</a></li>
+								
+							
+								
+								<li><a href="components/gc-minister/gc-minister-two-ministers-en.html" >Minister or institutional head - two ministers example</a></li>
+								
+							
+								
+								<li><a href="components/gc-minister/gc-minister-two-ministers-fr.html" lang="fr" hreflang="fr">Ministre ou chef d'institution - exemple avec deux ministres</a></li>
+								
+							
+								
+								<li><a href="components/gc-minister/gc-minister-special-cases-en.html" >Minister or institutional head - special cases example</a></li>
+								
+							
+								
+								<li><a href="components/gc-minister/gc-minister-special-cases-fr.html" lang="fr" hreflang="fr">Ministre ou chef d'institution - cas particuliers</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Documentations
+							<ul>
+							
+							
+								
+								<li><a href="components/gc-minister/gc-minister-doc-en.html" >Minister or institutional head</a></li>
+								
+							
+								
+								<li><a href="components/gc-minister/gc-minister-doc-fr.html" lang="fr" hreflang="fr">Ministre ou chef d’institution</a></li>
+								
+							
+							</ul>
+						</li>
+					
+					</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Most requested
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
 				
 				</h3>
 				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
@@ -745,6 +865,12 @@
 					- Link to the documentations if any
 					-->
 					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="components/gc-most-requested/gc-most-requested-doc-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
 					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/gc-most-requested" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
 					</ul>
 					<!--
@@ -757,16 +883,40 @@
 					<ul class="list-unstyled">
 					
 						
+						<li>Documentations
+							<ul>
+							
+							
+								
+								<li><a href="components/gc-most-requested/gc-most-requested-doc-en.html" >Most requested - Documentation</a></li>
+								
+							
+								
+								<li><a href="components/gc-most-requested/gc-most-requested-doc-fr.html" lang="fr" hreflang="fr">En demande - Documentation</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
 						<li>Examples
 							<ul>
 							
 							
 								
-								<li><a href="components/gc-most-requested/gc-most-requested-en.html" >Most requested - Documentation and working example</a></li>
+								<li><a href="components/gc-most-requested/gc-most-requested-en.html" >Most requested</a></li>
 								
 							
 								
-								<li><a href="components/gc-most-requested/gc-most-requested-fr.html - Documentation et example pratique" lang="fr" hreflang="fr">En demande</a></li>
+								<li><a href="components/gc-most-requested/gc-most-requested-fr.html" lang="fr" hreflang="fr">En demande</a></li>
+								
+							
+								
+								<li><a href="components/gc-most-requested/gc-most-requested-bad-en.html" >Most requested - bad implementation</a></li>
+								
+							
+								
+								<li><a href="components/gc-most-requested/gc-most-requested-bad-fr.html" lang="fr" hreflang="fr">En demande - mauvaise implémentation</a></li>
 								
 							
 							</ul>
@@ -833,6 +983,22 @@
 							
 								
 								<li><a href="components/gc-servinfo/gc-srvinfo-examples.html" lang="fr" hreflang="fr">Services et information (en anglais seulement)</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Reports
+							<ul>
+							
+							
+								
+								<li><a href="components/gc-servinfo/reports/ally-1-en.html" >Accessibility assessment #1 - services and information</a></li>
+								
+							
+								
+								<li><a href="components/gc-servinfo/reports/ally-1-fr.html" lang="fr" hreflang="fr">Assessment d'accessibilité #1 - Services et information</a></li>
 								
 							
 							</ul>
@@ -1257,6 +1423,66 @@
 							
 								
 								<li><a href="components/header-rwd/well-header-rwd-fr.html" lang="fr" hreflang="fr">Entête well responsive</a></li>
+								
+							
+							</ul>
+						</li>
+					
+					</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Images
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Apply WET-BOEW simple styles or modify an image without use of editing software.</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+					<a href="components/images/images-en.html" lang="en" hreflang="en"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/components/images" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
+					<ul class="list-unstyled">
+					
+						
+						<li>Examples
+							<ul>
+							
+							
+								
+								<li><a href="components/images/images-en.html" >Images</a></li>
+								
+							
+								
+								<li><a href="components/images/images-fr.html" lang="fr" hreflang="fr">Images</a></li>
 								
 							
 							</ul>
@@ -2468,6 +2694,22 @@
 								</ul>
 							</li>
 						
+							
+							<li>Reports
+								<ul>
+								
+								
+									
+									<li><a href="templates/home/reports/pre-a11y-1-en.html" >Pre-accessibility assessment #1</a></li>
+									
+								
+									
+									<li><a href="templates/home/reports/pre-a11y-1-fr.html" lang="fr" hreflang="fr">Évaluation de pré-accessibilité #1</a></li>
+									
+								
+								</ul>
+							</li>
+						
 						</ul>
 					</details>
 				</div>
@@ -2677,13 +2919,19 @@
 					
 					<li>
 					
-					<a href="templates/institutional/institution-en.html" ><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					<a href="templates/institutional/institutional-landing-en.html" ><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
 					
 					
 					<!--
 					Documentation
 					- Link to the documentations if any
 					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="templates/institutional/institution-doc-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
 					
 					</ul>
 					<!--
@@ -2696,24 +2944,32 @@
 						<ul class="mrgn-tp-md">
 							
 							
+							<li>Documentations
+								<ul>
+								
+								
+									
+									<li><a href="templates/institutional/institution-doc-en.html" >Institutional profile</a></li>
+									
+								
+									
+									<li><a href="templates/institutional/institution-doc-fr.html" lang="fr" hreflang="fr">Profil institutionnel</a></li>
+									
+								
+								</ul>
+							</li>
+						
+							
 							<li>Examples
 								<ul>
 								
 								
 									
-									<li><a href="templates/institutional/institution-en.html" >[Institution Name]</a></li>
+									<li><a href="templates/institutional/institutional-landing-en.html" >Institutional landing page</a></li>
 									
 								
 									
-									<li><a href="templates/institutional/institution-fr.html" lang="fr" hreflang="fr">[Nom de l’institution]</a></li>
-									
-								
-									
-									<li><a href="templates/institutional/institution-landing-en.html" >[Institution Name] - landing page (provisional)</a></li>
-									
-								
-									
-									<li><a href="templates/institutional/institution-landing-fr.html" lang="fr" hreflang="fr">[Nom de l’institution] - Pages d'accueil (provisoire)</a></li>
+									<li><a href="templates/institutional/institutional-landing-fr.html" lang="fr" hreflang="fr">Page d'accueil institutionnelle</a></li>
 									
 								
 									
@@ -2730,30 +2986,6 @@
 								
 									
 									<li><a href="templates/institutional/institutional-service-performance-fr.html" lang="fr" hreflang="fr">Compte rendu du rendement des services de [Nom de l’institution] pour l’exercice financier de 2015 à 2016</a></li>
-									
-								
-									
-									<li><a href="templates/institutional/institution-arms-en.html" >arm’s length - [Institution Name]</a></li>
-									
-								
-									
-									<li><a href="templates/institutional/institution-arms-fr.html" lang="fr" hreflang="fr">organisme indépendamment - [Nom de l’institution]</a></li>
-									
-								
-								</ul>
-							</li>
-						
-							
-							<li>Related documents
-								<ul>
-								
-								
-									
-										<li><a href="https://wet-boew.github.io/themes-dist/theme-gcwu-fegc/institution-en.html">GCWU theme - English institution template</a></li>
-									
-								
-									
-										<li><a href="https://wet-boew.github.io/themes-dist/theme-gcwu-fegc/institution-fr.html">Thème FEGC - Français - Gabarit de profil institutionnel</a></li>
 									
 								
 								</ul>
@@ -3762,6 +3994,178 @@
 	<hr />
 	<h2 id="designPatterns" class="mrgn-bttm-lg pt-4">Design patterns</h2>
 	<ul class="row list-unstyled wb-eqht-grd wb-filter mrgn-tp-md pb-4" data-wb-filter='{ "selector": ">li" }'>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">About the institution pattern
+				
+				<span class="label label-default mrgn-lft-sm"><span class="wb-inv">State: </span>Undefined</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Section on an institutional landing page that provides links to corporate, program and policy information</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+					<a href="design-patterns/gc-institution/gc-institution-en.html" lang="en" hreflang="en"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="design-patterns/gc-institution/gc-institution-doc-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
+					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/design-patterns/gc-institution" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
+					<ul class="list-unstyled">
+					
+						
+						<li>Documentations
+							<ul>
+							
+							
+								
+								<li><a href="design-patterns/gc-institution/gc-institution-doc-en.html" >About the institution</a></li>
+								
+							
+								
+								<li><a href="design-patterns/gc-institution/gc-institution-doc-fr.html" lang="fr" hreflang="fr">À propos de l'institution</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Examples
+							<ul>
+							
+							
+								
+								<li><a href="design-patterns/gc-institution/gc-institution-en.html" >About the institution</a></li>
+								
+							
+								
+								<li><a href="design-patterns/gc-institution/gc-institution-fr.html" lang="fr" hreflang="fr">À propos de l'institution</a></li>
+								
+							
+							</ul>
+						</li>
+					
+					</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Introduction block - Documentation and working example
+				
+				<span class="label label-default mrgn-lft-sm"><span class="wb-inv">State: </span>Undefined</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Guidance about using the introduction block pattern on Canada.ca.</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+					<a href="design-patterns/gc-intro/gc-intro-en.html" lang="en" hreflang="en"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					
+						<li><a href="design-patterns/gc-intro/gc-intro-doc-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					
+					
+					<li><a href="https://github.com/wet-boew/GCWeb/tree/master/design-patterns/gc-intro" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
+					<ul class="list-unstyled">
+					
+						
+						<li>Documentations
+							<ul>
+							
+							
+								
+								<li><a href="design-patterns/gc-intro/gc-intro-doc-en.html" >Introduction block</a></li>
+								
+							
+								
+								<li><a href="design-patterns/gc-intro/gc-intro-doc-fr.html" lang="fr" hreflang="fr">Bloc d’introduction</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Examples
+							<ul>
+							
+							
+								
+								<li><a href="design-patterns/gc-intro/gc-intro-en.html" >Introduction block</a></li>
+								
+							
+								
+								<li><a href="design-patterns/gc-intro/gc-intro-fr.html" lang="fr" hreflang="fr">Bloc d’introduction</a></li>
+								
+							
+								
+								<li><a href="design-patterns/gc-intro/gc-intro-image-en.html" >Introduction block with image</a></li>
+								
+							
+								
+								<li><a href="design-patterns/gc-intro/gc-intro-image-fr.html" lang="fr" hreflang="fr">Bloc d’introduction avec image</a></li>
+								
+							
+							</ul>
+						</li>
+					
+					</ul>
+					</details>
+				</div>
+			</div>
+		</li>
 	
 	</ul>
 </div>
@@ -4814,6 +5218,30 @@
 								</ul>
 							</li>
 						
+							
+							<li>Reports
+								<ul>
+								
+								
+									
+									<li><a href="sites/page-details/reports/pre-a11y-1-en.html" >Accessibility (Only new SC WCAG 2.1/2.2 Level AA)- Page Details - English report</a></li>
+									
+								
+									
+									<li><a href="sites/page-details/reports/pre-a11y-1-fr.html" lang="fr" hreflang="fr">Accessibility (Only new SC WCAG 2.1/2.2 Level AA)- Page Details - French report</a></li>
+									
+								
+									
+									<li><a href="sites/page-details/reports/pre-a11y-basic-html-1-en.html" >Accessibility (Only new SC WCAG 2.1/2.2 Level AA)- Page Details (Basic Html version)- English report</a></li>
+									
+								
+									
+									<li><a href="sites/page-details/reports/pre-a11y-basic-html-1-fr.html" lang="fr" hreflang="fr">Accessibility (Only new SC WCAG 2.1/2.2 Level AA)- Page Details (Basic Html version)- French report</a></li>
+									
+								
+								</ul>
+							</li>
+						
 						</ul>
 					</details>
 				</div>
@@ -5016,16 +5444,15 @@
 					
 					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
 					
+					<li>
+					
+					<a href="sites/skiplinks/skiplinks-en.html" ><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
 					<!--
 					Documentation
 					- Link to the documentations if any
 					-->
-					
-					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
-					
-					
-						<li><a href="sites/skiplinks/skiplinks-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
-					
 					
 					</ul>
 					<!--
@@ -5038,7 +5465,7 @@
 						<ul class="mrgn-tp-md">
 							
 							
-							<li>Documentations
+							<li>Examples
 								<ul>
 								
 								
@@ -5048,6 +5475,22 @@
 								
 									
 									<li><a href="sites/skiplinks/skiplinks-fr.html" lang="fr" hreflang="fr">Liens de saut de page</a></li>
+									
+								
+								</ul>
+							</li>
+						
+							
+							<li>Reports
+								<ul>
+								
+								
+									
+									<li><a href="sites/skiplinks/reports/a11y-1-en.html" >Accessibility assessment #1 - Skip links</a></li>
+									
+								
+									
+									<li><a href="sites/skiplinks/reports/a11y-1-fr.html" lang="fr" hreflang="fr">Évaluation d'accessibilité #1 - Liens de saut de page</a></li>
 									
 								
 								</ul>
@@ -5117,6 +5560,22 @@
 								</ul>
 							</li>
 						
+							
+							<li>Reports
+								<ul>
+								
+								
+									
+									<li><a href="common/ajax-fetch/reports/pre-a11y-1-en.html" >Pre Accessibility assessment #1 - AJAX Fetch</a></li>
+									
+								
+									
+									<li><a href="common/ajax-fetch/reports/pre-a11y-1-fr.html" lang="fr" hreflang="fr">Assessment d'accessibilité préliminaire #1 - Récupération de ressource via Ajax</a></li>
+									
+								
+								</ul>
+							</li>
+						
 						</ul>
 					</details>
 				</div>
@@ -5171,6 +5630,22 @@
 								
 									
 									<li><a href="common/alert/alerts-fr.html" lang="fr" hreflang="fr">Alertes</a></li>
+									
+								
+								</ul>
+							</li>
+						
+							
+							<li>Reports
+								<ul>
+								
+								
+									
+									<li><a href="common/alert/reports/a11y-1-en.html" >Accessibility assessment #1 - Alert</a></li>
+									
+								
+									
+									<li><a href="common/alert/reports/a11y-1-fr.html" lang="fr" hreflang="fr">Évaluation de l'accessibilité #1 - Alert</a></li>
 									
 								
 								</ul>
@@ -5477,6 +5952,14 @@
 									<li><a href="common/scaffolding/formulaires.html" lang="fr" hreflang="fr">Formulaires</a></li>
 									
 								
+									
+									<li><a href="common/scaffolding/text-level-semantics.html" >Text level semantics</a></li>
+									
+								
+									
+									<li><a href="common/scaffolding/texte-niveau-semantique.html" lang="fr" hreflang="fr">Sémantique au niveau du texte</a></li>
+									
+								
 								</ul>
 							</li>
 						
@@ -5491,6 +5974,14 @@
 								
 									
 									<li><a href="common/scaffolding/reports/a11y-1-fr.html" lang="fr" hreflang="fr">Évaluation d'accessibilité #1 - Visibilité du focus</a></li>
+									
+								
+									
+									<li><a href="common/scaffolding/reports/ally-assess-1-en.html" >Text level semantics - Full Accessibility assessment</a></li>
+									
+								
+									
+									<li><a href="common/scaffolding/reports/ally-assess-1-fr.html" lang="fr" hreflang="fr">Texte de niveau sémantique - Évaluation d'accessibilité complète</a></li>
 									
 								
 								</ul>
@@ -5986,6 +6477,109 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Toggle
+				
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
+				
+				</h3>
+				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
+					<p>Create an element that toggles elements between on and off states.</p>
+					<!--
+					Main working example
+					- First working example in the example list where the language match
+					-->
+					
+					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
+					
+					<li>
+					
+						<a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/toggle/toggle-en.html" lang="en" hreflang="en"><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Working example</a>
+					
+					
+					<!--
+					Documentation
+					- Link to the documentations if any
+					-->
+					
+					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
+					
+					<!--
+					Documentation in GCWeb repo
+					-->
+					  
+					      
+						<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/toggle/toggle-en.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
+					       
+					   
+					
+					    <li><a href="https://github.com/wet-boew/GCWeb/tree/master/wet-boew/toggle" hreflang="en"><span class="fas fa-code small mrgn-rght-sm" aria-hidden="true"></span>Source code</a></li>
+					</ul>
+					<!--
+					> All examples and info
+					* Example
+					* Documentation
+					* Spec
+					-->
+					<details class="mrgn-tp-lg"><summary>All examples and info</summary>
+					<ul class="list-unstyled">
+					
+						
+						<li>Examples
+							<ul>
+							
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/toggle/toggle-en.html">Toggle</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/gcweb-compiled-demos/wetboew-demos/toggle/toggle-fr.html">Basculer</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Documentations
+							<ul>
+							
+							
+								
+									<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/toggle/toggle-en.html">Toggle</a></li>
+								
+							
+								
+									<li><a href="https://wet-boew.github.io/wet-boew/docs/ref/toggle/toggle-fr.html">Basculer</a></li>
+								
+							
+							</ul>
+						</li>
+					
+						
+						<li>Reports
+							<ul>
+							
+							
+								
+								<li><a href="wet-boew/toggle/reports/a11y-1-en.html" >Accessibility assessment #1 - toggle</a></li>
+								
+							
+								
+								<li><a href="wet-boew/toggle/reports/a11y-1-fr.html" lang="fr" hreflang="fr">Assessment d'accessibilité #1 - Basculer</a></li>
+								
+							
+							</ul>
+						</li>
+					
+					</ul>
+					</details>
+				</div>
+			</div>
+		</li>
+	
+		
+		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
+			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
 				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Data JSON
 				
 				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">State: </span>Stable</span>
@@ -6227,7 +6821,7 @@
 
 			</div><div class="col-xs-12"><dl id="wb-dtmd">
 	<dt>Date modified:</dt>
-	<dd><time property="dateModified">2024-02-14</time></dd>
+	<dd><time property="dateModified">2024-03-05</time></dd>
 </dl>
 </div>
 	</div>
@@ -6280,14 +6874,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-pr2322/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-pr2322/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/ilp-template/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/ilp-template/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
