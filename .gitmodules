@@ -10,3 +10,7 @@
 	path = ilp-template
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = ilp-template
+[submodule "twitter-timeline"]
+	path = twitter-timeline
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = twitter-timeline
