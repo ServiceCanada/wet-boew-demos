@@ -8,6 +8,17 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="dist/GCWeb/css/theme.css" />
 	<link href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" class="wb-init wb-favicon-inited">
+
+	<style>
+		.list-group-item:has(.wb-filter) fieldset {
+			margin: 10px -15px 0;
+			max-height: 200px;
+			overflow: auto;
+			padding-left: 15px;
+			padding-right: 5px;
+			padding-top: 0;
+		}
+	</style>
 </head>
 
 <body vocab="http://schema.org/" typeof="WebPage" resource="#wb-webpage">
@@ -207,7 +218,7 @@
 
 					<div class="list-group">
 						<div class="list-group-item p-0">
-							<button type="button" class="btn btn-link btn-block" style="text-align:left;" aria-controls="newsTypeList" data-wb-doaction='{
+							<button type="button" class="btn btn-link btn-block" style="text-align:left;" aria-controls="newsTypeList" data-toggle='{
 								"action": "toggleClass",
 								"class": "hide",
 								"source": ".news-type-tggl"
@@ -260,9 +271,9 @@
 										<label for="newsInstitutionSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter institutions: results appear below as you type.</span></label>
 									</div>
 								</div>
-								<fieldset class="p-0" data-path="/institutions" data-template-object='[]'>
+								<fieldset data-path="/institutions" data-template-object='[]'>
 									<legend class="wb-inv">Institution</legend>
-									<ul class="list-unstyled mrgn-bttm-0 mrgn-tp-md">
+									<ul class="list-unstyled mrgn-bttm-0">
 										<li class="checkbox">
 											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsInstitution" id="newsInstitution1" value="aboriginal-business-canada">Aboriginal Business Canada</label>
 										</li>
@@ -791,9 +802,9 @@
 										<label for="newsSubjectSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter subjects: results appear below as you type.</span></label>
 									</div>
 								</div>
-								<fieldset class="p-0" data-path="/subjects" data-template-object='[]'>
+								<fieldset data-path="/subjects" data-template-object='[]'>
 									<legend class="wb-inv">Subject</legend>
-									<ul class="list-unstyled mrgn-bttm-0 mrgn-tp-md">
+									<ul class="list-unstyled mrgn-bttm-0">
 										<li class="checkbox">
 											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsSubject" id="newsSubject1" value="aa-arts-music-literature">AA Arts, Music, Literature</label>
 										</li>
@@ -875,9 +886,9 @@
 										<label for="newsMinisterSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter ministers: results appear below as you type.</span></label>
 									</div>
 								</div>
-								<fieldset class="p-0" data-path="/ministers" data-template-object='[]'>
+								<fieldset data-path="/ministers" data-template-object='[]'>
 									<legend class="wb-inv">Minister</legend>
-									<ul class="list-unstyled mrgn-bttm-0 mrgn-tp-md">
+									<ul class="list-unstyled mrgn-bttm-0">
 										<li class="checkbox">
 											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsMinister" id="newsMinister1" value="hon-ahmed-d-hussen">Hon. Ahmed D. Hussen</label>
 										</li>
@@ -1019,9 +1030,9 @@
 										<label for="newsAudienceSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter audiences: results appear below as you type.</span></label>
 									</div>
 								</div>
-								<fieldset class="p-0" data-path="/audiences" data-template-object='[]'>
+								<fieldset data-path="/audiences" data-template-object='[]'>
 									<legend class="wb-inv">Audience</legend>
-									<ul class="list-unstyled mrgn-bttm-0 mrgn-tp-md">
+									<ul class="list-unstyled mrgn-bttm-0">
 										<li class="checkbox">
 											<label><input type="checkbox" class="wb-tagfilter-ctrl" data-path="/-" name="newsAudience" id="newsAudience1" value="aboriginal-peoples">Aboriginal peoples</label>
 										</li>
