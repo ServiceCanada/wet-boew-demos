@@ -12,12 +12,12 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2024-04-04 13:07:23 +0000"/>
+<meta name="dcterms.issued" content="2024-05-24 18:57:21 +0000"/>
 <meta name="dcterms.modified" content="2015-03-09"/>
 
-<link href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="demo/data-ajax" />
+<link href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2371/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="demo/data-ajax" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +31,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -99,7 +99,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/ilp-template/index-fr.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2371/index-fr.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -395,14 +395,77 @@
 	&lt;p&gt;J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax.&lt;/p&gt;
 &lt;/section&gt;
 
-&lt;section class=&quot;ajaxed-in filter-selector&quot;&gt;
+&lt;section class=&quot;filter-selector&quot;&gt;&div class="ajaxed-in">
 	&lt;h4&gt;J'ai été affiché via Ajax et après filtrer par selecteur&lt;/h4&gt;
 	&lt;p&gt;J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax.&lt;/p&gt;
+&lt;!-- Pour illustrer le retrait de contenu par selecteur -->
+&lt;ul class="filter-out-selector">
+	&lt;li>Item 1&lt;/li>
+	&lt;li>Item 2&lt;/li>
+	&lt;li>Item 3&lt;/li>
+&lt;/ul>
+&lt;/div>
 &lt;/section&gt;</code></pre>
 			</section>
 		</details>
 	</section>
 </section>
+
+<section>
+	<h2>Retirer du contenu via un sélecteur</h2>
+	<section>
+		<h3>Retrait d'un élément</h3>
+		<p>Attribut data ajax: <code>data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector)"</code></p>
+		<div data-ajax-replace="ajax/data-ajax-filter-fr.html .filter-selector > div > *:not(.filter-out-selector)" class="original">
+			<p>Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte.</p>
+		</div>
+	</section>
+	<section>
+		<h3>Retrait de plusieurs éléments</h3>
+		<p>Attribut data ajax: <code>data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector, p)"</code></p>
+		<div data-ajax-replace="ajax/data-ajax-filter-fr.html .filter-selector > div > *:not(.filter-out-selector, p)" class="original">
+			<p>Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte.</p>
+		</div>
+	</section>
+	<section>
+		<h3>Retrait d'un élément et encoder le rendement</h3>
+		<p>Attribut data ajax: <code>data-wb-ajax='{ "encode": true, "url": "ajax/data-ajax-filter-fr.html .filter-selector > div > *:not(.filter-out-selector)", "type": "replace" }'</code></p>
+		<pre><code data-wb-ajax='{ "encode": true, "url": "ajax/data-ajax-filter-fr.html .filter-selector > div > *:not(.filter-out-selector)", "type": "replace" }'>Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte.</code></pre>
+	</section>
+	<section>
+		<h3>Code source</h3>
+		<details>
+			<summary>Visualiser le code</summary>
+			<p>Retrait d'un élément, HTML dans la page</p>
+			<pre><code>&lt;div data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *<strong>:not(.filter-out-selector)</strong>" class="original"&gt;
+	&lt;p&gt;Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+			<p>Retrait de plusieurs éléments, HTML dans la page</p>
+			<pre><code>&lt;div data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *<strong>:not(.filter-out-selector, p)</strong>" class="original"&gt;
+	&lt;p&gt;Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+			<p>Retrait d'un élément et encoder le rendement</p>
+			<pre><code>&lt;pre>&lt;code data-wb-ajax='{ "encode": true, "url": "ajax/data-ajax-filter-fr.html .filter-selector > div > *:not(.filter-out-selector)", "type": "replace" }'>Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte. Exemple de texte.&lt;/code>&lt;/pre></code></pre>
+			<p>data-ajax-filter-fr.html</p>
+			<pre><code>&lt;section id=&quot;filter-id&quot; class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;J'ai été affiché via Ajax et après filtrer par le &amp;#171;&amp;#160;hash&amp;#160;&amp;#187; de l'URL&lt;/h4&gt;
+	&lt;p&gt;J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section class=&quot;filter-selector&quot;&gt;&lt;div class="ajaxed-in">
+	&lt;h4&gt;J'ai été affiché via Ajax et après filtrer par selecteur&lt;/h4&gt;
+	&lt;p&gt;J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax. J'ai été affiché via Ajax.&lt;/p&gt;
+	&lt;!-- Pour illustrer le retrait de contenu par selecteur -->
+	&lt;ul class="filter-out-selector">
+		&lt;li>Item 1&lt;/li>
+		&lt;li>Item 2&lt;/li>
+		&lt;li>Item 3&lt;/li>
+	&lt;/ul>
+&lt;/div&gt;&lt;/section></code></pre>
+		</details>
+	</section>
+</section>
+
 <section>
 	<h2>Syntaxe alternative</h2>
 	<p>Veuillez consulter la <a href="../../docs/ref/data-ajax/data-ajax-fr.html">documentation</a> pour de plus ample renseignement concernant cette syntaxe alternative.</p>
@@ -543,14 +606,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/ilp-template/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/ilp-template/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2371/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

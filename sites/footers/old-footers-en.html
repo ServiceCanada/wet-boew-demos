@@ -13,11 +13,11 @@
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2022-11-14"/>
+<meta name="dcterms.modified" content="2023-12-04"/>
 
-<link href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2371/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -112,14 +112,14 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/ilp-template/index-en.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2371/index-en.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
 							</li>
 							
 						<li property="itemListElement" typeof="ListItem">
-							<a property="item" typeof="WebPage" href="/wet-boew-demos/ilp-template/sites/footers/footers-en.html">
+							<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2371/sites/footers/footers-en.html">
 								<span property="name">Footer</span>
 							</a>
 							<meta property="position" content="3">
@@ -134,6 +134,79 @@
 
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Previous footer versions</h1>
 <div class="wb-prettify all-pre hide"></div>
+
+<h2>Version 6.0</h2>
+<ul>
+	<li>Changed the “Veterans and military” URL.</li>
+</ul>
+<p>Working example: <a href="deprecated/footers-v6-en.html">Footer version 6.0</a></p>
+<details>
+	<summary>Expected output code</summary>
+	<pre><code>&lt;footer id="wb-info">
+	&lt;h2 class="wb-inv">About this site&lt;/h2>
+	&lt;div class="gc-contextual">
+		&lt;div class="container">
+			&lt;nav>
+				&lt;h3>[Contextual footer header]&lt;/h3>
+				&lt;ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+					&lt;li>&lt;a href="http://canada.ca/en">Contextual link 1&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="http://canada.ca/en">Contextual link 2&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="http://canada.ca/en">Contextual link 3&lt;/a>&lt;/li>
+				&lt;/ul>
+			&lt;/nav>
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="gc-main-footer">
+		&lt;div class="container">
+			&lt;nav>
+				&lt;h3>Government of Canada&lt;/h3>
+				&lt;ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+					&lt;li>&lt;a href="https://www.canada.ca/en/contact.html">All contacts&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/government/dept.html">Departments and agencies&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/government/system.html">About government&lt;/a>&lt;/li>
+				&lt;/ul>
+				&lt;h4>&lt;span class="wb-inv">Themes and topics&lt;/span>&lt;/h4>
+				&lt;ul class="list-unstyled colcount-sm-2 colcount-md-3">
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/jobs.html">Jobs&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://travel.gc.ca/">Travel and tourism&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/business.html">Business&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/benefits.html">Benefits&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/health.html">Health&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/taxes.html">Taxes&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/environment.html">Environment and natural resources&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/defence.html">National security and defence&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/finance.html">Money and finance&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/science.html">Science and innovation&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/veterans-military.html">Veterans and military&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/services/youth.html">Youth&lt;/a>&lt;/li>
+				&lt;/ul>
+			&lt;/nav>
+		&lt;/div>
+	&lt;/div>
+	&lt;div class="gc-sub-footer">
+		&lt;div class="container d-flex align-items-center">
+			&lt;nav>
+				&lt;h3 class="wb-inv">Government of Canada Corporate&lt;/h3>
+				&lt;ul>
+					&lt;li>&lt;a href="https://www.canada.ca/en/social.html">Social media&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/mobile.html">Mobile applications&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/government/about.html">About Canada.ca&lt;/a>&lt;/li>&lt;li>&lt;a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions&lt;/a>&lt;/li>
+					&lt;li>&lt;a href="https://www.canada.ca/en/transparency/privacy.html">Privacy&lt;/a>&lt;/li>
+				&lt;/ul>
+			&lt;/nav>
+			&lt;div class="wtrmrk align-self-end">
+				&lt;img src="/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+			&lt;/div>
+		&lt;/div>
+	&lt;/div>
+&lt;/footer></code></pre>
+</details>
 
 <h2>Version 5.0 (deprecated)</h2>
 <ul>
@@ -497,7 +570,7 @@
 
 	<div class="row"><div class="wb-share col-sm-4 col-md-3 col-sm-push-8 col-md-push-9" data-wb-share='{"lnkClass": "btn btn-default btn-block"}'></div><div class="col-sm-6 col-md-5 col-lg-4 col-sm-pull-4 col-md-pull-3"><dl id="wb-dtmd">
 	<dt>Date modified:</dt>
-	<dd><time property="dateModified">2022-11-14</time></dd>
+	<dd><time property="dateModified">2023-12-04</time></dd>
 </dl>
 </div>
 	</div>
@@ -528,7 +601,7 @@
 					<li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
 					<li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
 					<li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
-					<li><a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+					<li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
 					<li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
 					<li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
 					<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
@@ -549,14 +622,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/ilp-template/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/ilp-template/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2371/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

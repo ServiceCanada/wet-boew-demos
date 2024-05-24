@@ -15,9 +15,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2024-02-14"/>
 
-<link href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2371/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -112,7 +112,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/ilp-template/index-fr.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2371/index-fr.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -326,6 +326,13 @@
 					"assess": "/status",
 					"expect": "deprecated",
 					"mapping": null
+				},
+				{
+					"template": "[data-status-demoted]",
+					"test": "fn:getValue",
+					"assess": "/status",
+					"expect": "demoted",
+					"mapping": null
 				}
 			]
 		},
@@ -386,6 +393,19 @@
 									"mapping": [
 										{ "selector": "li",	"value": "/", "isHTML": true }
 									]
+								}
+							]
+						},
+
+						{
+							"template": "[data-ajax-source-code]",
+							"test": "fn:isLiteral",
+							"assess": "/ajaxSourceCode/fr",
+							"mapping": [
+								{
+									"selector": "code",
+									"value": "/ajaxSourceCode/fr",
+									"attr": "data-ajax-append"
 								}
 							]
 						},
@@ -535,16 +555,19 @@
 		<h3>
 			<span data-name>[[ Name of the variation ]]</span>
 			<template data-status-stable>
-				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">Status: </span>Stable</span>
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">Statut: </span>Stable</span>
 			</template>
 			<template data-status-tobereviewed>
-				<span class="label label-info mrgn-lft-sm"><span class="wb-inv">Status: </span>To be reviewed</span>
+				<span class="label label-info mrgn-lft-sm"><span class="wb-inv">Statut: </span>A vérifier</span>
 			</template>
 			<template data-status-provisional>
-				<span class="label label-warning mrgn-lft-sm"><span class="wb-inv">Status: </span>Provisional</span>
+				<span class="label label-warning mrgn-lft-sm"><span class="wb-inv">Statut: </span>Provisoire</span>
 			</template>
 			<template data-status-deprecated>
-				<span class="label label-default mrgn-lft-sm"><span class="wb-inv">Status: </span>Deprecated</span>
+				<span class="label label-default mrgn-lft-sm"><span class="wb-inv">Statut: </span>Obsolète</span>
+			</template>
+			<template data-status-demoted>
+				<span class="label label-default mrgn-lft-sm"><span class="wb-inv">Statut: </span>Rétrogradé</span>
 			</template>
 		</h3>
 
@@ -587,6 +610,10 @@
 										<li>Instruction</li>
 									</template>
 								</ul>
+							</template>
+
+							<template data-ajax-source-code>
+								<pre><code data-wb-ajax='{ "encode": true }'></code></pre>
 							</template>
 
 							<template data-notes>
@@ -1535,6 +1562,45 @@
 				}
 
 			]
+		},
+
+		{
+			"about": "/test",
+			"dd14": "Testing files",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-test-none]",
+					"test": "fn:guessType",
+					"value": "/test",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-test-description]",
+					"test": "fn:guessType",
+					"value": "/test",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/" }
+					]
+				},
+				{
+					"template": "[data-test-list]",
+					"test": "fn:guessType",
+					"value": "/test",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value", "isHTML": true }
+							]
+						}
+					]
+				}
+
+			]
 		}
 
 
@@ -1959,6 +2025,26 @@
 				</dd>
 			</template>
 
+			<!-- Testing files -->
+			<template data-test-none>
+				<dt>Testing files:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-test-description>
+				<dt>Testing files:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-test-list>
+				<dt>Testing files:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
+
 			<dt>Based on <span class="nowrap">iteration</span></dt>
 			<dd data-iteration>_:iteration_xyz</dd>
 		</dl>
@@ -2215,14 +2301,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/ilp-template/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/ilp-template/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2371/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

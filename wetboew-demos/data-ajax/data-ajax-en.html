@@ -12,12 +12,12 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2024-04-04 13:07:23 +0000"/>
+<meta name="dcterms.issued" content="2024-05-24 18:57:21 +0000"/>
 <meta name="dcterms.modified" content="2015-03-09"/>
 
-<link href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/ilp-template/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="demo/data-ajax" />
+<link href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-pr2371/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="demo/data-ajax" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +31,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -99,7 +99,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/ilp-template/index-en.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-pr2371/index-en.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -341,7 +341,7 @@
 </section>
 
 <section>
-	<h2>Filtering the content by the URL hash (<code>ajax/data-ajax-extra-en.html#filter-id</code>, v4.0.12+)</h2>
+	<h2>Filtering the content by the URL hash (<code>ajax/data-ajax-filter-en.html#filter-id</code>, v4.0.12+)</h2>
 	<section>
 		<h3>Example</h3>
 		<div data-ajax-append="ajax/data-ajax-filter-en.html#filter-id" class="original">
@@ -374,7 +374,7 @@
 </section>
 
 <section>
-	<h2>Filtering the content by a selector (<code>ajax/data-ajax-extra-en.html .filter-selector</code>, v4.0.12+)</h2>
+	<h2>Filtering the content by a selector (<code>ajax/data-ajax-filter-en.html .filter-selector</code>, v4.0.12+)</h2>
 	<section>
 		<h3>Example</h3>
 		<div data-ajax-append="ajax/data-ajax-filter-en.html .filter-selector" class="original">
@@ -396,12 +396,74 @@
 	&lt;p&gt;I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in.&lt;/p&gt;
 &lt;/section&gt;
 
-&lt;section class=&quot;ajaxed-in filter-selector&quot;&gt;
+&lt;section class=&quot;filter-selector&quot;&gt;&lt;div class="ajaxed-in">
 	&lt;h4&gt;I was ajaxed in and filtered by a selector&lt;/h4&gt;
 	&lt;p&gt;I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in.&lt;/p&gt;
+&lt;!-- to illustrate filter out -->
+&lt;ul class="filter-out-selector">
+	&lt;li>Item 1&lt;/li>
+	&lt;li>Item 2&lt;/li>
+	&lt;li>Item 3&lt;/li>
+&lt;/ul>
+&lt;/div>
 &lt;/section&gt;
 </code></pre>
 			</section>
+		</details>
+	</section>
+</section>
+
+<section>
+	<h2>Filtering out the content by a selector </h2>
+	<section>
+		<h3>Removing one element</h3>
+		<p>Data ajax attribute: <code>data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector)"</code></p>
+		<div data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector)" class="original">
+			<p>Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.</p>
+		</div>
+	</section>
+	<section>
+		<h3>Removing multiple elements</h3>
+		<p>Data ajax attribute: <code>data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector, p)</code></p>
+		<div data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector, p)" class="original">
+			<p>Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.</p>
+		</div>
+	</section>
+	<section>
+		<h3>Removing an element and encoding the output</h3>
+		<p>Data ajax attribute: <code>data-wb-ajax='{ "encode": true, "url": "ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector)", "type": "replace" }'</code></p>
+		<pre><code data-wb-ajax='{ "encode": true, "url": "ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector)", "type": "replace" }'>Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.</code></pre>
+	</section>
+	<section>
+		<h3>Source code</h3>
+		<details>
+			<summary>View code</summary>
+			<p>Filering out one element, in-page HTML</p>
+			<pre><code>&lt;div data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *<strong>:not(.filter-out-selector)</strong>" class="original"&gt;
+	&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+			<p>Filering out multiple elements, in-page HTML</p>
+			<pre><code>&lt;div data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *<strong>:not(.filter-out-selector, p)</strong>" class="original"&gt;
+	&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+			<p>Filering out one element and encoding the output</p>
+			<pre><code>&lt;pre>&lt;code data-wb-ajax='{ "encode": true, "url": "ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector)", "type": "replace" }'>Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/code>&lt;/pre></code></pre>
+			<p>data-ajax-filter-en.html</p>
+			<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
+	&lt;h4&gt;I was ajaxed in and filtered by the URL hash&lt;/h4&gt;
+	&lt;p&gt;I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in.&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;section class=&quot;filter-selector&quot;&gt;&lt;div class="ajaxed-in">
+&lt;h4&gt;I was ajaxed in and filtered by a selector&lt;/h4&gt;
+&lt;p&gt;I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in. I was ajaxed in.&lt;/p&gt;
+&lt;!-- to illustrate filter out -->
+&lt;ul class="filter-out-selector">
+	&lt;li>Item 1&lt;/li>
+	&lt;li>Item 2&lt;/li>
+	&lt;li>Item 3&lt;/li>
+&lt;/ul>
+&lt;/div&gt;&lt;/section></code></pre>
 		</details>
 	</section>
 </section>
@@ -524,7 +586,7 @@
 					<li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
 					<li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
 					<li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
-					<li><a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+					<li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
 					<li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
 					<li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
 					<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
@@ -545,14 +607,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/ilp-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/ilp-template/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/ilp-template/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2371/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcweb-pr2371/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
