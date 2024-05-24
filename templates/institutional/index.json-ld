@@ -14,7 +14,7 @@
 		"en": "Institutional profile templates",
 		"fr": "Gabarit à propos de page de profil institutionel"
 	},
-	"modified": "2021-05-17",
+	"modified": "2024-03-30",
 	"componentName": "institutional",
 	"status": "stable",
 	"version": "1.0.0",
@@ -52,7 +52,6 @@
 			}
 		],
 		"related": [
-
 			{
 				"title": "GCWU theme - English institution template",
 				"language": "en",
@@ -63,7 +62,6 @@
 				"language": "fr",
 				"url": "https://wet-boew.github.io/themes-dist/theme-gcwu-fegc/institution-fr.html"
 			}
-
 		]
 	}
 }

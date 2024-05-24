@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.7.0 - 2024-04-04
+ * v15.1.0 - 2024-05-24
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -144,6 +144,47 @@ var $document = wb.doc,
 		contrastRatio = ( Math.max( luminance1, luminance2 ) + 0.05 ) / ( Math.min( luminance1, luminance2 ) + 0.05 );
 
 		return contrastRatio.toFixed( 2 );
+	};
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, window, wb );
+
+( function( $, window, wb ) {
+"use strict";
+
+var $document = wb.doc,
+	componentName = "followus",
+	selector = "." + componentName,
+	initEvent = "wb-init " + selector,
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector );
+
+		if ( elm && event.currentTarget === event.target ) {
+
+			var twitterElm = elm.querySelector( ".twitter .wb-inv" );
+
+			// Replacing "Twitter" with "X"
+			if ( twitterElm ) {
+				twitterElm.innerHTML = twitterElm.innerHTML.replace( "Twitter", "X" );
+			}
+
+			// Identify that initialization has completed
+			wb.ready( $( elm ), componentName );
+		}
 	};
 
 // Bind the init event of the plugin
@@ -2381,7 +2422,7 @@ var componentName = "wb-fieldflow",
 			} else {
 
 				// We have a group of sub-items, the cur_itm are a group
-				selectOut += "<optgroup label='" + cur_itm.label + "'>";
+				selectOut += "<optgroup label='" + wb.escapeAttribute( stripHtml( cur_itm.label ) ) + "'>";
 				j_len = cur_itm.group.length;
 				for ( j = 0; j !== j_len; j += 1 ) {
 					selectOut += buildSelectOption( cur_itm.group[ j ] );
@@ -2524,7 +2565,7 @@ var componentName = "wb-fieldflow",
 		var arrItems = $items.get(),
 			i, i_len = arrItems.length, itmCached,
 			itmLabel, itmValue, grpItem,
-			j, j_len, childNodes, firstNode, childNode, $childNode, childNodeID,
+			j, j_len, childNodes, firstNode, firstElmNode, childNode, $childNode, childNodeID,
 			parsedItms = [],
 			actions;
 
@@ -2536,6 +2577,7 @@ var componentName = "wb-fieldflow",
 			itmLabel = "";
 
 			firstNode = itmCached.firstChild;
+			firstElmNode = itmCached.firstElementChild;
 			childNodes = itmCached.childNodes;
 			j_len = childNodes.length;
 
@@ -2545,10 +2587,10 @@ var componentName = "wb-fieldflow",
 
 			actions = [];
 
-			// Is firstNode an anchor?
-			if ( firstNode.nodeName === "A" ) {
-				itmValue = firstNode.getAttribute( "href" );
-				itmLabel = $( firstNode ).html().trim();
+			// Is firstElmNode an anchor?
+			if ( firstElmNode && firstElmNode.nodeName === "A" ) {
+				itmValue = firstElmNode.getAttribute( "href" );
+				itmLabel = $( firstElmNode ).html().trim();
 				j_len = 1; // Force following elements to be ignored
 
 				actions.push( {
@@ -4131,3 +4173,9 @@ $document.on( "timerpoke.wb " + initEvent, selector, init );
 wb.add( selector );
 
 } )( jQuery, wb );
+
+// If GC-ministers, GC-institution, and Services & information are present and the page doesn't already have "page-type-ilp" class
+if ( document.querySelector( ".gc-minister" ) && !document.body.classList.contains( "page-type-ilp" ) && document.querySelector( ".gc-srvinfo" ) && document.querySelector( ".list-unstyled.bold-content.mrgn-tp-lg.lst-spcd-2.colcount-md-2" ) ) {
+	document.body.classList.add( "page-type-ilp" );
+	console.warn( "It seems that this page is an institutional landing page. However, the <body> element is missing the \"page-type-ilp\" CSS class. It has been added for your convenience, but please make sure you follow the technical guidance: https://wet-boew.github.io/GCWeb/templates/institutional-landing/institutional-landing-doc-en.html" );
+}
