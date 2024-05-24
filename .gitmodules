@@ -14,3 +14,7 @@
 	path = twitter-timeline
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = twitter-timeline
+[submodule "gcweb-pr2371"]
+	path = gcweb-pr2371
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gcweb-pr2371
