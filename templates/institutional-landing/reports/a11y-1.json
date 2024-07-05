@@ -374,7 +374,7 @@
       "earl:mode": "earl:manual",
       "acr:severity": "acr:moderate",
       "acr:relevancy": "acr:sufficient",
-      "dct:description": "This stretched link example:\n\n<div class=\"well well-sm brdr-rds-0 eqht-trgt\" style=\"vertical-align: top; min-height: 325px;\">\n\t<img class=\"img-responsive full-width\" src=\"https://via.placeholder.com/360x203/000000/FFFFFF.png\" alt=\"\">\n\t<h3 class=\"h5\"><a class=\"stretched-link\" href=\"#\">[Feature hyperlink text]</a></h3>\n\t<p>Brief description of the feature being promoted.</p>\n</div>\nPasses but may be confusing on small mobile screens when scrolling.\n\n",
+      "dct:description": "This stretched link example:\n\n<div class=\"well well-sm brdr-rds-0 eqht-trgt\" style=\"vertical-align: top; min-height: 325px;\">\n\t<img class=\"img-responsive full-width\" src=\"https://dummyimage.com/360x203/000000/FFFFFF.png\" alt=\"\">\n\t<h3 class=\"h5\"><a class=\"stretched-link\" href=\"#\">[Feature hyperlink text]</a></h3>\n\t<p>Brief description of the feature being promoted.</p>\n</div>\nPasses but may be confusing on small mobile screens when scrolling.\n\n",
       "earl:outcome": "earl:passed",
       "selected": ""
     },
