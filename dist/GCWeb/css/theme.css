@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.2.0 - 2024-06-20
+ * v15.3.0 - 2024-07-05
  *
  */
 /*
@@ -11501,7 +11501,8 @@ main .gc-rms-lngth img {
 	 */
 	/* Dark theme
 	 */
-	/* Theme/topic decorative image */ }
+	/* Theme/topic decorative image */
+	/* Contributors */ }
 	.provisional .bg-pnkDy {
 		background-color: #AD005F; }
 		.provisional .bg-pnkDy.well.header-rwd {
@@ -11577,6 +11578,18 @@ main .gc-rms-lngth img {
 		min-height: 200px;
 		overflow: hidden;
 		width: calc(50vw - 15px); }
+	.provisional.gc-contributors {
+		margin-top: 38px; }
+		.provisional.gc-contributors h2, .provisional.gc-contributors ul {
+			display: inline;
+			font-size: 87%;
+			margin-top: 0; }
+		.provisional.gc-contributors ul {
+			padding-inline-start: 0; }
+			.provisional.gc-contributors ul li {
+				display: inline-block;
+				font-weight: 700;
+				margin-right: .7em; }
 
 .gc-dwnld .gc-dwnld-txt {
 	text-decoration: underline; }
@@ -11669,17 +11682,6 @@ main .gc-rms-lngth img {
 	border-right: 5px solid transparent;
 	height: 0;
 	width: 0; }
-
-/* Contributors */
-.gc-contributors {
-	margin-top: 38px; }
-	.gc-contributors h2, .gc-contributors ul {
-		font-size: 87%;
-		margin-top: 0; }
-	.gc-contributors ul {
-		padding-inline-start: 20px; }
-		.gc-contributors ul li {
-			font-weight: 700; }
 
 /*
  Social Media Icons, follow-us
@@ -12206,11 +12208,6 @@ aside.features {
 	.gc-prtts a p:last-child,
 	.gc-nttvs a p:last-child {
 		color: black; }
-
-/* REMOVE ONCE IMPLEMENTED IN WET-BOEW */
-.bg-half-width-right {
-	background-position: 100% center;
-	background-size: 50%; }
 
 /*
  *
@@ -14514,6 +14511,21 @@ Miscellaneous Utiliy CSS
 	.home .home-your-gov {
 		background-image: none; }
 	/*
+  WET-BOEW
+  @title: Small view and under (screen only)
+  @desc:  Variable $screen-sm-max <= 991 px
+ */
+	/* PROVISIONAL features */
+	.provisional {
+		/* Contributors */ }
+		.provisional.gc-contributors h2, .provisional.gc-contributors ul {
+			display: block; }
+		.provisional.gc-contributors ul {
+			padding-inline-start: 20px; }
+			.provisional.gc-contributors ul li {
+				display: list-item;
+				margin-right: 0; }
+	/*
 * Institutional landing page template
 */
 	.page-type-ilp .gc-followus {
@@ -14824,23 +14836,6 @@ Miscellaneous Utiliy CSS
  Social Media Icons Medium View and over
 */
 	/*
-  WET-BOEW
-  @title: Medium view and over (screen only)
-  @desc:  Variable $screen-md-min >= 992px
-*/
-	.gc-contributors h2, .gc-contributors ul {
-		display: inline; }
-	.gc-contributors ul {
-		padding-inline-start: 0; }
-		.gc-contributors ul li {
-			display: inline-block;
-			margin-right: .5em; }
-			.gc-contributors ul li::before {
-				content: "\2022";
-				margin-right: .7em; }
-			.gc-contributors ul li:first-child::before {
-				content: none; }
-	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
@@ -14900,12 +14895,28 @@ Miscellaneous Utiliy CSS
 	div:not(.container) .gc-most-requested ul {
 		display: flex;
 		flex-wrap: wrap;
-		list-style-position: inside;
-		padding-left: 1.3em; }
+		padding-left: 2.5em; }
 		main:not(.container) .gc-most-requested ul li,
 		div:not(.container) .gc-most-requested ul li {
 			flex-basis: 50%;
-			font-size: 87%; }
+			font-size: 87%;
+			padding-right: 1.3em; }
+	/*
+  WET-BOEW
+  @title: Medium view and over (screen only)
+  @desc:  Variable $screen-md-min >= 992px
+ */
+	/* PROVISIONAL features */
+	.provisional {
+		/* Contributors */
+		/* Follow us */ }
+		.provisional.gc-contributors ul li:first-child:before {
+			content: none; }
+		.provisional.gc-contributors ul li:before {
+			content: "\2022";
+			margin-right: .7em; }
+		.provisional.gc-followus h2 {
+			margin-top: 0 !important; }
 	/*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
