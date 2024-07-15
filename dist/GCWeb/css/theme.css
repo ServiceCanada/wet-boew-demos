@@ -11757,6 +11757,10 @@ main .gc-rms-lngth img {
 			margin-top: 34px; }
 		.gc-followus ul li:last-child {
 			margin-bottom: 15px; }
+		.gc-followus ul li.more-ways {
+			display: block; }
+			.gc-followus ul li.more-ways a {
+				text-decoration: underline; }
 		.gc-followus ul li a {
 			display: flex;
 			line-height: 1.54;
@@ -11784,8 +11788,6 @@ main .gc-rms-lngth img {
 				.gc-followus ul.list-inline li:not(.more-ways) a:hover, .gc-followus ul.list-inline li:not(.more-ways) a:focus, .gc-followus ul.list-inline li:not(.more-ways) a:active {
 					outline: solid 2px #0535d2;
 					outline-offset: 1px; }
-		.gc-followus ul.list-inline .more-ways {
-			display: block; }
 	.gc-followus ul .facebook::before {
 		background-image: url("../assets/gc-follow-us/facebook.svg"); }
 	.gc-followus ul .twitter::before {
