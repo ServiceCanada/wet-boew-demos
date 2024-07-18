@@ -22,3 +22,7 @@
 	path = topic-template-demo
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = topic-template-demo
+[submodule "theme-template"]
+	path = theme-template
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = theme-template
