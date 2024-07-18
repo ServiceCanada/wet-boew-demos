@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.3.0 - 2024-07-15
+ * v15.3.0 - 2024-07-18
  *
  */
 /*
@@ -11501,7 +11501,8 @@ main .gc-rms-lngth img {
 	 */
 	/* Dark theme
 	 */
-	/* Theme/topic decorative image */ }
+	/* Theme/topic decorative image */
+	/* Contributors */ }
 	.provisional .bg-pnkDy {
 		background-color: #AD005F; }
 		.provisional .bg-pnkDy.well.header-rwd {
@@ -11577,6 +11578,18 @@ main .gc-rms-lngth img {
 		min-height: 200px;
 		overflow: hidden;
 		width: calc(50vw - 15px); }
+	.provisional.gc-contributors {
+		margin-top: 38px; }
+		.provisional.gc-contributors h2, .provisional.gc-contributors ul {
+			display: inline;
+			font-size: 87%;
+			margin-top: 0; }
+		.provisional.gc-contributors ul {
+			padding-inline-start: 0; }
+			.provisional.gc-contributors ul li {
+				display: inline-block;
+				font-weight: 700;
+				margin-right: .7em; }
 
 .gc-dwnld .gc-dwnld-txt {
 	text-decoration: underline; }
@@ -11669,17 +11682,6 @@ main .gc-rms-lngth img {
 	border-right: 5px solid transparent;
 	height: 0;
 	width: 0; }
-
-/* Contributors */
-.gc-contributors {
-	margin-top: 38px; }
-	.gc-contributors h2, .gc-contributors ul {
-		font-size: 87%;
-		margin-top: 0; }
-	.gc-contributors ul {
-		padding-inline-start: 20px; }
-		.gc-contributors ul li {
-			font-weight: 700; }
 
 /*
  Social Media Icons, follow-us
@@ -13342,6 +13344,63 @@ table.dataTable.nws-tbl .label.label-success {
 	.page-type-ilp .gc-followus ul li:last-child {
 		margin-bottom: 15px; }
 
+/*
+  WET-BOEW
+  @title: Theme template
+  @desc:  Styles specific to the Theme template for GCWeb
+*/
+.page-type-theme #wb-bc li:first-child a {
+	border-left: solid #26374a 5px;
+	padding-left: 8px; }
+
+.page-type-theme #wb-bc .breadcrumb {
+	margin-bottom: 15px; }
+
+.page-type-theme #gridContainer > nav #menuTrigger {
+	border-radius: 0;
+	display: block;
+	margin-bottom: 1em;
+	margin-left: -15px;
+	text-align: left;
+	width: calc(100% + 30px); }
+	.page-type-theme #gridContainer > nav #menuTrigger .glyphicon {
+		margin-left: 10px; }
+	.page-type-theme #gridContainer > nav #menuTrigger.expanded .glyphicon {
+		transform: rotate(180deg) translateY(2px); }
+	.wb-disable .page-type-theme #gridContainer > nav #menuTrigger {
+		display: none; }
+
+.page-type-theme #gridContainer > nav li a {
+	color: #295376;
+	display: block;
+	font-size: 16px;
+	line-height: 1.65em;
+	padding: 10px 14px;
+	text-decoration: none; }
+	.page-type-theme #gridContainer > nav li a:hover {
+		background-color: #f5f5f5;
+		color: #284162;
+		text-decoration: underline; }
+
+.page-type-theme #gridContainer > nav li.active a, .page-type-theme #gridContainer > nav li.active a:hover {
+	background-color: #26374a;
+	color: #fff; }
+
+.page-type-theme #gridContainer > nav li.active a:focus {
+	outline: 5px auto #fff;
+	outline-offset: -5px; }
+
+.page-type-theme #gridContainer > nav + section h1#wb-cont {
+	border: none;
+	font-size: 1.2em;
+	line-height: 1.1;
+	margin: 10px 0 11.5px; }
+
+.page-type-theme #gridContainer > nav + section .gc-most-requested h2 {
+	float: none;
+	font-size: 1em;
+	width: auto; }
+
 /*! Core - Utilities */
 /*
  * Helper Classes
@@ -14513,13 +14572,50 @@ Miscellaneous Utiliy CSS
 	.home .home-your-gov {
 		background-image: none; }
 	/*
+  WET-BOEW
+  @title: Small view and under (screen only)
+  @desc:  Variable $screen-sm-max <= 991 px
+ */
+	/* PROVISIONAL features */
+	.provisional {
+		/* Contributors */ }
+		.provisional.gc-contributors h2, .provisional.gc-contributors ul {
+			display: block; }
+		.provisional.gc-contributors ul {
+			padding-inline-start: 20px; }
+			.provisional.gc-contributors ul li {
+				display: list-item;
+				margin-right: 0; }
+	/*
 * Institutional landing page template
 */
 	.page-type-ilp .gc-followus {
 		margin-bottom: 40px;
 		margin-top: 40px; }
 	.page-type-ilp .wb-feeds {
-		margin-bottom: 40px; } }
+		margin-bottom: 40px; }
+	/*
+  WET-BOEW
+  @title: theme component
+  @desc:  Styles specific to the theme component for GCWeb
+*/
+	.page-type-theme #gridContainer > nav ul {
+		display: none; }
+		.wb-disable .page-type-theme #gridContainer > nav ul {
+			display: block; }
+		.page-type-theme #gridContainer > nav ul li {
+			border-bottom: #f5f5f5 solid 1px;
+			position: relative; }
+			.page-type-theme #gridContainer > nav ul li a::after {
+				content: "\203A";
+				font-size: 1.5em;
+				margin-left: 10px;
+				position: absolute;
+				right: 14px;
+				top: 50%;
+				transform: translateY(-50%); }
+			.page-type-theme #gridContainer > nav ul li.active a::after {
+				display: none; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
@@ -14823,25 +14919,6 @@ Miscellaneous Utiliy CSS
  Social Media Icons Medium View and over
 */
 	/*
-  WET-BOEW
-  @title: Medium view and over (screen only)
-  @desc:  Variable $screen-md-min >= 992px
-*/
-	.gc-contributors {
-		display: flex; }
-		.gc-contributors h2 {
-			line-height: 1.8em; }
-		.gc-contributors ul {
-			padding-inline-start: 5px; }
-			.gc-contributors ul li {
-				display: inline-block;
-				margin-right: .5em; }
-				.gc-contributors ul li::after {
-					content: "\2022";
-					margin-left: .7em; }
-				.gc-contributors ul li:last-child::after {
-					content: none; }
-	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
@@ -14907,6 +14984,47 @@ Miscellaneous Utiliy CSS
 			flex-basis: 50%;
 			font-size: 87%;
 			padding-right: 1.3em; }
+	/*
+  WET-BOEW
+  @title: Medium view and over (screen only)
+  @desc:  Variable $screen-md-min >= 992px
+ */
+	/* PROVISIONAL features */
+	.provisional {
+		/* Contributors */
+		/* Follow us */ }
+		.provisional.gc-contributors ul li:first-child:before {
+			content: none; }
+		.provisional.gc-contributors ul li:before {
+			content: "\2022";
+			margin-right: .7em; }
+		.provisional.gc-followus h2 {
+			margin-top: 0 !important; }
+	/*
+  WET-BOEW
+  @title: theme component
+  @desc:  Styles specific to the theme component for GCWeb
+*/
+	.page-type-theme #gridContainer {
+		display: flex;
+		margin: 0 auto;
+		padding: 0 15px;
+		width: 970px; }
+		.page-type-theme #gridContainer > nav {
+			border-right: 5px solid #26374a;
+			flex: 0 0 300px; }
+			.page-type-theme #gridContainer > nav .container {
+				padding: 0;
+				width: auto; }
+			.page-type-theme #gridContainer > nav #menuTrigger {
+				display: none; }
+			.page-type-theme #gridContainer > nav ul {
+				display: block !important; }
+			.page-type-theme #gridContainer > nav + section {
+				flex: 1 0 0%; }
+				.page-type-theme #gridContainer > nav + section .container {
+					padding-left: 35px;
+					width: auto; }
 	/*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -14985,6 +15103,13 @@ Miscellaneous Utiliy CSS
 		width: 30%; }
 	.lt-ie9 main.col-md-9 .sect-lnks {
 		width: 30%; }
+	/*
+  WET-BOEW
+  @title: Sidebar component
+  @desc:  Styles specific to the sidebar component for GCWeb
+*/
+	.page-type-theme #gridContainer {
+		width: 1170px; }
 	/*
   WET-BOEW
   @title: Proximity CSS - Medium view and over

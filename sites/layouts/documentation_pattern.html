@@ -15,9 +15,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content=""/>
 
-<link href="/wet-boew-demos/topic-template-demo/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/topic-template-demo/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/topic-template-demo/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/theme-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -31,11 +31,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/topic-template-demo/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/theme-template/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/topic-template-demo/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/theme-template/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -99,7 +99,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/topic-template-demo/index-fr.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/theme-template/index-fr.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -541,7 +541,7 @@
 															"assess": "/collapsed",
 															"expect": true,
 															"mapping": [
-																{ "selector": "summary", "value": "/description" },
+																{ "selector": "summary", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -551,7 +551,7 @@
 															"assess": "/collapsed",
 															"expect": false,
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -561,7 +561,7 @@
 															"assess": "/collapsed",
 															"expect": "undefined",
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														}
@@ -586,7 +586,7 @@
 													"assess": "/collapsed",
 													"expect": true,
 													"mapping": [
-														{ "selector": "summary", "value": "/description" },
+														{ "selector": "summary", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -596,7 +596,7 @@
 													"assess": "/collapsed",
 													"expect": false,
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -606,7 +606,7 @@
 													"assess": "/collapsed",
 													"expect": "undefined",
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												}
@@ -869,7 +869,7 @@
 	"mapping": [
 		{ "selector": "details > summary", "value": "/name" },
 		{ "selector": "[data-status]", "value": "/status" },
-		{ "selector": "[data-description]", "value": "/description" },
+		{ "selector": "[data-description]", "value": "/description", "isHTML": true },
 		{ "selector": "[data-detectability]", "value": "/detectableBy" },
 		{ "selector": "[data-iteration]", "value": "/baseOnIteration/name" },
 
@@ -998,7 +998,7 @@
 									"assess": "/collapsed",
 									"expect": true,
 									"mapping": [
-										{ "selector": "summary", "value": "/description" },
+										{ "selector": "summary", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1008,7 +1008,7 @@
 									"assess": "/collapsed",
 									"expect": false,
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1018,7 +1018,7 @@
 									"assess": "/collapsed",
 									"expect": "undefined",
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								}
@@ -1079,7 +1079,7 @@
 									"assess": "/collapsed",
 									"expect": true,
 									"mapping": [
-										{ "selector": "summary", "value": "/description" },
+										{ "selector": "summary", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1089,7 +1089,7 @@
 									"assess": "/collapsed",
 									"expect": false,
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1099,7 +1099,7 @@
 									"assess": "/collapsed",
 									"expect": "undefined",
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								}
@@ -2230,7 +2230,7 @@
 							"expect": "source-code",
 							"assess": "/",
 							"mapping": [
-								{ "selector": "summary", "value": "/description" },
+								{ "selector": "summary", "value": "/description", "isHTML": true },
 								{ "selector": "code", "value": "/code", "encode": "true" },
 								{ "selector": "details", "attr": "lang", "value": "/@language" }
 							]
@@ -2621,7 +2621,7 @@
 															"assess": "/collapsed",
 															"expect": true,
 															"mapping": [
-																{ "selector": "summary", "value": "/description" },
+																{ "selector": "summary", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -2631,7 +2631,7 @@
 															"assess": "/collapsed",
 															"expect": false,
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -2641,7 +2641,7 @@
 															"assess": "/collapsed",
 															"expect": "undefined",
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														}
@@ -2666,7 +2666,7 @@
 													"assess": "/collapsed",
 													"expect": true,
 													"mapping": [
-														{ "selector": "summary", "value": "/description" },
+														{ "selector": "summary", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -2676,7 +2676,7 @@
 													"assess": "/collapsed",
 													"expect": false,
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -2686,7 +2686,7 @@
 													"assess": "/collapsed",
 													"expect": "undefined",
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												}
@@ -2979,14 +2979,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/topic-template-demo/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/theme-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/topic-template-demo/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/topic-template-demo/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/theme-template/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/theme-template/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
