@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.3.0 - 2024-07-18
+ * v15.4.0 - 2024-08-02
  *
  */
 /*
@@ -4453,21 +4453,23 @@ details {
  WET breadcrumb overwrites
  for: GCWeb v5
  */
-#wb-bc ol {
-	margin-top: 15px;
-	padding-left: 0px;
-	padding-right: 0px; }
-
-#wb-bc li:before {
-	content: "\e080";
-	padding: 0 4px 0 0;
-	position: relative; }
-
-#wb-bc li:first-child a {
-	padding-left: 0; }
-
-#wb-bc a {
-	padding: 5px 0; }
+#wb-bc {
+	flex: 1 0 0%;
+	padding-right: 10px; }
+	#wb-bc ol {
+		margin-top: 10px;
+		padding-left: 0px;
+		padding-right: 0px; }
+	#wb-bc li {
+		padding: 0; }
+		#wb-bc li:before {
+			content: "\e080";
+			margin-left: 7px;
+			margin-right: 5px;
+			padding: 0;
+			position: relative; }
+	#wb-bc a {
+		padding: 5px 0; }
 
 /*
   WET-BOEW
@@ -5289,23 +5291,40 @@ main .pagedetails {
 /*
  * Specific classes for authentication section which include Sign-on/Sign-off button and the Contextual Sign-in button.
  */
-#wb-so .btn {
-	border-radius: 0px;
-	margin-top: 5px; }
-
-#wb-so a.btn-primary:hover {
-	background-color: #444; }
+#wb-so {
+	flex: 0 0 auto; }
+	#wb-so .btn {
+		border-radius: 0px; }
+	#wb-so a.btn-primary:hover {
+		background-color: #444; }
 
 /*
  * Site header
  */
 #wb-bnr + hr {
-	border-top: 3px solid #38414d;
+	border-top: 1px solid #ddd;
 	margin-bottom: 0px;
 	margin-top: 5px; }
 	#wb-bnr + hr + .container {
-		font-size: 20px; }
+		display: flex;
+		justify-content: flex-end; }
 
+/* START: To be removed when support for the header v4.0 is removed */
+#wb-bnr:has(+ hr + .container > .row) + hr {
+	border-top: 3px solid #38414d; }
+	#wb-bnr:has(+ hr + .container > .row) + hr + .container {
+		display: block;
+		font-size: 20px; }
+		#wb-bnr:has(+ hr + .container > .row) + hr + .container #wb-so .btn {
+			margin-top: 5px; }
+		#wb-bnr:has(+ hr + .container > .row) + hr + .container + #wb-bc {
+			padding-right: 0; }
+			#wb-bnr:has(+ hr + .container > .row) + hr + .container + #wb-bc ol {
+				margin-top: 15px; }
+			#wb-bnr:has(+ hr + .container > .row) + hr + .container + #wb-bc li {
+				padding: 7px 0; }
+
+/* END */
 /* H1 short bold red underline */
 h1#wb-cont {
 	border-bottom: 0.18em solid #af3c43;
@@ -11501,8 +11520,7 @@ main .gc-rms-lngth img {
 	 */
 	/* Dark theme
 	 */
-	/* Theme/topic decorative image */
-	/* Contributors */ }
+	/* Theme/topic decorative image */ }
 	.provisional .bg-pnkDy {
 		background-color: #AD005F; }
 		.provisional .bg-pnkDy.well.header-rwd {
@@ -11578,18 +11596,6 @@ main .gc-rms-lngth img {
 		min-height: 200px;
 		overflow: hidden;
 		width: calc(50vw - 15px); }
-	.provisional.gc-contributors {
-		margin-top: 38px; }
-		.provisional.gc-contributors h2, .provisional.gc-contributors ul {
-			display: inline;
-			font-size: 87%;
-			margin-top: 0; }
-		.provisional.gc-contributors ul {
-			padding-inline-start: 0; }
-			.provisional.gc-contributors ul li {
-				display: inline-block;
-				font-weight: 700;
-				margin-right: .7em; }
 
 .gc-dwnld .gc-dwnld-txt {
 	text-decoration: underline; }
@@ -11682,6 +11688,17 @@ main .gc-rms-lngth img {
 	border-right: 5px solid transparent;
 	height: 0;
 	width: 0; }
+
+/* Contributors */
+.gc-contributors {
+	margin-top: 38px; }
+	.gc-contributors h2, .gc-contributors ul {
+		font-size: 87%;
+		margin-top: 0; }
+	.gc-contributors ul {
+		padding-inline-start: 20px; }
+		.gc-contributors ul li {
+			font-weight: 700; }
 
 /*
  Social Media Icons, follow-us
@@ -12857,7 +12874,7 @@ aside.features {
 		margin-left: 0px; }
 		.home #wb-bnr + .gcweb-menu .container {
 			padding: 0px; }
-	.home #wb-so .btn {
+	.home #wb-bnr:has(+ hr + .container > .row) #wb-so .btn {
 		margin-top: 3px; }
 	.home .header-rwd {
 		margin: 1em 0px; }
@@ -14572,21 +14589,6 @@ Miscellaneous Utiliy CSS
 	.home .home-your-gov {
 		background-image: none; }
 	/*
-  WET-BOEW
-  @title: Small view and under (screen only)
-  @desc:  Variable $screen-sm-max <= 991 px
- */
-	/* PROVISIONAL features */
-	.provisional {
-		/* Contributors */ }
-		.provisional.gc-contributors h2, .provisional.gc-contributors ul {
-			display: block; }
-		.provisional.gc-contributors ul {
-			padding-inline-start: 20px; }
-			.provisional.gc-contributors ul li {
-				display: list-item;
-				margin-right: 0; }
-	/*
 * Institutional landing page template
 */
 	.page-type-ilp .gc-followus {
@@ -14919,6 +14921,25 @@ Miscellaneous Utiliy CSS
  Social Media Icons Medium View and over
 */
 	/*
+  WET-BOEW
+  @title: Medium view and over (screen only)
+  @desc:  Variable $screen-md-min >= 992px
+*/
+	.gc-contributors {
+		display: flex; }
+		.gc-contributors h2 {
+			line-height: 1.8em; }
+		.gc-contributors ul {
+			padding-inline-start: 5px; }
+			.gc-contributors ul li {
+				display: inline-block;
+				margin-right: .5em; }
+				.gc-contributors ul li::after {
+					content: "\2022";
+					margin-left: .7em; }
+				.gc-contributors ul li:last-child::after {
+					content: none; }
+	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
@@ -14986,22 +15007,6 @@ Miscellaneous Utiliy CSS
 			padding-right: 1.3em; }
 	/*
   WET-BOEW
-  @title: Medium view and over (screen only)
-  @desc:  Variable $screen-md-min >= 992px
- */
-	/* PROVISIONAL features */
-	.provisional {
-		/* Contributors */
-		/* Follow us */ }
-		.provisional.gc-contributors ul li:first-child:before {
-			content: none; }
-		.provisional.gc-contributors ul li:before {
-			content: "\2022";
-			margin-right: .7em; }
-		.provisional.gc-followus h2 {
-			margin-top: 0 !important; }
-	/*
-  WET-BOEW
   @title: theme component
   @desc:  Styles specific to the theme component for GCWeb
 */
@@ -15025,6 +15030,16 @@ Miscellaneous Utiliy CSS
 				.page-type-theme #gridContainer > nav + section .container {
 					padding-left: 35px;
 					width: auto; }
+				.page-type-theme #gridContainer > nav + section .gc-most-requested {
+					position: relative; }
+					.page-type-theme #gridContainer > nav + section .gc-most-requested::after {
+						background-color: #f5f5f5;
+						bottom: 0;
+						content: "";
+						left: 100%;
+						position: absolute;
+						top: 0;
+						width: calc( (100vw - 970px + 15px)/2); }
 	/*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -15110,6 +15125,8 @@ Miscellaneous Utiliy CSS
 */
 	.page-type-theme #gridContainer {
 		width: 1170px; }
+		.page-type-theme #gridContainer > nav + section .gc-most-requested::after {
+			width: calc( (100vw - 1170px + 15px)/2); }
 	/*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
