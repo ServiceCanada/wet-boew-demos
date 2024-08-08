@@ -29,6 +29,19 @@
 	<div id="wb-bnr" class="container">
 		<div class="row">
 			
+				<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+	<h2 class="wb-inv">Language selection</h2>
+	<ul class="list-inline mrgn-bttm-0">
+		<li>
+			<a lang="fr" hreflang="fr" href="index-fr.html">
+				<span class="hidden-xs" translate="no">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+			</a>
+		</li>
+	</ul>
+</section>
+
+			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
 		<img src="/wet-boew-demos/topic-template-demo/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
@@ -112,7 +125,7 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Steps Quiz</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Steps Quiz</h1>
 <p>Addition of a quiz pattern for the Steps Form component.</p>
 
 <h2>GCWeb implementation plan</h2>
@@ -142,6 +155,13 @@
 
 </ul>
 
+<p>Accessibility reports</p>
+<ul>
+
+	<li>2024-06-25 - <a href="reports/a11y-1-en.html">Accessibility assessment no.1 - Progress bar</a></li>
+
+</ul>
+
 <p>Sponsor: Principal Publisher - ESDC</p>
 
 <section>
@@ -154,6 +174,25 @@
 	<ol>
 		<li>Add the <code>quiz</code> CSS class to <code>&lt;div&gt;</code> element containing the <code>wb-steps</code> CSS class of the Steps Form component.</li>
 	</ol>
+</section>
+
+<section>
+	<h2>List of changes</h2>
+	<dl class="dl-horizontal">
+		<dt>Date:</dt>
+		<dd>2024-07-15</dd>
+		<dt>Description:</dt>
+		<dd>
+			<ul>
+				<li>French translation functionality on language toggle for two text elements found in the component.</li>
+				<li>Addition of a <code>&lt;label&gt;</code> element around the <code>&lt;progress&gt;</code> element in order to resolve an accessibility issue (ref: <a href="reports/a11y-1-en.html">Accessibility assessment no.1 - Progress bar</a>).</li>
+			</ul>
+		</dd>
+		<dt>Impact on the sponsoring department:</dt>
+		<dd>Prevents a possible complaint related to official languages and/or accessibility.</dd>
+		<dt>Impact on users:</dt>
+		<dd>Access to content that complies with official languages and that meets WCAG accessibilty guidlines 2.1 (Option: Level AA).</dd>
+	</dl>
 </section>
 
 <section>

@@ -125,7 +125,7 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Collaborateurs</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Collaborateurs</h1>
 <p property="description">Documentation pour la composante Collaborateurs</p>
 
 <p>(<a href="index.json-ld" rel="alternate" type="application/json">Consultez cette documentation en format JSON</a>)</p>
@@ -456,7 +456,7 @@
 															"assess": "/collapsed",
 															"expect": true,
 															"mapping": [
-																{ "selector": "summary", "value": "/description" },
+																{ "selector": "summary", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -466,7 +466,7 @@
 															"assess": "/collapsed",
 															"expect": false,
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -476,7 +476,7 @@
 															"assess": "/collapsed",
 															"expect": "undefined",
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														}
@@ -501,7 +501,7 @@
 													"assess": "/collapsed",
 													"expect": true,
 													"mapping": [
-														{ "selector": "summary", "value": "/description" },
+														{ "selector": "summary", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -511,7 +511,7 @@
 													"assess": "/collapsed",
 													"expect": false,
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -521,7 +521,7 @@
 													"assess": "/collapsed",
 													"expect": "undefined",
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												}
@@ -551,7 +551,7 @@
 
 		{ "selector": "[data-history]", "value": "/history",
 			"mapping": [
-				{ "selector": "li", "value": "/fr" }
+				{ "selector": "li", "value": "/fr", "isHTML": true }
 			]
 		}
 
@@ -784,7 +784,7 @@
 	"mapping": [
 		{ "selector": "details > summary", "value": "/name" },
 		{ "selector": "[data-status]", "value": "/status" },
-		{ "selector": "[data-description]", "value": "/description" },
+		{ "selector": "[data-description]", "value": "/description", "isHTML": true },
 		{ "selector": "[data-detectability]", "value": "/detectableBy" },
 		{ "selector": "[data-iteration]", "value": "/baseOnIteration/name" },
 
@@ -913,7 +913,7 @@
 									"assess": "/collapsed",
 									"expect": true,
 									"mapping": [
-										{ "selector": "summary", "value": "/description" },
+										{ "selector": "summary", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -923,7 +923,7 @@
 									"assess": "/collapsed",
 									"expect": false,
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -933,7 +933,7 @@
 									"assess": "/collapsed",
 									"expect": "undefined",
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								}
@@ -994,7 +994,7 @@
 									"assess": "/collapsed",
 									"expect": true,
 									"mapping": [
-										{ "selector": "summary", "value": "/description" },
+										{ "selector": "summary", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1004,7 +1004,7 @@
 									"assess": "/collapsed",
 									"expect": false,
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1014,7 +1014,7 @@
 									"assess": "/collapsed",
 									"expect": "undefined",
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								}
@@ -2145,7 +2145,7 @@
 							"expect": "source-code",
 							"assess": "/",
 							"mapping": [
-								{ "selector": "summary", "value": "/description" },
+								{ "selector": "summary", "value": "/description", "isHTML": true },
 								{ "selector": "code", "value": "/code", "encode": "true" },
 								{ "selector": "details", "attr": "lang", "value": "/@language" }
 							]

@@ -125,7 +125,7 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Services and information</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Services and information</h1>
 <div class="wb-prettify all-pre hide"></div>
 
 <dl class="horizontal">
@@ -933,7 +933,7 @@ comp:DoormatShape
 															"assess": "/collapsed",
 															"expect": true,
 															"mapping": [
-																{ "selector": "summary", "value": "/description" },
+																{ "selector": "summary", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -943,7 +943,7 @@ comp:DoormatShape
 															"assess": "/collapsed",
 															"expect": false,
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -953,7 +953,7 @@ comp:DoormatShape
 															"assess": "/collapsed",
 															"expect": "undefined",
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														}
@@ -978,7 +978,7 @@ comp:DoormatShape
 													"assess": "/collapsed",
 													"expect": true,
 													"mapping": [
-														{ "selector": "summary", "value": "/description" },
+														{ "selector": "summary", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -988,7 +988,7 @@ comp:DoormatShape
 													"assess": "/collapsed",
 													"expect": false,
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -998,7 +998,7 @@ comp:DoormatShape
 													"assess": "/collapsed",
 													"expect": "undefined",
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												}
@@ -1028,7 +1028,7 @@ comp:DoormatShape
 
 		{ "selector": "[data-history]", "value": "/history",
 			"mapping": [
-				{ "selector": "li", "value": "/en" }
+				{ "selector": "li", "value": "/en", "isHTML": true }
 			]
 		}
 
@@ -1261,7 +1261,7 @@ comp:DoormatShape
 	"mapping": [
 		{ "selector": "details > summary", "value": "/name" },
 		{ "selector": "[data-status]", "value": "/status" },
-		{ "selector": "[data-description]", "value": "/description" },
+		{ "selector": "[data-description]", "value": "/description", "isHTML": true },
 		{ "selector": "[data-detectability]", "value": "/detectableBy" },
 		{ "selector": "[data-iteration]", "value": "/baseOnIteration/name" },
 
@@ -1390,7 +1390,7 @@ comp:DoormatShape
 									"assess": "/collapsed",
 									"expect": true,
 									"mapping": [
-										{ "selector": "summary", "value": "/description" },
+										{ "selector": "summary", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1400,7 +1400,7 @@ comp:DoormatShape
 									"assess": "/collapsed",
 									"expect": false,
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1410,7 +1410,7 @@ comp:DoormatShape
 									"assess": "/collapsed",
 									"expect": "undefined",
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								}
@@ -1471,7 +1471,7 @@ comp:DoormatShape
 									"assess": "/collapsed",
 									"expect": true,
 									"mapping": [
-										{ "selector": "summary", "value": "/description" },
+										{ "selector": "summary", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1481,7 +1481,7 @@ comp:DoormatShape
 									"assess": "/collapsed",
 									"expect": false,
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1491,7 +1491,7 @@ comp:DoormatShape
 									"assess": "/collapsed",
 									"expect": "undefined",
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								}
@@ -2622,7 +2622,7 @@ comp:DoormatShape
 							"expect": "source-code",
 							"assess": "/",
 							"mapping": [
-								{ "selector": "summary", "value": "/description" },
+								{ "selector": "summary", "value": "/description", "isHTML": true },
 								{ "selector": "code", "value": "/code", "encode": "true" },
 								{ "selector": "details", "attr": "lang", "value": "/@language" }
 							]

@@ -112,8 +112,8 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Page untitled</h1>
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Chat wizard</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont"></h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Chat wizard</h1>
 <h2>Purpose</h2>
 <p>Transforms a simple form into a conversation like experience used as a wizard. The chat wizard has especially proven itself useful in emergency situations, as a crutch to help users better find the right information while strategies are being developed to improve content structure and/or on-page content in an effort to make proper information and access to support and/or benefits easily available to users in said situations, without the permanent necessity of a chat wizard. Therefore, the chat wizard is a convenient temporary solution to fill an informational/structural gap; COVID-19 was a good example.</p>
 
@@ -540,7 +540,7 @@
 															"assess": "/collapsed",
 															"expect": true,
 															"mapping": [
-																{ "selector": "summary", "value": "/description" },
+																{ "selector": "summary", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -550,7 +550,7 @@
 															"assess": "/collapsed",
 															"expect": false,
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														},
@@ -560,7 +560,7 @@
 															"assess": "/collapsed",
 															"expect": "undefined",
 															"mapping": [
-																{ "selector": "figcaption", "value": "/description" },
+																{ "selector": "figcaption", "value": "/description", "isHTML": true },
 																{ "selector": "code", "value": "/code", "encode": true }
 															]
 														}
@@ -585,7 +585,7 @@
 													"assess": "/collapsed",
 													"expect": true,
 													"mapping": [
-														{ "selector": "summary", "value": "/description" },
+														{ "selector": "summary", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -595,7 +595,7 @@
 													"assess": "/collapsed",
 													"expect": false,
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												},
@@ -605,7 +605,7 @@
 													"assess": "/collapsed",
 													"expect": "undefined",
 													"mapping": [
-														{ "selector": "figcaption", "value": "/description" },
+														{ "selector": "figcaption", "value": "/description", "isHTML": true },
 														{ "selector": "code", "value": "/code", "encode": true }
 													]
 												}
@@ -635,7 +635,7 @@
 
 		{ "selector": "[data-history]", "value": "/history",
 			"mapping": [
-				{ "selector": "li", "value": "/" }
+				{ "selector": "li", "value": "/", "isHTML": true }
 			]
 		}
 
@@ -868,7 +868,7 @@
 	"mapping": [
 		{ "selector": "details > summary", "value": "/name" },
 		{ "selector": "[data-status]", "value": "/status" },
-		{ "selector": "[data-description]", "value": "/description" },
+		{ "selector": "[data-description]", "value": "/description", "isHTML": true },
 		{ "selector": "[data-detectability]", "value": "/detectableBy" },
 		{ "selector": "[data-iteration]", "value": "/baseOnIteration/name" },
 
@@ -997,7 +997,7 @@
 									"assess": "/collapsed",
 									"expect": true,
 									"mapping": [
-										{ "selector": "summary", "value": "/description" },
+										{ "selector": "summary", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1007,7 +1007,7 @@
 									"assess": "/collapsed",
 									"expect": false,
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1017,7 +1017,7 @@
 									"assess": "/collapsed",
 									"expect": "undefined",
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								}
@@ -1078,7 +1078,7 @@
 									"assess": "/collapsed",
 									"expect": true,
 									"mapping": [
-										{ "selector": "summary", "value": "/description" },
+										{ "selector": "summary", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1088,7 +1088,7 @@
 									"assess": "/collapsed",
 									"expect": false,
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								},
@@ -1098,7 +1098,7 @@
 									"assess": "/collapsed",
 									"expect": "undefined",
 									"mapping": [
-										{ "selector": "figcaption", "value": "/description" },
+										{ "selector": "figcaption", "value": "/description", "isHTML": true },
 										{ "selector": "code", "value": "/code", "encode": true }
 									]
 								}
@@ -2229,7 +2229,7 @@
 							"expect": "source-code",
 							"assess": "/",
 							"mapping": [
-								{ "selector": "summary", "value": "/description" },
+								{ "selector": "summary", "value": "/description", "isHTML": true },
 								{ "selector": "code", "value": "/code", "encode": "true" },
 								{ "selector": "details", "attr": "lang", "value": "/@language" }
 							]
