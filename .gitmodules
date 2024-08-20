@@ -30,3 +30,8 @@
 	path = theme-menu
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = theme-menu
+
+[submodule "wet-464"]
+	path = wet-464
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = wet-464
