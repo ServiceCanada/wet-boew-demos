@@ -73,8 +73,8 @@
 			"iteration": "_:iteration_mpt_2",
 			"example": [
 				{
-					"en": { "href": "../../content-page/content-en.html", "text": "Content page (main page title)" },
-					"fr": { "href": "../../content-page/content-fr.html", "text": "Page de contenu (titre principal)" }
+					"en": { "href": "../../templates/content-page/content-en.html", "text": "Content page (main page title)" },
+					"fr": { "href": "../../templates/content-page/content-fr.html", "text": "Page de contenu (titre principal)" }
 				}
 			],
 			"implementation": [
@@ -226,14 +226,14 @@
 					{
 						"@type": "source-code",
 						"description": "HTML sample",
-						"code":	"<hgroup>\n\t<p>GCWeb technical documentation</p>\n\t<h1 id=\"wb-cont\">Stacked main page title</h1>\n</hgroup>"
+						"code":	"<hgroup id=\"wb-cont\">\n\t<p>GCWeb technical documentation</p>\n\t<h1>Stacked main page title</h1>\n</hgroup>"
 					}
 				],
 				"fr": [
 					{
 						"@type": "source-code",
 						"description": "Exemple HTML",
-						"code":	"<hgroup>\n\t<p>Documentation technique GCWeb</p>\n\t<h1 id=\"wb-cont\">Titre principal superposé</h1>\n</hgroup>"
+						"code":	"<hgroup id=\"wb-cont\">\n\t<p>Documentation technique GCWeb</p>\n\t<h1>Titre principal superposé</h1>\n</hgroup>"
 					}
 				]
 			}
@@ -334,9 +334,9 @@
 			"name": "Visual update 2024",
 			"date": "2024-01",
 			"detectableBy": "Visual inspection can be used to detect the size of the line. The width of the line should be 71px (3.55em) long and the thickness should be 3.6px (0.18em), with the color #af3c43.",
-			"breaking": {
-				"style": "Width of the line should 70px and the thickness .18em #af3c43. Followed by optional byline, tagline or subtitle"
-			},
+			"breaking": [
+				"Style: Width of the line should 70px and the thickness .18em #af3c43. Followed by optional byline, tagline or subtitle"
+			],
 			"predecessor": "_:iteration_mpt_1"
 		},
 		{
