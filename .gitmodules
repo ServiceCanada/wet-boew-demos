@@ -34,3 +34,7 @@
 	path = wet-464
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = wet-464
+[submodule "WET-481"]
+	path = WET-481
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = WET-481
