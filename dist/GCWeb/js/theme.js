@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.6.0 - 2024-08-29
+ * v15.6.0 - 2024-09-03
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -4206,7 +4206,8 @@ var $document = wb.doc,
 
 		if ( elm && event.currentTarget === event.target ) {
 
-			let themeMenuBtn = document.querySelector( "#menuTrigger" ),
+			let themeMenuBtn = document.querySelector( "#menuBtn" ),
+				themeMenuIcon = themeMenuBtn.querySelector( ".glyphicon" ),
 				themeNavUL = document.querySelector( "#gridContainer > nav ul" ),
 				activePageLink = themeNavUL.querySelector( ".active a" );
 
@@ -4214,6 +4215,7 @@ var $document = wb.doc,
 			activePageLink.setAttribute( "aria-current", "page" );
 			themeMenuBtn.setAttribute( "aria-controls", themeNavUL.id );
 			themeMenuBtn.setAttribute( "aria-expanded", "false" );
+			themeMenuIcon.setAttribute( "aria-hidden", "true" );
 
 			// Identify that initialization has completed
 			wb.ready( $( elm ), componentName );
@@ -4224,16 +4226,13 @@ var $document = wb.doc,
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // On click of the menu button
-$document.on( "click", "#menuTrigger", function( event ) {
-	let themeMenuBtn = event.currentTarget,
-		themeNavUL = document.querySelector( "#" + themeMenuBtn.attributes[ "aria-controls" ].value );
+$document.on( "click", "#menuBtn", function( event ) {
+	let themeMenuBtn = event.currentTarget;
 
 	if ( themeMenuBtn.getAttribute( "aria-expanded" ) === "true" ) {
-		themeNavUL.classList.remove( "visible-xs", "visible-sm" );
 		themeMenuBtn.setAttribute( "aria-expanded", "false" );
 		themeMenuBtn.classList.remove( "expanded" );
 	} else {
-		themeNavUL.classList.add( "visible-xs", "visible-sm" );
 		themeMenuBtn.setAttribute( "aria-expanded", "true" );
 		themeMenuBtn.classList.add( "expanded" );
 	}
