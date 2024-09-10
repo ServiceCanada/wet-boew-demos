@@ -5,8 +5,7 @@
         "canadian-coast-guard"
       ],
       "regions": [
-        "atlantic",
-        "ontario"
+        "atlantic"
       ],
       "pref_notification": "daily",
       "pref_language": "fr"
