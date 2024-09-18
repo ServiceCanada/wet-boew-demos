@@ -141,128 +141,126 @@
 						</div>
 					</fieldset>
 				</div>
-				<div class="mrgn-bttm-lg">
-					<div>
-						<fieldset class="mrgn-lft-md mrgn-bttm-lg wb-select-all">
-							<legend class="h4 mrgn-tp-0">News releases</legend>
-							<ul class="list-unstyled">
-								<li class="checkbox mrgn-bttm-md">
-									<label><input id="protoCheckAll" type="checkbox" name="filter-releases" id="all-releases" value="all" class="wb-select-all-check" onchange="checkAll( this );"><span data-label><em>Select all news releases</em></span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="benefits" value="benefits"><span data-label>Benefits</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="business-and-industry" value="business-and-industry"><span data-label>Business and industry</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="canada-and-the-world" value="canada-and-the-world"><span data-label>Canada and the world</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="culture-history-and-sport" value="culture-history-and-sport"><span data-label>Culture, history and sport</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="environment-and-natural-resources" value="environment-and-natural-resources"><span data-label>Environment and natural resources</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="health" value="health"><span data-label>Health</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="how-government-works" value="how-government-works"><span data-label>How government works</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="immigration-and-citizenship" value="immigration-and-citizenship"><span data-label>Immigration and citizenship</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="jobs-and-the-workplace" value="jobs-and-the-workplace"><span data-label>Jobs and the workplace</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="money-and-finances" value="money-and-finances"><span data-label>Money and finances</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="national-security-and-defence" value="national-security-and-defence"><span data-label>National security and defence</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="policing-justice-and-emergencies" value="policing-justice-and-emergencies"><span data-label>Policing, justice and emergencies</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="public-service-and-military" value="public-service-and-military"><span data-label>Public Service and Military</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="taxes" value="taxes"><span data-label>Taxes</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="transport-and-infrastructure" value="transport-and-infrastructure"><span data-label>Transport and infrastructure</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="travel-and-tourism" value="travel-and-tourism"><span data-label>Travel and tourism</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox" onchange="checkInt( this )" name="filter-releases" id="science-and-innovation" value="science-and-innovation"><span data-label>Science and innovation</span></label>
-								</li>
-							</ul>
-						</fieldset>
+				<div class="row wb-eqht-grd mrgn-bttm-lg">
+					<div class="col-md-6 col-lg-3">
+						<div class="panel brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+							<div class="panel-body">
+								<fieldset class="p-0">
+									<legend class="h4 mrgn-tp-0">News type</legend>
+									<ul class="list-unstyled mrgn-bttm-0" data-wb-json='{
+										"url": "tags.json#/type",
+										"queryall": "li",
+										"mapping": [
+											{ "selector": "input[type=checkbox]", "value": "/tag", "attr": "id" },
+											{ "selector": "input[type=checkbox]", "value": "/tag", "attr": "value" },
+											{ "selector": "[data-label]", "value": "/en" }
+										]
+									}'>
+										<template>
+											<li class="checkbox">
+												<label><input type="checkbox" name="newsType" id="" value=""><span data-label=""></span></label>
+											</li>
+										</template>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
 					</div>
-					<div>
-						<fieldset class="mrgn-lft-md">
-							<legend class="h4 mrgn-tp-0">Statements</legend>
-							<ul class="list-unstyled">
-								<li class="checkbox mrgn-bttm-md">
-									<label><input id="protoCheckAll2" type="checkbox" name="filter-statements" id="all-statements" value="all" class="wb-select-all" onchange="checkAll2( this );"><span data-label><em>Select all statements</em></span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="benefits" value="benefits"><span data-label>Benefits</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="business-and-industry" value="business-and-industry"><span data-label>Business and industry</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="canada-and-the-world" value="canada-and-the-world"><span data-label>Canada and the world</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="culture-history-and-sport" value="culture-history-and-sport"><span data-label>Culture, history and sport</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="environment-and-natural-resources" value="environment-and-natural-resources"><span data-label>Environment and natural resources</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="health" value="health"><span data-label>Health</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="how-government-works" value="how-government-works"><span data-label>How government works</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="immigration-and-citizenship" value="immigration-and-citizenship"><span data-label>Immigration and citizenship</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="jobs-and-the-workplace" value="jobs-and-the-workplace"><span data-label>Jobs and the workplace</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="money-and-finances" value="money-and-finances"><span data-label>Money and finances</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="national-security-and-defence" value="national-security-and-defence"><span data-label>National security and defence</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="policing-justice-and-emergencies" value="policing-justice-and-emergencies"><span data-label>Policing, justice and emergencies</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="public-service-and-military" value="public-service-and-military"><span data-label>Public Service and Military</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="taxes" value="taxes"><span data-label>Taxes</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="transport-and-infrastructure" value="transport-and-infrastructure"><span data-label>Transport and infrastructure</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="travel-and-tourism" value="travel-and-tourism"><span data-label>Travel and tourism</span></label>
-								</li>
-								<li class="checkbox">
-									<label><input type="checkbox"  onchange="checkInt2( this )" name="filter-statements" id="science-and-innovation" value="science-and-innovation"><span data-label>Science and innovation</span></label>
-								</li>
-							</ul>
-						</fieldset>
+					<div class="col-md-6 col-lg-3">
+						<div class="panel brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+							<div class="panel-body">
+								<fieldset class="p-0">
+									<legend class="h4 mrgn-tp-0">Minister</legend>
+									<div id="newsInstitutionList" class="wb-filter" data-wb-filter='{
+										"uiTemplate": "#filteredNewsMinisters",
+										"section": "ul",
+										"selector": "li"
+									}'>
+										<div id="filteredNewsMinisters">
+											<div class="input-group input-group-sm mrgn-bttm-sm">
+												<input id="newsMinisterSearch" type="search" class="form-control full-width" placeholder="Find a minister...">
+												<label for="newsMinisterSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter ministers: results appear below as you type.</span></label>
+											</div>
+										</div>
+										<ul class="list-unstyled mrgn-bttm-0 max-300" data-wb-json='{
+											"url": "tags.json#/minister",
+											"queryall": "li",
+											"mapping": [
+												{ "selector": "input[type=checkbox]", "value": "/tag", "attr": "id" },
+												{ "selector": "input[type=checkbox]", "value": "/tag", "attr": "value" },
+												{ "selector": "[data-label]", "value": "/en" }
+											]
+										}'>
+											<template>
+												<li class="checkbox">
+													<label><input type="checkbox" name="newsMinisters" id="" value=""><span data-label=""></span></label>
+												</li>
+											</template>
+										</ul>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3">
+						<div class="panel brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+							<div class="panel-body">
+								<fieldset class="p-0">
+									<legend class="h4 mrgn-tp-0">Institution</legend>
+									<div id="filteredNewsInstitution">
+										<div class="input-group input-group-sm mrgn-bttm-sm">
+											<input id="newsInstitutionearch" type="search" class="form-control full-width" placeholder="Find an institution...">
+											<label for="newsInstitutionearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter institutions: results appear below as you type.</span></label>
+										</div>
+									</div>
+									<ul class="list-unstyled mrgn-bttm-0 max-300" data-wb-json='{
+										"url": "tags.json#/dept",
+										"queryall": "li",
+										"mapping": [
+											{ "selector": "input[type=checkbox]", "value": "/tag", "attr": "id" },
+											{ "selector": "input[type=checkbox]", "value": "/tag", "attr": "value" },
+											{ "selector": "[data-label]", "value": "/en" }
+										]
+									}'>
+										<template>
+											<li class="checkbox">
+												<label><input type="checkbox" name="newsInstitutions" id="" value=""><span data-label=""></span></label>
+											</li>
+										</template>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3">
+						<div class="panel brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
+							<div class="panel-body">
+								<fieldset class="p-0">
+									<legend class="h4 mrgn-tp-0">Topic</legend>
+									<div id="filteredNewsTopics">
+										<div class="input-group input-group-sm mrgn-bttm-sm">
+											<input id="newsTopicSearch" type="search" class="form-control full-width" placeholder="Find a topic...">
+											<label for="newsTopicSearch" class="input-group-addon"><i class="fas fa-search"></i><span class="wb-inv">Filter topics: results appear below as you type.</span></label>
+										</div>
+									</div>
+									<ul class="list-unstyled mrgn-bttm-0 max-300" data-wb-json='{
+										"url": "tags.json#/topic",
+										"queryall": "li",
+										"mapping": [
+											{ "selector": "input[type=checkbox]", "value": "/tag", "attr": "id" },
+											{ "selector": "input[type=checkbox]", "value": "/tag", "attr": "value" },
+											{ "selector": "[data-label]", "value": "/en" }
+										]
+									}'>
+										<template>
+											<li class="checkbox">
+												<label><input type="checkbox" name="newsTopics" id="" value=""><span data-label=""></span></label>
+											</li>
+										</template>
+									</ul>
+								</fieldset>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="form-group mrgn-bttm-lg mrgn-lft-md">
@@ -341,106 +339,5 @@
 	</footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
 	<script src="dist/wet-boew/js/wet-boew.js"></script>
-	<script>
-
-		var prevCheckState = {};
-		function checkAll( elm ){
-			if ( prevCheckState[ elm.name ] === elm.checked ) {
-				return;
-			}
-
-			$( "[name='" + elm.name + "']" ).prop( "checked", elm.checked  );
-		}
-
-		function checkInt( elm ) {
-
-			// Prototype, intermediate selection
-			var intCheckbox = document.querySelectorAll( "[name=filter-releases][value]" );
-
-			var numberOfChecked = 0;
-
-			for( var i = 0; i < intCheckbox.length; i++ ) {
-				if ( intCheckbox[ i ].checked ) {
-					numberOfChecked = numberOfChecked + 1;
-				}
-			}
-
-			var protoCheckAll = document.getElementById( "protoCheckAll" );
-
-
-			if ( numberOfChecked === intCheckbox.length ) {
-
-				// They are all check
-				protoCheckAll.checked = true;
-				protoCheckAll.indeterminate = false;
-
-			} else if ( numberOfChecked === 0 ) {
-
-				// None are checked
-				protoCheckAll.checked = false;
-				protoCheckAll.indeterminate = false;
-
-			} else {
-
-				// Intermediate state
-				protoCheckAll.checked = false;
-				protoCheckAll.indeterminate = true;
-
-			}
-
-		}
-
-
-
-
-
-
-		var prevCheckState2 = {};
-		function checkAll2( elm ){
-			if ( prevCheckState2[ elm.name ] === elm.checked ) {
-				return;
-			}
-
-			$( "[name='" + elm.name + "']" ).prop( "checked", elm.checked  );
-		}
-
-		function checkInt2( elm ) {
-
-			// Prototype, intermediate selection
-			var intCheckbox2 = document.querySelectorAll( "[name=filter-statements][value]" );
-
-			var numberOfChecked2 = 0;
-
-			for( var i = 0; i < intCheckbox2.length; i++ ) {
-				if ( intCheckbox2[ i ].checked ) {
-					numberOfChecked2 = numberOfChecked2 + 1;
-				}
-			}
-
-			var protoCheckAll2 = document.getElementById( "protoCheckAll2" );
-
-
-			if ( numberOfChecked2 === intCheckbox2.length ) {
-
-				// They are all check
-				protoCheckAll2.checked = true;
-				protoCheckAll2.indeterminate = false;
-
-			} else if ( numberOfChecked2 === 0 ) {
-
-				// None are checked
-				protoCheckAll2.checked = false;
-				protoCheckAll2.indeterminate = false;
-
-			} else {
-
-				// Intermediate state
-				protoCheckAll2.checked = false;
-				protoCheckAll2.indeterminate = true;
-
-			}
-
-		}
-	</script>
 </body>
 </html>
