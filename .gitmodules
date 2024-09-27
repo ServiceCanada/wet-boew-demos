@@ -42,7 +42,3 @@
 	path = wet-484
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = wet-484
-[submodule "gcweb-pr2429"]
-	path = gcweb-pr2429
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = gcweb-pr2429
