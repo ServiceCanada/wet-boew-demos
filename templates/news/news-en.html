@@ -126,10 +126,19 @@
 </header>
 
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">News</h1>
-<!-- START: Banner (This pattern should be reviewed, optimized and changed to incldue stretched-link) -->
-<div class="mrgn-bttm-md" data-wb-randomize="{ &quot;shuffle&quot;: true, &quot;selector&quot;: &quot;a&quot;, &quot;toggle&quot;: &quot;hide&quot; }">
+<!-- START: Banner (This pattern should be reviewed, optimized and changed to include stretched-link) -->
+<section class="mrgn-bttm-md" data-wb-randomize="{ &quot;shuffle&quot;: true, &quot;selector&quot;: &quot;a&quot;, &quot;toggle&quot;: &quot;hide&quot; }">
 	<h2 class="wb-inv">Promotions</h2>
-	<a href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/israel.aspx?lang=eng" class="promo hide learmore" data-gc-analytics="promo:homePageFeature">
+	<!-- START: Add the list of links to the promos to display in basic HTML mode -->
+	<ul class="nojs-show">
+		<li><a href="#">Canada’s response to the crisis in Israel, the West Bank and the Gaza Strip</a></li>
+		<li><a href="#">Learn about Canada’s response to the Russian invasion of Ukraine</a></li>
+		<li><a href="#">Protect your child with routine vaccination</a></li>
+		<li><a href="#">Discover groundbreaking forestry research at Natural Resources Canada</a></li>
+	</ul>
+	<!-- END -->
+
+	<a href="https://example.com" class="promo hide learmore" data-gc-analytics="promo:homePageFeature">
 		<figure>
 			<img class="img-responsive full-width" src="https://dummyimage.com/1170x347/F5F5F5/000000.png" alt="">
 			<figcaption class="well brdr-rds-0">
@@ -137,7 +146,7 @@
 			</figcaption>
 		</figure>
 	</a>
-	<a href="https://www.international.gc.ca/world-monde/issues_development-enjeux_developpement/response_conflict-reponse_conflits/crisis-crises/ukraine.aspx?lang=eng&amp;utm_campaign=gac-amc-ukraine-21-22&amp;utm_source=canadahome&amp;utm_medium=feat&amp;utm_content=en" class="promo hide learmore" data-gc-analytics="promo:homePageFeature">
+	<a href="https://example.com" class="promo hide learmore" data-gc-analytics="promo:homePageFeature">
 		<figure>
 			<img class="img-responsive full-width" src="https://dummyimage.com/1170x347/26374A/FFFFFF.png" alt="">
 			<figcaption class="well brdr-rds-0">
@@ -145,7 +154,7 @@
 			</figcaption>
 		</figure>
 	</a>
-	<a href="/en/services/health/campaigns/childhood-vaccines.html" class="promo hide learmore" data-gc-analytics="promo:homePageFeature">
+	<a href="https://example.com" class="promo hide learmore" data-gc-analytics="promo:homePageFeature">
 		<figure>
 			<img class="img-responsive full-width" src="https://dummyimage.com/1170x347/7834BC/FFFFFF.png" alt="">
 			<figcaption class="well brdr-rds-0">
@@ -153,7 +162,7 @@
 			</figcaption>
 		</figure>
 	</a>
-	<a href="https://natural-resources.canada.ca/simply-science/forestry-and-insects/667?utm_campaign=ss-nfw&amp;utm_medium=vurl&amp;utm_source=canada.ca&amp;utm_content=forestry-en" class="promo hide learmore" data-gc-analytics="promo:homePageFeature">
+	<a href="https://example.com" class="promo hide learmore" data-gc-analytics="promo:homePageFeature">
 		<figure>
 			<img class="img-responsive full-width" src="https://dummyimage.com/1170x347/0000FF/000000.png" alt="">
 			<figcaption class="well brdr-rds-0">
@@ -161,7 +170,7 @@
 			</figcaption>
 		</figure>
 	</a>
-</div>
+</section>
 <!-- END -->
 
 <div class="clearfix">
@@ -199,40 +208,40 @@
 	<!-- Add the "data-wb-randomize" attribute to the "row" element to randomize the features -->
 	<div class="row wb-eqht-grd">
 		<div class="col-lg-4 col-sm-6 hght-inhrt" data-wb-randomize='{ "toggle": "hide" }'>
-			<div class="well well-sm eqht-trgt hide">
-				<img src="../assets/news-feature-1-360x203.jpg" alt="">
+			<section class="well well-sm eqht-trgt hide">
+				<img src="https://dummyimage.com/360x203/000000/FFFFFF" alt="">
 				<h3><a href="#" class="stretched-link">[1. Feature hyperlink text]</a></h3>
 				<p>1. Brief description of the feature being promoted.</p>
-			</div>
-			<div class="well well-sm eqht-trgt hide">
-				<img src="../assets/news-feature-2-360x203.jpg" alt="">
+			</section>
+			<section class="well well-sm eqht-trgt hide">
+				<img src="https://dummyimage.com/360x203/e5ff6a/000000" alt="">
 				<h3><a href="#" class="stretched-link">[2. Feature hyperlink text]</a></h3>
 				<p>2. Brief description of the feature being promoted.</p>
-			</div>
+			</section>
 		</div>
 		<div class="col-lg-4 col-sm-6 hght-inhrt" data-wb-randomize='{ "toggle": "hide" }'>
-			<div class="well well-sm eqht-trgt hide">
-				<img src="../assets/news-feature-3-360x203.jpg" alt="">
+			<section class="well well-sm eqht-trgt hide">
+				<img src="https://dummyimage.com/360x203/46b393/000000" alt="">
 				<h3><a href="#" class="stretched-link">[3. Feature hyperlink text]</a></h3>
 				<p>3. Brief description of the feature being promoted.</p>
-			</div>
-			<div class="well well-sm eqht-trgt hide">
-				<img src="../assets/news-feature-4-360x203.jpg" alt="">
+			</section>
+			<section class="well well-sm eqht-trgt hide">
+				<img src="https://dummyimage.com/360x203/0bd6fd/000000" alt="">
 				<h3><a href="#" class="stretched-link">[4. Feature hyperlink text]</a></h3>
 				<p>4. Brief description of the feature being promoted.</p>
-			</div>
+			</section>
 		</div>
 		<div class="col-lg-4 col-sm-6 hght-inhrt" data-wb-randomize='{ "toggle": "hide" }'>
-			<div class="well well-sm eqht-trgt hide">
-				<img src="../assets/news-feature-5-360x203.jpg" alt="">
+			<section class="well well-sm eqht-trgt hide">
+				<img src="https://dummyimage.com/360x203/2b3551/FFFFFF" alt="">
 				<h3><a href="#" class="stretched-link">[5. Feature hyperlink text]</a></h3>
 				<p>5. Brief description of the feature being promoted.</p>
-			</div>
-			<div class="well well-sm eqht-trgt hide">
-				<img src="../assets/news-feature-6-360x203.jpg" alt="">
+			</section>
+			<section class="well well-sm eqht-trgt hide">
+				<img src="https://dummyimage.com/360x203/311893/FFFFFF" alt="">
 				<h3><a href="#" class="stretched-link">[6. Feature hyperlink text]</a></h3>
 				<p>6. Brief description of the feature being promoted.</p>
-			</div>
+			</section>
 		</div>
 	</div>
 </section>
@@ -566,11 +575,10 @@
 		</section>
 	</div>
 	<div class="col-md-9">
-		<p>To access all articles, please visit the <a href="https://www.canada.ca/en/news/advanced-news-search.html">advanced search</a>.</p>
+		<p>To access all articles, please visit the <a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">advanced search</a>.</p>
 
 		<section class="mrgn-tp-xl">
 			<h2 class="wb-inv">Search results</h2>
-			<p class="nojs-show">The news articles are not available in basic HTML mode. Please switch to the standard version to view articles.</p>
 			<table class="wb-tables table table-striped table-hover nws-tbl" id="dataset-filter" aria-live="polite" data-wb-tables='{
 			"bDeferRender": true,
 			"ajaxSource": "https://wet-boew.github.io/wet-boew/demos/tables/ajax/datasource.json",
@@ -602,7 +610,7 @@
 			</table>
 		</section>
 
-		<p>To access all articles, please visit the <a href="https://www.canada.ca/en/news/advanced-news-search.html">advanced search</a>.</p>
+		<p>To access all articles, please visit the <a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">advanced search</a>.</p>
 	</div>
 </div>
 
