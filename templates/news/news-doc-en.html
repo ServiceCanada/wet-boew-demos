@@ -136,11 +136,11 @@
 	<dt>Last review</dt>
 	<dd>2024-09-13</dd>
 	<dt>Conforming to</dt>
-	<dd>Content and IA spec 2.1</dd>
+	<dd>Content and IA spec 3.0</dd>
 	<dt>Specification</dt>
 	<dd><a href="https://design.canada.ca/mandatory-templates/news-pages.html#landing">News pages - Canada.ca mandatory template</a></dd>
 	<dt>Template version</dt>
-	<dd>Version 2.1</dd>
+	<dd>Version 3.0</dd>
 	<dt>Available instances</dt>
 	<dd><a href="https://www.canada.ca/en/news.html">https://www.canada.ca/en/news.html</a></dd>
 	<dd><a href="https://www.canada.ca/fr/nouvelles.html">https://www.canada.ca/fr/nouvelles.html</a></dd>
@@ -148,32 +148,55 @@
 
 <h2>Working examples</h2>
 <ul>
-	<li><a href="news-en.html">News landing page template - Version 2.1</a></li>
-	<li><a href="news-fr.html" lang="fr">Gabarit de la page d'accueil des nouvelles - Version 2.1</a></li>
+	<li><a href="news-en.html">News landing page template - Version 3.0</a></li>
+	<li><a href="news-fr.html" lang="fr">Gabarit de la page d'accueil des nouvelles - Version 3.0</a></li>
 </ul>
 
 <h2>List of changes</h2>
 <ul>
-	<li>Version 2.1:
+	<li>Version 3.0:
 		<ul>
-			<li>Addition of randomised functionality for the three items in the features section.</li>
+			<li>Addition of randomized functionality for the three items in the features section.</li>
+			<li>Make top promotions more accessible.</li>
+			<li>Update the advanced search link.</li>
 		</ul>
 	</li>
 </ul>
 
-<h2>Transition from version 2.0 to 2.1</h2>
-<ul>
-	<li>Add the attribute <code>data-wb-randomize='{ "toggle": "hide" }'</code> to each <code>&lt;div class="col-lg-4 col-sm-6 hght-inhrt"></code> element wrapping the features groups.</li>
-	<li>Change the HTML tag for features from <code>&lt;div></code> to <code>&lt;section></code></li>
-	<li>Add the class <code>hide</code> to the <code>&lt;section class="well well-sm eqht-trgt"></code> elements (feature elements).</li>
-	<li>Above the <code>&lt;div class="row"></code> element, add a <code>&lt;ul class="nojs-show"></code> with a list of the links for all the features contained in all the <code>&lt;div class="col-lg-4 col-sm-6 hght-inhrt"></code> elements. This step is necessary for users of the basic HTML version.</li>
-</ul>
-
-<h3>Previous versions</h3>
+<h3>Previous version</h3>
 <dl>
 	<dt>Version 2.0</dt>
 	<dd><a href="deprecated/news_v2-en.html">News landing page template - Version 2.0</a></dd>
 </dl>
+
+<h2>Transition from version 2.0 to 3.0</h2>
+<ul>
+	<li>Promotions:
+		<ul>
+			<li>Wrap the promotion links with a <code>&lt;div></code> and move the <code>data-wb-randomize</code> from the <code>&lt;section></code> element to the newly created <code>&lt;div></code>.</li>
+			<li>Above the newly created <code>&lt;div></code> element, add a <code>&lt;ul class="nojs-show"></code> with a list of the links for all the promotions contained in the <code>&lt;div></code> element. This step is necessary for users of the basic HTML version.</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+	<li>Features:
+		<ul>
+			<li>Add the attribute <code>data-wb-randomize='{ "toggle": "hide" }'</code> to each <code>&lt;div class="col-lg-4 col-sm-6 hght-inhrt"></code> element wrapping the features groups.</li>
+			<li>Change the HTML tag for features from <code>&lt;div></code> to <code>&lt;section></code></li>
+			<li>Add the class <code>hide</code> to the <code>&lt;section class="well well-sm eqht-trgt"></code> elements (feature elements).</li>
+			<li>Above the <code>&lt;div class="row"></code> element, add a <code>&lt;ul class="nojs-show"></code> with a list of the links for all the features contained in all the <code>&lt;div class="col-lg-4 col-sm-6 hght-inhrt"></code> elements. This step is necessary for users of the basic HTML version.</li>
+		</ul>
+	</li>
+</ul>
+
+<ul>
+	<li>News articles:
+		<ul>
+			<li>Update the advanced search link to the following: <code>https://www.canada.ca/en/news/advanced-news-search/news-results.html</code></li>
+		</ul>
+	</li>
+</ul>
 
 <h2>Deprecated layout</h2>
 
