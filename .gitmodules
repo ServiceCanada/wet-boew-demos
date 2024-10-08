@@ -2,22 +2,6 @@
 	path = news-subscription
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = news-subscription
-[submodule "wet-pr9296"]
-	path = wet-pr9296
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = wet-pr9296
-[submodule "ilp-template"]
-	path = ilp-template
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = ilp-template
-[submodule "twitter-timeline"]
-	path = twitter-timeline
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = twitter-timeline
-[submodule "gcweb-pr2371"]
-	path = gcweb-pr2371
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = gcweb-pr2371
 [submodule "topic-template-demo"]
 	path = topic-template-demo
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
@@ -30,14 +14,6 @@
 	path = theme-menu
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = theme-menu
-[submodule "wet-464"]
-	path = wet-464
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = wet-464
-[submodule "WET-481"]
-	path = WET-481
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = WET-481
 [submodule "gcweb-pr2429"]
 	path = gcweb-pr2429
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
