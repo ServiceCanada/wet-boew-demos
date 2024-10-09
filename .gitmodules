@@ -14,10 +14,6 @@
 	path = theme-menu
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = theme-menu
-[submodule "wet-484"]
-	path = wet-484
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = wet-484
 [submodule "wet-pr9296"]
 	path = wet-pr9296
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
