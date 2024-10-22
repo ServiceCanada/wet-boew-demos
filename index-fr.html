@@ -13,11 +13,11 @@
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2024-09-11"/>
+<meta name="dcterms.modified" content="2024-10-15"/>
 
-<link href="/wet-boew-demos/theme-menu/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/theme-menu/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/theme-menu/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+<link href="/wet-boew-demos/gc-homepage-doormats/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gc-homepage-doormats/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gc-homepage-doormats/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -44,11 +44,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/theme-menu/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/gc-homepage-doormats/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/theme-menu/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gc-homepage-doormats/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -76,22 +76,46 @@
 	
 	<hr>
 	<div class="container">
-		<nav id="wb-bc" property="breadcrumb">
-	<h2>Vous êtes ici :</h2>
-	<ol class="breadcrumb" typeof="BreadcrumbList">
-		<li property="itemListElement" typeof="ListItem">
-			<a property="item" typeof="WebPage" href="https://www.canada.ca/fr.html">
-				<span property="name">Canada.ca</span>
-			</a>
-			<meta property="position" content="1">
-		</li>
-		
-	</ol>
+		<div class="row"><div class="col-md-8">
+					<nav class="gcweb-menu" typeof="SiteNavigationElement">
+	<h2 class="wb-inv">Menu</h2>
+	<button type="button" aria-haspopup="true" aria-expanded="false">Menu<span class="wb-inv"> principal</span> <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+	<ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-fr.html"><li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/emplois.html">Emplois et milieu de travail</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/immigration-citoyennete.html">Immigration et citoyenneté</a></li>
+		<li role="presentation"><a role="menuitem" href="https://voyage.gc.ca/">Voyage et tourisme</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/entreprises.html">Entreprises et industrie</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/prestations.html">Prestations</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/sante.html">Santé</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/impots.html">Impôts</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/environnement.html">Environnement et ressources naturelles</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/defense.html">Sécurité nationale et défense</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li></ul>
 </nav>
 
-</div>
+				</div></div>
+	</div>
 	
-	
+	<nav id="wb-bc" property="breadcrumb">
+	<h2>Vous êtes ici :</h2>
+	<div class="container">
+		<ol class="breadcrumb" typeof="BreadcrumbList">
+			<li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="https://www.canada.ca/fr.html">
+					<span property="name">Canada.ca</span>
+				</a>
+				<meta property="position" content="1">
+			</li>
+			
+		</ol>
+	</div>
+</nav>
+
+
 </header>
 
 <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
@@ -102,8 +126,8 @@
 			<p>Les gabarits et les conceptions communes si dessous sont une référence d'implémentation du <a href="https://conception.canada.ca">Système de conception de Canada.ca</a>, incluant les exigences obligatoire de la spécifications du contenu et de l’architecture de l'information (C&amp;AI) pour Canada.ca. Les ministères et organisme du gouvernement du Canada peuvent y contribuer en publiant leur modèle et leur conception commune via le <a href="https://github.com/wet-boew/GCWeb">dépôt github de GCWeb</a>.</p>
 		</div>
 		<div class="col-xs-12 col-md-auto pull-right">
-			<p><a href="https://github.com/wet-boew/GCWeb/archive/v15.6.1.zip" class="btn btn-primary">Télécharger le thème <strong>GCWeb v15.6.1</strong></a><br />
-				<small>(<time>2024-09-11</time> - <a href="https://github.com/wet-boew/gcweb/releases/latest">Note de version</a>)</small></p>
+			<p><a href="https://github.com/wet-boew/GCWeb/archive/v15.7.0.zip" class="btn btn-primary">Télécharger le thème <strong>GCWeb v15.7.0</strong></a><br />
+				<small>(<time>2024-10-15</time> - <a href="https://github.com/wet-boew/gcweb/releases/latest">Note de version</a>)</small></p>
 		</div>
 	</div>
 </div>
@@ -2779,14 +2803,6 @@
 									<li><a href="templates/home/home-fr.html" >Accueil - Canada.ca</a></li>
 									
 								
-									
-									<li><a href="templates/home/home-auth-en.html" lang="en" hreflang="en">Home with contextual Sign in button - Canada.ca</a></li>
-									
-								
-									
-									<li><a href="templates/home/home-auth-fr.html" >Accueil avec bouton contextuel « Se connecter » - Canada.ca</a></li>
-									
-								
 								</ul>
 							</li>
 						
@@ -3887,87 +3903,6 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Thème
-				
-				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
-				
-				</h3>
-				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
-					<p>Gabarit de page thème</p>
-					<!--
-					Main working example
-					- First working example in the example list where the language match
-					-->
-					
-					<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">
-					
-					<li>
-					
-					<a href="templates/theme/theme-fr.html" ><span class="fas fa-eye small mrgn-rght-sm" aria-hidden="true"></span>Exemple pratique</a>
-					
-					
-					<!--
-					Documentation
-					- Link to the documentations if any
-					-->
-					
-					<!--<ul class="list-unstyled mrgn-bttm-lg mrgn-lft-md">-->
-					
-					
-						<li><a href="templates/theme/theme-doc-fr.html"><span class="fas fa-info-circle small mrgn-rght-sm" aria-hidden="true"></span>Documentation</a></li>
-					
-					
-					</ul>
-					<!--
-					> All examples and info
-					* Example
-					* Documentation
-					* Spec
-					-->
-					<details class="mrgn-tp-lg"><summary>Tous les exemples et info</summary>
-						<ul class="mrgn-tp-md">
-							
-							
-							<li>Exemples
-								<ul>
-								
-								
-									
-									<li><a href="templates/theme/theme-en.html" lang="en" hreflang="en">[Theme]</a></li>
-									
-								
-									
-									<li><a href="templates/theme/theme-fr.html" >[Thème]</a></li>
-									
-								
-								</ul>
-							</li>
-						
-							
-							<li>Documentations
-								<ul>
-								
-								
-									
-									<li><a href="templates/theme/theme-doc-en.html" lang="en" hreflang="en">Theme page</a></li>
-									
-								
-									
-									<li><a href="templates/theme/theme-doc-fr.html" >Page de thème</a></li>
-									
-								
-								</ul>
-							</li>
-						
-						</ul>
-					</details>
-				</div>
-			</div>
-		</li>
-	
-		
-		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
-			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
 				<h3 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Sujet
 				
 				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
@@ -4904,7 +4839,7 @@
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
 				<h4 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Menu GCWeb
 				
-				<span class="label label-default mrgn-lft-sm"><span class="wb-inv">État: </span>Non défini</span>
+				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
 				
 				</h4>
 				<div class="mrgn-rght-md mrgn-bttm-md mrgn-lft-md">
@@ -4962,7 +4897,7 @@
 		
 		<li class="col-xs-12 col-md-6 mrgn-tp-md mrgn-bttm-md">
 			<div class="brdr-tp brdr-rght brdr-bttm brdr-lft hght-inhrt">
-				<h4 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">En-tête
+				<h4 class="mrgn-tp-md mrgn-rght-md mrgn-bttm-md mrgn-lft-md">Entête
 				
 				<span class="label label-success mrgn-lft-sm"><span class="wb-inv">État: </span>Stable</span>
 				
@@ -5241,6 +5176,38 @@
 								
 									
 									<li><a href="sites/main-page-title/main-page-title-stacked-fr.html" >Titre principal superposé</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-align-right-en.html" lang="en" hreflang="en">Main page title aligned on the right</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-align-right-fr.html" >Titre principal de la page aligné à droite</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-div-align-right-en.html" lang="en" hreflang="en">Main page title in a div aligned on the right</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-div-align-right-fr.html" >Titre principal dans une div alignée à droite</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-div-stacked-align-right-en.html" lang="en" hreflang="en">Stacked main page title in a div aligned on the right</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-div-stacked-align-right-fr.html" >Titre principal superposé dans une div alignée à droite</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-stacked-align-right-en.html" lang="en" hreflang="en">Stacked main page title aligned on the right</a></li>
+									
+								
+									
+									<li><a href="sites/main-page-title/main-page-title-stacked-align-right-fr.html" >Titre principal superposé aligné à droite</a></li>
 									
 								
 								</ul>
@@ -10318,7 +10285,7 @@
 		</div>
 	</div><dl id="wb-dtmd">
 	<dt>Date de modification&#160;:</dt>
-	<dd><time property="dateModified">2024-09-11</time></dd>
+	<dd><time property="dateModified">2024-10-15</time></dd>
 </dl>
 </section>
 
@@ -10369,14 +10336,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/theme-menu/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/gc-homepage-doormats/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/theme-menu/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/theme-menu/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gc-homepage-doormats/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gc-homepage-doormats/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

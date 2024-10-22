@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.6.1 - 2024-09-24
+ * v15.7.0 - 2024-10-22
  *
  */
 /*
@@ -4453,23 +4453,21 @@ details {
  WET breadcrumb overwrites
  for: GCWeb v5
  */
-#wb-bc {
-	flex: 1 0 0%;
-	padding-right: 10px; }
-	#wb-bc ol {
-		margin-top: 10px;
-		padding-left: 0px;
-		padding-right: 0px; }
-	#wb-bc li {
-		padding: 0; }
-		#wb-bc li:before {
-			content: "\e080";
-			margin-left: 7px;
-			margin-right: 5px;
-			padding: 0;
-			position: relative; }
-	#wb-bc a {
-		padding: 5px 0; }
+#wb-bc ol {
+	margin-top: 15px;
+	padding-left: 0px;
+	padding-right: 0px; }
+
+#wb-bc li:before {
+	content: "\e080";
+	padding: 0 4px 0 0;
+	position: relative; }
+
+#wb-bc li:first-child a {
+	padding-left: 0; }
+
+#wb-bc a {
+	padding: 5px 0; }
 
 /*
   WET-BOEW
@@ -5291,45 +5289,35 @@ main .pagedetails {
 /*
  * Specific classes for authentication section which include Sign-on/Sign-off button and the Contextual Sign-in button.
  */
-#wb-so {
-	flex: 0 0 auto; }
-	#wb-so .btn {
-		border-radius: 0px; }
-	#wb-so a.btn-primary:hover {
-		background-color: #444; }
+#wb-so .btn {
+	border-radius: 0px;
+	margin-top: 5px; }
+
+#wb-so a.btn-primary:hover {
+	background-color: #444; }
 
 /*
  * Site header
  */
 #wb-bnr + hr {
-	border-top: 1px solid #ddd;
+	border-top: 3px solid #38414d;
 	margin-bottom: 0px;
 	margin-top: 5px; }
 	#wb-bnr + hr + .container {
-		display: flex;
-		justify-content: flex-end;
-		position: relative; }
-
-/* START: To be removed when support for the header v4.0 is removed */
-#wb-bnr:has(+ hr + .container > .row) + hr {
-	border-top: 3px solid #38414d; }
-	#wb-bnr:has(+ hr + .container > .row) + hr + .container {
-		display: block;
 		font-size: 20px; }
-		#wb-bnr:has(+ hr + .container > .row) + hr + .container #wb-so .btn {
-			margin-top: 5px; }
-		#wb-bnr:has(+ hr + .container > .row) + hr + .container + #wb-bc {
-			padding-right: 0; }
-			#wb-bnr:has(+ hr + .container > .row) + hr + .container + #wb-bc ol {
-				margin-top: 15px; }
-			#wb-bnr:has(+ hr + .container > .row) + hr + .container + #wb-bc li {
-				padding: 7px 0; }
 
-/* END */
 /* H1 short bold red underline */
 h1#wb-cont, hgroup#wb-cont h1 {
 	border-bottom: 0.18em solid #af3c43;
 	border-image: linear-gradient(to right, #af3c43 71px, transparent 71px);
+	border-image-slice: 1;
+	border-left-width: 0;
+	border-right-width: 0;
+	border-top-width: 0; }
+
+h1#wb-cont[dir="rtl"], hgroup#wb-cont[dir="rtl"] h1, [dir="rtl"] h1#wb-cont, [dir="rtl"] hgroup#wb-cont h1 {
+	border-bottom: 0.18em solid #af3c43;
+	border-image: linear-gradient(to left, #af3c43 71px, transparent 71px);
 	border-image-slice: 1;
 	border-left-width: 0;
 	border-right-width: 0;
@@ -12878,14 +12866,6 @@ aside.features {
 		margin-top: 10px; }
 	.home h2 {
 		font-size: 1.2em; }
-	.home #wb-so {
-		position: absolute;
-		right: 15px;
-		top: 0;
-		z-index: 2; }
-		.home #wb-so a {
-			border: 2px solid #fff;
-			border-top: none; }
 	.home #wb-bnr + hr {
 		border-top: 1px solid #ddd;
 		color: #284162;
@@ -12896,7 +12876,7 @@ aside.features {
 		margin-left: 0px; }
 		.home #wb-bnr + .gcweb-menu .container {
 			padding: 0px; }
-	.home #wb-bnr:has(+ hr + .container > .row) #wb-so .btn {
+	.home #wb-so .btn {
 		margin-top: 3px; }
 	.home .header-rwd {
 		margin: 1em 0px; }
@@ -12911,6 +12891,17 @@ aside.features {
 		background-position: right center;
 		background-repeat: no-repeat;
 		background-size: 38%; }
+	.home .gc-srvinfo .container > p:last-child {
+		margin-bottom: 20px;
+		margin-top: 20px; }
+		.home .gc-srvinfo .container > p:last-child .btn-all-services {
+			border: 2px solid #26374a;
+			color: #26374a;
+			font-size: 1.1em;
+			font-weight: bold;
+			padding: .65em 1.1em; }
+			.home .gc-srvinfo .container > p:last-child .btn-all-services:hover {
+				text-decoration: underline; }
 
 /* The blog page template was removed on Sep 27, 2016 and introduced in 2014
  *
@@ -13382,63 +13373,6 @@ table.dataTable.nws-tbl .label.label-success {
 	margin-bottom: 21px; }
 	.page-type-ilp .gc-followus ul li:last-child {
 		margin-bottom: 15px; }
-
-/*
-  WET-BOEW
-  @title: Theme template
-  @desc:  Styles specific to the Theme template for GCWeb
-*/
-.page-type-theme #wb-bc li:first-child a {
-	border-left: solid #26374a 5px;
-	padding-left: 8px; }
-
-.page-type-theme #wb-bc .breadcrumb {
-	margin-bottom: 15px; }
-
-.page-type-theme #gridContainer > nav #menuBtn {
-	border-radius: 0;
-	display: block;
-	margin-bottom: 1em;
-	margin-left: -15px;
-	text-align: left;
-	width: calc(100% + 30px); }
-	.page-type-theme #gridContainer > nav #menuBtn .glyphicon-chevron-down {
-		margin-left: 10px; }
-	.page-type-theme #gridContainer > nav #menuBtn.expanded .glyphicon-chevron-down {
-		transform: rotate(180deg) translateY(2px); }
-	.wb-disable .page-type-theme #gridContainer > nav #menuBtn {
-		display: none; }
-
-.page-type-theme #gridContainer > nav li a {
-	color: #295376;
-	display: block;
-	font-size: 16px;
-	line-height: 1.65em;
-	padding: 10px 14px;
-	text-decoration: none; }
-	.page-type-theme #gridContainer > nav li a:hover {
-		background-color: #f5f5f5;
-		color: #284162;
-		text-decoration: underline; }
-
-.page-type-theme #gridContainer > nav li.active a, .page-type-theme #gridContainer > nav li.active a:hover {
-	background-color: #26374a;
-	color: #fff; }
-
-.page-type-theme #gridContainer > nav li.active a:focus {
-	outline: 5px auto #fff;
-	outline-offset: -5px; }
-
-.page-type-theme #gridContainer > nav + section h1#wb-cont {
-	border: none;
-	font-size: 1.2em;
-	line-height: 1.1;
-	margin: 10px 0 11.5px; }
-
-.page-type-theme #gridContainer > nav + section .gc-most-requested h2 {
-	float: none;
-	font-size: 1em;
-	width: auto; }
 
 /*! Core - Utilities */
 /*
@@ -14617,31 +14551,7 @@ Miscellaneous Utiliy CSS
 		margin-bottom: 40px;
 		margin-top: 40px; }
 	.page-type-ilp .wb-feeds {
-		margin-bottom: 40px; }
-	/*
-  WET-BOEW
-  @title: theme component
-  @desc:  Styles specific to the theme component for GCWeb
-*/
-	.page-type-theme #gridContainer > nav #menuBtn.expanded + ul {
-		display: block; }
-	.page-type-theme #gridContainer > nav ul {
-		display: none; }
-		.wb-disable .page-type-theme #gridContainer > nav ul {
-			display: block; }
-		.page-type-theme #gridContainer > nav ul li {
-			border-bottom: #f5f5f5 solid 1px;
-			position: relative; }
-			.page-type-theme #gridContainer > nav ul li a::after {
-				content: "\203A";
-				font-size: 1.5em;
-				margin-left: 10px;
-				position: absolute;
-				right: 14px;
-				top: 50%;
-				transform: translateY(-50%); }
-			.page-type-theme #gridContainer > nav ul li.active a::after {
-				display: none; } }
+		margin-bottom: 40px; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
@@ -15031,39 +14941,6 @@ Miscellaneous Utiliy CSS
 			padding-right: 1.3em; }
 	/*
   WET-BOEW
-  @title: theme component
-  @desc:  Styles specific to the theme component for GCWeb
-*/
-	.page-type-theme #gridContainer {
-		display: flex;
-		margin: 0 auto;
-		padding: 0 15px;
-		width: 970px; }
-		.page-type-theme #gridContainer > nav {
-			border-right: 5px solid #26374a;
-			flex: 0 0 300px; }
-			.page-type-theme #gridContainer > nav .container {
-				padding: 0;
-				width: auto; }
-			.page-type-theme #gridContainer > nav #menuBtn {
-				display: none; }
-			.page-type-theme #gridContainer > nav + section {
-				flex: 1 0 0%; }
-				.page-type-theme #gridContainer > nav + section .container {
-					padding-left: 35px;
-					width: auto; }
-				.page-type-theme #gridContainer > nav + section .gc-most-requested {
-					position: relative; }
-					.page-type-theme #gridContainer > nav + section .gc-most-requested::after {
-						background-color: #f5f5f5;
-						bottom: 0;
-						content: "";
-						left: calc(100% - 1px);
-						position: absolute;
-						top: 0;
-						width: calc( (100vw - 970px + 15px)/2); }
-	/*
-  WET-BOEW
   @title: Proximity CSS - Medium view and over
  */
 	.colcount-md-2 {
@@ -15140,15 +15017,6 @@ Miscellaneous Utiliy CSS
 		width: 30%; }
 	.lt-ie9 main.col-md-9 .sect-lnks {
 		width: 30%; }
-	/*
-  WET-BOEW
-  @title: Sidebar component
-  @desc:  Styles specific to the sidebar component for GCWeb
-*/
-	.page-type-theme #gridContainer {
-		width: 1170px; }
-		.page-type-theme #gridContainer > nav + section .gc-most-requested::after {
-			width: calc( (100vw - 1170px + 15px)/2); }
 	/*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
