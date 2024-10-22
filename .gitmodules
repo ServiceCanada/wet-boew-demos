@@ -26,3 +26,7 @@
 	path = gcweb-pr2429
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = gcweb-pr2429
+[submodule "gc-homepage-doormats"]
+	path = gc-homepage-doormats
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gc-homepage-doormats
