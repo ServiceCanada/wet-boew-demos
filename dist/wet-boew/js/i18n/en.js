@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"srch-menus": "Search and menus",
 	email: "Email",
 	"menu-close": "Close menu",
-	"overlay-close": "overlay",
+	"overlay-close": "Close overlay",
 	"esc-key": "(escape key)",
 	show: "Show",
 
@@ -190,11 +190,11 @@ wb.i18nDict = {
 	tbFilterInst: "This table provides a sorting feature via the buttons across the column header row with only one instance visible at a time.",
 
 	/* Twitter embedded timeline */
-	"twitter-start-notice": "Start of @%username%’s X timeline",
-	"twitter-end-notice": "End of @%username%’s X timeline",
-	"twitter-skip-end": "Skip to end of @%username%’s X timeline",
-	"twitter-skip-start": "Skip to start of @%username%’s X timeline",
-	"twitter-timeline-title": "X timeline",
+	"twitter-start-notice": "@twitter-start-notice@",
+	"twitter-end-notice": "@twitter-end-notice@",
+	"twitter-skip-end": "@twitter-skip-end@",
+	"twitter-skip-start": "@twitter-skip-start@",
+	"twitter-timeline-title": "@twitter-timeline-title@",
 
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
@@ -248,7 +248,20 @@ wb.i18nDict = {
 
 	/* Filter */
 	"fltr-lbl": "Filter<span class=\"wb-inv\"> content: results appear below as you type.</span>",
-	"fltr-info": "Showing <span data-nbitem></span> filtered from <span data-total></span> total entries"
+	"fltr-info": "Showing <span data-nbitem></span> filtered from <span data-total></span> total entries",
+
+	/* Data scrub */
+	"pii-header": "Remove Personal information",
+	"pii-intro": "Some information added in the following fields is identified as personal information and it will be replaced as follows:",
+	"pii-view-more": "Find out more",
+	"pii-view-more-intro": "Please note that any information that corresponds to the cases from the list below, is considered as personal information and is removed from the form prior its submission:",
+	"pii-view-more-item-1": "Any 8 or more digits separated or not by the following characters: ' ', '/', '-', '.'",
+	"pii-view-more-item-2": "Passport serial number",
+	"pii-view-more-item-3": "Email",
+	"pii-view-more-item-4": "Postal code",
+	"pii-view-more-item-5": "Certain parametres considered non secured in a url",
+	"pii-yes-btn": "I agree, remove personal information",
+	"pii-cancel-btn": "Go back to the form"
 };
 
 } )( wb );
