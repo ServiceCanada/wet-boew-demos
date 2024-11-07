@@ -18,3 +18,7 @@
 	path = most-requested
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = most-requested
+[submodule "pft-pii-demo"]
+	path = pft-pii-demo
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = pft-pii-demo
