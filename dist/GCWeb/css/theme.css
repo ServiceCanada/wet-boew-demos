@@ -15028,6 +15028,7 @@ Miscellaneous Utiliy CSS
 		div:not(.container) .gc-most-requested ul li {
 			flex-basis: 50%;
 			font-size: 87%;
+			line-height: 1.5em;
 			padding-right: 1.3em; }
 	/*
   WET-BOEW
