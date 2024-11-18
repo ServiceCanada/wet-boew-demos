@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.6.3 - 2024-10-11
+ * v15.7.0 - 2024-11-18
  *
  */
 /*
@@ -12891,6 +12891,17 @@ aside.features {
 		background-position: right center;
 		background-repeat: no-repeat;
 		background-size: 38%; }
+	.home .gc-srvinfo .container > p:last-child {
+		margin-bottom: 20px;
+		margin-top: 20px; }
+		.home .gc-srvinfo .container > p:last-child .btn-all-services {
+			border: 2px solid #26374a;
+			color: #26374a;
+			font-size: 1.1em;
+			font-weight: bold;
+			padding: .65em 1.1em; }
+			.home .gc-srvinfo .container > p:last-child .btn-all-services:hover {
+				text-decoration: underline; }
 
 /* The blog page template was removed on Sep 27, 2016 and introduced in 2014
  *
