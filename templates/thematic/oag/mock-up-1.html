@@ -123,17 +123,54 @@
 </header>
 
 <main property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<!--
-08 nov - 2h
-09 nov - 3h
-10 nov - 11:55
--->
 <style>
 	.oag-theme header .brand img, header .brand object {
 		max-height: none;
 	}
 	.oag-theme header .oag-gb {
 		background: #1a303c;
+	}
+
+	.oag-theme .btn-primary{
+		background-color: #803C2C;
+		border-color: #26374a;
+		border-radius: unset;
+	}
+	.oag-theme .btn-primary:hover {
+		background-color: #1A303C;
+		border-color: #091c2d;
+	}
+
+	.oag-theme .alert-info {
+		border-color: #7F3D2D;
+		-o-border-image: linear-gradient(to bottom, #7F3D2D 16px, #7F3D2D 16px, transparent 16px, transparent 48px, #7F3D2D 48px, #7F3D2D 48px) 1 100%;
+		border-image: linear-gradient(to bottom, #7F3D2D 16px, #7F3D2D 16px, transparent 16px, transparent 48px, #7F3D2D 48px, #7F3D2D 48px) 1 100%;
+		color: #676C72;
+	}
+
+	.alert-info::before {
+		color: #7F3D2D;
+		content: "";
+	}
+	.oag-theme .text-primary {
+		color: #7F3D2D;
+	}
+	.oag-theme .label-primary{
+		background: #E3E0D3;
+		border-color: #908F84;
+		color: #4B5B62;
+	}
+
+	.oag-theme .well {
+		border: 2px solid #908F84;
+	}
+
+	.oag-theme .panel-default {
+		border: 1px solid transparent;
+		background-color: #F4F4F2 ;
+	}
+	.oag-theme .section-bg{
+		background-color: #F4F4F2;
 	}
 	.p-3 {
 		padding: 20px;
@@ -149,6 +186,9 @@
 	}
 	.bg-white {
 		background-color: #ffffff;
+	}
+	.w-100 {
+		width: 100%;
 	}
 </style>
 
@@ -167,15 +207,15 @@
 		<div class="row d-flex">
 			<div class="col-sm-7 d-flex">
 				<!-- Report Card 1 -->
-				<div class="img-rounded bg-center bg-cover well"
-					data-bgimg-srcset="https://wet-boew.github.io/vocab/wb/utilities#no-image 991w, ../assets/oag/bear-background.png 992w" style="width: 100%;">
+				<div class="img-rounded bg-center bg-cover well w-100"
+					data-bgimg-srcset="https://wet-boew.github.io/vocab/wb/utilities#no-image 991w, ../assets/oag/bear-background.png 992w">
 					<div class="bg-light p-3">
-						<p class="img-rounded font-weight-bold p-1 btn btn-xs btn-info"> Reports of the Auditor General of Canada</p>
-						<section class="alert alert-danger mrgn-tp-lg mrgn-bttm-lg">
+						<span class="img-rounded font-weight-bold p-1 label label-primary"> Reports of the Auditor General of Canada</span>
+						<section class="alert alert-info mrgn-tp-lg mrgn-bttm-lg">
 							<p>3 Upcoming Reports:</p>
-							<h2>March 19, 2024</h2>
+							<time class="h2 text-primary" datetime="2024-11-18">November 18, 2024</time>
 						</section>
-						<a class="btn btn-lg btn-danger mt-3" href="#">See all upcoming reports</a>
+						<a class="btn btn-lg btn-primary mt-3" href="#">See all upcoming reports</a>
 					</div>
 				</div>
 			</div>
@@ -183,72 +223,48 @@
 				<!-- Report Card 2 -->
 				<div class="img-rounded mb-3 mrgn-bttm-lg bg-white well">
 					<p class="mb-1">
-						<span class="small font-weight-bold p-1 btn btn-xs btn-info">AG
+						<span class="small font-weight-bold p-1 label label-primary">AG
 							Reports</span> <span class=""> May 6, 2024</span>
 					</p>
+
 					<p class="mb-3">Strategic Innovation Fund’s Net Zero Accelerator Initiative—Innovation,
 						Science and Economic Development Canada</p>
-					<a href="#" class="pull-right no-undrln text-danger">Read report &rarr;</a>
+					<a href="#" class="pull-right no-undrln text-primary">Read report &rarr;</a>
 				</div>
 
 				<!-- Report Card 3 -->
 				<div class="img-rounded bg-white well">
-					<p class="mb-1"><span class="small font-weight-bold p-1 btn btn-xs btn-info">CESD
-							Reports </span> <span class=""> Feb. 18, 2024</span></p>
+					<p class="mb-1">
+						<span class="small font-weight-bold p-1 label label-primary">CESD
+							Reports </span> <span class=""> Feb. 18, 2024</span>
+						</p>
 					<p class="mb-3">Housing in First Nations Communities</p>
-					<a href="#" class="pull-right no-undrln text-danger">Read report &rarr;</a>
+					<a href="#" class="pull-right no-undrln text-primary">Read report &rarr;</a>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
 
-<section class="gc-features mrgn-tp-lg mrgn-bttm-xl">
-	<div class="container">
-		<div class="row wb-eqht-grd">
-			<div class="col-sm-4">
-				<div class="img-rounded well well-sm eqht-trgt hght-inhrt">
-					<h3><a href="#" class="stretched-link no-undrln">Public Inquiries</a></h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et
-						dolore magna.</p>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="img-rounded well well-sm eqht-trgt hght-inhrt">
-					<h3><a href="#" class="stretched-link no-undrln">Job opportunities</a></h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et
-						dolore magna.</p>
-				</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="img-rounded well well-sm eqht-trgt hght-inhrt">
-					<h3><a href="#" class="stretched-link no-undrln">Updates on Past Audits</a></h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et
-						dolore magna.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="gc-features mrgn-tp-lg mrgn-bttm-xl">
+<section class="mrgn-tp-lg mrgn-bttm-xl">
 	<div class="container">
 		<div class="row wb-eqht-grd">
 			<!-- Feature 1 -->
 			<div class="col-sm-4">
-				<div class="well well-sm eqht-trgt hght-inhrt gc-hvr-shadow">
-					<div class="media">
-						<div class="media-left">
-							<!-- Icon Placeholder with Bootstrap's Glyphicons -->
-							<span class="media-object well well-sm img-rounded text-center">
-								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-							</span>
-						</div>
-						<div class="media-body">
-							<h3 class="media-heading"><a href="#" class="stretched-link no-undrln">Public Inquiries</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+				<div class="panel panel-default gc-hvr-shadow eqht-trgt hght-inhrt">
+					<div class="panel-body">
+						<div class="row wb-eqht-grd">
+							<!-- Icon Placeholder -->
+							<div class="col-xs-3 d-flex align-items-center">
+								<span class="img-rounded text-center center-block">
+									<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+								</span>
+							</div>
+							<!-- Content -->
+							<div class="col-xs-9">
+								<p class="h4"><a href="#" class="stretched-link no-undrln">Public Inquiries</a></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -256,17 +272,20 @@
 
 			<!-- Feature 2 -->
 			<div class="col-sm-4">
-				<div class="well well-sm eqht-trgt hght-inhrt gc-hvr-shadow">
-					<div class="media">
-						<div class="media-left">
-							<!-- Icon Placeholder with Bootstrap's Glyphicons -->
-							<span class="media-object well well-sm img-rounded text-center">
-								<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-							</span>
-						</div>
-						<div class="media-body">
-							<h3 class="media-heading"><a href="#" class="stretched-link no-undrln">Job Opportunities</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+				<div class="panel panel-default gc-hvr-shadow eqht-trgt hght-inhrt">
+					<div class="panel-body">
+						<div class="row wb-eqht-grd">
+							<!-- Icon Placeholder -->
+							<div class="col-xs-3 d-flex align-items-center">
+								<span class="img-rounded text-center center-block">
+									<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+								</span>
+							</div>
+							<!-- Content -->
+							<div class="col-xs-9">
+								<p class="h4"><a href="#" class="stretched-link no-undrln">Job Opportunities</a></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -274,17 +293,20 @@
 
 			<!-- Feature 3 -->
 			<div class="col-sm-4">
-				<div class="well well-sm eqht-trgt hght-inhrt gc-hvr-shadow">
-					<div class="media">
-						<div class="media-left">
-							<!-- Icon Placeholder with Bootstrap's Glyphicons -->
-							<span class="media-object well well-sm img-rounded text-center">
-								<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-							</span>
-						</div>
-						<div class="media-body">
-							<h3 class="media-heading"><a href="#" class="stretched-link no-undrln">Updates on Past Audits</a></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+				<div class="panel panel-default gc-hvr-shadow eqht-trgt hght-inhrt">
+					<div class="panel-body">
+						<div class="row wb-eqht-grd">
+							<!-- Icon Placeholder -->
+							<div class="col-xs-3 d-flex align-items-center">
+								<span class="img-rounded text-center center-block">
+									<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+								</span>
+							</div>
+							<!-- Content -->
+							<div class="col-xs-9">
+								<p class="h4"><a href="#" class="stretched-link no-undrln">Updates on Past Audits</a></p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -293,7 +315,7 @@
 	</div>
 </section>
 
-<section class="pt-4 pb-4" style="background-color: #F4F4F2;">
+<section class="pt-4 pb-4 section-bg">
 	<div class="container">
 		<div class="row pb-4">
 			<div class="col-sm-8 pr-4">
@@ -355,7 +377,7 @@
 					backgrounds
 					within our team.
 				</p>
-				<a class="btn btn-lg btn-danger" href="#">Career opportunities</a>
+				<a class="btn btn-lg btn-primary" href="#">Career opportunities</a>
 			</div>
 		</div>
 	</div>
@@ -372,7 +394,7 @@
 					organization—to bring their concerns and questions about environmental issues related to sustainable
 					development to the attention of the federal ministers, with a guaranteed response.
 				</p>
-				<a class="btn btn-lg btn-danger" href="#">More about petitions</a>
+				<a class="btn btn-lg btn-primary" href="#">More about petitions</a>
 			</div>
 		</div>
 	</div>
@@ -406,7 +428,7 @@
 				</nav>
 			</div>
 			<div class="col-sm-3 pt-4">
-				<img src="../../../templates/thematic/assets/oag/logo-full-transparent.png" alt="Symbol of the Government of Canada" />
+				<img class="img-responsive" src="../../../templates/thematic/assets/oag/logo-full-transparent.png" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
