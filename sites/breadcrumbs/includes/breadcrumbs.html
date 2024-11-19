@@ -4,8 +4,14 @@
 	<div class="container">
 		<ol class="breadcrumb" typeof="BreadcrumbList">
 			<li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="{{ i18nText-homePage }}">
-					<span property="name">{{ i18nText-home }}</span>
+				<a property="item" typeof="WebPage" href="{% if page.pageclass == 'oag-theme' %}https://www.oag-bvg.gc.ca/internet/English/admin_e_41.html{% else %}{{ i18nText-homePage }}{% endif %}">
+					<span property="name">
+						{% if page.pageclass == 'oag-theme' %}
+							Office of the Auditor General of Canada
+						{% else %}
+							{{ i18nText-home }}
+						{% endif %}
+					</span>
 				</a>
 				<meta property="position" content="1">
 			</li>
