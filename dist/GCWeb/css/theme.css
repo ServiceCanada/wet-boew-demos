@@ -15023,14 +15023,13 @@ Miscellaneous Utiliy CSS
 	div:not(.container) .gc-most-requested ul {
 		column-count: 2;
 		column-gap: 0;
-		margin-bottom: 0;
 		padding-left: 1.55em; }
 		main:not(.container) .gc-most-requested ul li,
 		div:not(.container) .gc-most-requested ul li {
 			display: inline-block;
 			font-size: 87%;
-			line-height: 1.25em;
-			margin-bottom: 10px;
+			line-height: 1.35em;
+			margin-bottom: 5px;
 			padding-left: 1.15em;
 			padding-right: 1em;
 			position: relative; }
@@ -15079,6 +15078,9 @@ Miscellaneous Utiliy CSS
 						position: absolute;
 						top: 0;
 						width: calc( (100vw - 970px + 15px)/2); }
+					.page-type-theme #gridContainer > nav + section .gc-most-requested ul li::after {
+						width: 240px;
+					}
 	/*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -15166,6 +15168,9 @@ Miscellaneous Utiliy CSS
 		width: 1170px; }
 		.page-type-theme #gridContainer > nav + section .gc-most-requested::after {
 			width: calc( (100vw - 1170px + 15px)/2); }
+		.page-type-theme #gridContainer > nav + section .gc-most-requested ul li::after {
+			width: 340px;
+		}
 	/*
 	Most requested component
 */
