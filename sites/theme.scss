@@ -34,9 +34,7 @@
 @import "bootstrap-sass/assets/stylesheets/bootstrap/type";
 @import "wet-boew/src/base/bootstrap-overrides/core-heading";
 @import "baseline/heading";
-@import "../common/colour/colours";
 @import "../common/list/lists";
-@import "../common/text-level-modifiers/base";
 @import "wet-boew/src/base/bootstrap-overrides/core";
 @import "wet-boew/src/base/details/base";
 @import "baseline/details";
@@ -210,13 +208,14 @@
 
 
 /*! Core - Utilities */
-@import "helpers/base";
 @import "bootstrap-sass/assets/stylesheets/bootstrap/utilities";
 @import "bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
 @import "wet-boew/src/base/accessibility/utilities";
 @import "wet-boew/src/base/proximity/base";
 @import "wet-boew/src/base/bootstrap-4";
 @import "wet-boew/src/base/component";
+@import "../common/text-level-modifiers/base";
+@import "../common/colour/colours";
 @import "../common/spacing/base";
 
 

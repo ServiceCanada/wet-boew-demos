@@ -112,10 +112,13 @@
 	"changesets": [
 		{
 			"@id": "_:cs_allservices",
-			"name": "Topic page",
+			"name": "All services page",
 			"status": "stable",
 			"baseOnIteration": "_:iteration_allservices_1",
 			"detectableBy": "By the sequence of elements.",
+			"semantic": "h1 + h2*3 + h1 + h2*n",
+			"accessibility": "This page contains two <h1> elements since the content is perceptibly split in two distinct sections. A skip link has been added at the top of the content to go directly to the second part of the content.",
+			"context": "This page template is strictly limited to the All services page located on Canada.ca.",
 			"layout": [
 				"Top serches navigation band",
 				"Most requested services navigation band",

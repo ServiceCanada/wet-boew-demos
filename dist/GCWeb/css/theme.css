@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.8.0 - 2024-12-03
+ * v15.8.0 - 2024-12-05
  *
  */
 /*
@@ -1940,14 +1940,6 @@ h6, .h6 {
 
 /*
  *
- * @title: Colours
- *
- */
-.bg-light {
-	background-color: #f5f5f5; }
-
-/*
- *
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
@@ -2102,18 +2094,11 @@ div.list-advanced.square > ul, ul.square {
 	list-style-type: square; }
 
 /*
- * GCWeb/AEM: Custom CSS for list styling with navigation links.
+ * Compact list version primarily used for navigation links on navigational page
  */
-ul.small li {
+ul.compact li {
+	font-size: 87%;
 	line-height: 1.5em; }
-
-/*
- *
- * @title: Text-level modifiers
- *
- */
-.fnt-hdng {
-	font-family: Lato, sans-serif; }
 
 /*
 	WET-BOEW
@@ -13407,21 +13392,6 @@ table.dataTable.nws-tbl .label.label-success {
 		margin-bottom: 15px; }
 
 /*! Core - Utilities */
-/*
- * Helper Classes
- */
-.margin-bottom-none {
-	margin-bottom: 0; }
-
-.margin-bottom-small {
-	margin-bottom: .25em; }
-
-.margin-top-large {
-	margin-top: 1.5em; }
-
-.margin-top-medium {
-	margin-top: .75em; }
-
 .clearfix:before, .gc-subway-landmark-end:before, .clearfix:after, .gc-subway-landmark-end:after {
 	display: table;
 	content: " "; }
@@ -13976,6 +13946,22 @@ Miscellaneous Utiliy CSS
 
 /*
  *
+ * @title: Text-level modifiers
+ *
+ */
+.fnt-hdng {
+	font-family: Lato, sans-serif; }
+
+/*
+ *
+ * @title: Colours
+ *
+ */
+.bg-light {
+	background-color: #f5f5f5; }
+
+/*
+ *
  * @title: Spacing
  *
  */
@@ -14207,6 +14193,12 @@ Miscellaneous Utiliy CSS
 .px-5 {
 	padding-left: 60px !important; }
 
+/*
+ * TODO TODO TODO
+ * The following styles will need to be removed in WET-BOEW:
+ * .p-0, .pl-2, .px-2, .pr-2, .px-2, .pt-4, .py-4, .pb-4, .py-4, .mt-auto
+ * TODO TODO TODO
+*/
 .m-auto {
 	margin: auto !important; }
 
@@ -14225,6 +14217,18 @@ Miscellaneous Utiliy CSS
 .ml-auto,
 .mx-auto {
 	margin-left: auto !important; }
+
+.margin-bottom-none {
+	margin-bottom: 0; }
+
+.margin-bottom-small {
+	margin-bottom: .25em; }
+
+.margin-top-large {
+	margin-top: 1.5em; }
+
+.margin-top-medium {
+	margin-top: .75em; }
 
 /*
  Views
