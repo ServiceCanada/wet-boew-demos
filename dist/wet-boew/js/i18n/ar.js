@@ -190,11 +190,11 @@ wb.i18nDict = {
 	tbFilterInst: "This table provides a sorting feature via the buttons across the column header row with only one instance visible at a time.",
 
 	/* Twitter embedded timeline */
-	"twitter-start-notice": "@twitter-start-notice@",
-	"twitter-end-notice": "@twitter-end-notice@",
-	"twitter-skip-end": "@twitter-skip-end@",
-	"twitter-skip-start": "@twitter-skip-start@",
-	"twitter-timeline-title": "@twitter-timeline-title@",
+	"twitter-start-notice": "Start of @%username%’s X timeline",
+	"twitter-end-notice": "End of @%username%’s X timeline",
+	"twitter-skip-end": "Skip to end of @%username%’s X timeline",
+	"twitter-skip-start": "Skip to start of @%username%’s X timeline",
+	"twitter-timeline-title": "X timeline",
 
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
@@ -253,15 +253,11 @@ wb.i18nDict = {
 	/* Data scrub */
 	"pii-header": "Remove Personal information",
 	"pii-intro": "Some information added in the following fields is identified as personal information and it will be replaced as follows:",
-	"pii-view-more": "Find out more",
-	"pii-view-more-intro": "Please note that any information that corresponds to the cases from the list below, is considered as personal information and is removed from the form prior its submission:",
-	"pii-view-more-item-1": "Any 8 or more digits separated or not by the following characters: ' ', '/', '-', '.'",
-	"pii-view-more-item-2": "Passport serial number",
-	"pii-view-more-item-3": "Email",
-	"pii-view-more-item-4": "Postal code",
-	"ii-view-more-item-5": "Certain parametres considered non secured in a url",
-	"pii-yes-btn": "I agree, remove personal information",
-	"pii-cancel-btn": "Go back to the form"
+	"pii-view-more": "What is considered personal information?",
+	"pii-view-more-info": "<p>The following types of information are considered personal information:</p><ul><li>email address</li><li>telephone number</li><li>postal code</li><li>passport number</li><li>business number</li><li>social insurance number (SIN)</li></ul>",
+	"pii-yes-btn": "Remove personal information and submit",
+	"pii-cancel-btn": "Go back and edit fields",
+	"redacted": "redacted"
 };
 
 } )( wb );
@@ -298,7 +294,36 @@ $.extend( $.validator.messages, {
 	rangelength: $.validator.format( "عدد الحروف يجب أن يكون بين {0} و {1}" ),
 	range: $.validator.format( "رجاء إدخال عدد قيمته بين {0} و {1}" ),
 	max: $.validator.format( "رجاء إدخال عدد أقل من أو يساوي {0}" ),
-	min: $.validator.format( "رجاء إدخال عدد أكبر من أو يساوي {0}" )
+	min: $.validator.format( "رجاء إدخال عدد أكبر من أو يساوي {0}" ),
+	step: $.validator.format( "يرجى تقديم قيمة من مضاعفات {0}" ),
+	maxWords: $.validator.format( "يرجى تقديم ما لا يزيد عن {0} كلمات" ),
+	minWords: $.validator.format( "يرجى تقديم {0} كلمات على الأقل" ),
+	rangeWords: $.validator.format( "يرجى تقديم ما بين {0} و{1} كلمة" ),
+	letterswithbasicpunc: "يرجى تقديم الحروف وعلامات الترقيم فقط",
+	alphanumeric: "يرجى تقديم الحروف والأرقام والمسافات والتسطير فقط",
+	lettersonly: "يرجى تقديم الحروف فقط",
+	nowhitespace: "من فضلك لا تدخل المساحات البيضاء",
+	ziprange: "يرجى تقديم الرمز البريدي بين 902xx-xxxx و905-xx-xxxx",
+	integer: "يرجى تقديم رقم غير عشري موجب أو سالب",
+	vinUS: "يرجى تقديم رقم تعريف المركبة (VIN)",
+	dateITA: "يرجى تقديم تاريخ صالح",
+	time: "يرجى تقديم وقت صالح بين 00:00 و23:59",
+	phoneUS: "الرجاء تقديم رقم هاتف صالح",
+	phoneUK: "الرجاء تقديم رقم هاتف صالح",
+	mobileUK: "يرجى تقديم رقم هاتف محمول صالح",
+	strippedminlength: $.validator.format( "يرجى تقديم {0} حرفًا على الأقل" ),
+	email2: "يرجى تقديم عنوان بريد إلكتروني صالح",
+	url2: "يرجى إدخال عنوان بريد إلكتروني صحيح",
+	creditcardtypes: "يرجى تقديم رقم بطاقة ائتمان صالح",
+	currency: "يرجى تقديم عملة صالحة",
+	ipv4: "يرجى تقديم عنوان IP v4 صالح",
+	ipv6: "يرجى تقديم عنوان IP v6 صالح",
+	require_from_group: $.validator.format( "يرجى تقديم ما لا يقل عن {0} من هذه الحقول" ),
+	nifES: "يرجى تقديم رقم TIN صالح",
+	nieES: "يرجى تقديم رقم NIE صالح",
+	cifES: "يرجى تقديم رقم CIF صالح",
+	postalCodeCA: "يرجى تقديم رمز بريدي صالح",
+	pattern: "التنسيق غير صالح"
 } );
 return $;
 }));

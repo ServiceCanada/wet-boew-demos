@@ -58,7 +58,7 @@ wb.i18nDict = {
 	"srch-menus": "Recherche et menus",
 	email: "Courriel",
 	"menu-close": "Fermer le menu",
-	"overlay-close": "Fermer la fenêtre superposée",
+	"overlay-close": "la fenêtre superposée",
 	"esc-key": "(touche d'échappement)",
 	show: "Afficher",
 
@@ -190,11 +190,11 @@ wb.i18nDict = {
 	tbFilterInst: "Ce tableau offre une fonctionnalité de triage via les boutons situés dans la ligne d'entêtes de colonnes avec seulement une instance visible à la fois.",
 
 	/* Twitter embedded timeline */
-	"twitter-start-notice": "@twitter-start-notice@",
-	"twitter-end-notice": "@twitter-end-notice@",
-	"twitter-skip-end": "@twitter-skip-end@",
-	"twitter-skip-start": "@twitter-skip-start@",
-	"twitter-timeline-title": "@twitter-timeline-title@",
+	"twitter-start-notice": "Commencement du fil X de @%username%",
+	"twitter-end-notice": "Fin du fil X de @%username%",
+	"twitter-skip-end": "Passer à la fin du fil X de @%username%",
+	"twitter-skip-start": "Passer au commencement du fil X de @%username%",
+	"twitter-timeline-title": "Fil X",
 
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
@@ -252,16 +252,12 @@ wb.i18nDict = {
 
 	/* Data scrub */
 	"pii-header": "Supprimer les informations personnelles",
-	"pii-intro": "Certaines informations ajoutées dans les champs suivants sont identifiées comme des informations personnelles et seront remplacées comme suit:",
-	"pii-view-more": "En savoir plus",
-	"pii-view-more-intro": "Veuillez noter que toute information correspondant aux cas de la liste ci-dessous est considérée comme une information personnelle et est supprimé du formulaire avant sa soumission&nbsp;:",
-	"pii-view-more-item-1": "8 chiffres ou plus séparés ou non par les caractères suivants : «&nbsp;», «&nbsp;/&nbsp;», «&nbsp;-&nbsp;», «&nbsp;.&nbsp;»",
-	"pii-view-more-item-2": "Numéro de série du passeport",
-	"pii-view-more-item-3": "Courriel",
-	"pii-view-more-item-4": "Code postal",
-	"ii-view-more-item-5": "Certains paramètres considérés comme non sécurisés dans une url",
-	"pii-yes-btn": "J'accepte, supprimer les informations personnelles",
-	"pii-cancel-btn": "Retourner au formulaire"
+	"pii-intro": "Certaines informations ajoutées dans les champs suivants sont identifiées comme des informations personnelles et seront remplacées comme suit&nbsp;:",
+	"pii-view-more": "Qu’est-ce qui est considéré comme une information personnelle?",
+	"pii-view-more-info": "<p>Les types d'informations suivants sont considérés comme des informations personnelles&nbsp;:</p><ul><li>adresse courriel</li><li>numéro de téléphone</li><li>code postal</li><li>numéro de passeport</li><li>numéro d'entreprise</li><li>numéro d'assurance sociale (NAS)</li></ul>",
+	"pii-yes-btn": "Supprimer les informations personnelles et soumettre",
+	"pii-cancel-btn": "Retourner et modifier les champs",
+	"redacted": "caviardé"
 };
 
 } )( wb );
@@ -320,6 +316,7 @@ $.extend( $.validator.messages, {
 	email2: "Veuillez fournir une adresse électronique valide.",
 	url2: "Veuillez fournir une adresse URL valide.",
 	creditcardtypes: "Veuillez fournir un numéro de carte de crédit valide.",
+	currency: "Veuillez fournir une monnaie valide.",
 	ipv4: "Veuillez fournir une adresse IP v4 valide.",
 	ipv6: "Veuillez fournir une adresse IP v6 valide.",
 	require_from_group: $.validator.format( "Veuillez fournir au moins {0} de ces champs." ),
