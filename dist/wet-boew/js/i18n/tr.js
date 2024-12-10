@@ -252,7 +252,7 @@ wb.i18nDict = {
 
 	/* Data scrub */
 	"pii-header": "Remove Personal information",
-	"pii-intro": "Some information added in the following fields is identified as personal information and it will be replaced as follows:",
+	"pii-intro": "Some information in your form is identified as personal information and it will be replaced as follows:",
 	"pii-view-more": "What is considered personal information?",
 	"pii-view-more-info": "<p>The following types of information are considered personal information:</p><ul><li>email address</li><li>telephone number</li><li>postal code</li><li>passport number</li><li>business number</li><li>social insurance number (SIN)</li></ul>",
 	"pii-yes-btn": "Remove personal information and submit",

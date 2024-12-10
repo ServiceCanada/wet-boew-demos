@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.83 - 2024-12-09
+ * v4.0.83 - 2024-12-10
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 3.1.7 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.1.7/LICENSE */
@@ -13673,11 +13673,15 @@ var $document = wb.doc,
 		}
 
 		// Generate PII fields list
-		piiModalFields += "<dl>";
-		form.PIIFields.forEach( ( field ) => {
-			piiModalFields += "<dt>" + field.label + "</dt><dd class=\"well well-sm\">" + field.scrubValHTML + "</dd>";
-		} );
-		piiModalFields += "</dl>";
+		if ( form.PIIFields.length > 1 ) {
+			piiModalFields += "<dl>";
+			form.PIIFields.forEach( ( field ) => {
+				piiModalFields += "<dt>" + field.label + "</dt><dd class=\"well well-sm\">" + field.scrubValHTML + "</dd>";
+			} );
+			piiModalFields += "</dl>";
+		} else {
+			piiModalFields += "<div class=\"well well-sm\">" + form.PIIFields[ 0 ].scrubValHTML + "</div>";
+		}
 
 		piiModal.id = piiModalID;
 		piiModal.className = "modal-dialog modal-content overlay-def";
@@ -13687,20 +13691,20 @@ var $document = wb.doc,
 			piiModal.innerHTML = uiTemplate.innerHTML;
 		} else {
 			piiModal.innerHTML = `<header class="modal-header">
-					<h2 class="modal-title">${i18nText.header}</h2>
+					<h2 class="modal-title">${ i18nText.header }</h2>
 				</header>
 				<div class="modal-body">
-					<p>${i18nText.intro}</p>
-					${piiModalFields}
+					<p>${ i18nText.intro }</p>
+					${ piiModalFields }
 					<details class="mrgn-tp-md">
-						<summary>${i18nText.viewMore}</summary>
-						${moreInfoContent}
+						<summary>${ i18nText.viewMore }</summary>
+						${ moreInfoContent }
 					</details>
 				</div>
 				<div class="modal-footer">
 					<div class="row">
-						<div class="col-xs-12 col-sm-5 mrgn-tp-sm"><button type="button" class="btn btn-link btn-block popup-modal-dismiss">${i18nText.cancelBtn}</button></div>
-						<div class="col-xs-12 col-sm-7 mrgn-tp-sm"><button type="button" class="btn btn-primary btn-block popup-modal-dismiss" ${attrScrubSubmit}>${i18nText.confirmBtn}</button></div>
+						<div class="col-xs-12 col-sm-5 mrgn-tp-sm"><button type="button" class="btn btn-link btn-block popup-modal-dismiss">${ i18nText.cancelBtn }</button></div>
+						<div class="col-xs-12 col-sm-7 mrgn-tp-sm"><button type="button" class="btn btn-primary btn-block popup-modal-dismiss" ${ attrScrubSubmit }>${ i18nText.confirmBtn }</button></div>
 					</div>
 				</div>`;
 		}
