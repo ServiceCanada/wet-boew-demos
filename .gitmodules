@@ -30,3 +30,7 @@
 	path = all-services
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = all-services
+[submodule "news"]
+	path = news
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = news
