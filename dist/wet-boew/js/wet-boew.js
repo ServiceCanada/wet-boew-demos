@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.83 - 2024-12-10
+ * v4.0.83 - 2024-12-20
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 3.1.7 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.1.7/LICENSE */
@@ -3977,12 +3977,65 @@ wb.findPotentialPII = function( str, scope, opts ) {
 		return false;
 	}
 	var oRegEx = {
-			digits: /\d(?:[\s\-\\.\\/]?\d){8,}(?!\d)/ig, //9digits or more pattern
-			phone: /\+?(\d{1,3})?[-._\s]?(\(?\d{3}\)?)[-._\s]?(\d{3})[-._\s]?(\d{4})/ig, //any phone number format
-			passport: /\b[A-Za-z]{2}[\s\\.-]*?\d{6}\b/ig, //canadian nr passport pattern
-			email: /\b(?:[a-zA-Z0-9_\-\\.]+)(?:@|%40|%2540)(?:[a-zA-Z0-9_\-\\.]+)\.(?:[a-zA-Z]{2,5})\b/ig, //email pattern
-			postalCode: /\b[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d\b/ig, //postal code pattern
+
+			/*
+			* Digits:
+			* 9 digits or more
+			*/
+			digits: /\d(?:[\s\-\\.\\/]?\d){8,}(?!\d)/ig,
+
+			/*
+			* Phone:
+			* Any international phone number format
+			*/
+			phone: /\+?(\d{1,3})?[-._\s]?(\(?\d{3}\)?)[-._\s]?(\d{3})[-._\s]?(\d{4})/ig,
+
+			/*
+			* Passport:
+			* 2 letters followed by either a " ", a "/", a ".", or a "-" any amount of times, followed by 6 digits
+			*/
+			passport: /\b[A-Za-z]{2}[\s\\.-]*?\d{6}\b/ig,
+
+			/*
+			* Email:
+			* valid email format
+			*/
+			email: /\b(?:[a-zA-Z0-9_\-\\.]+)(?:@|%40|%2540)(?:[a-zA-Z0-9_\-\\.]+)\.(?:[a-zA-Z]{2,5})\b/ig,
+
+			/*
+			* Loose email:
+			* email address that has one or more whitespaces before the "@" sign and either a "." or "," after the domain name
+			*/
+			looseEmail: /([a-zA-Z0-9_\-.]+)\s*@([\sa-zA-Z0-9_\-.]+)[.,]([a-zA-Z]{1,5})/g,
+
+			/*
+			* Loose email 2:
+			* matches probable email format that the user tried to hide
+			* any amount of letters, numbers, ".", "_", "%", "+", or "-", followed by 0 or 1 whitespace,
+			* followed by "@", followed by 0 or 1 whitespace, followed by "gmail", "outlook", "hotmail", or "yahoo".
+			*/
+			looseEmail2: /([a-zA-Z0-9._%+-]+)\s?@\s?(gmail|outlook|icloud|hotmail|yahoo)(\s?\.?\s?(com|ca))?/ig,
+
+			/*
+			* Postal code:
+			* valid Canadian postal code
+			*/
+			postalCode: /\b[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d\b/ig,
+
+			/*
+			* Usename:
+			* "username" or "user",
+			* followed by a colon or an equals sign,
+			* followed by any character that is not a " " or a "&"
+			*/
 			username: /(?:(username|user)[%20]?([:=]|(%EF%BC%9A))[^\s&]*)/ig,
+
+			/*
+			* Password:
+			* "password" or "pass",
+			* ollowed by a ":" or a "=",
+			* followed by any character that is not a " " or a "&"
+			*/
 			password: /(?:(password|pass)[%20]?([:=]|(%EF%BC%9A))[^\s&]*)/ig
 		},
 		isFound = false,
@@ -4115,13 +4168,13 @@ function focusable( element, isTabIndexNotNaN, visibility ) {
 		return !!img && visible( img );
 	}
 	if ( visibility ) {
-		return ( /input|select|textarea|button|object/.test( nodeName ) ? !element.disabled :
+		return ( /input|select|textarea|button|object|summary/.test( nodeName ) ? !element.disabled :
 			nodeName === "a" ?
 				element.href || isTabIndexNotNaN :
 				isTabIndexNotNaN ) &&
 		visible( element ); /* the element and all of its ancestors must be visible */
 	} else {
-		return ( /input|select|textarea|button|object/.test( nodeName ) ? !element.disabled :
+		return ( /input|select|textarea|button|object|summary/.test( nodeName ) ? !element.disabled :
 			nodeName === "a" ?
 				element.href || isTabIndexNotNaN :
 				isTabIndexNotNaN );
@@ -10519,7 +10572,7 @@ var componentName = "wb-lbx",
 
 		$wrap.on( "keydown", function( e ) {
 			if ( e.which === 9 ) {
-				var tabbable = $wrap.find( ".mfp-container a[href]:visible, .mfp-container button:visible, .mfp-container input:visible, .mfp-container textarea:visible, .mfp-container select:visible, .mfp-container details>summary:visible, .mfp-container [tabindex]:not([tabindex='-1']:visible)" ),
+				var tabbable = $wrap.find( ".mfp-container :tabbable" ),
 					firstTabbable = tabbable.first()[ 0 ],
 					lastTabbable = tabbable.last()[ 0 ],
 					currentFocus = $( document.activeElement )[ 0 ];
@@ -13061,7 +13114,7 @@ $document.on( "timerpoke.wb " + initEvent + " keydown open" + selector +
 
 					// No special tab handling when ignoring outside activity
 					if ( overlay.className.indexOf( ignoreOutsideClass ) === -1 ) {
-						$focusable = $( overlay ).find( "a[href]:visible, button:visible, input:visible, textarea:visible, select:visible, details>summary:visible, [tabindex]:not([tabindex='-1']:visible)" );
+						$focusable = $( overlay ).find( ":tabbable" );
 						length = $focusable.length;
 						index = $focusable.index( event.target ) + ( event.shiftKey ? -1 : 1 );
 
@@ -13665,7 +13718,7 @@ var $document = wb.doc,
 		let piiModalFields = "",
 			piiModal = document.createElement( "section" ),
 			moreInfoContent = form.settings.moreInfo ? form.settings.moreInfo : i18nText.viewMoreInfo,
-			uiTemplate = form.querySelector( "template" + form.settings.modalTemplate );
+			modalTemplate = form.querySelector( "template" + form.settings.modalTemplate );
 
 		// Destroy modal if present
 		if ( document.getElementById( piiModalID ) ) {
@@ -13676,19 +13729,19 @@ var $document = wb.doc,
 		if ( form.PIIFields.length > 1 ) {
 			piiModalFields += "<dl>";
 			form.PIIFields.forEach( ( field ) => {
-				piiModalFields += "<dt>" + field.label + "</dt><dd class=\"well well-sm\">" + field.scrubValHTML + "</dd>";
+				piiModalFields += "<dt>" + field.label + "</dt><dd class=\"well well-sm\">" + field.scrubValHTML.replace( /\n/g, "<br>" ) + "</dd>";
 			} );
 			piiModalFields += "</dl>";
 		} else {
-			piiModalFields += "<div class=\"well well-sm\">" + form.PIIFields[ 0 ].scrubValHTML + "</div>";
+			piiModalFields += "<div class=\"well well-sm\">" + form.PIIFields[ 0 ].scrubValHTML.replace( /\n/g, "<br>" ) + "</div>";
 		}
 
 		piiModal.id = piiModalID;
 		piiModal.className = "modal-dialog modal-content overlay-def";
 		piiModal.setAttribute( "data-form", form.id );
 
-		if ( uiTemplate ) {
-			piiModal.innerHTML = uiTemplate.innerHTML;
+		if ( modalTemplate ) {
+			piiModal.appendChild( modalTemplate.content.cloneNode( true ) );
 		} else {
 			piiModal.innerHTML = `<header class="modal-header">
 					<h2 class="modal-title">${ i18nText.header }</h2>
@@ -13713,7 +13766,7 @@ var $document = wb.doc,
 		$( "body" ).append( piiModal );
 
 		// Add PII fields HTML if using a custom UI template
-		if ( uiTemplate ) {
+		if ( modalTemplate ) {
 			$( "#" + piiModalID + " [data-scrub-modal-fields]" ).html( piiModalFields );
 		}
 	};
