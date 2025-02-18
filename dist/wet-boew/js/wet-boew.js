@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.83 - 2024-12-20
+ * v4.0.85 - 2025-02-07
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 3.1.7 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.1.7/LICENSE */
@@ -4191,18 +4191,10 @@ function visible( element ) {
 		.length;
 }
 
-$.extend( $.expr[ ":" ], {
-	data: $.expr.createPseudo ? $.expr.createPseudo( function( dataName ) {
-		return function( elem ) {
-			return !!$.data( elem, dataName );
-		};
-	} ) :
-
-	// support: jQuery <1.8
-
-		function( elem, i, match ) {
-			return !!$.data( elem, match[ 3 ] );
-		},
+$.extend( $.expr.pseudos, {
+	data: function( elem, index, match ) {
+		return !!$.data( elem, match[ 3 ] );
+	},
 	focusable: function( element ) {
 		return focusable( element, !isNaN( $.attr( element, "tabindex" ) ), true );
 	},
@@ -13585,6 +13577,8 @@ var $document = wb.doc,
 		scrubChar: "********"
 	},
 	i18n, i18nText,
+	currSubmitter,
+	btnAsInput,
 
 	init = function( event ) {
 		var elm = wb.init( event, componentName, selector ),
@@ -13621,8 +13615,8 @@ var $document = wb.doc,
 			// Block form submission for Postback forms by default
 			elm.setAttribute( attrPIIBlocked, "true" );
 
-			elm.addEventListener( "submit", function( event ) {
-				event.preventDefault(); // This is needed because of the setTimeout
+			elm.addEventListener( "submit", function( e ) {
+				e.preventDefault(); // This is needed because of the setTimeout
 
 				// Go through form values
 				checkFormValues( elm );
@@ -13632,6 +13626,16 @@ var $document = wb.doc,
 					let errorElm = elm.querySelector( ".error .label.label-danger" );
 
 					if ( !errorElm ) {
+						currSubmitter = e.submitter;
+
+						// Add submitter data if it is present (only if not a Postback form as it has its own method)
+						if ( currSubmitter.name && !elm.classList.contains( "wb-postback" ) ) {
+							btnAsInput = document.createElement( "input" );
+							btnAsInput.type = "hidden";
+							btnAsInput.name = currSubmitter.name;
+							btnAsInput.value = currSubmitter.value;
+							elm.appendChild( btnAsInput );
+						}
 
 						// Open modal
 						if ( elm.PIIFields.length > 0 ) {
@@ -13646,7 +13650,7 @@ var $document = wb.doc,
 							] );
 						} else {
 							if ( elm.classList.contains( "wb-postback" ) ) {
-								$( elm ).trigger( "wb-postback.submit", { event } );
+								$( elm ).trigger( "wb-postback.submit", currSubmitter );
 							} else {
 								elm.submit();
 							}
@@ -13775,14 +13779,14 @@ var $document = wb.doc,
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // Scrub the form fields on click of the "Confirm" button
-$document.on( "click", "#" + piiModalID + " [" + attrScrubSubmit + "]", function( event ) {
+$document.on( "click", "#" + piiModalID + " [" + attrScrubSubmit + "]", function( ) {
 	let modal = document.getElementById( piiModalID ),
 		form = document.getElementById( modal.dataset.form );
 
 	scrubFormValues( form );
 
 	if ( form.classList.contains( "wb-postback" ) ) {
-		$( form ).trigger( "wb-postback.submit", { event } );
+		$( form ).trigger( "wb-postback.submit", currSubmitter );
 	} else {
 		form.submit();
 	}
@@ -14117,6 +14121,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 		refreshOnClick: true,		/* refresh session if user clicks on the page */
 		refreshLimit: 120000,		/* default period of 2 minutes (ajax calls happen only once during this period) */
 		method: "POST",				/* the request method to use */
+		textOverrides: null,		/* text overrides (no default) */
 		additionalData: null,		/* additional data to send with the request */
 		refreshCallback: function( response ) {	/* callback function used to check the server response */
 			return response.replace( /\s/g, "" ) === "true";
@@ -14151,15 +14156,28 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 			// Only initialize the i18nText once
 			if ( !i18nText ) {
 				i18n = wb.i18n;
-				i18nText = {
-					buttonContinue: i18n( "st-btn-cont" ),
-					buttonEnd: i18n( "st-btn-end" ),
-					buttonSignin: i18n( "tmpl-signin" ),
-					timeoutBegin: i18n( "st-to-msg-bgn" ),
-					timeoutEnd: i18n( "st-to-msg-end" ),
-					timeoutTitle: i18n( "st-msgbx-ttl" ),
-					timeoutAlready: i18n( "st-alrdy-to-msg" )
-				};
+				const textOverrides = settings.textOverrides;
+				if ( textOverrides ) {
+					i18nText = {
+						buttonContinue: Object.hasOwn( textOverrides, "buttonContinue" ) ? DOMPurify.sanitize( textOverrides.buttonContinue ) : i18n( "st-btn-cont" ),
+						buttonEnd: Object.hasOwn( textOverrides, "buttonEnd" ) ? DOMPurify.sanitize( textOverrides.buttonEnd ) : i18n( "st-btn-end" ),
+						buttonSignin: Object.hasOwn( textOverrides, "buttonSignin" ) ? DOMPurify.sanitize( textOverrides.buttonSignin ) : i18n( "tmpl-signin" ),
+						timeoutBegin: i18n( "st-to-msg-bgn" ),
+						timeoutEnd: Object.hasOwn( textOverrides, "timeoutEnd" ) ? DOMPurify.sanitize( textOverrides.timeoutEnd ) : i18n( "st-to-msg-end" ),
+						timeoutTitle: i18n( "st-msgbx-ttl" ),
+						timeoutAlready: Object.hasOwn( textOverrides, "timeoutAlready" ) ? DOMPurify.sanitize( textOverrides.timeoutAlready ) : i18n( "st-alrdy-to-msg" )
+					};
+				} else {
+					i18nText = {
+						buttonContinue: i18n( "st-btn-cont" ),
+						buttonEnd: i18n( "st-btn-end" ),
+						buttonSignin: i18n( "tmpl-signin" ),
+						timeoutBegin: i18n( "st-to-msg-bgn" ),
+						timeoutEnd: i18n( "st-to-msg-end" ),
+						timeoutTitle: i18n( "st-msgbx-ttl" ),
+						timeoutAlready: i18n( "st-alrdy-to-msg" )
+					};
+				}
 			}
 
 			onReady = function() {
@@ -20139,13 +20157,12 @@ var $document = wb.doc,
 
 				// Submit the form unless it's blocked or currently being sent
 				if ( !$( this ).attr( attrBlocked ) && !$( this ).attr( attrSending ) && !$( this ).attr( attrPIIBlocked ) ) {
-					$elm.trigger( componentName + ".submit", { e } );
+					$elm.trigger( componentName + ".submit", e.submitter );
 				}
 			} );
 
-			$elm.on( componentName + ".submit", function( event, submitEvent ) {
+			$elm.on( componentName + ".submit", function( event, submitter ) {
 				var data = $elm.serializeArray(),
-					btn = submitEvent.submitter,
 					$selectorSuccess = $( selectorSuccess ),
 					$selectorFailure = $( selectorFailure );
 
@@ -20154,8 +20171,8 @@ var $document = wb.doc,
 
 				// If the submit button contains a variable, add it to the form's paramaters
 				// Note: Submitting a form via Enter will act as if the FIRST submit button was pressed. Therefore, that button's variable will be added (as opposed to nothing). This is in line with default form submission behaviour.
-				if ( btn && btn.name ) {
-					data.push( { name: btn.name, value: btn.value } );
+				if ( submitter && submitter.name ) {
+					data.push( { name: submitter.name, value: submitter.value } );
 				}
 
 				// Hide feedback messages
