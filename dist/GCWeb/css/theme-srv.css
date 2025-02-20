@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.2.0 - 2025-02-18
+ * v16.2.0 - 2025-02-20
  *
  */
 /*!
@@ -1572,27 +1572,27 @@ h6 .small, .h6 small,
 }
 
 h1, .h1 {
-	font-size: 1.9em;
+	font-size: 2.05em;
 }
 
 h2, .h2 {
-	font-size: 1.8em;
+	font-size: 1.95em;
 }
 
 h3, .h3 {
-	font-size: 1.2em;
+	font-size: 1.45em;
 }
 
 h4, .h4 {
-	font-size: 1.1em;
+	font-size: 1.35em;
 }
 
 h5, .h5 {
-	font-size: 1em;
+	font-size: 1.2em;
 }
 
 h6, .h6 {
-	font-size: 0.95em;
+	font-size: 1.1em;
 }
 
 p {
@@ -9550,27 +9550,27 @@ h6 .small, .h6 small,
 }
 
 h1, .h1 {
-	font-size: 1.9em;
+	font-size: 2.05em;
 }
 
 h2, .h2 {
-	font-size: 1.8em;
+	font-size: 1.95em;
 }
 
 h3, .h3 {
-	font-size: 1.2em;
+	font-size: 1.45em;
 }
 
 h4, .h4 {
-	font-size: 1.1em;
+	font-size: 1.35em;
 }
 
 h5, .h5 {
-	font-size: 1em;
+	font-size: 1.2em;
 }
 
 h6, .h6 {
-	font-size: 0.95em;
+	font-size: 1.1em;
 }
 
 p {
@@ -20868,7 +20868,7 @@ Miscellaneous Utiliy CSS
 	.mfp-content:before, .wb-overlay.open:before {
 		content: attr(data-pgtitle);
 		display: block;
-		font-size: 1.9em;
+		font-size: 2.05em;
 	}
 	/*
 	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)

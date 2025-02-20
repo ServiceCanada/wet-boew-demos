@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.2.0 - 2025-02-18
+ * v16.2.0 - 2025-02-20
  *
  */
 /*
@@ -1882,7 +1882,7 @@ html {
 
 main {
 	font-size: 20px;
-	line-height: 1.65em;
+	line-height: 1.6;
 }
 main table p {
 	word-break: initial;
@@ -2005,27 +2005,27 @@ h6 .small, .h6 small,
 }
 
 h1, .h1 {
-	font-size: 1.9em;
+	font-size: 2.05em;
 }
 
 h2, .h2 {
-	font-size: 1.8em;
+	font-size: 1.95em;
 }
 
 h3, .h3 {
-	font-size: 1.2em;
+	font-size: 1.45em;
 }
 
 h4, .h4 {
-	font-size: 1.1em;
+	font-size: 1.35em;
 }
 
 h5, .h5 {
-	font-size: 1em;
+	font-size: 1.2em;
 }
 
 h6, .h6 {
-	font-size: 0.95em;
+	font-size: 1.1em;
 }
 
 p {
@@ -2376,12 +2376,6 @@ h6,
  * @title: Heading
  *
  */
-h1 {
-	margin-bottom: 0.2em;
-	margin-top: 1em;
-	padding-bottom: 0.2em;
-}
-
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	font-family: Lato, sans-serif;
 	font-variant-ligatures: no-common-ligatures;
@@ -2395,9 +2389,27 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	border: 0;
 }
 
-h6,
-.h6 {
-	font-weight: 400;
+h1, .h1 {
+	line-height: 1.17;
+	margin-bottom: 0.2em;
+	margin-top: 1em;
+	padding-bottom: 0.2em;
+}
+
+h2, .h2 {
+	line-height: 1.23;
+}
+
+h3, .h3 {
+	line-height: 1.37;
+}
+
+h4, .h4, h5, .h5 {
+	line-height: 1.33;
+}
+
+h6, .h6 {
+	line-height: 1.45;
 }
 
 /*
@@ -13545,7 +13557,7 @@ html:not(.wb-disable) .wb-pgfltr-out {
 * Panel title
 */
 .panel-title {
-	font-size: 1.2em;
+	font-size: 1.45em;
 }
 
 /*
@@ -13945,7 +13957,7 @@ main .gc-rms-lngth img {
 	line-height: 1.5em;
 }
 .gc-srvinfo h3, .gc-srvinfo h4, .gc-srvinfo h5, .gc-srvinfo h6, .gc-drmt h3, .gc-drmt h4, .gc-drmt h5, .gc-drmt h6 {
-	font-size: 1em;
+	font-size: 1.2em;
 	margin-bottom: 5px;
 	margin-top: 23px;
 }
@@ -14098,7 +14110,7 @@ main .gc-rms-lngth img {
 }
 
 .gc-followus h2 {
-	font-size: 1.1em;
+	font-size: 1.35em;
 	margin-top: 0px;
 }
 .gc-followus ul {
@@ -14264,7 +14276,7 @@ div:not(.container) .gc-most-requested {
 }
 main:not(.container) .gc-most-requested h2,
 div:not(.container) .gc-most-requested h2 {
-	font-size: 1.1em;
+	font-size: 1.35em;
 	margin-top: 0;
 }
 main:not(.container) .gc-most-requested ul li,
@@ -14592,7 +14604,7 @@ fieldset.gc-chckbxrdio {
 	line-height: 1.5em;
 }
 .gc-features h3, .gc-features h4, .gc-features h5, .gc-features h6 {
-	font-size: 1em;
+	font-size: 1.2em;
 	margin-bottom: 5px;
 	margin-top: 23px;
 }
@@ -15997,7 +16009,7 @@ table.dataTable.nws-tbl .label.label-success {
 * Institutional landing page template
 */
 .page-type-ilp h2 {
-	font-size: 1.2em;
+	font-size: 1.45em;
 	margin-top: 15px;
 }
 .page-type-ilp .gc-followus ul li {
@@ -17392,12 +17404,46 @@ Miscellaneous Utiliy CSS
 	 */
 	h1,
 	.h1 {
-		font-size: 1.7em;
+		font-size: 2.055555em;
+		line-height: 1.19;
 		margin-top: 0.75em;
 	}
 	h2,
 	.h2 {
-		font-size: 1.6em;
+		font-size: 1.944444em;
+		line-height: 1.25;
+	}
+	h3,
+	.h3 {
+		font-size: 1.444444em;
+		line-height: 1.23;
+	}
+	h4,
+	.h4 {
+		font-size: 1.22222em;
+		line-height: 1.33;
+	}
+	h5,
+	.h5 {
+		font-size: 1.11111em;
+		line-height: 1.27;
+	}
+	h6,
+	.h6 {
+		font-size: 1em;
+		line-height: 1.4;
+	}
+	/*
+	 *
+	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+	 * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+	 *
+	 * @title: Scaffolding
+	 *
+	 */
+	main {
+		font-size: 18px;
+		line-height: 1.55;
 	}
 	/*
 	  WET-BOEW
@@ -19549,7 +19595,7 @@ Miscellaneous Utiliy CSS
 	.mfp-content:before, .wb-overlay.open:before {
 		content: attr(data-pgtitle);
 		display: block;
-		font-size: 1.9em;
+		font-size: 2.05em;
 	}
 	/*
 	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
