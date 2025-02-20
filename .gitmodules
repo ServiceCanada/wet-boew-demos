@@ -38,3 +38,7 @@
 	path = byline
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = byline
+[submodule "text-size"]
+	path = text-size
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = text-size
