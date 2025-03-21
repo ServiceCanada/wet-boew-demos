@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
 <title>Data Ajax - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta name="description" content="A basic AjaxLoader wrapper that inserts AJAXed-in content." />
@@ -12,7 +13,7 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2025-02-20 13:31:14 +0000"/>
+<meta name="dcterms.issued" content="2025-03-21 17:29:57 +0000"/>
 <meta name="dcterms.modified" content="2015-03-09"/>
 
 <link href="/wet-boew-demos/text-size/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -438,15 +439,15 @@
 		<h3>Source code</h3>
 		<details>
 			<summary>View code</summary>
-			<p>Filering out one element, in-page HTML</p>
+			<p>Filtering out one element, in-page HTML</p>
 			<pre><code>&lt;div data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *<strong>:not(.filter-out-selector)</strong>" class="original"&gt;
 	&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
-			<p>Filering out multiple elements, in-page HTML</p>
+			<p>Filtering out multiple elements, in-page HTML</p>
 			<pre><code>&lt;div data-ajax-replace="ajax/data-ajax-filter-en.html .filter-selector > div > *<strong>:not(.filter-out-selector, p)</strong>" class="original"&gt;
 	&lt;p&gt;Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
-			<p>Filering out one element and encoding the output</p>
+			<p>Filtering out one element and encoding the output</p>
 			<pre><code>&lt;pre>&lt;code data-wb-ajax='{ "encode": true, "url": "ajax/data-ajax-filter-en.html .filter-selector > div > *:not(.filter-out-selector)", "type": "replace" }'>Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text. Example text.&lt;/code>&lt;/pre></code></pre>
 			<p>data-ajax-filter-en.html</p>
 			<pre><code>&lt;section class=&quot;ajaxed-in&quot;&gt;
@@ -470,7 +471,7 @@
 
 <section>
 	<h2>Alternative syntax</h2>
-	<p>Consult the <a href="../../docs/ref/data-ajax/data-ajax-en.html">documentation</a> for more information regarding the following alternative syntaxt.</p>
+	<p>Consult the <a href="../../docs/ref/data-ajax/data-ajax-en.html">documentation</a> for more information regarding the following alternative syntax.</p>
 	<h3>Example</h3>
 	<div data-wb-ajax='{
 			"url": "ajax/data-ajax-extra-en.html",

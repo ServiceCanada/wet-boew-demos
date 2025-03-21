@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.2.0 - 2025-02-20
+ * v16.4.0 - 2025-03-21
  *
  */
 /*
@@ -1877,11 +1877,16 @@ main table caption p, main h1, main h2, main h3, main h4, main h5, main h6, main
 
 html {
 	-webkit-font-smoothing: antialiased;
+	font-size: unset;
 	text-rendering: optimizeLegibility;
 }
 
+body {
+	font-size: unset;
+}
+
 main {
-	font-size: 20px;
+	font-size: 1.25rem;
 	line-height: 1.6;
 }
 main table p {
@@ -1940,6 +1945,14 @@ a.figcaption figure > *:not(blockquote):not(img):not(table):not(div) {
 }
 a.figcaption figcaption {
 	text-decoration: underline;
+}
+
+output {
+	font-size: 1em;
+}
+
+blockquote {
+	font-size: 1em;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -2005,27 +2018,27 @@ h6 .small, .h6 small,
 }
 
 h1, .h1 {
-	font-size: 2.05em;
+	font-size: 2.5625rem;
 }
 
 h2, .h2 {
-	font-size: 1.95em;
+	font-size: 2.4375rem;
 }
 
 h3, .h3 {
-	font-size: 1.45em;
+	font-size: 1.8125rem;
 }
 
 h4, .h4 {
-	font-size: 1.35em;
+	font-size: 1.6875rem;
 }
 
 h5, .h5 {
-	font-size: 1.2em;
+	font-size: 1.5rem;
 }
 
 h6, .h6 {
-	font-size: 1.1em;
+	font-size: 1.375rem;
 }
 
 p {
@@ -2791,6 +2804,14 @@ details[open] > summary.btn-default {
  */
 blockquote {
 	font-size: 1em;
+}
+
+.lead {
+	font-size: 1.2em;
+}
+
+pre {
+	font-size: 1rem;
 }
 
 code,
@@ -4497,7 +4518,7 @@ input[type=button], input[type=reset], input[type=submit] {
 }
 .form-inline .label-inline label {
 	font-weight: 400;
-	margin-bottom: 0px;
+	margin-bottom: 0;
 	padding-left: 2px;
 }
 
@@ -4554,16 +4575,22 @@ fieldset.chkbxrdio-grp legend {
  */
 label.required strong.required,
 legend.required strong.required,
-.checkbox.required strong.required, label.required:before,
-legend.required:before,
-.checkbox.required:before {
+.checkbox.required strong.required, label.required:not(.required-no-asterisk .required):before,
+legend.required:not(.required-no-asterisk .required):before,
+.checkbox.required:not(.required-no-asterisk .required):before {
 	color: #d3080c;
 	font-weight: 700;
 }
 
-label.required:before,
-legend.required:before,
-.checkbox.required:before {
+label.required,
+legend.required,
+.checkbox.required {
+	/* Set required asterisk styles... unless any parent element uses a disable class */
+	/* Credit: Stack Overflow answer (https://stackoverflow.com/a/73773370) by magda and Zach Jensz (zach-jensz) */
+}
+label.required:not(.required-no-asterisk .required):before,
+legend.required:not(.required-no-asterisk .required):before,
+.checkbox.required:not(.required-no-asterisk .required):before {
 	content: "* ";
 	margin-left: -0.87em;
 	vertical-align: top;
@@ -4575,8 +4602,8 @@ legend.required:before,
 	font-weight: 700;
 }
 
-[dir=rtl] label.required:before,
-[dir=rtl] legend.required:before {
+[dir=rtl] label.required:not(.required-no-asterisk .required):before,
+[dir=rtl] legend.required:not(.required-no-asterisk .required):before {
 	margin-left: auto;
 	margin-right: -0.87em;
 }
@@ -4607,8 +4634,8 @@ input[placeholder],
  * - Fieldflow is brought to speed with the visual update with a clearly defined temporary class .gc-font-2019, but the class can be tried out on other forms
  */
 :not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
-	font-size: 16px;
-	line-height: 23px;
+	font-size: 1rem;
+	line-height: 1.4375;
 }
 
 form .btn:not(.btn-call-to-action), .form-control {
@@ -4616,6 +4643,7 @@ form .btn:not(.btn-call-to-action), .form-control {
 }
 
 legend {
+	font-size: 1.2em;
 	line-height: 1.65em;
 }
 
@@ -5063,7 +5091,7 @@ input.btn.btn-call-to-action {
  *
  * This undo the font style introduced with gcweb v5 new look
  *
- * - Rational: This is to help the adoption of the new desing by allowing adopter to use
+ * - Rational: This is to help the adoption of the new design by allowing adopter to use
  * a special CSS class on content like the one optimized for a desktop at 100% view port
  * Example of content: high profile pages, campaign, application, .....
  *
@@ -5446,6 +5474,7 @@ header .brand img {
 	z-index: 5;
 }
 #wb-info h3 {
+	font-size: 1.25rem;
 	margin-bottom: 1em;
 	margin-top: 0;
 }
@@ -5488,7 +5517,7 @@ header .brand img {
 	padding-top: 0.6em;
 }
 #wb-info .gc-main-footer h4, #wb-info .landscape h4 {
-	margin-top: 2em;
+	margin-top: 2rem;
 	position: relative;
 }
 #wb-info .gc-main-footer h4::before, #wb-info .landscape h4::before {
@@ -5497,8 +5526,8 @@ header .brand img {
 	display: block;
 	left: 0;
 	position: absolute;
-	top: -1.5em;
-	width: 2.25em;
+	top: -1.5rem;
+	width: 40px;
 }
 [dir=rtl] #wb-info .gc-main-footer h4::before, [dir=rtl] #wb-info .landscape h4::before {
 	left: auto;
@@ -5890,7 +5919,7 @@ main .pagedetails {
 	/* The rest of items */
 	/* First menu item (represent the home link */
 	/* Undo for lower level */
-	/* SubSubMenu (MostRequested) for more iteroperability, use CSS class */
+	/* SubSubMenu (MostRequested) for more interoperability, use CSS class */
 	/* Grid of the submenu panel */
 }
 .gcweb-menu button[aria-haspopup=true] {
@@ -6371,7 +6400,7 @@ main .pagedetails {
 	margin-top: 5px;
 }
 #wb-bnr + hr + .container {
-	font-size: 20px;
+	font-size: 1.25rem;
 }
 
 /* H1 short bold red underline */
@@ -6408,6 +6437,22 @@ hgroup#wb-cont h1 {
 hgroup#wb-cont p.gc-byline {
 	font-weight: 700;
 	margin-bottom: 30px;
+}
+
+/* Contributors */
+.gc-contributors {
+	font-size: 20px;
+	margin-top: 38px;
+}
+.gc-contributors h2, .gc-contributors h3, .gc-contributors ul {
+	font-size: 87%;
+	margin-top: 0;
+}
+.gc-contributors ul {
+	padding-inline-start: 20px;
+}
+.gc-contributors ul li {
+	font-weight: 700;
 }
 
 /*! Components (CSS type only) */
@@ -10953,12 +10998,12 @@ body.wb-modal .modal-dialog summary {
 }
 .mfp-arrow-left:before,
 .mfp-arrow-left .mfp-b {
-	border-right: 27px solid #000000;
+	border-right: 27px solid #000;
 }
 
 .mfp-arrow-right:before,
 .mfp-arrow-right .mfp-b {
-	border-left: 27px solid #000000;
+	border-left: 27px solid #000;
 }
 
 /* Should fix upstream in Magnific Popup rather than overriding in WET */
@@ -12732,7 +12777,7 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 	-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
 	background-color: white;
-	border: 1px solid #cccccc;
+	border: 1px solid #ccc;
 	border-radius: 3px;
 	bottom: 12px;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -12763,7 +12808,7 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 }
 
 .ol-popup:before {
-	border-top-color: #cccccc;
+	border-top-color: #ccc;
 	border-width: 11px;
 	left: 48px;
 	margin-left: -11px;
@@ -12793,7 +12838,7 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 	border-bottom: solid 1px #999;
 	color: #999;
 	font-size: 1em;
-	margin: -5px 0px 5px 0px;
+	margin: -5px 0 5px;
 	padding-bottom: 3px;
 }
 
@@ -12855,11 +12900,11 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 
 .geomap-lgnd-layer {
 	margin-bottom: 10px;
-	margin-top: 0px !important;
+	margin-top: 0 !important;
 }
 
 .geomap-lgnd > :last-child {
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 
 .geomap-geoloc {
@@ -12919,7 +12964,7 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 	font-size: 0.75em;
 	left: 0.6666em;
 	min-width: 100px;
-	padding: 2px 6px 2px 6px;
+	padding: 2px 6px;
 	position: absolute;
 	will-change: contents, width;
 }
@@ -13179,7 +13224,7 @@ ol-geolocate button {
 }
 
 .ol-dragbox {
-	border: 2px solid #ff0033;
+	border: 2px solid #f03;
 	border-radius: 2px;
 	box-sizing: border-box;
 }
@@ -13276,7 +13321,7 @@ ol-geolocate button {
 }
 
 .tooltip-txt::after {
-	border-color: rgb(192, 192, 192) transparent transparent transparent;
+	border-color: rgb(192, 192, 192) transparent transparent;
 	border-style: solid;
 	border-width: 5px;
 	content: " ";
@@ -13336,7 +13381,7 @@ ol-geolocate button {
 .wb-geomap-geoloc-al-cnt .wb-geomap-geoloc-al a {
 	color: #333;
 	display: block;
-	padding: 5px 5px;
+	padding: 5px;
 	text-decoration: none;
 }
 .wb-geomap-geoloc-al-cnt .wb-geomap-geoloc-al a:hover, .wb-geomap-geoloc-al-cnt .wb-geomap-geoloc-al a:focus {
@@ -13383,7 +13428,7 @@ ol-geolocate button {
 .skeleton-lgnd-2 {
 	background-color: #f5f5f5;
 	height: 25px;
-	margin: 20px 0 20px 0;
+	margin: 20px 0;
 	width: 100%;
 }
 
@@ -13557,7 +13602,7 @@ html:not(.wb-disable) .wb-pgfltr-out {
 * Panel title
 */
 .panel-title {
-	font-size: 1.45em;
+	font-size: 1.8125rem;
 }
 
 /*
@@ -13793,7 +13838,7 @@ main .gc-rms-lngth img {
 	*
 	*/
 	/* ------------
-	 * Background color
+	 * Background colour
 	 *
 	 */
 	/* ------------
@@ -13957,7 +14002,7 @@ main .gc-rms-lngth img {
 	line-height: 1.5em;
 }
 .gc-srvinfo h3, .gc-srvinfo h4, .gc-srvinfo h5, .gc-srvinfo h6, .gc-drmt h3, .gc-drmt h4, .gc-drmt h5, .gc-drmt h6 {
-	font-size: 1.2em;
+	font-size: 1.5rem;
 	margin-bottom: 5px;
 	margin-top: 23px;
 }
@@ -14018,21 +14063,6 @@ main .gc-rms-lngth img {
 .gc-byline {
 	font-weight: 700;
 	margin-bottom: 30px;
-}
-
-/* Contributors */
-.gc-contributors {
-	margin-top: 38px;
-}
-.gc-contributors h2, .gc-contributors ul {
-	font-size: 87%;
-	margin-top: 0;
-}
-.gc-contributors ul {
-	padding-inline-start: 20px;
-}
-.gc-contributors ul li {
-	font-weight: 700;
 }
 
 /*
@@ -14110,7 +14140,7 @@ main .gc-rms-lngth img {
 }
 
 .gc-followus h2 {
-	font-size: 1.35em;
+	font-size: 1.6875rem;
 	margin-top: 0px;
 }
 .gc-followus ul {
@@ -14276,7 +14306,7 @@ div:not(.container) .gc-most-requested {
 }
 main:not(.container) .gc-most-requested h2,
 div:not(.container) .gc-most-requested h2 {
-	font-size: 1.35em;
+	font-size: 1.6875rem;
 	margin-top: 0;
 }
 main:not(.container) .gc-most-requested ul li,
@@ -14295,7 +14325,7 @@ div:not(.container) .gc-most-requested ul li {
 }
 
 /*
-	Github addition Widget Format
+	GitHub addition Widget Format
 	Use in:
 	+ Event page
 	+ campaign
@@ -14604,7 +14634,7 @@ fieldset.gc-chckbxrdio {
 	line-height: 1.5em;
 }
 .gc-features h3, .gc-features h4, .gc-features h5, .gc-features h6 {
-	font-size: 1.2em;
+	font-size: 1.5rem;
 	margin-bottom: 5px;
 	margin-top: 23px;
 }
@@ -14698,7 +14728,7 @@ aside.features .thumbnail img {
 }
 
 /*
- * CSS used for the legacy/obselete code
+ * CSS used for the legacy/obsolete code
  */
 /* Report a problem Thank you message */
 .gc-rprt-prblm-thnk {
@@ -16009,7 +16039,7 @@ table.dataTable.nws-tbl .label.label-success {
 * Institutional landing page template
 */
 .page-type-ilp h2 {
-	font-size: 1.45em;
+	font-size: 1.8125rem;
 	margin-top: 15px;
 }
 .page-type-ilp .gc-followus ul li {
@@ -16577,7 +16607,7 @@ dl.colcount-no-break > div, .colcount-no-break > dd,
 
 /*
   WET-BOEW
-  @title: Bootstrap 4 suplemental style for WET-BOEW
+  @title: Bootstrap 4 supplemental style for WET-BOEW
  */
 /* Spacing */
 .p-0 {
@@ -16723,7 +16753,7 @@ Panels
 }
 
 /*
-Miscellaneous Utiliy CSS
+Miscellaneous Utility CSS
  */
 .max-content {
 	max-width: max-content;
@@ -16736,6 +16766,10 @@ Miscellaneous Utiliy CSS
  */
 .fnt-hdng {
 	font-family: Lato, sans-serif;
+}
+
+.lead {
+	font-size: 1.2em;
 }
 
 /*
@@ -17279,10 +17313,22 @@ Miscellaneous Utiliy CSS
 	  @title: Extra-small view and under (screen only)
 	  @desc:  Variable $screen-xs-max <= 767px
 	 */
-	/* Make a simple list multi-column and responsive (overide _defaults.scss) */
+	/* Make a simple list multi-column and responsive (override _defaults.scss) */
 	.list-responsive > li {
 		clear: right;
 		width: 100%;
+	}
+	/*
+	 *
+	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+	 * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+	 *
+	 * @title: Scaffolding
+	 *
+	 */
+	main {
+		font-size: 1.125rem;
+		line-height: 1.55;
 	}
 	/*
 	  WET-BOEW
@@ -17404,46 +17450,34 @@ Miscellaneous Utiliy CSS
 	 */
 	h1,
 	.h1 {
-		font-size: 2.055555em;
+		font-size: 2.3125rem;
 		line-height: 1.19;
-		margin-top: 0.75em;
+		margin-top: 1.265rem;
 	}
 	h2,
 	.h2 {
-		font-size: 1.944444em;
+		font-size: 2.1875rem;
 		line-height: 1.25;
 	}
 	h3,
 	.h3 {
-		font-size: 1.444444em;
+		font-size: 1.625rem;
 		line-height: 1.23;
 	}
 	h4,
 	.h4 {
-		font-size: 1.22222em;
+		font-size: 1.375rem;
 		line-height: 1.33;
 	}
 	h5,
 	.h5 {
-		font-size: 1.11111em;
+		font-size: 1.25rem;
 		line-height: 1.27;
 	}
 	h6,
 	.h6 {
-		font-size: 1em;
+		font-size: 1.125rem;
 		line-height: 1.4;
-	}
-	/*
-	 *
-	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-	 * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
-	 *
-	 * @title: Scaffolding
-	 *
-	 */
-	main {
-		font-size: 18px;
-		line-height: 1.55;
 	}
 	/*
 	  WET-BOEW
@@ -18012,7 +18046,7 @@ Miscellaneous Utiliy CSS
 	}
 	/*
 	  WET-BOEW
-	  @title: Bootstrap 4 suplemental style for WET-BOEW - Small view and over (screen only)
+	  @title: Bootstrap 4 supplemental style for WET-BOEW - Small view and over (screen only)
 	 */
 	/* Alignment */
 	.text-sm-left {
@@ -18376,6 +18410,32 @@ Miscellaneous Utiliy CSS
 		margin-top: 16px;
 	}
 	/*
+	  WET-BOEW
+	  @title: Medium view and over (screen only)
+	  @desc:  Variable $screen-md-min >= 992px
+	*/
+	.gc-contributors {
+		display: flex;
+	}
+	.gc-contributors h2, .gc-contributors h3 {
+		line-height: 1.8em;
+		word-break: initial;
+	}
+	.gc-contributors ul {
+		padding-inline-start: 5px;
+	}
+	.gc-contributors ul li {
+		display: inline-block;
+		margin-right: 0.5em;
+	}
+	.gc-contributors ul li::after {
+		content: "•";
+		margin-left: 0.7em;
+	}
+	.gc-contributors ul li:last-child::after {
+		content: none;
+	}
+	/*
 	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 	 * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
 	 */
@@ -18433,31 +18493,6 @@ Miscellaneous Utiliy CSS
 	}
 	.wb-tabs.carousel-s2.show-thumbs [role=tablist] li.prv, .wb-tabs.carousel-s2.show-thumbs [role=tablist] li.tab-count, .wb-tabs.carousel-s2.show-thumbs [role=tablist] li.nxt {
 		display: none;
-	}
-	/*
-	  WET-BOEW
-	  @title: Medium view and over (screen only)
-	  @desc:  Variable $screen-md-min >= 992px
-	*/
-	.gc-contributors {
-		display: flex;
-	}
-	.gc-contributors h2 {
-		line-height: 1.8em;
-	}
-	.gc-contributors ul {
-		padding-inline-start: 5px;
-	}
-	.gc-contributors ul li {
-		display: inline-block;
-		margin-right: 0.5em;
-	}
-	.gc-contributors ul li::after {
-		content: "•";
-		margin-left: 0.7em;
-	}
-	.gc-contributors ul li:last-child::after {
-		content: none;
 	}
 	/*
 	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -18855,7 +18890,7 @@ Miscellaneous Utiliy CSS
 	ul.list-col-lg-4 > li {
 		flex-basis: 25%;
 	}
-	/* Make a simple list multi-column and responsive (overide _defaults.scss) */
+	/* Make a simple list multi-column and responsive (override _defaults.scss) */
 	.list-responsive > li {
 		width: 25%;
 	}
@@ -19595,7 +19630,7 @@ Miscellaneous Utiliy CSS
 	.mfp-content:before, .wb-overlay.open:before {
 		content: attr(data-pgtitle);
 		display: block;
-		font-size: 2.05em;
+		font-size: 2.5625rem;
 	}
 	/*
 	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)

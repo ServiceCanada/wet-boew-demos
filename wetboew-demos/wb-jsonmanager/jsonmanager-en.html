@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
 <title>JSON Manager - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta name="description" content="Manage dataset and apply JSON Patch" />
@@ -12,7 +13,7 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2025-02-20 13:31:14 +0000"/>
+<meta name="dcterms.issued" content="2025-03-21 17:29:57 +0000"/>
 <meta name="dcterms.modified" content="2022-10-31"/>
 
 <link href="/wet-boew-demos/text-size/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -132,6 +133,11 @@
 	<li><a class="btn btn-primary" href="https://github.com/wet-boew/GCWeb/issues/new?title=JSON%20Manager">Questions or comments?</a></li>
 </ul>
 -->
+
+<ul>
+	<li>Main example</li>
+	<li><a href="multisource-en.html">Multiple data source to render a data table</a></li>
+</ul>
 <div class="wb-prettify all-pre"></div>
 <p>Manage dataset and apply JSON Patch.</p>
 
@@ -926,11 +932,11 @@
 
 <h2>JSON patches operation</h2>
 
-<p>JSON operation is defined as per <a href="https://tools.ietf.org/html/rfc6902">RFC6002 - JavaScript Object Notation (JSON) Patch</a> with additional operation to fullfill the needs of the JSON manager. Described in the documentation, the following operation are supported by default: <code>add</code>, <code>remove</code>, <code>replace</code>, <code>move</code>, <code>copy</code>, <code>test</code>, <code>wb-count</code>, <code>wb-first</code>, <code>wb-last</code>, <code>wb-decodeUTF8Base64</code>, <code>wb-escapeHTML</code>, <code>wb-toDateISO</code> and <code>wb-toDateTimeISO</code>.</p>
+<p>JSON operation is defined as per <a href="https://tools.ietf.org/html/rfc6902">RFC6002 - JavaScript Object Notation (JSON) Patch</a> with additional operation to fulfil the needs of the JSON manager. Described in the documentation, the following operation are supported by default: <code>add</code>, <code>remove</code>, <code>replace</code>, <code>move</code>, <code>copy</code>, <code>test</code>, <code>wb-count</code>, <code>wb-first</code>, <code>wb-last</code>, <code>wb-decodeUTF8Base64</code>, <code>wb-escapeHTML</code>, <code>wb-toDateISO</code> and <code>wb-toDateTimeISO</code>.</p>
 
 <h2>Debugging</h2>
 
-<p>You can set the configuration option <code>&quot;debug&quot;: true</code> to show next to the json manager the modified JSON object with the applied patches. The JSON content are displayed without formating.</p>
+<p>You can set the configuration option <code>&quot;debug&quot;: true</code> to show next to the json manager the modified JSON object with the applied patches. The JSON content are displayed without formatting.</p>
 
 <p data-wb-jsonmanager='{
 	"url": "demo/data-en.json",

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
 <title>Developing for GCWeb - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta name="description" content="Instructions on how to develop for the Canada.ca theme." />
@@ -151,38 +152,39 @@
   </li>
 </ul>
 
-<h2 id="run-gcweb-wetsite-locally">Run GCWeb wetsite locally</h2>
+<h2 id="run-gcweb-website-locally">Run GCWeb website locally</h2>
 
-<p>Ensure that you have builded GCWeb first</p>
+<p>Ensure that you have built GCWeb first</p>
 
 <p>After your are running docking container or the docker composer you will be able to access your local website at: <code class="language-plaintext highlighter-rouge">http://localhost:4000</code></p>
 
 <p>Build Dockerfile locally</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build -t jekyll-with-env-options .
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> jekyll-with-env-options <span class="nb">.</span>
 </code></pre></div></div>
 
 <p>Run your image</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
 
-docker run -it --rm -v "$PWD":/usr/src/app -p "4000:4000" --env JEKYLL_OPTIONS='--config _config.yml,_localJekyll.yml' jekyll-with-env-options
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
+
+docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>:/usr/src/app <span class="nt">-p</span> <span class="s2">"4000:4000"</span> <span class="nt">--env</span> <span class="nv">JEKYLL_OPTIONS</span><span class="o">=</span><span class="s1">'--config _config.yml,_localJekyll.yml'</span> jekyll-with-env-options
 </code></pre></div></div>
 
 <h3 id="alternative-with-docker-compose">alternative with docker-compose</h3>
 
-<p>This version leverage the remote theme wet-beoew/gcweb-jekyll. This equivalent if you run with gh-pages through your own GCWeb repository.</p>
+<p>This version leverage the remote theme wet-boew/gcweb-jekyll. This equivalent if you run with gh-pages through your own GCWeb repository.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
 docker-compose up
 </code></pre></div></div>
 
 <p>First time run: <code class="language-plaintext highlighter-rouge">docker-compose up --build</code></p>
 
-<h2 id="run-the-continous-integration-and-deployment-script-locally">Run the continous integration and deployment script locally</h2>
+<h2 id="run-the-continuos-integration-and-deployment-script-locally">Run the continuos integration and deployment script locally</h2>
 
 <p>Install ACT - <a href="https://github.com/nektos/act">https://github.com/nektos/act</a></p>
 
-<p>Github fork needed:</p>
+<p>GitHub fork needed:</p>
 
 <ul>
   <li><a href="https://github.com/wet-boew/gcweb">wet-boew/gcweb</a></li>
@@ -194,10 +196,11 @@ docker-compose up
 
 <p>Run the continuous deployment script</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>act -f deploy-gcweb -s my_token=&lt;XXXXXXXXXXXXXX&gt; -s my_username="&lt;GITHUB USERNAME&gt;" - my_email="&lt;GITHUB HANDLE&gt;@users.noreply.github.com" -a &lt;GITHUB HANDLE&gt;
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>act <span class="nt">-f</span> deploy-gcweb <span class="nt">-s</span> <span class="nv">my_token</span><span class="o">=</span>&lt;XXXXXXXXXXXXXX&gt; <span class="nt">-s</span> <span class="nv">my_username</span><span class="o">=</span><span class="s2">"&lt;GITHUB USERNAME&gt;"</span> - <span class="nv">my_email</span><span class="o">=</span><span class="s2">"&lt;GITHUB HANDLE&gt;@users.noreply.github.com"</span> <span class="nt">-a</span> &lt;GITHUB HANDLE&gt;
 </code></pre></div></div>
 
 <p>Where:</p>
+
 <ul>
   <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB USERNAME&gt;</code>: Your name, like “John Doe”</li>
   <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB HANDLE&gt;</code>: Your github id</li>
@@ -208,29 +211,29 @@ docker-compose up
 
 <p>Pre-requites</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
 docker-compose up
 
 </code></pre></div></div>
 
 <p>HTML link checker</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker exec -i gcweb_jekyll rake
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-i</span> gcweb_jekyll rake
 </code></pre></div></div>
 
 <p>Bootlint test</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt bootlint
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt bootlint
 </code></pre></div></div>
 
 <p>HTML lint</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt htmllint:all
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt htmllint:all
 </code></pre></div></div>
 
 <h2 id="build-demo-files">Build demo files</h2>
 
-<p>Run the following command to generate files for a demo on https://github.com/ServiceCanada/wet-boew-demos where <code class="language-plaintext highlighter-rouge">[branchName]</code> refers to the branch name where your demo is hosted.</p>
+<p>Run the following command to generate files for a demo on <a href="https://github.com/ServiceCanada/wet-boew-demos">https://github.com/ServiceCanada/wet-boew-demos</a> where <code class="language-plaintext highlighter-rouge">[branchName]</code> refers to the branch name where your demo is hosted.</p>
 
 <p><code class="language-plaintext highlighter-rouge">grunt demo --branch=[branchName]</code></p>
 
@@ -238,10 +241,11 @@ docker-compose up
 
 <p>You can make a commit to your site and it will get regenerated with the latest version of the jekyll theme. Alternatively, the following curl command will told github to regenerate your site.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -u &lt;GITHUB HANDLE&gt;:&lt;XXXXXXXXXXXXXX&gt; -X POST https://api.github.com/repos/&lt;GITHUB HANDLE&gt;/&lt;GITHUB REPOSITORY&gt;/pages/builds
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-u</span> &lt;GITHUB HANDLE&gt;:&lt;XXXXXXXXXXXXXX&gt; <span class="nt">-X</span> POST https://api.github.com/repos/&lt;GITHUB HANDLE&gt;/&lt;GITHUB REPOSITORY&gt;/pages/builds
 </code></pre></div></div>
 
 <p>Where:</p>
+
 <ul>
   <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB HANDLE&gt;</code>: Your github id</li>
   <li><code class="language-plaintext highlighter-rouge">&lt;XXXXXXXXXXXXXX&gt;</code>: Your personal access token with access to public repository</li>

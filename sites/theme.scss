@@ -80,6 +80,7 @@
 @import "authentication/base";
 @import "header/base";
 @import "main-page-title/base";
+@import "contributors/base";
 
 /*! Components (CSS type only) */
 @import "bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
@@ -172,7 +173,6 @@
 @import "../components/dshbrd/base";
 @import "../components/triangle-up";
 @import "../components/byline/base";
-@import "../components/gc-contributors/base";
 @import "../components/gc-follow-us/base";
 @import "../components/gc-minister/base";
 @import "../components/gc-most-requested/base";
@@ -242,6 +242,7 @@
 
 	@import "banner/screen-xs-max";
 	@import "baseline/lists/screen-xs-max";
+	@import "baseline/scaffolding-screen-xs-max";
 	@import "gcweb-menu/screen-xs-max";
 	@import "page-details/screen-xs-max";
 
@@ -261,7 +262,6 @@
 
 	@import "banner/screen-sm-max";
 	@import "baseline/heading-screen-sm-max";
-	@import "baseline/scaffolding-screen-sm-max";
 	@import "gcweb-menu/screen-sm-max";
 	@import "authentication/screen-sm-max";
 	@import "footers/screen-sm-max";
@@ -328,10 +328,10 @@
 	@import "baseline/lists/screen-md-min";
 	@import "gcweb-menu/screen-md-min";
 	@import "feedback/screen-md-min";
+	@import "contributors/screen-md-min";
 
 	@import "wet-boew/src/plugins/feeds/screen-md-min";
 	@import "wet-boew/src/plugins/tabs/screen-md-min";
-	@import "../components/gc-contributors/screen-md-min";
 	@import "../components/gc-subway/screen-md-min";
 	@import "../components/gc-most-requested/screen-md-min";
 
