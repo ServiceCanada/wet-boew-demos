@@ -42,3 +42,7 @@
 	path = th-choose-canada
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = th-choose-canada
+[submodule "theme-menu"]
+	path = theme-menu
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = theme-menu
