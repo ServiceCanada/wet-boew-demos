@@ -42,3 +42,7 @@
 	path = text-size
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = text-size
+[submodule "th-choose-canada"]
+	path = th-choose-canada
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = th-choose-canada
