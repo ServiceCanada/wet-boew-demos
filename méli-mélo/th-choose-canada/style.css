@@ -29,7 +29,7 @@
 .choose-canada-card {
 	border-radius: 18px;
 	box-shadow: 0px 3px 6px #00000029;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.5em !important;
 	overflow: hidden;
 	position: relative;
 
@@ -40,6 +40,6 @@
 	.card-title {
 		font-size: 1.2em;
 		margin-bottom: .75em;
-		margin-top: 0;
+		margin-top: 0 !important;
 	}
 }
