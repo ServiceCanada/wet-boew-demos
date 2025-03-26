@@ -158,7 +158,7 @@
 @import "wet-boew/src/plugins/zebra/base";
 @import "wet-boew/src/plugins/feeds/base";
 @import "wet-boew/src/plugins/paginate/base";
-@import "wet-boew/feeds/base"; // CSS for feeds plugin GC override
+@import "../wet-boew/feeds/base"; // CSS for feeds plugin GC override
 
 // Components GC Theme
 @import "../components/baseline/base";
@@ -242,7 +242,6 @@
 
 	@import "banner/screen-xs-max";
 	@import "baseline/lists/screen-xs-max";
-	@import "baseline/scaffolding-screen-xs-max";
 	@import "gcweb-menu/screen-xs-max";
 	@import "page-details/screen-xs-max";
 

@@ -16,9 +16,9 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2024-04-01 00:00:00 +0000"/>
 
-<link href="/wet-boew-demos/text-size/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/text-size/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/text-size/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="../../../dist/GCWeb/méli-mélo/2025-04-nahanni.css" />
+<link href="/wet-boew-demos/th-choose-canada/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/th-choose-canada/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/th-choose-canada/dist/wet-boew/css/noscript.css" /></noscript><link rel="stylesheet" href="../../../dist/GCWeb/méli-mélo/2025-04-nahanni.css" />
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -45,11 +45,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/text-size/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/th-choose-canada/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/text-size/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/th-choose-canada/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -113,7 +113,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/text-size/index-en.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/th-choose-canada/index-en.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -201,6 +201,7 @@
 	<ul>
 		<li><a href="#default-1">Steps Quiz - Default (full width)</a></li>
 		<li><a href="stepsquiz-limited.html">Steps Quiz - Content Limited Width Panel</a></li>
+		<li><a href="#nested">Steps Quiz - Nested fieldsets</a></li>
 	</ul>
 </section>
 
@@ -277,6 +278,68 @@
 	</div>
 </section>
 
+<section>
+	<div class="wb-frmvld provisional wb-steps quiz">
+		<h2 id="nested">Example - Nested fieldsets</h2>
+		<form action="#" id="quiz-example2">
+			<fieldset>
+				<legend>Name</legend>
+				<div>
+					<div class="form-group">
+						<label for="firstName">First name</label>
+						<input type="text" name="firstName" id="firstName" class="form-control" />
+					</div>
+
+					<div class="form-group">
+						<label for="lastName">Last name</label>
+						<input type="text" name="lastName" id="lastName" class="form-control" />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>2. What are your interests?</legend>
+				<div>
+					<fieldset class="gc-chckbxrdio">
+						<legend>Sports:</legend>
+						<ul class="list-unstyled lst-spcd-2">
+							<li class="radio">
+								<input type="radio" name="sports" id="hockey-1" value="hockey">
+								<label for="hockey-1">Hockey</label>
+							</li>
+							<li class="radio">
+								<input type="radio" name="sports" id="soccer-1" value="soccer">
+								<label for="soccer-1">Soccer</label>
+							</li>
+							<li class="radio">
+								<input type="radio" name="sports" id="basketball-1" value="basketball">
+								<label for="basketball-1">Basketball</label>
+							</li>
+						</ul>
+					</fieldset>
+					<fieldset class="gc-chckbxrdio">
+						<legend>Arts:</legend>
+						<ul class="list-unstyled lst-spcd-2">
+							<li class="radio">
+								<input type="radio" name="arts" id="music-1" value="music">
+								<label for="music-1">Music</label>
+							</li>
+							<li class="radio">
+								<input type="radio" name="arts" id="theater-1" value="theater">
+								<label for="theater-1">Theater</label>
+							</li>
+							<li class="radio">
+								<input type="radio" name="arts" id="museum-1" value="museum">
+								<label for="museum-1">Museum</label>
+							</li>
+						</ul>
+					</fieldset>
+				</div>
+			</fieldset>
+			<input type="submit" class="btn btn-primary" />
+		</form>
+	</div>
+</section>
+
 <section class="pagedetails">
 	<h2 class="wb-inv">Page details</h2><dl id="wb-dtmd">
 	<dt>Date modified:</dt>
@@ -330,14 +393,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/text-size/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/th-choose-canada/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/text-size/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/text-size/dist/GCWeb/js/theme.js"></script><script src="../../../dist/GCWeb/méli-mélo/2025-04-nahanni.js"></script>
+<script src="/wet-boew-demos/th-choose-canada/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/th-choose-canada/dist/GCWeb/js/theme.js"></script><script src="../../../dist/GCWeb/méli-mélo/2025-04-nahanni.js"></script>
 </body>
 </html>
