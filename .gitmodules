@@ -42,3 +42,7 @@
 	path = theme-menu
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = theme-menu
+[submodule "pft-pii"]
+	path = pft-pii
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = pft-pii
