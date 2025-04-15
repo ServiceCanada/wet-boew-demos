@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.5.0 - 2025-04-04
+ * v16.5.0 - 2025-04-15
  *
  */
 /*
@@ -1877,17 +1877,12 @@ main table caption p, main h1, main h2, main h3, main h4, main h5, main h6, main
 
 html {
   -webkit-font-smoothing: antialiased;
-  font-size: unset;
   text-rendering: optimizeLegibility;
 }
 
-body {
-  font-size: unset;
-}
-
 main {
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 1.65em;
 }
 main table p {
   word-break: initial;
@@ -1945,14 +1940,6 @@ a.figcaption figure > *:not(blockquote):not(img):not(table):not(div) {
 }
 a.figcaption figcaption {
   text-decoration: underline;
-}
-
-output {
-  font-size: 1em;
-}
-
-blockquote {
-  font-size: 1em;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -2018,27 +2005,27 @@ h6 .small, .h6 small,
 }
 
 h1, .h1 {
-  font-size: 2.5625rem;
+  font-size: 1.9em;
 }
 
 h2, .h2 {
-  font-size: 2.4375rem;
+  font-size: 1.8em;
 }
 
 h3, .h3 {
-  font-size: 1.8125rem;
+  font-size: 1.2em;
 }
 
 h4, .h4 {
-  font-size: 1.6875rem;
+  font-size: 1.1em;
 }
 
 h5, .h5 {
-  font-size: 1.5rem;
+  font-size: 1em;
 }
 
 h6, .h6 {
-  font-size: 1.375rem;
+  font-size: 0.95em;
 }
 
 p {
@@ -2389,6 +2376,12 @@ h6,
  * @title: Heading
  *
  */
+h1 {
+  margin-bottom: 0.2em;
+  margin-top: 1em;
+  padding-bottom: 0.2em;
+}
+
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-family: Lato, sans-serif;
   font-variant-ligatures: no-common-ligatures;
@@ -2402,27 +2395,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   border: 0;
 }
 
-h1, .h1 {
-  line-height: 1.17;
-  margin-bottom: 0.2em;
-  margin-top: 1em;
-  padding-bottom: 0.2em;
-}
-
-h2, .h2 {
-  line-height: 1.23;
-}
-
-h3, .h3 {
-  line-height: 1.37;
-}
-
-h4, .h4, h5, .h5 {
-  line-height: 1.33;
-}
-
-h6, .h6 {
-  line-height: 1.45;
+h6,
+.h6 {
+  font-weight: 400;
 }
 
 /*
@@ -2802,14 +2777,6 @@ details[open] > summary.btn-default {
  */
 blockquote {
   font-size: 1em;
-}
-
-.lead {
-  font-size: 1.2em;
-}
-
-pre {
-  font-size: 1rem;
 }
 
 code,
@@ -4628,8 +4595,8 @@ input[placeholder],
  * - Fieldflow is brought to speed with the visual update with a clearly defined temporary class .gc-font-2019, but the class can be tried out on other forms
  */
 :not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
-  font-size: 1rem;
-  line-height: 1.4375;
+  font-size: 16px;
+  line-height: 23px;
 }
 
 form .btn:not(.btn-call-to-action), .form-control {
@@ -4637,7 +4604,6 @@ form .btn:not(.btn-call-to-action), .form-control {
 }
 
 legend {
-  font-size: 1.2em;
   line-height: 1.65em;
 }
 
@@ -5468,23 +5434,23 @@ header .brand img {
   z-index: 5;
 }
 #wb-info h3 {
-  font-size: 1.625rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1em;
   margin-top: 0;
 }
 #wb-info a {
+  font-size: 0.875em;
   text-decoration: none;
 }
 #wb-info nav {
-  padding-bottom: 0.75rem;
-  padding-top: 2.25rem;
+  padding-bottom: 1em;
+  padding-top: 1.4em;
   position: relative;
 }
 #wb-info nav ul[class*=colcount-] {
   column-gap: 0;
 }
 #wb-info nav li {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75em;
 }
 #wb-info .gc-contextual {
   background-color: #33465c;
@@ -5499,57 +5465,149 @@ header .brand img {
 #wb-info .gc-contextual a:hover {
   text-decoration: underline;
 }
-#wb-info .gc-main-footer {
+#wb-info .gc-main-footer, #wb-info .landscape {
   background: #26374a url(../assets/landscape.png) no-repeat right bottom;
   color: #fff;
+  /* Start: to support footer version 2.0 (with gcweb v4.0.22) */
+  /* END */
 }
-#wb-info .gc-main-footer h4 {
-  margin-bottom: 2rem;
-  margin-top: 1.75rem;
+#wb-info .gc-main-footer nav h2.wb-inv + ul, #wb-info .landscape nav h2.wb-inv + ul {
+  padding-bottom: 1em;
+  padding-top: 0.6em;
+}
+#wb-info .gc-main-footer h4, #wb-info .landscape h4 {
+  margin-top: 2em;
   position: relative;
 }
-#wb-info .gc-main-footer h4::before {
+#wb-info .gc-main-footer h4::before, #wb-info .landscape h4::before {
   border-bottom: 4px solid #fff;
   content: "";
   display: block;
+  left: 0;
   position: absolute;
-  top: -1.5rem;
-  width: 40px;
+  top: -1.5em;
+  width: 2.25em;
 }
-#wb-info .gc-main-footer a {
+[dir=rtl] #wb-info .gc-main-footer h4::before, [dir=rtl] #wb-info .landscape h4::before {
+  left: auto;
+  right: 0;
+}
+#wb-info .gc-main-footer a, #wb-info .landscape a {
   color: #fff;
 }
-#wb-info .gc-main-footer a:hover {
+#wb-info .gc-main-footer a:hover, #wb-info .landscape a:hover {
   text-decoration: underline;
 }
-#wb-info .gc-sub-footer {
+#wb-info .gc-sub-footer, #wb-info .brand {
   background: #f8f8f8;
   color: #333;
-  padding: 1.5rem 0 2rem;
+  padding: 1.5em 0 2em;
+  /* START: To support footer <= v2.0 */
+  /* END */
 }
 #wb-info .gc-sub-footer object,
-#wb-info .gc-sub-footer img {
+#wb-info .gc-sub-footer img, #wb-info .brand object,
+#wb-info .brand img {
   height: 40px;
   width: auto;
 }
-#wb-info .gc-sub-footer nav {
+#wb-info .gc-sub-footer nav, #wb-info .brand nav {
   flex: 1 1 auto;
   padding-bottom: 0;
   padding-top: 0;
+  /* START: To support footer v3.0 */
+  /* END */
 }
-#wb-info .gc-sub-footer nav ul {
+#wb-info .gc-sub-footer nav ul, #wb-info .brand nav ul {
+  display: inline-block;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-#wb-info .gc-sub-footer nav ul li {
+#wb-info .gc-sub-footer nav ul li, #wb-info .brand nav ul li {
   display: inline-block;
   margin-bottom: 0;
-  margin-inline-end: 0.5rem;
+  margin-right: 0.5em;
 }
-#wb-info .gc-sub-footer nav ul li:not(:first-child)::before {
+[dir=rtl] #wb-info .gc-sub-footer nav ul li, [dir=rtl] #wb-info .brand nav ul li {
+  margin-left: 0.5em;
+  margin-right: 0;
+}
+#wb-info .gc-sub-footer nav ul li:not(:first-child)::before, #wb-info .brand nav ul li:not(:first-child)::before {
   content: "•";
-  margin-inline-end: 0.7rem;
+  margin-right: 0.7em;
+}
+[dir=rtl] #wb-info .gc-sub-footer nav ul li:not(:first-child)::before, [dir=rtl] #wb-info .brand nav ul li:not(:first-child)::before {
+  margin-left: 0.7em;
+  margin-right: 0;
+}
+#wb-info .gc-sub-footer nav h4, #wb-info .brand nav h4 {
+  margin: 0;
+}
+#wb-info .gc-sub-footer nav ul + h4, #wb-info .brand nav ul + h4 {
+  display: inline-block;
+  margin: 0;
+}
+#wb-info .gc-sub-footer nav ul + h4::before, #wb-info .brand nav ul + h4::before {
+  border: 1px solid #333;
+  border-width: 0 0 0 1px;
+  content: "";
+  display: block;
+  height: 1em;
+  margin: 0 0.75em 0 0.4em;
+  position: relative;
+  top: 0.1875em;
+}
+#wb-info .gc-sub-footer .wtrmrk, #wb-info .brand .wtrmrk {
+  text-align: right;
+}
+[dir=rtl] #wb-info .gc-sub-footer .wtrmrk, [dir=rtl] #wb-info .brand .wtrmrk {
+  text-align: left;
+}
+#wb-info .gc-sub-footer .row ul, #wb-info .brand .row ul {
+  list-style-type: none;
+  margin-bottom: 0;
+  padding: 0;
+  padding-top: 1em;
+}
+#wb-info .gc-sub-footer .row ul li, #wb-info .brand .row ul li {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+[dir=rtl] #wb-info .gc-sub-footer .row ul li, [dir=rtl] #wb-info .brand .row ul li {
+  margin-left: 0.5em;
+  margin-right: 0;
+}
+#wb-info .gc-sub-footer .row ul li:not(:first-child):before, #wb-info .brand .row ul li:not(:first-child):before {
+  content: "•";
+  margin-right: 0.75em;
+}
+[dir=rtl] #wb-info .gc-sub-footer .row ul li:not(:first-child):before, [dir=rtl] #wb-info .brand .row ul li:not(:first-child):before {
+  margin-left: 0.75em;
+  margin-right: 0;
+}
+#wb-info .gc-sub-footer .row nav, #wb-info .brand .row nav {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+#wb-info .gc-sub-footer .tofpg, #wb-info .brand .tofpg {
+  line-height: 40px;
+}
+#wb-info .gc-sub-footer .tofpg a, #wb-info .brand .tofpg a {
+  color: #000;
+}
+#wb-info .gc-sub-footer .tofpg a span, #wb-info .brand .tofpg a span {
+  margin-left: 25px;
+}
+#wb-info .gc-sub-footer .tofpg a:hover, #wb-info .brand .tofpg a:hover {
+  text-decoration: none;
+}
+[dir=rtl] #wb-info .gc-sub-footer .tofpg, [dir=rtl] #wb-info .brand .tofpg {
+  float: right;
+}
+[dir=rtl] #wb-info .gc-sub-footer .tofpg a span, [dir=rtl] #wb-info .brand .tofpg a span {
+  margin-left: 0;
+  margin-right: 10px;
 }
 
 #wb-lng {
@@ -5557,9 +5615,6 @@ header .brand img {
 }
 #wb-lng li {
   padding-right: 0;
-}
-#wb-lng abbr {
-  font-size: 1.25rem;
 }
 
 [dir=rtl] #wb-lng {
@@ -6304,7 +6359,7 @@ main .pagedetails {
   margin-top: 5px;
 }
 #wb-bnr + hr + .container {
-  font-size: 1.25rem;
+  font-size: 20px;
 }
 
 /* H1 short bold red underline */
@@ -11417,18 +11472,6 @@ body.wb-modal .modal-dialog summary {
 }
 
 /*
- *
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- *
- * @title: Form validation overrides
- *
- */
-.wb-frmvld section[id^=errors-] h2 {
-  font-size: 1.75em;
-}
-
-/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
@@ -13494,7 +13537,7 @@ html:not(.wb-disable) .wb-pgfltr-out {
 * Panel title
 */
 .panel-title {
-  font-size: 1.8125rem;
+  font-size: 1.2em;
 }
 
 /*
@@ -13894,7 +13937,7 @@ main .gc-rms-lngth img {
   line-height: 1.5em;
 }
 .gc-srvinfo h3, .gc-srvinfo h4, .gc-srvinfo h5, .gc-srvinfo h6, .gc-drmt h3, .gc-drmt h4, .gc-drmt h5, .gc-drmt h6 {
-  font-size: 1.5rem;
+  font-size: 1em;
   margin-bottom: 5px;
   margin-top: 23px;
 }
@@ -14032,7 +14075,7 @@ main .gc-rms-lngth img {
 }
 
 .gc-followus h2 {
-  font-size: 1.6875rem;
+  font-size: 1.1em;
   margin-top: 0px;
 }
 .gc-followus ul {
@@ -14204,7 +14247,7 @@ div:not(.container) .gc-most-requested h2 {
 main:not(.container) .gc-most-requested ul li,
 div:not(.container) .gc-most-requested ul li {
   font-family: "Lato", sans-serif;
-  font-size: 0.9em;
+  font-size: 19px;
   font-weight: 700;
   line-height: 1.8em;
 }
@@ -14526,7 +14569,7 @@ fieldset.gc-chckbxrdio {
   line-height: 1.5em;
 }
 .gc-features h3, .gc-features h4, .gc-features h5, .gc-features h6 {
-  font-size: 1.5rem;
+  font-size: 1em;
   margin-bottom: 5px;
   margin-top: 23px;
 }
@@ -15931,7 +15974,7 @@ table.dataTable.nws-tbl .label.label-success {
 * Institutional landing page template
 */
 .page-type-ilp h2 {
-  font-size: 1.8125rem;
+  font-size: 1.2em;
   margin-top: 15px;
 }
 .page-type-ilp .gc-followus ul li {
@@ -16659,10 +16702,6 @@ Miscellaneous Utility CSS
   font-family: Lato, sans-serif;
 }
 
-.lead {
-  font-size: 1.2em;
-}
-
 /*
  *
  * @title: Colours
@@ -17210,18 +17249,6 @@ Miscellaneous Utility CSS
     width: 100%;
   }
   /*
-   *
-   * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-   * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
-   *
-   * @title: Scaffolding
-   *
-   */
-  main {
-    font-size: 1.125rem;
-    line-height: 1.55;
-  }
-  /*
     WET-BOEW
     @title: Extra-small view and under (screen only)
    */
@@ -17341,34 +17368,12 @@ Miscellaneous Utility CSS
    */
   h1,
   .h1 {
-    font-size: 2.3125rem;
-    line-height: 1.19;
-    margin-top: 1.265rem;
+    font-size: 1.7em;
+    margin-top: 0.75em;
   }
   h2,
   .h2 {
-    font-size: 2.1875rem;
-    line-height: 1.25;
-  }
-  h3,
-  .h3 {
-    font-size: 1.625rem;
-    line-height: 1.23;
-  }
-  h4,
-  .h4 {
-    font-size: 1.375rem;
-    line-height: 1.33;
-  }
-  h5,
-  .h5 {
-    font-size: 1.25rem;
-    line-height: 1.27;
-  }
-  h6,
-  .h6 {
-    font-size: 1.125rem;
-    line-height: 1.4;
+    font-size: 1.6em;
   }
   /*
     WET-BOEW
@@ -17523,7 +17528,7 @@ Miscellaneous Utility CSS
     display: block;
   }
   #wb-info .gc-sub-footer nav ul li:not(:last-child) {
-    margin-bottom: 1.5em;
+    margin-bottom: 0.75em;
   }
   #wb-info .gc-sub-footer nav ul li::before {
     display: none;
@@ -18403,7 +18408,9 @@ Miscellaneous Utility CSS
     display: block;
   }
   .gc-subway.provisional:not(.gc-subway-index) hgroup {
-    margin-left: -14px;
+    left: -0.5em;
+    position: absolute;
+    top: -2em;
   }
   .gc-subway.provisional:not(.gc-subway-index) hgroup h1 {
     clip: rect(1px, 1px, 1px, 1px);
@@ -18459,6 +18466,7 @@ Miscellaneous Utility CSS
   main:not(.container) .gc-most-requested ul li,
   div:not(.container) .gc-most-requested ul li {
     flex-basis: 50%;
+    font-size: 87%;
     padding-right: 1.3em;
   }
   /*
@@ -19518,7 +19526,7 @@ Miscellaneous Utility CSS
   .mfp-content:before, .wb-overlay.open:before {
     content: attr(data-pgtitle);
     display: block;
-    font-size: 2.5625rem;
+    font-size: 1.9em;
   }
   /*
    * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
