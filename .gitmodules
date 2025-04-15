@@ -46,3 +46,7 @@
 	path = pft-pii
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = pft-pii
+[submodule "pft-down"]
+	path = pft-down
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = pft-down
