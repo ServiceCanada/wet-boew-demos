@@ -2744,17 +2744,12 @@ main {
 
 a {
   color: #284162;
-  text-decoration-thickness: 0.0625rem !important;
-  text-underline-offset: 0.25rem;
 }
 a img.thumbnail:hover {
   box-shadow: 1px 1px 5px #999;
 }
 a.no-undrln {
   text-decoration: none;
-}
-a:hover {
-  text-decoration-thickness: 0.125rem !important;
 }
 
 /* Style only the figcaption as the link */
