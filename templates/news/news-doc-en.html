@@ -14,7 +14,7 @@
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2025-02-21"/>
+<meta name="dcterms.modified" content="2025-04-16"/>
 
 <link href="/wet-boew-demos/text-size/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="/wet-boew-demos/text-size/dist/GCWeb/css/theme.css" />
@@ -135,13 +135,13 @@
 	<dt>Type</dt>
 	<dd>Canada.ca template</dd>
 	<dt>Last review</dt>
-	<dd>2024-12-19</dd>
+	<dd>2025-04-16</dd>
 	<dt>Conforming to</dt>
 	<dd>Content and IA spec 3.0</dd>
 	<dt>Specification</dt>
 	<dd><a href="https://design.canada.ca/mandatory-templates/news-pages.html#landing">News pages - Canada.ca mandatory template</a></dd>
 	<dt>Template version</dt>
-	<dd>Version 4.0</dd>
+	<dd>Version 5.0</dd>
 	<dt>Available instances</dt>
 	<dd><a href="https://www.canada.ca/en/news.html">https://www.canada.ca/en/news.html</a></dd>
 	<dd><a href="https://www.canada.ca/fr/nouvelles.html">https://www.canada.ca/fr/nouvelles.html</a></dd>
@@ -152,6 +152,12 @@
 
 <h2>List of changes</h2>
 <ul>
+	<li>Version 5.0:
+		<ul>
+			<li>Changed news item title size.</li>
+			<li>Changed "Filter news" size.</li>
+		</ul>
+	</li>
 	<li>Version 4.0:
 		<ul>
 			<li>Changed paragraph above news items.</li>
@@ -171,32 +177,16 @@
 
 <h3>Previous version</h3>
 <dl>
-	<dt>Version 3.0</dt>
-	<dd><a href="deprecated/news_v3-en.html">News landing page template - Version 3.0</a></dd>
+	<dt>Version 4.0</dt>
+	<dd><a href="deprecated/news_v4-en.html">News landing page template - Version 4.0</a></dd>
 </dl>
 
-<h2>Transition from version 3.0 to 4.0</h2>
+<h2>Transition from version 4.0 to 5.0</h2>
 <ul>
-	<li>
-		Change paragraph above news items from:<br>
-		<pre><code>&lt;p>To access all articles, please visit the &lt;a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">advanced search&lt;/a>.&lt;/p></code></pre>
-		to:<br>
-		<pre><code>&lt;p class="nojs-hide">&lt;a href="https://www.canada.ca/en/news/advanced-news-search.html">Perform an advanced search&lt;/a>&lt;/p></code></pre>
-	</li>
-	<li>
-		Change paragraph below news items from:<br>
-		<pre><code>&lt;p>To access all articles, please visit the &lt;a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">advanced search&lt;/a>.&lt;/p></code></pre>
-		to:<br>
-		<pre><code>&lt;p class="text-center nojs-hide">&lt;a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">All news products&lt;/a>&lt;/p></code></pre>
-	</li>
-	<li>Add the following block right after the first paragraph, before the news products table (only visible in basic HTML):
-		<pre><code>&lt;div class="nojs-show">&lt;p>While using basic HTML visit:&lt;/p>
-			&lt;ul>
-				&lt;li>&lt;a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">All news products&lt;/a>&lt;/li>
-				&lt;li>&lt;a href="https://www.canada.ca/en/news/advanced-news-search.html">News search&lt;/a>&lt;/li>
-			&lt;/ul>
-		&lt;/div></code></pre>
-	</li>
+	<ul>
+		<li>In the attribute <code>data-wb-tables</code> of the news table, change <code>"className": "nws-tbl-ttl h4"</code> for "className": "nws-tbl-ttl <strong>h6</strong>".</li>
+		<li>Change the title <code>&lt;h4 class="h4">Filter news&lt;/h4></code> for <code>&lt;h4 class="<strong>h6</strong>">Filter news&lt;/h4></code></li>
+	</ul>
 </ul>
 
 <h2>Deprecated layout</h2>
@@ -267,7 +257,7 @@
 <section class="pagedetails">
 	<h2 class="wb-inv">Page details</h2><dl id="wb-dtmd">
 	<dt>Date modified:</dt>
-	<dd><time property="dateModified">2025-02-21</time></dd>
+	<dd><time property="dateModified">2025-04-16</time></dd>
 </dl>
 </section>
 
