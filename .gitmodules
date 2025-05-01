@@ -50,3 +50,7 @@
 	path = pft-down
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = pft-down
+[submodule "WET-536"]
+	path = WET-536
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = WET-536
