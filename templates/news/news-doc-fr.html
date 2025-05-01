@@ -14,11 +14,13 @@
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2025-04-16"/>
+<meta name="dcterms.modified" content="2025-02-21"/>
 
-<link href="/wet-boew-demos/text-size/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/text-size/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/text-size/dist/wet-boew/css/noscript.css" /></noscript>
+
+
+<link href="/wet-boew-demos/WET-536/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/WET-536/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/WET-536/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -45,11 +47,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/text-size/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/WET-536/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/text-size/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/WET-536/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -113,7 +115,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/text-size/index-fr.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/WET-536/index-fr.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -135,13 +137,13 @@
 	<dt>Type</dt>
 	<dd>Gabarit de Canada.ca</dd>
 	<dt>Dernière revue</dt>
-	<dd>2025-04-16</dd>
+	<dd>2024-12-19</dd>
 	<dt>Est conforme à</dt>
 	<dd>Spécifications du contenu et de l'architecture de l'information 3.0</dd>
 	<dt>Spécification</dt>
 	<dd><a href="https://conception.canada.ca/modeles-obligatoire/pages-nouvelles.html">Pages de profil des ministres - Modèle obligatoire de Canada.ca</a></dd>
 	<dt>Version du gabarit</dt>
-	<dd>Version 5.0</dd>
+	<dd>Version 4.0</dd>
 	<dt>Instances disponibles</dt>
 	<dd><a href="https://www.canada.ca/fr/nouvelles.html">https://www.canada.ca/fr/nouvelles.html</a></dd>
 	<dd><a href="https://www.canada.ca/en/news.html">https://www.canada.ca/en/news.html</a></dd>
@@ -152,12 +154,6 @@
 
 <h2>Liste des modifications</h2>
 <ul>
-	<li>Version 5.0:
-		<ul>
-			<li>Modification de la grosseur des titres de nouvelles.</li>
-			<li>Modification de la grosseur de "Filtrer les nouvelles".</li>
-		</ul>
-	</li>
 	<li>Version 4.0&nbsp;:
 		<ul>
 			<li>Modification du paragraphe au-dessus des nouvelles.</li>
@@ -177,14 +173,32 @@
 
 <h2>Version précédente</h2>
 <dl>
-	<dt>Version 4.0</dt>
-	<dd><a href="deprecated/news_v4-fr.html">Gabarit de la page d'accueil des nouvelles - Version 4.0</a></dd>
+	<dt>Version 3.0</dt>
+	<dd><a href="deprecated/news_v3-fr.html">Gabarit de la page d'accueil des nouvelles - Version 3.0</a></dd>
 </dl>
 
-<h2>Transition de la version 4.0 à la version 5.0</h2>
+<h2>Transition de la version 3.0 à la version 4.0</h2>
 <ul>
-	<li>Dans l'attribut <code>data-wb-tables</code> du tableau de nouvelles, changer <code>"className": "nws-tbl-ttl h4"</code> pour "className": "nws-tbl-ttl <strong>h6</strong>".</li>
-	<li>Changer le titre <code>&lt;h4 class="h4">Filtrer les nouvelles&lt;/h4></code> pour <code>&lt;h4 class="<strong>h6</strong>">Filtrer les nouvelles&lt;/h4></code></li>
+	<li>
+		Modifier le paragraphe au-dessus des nouvelles de&nbsp;:<br>
+		<pre><code>&lt;p>Pour accéder à tous les articles, visitez la &lt;a href="https://www.canada.ca/fr/nouvelles/recherche-avancee-de-nouvelles/resultats-de-nouvelles.html">page de recherche avancée&lt;/a>.&lt;/p></code></pre>
+		à&nbsp;:<br>
+		<pre><code>&lt;p class="nojs-hide">&lt;a href="https://www.canada.ca/fr/nouvelles/recherche-avancee-de-nouvelles.html">Effectuer une recherche avancée&lt;/a>&lt;/p></code></pre>
+	</li>
+	<li>
+		Modifier le paragraphe sous les nouvelles de&nbsp;:<br>
+		<pre><code>&lt;p>Pour accéder à tous les articles, visitez la &lt;a href="https://www.canada.ca/fr/nouvelles/recherche-avancee-de-nouvelles/resultats-de-nouvelles.html">page de recherche avancée&lt;/a>.&lt;/p></code></pre>
+		à&nbsp;:<br>
+		<pre><code>&lt;p class="text-center">&lt;a href="https://www.canada.ca/fr/nouvelles/recherche-avancee-de-nouvelles/resultats-de-nouvelles.html">Toutes les nouvelles&lt;/a>&lt;/p></code></pre>
+	</li>
+	<li>Ajoutez le bloc suivant juste après le premier paragraphe (avant le tableau des produits d’actualité)&nbsp;:
+		<pre><code>&lt;div class="nojs-show">&lt;p>En utilisant le HTML de base, consultez&nbsp;:&lt;/p>
+			&lt;ul>
+				&lt;li>&lt;a href="https://www.canada.ca/fr/nouvelles/recherche-avancee-de-nouvelles/resultats-de-nouvelles.html">Tous les produits de nouvelles&lt;/a>&lt;/li>
+				&lt;li>&lt;a href="https://www.canada.ca/fr/nouvelles/recherche-avancee-de-nouvelles.html">Recherche - Nouvelles&lt;/a>&lt;/li>
+			&lt;/ul>
+		&lt;/div></code></pre>
+	</li>
 </ul>
 
 <h2>Gabarit obsolète</h2>
@@ -255,7 +269,7 @@
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2><dl id="wb-dtmd">
 	<dt>Date de modification&#160;:</dt>
-	<dd><time property="dateModified">2025-04-16</time></dd>
+	<dd><time property="dateModified">2025-02-21</time></dd>
 </dl>
 </section>
 
@@ -305,14 +319,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/text-size/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/WET-536/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/text-size/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/text-size/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/WET-536/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/WET-536/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
