@@ -6,7 +6,7 @@
 
 /*
  Global Helper functions
- @author: Goverment of Canada
+ @author: Government of Canada
  ======================================================== */
 
 /* ---------------------------------
@@ -70,7 +70,7 @@ $( document ).on( "draw.dt", ".wb-tables", function( evnt ) {
 } );
 
 /* Workaround for IE and Edge, which need the details polyfills
- * The source of the issue are unknow.
+ * The source of the issue are unknown.
  * Hypothesis: Is the polyfill get executed and then the datatable do a DOM mutation which remove the event handler previously added by the polyfill?
  */
 if ( !Modernizr.details ) {
@@ -99,24 +99,24 @@ $( document ).on( "draw.dt", "[data-wbtbl-draw]", function( evnt ) {
 	//total = evnt.displayed;
 
 	switch ( action.command ) {
-	case "display":
-		return setValue( $elm, $table.page.info()[ action.options ] );
-	case "count":
-		var rows = isFiltered ? $table.rows( { search: "applied" } ) : $table.rows( { page: "all" } );
-		rows.iterator( "row", function( context, index ) {
-			if ( $( this.row( index ).node() ).text().indexOf( action.options ) > -1 ) {
-				count++;
-			}
-		} );
-		if ( $elm.is( "progress" ) ) {
-			$elm.attr( { max: all, value: count } );
+		case "display":
+			return setValue( $elm, $table.page.info()[ action.options ] );
+		case "count":
+			var rows = isFiltered ? $table.rows( { search: "applied" } ) : $table.rows( { page: "all" } );
+			rows.iterator( "row", function( context, index ) {
+				if ( $( this.row( index ).node() ).text().indexOf( action.options ) > -1 ) {
+					count++;
+				}
+			} );
+			if ( $elm.is( "progress" ) ) {
+				$elm.attr( { max: all, value: count } );
 
-			if ( $node.hasClass( "wbtbl-silent" ) ) {
-				return true;
+				if ( $node.hasClass( "wbtbl-silent" ) ) {
+					return true;
+				}
+				$elm.trigger( "updated.wb5" );
 			}
-			$elm.trigger( "updated.wb5" );
-		}
-		return $elm.text( count );
+			return $elm.text( count );
 	}
 } );
 
@@ -307,7 +307,7 @@ $( document ).on( "keypress click", "[data-wbtbl-tagcloud] li button", function(
 } );
 
 /*
- * External event to refresh the table controler
+ * External event to refresh the table controller
  *
  * @param: isSelected Define if the search trigger a selection or not, undefined means true
  *
@@ -444,7 +444,7 @@ function applySearchFilter() {
  * data-wbtbl-post
  * @description post to a datable search columns via form elements
  * @param  {[event]}     evt
- * @return {[boolean]}     proceed to submite
+ * @return {[boolean]}     proceed to submit
  */
 $( document ).on( "submit", "[data-wbtbl-post]", function( ) {
 
@@ -461,7 +461,7 @@ $( document ).on( "submit", "[data-wbtbl-post]", function( ) {
  * data-wbtbl-post
  * @description post to a datable search columns via form elements
  * @param  {[event]}     evt
- * @return {[boolean]}     proceed to submite
+ * @return {[boolean]}     proceed to submit
  */
 $( document ).on( "reset", "[data-wbtbl-post]", function( ) {
 

@@ -145,7 +145,7 @@ var componentName = "wb-combobox",
 				return ( matchChars / maxChars ) * 100;
 			}
 
-			// Check agains the pass Ratio
+			// Check against the pass Ratio
 			var result = similartextCheck( str1, str2 );
 			passRatio = parseInt( passRatio );
 			if ( result >= passRatio ) {
@@ -474,7 +474,7 @@ var componentName = "wb-combobox",
 
 			if ( typeof replacementValue === "object" ) {
 
-				// Stringfy the value
+				// Stringify the value
 				replacementValue = JSON.stringify( replacementValue );
 			}
 
@@ -526,7 +526,7 @@ var componentName = "wb-combobox",
 		el.ifConditions.push( condition );
 	},
 
-	// @tmplId going to be replated by the Real DOM template
+	// @tmplId going to be replaced by the Real DOM template
 	renderTemplate = function( dataObj, settings ) {
 
 		// Prepare the template
@@ -553,7 +553,7 @@ var componentName = "wb-combobox",
 
 		// Template cheat sheet
 		// 		Document.querySelector()
-		//		It only take the first occurence
+		//		It only take the first occurrence
 		//var cssSelectorsMapping = {
 		//	"CSS selector": "Property Name in the dataObj" // Need a modifier (like TextContent, ....)
 		//}
@@ -725,7 +725,7 @@ var componentName = "wb-combobox",
 				virtualLinearDOM[ frgItemId ] = dataObject;
 
 				// Add a class || data attribute to note it is a component
-				// - This is to be able to retreive the associated data on a event
+				// - This is to be able to retrieve the associated data on a event
 				i_cache.classList.add( "wb5React" );
 			}
 
@@ -739,7 +739,7 @@ var componentName = "wb-combobox",
 			// The fragment would replace the current element
 			elm.parentNode.insertBefore( tmpl, elm );
 
-			// Detach the current element - Eventually they could be completly removed
+			// Detach the current element - Eventually they could be completely removed
 			if ( !settings.hideSourceUI ) {
 				elm.id = wb.getId();
 				docFragmentSourceUI.appendChild( elm );
@@ -866,7 +866,7 @@ var componentName = "wb-combobox",
 
 		if ( idxOpen !== -1 && idxClose !== -1 && idxOpen + 1 !== idxClose ) {
 
-			// We have an internal functin
+			// We have an internal function
 
 			// Extract in between and re-process
 			var newPointer = pointer.substring( 0, idxOpen ),
@@ -1205,7 +1205,7 @@ var componentName = "wb-combobox",
 			if ( Array.isArray( val ) ) {
 
 				// Just make reactive those special properties
-				val.wbLen = parseInt( val.length ); // Length of the array (Updated before an iteration happend on it)
+				val.wbLen = parseInt( val.length ); // Length of the array (Updated before an iteration happened on it)
 				val.wbActive = 0; // Number of items that was identified being "True"
 
 				makeReactive( val, "wbLen", key );
@@ -1339,34 +1339,34 @@ $document.on( "keyup", "[role=combobox] input", function( evt ) {
 		isInError = evt.target.classList.contains( "error" );
 
 	switch ( key ) {
-	case KeyCode.UP:
-	case KeyCode.DOWN:
-	case KeyCode.ESC:
-	case KeyCode.RETURN:
-	case KeyCode.HOME:
-	case KeyCode.END:
-		evt.preventDefault();
-		if ( isInError ) {
-			setTimeout( function() {
-				onChange( evt.target );
-			}, 100 );
-		}
-		return;
-
-	case KeyCode.TAB:
-		if ( isInError ) {
-			setTimeout( function() {
-				onChange( evt.target );
-			}, 100 );
-		}
-		return;
-	default:
-		setTimeout( function() {
-			updateResults( evt.target, false );
+		case KeyCode.UP:
+		case KeyCode.DOWN:
+		case KeyCode.ESC:
+		case KeyCode.RETURN:
+		case KeyCode.HOME:
+		case KeyCode.END:
+			evt.preventDefault();
 			if ( isInError ) {
-				onChange( evt.target );
+				setTimeout( function() {
+					onChange( evt.target );
+				}, 100 );
 			}
-		}, 100 );
+			return;
+
+		case KeyCode.TAB:
+			if ( isInError ) {
+				setTimeout( function() {
+					onChange( evt.target );
+				}, 100 );
+			}
+			return;
+		default:
+			setTimeout( function() {
+				updateResults( evt.target, false );
+				if ( isInError ) {
+					onChange( evt.target );
+				}
+			}, 100 );
 	}
 } );
 
@@ -1415,59 +1415,59 @@ $document.on( "keydown", "[role=combobox] input", function( evt ) {
 
 
 	switch ( key ) {
-	case KeyCode.UP:
+		case KeyCode.UP:
 
-		// Move focus to and select the previous option. If focus is on the first option do nothing
-		if ( activeIndex === -1 ) {
-			activeIndex = resultsCount - 1;
-		} else if ( activeIndex !== 0 ) {
-			activeIndex--;
-		} else {
-			activeIndex = resultsCount - 1;
-		}
+			// Move focus to and select the previous option. If focus is on the first option do nothing
+			if ( activeIndex === -1 ) {
+				activeIndex = resultsCount - 1;
+			} else if ( activeIndex !== 0 ) {
+				activeIndex--;
+			} else {
+				activeIndex = resultsCount - 1;
+			}
 
-		break;
-	case KeyCode.DOWN:
+			break;
+		case KeyCode.DOWN:
 
-		// Move focus to and select next option. If focus is on the first option do nothing
-		if ( activeIndex === -1 ) {
+			// Move focus to and select next option. If focus is on the first option do nothing
+			if ( activeIndex === -1 ) {
+				activeIndex = 0;
+			} else if ( activeIndex < resultsCount ) {
+				activeIndex++;
+			}
+
+			break;
+
+		case KeyCode.HOME:
+
+			// Move focus to and selects the first option
 			activeIndex = 0;
-		} else if ( activeIndex < resultsCount ) {
-			activeIndex++;
-		}
+			break;
 
-		break;
+		case KeyCode.END:
 
-	case KeyCode.HOME:
+			// Move focus to and selects the last option
+			activeIndex = resultsCount - 1;
 
-		// Move focus to and selects the first option
-		activeIndex = 0;
-		break;
+			break;
 
-	case KeyCode.END:
+		case KeyCode.RETURN:
 
-		// Move focus to and selects the last option
-		activeIndex = resultsCount - 1;
-
-		break;
-
-	case KeyCode.RETURN:
-
-		$( options[ activeIndex ] ).trigger( "wb.select" );
-
-		hideListbox();
-		evt.preventDefault(); // Need to prevent default here because when the combobox is within a form, the form are submited
-		return;
-	case KeyCode.TAB:
-
-		// Should only select if the last active item selected was made through keyboard
-		if ( isLastActiveKeyboardSelect ) {
 			$( options[ activeIndex ] ).trigger( "wb.select" );
-		}
-		hideListbox();
-		return;
-	default:
-		return;
+
+			hideListbox();
+			evt.preventDefault(); // Need to prevent default here because when the combobox is within a form, the form are submitted
+			return;
+		case KeyCode.TAB:
+
+			// Should only select if the last active item selected was made through keyboard
+			if ( isLastActiveKeyboardSelect ) {
+				$( options[ activeIndex ] ).trigger( "wb.select" );
+			}
+			hideListbox();
+			return;
+		default:
+			return;
 	}
 
 	evt.preventDefault();

@@ -7,8 +7,8 @@
 		"modified": "dct:modified"
 	},
 	"title": {
-		"en": "Theme page",
-		"fr": "Page de thème"
+		"en": "Theme",
+		"fr": "Thème"
 	},
 	"description": {
 		"en": "Theme page template",
@@ -159,18 +159,22 @@
 	],
 	"iteration": [
 		{
-			"@id": "_:iteration_ilp_1",
+			"@id": "_:iteration_theme_1",
 			"name": "Theme page - Iteration 1",
 			"date": "2024-07",
 			"breaking": [
 				"Introduction of the page template."
 			],
-			"detectableBy": ".page-type-theme"
+			"detectableBy": ".page-type-theme",
+			"notes": [
+				"The H1 is exempt from the default styling (bottom red line). Confirmed by DTO on July 17th, 2024.",
+				"The breadcrumbs has specific styling <strong>only</strong> for Theme pages. Confirmed by DTO on July 8th, 2024."
+			]
 		}
 	],
 	"changesets": [
 		{
-			"@id": "_:cs_ilp_2",
+			"@id": "_:cs_theme",
 			"name": "Theme page",
 			"status": "stable",
 			"baseOnIteration": "_:iteration_theme_1",

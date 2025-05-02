@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
 <title>Titre principal de la page - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta name="description" content="Documentation à propos du H1 par défaut souligné d'une courte ligne rouge en gras." />
@@ -13,7 +14,9 @@
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2024-01-29"/>
+<meta name="dcterms.modified" content="2024-08-27"/>
+
+
 
 <link href="/wet-boew-demos/theme-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/GCWeb/css/theme.css" />
@@ -125,7 +128,7 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Titre principal de la page</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Titre principal de la page</h1>
 <p property="description">Documentation à propos du H1 par défaut souligné d'une courte ligne rouge en gras.</p>
 
 
@@ -302,8 +305,23 @@
 	"mapping": [
 		{ "selector": "[data-name]", "value": "/name/fr" },
 		{ "selector": "[data-description]", "value": "/description/fr", "isHTML": true  },
-		{ "selector": "[data-guidance]", "value": "/guidance/fr", "attr": "href" },
 		{ "selector": "[data-iteration]", "value": "/revisedFor/name/fr" },
+
+		{
+			"template": "[data-guidance]",
+			"test": "fn:guessType",
+			"expect": "rdfs:Resource",
+			"assess": "/guidance",
+			"mapping": [
+				{
+					"selector": "p",
+					"value": "/guidance",
+					"mapping": [
+						{ "selector": "a", "value": "/fr", "attr": "href" }
+					]
+				}
+			]
+		},
 
 		{
 			"@type": "rdf:Alt",
@@ -552,7 +570,7 @@
 
 		{ "selector": "[data-history]", "value": "/history",
 			"mapping": [
-				{ "selector": "li", "value": "/fr" }
+				{ "selector": "li", "value": "/fr", "isHTML": true }
 			]
 		}
 
@@ -580,7 +598,11 @@
 			</template>
 		</h3>
 
-		<p data-description>[[ Short description ]]</p><p>Consultez les <a data-guidance href>guides de conception concernant cette variante</a>.</p><!--
+		<p data-description>[[ Short description ]]</p>
+
+		<template data-guidance><p>Consultez les <a href>guides de conception concernant cette variante</a>.</p></template>
+
+		<!--
 		<p>TODO: Screen capture</p>
 		<p>TODO: Working example link</p>
 		-->
@@ -622,7 +644,10 @@
 							</template>
 
 							<template data-ajax-source-code>
-								<pre><code data-wb-ajax='{ "encode": true }'></code></pre>
+								<details>
+									<summary>Exemple de code</summary>
+									<pre><code data-wb-ajax='{ "encode": true }'></code></pre>
+								</details>
 							</template>
 
 							<template data-notes>
@@ -2169,6 +2194,44 @@
 					]
 				}
 			]
+		},
+		{
+			"about": "/notes",
+			"dd14": "Notes",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-notes-none]",
+					"test": "fn:guessType",
+					"value": "/notes",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-notes-description]",
+					"test": "fn:guessType",
+					"value": "/notes",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/", "isHTML": true }
+					]
+				},
+				{
+					"template": "[data-notes-list]",
+					"test": "fn:guessType",
+					"value": "/notes",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value", "isHTML": true }
+							]
+						}
+					]
+				}
+
+			]
 		}
 	]
 }'>
@@ -2248,6 +2311,26 @@
 					</ul>
 				</dd>
 			</template>
+
+			<!-- Notes -->
+			<template data-notes-none>
+				<dt>Notes:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-notes-description>
+				<dt>Notes:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-notes-list>
+				<dt>Notes:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
 		</dl>
 	</details>
 </template>
@@ -2256,7 +2339,7 @@
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2><dl id="wb-dtmd">
 	<dt>Date de modification&#160;:</dt>
-	<dd><time property="dateModified">2024-01-29</time></dd>
+	<dd><time property="dateModified">2024-08-27</time></dd>
 </dl>
 </section>
 
@@ -2286,7 +2369,7 @@
 					<li><a href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 					<li><a href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
 					<li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Le Canada et le monde</a></li>
-					<li><a href="https://www.canada.ca/fr/services/finance.html">Argent et finance</a></li>
+					<li><a href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 					<li><a href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li>
 					<li><a href="https://www.canada.ca/fr/services/autochtones.html">Autochtones</a></li>
 					<li><a href="https://www.canada.ca/fr/services/veterans-militaire.html">Vétérans et militaires</a></li>
