@@ -1,6 +1,6 @@
 /*
  WET 5.0 (early bird)
- @author: Goverment of Canada
+ @author: Government of Canada
  ======================================================== */
 ( function( $, document ) {
 "use strict";
@@ -90,7 +90,7 @@ $.fn.extend( {
 
 	/* ---------------------------------
 	@extension: rand
-	@returns: [collection] of randoms elements
+	@returns: [collection] of random elements
 	-------------------------------- */
 	rand: function( k ) {
 		var b = this,
@@ -151,7 +151,7 @@ $.fn.extend( {
 
 /* ---------------------------------
     Bind
-    @description: creates a referencable set of elements to a node
+    @description: creates a referenceable set of elements to a node
     @api
       - elements are extended with related function
         $elm.related( nodelist )
@@ -261,10 +261,10 @@ $( document ).on( "keypress click", "[data-wb5-ajax]", function( evt ) {
 	$nodes.attr( "aria-live", "polite" );
 
 	switch ( action.command ) {
-	case "replace":
-		$.get( action.options, function( data ) {
-			$nodes.html( data );
-		} );
+		case "replace":
+			$.get( action.options, function( data ) {
+				$nodes.html( data );
+			} );
 	}
 } );
 
@@ -294,8 +294,8 @@ $( document ).on( "keypress click", "[data-wb5-load]", function( evt ) {
 	} );
 
 	switch ( action.command ) {
-	case "replace":
-		$nodes.load( action.options );
+		case "replace":
+			$nodes.load( action.options );
 	}
 } );
 

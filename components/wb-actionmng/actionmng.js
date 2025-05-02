@@ -62,7 +62,7 @@ var $document = wb.doc,
 			actions = wb.getData( $elm, componentName );
 
 			if ( actions ) {
-				if ( !$.isArray( actions ) ) {
+				if ( !Array.isArray( actions ) ) {
 					actions = [ actions ];
 				}
 				i_len = actions.length;
@@ -109,7 +109,7 @@ var $document = wb.doc,
 			return;
 		}
 
-		if ( !$.isArray( ops ) ) {
+		if ( !Array.isArray( ops ) ) {
 			ops = [ ops ];
 		}
 
@@ -249,7 +249,7 @@ var $document = wb.doc,
 				var cellCSVText;
 				if ( isDataTable ) {
 
-					// I would like to use ".node()" instead of ".data()" but it is not possible to get the referencied
+					// I would like to use ".node()" instead of ".data()" but it is not possible to get the referenced
 					// node because it don't exist if the table have multiple pages.
 					cellCSVText = $datatable.cell( i, j, { "page": "all" } ).data();
 
@@ -309,7 +309,7 @@ var $document = wb.doc,
 
 	},
 
-	// From a user input or a predefined input, apply some tranformation to the command prior to execute it
+	// From a user input or a predefined input, apply some transformation to the command prior to execute it
 	// This functionality was already in the URL mapping and was moved here to be reused by any user input
 	withInput = function( event, data ) {
 
@@ -335,7 +335,7 @@ var $document = wb.doc,
 			defaultValue;
 
 
-		if ( !$.isArray( actions ) ) {
+		if ( !Array.isArray( actions ) ) {
 			actions = [ actions ];
 		} else {
 			actions = $.extend( [], actions );
@@ -383,32 +383,32 @@ var $document = wb.doc,
 
 			switch ( cache_action ) {
 
-			case "patch":
-				var ops = i_cache.patches,
-					basePntr = i_cache.base || "/";
-				if ( !ops ) {
-					ops = [ patchDefault ];
-					i_cache.cumulative = true;
-				}
-				if ( !$.isArray( ops ) ) {
-					ops = [ ops ];
-				}
-				ops = patchFixArray( ops, i_cache.qval, basePntr );
-				i_cache.patches = ops;
-				break;
-			case "ajax":
-				if ( i_cache.trigger && dontTriggerWET ) {
-					i_cache.trigger = false;
-				}
-				i_cache.url = replaceMappingKeys( i_cache.url, i_cache.qval );
-				break;
-			case "tblfilter":
-				i_cache.value = replaceMappingKeys( i_cache.value, i_cache.qval );
-				break;
-			default:
+				case "patch":
+					var ops = i_cache.patches,
+						basePntr = i_cache.base || "/";
+					if ( !ops ) {
+						ops = [ patchDefault ];
+						i_cache.cumulative = true;
+					}
+					if ( !Array.isArray( ops ) ) {
+						ops = [ ops ];
+					}
+					ops = patchFixArray( ops, i_cache.qval, basePntr );
+					i_cache.patches = ops;
+					break;
+				case "ajax":
+					if ( i_cache.trigger && dontTriggerWET ) {
+						i_cache.trigger = false;
+					}
+					i_cache.url = replaceMappingKeys( i_cache.url, i_cache.qval );
+					break;
+				case "tblfilter":
+					i_cache.value = replaceMappingKeys( i_cache.value, i_cache.qval );
+					break;
+				default:
 
-				// Just do the action as defined.
-				break;
+					// Just do the action as defined.
+					break;
 
 			}
 
@@ -503,7 +503,7 @@ $document.on( "do." + actionEvent, function( event ) {
 	// Filter out any events triggered by descendants
 	if ( ( elm === event.target || event.currentTarget === event.target ) && elm.className.indexOf( componentName ) === -1 ) {
 
-		if ( !$.isArray( actions ) ) {
+		if ( !Array.isArray( actions ) ) {
 			actions = [ actions ];
 		}
 
@@ -579,39 +579,39 @@ $document.on( actionMngEvent, selector, function( event, data ) {
 
 	if ( actionEvent === event.namespace ) {
 		switch ( eventType ) {
-		case "run":
-			runAct( event, data );
-			break;
-		case "tblfilter":
-			tblflrAct( event, data );
-			break;
-		case "addClass":
-			addClassAct( event, data );
-			break;
-		case "removeClass":
-			remClassAct( event, data );
-			break;
-		case "ajax":
-			ajaxAct( event, data );
-			break;
-		case "patch":
-			patchAct( event, data );
-			break;
-		case "selectInput":
-			selectInputAct( event, data );
-			break;
-		case "mapfilter":
-			geomapAOIAct( event, data );
-			break;
-		case "tocsv":
-			tblToCSV( data.source, data.filename );
-			break;
-		case "loadJSON":
-			loadJSON( data );
-			break;
-		case "withInput":
-			withInput( event, data );
-			break;
+			case "run":
+				runAct( event, data );
+				break;
+			case "tblfilter":
+				tblflrAct( event, data );
+				break;
+			case "addClass":
+				addClassAct( event, data );
+				break;
+			case "removeClass":
+				remClassAct( event, data );
+				break;
+			case "ajax":
+				ajaxAct( event, data );
+				break;
+			case "patch":
+				patchAct( event, data );
+				break;
+			case "selectInput":
+				selectInputAct( event, data );
+				break;
+			case "mapfilter":
+				geomapAOIAct( event, data );
+				break;
+			case "tocsv":
+				tblToCSV( data.source, data.filename );
+				break;
+			case "loadJSON":
+				loadJSON( data );
+				break;
+			case "withInput":
+				withInput( event, data );
+				break;
 		}
 	}
 } );

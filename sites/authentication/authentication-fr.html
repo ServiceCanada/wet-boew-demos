@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
 <title>Modèles d'authentification - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta name="description" content="Documentation sur l'utilisation des divers modèles d'authentification." />
@@ -14,6 +15,8 @@
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2022-06-30"/>
+
+
 
 <link href="/wet-boew-demos/theme-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/GCWeb/css/theme.css" />
@@ -125,12 +128,12 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Modèles d'authentification</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Modèles d'authentification</h1>
 <p>Ce composant supporte les 4 variants de modèle de conception suivants:</p>
 <ul>
 	<li>Bouton contextuel « Se connecter »: Un lien pointant vers une page d'authentification désignée</li>
 	<li>Session fermée: Un modèle qui présente un bouton d'inscription et un bouton de connexion.</li>
-	<li>Session ouverte: Un modèle qui présente un bouton afin d'acceder au compte de l'utilisateur, un bouton de déconnexion ainsi qu'un texte confirmant que l'utilisateur est bien connecté. Note: La boîte de dialogue d'invite et l'intéraction résultant de la connexion sont actuellement hors de portée.</li>
+	<li>Session ouverte: Un modèle qui présente un bouton afin d'accéder au compte de l'utilisateur, un bouton de déconnexion ainsi qu'un texte confirmant que l'utilisateur est bien connecté. Note: La boîte de dialogue d'invite et l'interaction résultant de la connexion sont actuellement hors de portée.</li>
 	<li><a href="activeusersession-fr.html">Session utilisateur active</a>: Un modèle affichant l'information de la session d'un utilisateur avec une session active (connecté), personnalisé avec son nom d'utilisateur.</li>
 
 </ul>
@@ -142,8 +145,8 @@
 <h3>Structure HTML - Version 1.0</h3>
 <ul>
 	<li><a href="contextual-signin-fr.html">Bouton de connexion contextuel</a></li>
-	<li><a href="contextual-signin-label-extended-fr.html">Bouton de connexion contextuel incluant un libelé allongé</a></li>
-	<li><a href="contextual-signin-nolabels-fr.html">Bouton de connexion contextuel sans aucun libelés personnalisés</a></li>
+	<li><a href="contextual-signin-label-extended-fr.html">Bouton de connexion contextuel incluant un libellé allongé</a></li>
+	<li><a href="contextual-signin-nolabels-fr.html">Bouton de connexion contextuel sans aucun libellés personnalisés</a></li>
 	<li><a href="contextual-signin-nomenu-fr.html">Bouton de connexion contextuel sans le menu GCWeb</a></li>
 </ul>
 
@@ -161,7 +164,7 @@
 
 <h2>Modèles de Session fermée / Session ouverte</h2>
 
-<p>Au chargement de la page, les boutons doivent apparaîtres dans le coin supérieur droit de la page sous la ligne horizontale.</p>
+<p>Au chargement de la page, les boutons doivent apparaître dans le coin supérieur droit de la page sous la ligne horizontale.</p>
 
 <h3>Structure HTML - Version 2.0</h3>
 
@@ -186,7 +189,7 @@
 <h3>Modèles de conception précédents</h3>
 <details>
 	<summary>Modèle précédent (Page de contenu - Session fermée)</summary>
-	<p>Les boutons "Inscription" et "Ouvrir une session" étaient situés du coté droit de la page, dernier élément de l'entête <code>&lt;header&gt;</code> donc apparaissant entre le fil d'ariane et la balise <code>&lt;h1&gt;</code> du contenu.</p>
+	<p>Les boutons "Inscription" et "Ouvrir une session" étaient situés du coté droit de la page, dernier élément de l'entête <code>&lt;header&gt;</code> donc apparaissant entre le fil d'Ariane et la balise <code>&lt;h1&gt;</code> du contenu.</p>
 	<p><img src="assets/previous-signedoff-fr.png" alt="Gouvernement du Canada, Government of Canada, English, Rechercher dans Canada.ca, Menu, Canada.ca, Inscription, Ouvrir une session, Page de contenu - Session Fermée, En-tête 2 (h2) " /></p>
 	<h3>Code</h3>
 	<pre><code>&lt;section id="wb-so"&gt;
@@ -204,7 +207,7 @@
 
 <details>
 	<summary>Modèle précédent (Page de contenu - Session ouverte)</summary>
-	<p>Les boutons "Mon compte" et "Fermer la session" ainsi que le texte "Connecté en tant que [nom complet]" étaient situés du coté droit de la page, dernier élément de l'entête <code>&lt;header&gt;</code> donc apparaissant entre le fil d'ariane et la balise <code>&lt;h1&gt;</code> du contenu.</p>
+	<p>Les boutons "Mon compte" et "Fermer la session" ainsi que le texte "Connecté en tant que [nom complet]" étaient situés du coté droit de la page, dernier élément de l'entête <code>&lt;header&gt;</code> donc apparaissant entre le fil d'Ariane et la balise <code>&lt;h1&gt;</code> du contenu.</p>
 	<p><img src="assets/previous-signedon-fr.png" alt="Gouvernement du Canada, Government of Canada, English, Rechercher dans Canada.ca, Menu, Canada.ca, Connecté en tant que John Doe, Mon compte, Fermer la session, Page de contenu - Session Ouverte, En-tête 2 (h2)" /></p>
 	<h3>Code</h3>
 	<pre><code>&lt;section id="wb-so"&gt;
@@ -270,7 +273,7 @@
 					<li><a href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 					<li><a href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
 					<li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Le Canada et le monde</a></li>
-					<li><a href="https://www.canada.ca/fr/services/finance.html">Argent et finance</a></li>
+					<li><a href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 					<li><a href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li>
 					<li><a href="https://www.canada.ca/fr/services/autochtones.html">Autochtones</a></li>
 					<li><a href="https://www.canada.ca/fr/services/veterans-militaire.html">Vétérans et militaires</a></li>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
 <title>Gestionnaire JSON - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta name="description" content="Gérer des jeux de données et applique des correctifs JSON." />
@@ -12,8 +13,10 @@
 <meta name="dcterms.creator" content=" "/>
 <meta name="dcterms.language" content="fra"/>
 <meta name="dcterms.subject" content=""/>
-<meta name="dcterms.issued" content="2024-07-18 12:43:01 +0000"/>
-<meta name="dcterms.modified" content="2022-10-31"/>
+<meta name="dcterms.issued" content="2025-05-02 13:16:21 +0000"/>
+<meta name="dcterms.modified" content="2025-03-19"/>
+
+
 
 <link href="/wet-boew-demos/theme-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/GCWeb/css/theme.css" />
@@ -125,13 +128,18 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Gestionnaire JSON</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Gestionnaire JSON</h1>
 <!--
 <ul class="list-inline">
 	<li><a class="btn btn-primary" href="jsonmanager-doc-fr.html">Documentation</a></li>
 	<li><a class="btn btn-primary" href="https://github.com/wet-boew/GCWeb/issues/new?title=JSON%20Manager">Questions ou commentaires?</a></li>
 </ul>
 -->
+
+<ul>
+	<li>Exemple principal</li>
+	<li><a href="multisource-fr.html">Plusieurs source de donnée afin de générer un tableau de donné</a></li>
+</ul>
 <div class="wb-prettify all-pre"></div>
 
 <p>Gérer des jeux de données et applique des correctifs JSON.</p>
@@ -244,7 +252,7 @@
 		{ "op": "patches", "path": "/items", "patches": [
 			{ "op": "wb-swap", "path": "/eventLanguage", "ref": "/reference/language/fr" },
 			{ "op": "wb-swap", "path": "/province", "ref": "/reference/province/fr" },
-			{ "op": "wb-swap", "path": "/registrationStatus", "ref": "/reference/registrationStatus/fr" },
+			{ "op": "wb-swap", "path": "/registrationStatus", "ref": "/reference/registrationStatus" },
 			{ "op": "wb-toDateISO", "path": "/startDate" },
 			{ "op": "wb-toDateISO", "path": "/endDate" },
 			{ "op": "patches", "path": "/registeredPeople", "patches": [
@@ -262,7 +270,7 @@
 			{ "selector": ".event-start", "value": "/startDate" },
 			{ "selector": ".event-end", "value": "/endDate" },
 			{ "selector": ".event-location", "value": "/city" },
-			{ "selector": ".event-status", "value": "/registrationStatus" },
+			{ "selector": ".event-status", "value": "/registrationStatus/fr" },
 			{ "selector": ".event-provinces", "value": "/province", "queryall": "li" },
 			{ "selector": ".event-registered", "value": "/registeredPeople",
 				"mapping": [
@@ -308,7 +316,7 @@
 		{ "op": "patches", "path": "/items", "patches": [
 			{ "op": "wb-swap", "path": "/eventLanguage", "ref": "/reference/language/fr" },
 			{ "op": "wb-swap", "path": "/province", "ref": "/reference/province/fr" },
-			{ "op": "wb-swap", "path": "/registrationStatus", "ref": "/reference/registrationStatus/fr" },
+			{ "op": "wb-swap", "path": "/registrationStatus", "ref": "/reference/registrationStatus" },
 			{ "op": "wb-toDateISO", "path": "/startDate" },
 			{ "op": "wb-toDateISO", "path": "/endDate" },
 			{ "op": "patches", "path": "/registeredPeople", "patches": [
@@ -326,7 +334,7 @@
 			{ "selector": ".event-start", "value": "/startDate" },
 			{ "selector": ".event-end", "value": "/endDate" },
 			{ "selector": ".event-location", "value": "/city" },
-			{ "selector": ".event-status", "value": "/registrationStatus" },
+			{ "selector": ".event-status", "value": "/registrationStatus/fr" },
 			{ "selector": ".event-provinces", "value": "/province", "queryall": "li" },
 			{ "selector": ".event-registered", "value": "/registeredPeople",
 				"mapping": [
@@ -344,6 +352,7 @@
 				&lt;p>De &lt;span class="event-start">&lt;/span> à &lt;span class="event-end">&lt;/span>&lt;/p>
 				&lt;p>Emplacement: &lt;span class="event-location">&lt;/span>&lt;/p>
 				&lt;p>Statut: &lt;span class="event-status">&lt;/span>&lt;/p>
+				&lt;p>Province(s):&lt;/p>
 				&lt;ul class="event-provinces">
 					&lt;template>
 						&lt;li>&lt;/li>
@@ -778,7 +787,7 @@
 				}
 			]'&gt;&lt;/a&gt; (&lt;span data-json-replace=&quot;#[github]/oldest&quot;&gt;inconnu&lt;/span&gt;)&lt;/li&gt;
 	&lt;/ul&gt;
-	&lt;p&gt;&lt;a href=&quot;https://github.com/wet-boew/wet-boew/issues?q=is%3Aopen+is%3Aissue+label%3A%22Work%3A+Accessibility%22&quot; hreflang=&quot;en&quot;&gt;Consulter les problèms sur GitHub&lt;/a&gt;&lt;/p&gt;
+	&lt;p&gt;&lt;a href=&quot;https://github.com/wet-boew/wet-boew/issues?q=is%3Aopen+is%3Aissue+label%3A%22Work%3A+Accessibility%22&quot; hreflang=&quot;en&quot;&gt;Consulter les problèmes sur GitHub&lt;/a&gt;&lt;/p&gt;
 &lt;/aside&gt;
 &lt;/div&gt;
 
@@ -860,7 +869,7 @@
 				}
 			]'></a> (<span data-json-replace="#[github]/oldest">inconnu</span>)</li>
 	</ul>
-	<p><a href="https://github.com/wet-boew/wet-boew/issues?q=is%3Aopen+is%3Aissue+label%3A%22Work%3A+Accessibility%22" hreflang="en">Consulter les problèms sur GitHub</a></p>
+	<p><a href="https://github.com/wet-boew/wet-boew/issues?q=is%3Aopen+is%3Aissue+label%3A%22Work%3A+Accessibility%22" hreflang="en">Consulter les problèmes sur GitHub</a></p>
 </aside>
 </div>
 
@@ -1275,7 +1284,7 @@
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2><dl id="wb-dtmd">
 	<dt>Date de modification&#160;:</dt>
-	<dd><time property="dateModified">2022-10-31</time></dd>
+	<dd><time property="dateModified">2025-03-19</time></dd>
 </dl>
 </section>
 
@@ -1305,7 +1314,7 @@
 					<li><a href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 					<li><a href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
 					<li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=fra">Le Canada et le monde</a></li>
-					<li><a href="https://www.canada.ca/fr/services/finance.html">Argent et finance</a></li>
+					<li><a href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 					<li><a href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li>
 					<li><a href="https://www.canada.ca/fr/services/autochtones.html">Autochtones</a></li>
 					<li><a href="https://www.canada.ca/fr/services/veterans-militaire.html">Vétérans et militaires</a></li>

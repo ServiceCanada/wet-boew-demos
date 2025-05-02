@@ -7,22 +7,33 @@
 ( function( $, document ) {
 "use strict";
 
-//Detect the enhancement of the quiz
-var quizSelector = ".provisional.wb-steps.quiz",
-	instances = document.querySelectorAll( quizSelector );
+// Fetch page language and set variables accordingly
+let relpreposition = " of ",
+progressLabel = "Questionnaire progress:";
 
-//How many quiz instances in the page
-instances.forEach ( ( instance ) => {
-	let $instance = $( instance );
+// Define French progress label
+if ( wb.lang === "fr" ) {
+	relpreposition = " de ";
+	progressLabel = "Progression du questionnaire : ";
+}
+
+//Detect the enhancement of the quiz
+var quizSelector = ".provisional.wb-steps.quiz";
+
+//Initialize all instances
+var init = function( e ) {
+	let $instance = $( e.currentTarget );
 
 	// Calculate number of questions
-	let numQuestion = $( "fieldset", $instance ).length;
+	let numQuestion = $( ".steps-wrapper", $instance ).length;
 
 	// Addition to UI (Ex: progress bar)
-	$( "form", $instance ).prepend( "<p class='progressText' role='status'></p>" );
-	$( "form", $instance ).prepend( "<p><progress class='progressBar' max='" + numQuestion + "'></progress></p>" );
+	if ( !$.contains( $instance, "progress" ) ) {
+		$( "form", $instance ).prepend( "<label class='full-width'><span class='wb-inv'>" + progressLabel + "</span><progress class='progressBar' max='" + numQuestion + "'></progress><p class='progressText' role='status'></p></label>" );
+	}
 
-});
+	hideOtherSteps( e );
+}
 
 var hideOtherSteps = function( e ) {
 	// Get wb-steps component
@@ -31,7 +42,6 @@ var hideOtherSteps = function( e ) {
 
 	if ( currentElement.classList.contains( "quiz" ) && currentElement.classList.contains( "wb-steps" ) ) {
 		steps = currentElement;
-
 	} else {
 		steps = $( currentElement ).parentsUntil( quizSelector ).parent().get( 0 );
 	}
@@ -52,7 +62,7 @@ var hideOtherSteps = function( e ) {
 	let numQuestion = $progressBar.attr( "max" );
 
 	// Set the progress label
-	$( "p.progressText", steps ).text( currentTabId + " of  " + numQuestion );
+	$( "p.progressText", steps ).text( currentTabId + relpreposition + numQuestion );
 
 	// Update progress bar
   	$progressBar.val( currentTabId );
@@ -66,6 +76,6 @@ var hideOtherSteps = function( e ) {
 $( document ).on( "click", quizSelector + " .steps-wrapper div.buttons > :button", hideOtherSteps );
 
 //Init
-$( quizSelector ).on( "wb-ready.wb-steps", hideOtherSteps );
+$( quizSelector ).on( "wb-ready.wb-steps", init );
 
 } )( jQuery, document );

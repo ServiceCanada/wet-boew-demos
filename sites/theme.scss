@@ -80,6 +80,7 @@
 @import "authentication/base";
 @import "header/base";
 @import "main-page-title/base";
+@import "contributors/base";
 
 /*! Components (CSS type only) */
 @import "bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
@@ -157,7 +158,7 @@
 @import "wet-boew/src/plugins/zebra/base";
 @import "wet-boew/src/plugins/feeds/base";
 @import "wet-boew/src/plugins/paginate/base";
-@import "wet-boew/feeds/base"; // CSS for feeds plugin GC override
+@import "../wet-boew/feeds/base"; // CSS for feeds plugin GC override
 
 // Components GC Theme
 @import "../components/baseline/base";
@@ -171,6 +172,7 @@
 @import "../components/redacted";
 @import "../components/dshbrd/base";
 @import "../components/triangle-up";
+@import "../components/byline/base";
 @import "../components/gc-follow-us/base";
 @import "../components/gc-minister/base";
 @import "../components/gc-most-requested/base";
@@ -208,13 +210,15 @@
 
 
 /*! Core - Utilities */
-@import "helpers/base";
 @import "bootstrap-sass/assets/stylesheets/bootstrap/utilities";
 @import "bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
 @import "wet-boew/src/base/accessibility/utilities";
 @import "wet-boew/src/base/proximity/base";
 @import "wet-boew/src/base/bootstrap-4";
 @import "wet-boew/src/base/component";
+@import "../common/text-level-modifiers/base";
+@import "../common/colour/colours";
+@import "../common/spacing/base";
 
 
 /*
@@ -241,7 +245,6 @@
 	@import "baseline/lists/screen-xs-max";
 	@import "gcweb-menu/screen-xs-max";
 	@import "page-details/screen-xs-max";
-	@import "footers/screen-xs-max";
 
 	@import "wet-boew/src/plugins/eqht-css/screen-xs-max";
 	@import "../components/header-rwd/screen-xs-max";
@@ -273,7 +276,6 @@
 	@import "../components/gc-srvinfo/screen-sm-max";
 
 	@import "../templates/home/screen-sm-max";
-	@import "../templates/theme-topic/screen-sm-max";
 	@import "../templates/institutional-landing/screen-sm-max";
 	@import "../templates/theme/screen-sm-max";
 }
@@ -317,6 +319,7 @@
 
 	@import "wet-boew/src/base/proximity/screen-sm-min";
 	@import "wet-boew/src/base/views/_bootstrap-4-screen-sm-min";
+	@import "../common/spacing/screen-sm-min";
 }
 
 /* Medium view and over */
@@ -326,17 +329,17 @@
 	@import "baseline/lists/screen-md-min";
 	@import "gcweb-menu/screen-md-min";
 	@import "feedback/screen-md-min";
+	@import "contributors/screen-md-min";
 
 	@import "wet-boew/src/plugins/feeds/screen-md-min";
 	@import "wet-boew/src/plugins/tabs/screen-md-min";
-	@import "../components/social-media-icons/screen-md-min";
 	@import "../components/gc-subway/screen-md-min";
 	@import "../components/gc-most-requested/screen-md-min";
 
-	@import "../templates/theme-topic/screen-md-min";
 	@import "../templates/theme/screen-md-min";
 
 	@import "wet-boew/src/base/proximity/screen-md-min";
+	@import "../common/spacing/screen-md-min";
 }
 
 /* Large view and over */
@@ -352,6 +355,7 @@
 	@import "../templates/theme/screen-lg-min";
 
 	@import "wet-boew/src/base/proximity/screen-lg-min";
+	@import "../common/spacing/screen-lg-min";
 }
 
 /* Extra-extra-small view */

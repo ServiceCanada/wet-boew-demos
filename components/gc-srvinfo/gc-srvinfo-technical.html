@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
 <title>Services and information - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta name="description" content=" " />
@@ -14,6 +15,8 @@
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2019-01-08"/>
+
+
 
 <link href="/wet-boew-demos/theme-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/GCWeb/css/theme.css" />
@@ -125,7 +128,7 @@
 
 </header>
 
-<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 id="wb-cont" property="name">Services and information</h1>
+<main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Services and information</h1>
 <div class="wb-prettify all-pre hide"></div>
 
 <dl class="horizontal">
@@ -196,7 +199,7 @@
 		<dt>Version 1.2 (between v4.0.28.1 and v4.0.27)</dt>
 		<dd>
 			<ul>
-				<li>Depricated: <code>gc-drmt</code></li>
+				<li>Deprecated: <code>gc-drmt</code></li>
 			</ul>
 		</dd>
 		<dt>Version 1.1 (between v4.0.21 and v4.0.26)</dt>
@@ -215,8 +218,8 @@
 
 <p>Notes:</p>
 <ul>
-	<li>The heading level are ajusted based on the context of use</li>
-	<li>The following are the official supported/versionned markup</li>
+	<li>The heading level are adjusted based on the context of use</li>
+	<li>The following are the official supported/versioned markup</li>
 	<li>Template for each grouping and column rendering</li>
 </ul>
 
@@ -778,8 +781,23 @@ comp:DoormatShape
 	"mapping": [
 		{ "selector": "[data-name]", "value": "/name/en" },
 		{ "selector": "[data-description]", "value": "/description/en", "isHTML": true  },
-		{ "selector": "[data-guidance]", "value": "/guidance/en", "attr": "href" },
 		{ "selector": "[data-iteration]", "value": "/revisedFor/name/en" },
+
+		{
+			"template": "[data-guidance]",
+			"test": "fn:guessType",
+			"expect": "rdfs:Resource",
+			"assess": "/guidance",
+			"mapping": [
+				{
+					"selector": "p",
+					"value": "/guidance",
+					"mapping": [
+						{ "selector": "a", "value": "/en", "attr": "href" }
+					]
+				}
+			]
+		},
 
 		{
 			"@type": "rdf:Alt",
@@ -1028,7 +1046,7 @@ comp:DoormatShape
 
 		{ "selector": "[data-history]", "value": "/history",
 			"mapping": [
-				{ "selector": "li", "value": "/en" }
+				{ "selector": "li", "value": "/en", "isHTML": true }
 			]
 		}
 
@@ -1056,7 +1074,11 @@ comp:DoormatShape
 			</template>
 		</h3>
 
-		<p data-description>[[ Short description ]]</p><p>Consult the <a data-guidance href>design guidance about this variation</a>.</p><!--
+		<p data-description>[[ Short description ]]</p>
+
+		<template data-guidance><p>Consult the <a href>design guidance about this variation</a>.</p></template>
+
+		<!--
 		<p>TODO: Screen capture</p>
 		<p>TODO: Working example link</p>
 		-->
@@ -1098,7 +1120,10 @@ comp:DoormatShape
 							</template>
 
 							<template data-ajax-source-code>
-								<pre><code data-wb-ajax='{ "encode": true }'></code></pre>
+								<details>
+									<summary>Code sample</summary>
+									<pre><code data-wb-ajax='{ "encode": true }'></code></pre>
+								</details>
 							</template>
 
 							<template data-notes>
@@ -2645,6 +2670,44 @@ comp:DoormatShape
 					]
 				}
 			]
+		},
+		{
+			"about": "/notes",
+			"dd14": "Notes",
+			"@type": "rdf:Alt",
+			"mapping": [
+				{
+					"template": "[data-notes-none]",
+					"test": "fn:guessType",
+					"value": "/notes",
+					"expect": "undefined"
+				},
+				{
+					"template": "[data-notes-description]",
+					"test": "fn:guessType",
+					"value": "/notes",
+					"expect": "xsd:string",
+					"mapping": [
+						{ "selector": "dd", "value": "/", "isHTML": true }
+					]
+				},
+				{
+					"template": "[data-notes-list]",
+					"test": "fn:guessType",
+					"value": "/notes",
+					"expect": "rdfs:Container",
+					"mapping": [
+						{
+							"template": "template",
+							"value": "/",
+							"mapping": [
+								{ "selector": "li", "value": "/@value", "isHTML": true }
+							]
+						}
+					]
+				}
+
+			]
 		}
 	]
 }'>
@@ -2724,6 +2787,26 @@ comp:DoormatShape
 					</ul>
 				</dd>
 			</template>
+
+			<!-- Notes -->
+			<template data-notes-none>
+				<dt>Notes:</dt>
+				<dd>Not applicable or out of scope</dd>
+			</template>
+			<template data-notes-description>
+				<dt>Notes:</dt>
+				<dd>[[ Description ]]</dd>
+			</template>
+			<template data-notes-list>
+				<dt>Notes:</dt>
+				<dd>
+					<ul>
+						<template>
+							<li>[[ Description ]]</li>
+						</template>
+					</ul>
+				</dd>
+			</template>
 		</dl>
 	</details>
 </template>
@@ -2762,9 +2845,9 @@ comp:DoormatShape
 					<li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
 					<li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
 					<li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
-					<li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
+					<li><a href="https://www.canada.ca/en/services/finance.html">Money and finances</a></li>
 					<li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
-					<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
+					<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous Peoples</a></li>
 					<li><a href="https://www.canada.ca/en/services/veterans-military.html">Veterans and military</a></li>
 					<li><a href="https://www.canada.ca/en/services/youth.html">Youth</a></li></ul>
 			</nav>
