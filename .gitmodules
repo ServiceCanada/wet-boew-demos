@@ -26,3 +26,7 @@
 	path = WET-536
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = WET-536
+[submodule "theme-template"]
+	path = theme-template
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = theme-template
