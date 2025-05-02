@@ -30,3 +30,7 @@
 	path = theme-template
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = theme-template
+[submodule "gcweb-wet491"]
+	path = gcweb-wet491
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gcweb-wet491
