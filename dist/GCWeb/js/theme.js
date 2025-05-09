@@ -4187,6 +4187,18 @@ if ( document.querySelector( ".gc-minister" ) && !document.body.classList.contai
 	console.warn( "It seems that this page is an institutional landing page. However, the <body> element is missing the \"page-type-ilp\" CSS class. It has been added for your convenience, but please make sure you follow the technical guidance: https://wet-boew.github.io/GCWeb/templates/institutional-landing/institutional-landing-doc-en.html" );
 }
 
+// If in the news page and still in version 4.0, make necessary changes for 4.0.1
+if ( document.querySelector( ".nws-tbl" ) && document.querySelector( "details summary h2.h4" ) ) {
+	let fltrNewsTitle = document.querySelector( "details summary h2.h4" ),
+		newsTable = document.querySelector( ".nws-tbl" ),
+		newsTableConfig = newsTable.getAttribute( "data-wb-tables" );
+
+	fltrNewsTitle.classList.remove( "h4" );
+	fltrNewsTitle.classList.add( "h6" );
+
+	newsTable.setAttribute( "data-wb-tables", newsTableConfig.replace( "nws-tbl-ttl h4", "nws-tbl-ttl h6" ) );
+}
+
 /*global ol: false*/
 ( function( $, wb ) {
 "use strict";

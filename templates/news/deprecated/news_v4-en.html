@@ -14,13 +14,17 @@
 <meta name="dcterms.language" content="eng"/>
 <meta name="dcterms.subject" content=""/>
 <meta name="dcterms.issued" content=""/>
-<meta name="dcterms.modified" content="2024-09-13"/>
+<meta name="dcterms.modified" content="2025-02-21"/>
+
+<!-- GC Design System -->
+<link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.css">
+<script type="module" src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.esm.js"></script>
+<script nomodule src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@latest/dist/gcds/gcds.js"></script>
 
 
-
-<link href="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/most-requested-column/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/most-requested-column/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/gcds-card/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/gcds-card/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/gcds-card/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -36,7 +40,7 @@
 	<h2 class="wb-inv">Language selection</h2>
 	<ul class="list-inline mrgn-bttm-0">
 		<li>
-			<a lang="fr" hreflang="fr" href="news_v3-fr.html">
+			<a lang="fr" hreflang="fr" href="news-fr.html">
 				<span class="hidden-xs" translate="no">Français</span>
 				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
 			</a>
@@ -47,11 +51,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+		<img src="/wet-boew-demos/gcds-card/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
 	</a>
 	<meta property="name" content="Government of Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/gcds-card/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -115,7 +119,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/most-requested-column/index-en.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcds-card/index-en.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -529,7 +533,13 @@
 		</section>
 	</div>
 	<div class="col-md-9">
-		<p>To access all articles, please visit the <a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">advanced search</a>.</p>
+		<p class="nojs-hide"><a href="https://www.canada.ca/en/news/advanced-news-search.html">Perform an advanced search</a></p>
+		<div class="nojs-show"><p>While using basic HTML visit:</p>
+			<ul>
+				<li><a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">All news products</a></li>
+				<li><a href="https://www.canada.ca/en/news/advanced-news-search.html">News search</a></li>
+			</ul>
+		</div>
 
 		<section class="mrgn-tp-xl">
 			<h2 class="wb-inv">Search results</h2>
@@ -562,16 +572,15 @@
 				</tr>
 				</thead>
 			</table>
+			<p class="text-center nojs-hide"><a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">All news products</a></p>
 		</section>
-
-		<p>To access all articles, please visit the <a href="https://www.canada.ca/en/news/advanced-news-search/news-results.html">advanced search</a>.</p>
 	</div>
 </div>
 
 <section class="pagedetails">
 	<h2 class="wb-inv">Page details</h2><dl id="wb-dtmd">
 	<dt>Date modified:</dt>
-	<dd><time property="dateModified">2024-09-13</time></dd>
+	<dd><time property="dateModified">2025-02-21</time></dd>
 </dl>
 </section>
 
@@ -621,14 +630,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/gcds-card/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/most-requested-column/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/most-requested-column/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/gcds-card/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/gcds-card/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
