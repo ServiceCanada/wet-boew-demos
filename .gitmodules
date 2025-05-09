@@ -42,6 +42,3 @@
 	path = gcds-card
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = gcds-card
-[submodule "test-new-submodule"]
-	path = test-new-submodule
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
