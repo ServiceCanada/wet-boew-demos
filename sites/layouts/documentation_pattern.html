@@ -18,9 +18,9 @@
 
 
 
-<link href="/wet-boew-demos/theme-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/most-requested-column/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/most-requested-column/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -34,11 +34,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/theme-template/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/theme-template/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -102,7 +102,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/theme-template/index-fr.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/most-requested-column/index-fr.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -2289,44 +2289,6 @@
 					]
 				}
 			]
-		},
-		{
-			"about": "/notes",
-			"dd14": "Notes",
-			"@type": "rdf:Alt",
-			"mapping": [
-				{
-					"template": "[data-notes-none]",
-					"test": "fn:guessType",
-					"value": "/notes",
-					"expect": "undefined"
-				},
-				{
-					"template": "[data-notes-description]",
-					"test": "fn:guessType",
-					"value": "/notes",
-					"expect": "xsd:string",
-					"mapping": [
-						{ "selector": "dd", "value": "/", "isHTML": true }
-					]
-				},
-				{
-					"template": "[data-notes-list]",
-					"test": "fn:guessType",
-					"value": "/notes",
-					"expect": "rdfs:Container",
-					"mapping": [
-						{
-							"template": "template",
-							"value": "/",
-							"mapping": [
-								{ "selector": "li", "value": "/@value", "isHTML": true }
-							]
-						}
-					]
-				}
-
-			]
 		}
 	]
 }'>
@@ -2402,26 +2364,6 @@
 					<ul data-example>
 						<template>
 							<li><a href></a></li>
-						</template>
-					</ul>
-				</dd>
-			</template>
-
-			<!-- Notes -->
-			<template data-notes-none>
-				<dt>Notes:</dt>
-				<dd>Not applicable or out of scope</dd>
-			</template>
-			<template data-notes-description>
-				<dt>Notes:</dt>
-				<dd>[[ Description ]]</dd>
-			</template>
-			<template data-notes-list>
-				<dt>Notes:</dt>
-				<dd>
-					<ul>
-						<template>
-							<li>[[ Description ]]</li>
 						</template>
 					</ul>
 				</dd>
@@ -3091,14 +3033,14 @@
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/theme-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/theme-template/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/theme-template/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/most-requested-column/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/most-requested-column/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>

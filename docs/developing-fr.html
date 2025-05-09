@@ -18,9 +18,9 @@
 
 
 
-<link href="/wet-boew-demos/theme-template/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/theme-template/dist/wet-boew/css/noscript.css" /></noscript>
+<link href="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/most-requested-column/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/most-requested-column/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -47,11 +47,11 @@
 			
 			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 	<a href="https://wet-boew.github.io/GCWeb/" property="url">
-		<img src="/wet-boew-demos/theme-template/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
+		<img src="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/sig-blk-fr.svg" alt="Gouvernement du Canada" property="logo" /><span class="wb-inv"> / <span lang="en">Government of Canada</span></span>
 	</a>
 	<meta property="name" content="Gouvernement du Canada">
 	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="/wet-boew-demos/theme-template/dist/GCWeb/assets/wmms-blk.svg" />
+	<link property="logo" href="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/wmms-blk.svg" />
 </div>
 
 			
@@ -115,7 +115,7 @@
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/theme-template/index-fr.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/most-requested-column/index-fr.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -129,133 +129,178 @@
 </header>
 
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Developing for GCWeb</h1>
-<p>[Needs translation]</p>
+<div lang="en">
+[Needs translation]
 
-<p>Install NodeJS</p>
+Install NodeJS
 
-<h2 id="building-gcweb">Building GCweb</h2>
+## Building GCweb
 
-<ul>
-  <li>Build a local development version: <code class="language-plaintext highlighter-rouge">grunt</code> or <code class="language-plaintext highlighter-rouge">grunt debug</code></li>
-  <li>Run code quality check: <code class="language-plaintext highlighter-rouge">grunt test</code></li>
-  <li>Build production files: <code class="language-plaintext highlighter-rouge">grunt dist</code></li>
-  <li>Compile and assemble méli-mélo:
-    <ul>
-      <li>Run local: <code class="language-plaintext highlighter-rouge">grunt méli-mélo</code></li>
-      <li>Run from compiled dist: <code class="language-plaintext highlighter-rouge">grunt méli-mélo-runLocal</code></li>
-      <li>Run from wet-boew sites : <code class="language-plaintext highlighter-rouge">grunt méli-mélo-remote</code></li>
-    </ul>
-  </li>
-  <li>Regenerate site web content: <code class="language-plaintext highlighter-rouge">grunt site-contents</code>
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">_data/components.json</code></li>
-      <li><code class="language-plaintext highlighter-rouge">_data/sites.json</code></li>
-      <li><code class="language-plaintext highlighter-rouge">_data/templates.json</code></li>
-      <li><code class="language-plaintext highlighter-rouge">_wetboew-demos/**</code></li>
-    </ul>
-  </li>
-</ul>
+* Build a local development version: `grunt` or `grunt debug`
+* Run code quality check: `grunt test`
+* Build production files: `grunt dist`
+* Compile and assemble méli-mélo:
+  * Run local: `grunt méli-mélo`
+  * Run from compiled dist: `grunt méli-mélo-runLocal`
+  * Run from wet-boew sites : `grunt méli-mélo-remote`
+* Regenerate site web content: `grunt site-contents`
+  * `_data/components.json`
+  * `_data/sites.json`
+  * `_data/templates.json`
+  * `_wetboew-demos/**`
 
-<h2 id="run-gcweb-website-locally">Run GCWeb website locally</h2>
+## Run GCWeb website locally
 
-<p>Ensure that you have built GCWeb first</p>
+Ensure that you have built GCWeb first
 
-<p>After your are running docking container or the docker composer you will be able to access your local website at: <code class="language-plaintext highlighter-rouge">http://localhost:4000</code></p>
+After your are running docking container or the docker composer you will be able to access your local website at: `http://localhost:4000`
 
-<p>Build Dockerfile locally</p>
+Build Dockerfile locally
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> jekyll-with-env-options <span class="nb">.</span>
-</code></pre></div></div>
+```shell
+docker build -t jekyll-with-env-options .
+```
 
-<p>Run your image</p>
+Run your image
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
+```shell
+grunt debug
 
-docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>:/usr/src/app <span class="nt">-p</span> <span class="s2">"4000:4000"</span> <span class="nt">--env</span> <span class="nv">JEKYLL_OPTIONS</span><span class="o">=</span><span class="s1">'--config _config.yml,_localJekyll.yml'</span> jekyll-with-env-options
-</code></pre></div></div>
+docker run -it --rm -v "$PWD":/usr/src/app -p "4000:4000" --env JEKYLL_OPTIONS='--config _config.yml,_localJekyll.yml' jekyll-with-env-options
+```
 
-<h3 id="alternative-with-docker-compose">alternative with docker-compose</h3>
+### alternative with docker-compose
 
-<p>This version leverage the remote theme wet-boew/gcweb-jekyll. This equivalent if you run with gh-pages through your own GCWeb repository.</p>
+This version leverage the remote theme wet-boew/gcweb-jekyll. This equivalent if you run with gh-pages through your own GCWeb repository.
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
+```shell
+grunt debug
 docker-compose up
-</code></pre></div></div>
+```
 
-<p>First time run: <code class="language-plaintext highlighter-rouge">docker-compose up --build</code></p>
+First time run: `docker-compose up --build`
 
-<h2 id="run-the-continuos-integration-and-deployment-script-locally">Run the continuos integration and deployment script locally</h2>
+## Run the continuos integration and deployment script locally
 
-<p>Install ACT - <a href="https://github.com/nektos/act">https://github.com/nektos/act</a></p>
+Install ACT - [https://github.com/nektos/act](https://github.com/nektos/act)
 
-<p>GitHub fork needed:</p>
+GitHub fork needed:
 
-<ul>
-  <li><a href="https://github.com/wet-boew/gcweb">wet-boew/gcweb</a></li>
-  <li><a href="https://github.com/wet-boew/gcweb-jekyll">wet-boew/gcweb-jekyll</a></li>
-  <li><a href="https://github.com/wet-boew/gcweb-compiled-demos">wet-boew/gcweb-compiled-demos</a></li>
-  <li><a href="https://github.com/wet-boew/themes-dist">wet-boew/themes-dist</a></li>
-  <li><a href="https://github.com/wet-boew/themes-cdn">wet-boew/themes-cdn</a></li>
-</ul>
+* [wet-boew/gcweb](https://github.com/wet-boew/gcweb)
+* [wet-boew/gcweb-jekyll](https://github.com/wet-boew/gcweb-jekyll)
+* [wet-boew/gcweb-compiled-demos](https://github.com/wet-boew/gcweb-compiled-demos)
+* [wet-boew/themes-dist](https://github.com/wet-boew/themes-dist)
+* [wet-boew/themes-cdn](https://github.com/wet-boew/themes-cdn)
 
-<p>Run the continuous deployment script</p>
+Run the continuous deployment script
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>act <span class="nt">-f</span> deploy-gcweb <span class="nt">-s</span> <span class="nv">my_token</span><span class="o">=</span>&lt;XXXXXXXXXXXXXX&gt; <span class="nt">-s</span> <span class="nv">my_username</span><span class="o">=</span><span class="s2">"&lt;GITHUB USERNAME&gt;"</span> - <span class="nv">my_email</span><span class="o">=</span><span class="s2">"&lt;GITHUB HANDLE&gt;@users.noreply.github.com"</span> <span class="nt">-a</span> &lt;GITHUB HANDLE&gt;
-</code></pre></div></div>
+```shell
+act -f deploy-gcweb -s my_token=<XXXXXXXXXXXXXX> -s my_username="<GITHUB USERNAME="">" - my_email="<GITHUB HANDLE="">@users.noreply.github.com" -a <GITHUB HANDLE="">
+```
 
-<p>Where:</p>
+Where:
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB USERNAME&gt;</code>: Your name, like “John Doe”</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB HANDLE&gt;</code>: Your github id</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;XXXXXXXXXXXXXX&gt;</code>: Your personal access token with access to public repository</li>
-</ul>
+* `<GITHUB USERNAME="">`: Your name, like "John Doe"
+* `<GITHUB HANDLE="">`: Your github id
+* `<XXXXXXXXXXXXXX>`: Your personal access token with access to public repository
 
-<h3 id="run-additional-ci-test-locally">Run additional CI test locally</h3>
+### Run additional CI test locally
 
-<p>Pre-requites</p>
+Pre-requites
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
+```shell
+grunt debug
 docker-compose up
 
-</code></pre></div></div>
+```
 
-<p>HTML link checker</p>
+HTML link checker
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-i</span> gcweb_jekyll rake
-</code></pre></div></div>
+```shell
+docker exec -i gcweb_jekyll rake
+```
 
-<p>HTML lint</p>
+HTML lint
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt htmllint:all
-</code></pre></div></div>
+```shell
+grunt htmllint:all
+```
 
-<h2 id="build-demo-files">Build demo files</h2>
+## Build demo files
 
-<p>Run the following command to generate files for a demo on <a href="https://github.com/ServiceCanada/wet-boew-demos">https://github.com/ServiceCanada/wet-boew-demos</a> where <code class="language-plaintext highlighter-rouge">[branchName]</code> refers to the branch name where your demo is hosted.</p>
+Run the following command to generate files for a demo on &lt;https://github.com/ServiceCanada/wet-boew-demos&gt; where `[branchName]` refers to the branch name where your demo is hosted.
 
-<p><code class="language-plaintext highlighter-rouge">grunt demo --branch=[branchName]</code></p>
+`grunt demo --branch=[branchName]`
 
-<h2 id="refresh-your-github-pages-with-the-latest-theme-changes">Refresh your github pages with the latest theme changes</h2>
+## Refresh your github pages with the latest theme changes
 
-<p>You can make a commit to your site and it will get regenerated with the latest version of the jekyll theme. Alternatively, the following curl command will told github to regenerate your site.</p>
+You can make a commit to your site and it will get regenerated with the latest version of the jekyll theme. Alternatively, the following curl command will told github to regenerate your site.
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-u</span> &lt;GITHUB HANDLE&gt;:&lt;XXXXXXXXXXXXXX&gt; <span class="nt">-X</span> POST https://api.github.com/repos/&lt;GITHUB HANDLE&gt;/&lt;GITHUB REPOSITORY&gt;/pages/builds
-</code></pre></div></div>
+```shell
+curl -u <GITHUB HANDLE="">:<XXXXXXXXXXXXXX> -X POST https://api.github.com/repos/<GITHUB HANDLE="">/<GITHUB REPOSITORY="">/pages/builds
+```
 
-<p>Where:</p>
+Where:
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB HANDLE&gt;</code>: Your github id</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;XXXXXXXXXXXXXX&gt;</code>: Your personal access token with access to public repository</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB REPOSITORY&gt;</code>: Your web site github repository, like “jekyll-website”</li>
-</ul>
+* `<GITHUB HANDLE="">`: Your github id
+* `<XXXXXXXXXXXXXX>`: Your personal access token with access to public repository
+* `<GITHUB REPOSITORY="">`: Your web site github repository, like "jekyll-website"
 
-<p>Note: A manual update is required if you have specified a version for your jekyll remote theme in your <code class="language-plaintext highlighter-rouge">config.yml</code> file.</p>
+Note: A manual update is required if you have specified a version for your jekyll remote theme in your `config.yml` file.
 
-<h2 id="contribuer-à-gcweb">Contribuer à GCWeb</h2>
+## Develop using Github Pages
 
-<p>Lorsque vous effectuez des correctifs ou améliorations à GCWeb, tels que la correction d’un bogue ou l’ajout d’une fonctionnalité, il pourrait être intéressant pour toutes et tous de contribuer au projet afin que tous les implémentations de GCWeb puissent en bénéficier. Pour ce faire, veuillez consulter les <a href="https://github.com/wet-boew/GCWeb/blob/master/CONTRIBUTING.md#comment-contribuer">lignes directrices de contribution de GCWeb</a>.</p>
+### 1. Create Personal Access Token (PAT)
+
+Once your Github Pages are set up, you'll have to generate a personal access token in order for the Github Actions workflow to work. Here are the steps:
+
+1. Go to this URL: [https://github.com/settings/tokens](https://github.com/settings/tokens)
+2. Select "Generate new token".
+3. Select "Generate new token (classic)".
+    * **Note**: "GCWeb dev for Github Pages"
+    * **Expiration**: Set it to a year from creation.
+4. Select the `repo` checkbox.
+5. Select "Generate new token".
+6. Copy the token.
+
+### 2. Create your environment
+
+You'll now have to add the token you created to the dev environment:
+
+1. In your GCWeb fork, go to the Settings tab.
+2. In the Settings page, go to the "Enviromnents" tab.
+3. **Name**: dev
+4. Select "Configure environment".
+5. Under "Environment secrets", select "Add environment secret":
+    * **Name**: MY_TOKEN
+    * **Value**: [Paste the token you copied in step 1.7]
+
+### 3. Setup Github Pages
+
+To be able to view GCWeb through Github, you'll have to setup your repo to use Github pages. Here's how to do so:
+
+1. In your GCWeb fork, go to the Settings tab.
+2. In the Settings page, go to the Pages tab.
+    * **Source**: deploy from a branch
+    * **Branch**: gh-pages /(root) (if you don't have the `gh-pages` branch already, you'll have to create it)
+3. You are now set up to start developing.
+
+### 4. Develop using the Github Pages workflow
+
+You are now set up to start developing. Here's the process to do so:
+
+1. Make your changes in your `dev` local branch.
+2. Run `git add .`
+3. Run `git commit "[Your commit message]"`. For ulterior changes, run `git commit --amend --no-edit`.
+4. Run `git push -f origin dev`.
+5. Repeat step 2 to 4 everytime you are ready to test your changes.
+
+&lt;/div&gt;
+
+## Contribuer à GCWeb
+
+Lorsque vous effectuez des correctifs ou améliorations à GCWeb, tels que la correction d'un bogue ou l'ajout d'une fonctionnalité, il pourrait être intéressant pour toutes et tous de contribuer au projet afin que tous les implémentations de GCWeb puissent en bénéficier. Pour ce faire, veuillez consulter les [lignes directrices de contribution de GCWeb](https://github.com/wet-boew/GCWeb/blob/master/CONTRIBUTING.md#comment-contribuer).
+</GITHUB></XXXXXXXXXXXXXX></GITHUB></GITHUB></GITHUB></XXXXXXXXXXXXXX></GITHUB></XXXXXXXXXXXXXX></GITHUB></GITHUB></GITHUB></GITHUB></GITHUB></XXXXXXXXXXXXXX></div>
 
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2><dl id="wb-dtmd">
@@ -310,14 +355,14 @@ docker-compose up
 					<li><a href="https://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/theme-template/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
+				<img src="/wet-boew-demos/most-requested-column/dist/GCWeb/assets/wmms-blk.svg" alt="Symbole du gouvernement du Canada" />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/theme-template/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/theme-template/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/most-requested-column/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/most-requested-column/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
