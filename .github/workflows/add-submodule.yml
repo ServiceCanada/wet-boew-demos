@@ -1,4 +1,4 @@
-name: Add submodule
+name: Add/update Submodule in gh-pages
 
 on:
   push:
@@ -10,21 +10,43 @@ jobs:
   add-submodule:
     runs-on: ubuntu-latest
 
-    env:
-      BRANCH_NAME: ${{ github.head_ref }}
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: false
 
-      # - name: Run git commands
-      #   run: |
-      #     echo ${{ BRANCH_NAME }}
-      #     echo ${{ github.repo }}
-      #     git clone --depth 1 ${{ github.repo }} --branch gh-pages ~temp-demo
-      #     cd ~temp-demo
-      #     git submodule add -b ${{ BRANCH_NAME }} ${{ github.repo }} ${{ BRANCH_NAME }} || git submodule update --remote --merge
-      
-      - name: Run git commands
+      - name: Set up Git
         run: |
-          echo ${{ BRANCH_NAME }}
-          echo ${{ github.repo }}
+          git config --global user.name "${{ github.repository_owner}}"
+          git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+
+      - name: Fetch gh-pages branch
+        run: |
+          git fetch origin gh-pages:gh-pages
+
+      - name: Switch to gh-pages branch
+        run: git checkout gh-pages
+
+      - name: Add or update submodule
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          if [ -d "$BRANCH_NAME" ]; then
+            echo "Submodule exists. Updating..."
+            git submodule update --init --remote "$BRANCH_NAME"
+          else
+            echo "Adding submodule..."
+            git submodule add https://github.com/ServiceCanada/wet-boew-demos.git "$BRANCH_NAME"
+          fi
+
+      - name: Commit changes
+        run: |
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update or add submodule in gh-pages"
+            git push origin gh-pages
+          fi
