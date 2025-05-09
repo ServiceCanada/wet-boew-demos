@@ -36,7 +36,7 @@ jobs:
             git submodule update --init --remote "$BRANCH_NAME"
           else
             echo "Adding submodule..."
-            git submodule add https://github.com/ServiceCanada/wet-boew-demos.git "$BRANCH_NAME"
+            git submodule add -b "$BRANCH_NAME" https://github.com/ServiceCanada/wet-boew-demos.git "$BRANCH_NAME"
           fi
 
       - name: Commit changes
