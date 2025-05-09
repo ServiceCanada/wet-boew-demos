@@ -1,0 +1,30 @@
+name: Add submodule
+
+on:
+  push:
+    branches:
+      - "*"
+      - "!gh-pages"
+
+jobs:
+  add-submodule:
+    runs-on: ubuntu-latest
+
+    env:
+      BRANCH_NAME: ${{ github.head_ref }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # - name: Run git commands
+      #   run: |
+      #     echo ${{ BRANCH_NAME }}
+      #     echo ${{ github.repo }}
+      #     git clone --depth 1 ${{ github.repo }} --branch gh-pages ~temp-demo
+      #     cd ~temp-demo
+      #     git submodule add -b ${{ BRANCH_NAME }} ${{ github.repo }} ${{ BRANCH_NAME }} || git submodule update --remote --merge
+      
+      - name: Run git commands
+        run: |
+          echo ${{ BRANCH_NAME }}
+          echo ${{ github.repo }}
