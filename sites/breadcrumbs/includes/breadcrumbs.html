@@ -4,14 +4,8 @@
 	<div class="container">
 		<ol class="breadcrumb" typeof="BreadcrumbList">
 			<li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="{% if page.pageclass == 'oag-theme' %}https://www.oag-bvg.gc.ca/internet/English/admin_e_41.html{% else %}{{ i18nText-homePage }}{% endif %}">
-					<span property="name">
-						{% if page.pageclass == 'oag-theme' %}
-							Office of the Auditor General of Canada
-						{% else %}
-							{{ i18nText-home }}
-						{% endif %}
-					</span>
+				<a property="item" typeof="WebPage" href="{{ i18nText-homePage }}">
+					<span property="name">{{ i18nText-home }}</span>
 				</a>
 				<meta property="position" content="1">
 			</li>
@@ -20,7 +14,7 @@
 				{%- if site.global.breadcrumbs -%}
 					{% for breadcrumb in site.global.breadcrumbs[i18nText-lang] %}
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="{% unless breadcrumb.link contains "http" or breadcrumb.link contains "../" %}{{ setting-siteBasePath }}{% endunless %}{{ breadcrumb.link }}">
+								<a property="item" typeof="WebPage" href="{% unless breadcrumb.link contains 'http' or breadcrumb.link contains '../' %}{{ setting-siteBasePath }}{% endunless %}{{ breadcrumb.link }}">
 									<span property="name">{{ breadcrumb.title }}</span>
 								</a>
 								<meta property="position" content="{{ breadcrumbCounter }}">
@@ -32,7 +26,7 @@
 			{%- if page.breadcrumbs -%}
 				{% for breadcrumb in page.breadcrumbs %}
 						<li property="itemListElement" typeof="ListItem">
-							<a property="item" typeof="WebPage" href="{% unless breadcrumb.link contains "http" or breadcrumb.link contains "../" %}{{ setting-siteBasePath }}{% endunless %}{{ breadcrumb.link }}">
+							<a property="item" typeof="WebPage" href="{% unless breadcrumb.link contains 'http' or breadcrumb.link contains '../' %}{{ setting-siteBasePath }}{% endunless %}{{ breadcrumb.link }}">
 								<span property="name">{{ breadcrumb.title }}</span>
 							</a>
 							<meta property="position" content="{{ breadcrumbCounter }}">

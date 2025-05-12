@@ -1,6 +1,6 @@
 <section class="gc-followus">
 	<h2>{%- if page.language == "fr" -%}Dans les médias sociaux{%- else -%}On social media{%- endif -%}</h2>
-	<ul{% if include.isInline %} class="list-inline"{% endif %}>
+	<ul {% if include.isInline %} class="list-inline"{% endif %}>
 		<li>
 			<a href="#facebook" class="facebook wb-lbx">
 				{%- if page.language == "fr" -%}
@@ -22,9 +22,9 @@
 		<li>
 			<a href="#" rel="external" class="youtube">
 				{%- if page.language == "fr" -%}
-					<span class="wb-inv">Youtube&nbsp;: </span>NomYouTube
+					<span class="wb-inv">YouTube&nbsp;: </span>NomYouTube
 				{%- else -%}
-					<span class="wb-inv">Youtube: </span>YouTubeName
+					<span class="wb-inv">YouTube: </span>YouTubeName
 				{%- endif -%}
 			</a>
 		</li>

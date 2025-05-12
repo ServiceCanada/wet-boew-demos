@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-<title>Quick implementation guide - GCWeb theme - Canada.ca </title>
+
+<title>Quick implementation guide - GCWeb theme - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta name="description" content=" " />
 <meta name="author" content=" "/>
@@ -15,9 +16,11 @@
 <meta name="dcterms.issued" content=""/>
 <meta name="dcterms.modified" content="2022-09-09"/>
 
-<link href="/wet-boew-demos/gcweb-wet491/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
-<link rel="stylesheet" href="/wet-boew-demos/gcweb-wet491/dist/GCWeb/css/theme.css" />
-<noscript><link rel="stylesheet" href="/wet-boew-demos/gcweb-wet491/dist/wet-boew/css/noscript.css" /></noscript>
+
+
+<link href="/wet-boew-demos/wet-543/dist/GCWeb/assets/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="stylesheet" href="/wet-boew-demos/wet-543/dist/GCWeb/css/theme.css" />
+<noscript><link rel="stylesheet" href="/wet-boew-demos/wet-543/dist/wet-boew/css/noscript.css" /></noscript>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage"><nav>
 	<ul id="wb-tphp">
@@ -26,7 +29,6 @@
 </nav>
 
 <header>
-	
 	<div id="wb-bnr" class="container">
 		<div class="row">
 			
@@ -43,15 +45,15 @@
 </section>
 
 			
-			<!-- Content for canada.ca pages -->
-	<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
-		<a href="https://wet-boew.github.io/GCWeb/" property="url">
-			<img src="/wet-boew-demos/gcweb-wet491/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
-		</a>
-		<meta property="name" content="Government of Canada">
-		<meta property="areaServed" typeof="Country" content="Canada" />
-		<link property="logo" href="/wet-boew-demos/gcweb-wet491/dist/GCWeb/assets/wmms-blk.svg" />
-	</div>
+			<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+	<a href="https://wet-boew.github.io/GCWeb/" property="url">
+		<img src="/wet-boew-demos/wet-543/dist/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+	</a>
+	<meta property="name" content="Government of Canada">
+	<meta property="areaServed" typeof="Country" content="Canada" />
+	<link property="logo" href="/wet-boew-demos/wet-543/dist/GCWeb/assets/wmms-blk.svg" />
+</div>
+
 			
 				
 <section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
@@ -59,7 +61,7 @@
 	<form action="#" method="post" name="cse-search-box" role="search">
 		<div class="form-group wb-srch-qry">
 			<label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
-			<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca " />
+			<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" />
 			<datalist id="wb-srch-q-ac"></datalist>
 		</div>
 		<div class="form-group submit">
@@ -77,9 +79,29 @@
 	
 	<hr>
 	<div class="container">
-		<div class="row"></div>
+		<div class="row"><div class="col-md-8">
+					<nav class="gcweb-menu" typeof="SiteNavigationElement">
+	<h2 class="wb-inv">Menu</h2>
+	<button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
+	<ul role="menu" aria-orientation="vertical" data-ajax-replace="https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html"><li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/jobs.html">Jobs and the workplace</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+		<li role="presentation"><a role="menuitem" href="https://travel.gc.ca/">Travel and tourism</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/business.html">Business and industry</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/health.html">Health</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Money and finances</a></li>
+		<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li></ul>
+</nav>
+
+				</div></div>
 	</div>
-	
 	
 	<nav id="wb-bc" property="breadcrumb">
 	<h2>You are here:</h2>
@@ -87,17 +109,13 @@
 		<ol class="breadcrumb" typeof="BreadcrumbList">
 			<li property="itemListElement" typeof="ListItem">
 				<a property="item" typeof="WebPage" href="https://www.canada.ca/en.html">
-					<span property="name">
-						
-							Canada.ca
-						
-					</span>
+					<span property="name">Canada.ca</span>
 				</a>
 				<meta property="position" content="1">
 			</li>
 			
 							<li property="itemListElement" typeof="ListItem">
-								<a property="item" typeof="WebPage" href="/wet-boew-demos/gcweb-wet491/index-en.html">
+								<a property="item" typeof="WebPage" href="/wet-boew-demos/wet-543/index-en.html">
 									<span property="name">GCWeb</span>
 								</a>
 								<meta property="position" content="2">
@@ -179,7 +197,7 @@
 			<li>Javascript</li>
 		</ul>
 	</li>
-	<li>Where the search form is submited</li>
+	<li>Where the search form is submitted</li>
 </ul>
 <p>If you are designing a bilingual template skeleton, you will also need to:</p>
 <ul>
@@ -188,7 +206,7 @@
 		<ul>
 			<li>Skip links</li>
 			<li>Language selection</li>
-			<li>FIP - Text and image for the Governement of Canada Organization publisher</li>
+			<li>FIP - Text and image for the Government of Canada Organization publisher</li>
 			<li>Search form</li>
 			<li>Top menu - You might want to leverage the <a href="#menuCDN">CDN menu</a> by changing the data-ajax attribute value</li>
 			<li>Breadcrumb</li>
@@ -215,7 +233,7 @@
 <h3>Use only the Canada.ca style without WET-BOEW's Javascript</h3>
 <p>GCWeb is designed to work with WET-BOEW. It is compliant with WCAG 2.0 Level AA and fully relies on the WET-BOEW 4 framework. If you are only using the CSS and the base HTML markup, you are encouraged to:</p>
 <ul>
-	<li>Peform a full WCAG assessment for every published pages</li>
+	<li>Perform a full WCAG assessment for every published pages</li>
 	<li>Create your own JS for the top menu behaviour</li>
 	<li>Re-create and maintain every plugin, design pattern and behaviour implemented by WET-BOEW.</li>
 </ul>
@@ -260,13 +278,13 @@
 </ul>
 <details>
 	<summary>Migrating from CLF 2.0, WET 3.1/4 or other</summary>
-	<p>The WET 4 web authoring coding is still current and it is currently used by the official reference implementation of the Canada.ca theme. Therefor, moving your content page coding toward WET 4 will be compatible with the latest version of GCWeb.</p>
+	<p>The WET 4 web authoring coding is still current and it is currently used by the official reference implementation of the Canada.ca theme. Therefore, moving your content page coding toward WET 4 will be compatible with the latest version of GCWeb.</p>
 	<p>Here are some challenges that might happen during your migration towards the latest version of Canada.ca's theme.</p>
 	<ul>
 		<li>You might rewrite your Information Architecture (IA) to get aligned with the Content and IA specification.
 			<ul>
 				<li>There is now a clear separation between the institution and the content. Traditionally, a user needed to go to the institution as a starting point in order to get the content. Now, the main starting point must go through the Canada.ca IA starting with the themes followed by topics and sub-topics. If you need assistance to figure out where your content fits into the global IA, we suggest you to contact DTO.</li>
-				<li>There is no institutional menu anymore. All the content must be re-organized by topic via topic pages.</li>
+				<li>There is no institutional menu any more. All the content must be re-organized by topic via topic pages.</li>
 			</ul>
 		</li>
 		<li>You might test and adjust content that depends on the left navigation. Around version 4.0.22 of WET and GCWeb, the release includes an undocumented breaking change that impacts the left navigation. Some code adjustments are required. Note that a left navigation is rendered and displayed to the user only after and at the end of the content of the page. The recommendation is to not use the left navigation and leverage the topics navigation instead.</li>
@@ -305,7 +323,7 @@
 <ul>
 	<li>Consult the documentation published on <a href="https://wet-boew.github.io/GCWeb/index-en.html">GCWeb</a> and on the <a href="https://www.canada.ca/en/government/about/design-system.html">Canada.ca design system</a></li>
 	<li>Look at the list of <a href="https://github.com/wet-boew/GCWeb/issues">current and closed GitHub issues</a></li>
-	<li>Submit a <a href="https://github.com/wet-boew/GCWeb/issues/new">new issue</a> on Github</li>
+	<li>Submit a <a href="https://github.com/wet-boew/GCWeb/issues/new">new issue</a> on GitHub</li>
 	<li>Attend the weekly <a href="https://github.com/wet-boew/wet-boew/wiki/WET-Office-hours,-Heures-de-service-de-la-BOEW">WET Office hours</a> (every Tuesday) and ask questions.</li>
 </ul>
 
@@ -406,35 +424,16 @@
 					<li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
 					<li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
 					<li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
-					<li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
+					<li><a href="https://www.canada.ca/en/services/finance.html">Money and finances</a></li>
 					<li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
-					<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
+					<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous Peoples</a></li>
 					<li><a href="https://www.canada.ca/en/services/veterans-military.html">Veterans and military</a></li>
 					<li><a href="https://www.canada.ca/en/services/youth.html">Youth</a></li></ul>
 			</nav>
 		</div>
 	</div>
 
-<div class="gc-main-footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-9">
-				<nav>
-					<h3 class="wb-inv">Government of Canada Corporate</h3>
-					<ul class="colcount-sm-2 colcount-md-3 list-unstyled text-white"><li><a href="#">Contact us</a></li>
-						<li><a href="#">Current opportunities</a></li>
-						<li><a href="#">Transparency</a></li>
-						<li><a href="#">Feedback</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy</a></li></ul>
-				</nav>
-			</div>
-			<div class="col-sm-3 pt-4">
-				<img class="img-responsive" src="../../../templates/thematic/assets/oag/logo-full-transparent.png" alt="Symbol of the Government of Canada" />
-			</div>
-		</div>
-	</div>
-</div><div class="gc-sub-footer">
+	<div class="gc-sub-footer">
 		<div class="container d-flex align-items-center">
 			<nav>
 				<h3 class="wb-inv">Government of Canada Corporate</h3>
@@ -445,13 +444,14 @@
 					<li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li></ul>
 			</nav>
 			<div class="wtrmrk align-self-end">
-				<img src="/wet-boew-demos/gcweb-wet491/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
+				<img src="/wet-boew-demos/wet-543/dist/GCWeb/assets/wmms-blk.svg" alt="Symbol of the Government of Canada" />
 			</div>
 		</div>
-	</div></footer>
+	</div>
+</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" crossorigin="anonymous"></script>
-<script src="/wet-boew-demos/gcweb-wet491/dist/wet-boew/js/wet-boew.js"></script>
-<script src="/wet-boew-demos/gcweb-wet491/dist/GCWeb/js/theme.js"></script>
+<script src="/wet-boew-demos/wet-543/dist/wet-boew/js/wet-boew.js"></script>
+<script src="/wet-boew-demos/wet-543/dist/GCWeb/js/theme.js"></script>
 </body>
 </html>
