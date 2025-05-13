@@ -50,3 +50,7 @@
 	path = wet-543
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = wet-543
+[submodule "wet-518"]
+	path = wet-518
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = wet-518
