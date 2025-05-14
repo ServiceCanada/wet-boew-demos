@@ -6,8 +6,14 @@ on:
       - "*"
       - "!gh-pages"
 
+  workflow_run:
+    workflows: ["Build & Publish GCWeb PR"]
+    types:
+      - completed
+
 jobs:
   add-submodule:
+    if: ${{ github.event_name == 'push' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
