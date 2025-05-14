@@ -1,0 +1,84 @@
+name: Build & Publish GCWeb PR
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request number on wet-boew/GCWeb'
+        required: true
+        type: number
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    env:
+      GCWEB_REPO: https://github.com/wet-boew/GCWeb.git
+      TARGET_BRANCH: pr-${{ github.event.inputs.pr_number }}
+      BUILD_DIR: gcweb
+
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v4
+        with:
+          ref: '${{ env.TARGET_BRANCH }}'
+
+      - name: Install Ruby and Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+
+      - name: Clone GCWeb repository
+        run: |
+          git clone $GCWEB_REPO $BUILD_DIR
+          cd $BUILD_DIR
+          git fetch origin pull/${{ github.event.inputs.pr_number }}/head:$TARGET_BRANCH
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout -b merged-$TARGET_BRANCH
+          git merge $TARGET_BRANCH --no-edit
+
+      - name: Install npm dependencies
+        working-directory: ${{ env.BUILD_DIR }}
+        run: npm ci --ignore-scripts
+
+      # Related to GCWeb#1737 about wet-boew#cc340a6 commit
+      - name: Copy the missing _sprite_share.scss file
+        working-directory: ${{ env.BUILD_DIR }}
+        run: |
+          curl https://gist.githubusercontent.com/duboisp/d69787b300eb1f4d40f937508e10d013/raw/86e7a0b15ad6a695754599e9793e986b460bf514/_sprites_share.scss >> _sprites_share.scss
+          mv _sprites_share.scss node_modules/wet-boew/src/plugins/share/sprites/_sprites_share.scss
+
+      - name: Build GCWeb
+        working-directory: ${{ env.BUILD_DIR }}
+        run: grunt build-gh-pages
+
+      # Overwrite all layout and includes and remove dist from .gitignore
+      - name: Update GCWeb Jekyll theme files
+        working-directory: ${{ env.BUILD_DIR }}
+        run: |
+          cp -R ~jekyll-dist/_includes/* _includes/
+          cp -R ~jekyll-dist/_layouts/* _layouts/
+
+      - name: Install Jekyll dependencies
+        working-directory: ${{ env.BUILD_DIR }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential zlib1g-dev libffi-dev libyaml-dev
+          bundle install
+
+      - name: Build Jekyll site
+        working-directory: ${{ env.BUILD_DIR }}
+        run: bundle exec jekyll build
+
+      - name: Push generated site to target branch in this repo
+        run: |
+          find . -maxdepth 1 ! -name '.*' ! -name '.' ! -name 'gcweb' -exec rm -rf {} +
+          mv gcweb/_site/* .
+          rm -rf gcweb
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add .
+          git commit -m "Generated from wet-boew/GCWeb PR #${{ github.event.inputs.pr_number }}"
+          git push --force origin $TARGET_BRANCH
