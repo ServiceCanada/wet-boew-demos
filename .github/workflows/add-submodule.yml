@@ -27,13 +27,13 @@ jobs:
         env:
           BRANCH_NAME: ${{ inputs.pr_number }}
         run: |
-          echo ${{ BRANCH_NAME }}
-          if [ -d "${{ BRANCH_NAME }}" ]; then
+          echo ${{ env.BRANCH_NAME }}
+          if [ -d "${{ env.BRANCH_NAME }}" ]; then
             echo "Submodule exists. Updating..."
-            git submodule update --init --remote "${{ BRANCH_NAME }}"
+            git submodule update --init --remote "${{ env.BRANCH_NAME }}"
           else
             echo "Adding submodule..."
-            git submodule add -b "${{ BRANCH_NAME }}" https://github.com/ServiceCanada/wet-boew-demos.git "${{ BRANCH_NAME }}"
+            git submodule add -b "${{ env.BRANCH_NAME }}" https://github.com/ServiceCanada/wet-boew-demos.git "${{ env.BRANCH_NAME }}"
           fi
 
       - name: Commit changes
