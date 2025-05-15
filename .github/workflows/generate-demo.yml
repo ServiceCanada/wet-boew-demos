@@ -9,33 +9,33 @@ on:
   workflow_dispatch:
     inputs:
       pr_number:
-        description: 'Pull Request branch name (e.g., pr-1234)'
+        description: 'Pull Request branch name (e.g., 1234)'
         required: true
         type: string
 
 jobs:
-  push-demo-files-trigger:
+  generate-demo-on-trigger:
     if: github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/demo-from-pr.yml
     with:
       pr_number: ${{ github.event.inputs.pr_number }}
 
-  push-demo-files-push:
+  generate-demo-on-push:
     if: github.event_name == 'push'
     uses: ./.github/workflows/demo-from-pr.yml
     with:
       pr_number: ${{ github.ref_name}}
     
-  update-submodules-trigger:
+  update-submodules-on-trigger:
     if: github.event_name == 'workflow_dispatch'
-    needs: push-demo-files-trigger
+    needs: generate-demo-on-trigger
     uses: ./.github/workflows/add-submodule.yml
     with:
       pr_number: ${{ github.event.inputs.pr_number }}
 
-  update-submodules-push:
+  update-submodules-on-push:
     if: github.event_name == 'push'
-    needs: push-demo-files-push
+    needs: generate-demo-on-push
     uses: ./.github/workflows/add-submodule.yml
     with:
       pr_number: ${{ github.event.inputs.pr_number }}
