@@ -27,6 +27,7 @@ jobs:
         env:
           BRANCH_NAME: ${{ inputs.pr_number }}
         run: |
+          echo $BRANCH_NAME
           if [ -d "$BRANCH_NAME" ]; then
             echo "Submodule exists. Updating..."
             git submodule update --init --remote "$BRANCH_NAME"
