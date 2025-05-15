@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       pr_number:
-        description: 'Pull Request branch name (e.g., pr-1234)'
+        description: 'Pull request number'
         required: true
         type: string
 
