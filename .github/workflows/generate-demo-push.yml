@@ -17,7 +17,3 @@ jobs:
     uses: ./.github/workflows/add-submodule.yml
     with:
       pr_number: ${{ github.ref_name }}
-
-  build-gh-pages:
-    needs: update-submodules
-    uses: ./.github/workflows/static.yml
