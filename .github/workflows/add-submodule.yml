@@ -42,6 +42,7 @@ jobs:
 
       - name: Commit changes
         run: |
+          ls
           git add .
           git commit -m "Update or add submodule in gh-pages" --allow-empty
           git push origin gh-pages
