@@ -1,12 +1,11 @@
 name: Build & Publish GCWeb PR
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       pr_number:
-        description: 'Pull Request number on wet-boew/GCWeb'
         required: true
-        type: number
+        type: string
 
 jobs:
   build-and-publish:
