@@ -54,7 +54,3 @@
 	path = wet-518
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = wet-518
-[submodule "gh-pages"]
-	path = gh-pages
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = gh-pages
