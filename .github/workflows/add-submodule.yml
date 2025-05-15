@@ -1,11 +1,6 @@
 name: Add/update Submodule in gh-pages
 
 on:
-  push:
-    branches:
-      - "*"
-      - "!gh-pages"
-
   workflow_call:
     inputs:
       pr_number:
@@ -14,7 +9,6 @@ on:
 
 jobs:
   add-submodule-auto:
-    if: ${{ github.event_name == 'workflow_call' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -31,42 +25,7 @@ jobs:
 
       - name: Add or update submodule
         env:
-          BRANCH_NAME: ${{ inputs.pr_number }}
-        run: |
-          if [ -d "$BRANCH_NAME" ]; then
-            echo "Submodule exists. Updating..."
-            git submodule update --init --remote "$BRANCH_NAME"
-          else
-            echo "Adding submodule..."
-            git submodule add -b "$BRANCH_NAME" https://github.com/ServiceCanada/wet-boew-demos.git "$BRANCH_NAME"
-          fi
-
-      - name: Commit changes
-        run: |
-          ls
-          git add .
-          git commit -m "Update or add submodule in gh-pages" --allow-empty
-          git push origin gh-pages
-
-  add-submodule-manual:
-    if: ${{ github.event_name == 'push' }}
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout the repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: false
-
-      - name: Set up Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Add or update submodule
-        env:
-          BRANCH_NAME: ${{ github.ref_name }}
+          BRANCH_NAME: pr-${{ inputs.pr_number }}
         run: |
           if [ -d "$BRANCH_NAME" ]; then
             echo "Submodule exists. Updating..."
