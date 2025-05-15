@@ -25,7 +25,7 @@ jobs:
 
       - name: Add or update submodule
         env:
-          BRANCH_NAME: pr-${{ inputs.pr_number }}
+          BRANCH_NAME: ${{ inputs.pr_number }}
         run: |
           if [ -d "$BRANCH_NAME" ]; then
             echo "Submodule exists. Updating..."

@@ -1,0 +1,41 @@
+name: Generate demo on user input
+
+on:
+  push:
+    branches:
+      - "*"
+      - "!gh-pages"
+
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request branch name (e.g., pr-1234)'
+        required: true
+        type: string
+
+jobs:
+  # Generate correct branch name depending on workflow trigger
+  set-pr-number:
+      runs-on: ubuntu-latest
+      outputs:
+        pr_number: ${{ steps.set.outputs.pr_number }}
+      steps:
+        - name: Determine PR number
+          id: set
+          run: |
+            echo "PR number input: ${{ github.event.inputs.pr_number }}"
+            if [ -n "${{ github.event.inputs.pr_number }}" ]; then
+              echo "pr_number=${{ github.event.inputs.pr_number }}" >> "$GITHUB_OUTPUT"
+            else
+              echo "pr_number=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+            fi
+  push-demo-files:
+    uses: ./.github/workflows/demo-from-pr.yml
+    with:
+      pr_number: ${{ github.event.inputs.pr_number }}
+    
+  update-submodules:
+    needs: push-demo-files
+    uses: ./.github/workflows/add-submodule.yml
+    with:
+      pr_number: ${{ github.event.inputs.pr_number }}

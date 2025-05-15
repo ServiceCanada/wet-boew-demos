@@ -13,7 +13,7 @@ jobs:
 
     env:
       GCWEB_REPO: https://github.com/wet-boew/GCWeb.git
-      TARGET_BRANCH: pr-${{ github.event.inputs.pr_number }}
+      TARGET_BRANCH: ${{ github.event.inputs.pr_number }}
       BUILD_DIR: gcweb
 
     steps:
