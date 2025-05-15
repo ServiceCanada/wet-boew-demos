@@ -1,4 +1,4 @@
-name: Generate demo on user input
+name: Generate demo
 
 on:
   push:
