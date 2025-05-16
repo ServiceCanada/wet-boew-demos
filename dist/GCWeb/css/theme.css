@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.5.0 - 2025-05-12
+ * v16.6.0 - 2025-05-16
  *
  */
 /*
@@ -89,7 +89,7 @@ Left menu variables
   text-decoration: none;
 }
 
-.wb-mltmd.video:not(.playing):not(.waiting) .display:before, .geomap-progress:before, .wb-twitter a.twitter-timeline + .twitter-timeline-loading:before, .wb-mltmd.video.waiting .display:before, .wb-mltmd.video:not(.playing):not(.waiting) .display:after, .geomap-progress:after, .wb-twitter a.twitter-timeline + .twitter-timeline-loading:after, .wb-mltmd.video.waiting .display:after {
+.wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display:before, .geomap-progress:before, .wb-twitter a.twitter-timeline + .twitter-timeline-loading:before, .wb-mltmd.video.waiting .display:before, .wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display:after, .geomap-progress:after, .wb-twitter a.twitter-timeline + .twitter-timeline-loading:after, .wb-mltmd.video.waiting .display:after {
   bottom: 0;
   content: " ";
   height: 100px;
@@ -101,10 +101,10 @@ Left menu variables
   width: 100px;
 }
 
-.wb-mltmd.video:not(.playing):not(.waiting) .display:after, .geomap-progress:after, .wb-twitter a.twitter-timeline + .twitter-timeline-loading:after, .wb-mltmd.video.waiting .display:after {
+.wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display:after, .geomap-progress:after, .wb-twitter a.twitter-timeline + .twitter-timeline-loading:after, .wb-mltmd.video.waiting .display:after {
   z-index: 1;
 }
-.wb-mltmd.video:not(.playing):not(.waiting) .display:before, .geomap-progress:before, .wb-twitter a.twitter-timeline + .twitter-timeline-loading:before, .wb-mltmd.video.waiting .display:before {
+.wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display:before, .geomap-progress:before, .wb-twitter a.twitter-timeline + .twitter-timeline-loading:before, .wb-mltmd.video.waiting .display:before {
   background: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
 }
@@ -5451,23 +5451,23 @@ header .brand img {
   z-index: 5;
 }
 #wb-info h3 {
-  margin-bottom: 1em;
+  font-size: 1.625rem;
+  margin-bottom: 1.5rem;
   margin-top: 0;
 }
 #wb-info a {
-  font-size: 0.875em;
   text-decoration: none;
 }
 #wb-info nav {
-  padding-bottom: 1em;
-  padding-top: 1.4em;
+  padding-bottom: 0.75rem;
+  padding-top: 2.25rem;
   position: relative;
 }
 #wb-info nav ul[class*=colcount-] {
   column-gap: 0;
 }
 #wb-info nav li {
-  margin-bottom: 0.75em;
+  margin-bottom: 1.5rem;
 }
 #wb-info .gc-contextual {
   background-color: #33465c;
@@ -5493,21 +5493,17 @@ header .brand img {
   padding-top: 0.6em;
 }
 #wb-info .gc-main-footer h4, #wb-info .landscape h4 {
-  margin-top: 2em;
+  margin-bottom: 2rem;
+  margin-top: 1.75rem;
   position: relative;
 }
 #wb-info .gc-main-footer h4::before, #wb-info .landscape h4::before {
   border-bottom: 4px solid #fff;
   content: "";
   display: block;
-  left: 0;
   position: absolute;
-  top: -1.5em;
-  width: 2.25em;
-}
-[dir=rtl] #wb-info .gc-main-footer h4::before, [dir=rtl] #wb-info .landscape h4::before {
-  left: auto;
-  right: 0;
+  top: -1.5rem;
+  width: 40px;
 }
 #wb-info .gc-main-footer a, #wb-info .landscape a {
   color: #fff;
@@ -5518,7 +5514,7 @@ header .brand img {
 #wb-info .gc-sub-footer, #wb-info .brand {
   background: #f8f8f8;
   color: #333;
-  padding: 1.5em 0 2em;
+  padding: 1.75rem 0 2.25rem;
   /* START: To support footer <= v2.0 */
   /* END */
 }
@@ -5544,19 +5540,11 @@ header .brand img {
 #wb-info .gc-sub-footer nav ul li, #wb-info .brand nav ul li {
   display: inline-block;
   margin-bottom: 0;
-  margin-right: 0.5em;
-}
-[dir=rtl] #wb-info .gc-sub-footer nav ul li, [dir=rtl] #wb-info .brand nav ul li {
-  margin-left: 0.5em;
-  margin-right: 0;
+  margin-inline-end: 0.5rem;
 }
 #wb-info .gc-sub-footer nav ul li:not(:first-child)::before, #wb-info .brand nav ul li:not(:first-child)::before {
   content: "•";
-  margin-right: 0.7em;
-}
-[dir=rtl] #wb-info .gc-sub-footer nav ul li:not(:first-child)::before, [dir=rtl] #wb-info .brand nav ul li:not(:first-child)::before {
-  margin-left: 0.7em;
-  margin-right: 0;
+  margin-inline-end: 0.7rem;
 }
 #wb-info .gc-sub-footer nav h4, #wb-info .brand nav h4 {
   margin: 0;
@@ -11220,14 +11208,14 @@ body.wb-modal .modal-dialog summary {
     Light Skinning of mediacontrols
    */
 }
-.wb-mltmd.video:not(.playing):not(.waiting) .display {
+.wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display {
   cursor: pointer;
   position: relative;
 }
-.wb-mltmd.video:not(.playing):not(.waiting) .display:before {
+.wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display:before {
   text-align: center;
 }
-.wb-mltmd.video:not(.playing):not(.waiting) .display:after {
+.wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display:after {
   color: #fff;
   content: "\e072";
   font-family: "Glyphicons Halflings";
@@ -11258,9 +11246,6 @@ body.wb-modal .modal-dialog summary {
   display: block;
   margin-left: -2px;
   width: 1.2em;
-}
-.wb-mltmd.youtube.video:not(.playing):not(.waiting) .display:before {
-  background: #3e3e3e;
 }
 .wb-mltmd.skn-lt {
   border-bottom: 1px solid #ddd;
@@ -19399,6 +19384,9 @@ Miscellaneous Utility CSS
      *
      * (Grid of the submenu panel)
      */
+  }
+  .gcweb-menu [role=menu] [role=menu] {
+    width: 610px;
   }
   .gcweb-menu [role=menu] [role=menu] li {
     width: 100%;

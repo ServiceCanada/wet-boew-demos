@@ -130,177 +130,176 @@
 
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Developing for GCWeb</h1>
 <div lang="en">
-[Needs translation]
 
-Install NodeJS
+  <p>[Needs translation]</p>
 
-## Building GCweb
+  <p>Install NodeJS</p>
 
-* Build a local development version: `grunt` or `grunt debug`
-* Run code quality check: `grunt test`
-* Build production files: `grunt dist`
-* Compile and assemble méli-mélo:
-  * Run local: `grunt méli-mélo`
-  * Run from compiled dist: `grunt méli-mélo-runLocal`
-  * Run from wet-boew sites : `grunt méli-mélo-remote`
-* Regenerate site web content: `grunt site-contents`
-  * `_data/components.json`
-  * `_data/sites.json`
-  * `_data/templates.json`
-  * `_wetboew-demos/**`
+  <h2 id="building-gcweb">Building GCweb</h2>
 
-## Run GCWeb website locally
+  <ul>
+    <li>Build a local development version: <code class="language-plaintext highlighter-rouge">grunt</code> or <code class="language-plaintext highlighter-rouge">grunt debug</code></li>
+    <li>Run code quality check: <code class="language-plaintext highlighter-rouge">grunt test</code></li>
+    <li>Build production files: <code class="language-plaintext highlighter-rouge">grunt dist</code></li>
+    <li>Compile and assemble méli-mélo:
+      <ul>
+        <li>Run local: <code class="language-plaintext highlighter-rouge">grunt méli-mélo</code></li>
+        <li>Run from compiled dist: <code class="language-plaintext highlighter-rouge">grunt méli-mélo-runLocal</code></li>
+        <li>Run from wet-boew sites : <code class="language-plaintext highlighter-rouge">grunt méli-mélo-remote</code></li>
+      </ul>
+    </li>
+    <li>Regenerate site web content: <code class="language-plaintext highlighter-rouge">grunt site-contents</code>
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">_data/components.json</code></li>
+        <li><code class="language-plaintext highlighter-rouge">_data/sites.json</code></li>
+        <li><code class="language-plaintext highlighter-rouge">_data/templates.json</code></li>
+        <li><code class="language-plaintext highlighter-rouge">_wetboew-demos/**</code></li>
+      </ul>
+    </li>
+  </ul>
 
-Ensure that you have built GCWeb first
+  <h2 id="run-gcweb-website-locally">Run GCWeb website locally</h2>
 
-After your are running docking container or the docker composer you will be able to access your local website at: `http://localhost:4000`
+  <p>Ensure that you have built GCWeb first</p>
 
-Build Dockerfile locally
+  <p>After your are running docking container or the docker composer you will be able to access your local website at: <code class="language-plaintext highlighter-rouge">http://localhost:4000</code></p>
 
-```shell
-docker build -t jekyll-with-env-options .
-```
+  <p>Build Dockerfile locally</p>
 
-Run your image
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nt">-t</span> jekyll-with-env-options <span class="nb">.</span>
+</code></pre></div>  </div>
 
-```shell
-grunt debug
+  <p>Run your image</p>
 
-docker run -it --rm -v "$PWD":/usr/src/app -p "4000:4000" --env JEKYLL_OPTIONS='--config _config.yml,_localJekyll.yml' jekyll-with-env-options
-```
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
 
-### alternative with docker-compose
+docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">"</span>:/usr/src/app <span class="nt">-p</span> <span class="s2">"4000:4000"</span> <span class="nt">--env</span> <span class="nv">JEKYLL_OPTIONS</span><span class="o">=</span><span class="s1">'--config _config.yml,_localJekyll.yml'</span> jekyll-with-env-options
+</code></pre></div>  </div>
 
-This version leverage the remote theme wet-boew/gcweb-jekyll. This equivalent if you run with gh-pages through your own GCWeb repository.
+  <h3 id="alternative-with-docker-compose">alternative with docker-compose</h3>
 
-```shell
-grunt debug
+  <p>This version leverage the remote theme wet-boew/gcweb-jekyll. This equivalent if you run with gh-pages through your own GCWeb repository.</p>
+
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
 docker-compose up
-```
+</code></pre></div>  </div>
 
-First time run: `docker-compose up --build`
+  <p>First time run: <code class="language-plaintext highlighter-rouge">docker-compose up --build</code></p>
 
-## Run the continuos integration and deployment script locally
+  <h2 id="run-the-continuos-integration-and-deployment-script-locally">Run the continuos integration and deployment script locally</h2>
 
-Install ACT - [https://github.com/nektos/act](https://github.com/nektos/act)
+  <p>Install ACT - <a href="https://github.com/nektos/act">https://github.com/nektos/act</a></p>
 
-GitHub fork needed:
+  <p>GitHub fork needed:</p>
 
-* [wet-boew/gcweb](https://github.com/wet-boew/gcweb)
-* [wet-boew/gcweb-jekyll](https://github.com/wet-boew/gcweb-jekyll)
-* [wet-boew/gcweb-compiled-demos](https://github.com/wet-boew/gcweb-compiled-demos)
-* [wet-boew/themes-dist](https://github.com/wet-boew/themes-dist)
-* [wet-boew/themes-cdn](https://github.com/wet-boew/themes-cdn)
+  <ul>
+    <li><a href="https://github.com/wet-boew/gcweb">wet-boew/gcweb</a></li>
+    <li><a href="https://github.com/wet-boew/gcweb-jekyll">wet-boew/gcweb-jekyll</a></li>
+    <li><a href="https://github.com/wet-boew/gcweb-compiled-demos">wet-boew/gcweb-compiled-demos</a></li>
+    <li><a href="https://github.com/wet-boew/themes-dist">wet-boew/themes-dist</a></li>
+    <li><a href="https://github.com/wet-boew/themes-cdn">wet-boew/themes-cdn</a></li>
+  </ul>
 
-Run the continuous deployment script
+  <p>Run the continuous deployment script</p>
 
-```shell
-act -f deploy-gcweb -s my_token=<XXXXXXXXXXXXXX> -s my_username="<GITHUB USERNAME="">" - my_email="<GITHUB HANDLE="">@users.noreply.github.com" -a <GITHUB HANDLE="">
-```
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>act <span class="nt">-f</span> deploy-gcweb <span class="nt">-s</span> <span class="nv">my_token</span><span class="o">=</span>&lt;XXXXXXXXXXXXXX&gt; <span class="nt">-s</span> <span class="nv">my_username</span><span class="o">=</span><span class="s2">"&lt;GITHUB USERNAME&gt;"</span> - <span class="nv">my_email</span><span class="o">=</span><span class="s2">"&lt;GITHUB HANDLE&gt;@users.noreply.github.com"</span> <span class="nt">-a</span> &lt;GITHUB HANDLE&gt;
+</code></pre></div>  </div>
 
-Where:
+  <p>Where:</p>
 
-* `<GITHUB USERNAME="">`: Your name, like "John Doe"
-* `<GITHUB HANDLE="">`: Your github id
-* `<XXXXXXXXXXXXXX>`: Your personal access token with access to public repository
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB USERNAME&gt;</code>: Your name, like “John Doe”</li>
+    <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB HANDLE&gt;</code>: Your github id</li>
+    <li><code class="language-plaintext highlighter-rouge">&lt;XXXXXXXXXXXXXX&gt;</code>: Your personal access token with access to public repository</li>
+  </ul>
 
-### Run additional CI test locally
+  <h3 id="run-additional-ci-test-locally">Run additional CI test locally</h3>
 
-Pre-requites
+  <p>Pre-requites</p>
 
-```shell
-grunt debug
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt debug
 docker-compose up
 
-```
+</code></pre></div>  </div>
 
-HTML link checker
+  <p>HTML link checker</p>
 
-```shell
-docker exec -i gcweb_jekyll rake
-```
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-i</span> gcweb_jekyll rake
+</code></pre></div>  </div>
 
-HTML lint
+  <p>HTML lint</p>
 
-```shell
-grunt htmllint:all
-```
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grunt htmllint:all
+</code></pre></div>  </div>
 
-## Build demo files
+  <h2 id="build-demo-files">Build demo files</h2>
 
-Run the following command to generate files for a demo on &lt;https://github.com/ServiceCanada/wet-boew-demos&gt; where `[branchName]` refers to the branch name where your demo is hosted.
+  <p>Run the following command to generate files for a demo on <a href="https://github.com/ServiceCanada/wet-boew-demos">https://github.com/ServiceCanada/wet-boew-demos</a> where <code class="language-plaintext highlighter-rouge">[branchName]</code> refers to the branch name where your demo is hosted.</p>
 
-`grunt demo --branch=[branchName]`
+  <p><code class="language-plaintext highlighter-rouge">grunt demo --branch=[branchName]</code></p>
 
-## Refresh your github pages with the latest theme changes
+  <h2 id="refresh-your-github-pages-with-the-latest-theme-changes">Refresh your github pages with the latest theme changes</h2>
 
-You can make a commit to your site and it will get regenerated with the latest version of the jekyll theme. Alternatively, the following curl command will told github to regenerate your site.
+  <p>You can make a commit to your site and it will get regenerated with the latest version of the jekyll theme. Alternatively, the following curl command will told github to regenerate your site.</p>
 
-```shell
-curl -u <GITHUB HANDLE="">:<XXXXXXXXXXXXXX> -X POST https://api.github.com/repos/<GITHUB HANDLE="">/<GITHUB REPOSITORY="">/pages/builds
-```
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-u</span> &lt;GITHUB HANDLE&gt;:&lt;XXXXXXXXXXXXXX&gt; <span class="nt">-X</span> POST https://api.github.com/repos/&lt;GITHUB HANDLE&gt;/&lt;GITHUB REPOSITORY&gt;/pages/builds
+</code></pre></div>  </div>
 
-Where:
+  <p>Where:</p>
 
-* `<GITHUB HANDLE="">`: Your github id
-* `<XXXXXXXXXXXXXX>`: Your personal access token with access to public repository
-* `<GITHUB REPOSITORY="">`: Your web site github repository, like "jekyll-website"
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB HANDLE&gt;</code>: Your github id</li>
+    <li><code class="language-plaintext highlighter-rouge">&lt;XXXXXXXXXXXXXX&gt;</code>: Your personal access token with access to public repository</li>
+    <li><code class="language-plaintext highlighter-rouge">&lt;GITHUB REPOSITORY&gt;</code>: Your web site github repository, like “jekyll-website”</li>
+  </ul>
 
-Note: A manual update is required if you have specified a version for your jekyll remote theme in your `config.yml` file.
+  <p>Note: A manual update is required if you have specified a version for your jekyll remote theme in your <code class="language-plaintext highlighter-rouge">config.yml</code> file.</p>
 
-## Develop using Github Pages
+  <h2 id="develop-using-github-pages">Develop using Github Pages</h2>
 
-### 1. Create Personal Access Token (PAT)
+  <h3 id="setup-github-pages">1. Setup Github Pages</h3>
 
-Once your Github Pages are set up, you'll have to generate a personal access token in order for the Github Actions workflow to work. Here are the steps:
+  <p>To be able to view GCWeb through Github, you’ll have to setup your repo to use Github pages. Here’s how to do so:</p>
 
-1. Go to this URL: [https://github.com/settings/tokens](https://github.com/settings/tokens)
-2. Select "Generate new token".
-3. Select "Generate new token (classic)".
-    * **Note**: "GCWeb dev for Github Pages"
-    * **Expiration**: Set it to a year from creation.
-4. Select the `repo` checkbox.
-5. Select "Generate new token".
-6. Copy the token.
+  <ol>
+    <li>In your GCWeb fork, go to the Settings tab.</li>
+    <li>In the Settings page, go to the Pages tab.
+      <ul>
+        <li><strong>Source</strong>: deploy from a branch</li>
+        <li>
+          <table>
+            <tbody>
+              <tr>
+                <td><strong>Branch</strong>: gh-pages</td>
+                <td>/(root) (if you don’t have the <code class="language-plaintext highlighter-rouge">gh-pages</code> branch already, you’ll have to create it)</td>
+              </tr>
+            </tbody>
+          </table>
+        </li>
+      </ul>
+    </li>
+    <li>Still in the Settings pages, go to the Environments tab.</li>
+    <li>Select “github-pages” environment.</li>
+    <li>Under “Deployment branches and tags”, if it is not already there, add the branch <code class="language-plaintext highlighter-rouge">dev</code>.</li>
+  </ol>
 
-### 2. Create your environment
+  <h3 id="develop-using-the-github-pages-workflow">2. Develop using the Github Pages workflow</h3>
 
-You'll now have to add the token you created to the dev environment:
+  <p>You are now set up to start developing. Here’s the process to do so:</p>
 
-1. In your GCWeb fork, go to the Settings tab.
-2. In the Settings page, go to the "Enviromnents" tab.
-3. **Name**: dev
-4. Select "Configure environment".
-5. Under "Environment secrets", select "Add environment secret":
-    * **Name**: MY_TOKEN
-    * **Value**: [Paste the token you copied in step 1.7]
+  <ol>
+    <li>Make your changes in your <code class="language-plaintext highlighter-rouge">dev</code> local branch.</li>
+    <li>Run <code class="language-plaintext highlighter-rouge">git add .</code></li>
+    <li>Run <code class="language-plaintext highlighter-rouge">git commit "[Your commit message]"</code>. For ulterior changes, run <code class="language-plaintext highlighter-rouge">git commit --amend --no-edit</code>.</li>
+    <li>Run <code class="language-plaintext highlighter-rouge">git push -f origin dev</code>.</li>
+    <li>Repeat step 2 to 4 everytime you are ready to test your changes.</li>
+  </ol>
 
-### 3. Setup Github Pages
+</div>
 
-To be able to view GCWeb through Github, you'll have to setup your repo to use Github pages. Here's how to do so:
+<h2 id="contribuer-à-gcweb">Contribuer à GCWeb</h2>
 
-1. In your GCWeb fork, go to the Settings tab.
-2. In the Settings page, go to the Pages tab.
-    * **Source**: deploy from a branch
-    * **Branch**: gh-pages /(root) (if you don't have the `gh-pages` branch already, you'll have to create it)
-3. You are now set up to start developing.
-
-### 4. Develop using the Github Pages workflow
-
-You are now set up to start developing. Here's the process to do so:
-
-1. Make your changes in your `dev` local branch.
-2. Run `git add .`
-3. Run `git commit "[Your commit message]"`. For ulterior changes, run `git commit --amend --no-edit`.
-4. Run `git push -f origin dev`.
-5. Repeat step 2 to 4 everytime you are ready to test your changes.
-
-&lt;/div&gt;
-
-## Contribuer à GCWeb
-
-Lorsque vous effectuez des correctifs ou améliorations à GCWeb, tels que la correction d'un bogue ou l'ajout d'une fonctionnalité, il pourrait être intéressant pour toutes et tous de contribuer au projet afin que tous les implémentations de GCWeb puissent en bénéficier. Pour ce faire, veuillez consulter les [lignes directrices de contribution de GCWeb](https://github.com/wet-boew/GCWeb/blob/master/CONTRIBUTING.md#comment-contribuer).
-</GITHUB></XXXXXXXXXXXXXX></GITHUB></GITHUB></GITHUB></XXXXXXXXXXXXXX></GITHUB></XXXXXXXXXXXXXX></GITHUB></GITHUB></GITHUB></GITHUB></GITHUB></XXXXXXXXXXXXXX></div>
+<p>Lorsque vous effectuez des correctifs ou améliorations à GCWeb, tels que la correction d’un bogue ou l’ajout d’une fonctionnalité, il pourrait être intéressant pour toutes et tous de contribuer au projet afin que tous les implémentations de GCWeb puissent en bénéficier. Pour ce faire, veuillez consulter les <a href="https://github.com/wet-boew/GCWeb/blob/master/CONTRIBUTING.md#comment-contribuer">lignes directrices de contribution de GCWeb</a>.</p>
 
 <section class="pagedetails">
 	<h2 class="wb-inv">Détails de la page</h2><dl id="wb-dtmd">

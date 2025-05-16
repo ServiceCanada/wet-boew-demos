@@ -253,42 +253,7 @@ docker-compose up
 
 <h2 id="develop-using-github-pages">Develop using Github Pages</h2>
 
-<h3 id="1-create-personal-access-token-pat">1. Create Personal Access Token (PAT)</h3>
-
-<p>Once your Github Pages are set up, you’ll have to generate a personal access token in order for the Github Actions workflow to work. Here are the steps:</p>
-
-<ol>
-  <li>Go to this URL: <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></li>
-  <li>Select “Generate new token”.</li>
-  <li>Select “Generate new token (classic)”.
-    <ul>
-      <li><strong>Note</strong>: “GCWeb dev for Github Pages”</li>
-      <li><strong>Expiration</strong>: Set it to a year from creation.</li>
-    </ul>
-  </li>
-  <li>Select the <code class="language-plaintext highlighter-rouge">repo</code> checkbox.</li>
-  <li>Select “Generate new token”.</li>
-  <li>Copy the token.</li>
-</ol>
-
-<h3 id="2-create-your-environment">2. Create your environment</h3>
-
-<p>You’ll now have to add the token you created to the dev environment:</p>
-
-<ol>
-  <li>In your GCWeb fork, go to the Settings tab.</li>
-  <li>In the Settings page, go to the “Enviromnents” tab.</li>
-  <li><strong>Name</strong>: dev</li>
-  <li>Select “Configure environment”.</li>
-  <li>Under “Environment secrets”, select “Add environment secret”:
-    <ul>
-      <li><strong>Name</strong>: MY_TOKEN</li>
-      <li><strong>Value</strong>: [Paste the token you copied in step 1.7]</li>
-    </ul>
-  </li>
-</ol>
-
-<h3 id="3-setup-github-pages">3. Setup Github Pages</h3>
+<h3 id="1-setup-github-pages">1. Setup Github Pages</h3>
 
 <p>To be able to view GCWeb through Github, you’ll have to setup your repo to use Github pages. Here’s how to do so:</p>
 
@@ -297,13 +262,24 @@ docker-compose up
   <li>In the Settings page, go to the Pages tab.
     <ul>
       <li><strong>Source</strong>: deploy from a branch</li>
-      <li><strong>Branch</strong>: gh-pages /(root) (if you don’t have the <code class="language-plaintext highlighter-rouge">gh-pages</code> branch already, you’ll have to create it)</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>Branch</strong>: gh-pages</td>
+              <td>/(root) (if you don’t have the <code class="language-plaintext highlighter-rouge">gh-pages</code> branch already, you’ll have to create it)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
     </ul>
   </li>
-  <li>You are now set up to start developing.</li>
+  <li>Still in the Settings pages, go to the Environments tab.</li>
+  <li>Select “github-pages” environment.</li>
+  <li>Under “Deployment branches and tags”, if it is not already there, add the branch <code class="language-plaintext highlighter-rouge">dev</code>.</li>
 </ol>
 
-<h3 id="4-develop-using-the-github-pages-workflow">4. Develop using the Github Pages workflow</h3>
+<h3 id="2-develop-using-the-github-pages-workflow">2. Develop using the Github Pages workflow</h3>
 
 <p>You are now set up to start developing. Here’s the process to do so:</p>
 
