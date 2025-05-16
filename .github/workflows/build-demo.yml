@@ -13,7 +13,8 @@ jobs:
 
     env:
       GCWEB_REPO: https://github.com/wet-boew/GCWeb.git
-      TARGET_BRANCH: ${{ github.event.inputs.pr_number }}
+      PR_NUMBER: ${{ github.event.inputs.pr_number }}
+      TARGET_BRANCH: gcweb-pr${{ github.event.inputs.pr_number }}
       BUILD_DIR: gcweb
 
     steps:
@@ -30,7 +31,7 @@ jobs:
         run: |
           git clone $GCWEB_REPO $BUILD_DIR
           cd $BUILD_DIR
-          git fetch origin pull/${{ github.event.inputs.pr_number }}/head:$TARGET_BRANCH
+          git fetch origin pull/$PR_NUMBER/head:$TARGET_BRANCH
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
           git checkout -b merged-$TARGET_BRANCH
@@ -49,7 +50,7 @@ jobs:
 
       - name: Build GCWeb
         working-directory: ${{ env.BUILD_DIR }}
-        run: grunt demo --branch=${{ env.TARGET_BRANCH }}
+        run: grunt demo --branch=$TARGET_BRANCH
 
       # Overwrite all layout and includes and remove dist from .gitignore
       - name: Update GCWeb Jekyll theme files
@@ -77,5 +78,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
           git add .
-          git commit -m "Generated from wet-boew/GCWeb PR #${{ github.event.inputs.pr_number }}"
+          git commit -m "Generated from wet-boew/GCWeb PR #$PR_NUMBER"
           git push --force origin gh-pages:$TARGET_BRANCH

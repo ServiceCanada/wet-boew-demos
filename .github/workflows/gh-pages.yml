@@ -4,7 +4,7 @@ name: Deploy static content to Pages
 on:
   # Runs on pushes targeting the default branch
   workflow_run:
-    workflows: ["Add/update Submodule in gh-pages", "Generate demo on user input", "Generate demo"]
+    workflows: ["Add/update Submodule in gh-pages", "Generate demo"]
     types:
       - completed
 
