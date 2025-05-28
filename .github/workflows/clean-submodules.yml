@@ -29,6 +29,14 @@ jobs:
           current_date=$(date -u +%s)
           threshold=$((90*24*60*60))  # 90 days in seconds
 
+          echo "🔍 Looking for submodules in .gitmodules"
+          cat .gitmodules || echo "⚠️ .gitmodules file not found"
+
+          echo "🔍 git config --file .gitmodules --get-regexp path:"
+          git config --file .gitmodules --get-regexp path || echo "⚠️ No submodule paths found"
+
+          echo "🔁 Starting loop..."
+
           while read -r path; do
             if [ -d "$path/.git" ]; then
               pushd "$path" > /dev/null
