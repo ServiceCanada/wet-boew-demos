@@ -27,7 +27,7 @@ jobs:
       - name: Find and delete stale submodules
         run: |
           current_date=$(date -u +%s)
-          threshold=$((90*24*60*60))  # 90 days in seconds
+          threshold=$((30*24*60*60))  # 90 days in seconds
 
           while read -r path; do
             if [ -d "$path/.git" ]; then
