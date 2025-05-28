@@ -1,0 +1,53 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  schedule:
+    # Runs at 00:00 on the 1st day of January, April, July, and October
+    - cron: '0 0 1 1,4,7,10 *'
+
+  workflow_dispatch:
+
+jobs:
+  clean-submodules:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: false
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Find and delete stale submodules
+        run: |
+          current_date=$(date -u +%s)
+          threshold=$((90*24*60*60))  # 90 days in seconds
+
+          while read -r path; do
+            if [ -d "$path/.git" ]; then
+              pushd "$path" > /dev/null
+              last_commit_date=$(git log -1 --format="%ct" || echo 0)
+              popd > /dev/null
+
+              age=$((current_date - last_commit_date))
+              if [ "$age" -gt "$threshold" ]; then
+                echo "Deleting stale submodule: $path"
+                git rm -f "$path"
+                sed -i "/$path/d" .gitmodules
+              else
+                echo "Keeping active submodule: $path"
+              fi
+            fi
+          done < <(git config --file .gitmodules --get-regexp path | awk '{ print $2 }')
+
+      - name: Commit and push changes
+        run: |
+          git add .
+          git commit -am "Remove stale submodules (inactive > 3 months)" || echo "No changes to commit"
+          git push origin gh-pages
