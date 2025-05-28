@@ -77,7 +77,6 @@ jobs:
               if [ "$age" -gt "$threshold" ]; then
                 echo "🗑️  Deleting stale submodule: $path"
                 git rm -f "$path"
-                sed -i '' "/$path/d" .gitmodules  # macOS-compatible sed
               else
                 echo "✅ Submodule is fresh. Keeping: $path"
               fi
