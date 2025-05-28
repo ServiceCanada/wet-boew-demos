@@ -41,9 +41,6 @@ jobs:
             exit 0
           fi
 
-          echo "📄 .gitmodules content:"
-          cat .gitmodules
-
           echo ""
           echo "🔍 Extracting submodule paths..."
           submodule_paths=$(awk '/path = / { print $3 }' .gitmodules)
@@ -53,8 +50,7 @@ jobs:
             exit 0
           fi
 
-          echo "✅ Found submodule paths:"
-          echo "$submodule_paths"
+          echo "✅ Found submodule paths"
 
           while read -r path; do
             echo ""
