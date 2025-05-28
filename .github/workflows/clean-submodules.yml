@@ -29,13 +29,37 @@ jobs:
 
       - name: Find and delete stale submodules
         run: |
-          #!/bin/bash
           set -euo pipefail
 
+          echo "🧹 Starting stale submodule cleanup..."
+
           current_date=$(date -u +%s)
-          threshold=$((90*24*60*60))  # 2 days in seconds
+          threshold=$((2*24*60*60))  # 2 days in seconds
+
+          if [ ! -f .gitmodules ]; then
+            echo "❌ .gitmodules file not found. Exiting."
+            exit 0
+          fi
+
+          echo "📄 .gitmodules content:"
+          cat .gitmodules
+
+          echo ""
+          echo "🔍 Extracting submodule paths..."
+          submodule_paths=$(awk '/path = / { print $3 }' .gitmodules)
+
+          if [ -z "$submodule_paths" ]; then
+            echo "⚠️ No submodule paths found in .gitmodules"
+            exit 0
+          fi
+
+          echo "✅ Found submodule paths:"
+          echo "$submodule_paths"
 
           while read -r path; do
+            echo ""
+            echo "🔎 Checking submodule: $path"
+
             if [ -d "$path/.git" ] || [ -f "$path/.git" ]; then
               pushd "$path" > /dev/null
 
