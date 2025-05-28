@@ -34,7 +34,7 @@ jobs:
           echo "🧹 Starting stale submodule cleanup..."
 
           current_date=$(date -u +%s)
-          threshold=$((2*24*60*60))  # 2 days in seconds
+          threshold=$((90*24*60*60))
 
           if [ ! -f .gitmodules ]; then
             echo "❌ .gitmodules file not found. Exiting."
