@@ -1,19 +1,7 @@
-[submodule "news-subscription"]
-	path = news-subscription
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = news-subscription
-[submodule "all-services"]
-	path = all-services
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = all-services
 [submodule "text-size"]
 	path = text-size
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = text-size
-[submodule "th-choose-canada"]
-	path = th-choose-canada
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = th-choose-canada
 [submodule "pft-pii"]
 	path = pft-pii
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
@@ -30,10 +18,6 @@
 	path = theme-template
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = theme-template
-[submodule "gcweb-wet491"]
-	path = gcweb-wet491
-	url = https://github.com/ServiceCanada/wet-boew-demos.git
-	branch = gcweb-wet491
 [submodule "most-requested-column"]
 	path = most-requested-column
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
