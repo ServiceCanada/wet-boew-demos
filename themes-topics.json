@@ -1,0 +1,270 @@
+{
+    "jcr:primaryType": "cq:Tag",
+    "jcr:mixinTypes": [
+        "cq:ReplicationStatus"
+    ],
+    "jcr:createdBy": "admin",
+    "jcr:title": "Themes and Topics",
+    "cq:lastReplicationAction": "Activate",
+    "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+    "jcr:title.en": "Themes and Topics",
+    "jcr:title.fr": "Thèmes et sujets",
+    "jcr:created": "Tue Jun 28 2016 11:46:07 GMT-0400",
+    "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+    "sling:resourceType": "cq/tagging/components/tag",
+    "benefits": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Benefits",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Benefits",
+        "jcr:title.fr": "Prestations",
+        "jcr:created": "Tue Jun 28 2016 11:46:07 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "business-and-industry": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Business and industry",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Business and industry",
+        "jcr:title.fr": "Entreprises et industrie",
+        "jcr:created": "Tue Jun 28 2016 11:46:07 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "canada-and-the-world": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Canada and the world",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Canada and the world",
+        "jcr:title.fr": "Canada et le monde",
+        "jcr:created": "Tue Jun 28 2016 11:46:07 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "culture-history-and-sport": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Culture, history and sport",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Culture, history and sport",
+        "jcr:title.fr": "Culture, histoire et sport",
+        "jcr:created": "Tue Jun 28 2016 11:46:08 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "environment-and-natural-resources": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Environment and natural resources",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Environment and natural resources",
+        "jcr:title.fr": "Environnement et ressources naturelles",
+        "jcr:created": "Tue Jun 28 2016 11:46:09 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "health": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Health",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Health",
+        "jcr:title.fr": "Santé",
+        "jcr:created": "Tue Jun 28 2016 11:46:09 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "how-government-works": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "How government works",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "How government works",
+        "jcr:title.fr": "Comment le gouvernement fonctionne",
+        "jcr:created": "Tue Jun 28 2016 11:46:10 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "immigration-and-citizenship": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Immigration and citizenship",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Immigration and citizenship",
+        "jcr:title.fr": "Immigration et citoyenneté",
+        "jcr:created": "Tue Jun 28 2016 11:46:10 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "jobs-and-the-workplace": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Jobs and the workplace",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Jobs and the workplace",
+        "jcr:title.fr": "Emplois et milieu de travail",
+        "jcr:created": "Tue Jun 28 2016 11:46:12 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "money-and-finances": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Money and finances",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Money and finances",
+        "jcr:title.fr": "Argent et finances",
+        "jcr:created": "Tue Jun 28 2016 11:46:12 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "national-security-and-defence": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "National security and defence",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "National security and defence",
+        "jcr:title.fr": "Sécurité nationale et défense",
+        "jcr:created": "Tue Jun 28 2016 11:46:12 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "policing-justice-and-emergencies": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Policing, justice and emergencies",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Policing, justice and emergencies",
+        "jcr:title.fr": "Services de police, justice et urgences",
+        "jcr:created": "Tue Jun 28 2016 11:46:13 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "public-service-and-military": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Public Service and Military",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Public Service and Military",
+        "jcr:title.fr": "Fonction publique et force militaire",
+        "jcr:created": "Tue Jun 28 2016 11:46:13 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "taxes": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Taxes",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Taxes",
+        "jcr:title.fr": "Impôts",
+        "jcr:created": "Tue Jun 28 2016 11:46:14 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "transport-and-infrastructure": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Transport and infrastructure",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Transport and infrastructure",
+        "jcr:title.fr": "Transport et infrastructure",
+        "jcr:created": "Tue Jun 28 2016 11:46:14 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "travel-and-tourism": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Travel and tourism",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Travel and tourism",
+        "jcr:title.fr": "Voyage et Tourisme",
+        "jcr:created": "Tue Jun 28 2016 11:46:15 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    },
+    "science-and-innovation": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:mixinTypes": [
+            "cq:ReplicationStatus"
+        ],
+        "jcr:createdBy": "admin",
+        "jcr:title": "Science and innovation",
+        "cq:lastReplicationAction": "Activate",
+        "cq:lastReplicatedBy": "acs-commons-package-replication-status-event-service",
+        "jcr:title.en": "Science and innovation",
+        "jcr:title.fr": "Science et innovation",
+        "jcr:created": "Tue Jun 28 2016 11:46:15 GMT-0400",
+        "cq:lastReplicated": "Wed Feb 12 2020 10:45:20 GMT-0500",
+        "sling:resourceType": "cq/tagging/components/tag"
+    }
+}
