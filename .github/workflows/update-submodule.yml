@@ -15,6 +15,8 @@ jobs:
       - name: Checkout the repo with submodules
         uses: actions/checkout@v4
         with:
+          ref: gh-pages   # explicitly checkout gh-pages
+          fetch-depth: 0  # fetch full history so git can push back
           submodules: false
 
       - name: Set up Git
