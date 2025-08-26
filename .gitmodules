@@ -122,3 +122,7 @@
 	path = news
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = news
+[submodule "gcweb-pr2614"]
+	path = gcweb-pr2614
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gcweb-pr2614
