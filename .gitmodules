@@ -78,3 +78,7 @@
 	path = csv-tables
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = csv-tables
+[submodule "gcweb-pr2718"]
+	path = gcweb-pr2718
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gcweb-pr2718
