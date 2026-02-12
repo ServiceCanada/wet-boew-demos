@@ -4,7 +4,7 @@ name: Remove stale demos
 on:
   schedule:
     # Runs at 00:00 on the 1st day of January, April, July, and October
-    - cron: '0 0 1 1,4,7,10 *'
+    - cron: '0 0 1 * *'
 
   workflow_dispatch:
 
