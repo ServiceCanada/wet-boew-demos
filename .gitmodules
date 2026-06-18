@@ -58,3 +58,7 @@
 	path = gcweb-pr2804
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = gcweb-pr2804
+[submodule "gcweb-pr2805"]
+	path = gcweb-pr2805
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gcweb-pr2805
