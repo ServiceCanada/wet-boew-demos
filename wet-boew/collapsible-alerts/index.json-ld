@@ -1,0 +1,46 @@
+{
+	"@context": {
+		"@version": 1.1,
+		"dct": "http://purl.org/dc/terms/",
+		"title": { "@id": "dct:title", "@container": "@language" },
+		"description": { "@id": "dct:description", "@container": "@language" },
+		"modified": "dct:modified"
+	},
+		"title": {
+		"en": "Collapsible Alerts",
+		"fr": "Alertes repliables"
+	},
+	"description": {
+		"en": "Deprecated - Alerts which can be collapsed by the user. Use the alert with expand/collapse instead.",
+		"fr": "Déconseillé - Alertes qui peuvent être réduites par l'utilisateur. Utilisez plutôt l'alerte avec développement et réduction."
+	},
+	"modified": "2026-09-18",
+	"componentName": "collapsible-alerts",
+	"status": "deprecated",
+	"pages": {
+		"examples": [
+			{
+				"title": "Collapsible alerts",
+				"language": "en",
+				"wetboew": "collapsible-alerts/collapsible-alerts-en.html"
+			},
+			{
+				"title": "Alertes repliables",
+				"language": "fr",
+				"wetboew": "collapsible-alerts/collapsible-alerts-fr.html"
+			}
+		],
+		"docs": [
+			{
+				"title": "Collapsible alerts",
+				"language": "en",
+				"url": "https://wet-boew.github.io/wet-boew/docs/ref/collapsible-alerts/collapsible-alerts-en.html"
+			},
+			{
+				"title": "Alertes repliables",
+				"language": "fr",
+				"url": "https://wet-boew.github.io/wet-boew/docs/ref/collapsible-alerts/collapsible-alerts-fr.html"
+			}
+		]
+	}
+}
