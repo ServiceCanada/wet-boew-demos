@@ -1,8 +1,13 @@
-name: Build & Publish GCWeb PR
+
+name: Build & Publish Demo
 
 on:
   workflow_call:
     inputs:
+      repository:
+        description: 'Repository containing the pull request'
+        required: true
+        type: string
       pr_number:
         required: true
         type: string
@@ -12,22 +17,30 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GCWEB_REPO: https://github.com/wet-boew/GCWeb.git
-      PR_NUMBER: ${{ github.event.inputs.pr_number }}
-      TARGET_BRANCH: gcweb-pr${{ github.event.inputs.pr_number }}
-      BUILD_DIR: gcweb
+      PR_NUMBER: ${{ inputs.pr_number }}
+      REPOSITORY: ${{ inputs.repository }}
+      TARGET_BRANCH: ${{ inputs.repository == 'GCWeb' && format('gcweb-pr{0}', inputs.pr_number) || format('gcds-ext-mws-pr{0}', inputs.pr_number) }}
+      BUILD_DIR: ${{ inputs.repository == 'GCWeb' && 'gcweb' || 'gcds-ext-mws' }}
 
     steps:
       - name: Checkout this repo
         uses: actions/checkout@v4
 
+      # --------------------------------------------------
+      # GCWeb build
+      # --------------------------------------------------
+
       - name: Install Ruby and Jekyll
+        if: inputs.repository == 'GCWeb'
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
           bundler-cache: true
 
       - name: Clone GCWeb repository
+        if: inputs.repository == 'GCWeb'
+        env:
+          GCWEB_REPO: https://github.com/wet-boew/GCWeb.git
         run: |
           git clone $GCWEB_REPO $BUILD_DIR
           cd $BUILD_DIR
@@ -37,46 +50,103 @@ jobs:
           git checkout -b merged-$TARGET_BRANCH
           git merge $TARGET_BRANCH --no-edit
 
-      - name: Install npm dependencies
+      - name: Install GCWeb npm dependencies
+        if: inputs.repository == 'GCWeb'
         working-directory: ${{ env.BUILD_DIR }}
         run: npm ci --ignore-scripts
 
       # Related to GCWeb#1737 about wet-boew#cc340a6 commit
       - name: Copy the missing _sprite_share.scss file
+        if: inputs.repository == 'GCWeb'
         working-directory: ${{ env.BUILD_DIR }}
         run: |
           curl https://gist.githubusercontent.com/duboisp/d69787b300eb1f4d40f937508e10d013/raw/86e7a0b15ad6a695754599e9793e986b460bf514/_sprites_share.scss >> _sprites_share.scss
           mv _sprites_share.scss node_modules/wet-boew/src/plugins/share/sprites/_sprites_share.scss
 
       - name: Build GCWeb
+        if: inputs.repository == 'GCWeb'
         working-directory: ${{ env.BUILD_DIR }}
         run: grunt demo --branch=$TARGET_BRANCH
 
-      # Overwrite all layout and includes and remove dist from .gitignore
       - name: Update GCWeb Jekyll theme files
+        if: inputs.repository == 'GCWeb'
         working-directory: ${{ env.BUILD_DIR }}
         run: |
           cp -R ~jekyll-dist/_includes/* _includes/
           cp -R ~jekyll-dist/_layouts/* _layouts/
 
-      - name: Install Jekyll dependencies
+      - name: Install GCWeb Jekyll dependencies
+        if: inputs.repository == 'GCWeb'
         working-directory: ${{ env.BUILD_DIR }}
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential zlib1g-dev libffi-dev libyaml-dev
           bundle install
 
-      - name: Build Jekyll site
+      - name: Build GCWeb Jekyll site
+        if: inputs.repository == 'GCWeb'
         working-directory: ${{ env.BUILD_DIR }}
         run: bundle exec jekyll build
 
+      # --------------------------------------------------
+      # gcds-ext-mws build
+      # --------------------------------------------------
+
+      - name: Checkout gcds-ext-mws PR
+        if: inputs.repository == 'gcds-ext-mws'
+        uses: actions/checkout@v4
+        with:
+          repository: ServiceCanada/gcds-ext-canada
+          ref: refs/pull/${{ inputs.pr_number }}/head
+          path: ${{ env.BUILD_DIR }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        if: inputs.repository == 'gcds-ext-mws'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: gcds-ext-mws/package-lock.json
+
+      - name: Install gcds-ext-mws dependencies
+        if: inputs.repository == 'gcds-ext-mws'
+        working-directory: ${{ env.BUILD_DIR }}
+        run: npm ci
+
+      - name: Build Stencil
+        if: inputs.repository == 'gcds-ext-mws'
+        working-directory: ${{ env.BUILD_DIR }}
+        run: npm run build
+
+      - name: Build Eleventy
+        if: inputs.repository == 'gcds-ext-mws'
+        working-directory: ${{ env.BUILD_DIR }}
+        run: npm run docs:build
+
+      # --------------------------------------------------
+      # Publish demo
+      # --------------------------------------------------
+
       - name: Push generated site to target branch in this repo
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          find . -maxdepth 1 ! -name '.*' ! -name '.' ! -name 'gcweb' -exec rm -rf {} +
-          mv gcweb/_site/* .
-          rm -rf gcweb
+          if [ "$REPOSITORY" = "GCWeb" ]; then
+            SITE_DIR="$BUILD_DIR/_site"
+          else
+            SITE_DIR="$BUILD_DIR/_site"
+          fi
+
+          find . -maxdepth 1 ! -name '.*' ! -name '.' ! -name "$BUILD_DIR" -exec rm -rf {} +
+
+          cp -R "$SITE_DIR"/. .
+
+          rm -rf "$BUILD_DIR"
+
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
+
           git add .
-          git commit -m "Generated from wet-boew/GCWeb PR #$PR_NUMBER"
-          git push --force origin gh-pages:$TARGET_BRANCH
+          git commit -m "Generated from wet-boew/$REPOSITORY PR #$PR_NUMBER"
+          git push --force origin HEAD:"$TARGET_BRANCH"
