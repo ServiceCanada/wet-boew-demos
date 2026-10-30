@@ -8,8 +8,15 @@ on:
 
   workflow_dispatch:
     inputs:
+      repository:
+        description: 'Repository'
+        required: true
+        type: choice
+        options:
+          - GCWeb
+          - gcds-ext-mws
       pr_number:
-        description: 'Pull Request branch name (e.g., 1234)'
+        description: 'Pull Request number (e.g., 1234)'
         required: true
         type: string
 
@@ -19,13 +26,14 @@ jobs:
     uses: ./.github/workflows/build-demo.yml
     with:
       pr_number: ${{ github.event.inputs.pr_number }}
-    
+      repository: ${{ github.event.inputs.repository }}
+
   update-submodules-on-trigger:
     if: github.event_name == 'workflow_dispatch'
     needs: build-demo
     uses: ./.github/workflows/update-submodule.yml
     with:
-      pr_number: gcweb-pr${{ github.event.inputs.pr_number }}
+      pr_number: ${{ github.event.inputs.repository == 'GCWeb' && format('gcweb-pr{0}', github.event.inputs.pr_number) || format('gcds-ext-mws-pr{0}', github.event.inputs.pr_number) }}
 
   update-submodules-on-push:
     if: github.event_name == 'push'
