@@ -1,0 +1,72 @@
+<h1>app-alert</h1>
+<!-- Auto Generated Below -->
+<h2>Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td><code>description</code></td>
+<td>Optional description. If omitted, the component will render the default slot instead.</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>heading</code></td>
+<td><code>heading</code></td>
+<td>Service title.  Used as a fallback when the heading slot is not provided.</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>href</code> <em>(required)</em></td>
+<td><code>href</code></td>
+<td>Link href</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>The main content of the container.</td>
+</tr>
+<tr>
+<td><code>&quot;heading&quot;</code></td>
+<td>Custom heading content.</td>
+</tr>
+</tbody>
+</table>
+<h2>Dependencies</h2>
+<h3>Depends on</h3>
+<ul>
+<li>gcds-heading</li>
+<li>gcds-link</li>
+<li>gcds-text</li>
+</ul>
+<h3>Graph</h3>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TD<span class="token punctuation">;</span>
+  gcds-ext-mws-services-item <span class="token arrow operator">--></span> gcds-heading
+  gcds-ext-mws-services-item <span class="token arrow operator">--></span> gcds-link
+  gcds-ext-mws-services-item <span class="token arrow operator">--></span> gcds-text
+  gcds-link <span class="token arrow operator">--></span> gcds-icon
+  <span class="token keyword">style</span> gcds-ext-mws-services-item <span class="token style"><span class="token property">fill</span><span class="token operator">:</span>#f9f<span class="token punctuation">,</span><span class="token property">stroke</span><span class="token operator">:</span>#333<span class="token punctuation">,</span><span class="token property">stroke-width</span><span class="token operator">:</span>4px</span></code></pre>
+<hr>
+<p><em>Built with <a href="https://stenciljs.com/">StencilJS</a></em></p>

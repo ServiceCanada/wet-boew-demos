@@ -1,0 +1,79 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composants - Canada.ca</title>
+
+    <link href="/gcds-ext-canada/assets/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- GCDS components and Shortcuts styles -->
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css" />
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@1.2.0/dist/gcds-css-shortcuts.min.css" />
+
+    <!-- Syntax highlighting styles -->
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/gcds-ext-canada/assets/style.css">
+
+    <!-- GCDS components -->
+    <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.esm.js"></script>
+
+    <!-- Script to build Stencil components with Eleventy -->
+    <script type="module" src="/gcds-ext-canada/public/stencil.js"></script>
+
+    <!-- Compiled component bundle (from `stencil build`, www output target) -->
+    <script type="module" src="/gcds-ext-canada/build/gcds-ext-mws.esm.js"></script>
+    <script nomodule src="/gcds-ext-canada/build/gcds-ext-mws.js"></script>
+
+    <meta name="dcterms.creator" content="ESDC">
+</head>
+<body>
+  <gcds-header lang-href="/gcds-ext-canada/en/components/index.html" skip-to-href="#main-content">
+    <gcds-search slot="search"></gcds-search>
+    <gcds-breadcrumbs slot="breadcrumb">
+        
+        <gcds-breadcrumbs-item href="/gcds-ext-canada/fr">Services Web Partagés</gcds-breadcrumbs-item>
+        
+        
+        
+    </gcds-breadcrumbs>
+    <gcds-top-nav label="Top navigation" alignment="end" slot="menu">
+      <gcds-nav-link href="/gcds-ext-canada/fr" slot="home" role="listitem">SWP Canada.ca</gcds-nav-link>
+      <gcds-nav-link href="/gcds-ext-canada/fr/composants" role="listitem">Composants</gcds-nav-link>
+    </gcds-top-nav>
+</gcds-header>
+
+  <gcds-container id="main-content" tag="main" layout="page">
+    
+<h1>Composants</h1>
+<p>Les composants du système de design GC sont des blocs de construction d'interface utilisateur qui répondent à différents objectifs utilisateur. Chacun est livré avec du code réutilisable, des conseils sur les meilleures pratiques et des conseils d'accessibilité.</p>
+
+<h2>Naviguer les composants</h2>
+<p>Nous proposons de nouveaux composants au fur et à mesure que nous les construisons.</p>
+
+
+
+<div class="my-600">
+    <gcds-grid tag="ul" columns="1fr" columns-tablet="1fr 1fr" columns-desktop="1fr 1fr 1fr">
+        
+            <gcds-card card-title="Services et renseignements" href="/gcds-ext-canada/fr/composants/services-et-renseignements" card-title-tag="h3" badge="" role="listitem" img-src="/gcds-ext-canada/assets/images/components/preview-services-and-information.svg">
+                <gcds-text>Présente des ensembles de liens accompagnés de descriptions (également appelés menus d’accueil thématique).</gcds-text>
+            </gcds-card>
+        
+    </gcds-grid>
+</div>
+
+
+    
+    <gcds-date-modified>2026-07-27</gcds-date-modified>
+    
+  </gcds-container>
+
+  <gcds-footer display="full"></gcds-footer>
+</body>
+</html>

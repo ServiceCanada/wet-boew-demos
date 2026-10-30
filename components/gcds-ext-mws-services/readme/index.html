@@ -1,0 +1,72 @@
+<h1>app-alert</h1>
+<!-- Auto Generated Below -->
+<h2>Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>columns</code></td>
+<td><code>columns</code></td>
+<td>Number of columns to distribute items across. Allowed values: 1, 2, 3.</td>
+<td><code>1 | 2 | 3</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>heading</code> <em>(required)</em></td>
+<td><code>heading</code></td>
+<td>Mandatory - Heading text</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>hideHeading</code></td>
+<td><code>hide-heading</code></td>
+<td>Hide the Heading visually.</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>The main content of the container.</td>
+</tr>
+<tr>
+<td><code>&quot;heading&quot;</code></td>
+<td>Custom heading content.</td>
+</tr>
+</tbody>
+</table>
+<h2>Dependencies</h2>
+<h3>Depends on</h3>
+<ul>
+<li>gcds-sr-only</li>
+<li>gcds-heading</li>
+<li>gcds-grid</li>
+</ul>
+<h3>Graph</h3>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TD<span class="token punctuation">;</span>
+  gcds-ext-mws-services <span class="token arrow operator">--></span> gcds-sr-only
+  gcds-ext-mws-services <span class="token arrow operator">--></span> gcds-heading
+  gcds-ext-mws-services <span class="token arrow operator">--></span> gcds-grid
+  gcds-grid <span class="token arrow operator">--></span> gcds-container
+  <span class="token keyword">style</span> gcds-ext-mws-services <span class="token style"><span class="token property">fill</span><span class="token operator">:</span>#f9f<span class="token punctuation">,</span><span class="token property">stroke</span><span class="token operator">:</span>#333<span class="token punctuation">,</span><span class="token property">stroke-width</span><span class="token operator">:</span>4px</span></code></pre>
+<hr>
+<p><em>Built with <a href="https://stenciljs.com/">StencilJS</a></em></p>

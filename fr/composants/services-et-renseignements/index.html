@@ -1,0 +1,266 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services et renseignements - Canada.ca</title>
+
+    <link href="/gcds-ext-canada/assets/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- GCDS components and Shortcuts styles -->
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css" />
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@1.2.0/dist/gcds-css-shortcuts.min.css" />
+
+    <!-- Syntax highlighting styles -->
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/gcds-ext-canada/assets/style.css">
+
+    <!-- GCDS components -->
+    <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.esm.js"></script>
+
+    <!-- Script to build Stencil components with Eleventy -->
+    <script type="module" src="/gcds-ext-canada/public/stencil.js"></script>
+
+    <!-- Compiled component bundle (from `stencil build`, www output target) -->
+    <script type="module" src="/gcds-ext-canada/build/gcds-ext-mws.esm.js"></script>
+    <script nomodule src="/gcds-ext-canada/build/gcds-ext-mws.js"></script>
+
+    <meta name="dcterms.creator" content="ESDC">
+</head>
+<body>
+  <gcds-header lang-href="/gcds-ext-canada/en/components/services-and-information/index.html" skip-to-href="#main-content">
+    <gcds-search slot="search"></gcds-search>
+    <gcds-breadcrumbs slot="breadcrumb">
+        
+        <gcds-breadcrumbs-item href="/gcds-ext-canada/fr">Services Web Partagés</gcds-breadcrumbs-item>
+        
+        
+          <gcds-breadcrumbs-item href="/gcds-ext-canada/fr/composants">Composants</gcds-breadcrumbs-item>
+        
+        
+    </gcds-breadcrumbs>
+    <gcds-top-nav label="Top navigation" alignment="end" slot="menu">
+      <gcds-nav-link href="/gcds-ext-canada/fr" slot="home" role="listitem">SWP Canada.ca</gcds-nav-link>
+      <gcds-nav-link href="/gcds-ext-canada/fr/composants" role="listitem">Composants</gcds-nav-link>
+    </gcds-top-nav>
+</gcds-header>
+
+  <gcds-container id="main-content" tag="main" layout="full">
+    
+
+
+
+
+
+<gcds-container layout="page">
+    <h1>Services et renseignements</h1>
+    <p>Le composant <code>&lt;gcds-ext-mws-services&gt;</code> affiche des ensembles de liens accompagnés de descriptions (également appelés menus d’accueil thématique). Elle sert de feuille de route lorsqu’une page de renvoi comporte une série de pages auxquelles renvoyer. Chaque lien, accompagné de sa description, fournit un résumé concis de ce qu’une personne trouvera sur les pages de destination.</p>
+    
+    <h2>Par défaut</h2>
+    <gcds-ext-mws-services heading="Services et renseignements">
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+    </gcds-ext-mws-services>
+    
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Services et renseignements<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services-item</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[Texte hyperlien]<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services-item</span><span class="token punctuation">></span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services</span><span class="token punctuation">></span></span></code></pre>
+    
+    <h2>Titre invisible</h2>
+    <gcds-ext-mws-services heading="Services et renseignements" hide-heading>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+    </gcds-ext-mws-services>
+    
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Services et renseignements<span class="token punctuation">"</span></span> <span class="token attr-name">hide-heading</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services-item</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[Texte hyperlien]<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services-item</span><span class="token punctuation">></span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services</span><span class="token punctuation">></span></span></code></pre>
+    
+    <h2>Titre avec emplacement</h2>
+    <gcds-ext-mws-services>
+        <span slot="heading">Services et renseignements</span>
+        <gcds-ext-mws-services-item href="#">
+            <span slot="heading">[Texte hyperlien] <span lang="en">in English</span></span>
+            Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie
+        </gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+    </gcds-ext-mws-services>
+    
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heading<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Services et renseignements<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services-item</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[Texte hyperlien]<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>heading<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Texte hyperlien] <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>in English<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+            Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services-item</span><span class="token punctuation">></span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services</span><span class="token punctuation">></span></span></code></pre>
+    
+    <h2>Sur deux colonnes</h2>
+    <gcds-ext-mws-services heading="Services et renseignements" columns="2">
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+    </gcds-ext-mws-services>
+    
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Services et renseignements<span class="token punctuation">"</span></span> <span class="token attr-name">columns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services-item</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[Texte hyperlien]<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services-item</span><span class="token punctuation">></span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services</span><span class="token punctuation">></span></span></code></pre>
+    
+    <h2>Sur une seule colonne</h2>
+    <gcds-ext-mws-services heading="Services et renseignements" columns="1">
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+    </gcds-ext-mws-services>
+    
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Services et renseignements<span class="token punctuation">"</span></span> <span class="token attr-name">columns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services-item</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[Texte hyperlien]<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services-item</span><span class="token punctuation">></span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services</span><span class="token punctuation">></span></span></code></pre>
+
+    <h2>Bande grise</h2>
+</gcds-container>
+<div class="bg-light">
+    <gcds-container layout="page">
+        <gcds-ext-mws-services heading="Services et renseignements">
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+        <gcds-ext-mws-services-item heading="[Texte hyperlien]" href="#">Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie</gcds-ext-mws-services-item>
+    </gcds-ext-mws-services>
+    </gcds-container>
+</div>
+<gcds-container layout="page">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bg-light<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-container</span> <span class="token attr-name">layout</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Services et renseignements<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-services-item</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>[Texte hyperlien]<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Utilisez des verbes d'action ou énumérez simplement des mots-clés pour résumer les informations ou les tâches qui peuvent être accomplies sur la page vers laquelle il renvoie<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services-item</span><span class="token punctuation">></span></span>
+                ...
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-services</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-container</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+</gcds-container>
+
+
+
+<gcds-container layout="page">
+
+
+<h2>Propriétés</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attributs</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Valeur par défaut</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr lang="en">
+      <th>columns </th>
+      <td>Number of columns to distribute items across.
+Allowed values: 1, 2, 3.</td>
+      <td><code>1 | 2 | 3</code></td>
+      <td><code>3</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>heading <span class="text-secondary font-regular">(obligatoire)</span></th>
+      <td>Mandatory - Heading text</td>
+      <td><code>string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>hide-heading </th>
+      <td>Hide the Heading visually.</td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+
+
+<h2>Événements</h2>
+
+<p>Aucun événement disponible pour ce composant.</p>
+
+
+<h2>Emplacements</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Emplacement</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr lang="en">
+      <th>(default)</th>
+      <td>The main content of the container.</td>
+    </tr>
+    
+    <tr lang="en">
+      <th>heading</th>
+      <td>Custom heading content.</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+</gcds-container>
+
+
+
+    
+    <gcds-container layout="page">
+    
+    <gcds-date-modified>2026-07-29</gcds-date-modified>
+    
+    </gcds-container>
+    
+  </gcds-container>
+
+  <gcds-footer display="full"></gcds-footer>
+</body>
+</html>

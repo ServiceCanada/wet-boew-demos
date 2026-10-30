@@ -1,0 +1,1 @@
+const t=function(){const t=[];for(let n=0;n<=1250;n+=25)t.push(n.toString());return t}();export{t as S}
