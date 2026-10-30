@@ -98,3 +98,7 @@
 	path = gcweb-pr2874
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = gcweb-pr2874
+[submodule "gcds-ext-mws-pr4"]
+	path = gcds-ext-mws-pr4
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gcds-ext-mws-pr4
