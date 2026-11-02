@@ -90,3 +90,7 @@
 	path = gcds-ext-mws-pr4
 	url = https://github.com/ServiceCanada/wet-boew-demos.git
 	branch = gcds-ext-mws-pr4
+[submodule "gcds-ext-mws-pr5"]
+	path = gcds-ext-mws-pr5
+	url = https://github.com/ServiceCanada/wet-boew-demos.git
+	branch = gcds-ext-mws-pr5
