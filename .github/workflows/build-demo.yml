@@ -123,7 +123,7 @@ jobs:
         if: inputs.repository == 'gcds-ext-mws'
         working-directory: ${{ env.BUILD_DIR }}
         env:
-          PATH_PREFIX: /gcds-ext-mws-pr${{ inputs.pr_number }}
+          PATH_PREFIX: /wet-boew-demos/gcds-ext-mws-pr${{ inputs.pr_number }}
         run: npm run docs:build
 
       # --------------------------------------------------
