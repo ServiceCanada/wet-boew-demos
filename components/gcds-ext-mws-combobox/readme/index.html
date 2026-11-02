@@ -1,0 +1,309 @@
+<h1>app-alert</h1>
+<!-- Auto Generated Below -->
+<h2>Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autofocus</code></td>
+<td><code>autofocus</code></td>
+<td>Specifies if an input element should be focused on component render.</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>disabled</code></td>
+<td><code>disabled</code></td>
+<td>Specifies if an input element is disabled or not.</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>enableSelectAll</code></td>
+<td><code>enable-select-all</code></td>
+<td>If true, a &quot;Select All&quot; option will be displayed at the top of the list of options.</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>error-message</code></td>
+<td>Error message for an invalid input element.</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>form</code></td>
+<td>The ID of the form that the input field belongs to.</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>hideLabel</code></td>
+<td><code>hide-label</code></td>
+<td>If true, the label will be visually hidden but still accessible to screen readers.</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>hint</code></td>
+<td><code>hint</code></td>
+<td>Hint displayed below the label and above the input field.</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>inputId</code> <em>(required)</em></td>
+<td><code>input-id</code></td>
+<td>Id attribute for the combobox input element.</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>label</code> <em>(required)</em></td>
+<td><code>label</code></td>
+<td>Form field label</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>name</code> <em>(required)</em></td>
+<td><code>name</code></td>
+<td>Name attribute for the combobox input element.</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td><code>options</code></td>
+<td>JSON option array, or URL returning objects with <code>name</code> and <code>tag</code> fields.</td>
+<td><code>SuggestionOption[] | string</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td><code>required</code></td>
+<td>Specifies if a form field is required or not.</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>selectedOptions</code></td>
+<td>--</td>
+<td>Selected options, available for programmatic updates.</td>
+<td><code>SuggestionOption[]</code></td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>validateOn</code></td>
+<td><code>validate-on</code></td>
+<td>Set event to call validator</td>
+<td><code>&quot;blur&quot; | &quot;other&quot; | &quot;submit&quot;</code></td>
+<td><code>'blur'</code></td>
+</tr>
+<tr>
+<td><code>validator</code></td>
+<td>--</td>
+<td>Array of validators</td>
+<td><code>(string | ValidatorEntry | Validator&lt;string&gt;)[]</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>validity</code></td>
+<td>--</td>
+<td>Read-only property of the combobox, returns a ValidityState object that represents the validity states this element is in.</td>
+<td><code>ValidityState</code></td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>value</code></td>
+<td>Initial selected values.</td>
+<td><code>string | string[]</code></td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Events</h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gcdsBlur</code></td>
+<td>Emitted when the input loses focus.</td>
+<td><code>CustomEvent&lt;void&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsChange</code></td>
+<td>Emitted when the input has changed.</td>
+<td><code>CustomEvent&lt;SuggestionOption[]&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsError</code></td>
+<td>Emitted when the element is invalid.</td>
+<td><code>CustomEvent&lt;object&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsFocus</code></td>
+<td>Emitted when the input has focus.</td>
+<td><code>CustomEvent&lt;void&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsInput</code></td>
+<td>Emitted when the element has received input.</td>
+<td><code>CustomEvent&lt;string&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsValid</code></td>
+<td>Emitted when the input has a validation error.</td>
+<td><code>CustomEvent&lt;object&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Methods</h2>
+<h3><code>checkValidity() =&gt; Promise&lt;boolean&gt;</code></h3>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;boolean&gt;</code></p>
+<h3><code>getSelectedOptions() =&gt; Promise&lt;SuggestionOption[]&gt;</code></h3>
+<p>Return a copy of the selected option objects.</p>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;SuggestionOption[]&gt;</code></p>
+<h3><code>getSelectedValues() =&gt; Promise&lt;string[]&gt;</code></h3>
+<p>Return the selected option values for form and application code.</p>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;string[]&gt;</code></p>
+<h3><code>getValidationMessage() =&gt; Promise&lt;string&gt;</code></h3>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;string&gt;</code></p>
+<h3><code>selectAll() =&gt; Promise&lt;void&gt;</code></h3>
+<p>Select every option and collapse the list.</p>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;void&gt;</code></p>
+<h3><code>setFocus() =&gt; Promise&lt;void&gt;</code></h3>
+<p>Focus the search field and open its list of options.</p>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;void&gt;</code></p>
+<h3><code>setOptions(options: Array&lt;Record&lt;string, unknown&gt;&gt;) =&gt; Promise&lt;void&gt;</code></h3>
+<p>Replace the option list using objects whose keys are labels and values
+are option values, then retain selections that still exist.</p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>options</code></td>
+<td><code>Record&lt;string, unknown&gt;[]</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;void&gt;</code></p>
+<h3><code>setSelectedOptions(items: SuggestionOption[]) =&gt; Promise&lt;void&gt;</code></h3>
+<p>Set selected options, ignoring values that are not in the option list.</p>
+<h4>Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>items</code></td>
+<td><code>SuggestionOption[]</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;void&gt;</code></p>
+<h3><code>unselectAll() =&gt; Promise&lt;void&gt;</code></h3>
+<p>Clear all selected options.</p>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;void&gt;</code></p>
+<h3><code>validate() =&gt; Promise&lt;void&gt;</code></h3>
+<p>Run configured validators against the selected values.</p>
+<h4>Returns</h4>
+<p>Type: <code>Promise&lt;void&gt;</code></p>
+<h2>Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;options&quot;</code></td>
+<td>The options slot is for providing the list of available options.</td>
+</tr>
+</tbody>
+</table>
+<h2>Shadow Parts</h2>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&quot;control&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&quot;listbox&quot;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&quot;tag&quot;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>Dependencies</h2>
+<h3>Depends on</h3>
+<ul>
+<li>gcds-icon</li>
+<li>gcds-label</li>
+<li>gcds-hint</li>
+<li>gcds-error-message</li>
+</ul>
+<h3>Graph</h3>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TD<span class="token punctuation">;</span>
+  gcds-ext-mws-combobox <span class="token arrow operator">--></span> gcds-icon
+  gcds-ext-mws-combobox <span class="token arrow operator">--></span> gcds-label
+  gcds-ext-mws-combobox <span class="token arrow operator">--></span> gcds-hint
+  gcds-ext-mws-combobox <span class="token arrow operator">--></span> gcds-error-message
+  gcds-hint <span class="token arrow operator">--></span> gcds-text
+  gcds-error-message <span class="token arrow operator">--></span> gcds-text
+  gcds-error-message <span class="token arrow operator">--></span> gcds-icon
+  <span class="token keyword">style</span> gcds-ext-mws-combobox <span class="token style"><span class="token property">fill</span><span class="token operator">:</span>#f9f<span class="token punctuation">,</span><span class="token property">stroke</span><span class="token operator">:</span>#333<span class="token punctuation">,</span><span class="token property">stroke-width</span><span class="token operator">:</span>4px</span></code></pre>
+<hr>
+<p><em>Built with <a href="https://stenciljs.com/">StencilJS</a></em></p>
