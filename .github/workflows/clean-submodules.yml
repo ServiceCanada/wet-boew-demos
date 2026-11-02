@@ -34,7 +34,7 @@ jobs:
           echo "🧹 Starting stale submodule cleanup..."
 
           current_date=$(date -u +%s)
-          threshold=$((90*24*60*60))
+          threshold=$((30*24*60*60))
 
           if [ ! -f .gitmodules ]; then
             echo "❌ .gitmodules file not found. Exiting."
@@ -84,5 +84,5 @@ jobs:
       - name: Commit and push changes
         run: |
           git add .
-          git commit -am "Remove stale submodules (inactive > 3 months)" || echo "No changes to commit"
+          git commit -am "Remove stale submodules (inactive > 1 month)" || echo "No changes to commit"
           git push origin gh-pages
