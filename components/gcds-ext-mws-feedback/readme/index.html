@@ -1,0 +1,100 @@
+<h1>app-alert</h1>
+<!-- Auto Generated Below -->
+<h2>Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>action</code></td>
+<td><code>action</code></td>
+<td>Defines the URL where the feedback should be submitted</td>
+<td><code>string</code></td>
+<td><code>'https://feedback-retroaction.canada.ca/api/QueueProblemForm'</code></td>
+</tr>
+<tr>
+<td><code>section</code></td>
+<td><code>section</code></td>
+<td>Defines the section where your page resides (sent as data via the form submission)</td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code>theme</code></td>
+<td><code>theme</code></td>
+<td>Defines the theme of your page (sent as data via the form submission)</td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Events</h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feedbackNo</code></td>
+<td>Triggered when the user select &quot;No&quot;</td>
+<td><code>CustomEvent&lt;void&gt;</code></td>
+</tr>
+<tr>
+<td><code>feedbackSubmit</code></td>
+<td>Triggered when the user select &quot;Yes&quot; or submits a comment</td>
+<td><code>CustomEvent&lt;void&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>The main content of the container.</td>
+</tr>
+</tbody>
+</table>
+<h2>Dependencies</h2>
+<h3>Depends on</h3>
+<ul>
+<li>gcds-text</li>
+<li>gcds-icon</li>
+<li>gcds-textarea</li>
+<li>gcds-button</li>
+</ul>
+<h3>Graph</h3>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TD<span class="token punctuation">;</span>
+  gcds-ext-mws-feedback <span class="token arrow operator">--></span> gcds-text
+  gcds-ext-mws-feedback <span class="token arrow operator">--></span> gcds-icon
+  gcds-ext-mws-feedback <span class="token arrow operator">--></span> gcds-textarea
+  gcds-ext-mws-feedback <span class="token arrow operator">--></span> gcds-button
+  gcds-textarea <span class="token arrow operator">--></span> gcds-label
+  gcds-textarea <span class="token arrow operator">--></span> gcds-hint
+  gcds-textarea <span class="token arrow operator">--></span> gcds-error-message
+  gcds-textarea <span class="token arrow operator">--></span> gcds-sr-only
+  gcds-textarea <span class="token arrow operator">--></span> gcds-text
+  gcds-hint <span class="token arrow operator">--></span> gcds-text
+  gcds-error-message <span class="token arrow operator">--></span> gcds-text
+  gcds-error-message <span class="token arrow operator">--></span> gcds-icon
+  gcds-button <span class="token arrow operator">--></span> gcds-icon
+  <span class="token keyword">style</span> gcds-ext-mws-feedback <span class="token style"><span class="token property">fill</span><span class="token operator">:</span>#f9f<span class="token punctuation">,</span><span class="token property">stroke</span><span class="token operator">:</span>#333<span class="token punctuation">,</span><span class="token property">stroke-width</span><span class="token operator">:</span>4px</span></code></pre>
+<hr>
+<p><em>Built with <a href="https://stenciljs.com/">StencilJS</a></em></p>

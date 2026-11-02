@@ -1,0 +1,177 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Canada.ca</title>
+
+    <link href="/wet-boew-demos/gcds-ext-mws-pr7/assets/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- GCDS components and Shortcuts styles -->
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css" />
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@1.2.0/dist/gcds-css-shortcuts.min.css" />
+
+    <!-- Syntax highlighting styles -->
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/wet-boew-demos/gcds-ext-mws-pr7/assets/style.css">
+
+    <!-- GCDS components -->
+    <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.esm.js"></script>
+
+    <!-- Script to build Stencil components with Eleventy -->
+    <script type="module" src="/wet-boew-demos/gcds-ext-mws-pr7/public/stencil.js"></script>
+
+    <!-- Compiled component bundle (from `stencil build`, www output target) -->
+    <script type="module" src="/wet-boew-demos/gcds-ext-mws-pr7/build/gcds-ext-mws.esm.js"></script>
+    <script nomodule src="/wet-boew-demos/gcds-ext-mws-pr7/build/gcds-ext-mws.js"></script>
+
+    <meta name="dcterms.creator" content="ESDC">
+</head>
+<body>
+  <gcds-header lang-href="/wet-boew-demos/gcds-ext-mws-pr7/fr/composants/retroaction/index.html" skip-to-href="#main-content">
+    <gcds-search slot="search"></gcds-search>
+    <gcds-breadcrumbs slot="breadcrumb">
+        
+        <gcds-breadcrumbs-item href="/wet-boew-demos/gcds-ext-mws-pr7/en">Managed Web Services</gcds-breadcrumbs-item>
+        
+        
+          <gcds-breadcrumbs-item href="/wet-boew-demos/gcds-ext-mws-pr7/en/components">Components</gcds-breadcrumbs-item>
+        
+        
+    </gcds-breadcrumbs>
+    <gcds-top-nav label="Top navigation" alignment="end" slot="menu">
+      <gcds-nav-link href="/wet-boew-demos/gcds-ext-mws-pr7/en" slot="home" role="listitem">Canada.ca MWS</gcds-nav-link>
+      <gcds-nav-link href="/wet-boew-demos/gcds-ext-mws-pr7/en/components" role="listitem">Components</gcds-nav-link>
+    </gcds-top-nav>
+</gcds-header>
+
+  <gcds-container id="main-content" tag="main" layout="page">
+    
+
+
+
+
+
+<h1>Feedback</h1>
+<p>The <code>&lt;gcds-ext-mws-feedback&gt;</code> collects feedback on the page experience. When in use, it is included at the bottom of the page before the date modified.</p>
+
+<h2>Default</h2>
+<gcds-ext-mws-feedback></gcds-ext-mws-feedback>
+
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-feedback</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-feedback</span><span class="token punctuation">></span></span></code></pre>
+
+
+
+
+<h2>Properties</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr lang="en">
+      <th>action </th>
+      <td>Defines the URL where the feedback should be submitted</td>
+      <td><code>string</code></td>
+      <td><code>&#39;https://feedback-retroaction.canada.ca/api/QueueProblemForm&#39;</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>section </th>
+      <td>Defines the section where your page resides (sent as data via the form submission)</td>
+      <td><code>string</code></td>
+      <td><code>&#39;&#39;</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>theme </th>
+      <td>Defines the theme of your page (sent as data via the form submission)</td>
+      <td><code>string</code></td>
+      <td><code>&#39;&#39;</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+
+
+<h2>Events</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Description</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr lang="en">
+      <th>feedbackNo</th>
+      <td>Triggered when the user select &quot;No&quot;</td>
+      <td><code>void</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>feedbackSubmit</th>
+      <td>Triggered when the user select &quot;Yes&quot; or submits a comment</td>
+      <td><code>void</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+
+
+<h2>Slots</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Slot</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr lang="en">
+      <th>(default)</th>
+      <td>The main content of the container.</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+    
+    <gcds-date-modified>2026-08-25</gcds-date-modified>
+    
+  </gcds-container>
+
+  <gcds-footer display="full"></gcds-footer>
+</body>
+</html>
