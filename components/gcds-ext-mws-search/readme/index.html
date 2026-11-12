@@ -1,0 +1,164 @@
+<h1>gcds-ext-mws-search</h1>
+<!-- Auto Generated Below -->
+<h2>Overview</h2>
+<p>Search is a space for entering keywords to find relevant information.</p>
+<h2>Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Attribute</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>action</code></td>
+<td><code>action</code></td>
+<td>Sets the action for the search form. Default will be canada.ca global search</td>
+<td><code>string</code></td>
+<td><code>'/sr/srb.html'</code></td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td><code>method</code></td>
+<td>Set the form method of the search form</td>
+<td><code>&quot;get&quot; | &quot;post&quot;</code></td>
+<td><code>'get'</code></td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>name</code></td>
+<td>Set the name of the search input</td>
+<td><code>string</code></td>
+<td><code>'q'</code></td>
+</tr>
+<tr>
+<td><code>placeholder</code></td>
+<td><code>placeholder</code></td>
+<td>Set the placeholder and label for the search input. Becomes &quot;Search [placeholder]&quot;</td>
+<td><code>string</code></td>
+<td><code>'Canada.ca'</code></td>
+</tr>
+<tr>
+<td><code>searchId</code></td>
+<td><code>search-id</code></td>
+<td>Set the id of the search input</td>
+<td><code>string</code></td>
+<td><code>'search'</code></td>
+</tr>
+<tr>
+<td><code>suggestionsAccessToken</code></td>
+<td><code>suggestions-access-token</code></td>
+<td>Bearer token used to access the suggestions API. Suggestions are disabled when omitted.</td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code>suggestionsEndpoint</code></td>
+<td><code>suggestions-endpoint</code></td>
+<td>Base URL for the Canada.ca query suggestions API, without the /querySuggest path.</td>
+<td><code>string</code></td>
+<td><code>'https://apps.canada.ca/search'</code></td>
+</tr>
+<tr>
+<td><code>suggestionsMaxItems</code></td>
+<td><code>suggestions-max-items</code></td>
+<td>Maximum number of suggestions requested from the API.</td>
+<td><code>number</code></td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>suggestionsMinCharacters</code></td>
+<td><code>suggestions-min-characters</code></td>
+<td>Minimum number of input characters before suggestions are requested.</td>
+<td><code>number</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>suggestionsOrganizationId</code></td>
+<td><code>suggestions-organization-id</code></td>
+<td>Organization ID used to access the suggestions API.</td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code>suggestionsPipeline</code></td>
+<td><code>suggestions-pipeline</code></td>
+<td>Pipeline sent with each suggestions request.</td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code>suggestionsSearchHub</code></td>
+<td><code>suggestions-search-hub</code></td>
+<td>Search hub sent with each suggestions request.</td>
+<td><code>string</code></td>
+<td><code>''</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>value</code></td>
+<td>Set the value of the search input</td>
+<td><code>string</code></td>
+<td><code>undefined</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Events</h2>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gcdsBlur</code></td>
+<td>Emitted when the search input has lost focus.</td>
+<td><code>CustomEvent&lt;void&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsChange</code></td>
+<td>Emitted when the search input value has changed.</td>
+<td><code>CustomEvent&lt;string&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsFocus</code></td>
+<td>Emitted when the search input has gained focus.</td>
+<td><code>CustomEvent&lt;void&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsInput</code></td>
+<td>Emitted when the search element has received input.</td>
+<td><code>CustomEvent&lt;string&gt;</code></td>
+</tr>
+<tr>
+<td><code>gcdsSubmit</code></td>
+<td>Emitted when the search form has submitted.</td>
+<td><code>CustomEvent&lt;string&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Dependencies</h2>
+<h3>Depends on</h3>
+<ul>
+<li>gcds-icon</li>
+<li>gcds-sr-only</li>
+<li>gcds-label</li>
+<li>gcds-button</li>
+</ul>
+<h3>Graph</h3>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">graph</span> TD<span class="token punctuation">;</span>
+  gcds-ext-mws-search <span class="token arrow operator">--></span> gcds-icon
+  gcds-ext-mws-search <span class="token arrow operator">--></span> gcds-sr-only
+  gcds-ext-mws-search <span class="token arrow operator">--></span> gcds-label
+  gcds-ext-mws-search <span class="token arrow operator">--></span> gcds-button
+  gcds-button <span class="token arrow operator">--></span> gcds-icon
+  <span class="token keyword">style</span> gcds-ext-mws-search <span class="token style"><span class="token property">fill</span><span class="token operator">:</span>#f9f<span class="token punctuation">,</span><span class="token property">stroke</span><span class="token operator">:</span>#333<span class="token punctuation">,</span><span class="token property">stroke-width</span><span class="token operator">:</span>4px</span></code></pre>
+<hr>
+<p><em>Built with <a href="https://stenciljs.com/">StencilJS</a></em></p>
