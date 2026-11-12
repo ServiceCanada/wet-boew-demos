@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most requested - Canada.ca</title>
+
+    <link href="/gcds-ext-canada/assets/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- GCDS components and Shortcuts styles -->
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css" />
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@1.2.0/dist/gcds-css-shortcuts.min.css" />
+
+    <!-- Syntax highlighting styles -->
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/gcds-ext-canada/assets/style.css">
+
+    <!-- GCDS components -->
+    <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.esm.js"></script>
+
+    <!-- Script to build Stencil components with Eleventy -->
+    <script type="module" src="/gcds-ext-canada/public/stencil.js"></script>
+
+    <!-- Compiled component bundle (from `stencil build`, www output target) -->
+    <script type="module" src="/gcds-ext-canada/build/gcds-ext-mws.esm.js"></script>
+    <script nomodule src="/gcds-ext-canada/build/gcds-ext-mws.js"></script>
+</head>
+<body>
+  <gcds-header lang-href="." skip-to-href="#main-content">
+    <gcds-search slot="search"></gcds-search>
+    <gcds-breadcrumbs slot="breadcrumb">
+        
+        <gcds-breadcrumbs-item href="/gcds-ext-canada/en">Managed Web Services</gcds-breadcrumbs-item>
+        
+        
+          <gcds-breadcrumbs-item href="/gcds-ext-canada/en/components">Components</gcds-breadcrumbs-item>
+        
+        
+    </gcds-breadcrumbs>
+    <gcds-top-nav label="Top navigation" alignment="end" slot="menu">
+      <gcds-nav-link href="/gcds-ext-canada/en" slot="home" role="listitem">Canada.ca MWS</gcds-nav-link>
+      <gcds-nav-link href="/gcds-ext-canada/en/components" role="listitem">Components</gcds-nav-link>
+    </gcds-top-nav>
+</gcds-header>
+
+  <gcds-container id="main-content" tag="main" layout="full">
+    
+
+
+
+
+
+<div class="container">
+    <h1>Most requested</h1>
+    <p>The <code>&lt;gcds-ext-mws-most-requested&gt;</code> component presents a short list of high-demand links. The non-home navigation frame is the default and the fallback whenever the page context cannot be confirmed as the Canada.ca home page.</p>
+
+    <h2>Default navigation frame</h2>
+</div>
+<gcds-ext-mws-most-requested heading="Most requested">
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink with a very long task name that spans over two lines 1]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 3]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 4]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 5]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink with a very long task name that spans over two lines 6]</gcds-ext-mws-most-requested-item>
+</gcds-ext-mws-most-requested>
+<div class="container">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Most requested<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink with a very long task name that spans over two lines 1]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 2]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 3]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 4]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 5]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink with a very long task name that spans over two lines 6]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested</span><span class="token punctuation">></span></span></code></pre>
+
+    <h2>Rich link content</h2>
+    <p>Use inline language markup when a link includes text in another language so assistive technology can use the right pronunciation.</p>
+</div>
+<gcds-ext-mws-most-requested heading="Most requested">
+    <gcds-ext-mws-most-requested-item href="#">Sign in to <span lang="fr">Mon dossier</span></gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">Apply for benefits</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">Check processing times</gcds-ext-mws-most-requested-item>
+</gcds-ext-mws-most-requested>
+<div class="container">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Most requested<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Sign in to <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Mon dossier<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Apply for benefits<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Check processing times<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested</span><span class="token punctuation">></span></span></code></pre>
+
+    <h2>Exactly two items</h2>
+</div>
+<gcds-ext-mws-most-requested heading="Most requested">
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 1]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+</gcds-ext-mws-most-requested>
+<div class="container">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Most requested<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 1]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 2]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested</span><span class="token punctuation">></span></span></code></pre>
+
+    <h2>Hidden heading</h2>
+</div>
+<gcds-ext-mws-most-requested heading="Most requested" hide-heading>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 1]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 2]</gcds-ext-mws-most-requested-item>
+    <gcds-ext-mws-most-requested-item href="#">[Top task hyperlink 3]</gcds-ext-mws-most-requested-item>
+</gcds-ext-mws-most-requested>
+<div class="container">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested</span> <span class="token attr-name">heading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Most requested<span class="token punctuation">"</span></span> <span class="token attr-name">hide-heading</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 1]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 2]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-most-requested-item</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>[Top task hyperlink 3]<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested-item</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-most-requested</span><span class="token punctuation">></span></span></code></pre>
+
+    <h2>Canada.ca home page frame</h2>
+    <p>The home frame is exclusive to the Canada.ca home page and is not author-selectable. This documentation page demonstrates it in an iframe so the iframe document, not the component markup, carries the required home page body classes.</p>
+    <iframe title="Most requested on the Canada.ca home page" style="border: 0; display: block; inline-size: 100%; min-block-size: 24rem;" srcdoc='&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css"&gt;&lt;script type="module" src="/build/gcds-ext-mws.esm.js"&gt;&lt;/script&gt;&lt;/head&gt;&lt;body class="home page-type-nav"&gt;&lt;gcds-ext-mws-most-requested heading="Most requested"&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/sign-in-online-account.html"&gt;Login to an account&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/services/benefits/ei.html"&gt;Employment Insurance and leave&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/services/benefits/publicpensions.html"&gt;Public pensions (CPP and OAS)&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html"&gt;Get a passport&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://weather.gc.ca/canada_e.html"&gt;Weather&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/grants-funding.html"&gt;Grants and funding&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/change-address.html"&gt;Change your address&lt;/gcds-ext-mws-most-requested-item&gt;&lt;gcds-ext-mws-most-requested-item href="http://www.healthycanadians.gc.ca/recall-alert-rappel-avis/index-eng.php"&gt;Product recalls and alerts&lt;/gcds-ext-mws-most-requested-item&gt;&lt;/gcds-ext-mws-most-requested&gt;&lt;/body&gt;&lt;/html&gt;'></iframe>
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Most requested on the Canada.ca home page<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">border</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span> <span class="token property">inline-size</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token property">min-block-size</span><span class="token punctuation">:</span> 24rem<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span> <span class="token attr-name">srcdoc</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>
+      <span class="token entity named-entity" title="&lt;">&amp;lt;</span>!doctype html<span class="token entity named-entity" title="&gt;">&amp;gt;</span><span class="token entity named-entity" title="&lt;">&amp;lt;</span>html<span class="token entity named-entity" title="&gt;">&amp;gt;</span><span class="token entity named-entity" title="&lt;">&amp;lt;</span>head<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+      <span class="token entity named-entity" title="&lt;">&amp;lt;</span>link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+      <span class="token entity named-entity" title="&lt;">&amp;lt;</span>script type="module" src="/build/gcds-ext-mws.esm.js"<span class="token entity named-entity" title="&gt;">&amp;gt;</span><span class="token entity named-entity" title="&lt;">&amp;lt;</span>/script<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+      <span class="token entity named-entity" title="&lt;">&amp;lt;</span>/head<span class="token entity named-entity" title="&gt;">&amp;gt;</span><span class="token entity named-entity" title="&lt;">&amp;lt;</span>body class="home page-type-nav"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+      <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested heading="Most requested"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+        <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/sign-in-online-account.html"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>Login to an account<span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested-item<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+        <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/services/benefits/ei.html"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>Employment Insurance and leave<span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested-item<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+        <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/services/benefits/publicpensions.html"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>Public pensions (CPP and OAS)<span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested-item<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+        <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/immigration-refugees-citizenship/services/canadian-passports.html"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>Get a passport<span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested-item<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+        <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested-item href="https://weather.gc.ca/canada_e.html"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>Weather<span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested-item<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+        <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/grants-funding.html"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>Grants and funding<span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested-item<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+        <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested-item href="https://www.canada.ca/en/government/change-address.html"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>Change your address<span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested-item<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+        <span class="token entity named-entity" title="&lt;">&amp;lt;</span>gcds-ext-mws-most-requested-item href="http://www.healthycanadians.gc.ca/recall-alert-rappel-avis/index-eng.php"<span class="token entity named-entity" title="&gt;">&amp;gt;</span>Product recalls and alerts<span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested-item<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+      <span class="token entity named-entity" title="&lt;">&amp;lt;</span>/gcds-ext-mws-most-requested<span class="token entity named-entity" title="&gt;">&amp;gt;</span>
+      <span class="token entity named-entity" title="&lt;">&amp;lt;</span>/body<span class="token entity named-entity" title="&gt;">&amp;gt;</span><span class="token entity named-entity" title="&lt;">&amp;lt;</span>/html<span class="token entity named-entity" title="&gt;">&amp;gt;</span><span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span></code></pre>
+</div>
+
+
+
+<gcds-container layout="page">
+
+
+<h2>Properties</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr lang="en">
+      <td><code>heading</code></td>
+      <td>Heading text (required)</td>
+      <td><code>string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    <tr lang="en">
+      <td><code>hide-heading</code></td>
+      <td>Hide the heading visually.</td>
+      <td><code>boolean | undefined</code></td>
+      <td><code>false</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Events</h2>
+
+<p>No events available for this component.</p>
+
+
+<h2>Slots</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Slot</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr lang="en">
+      <td><code>(default)</code></td>
+      <td>Most requested item elements.</td>
+    </tr>
+    
+    <tr lang="en">
+      <td><code>heading</code></td>
+      <td>Custom heading content.</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+</gcds-container>
+
+
+
+    
+    <gcds-container layout="page">
+    
+    <gcds-date-modified></gcds-date-modified>
+    
+    </gcds-container>
+    
+  </gcds-container>
+
+  <gcds-footer display="full"></gcds-footer>
+</body>
+</html>
