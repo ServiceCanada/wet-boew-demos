@@ -53,7 +53,7 @@ jobs:
       - name: Install GCWeb npm dependencies
         if: inputs.repository == 'GCWeb'
         working-directory: ${{ env.BUILD_DIR }}
-        run: npm ci --ignore-scripts
+        run: npm ci
 
       # Related to GCWeb#1737 about wet-boew#cc340a6 commit
       - name: Copy the missing _sprite_share.scss file
