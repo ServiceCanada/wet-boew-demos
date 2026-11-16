@@ -66,7 +66,7 @@ jobs:
       - name: Build GCWeb
         if: inputs.repository == 'GCWeb'
         working-directory: ${{ env.BUILD_DIR }}
-        run: grunt demo --branch=$TARGET_BRANCH
+        run: npx grunt demo --branch=$TARGET_BRANCH
 
       - name: Update GCWeb Jekyll theme files
         if: inputs.repository == 'GCWeb'
