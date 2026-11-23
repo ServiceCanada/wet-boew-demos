@@ -1,0 +1,407 @@
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boîte combinée - Canada.ca</title>
+
+    <link href="/wet-boew-demos/gcds-ext-mws-pr5/assets/favicon.ico" rel="icon" type="image/x-icon" />
+
+    <!-- GCDS components and Shortcuts styles -->
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.css" />
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@1.2.0/dist/gcds-css-shortcuts.min.css" />
+
+    <!-- Syntax highlighting styles -->
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/wet-boew-demos/gcds-ext-mws-pr5/assets/style.css">
+
+    <!-- GCDS components -->
+    <script type="module" src="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.esm.js"></script>
+
+    <!-- Script to build Stencil components with Eleventy -->
+    <script type="module" src="/wet-boew-demos/gcds-ext-mws-pr5/public/stencil.js"></script>
+
+    <!-- Compiled component bundle (from `stencil build`, www output target) -->
+    <script type="module" src="/wet-boew-demos/gcds-ext-mws-pr5/build/gcds-ext-mws.esm.js"></script>
+    <script nomodule src="/wet-boew-demos/gcds-ext-mws-pr5/build/gcds-ext-mws.js"></script>
+
+    <meta name="dcterms.creator" content="ESDC">
+</head>
+<body>
+  <gcds-header lang-href="/wet-boew-demos/gcds-ext-mws-pr5/en/components/combobox/index.html" skip-to-href="#main-content">
+    <gcds-search slot="search"></gcds-search>
+    <gcds-breadcrumbs slot="breadcrumb">
+        
+        <gcds-breadcrumbs-item href="/wet-boew-demos/gcds-ext-mws-pr5/fr">Services Web Partagés</gcds-breadcrumbs-item>
+        
+        
+          <gcds-breadcrumbs-item href="/wet-boew-demos/gcds-ext-mws-pr5/fr/composants">Composants</gcds-breadcrumbs-item>
+        
+        
+    </gcds-breadcrumbs>
+    <gcds-top-nav label="Top navigation" alignment="end" slot="menu">
+      <gcds-nav-link href="/wet-boew-demos/gcds-ext-mws-pr5/fr" slot="home" role="listitem">SWP Canada.ca</gcds-nav-link>
+      <gcds-nav-link href="/wet-boew-demos/gcds-ext-mws-pr5/fr/composants" role="listitem">Composants</gcds-nav-link>
+    </gcds-top-nav>
+</gcds-header>
+
+  <gcds-container id="main-content" tag="main" layout="page">
+    
+
+
+
+
+
+<h1>Boîte combinée</h1>
+<p>Le composant <code>&lt;gcds-ext-mws-combobox&gt;</code> est un élément personnalisé qui affiche une liste déroulante d'options parmi lesquelles l'utilisateur peut faire une sélection.</p>
+
+<h2>Par défaut</h2>
+<gcds-ext-mws-combobox
+    label="Légumes"
+    name="legumes-combobox"
+    input-id="legumes-combobox"
+    options='[{"concombre": "Concombre"},{"carotte": "Carotte"},{"brocoli": "Brocoli"},{"epinards": "Jeunes pousses d&#39;épinards"}]'
+>
+</gcds-ext-mws-combobox>
+<gcds-details details-title="Exemple de code">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-combobox</span>
+    <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Légumes<span class="token punctuation">"</span></span>
+    <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>legumes-combobox<span class="token punctuation">"</span></span>
+    <span class="token attr-name">input-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>legumes-combobox<span class="token punctuation">"</span></span>
+    <span class="token attr-name">options</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>[{"concombre": "Concombre"},{"carotte": "Carotte"},{"brocoli": "Brocoli"},{"epinards": "Jeunes pousses d<span class="token entity" title="&#39;">&amp;#39;</span>épinards"}]<span class="token punctuation">'</span></span>
+<span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-combobox</span><span class="token punctuation">></span></span></code></pre>
+</gcds-details>
+
+<h2>À l'aide d'emplacements</h2>
+<gcds-ext-mws-combobox
+    label="Fruits"
+    name="fruits-combobox"
+    input-id="fruits-combobox"
+>
+    <select slot="options">
+        <option value="apple">Pomme</option>
+        <option value="banana">Banane</option>
+        <option value="orange">Orange</option>
+        <option value="grape">Raisin</option>
+    </select>
+</gcds-ext-mws-combobox>
+
+<gcds-details details-title="Exemple de code">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-combobox</span>
+    <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Fruits<span class="token punctuation">"</span></span>
+    <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fruits-combobox<span class="token punctuation">"</span></span>
+    <span class="token attr-name">input-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fruits-combobox<span class="token punctuation">"</span></span>
+<span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>options<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>apple<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Pomme<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>banana<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Banane<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>orange<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Orange<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>option</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>grape<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Raisin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>option</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-combobox</span><span class="token punctuation">></span></span></code></pre>
+</gcds-details>
+
+<h2>Avec un indice et l'option « Tout sélectionner »</h2>
+<gcds-ext-mws-combobox
+    label="Animaux"
+    name="animaux-combobox"
+    input-id="animaux-combobox"
+    options='[{"lion": "Lion"},{"elephant": "Éléphant"},{"girafe": "Girafe"},{"zebre": "Zèbre"}]'
+    enable-select-all
+    hint="Sélectionnez au moins un animal."
+>
+</gcds-ext-mws-combobox>
+<gcds-details details-title="Exemple de code">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-combobox</span>
+    <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Animaux<span class="token punctuation">"</span></span>
+    <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animaux-combobox<span class="token punctuation">"</span></span>
+    <span class="token attr-name">input-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animaux-combobox<span class="token punctuation">"</span></span>
+    <span class="token attr-name">options</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>[{"lion": "Lion"},{"elephant": "Éléphant"},{"girafe": "Girafe"},{"zebre": "Zèbre"}]<span class="token punctuation">'</span></span>
+    <span class="token attr-name">enable-select-all</span>
+    <span class="token attr-name">hint</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Sélectionnez au moins un animal.<span class="token punctuation">"</span></span>
+    <span class="token attr-name">required</span>
+<span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-combobox</span><span class="token punctuation">></span></span></code></pre>
+</gcds-details>
+
+<h2>Dans un formulaire, avec un champ obligatoire</h2>
+<form novalidate action="#">
+    <gcds-error-summary listen></gcds-error-summary>
+    <gcds-ext-mws-combobox
+        label="Animaux"
+        name="animaux-combobox"
+        input-id="animaux-combobox"
+        options='[{"lion": "Lion"},{"elephant": "Éléphant"},{"girafe": "Girafe"},{"zebre": "Zèbre"}]'
+        hint="Sélectionnez au moins un animal."
+        required
+    ></gcds-ext-mws-combobox>
+    <gcds-button type="submit">Soumettre</gcds-button>
+</form>
+<gcds-details details-title="Exemple de code">
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">novalidate</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-error-summary</span> <span class="token attr-name">listen</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-error-summary</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-ext-mws-combobox</span>
+        <span class="token attr-name">label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Animaux<span class="token punctuation">"</span></span>
+        <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animaux-combobox<span class="token punctuation">"</span></span>
+        <span class="token attr-name">input-id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>animaux-combobox<span class="token punctuation">"</span></span>
+        <span class="token attr-name">options</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>[{"lion": "Lion"},{"elephant": "Éléphant"},{"girafe": "Girafe"},{"zebre": "Zèbre"}]<span class="token punctuation">'</span></span>
+        <span class="token attr-name">hint</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Sélectionnez au moins un animal.<span class="token punctuation">"</span></span>
+        <span class="token attr-name">required</span>
+    <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-ext-mws-combobox</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>gcds-button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Soumettre<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>gcds-button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+</gcds-details>
+
+
+
+
+<h2>Propriétés</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attributs</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Valeur par défaut</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr lang="en">
+      <th>autofocus </th>
+      <td>Specifies if an input element should be focused on component render.</td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>disabled </th>
+      <td>Specifies if an input element is disabled or not.</td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>enable-select-all </th>
+      <td>If true, a &quot;Select All&quot; option will be displayed at the top of the list of options.</td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>error-message </th>
+      <td>Error message for an invalid input element.</td>
+      <td><code>string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>form </th>
+      <td>The ID of the form that the input field belongs to.</td>
+      <td><code>string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>hide-label </th>
+      <td>If true, the label will be visually hidden but still accessible to screen readers.</td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>hint </th>
+      <td>Hint displayed below the label and above the input field.</td>
+      <td><code>string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>input-id <span class="text-secondary font-regular">(obligatoire)</span></th>
+      <td>Id attribute for the combobox input element.</td>
+      <td><code>string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>label <span class="text-secondary font-regular">(obligatoire)</span></th>
+      <td>Form field label</td>
+      <td><code>string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>name <span class="text-secondary font-regular">(obligatoire)</span></th>
+      <td>Name attribute for the combobox input element.</td>
+      <td><code>string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>options </th>
+      <td>JSON option array, or URL returning objects with `name` and `tag` fields.</td>
+      <td><code>SuggestionOption[] | string</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>required </th>
+      <td>Specifies if a form field is required or not.</td>
+      <td><code>boolean</code></td>
+      <td><code>false</code></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr lang="en">
+      <th>validate-on </th>
+      <td>Set event to call validator</td>
+      <td><code>&quot;blur&quot; | &quot;other&quot; | &quot;submit&quot;</code></td>
+      <td><code>&#39;blur&#39;</code></td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr lang="en">
+      <th>value </th>
+      <td>Initial selected values.</td>
+      <td><code>string | string[]</code></td>
+      <td><code></code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+
+
+<h2>Événements</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Événement</th>
+      <th>Description</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr lang="en">
+      <th>gcdsBlur</th>
+      <td>Emitted when the input loses focus.</td>
+      <td><code>void</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>gcdsChange</th>
+      <td>Emitted when the input has changed.</td>
+      <td><code>SuggestionOption[]</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>gcdsError</th>
+      <td>Emitted when the element is invalid.</td>
+      <td><code>object</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>gcdsFocus</th>
+      <td>Emitted when the input has focus.</td>
+      <td><code>void</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>gcdsInput</th>
+      <td>Emitted when the element has received input.</td>
+      <td><code>string</code></td>
+    </tr>
+    
+    
+    
+    <tr lang="en">
+      <th>gcdsValid</th>
+      <td>Emitted when the input has a validation error.</td>
+      <td><code>object</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+
+
+<h2>Emplacements</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Emplacement</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr lang="en">
+      <th>options</th>
+      <td>The options slot is for providing the list of available options.</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+
+
+    
+    <gcds-date-modified>2026-08-25</gcds-date-modified>
+    
+  </gcds-container>
+
+  <gcds-footer display="full"></gcds-footer>
+</body>
+</html>
